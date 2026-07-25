@@ -1,0 +1,411 @@
+import json
+import boto3
+import psycopg2
+import zoneinfo
+from datetime import datetime
+
+# ── MinIO connection ──────────────────────────────────────────
+MINIO_ENDPOINT  = "YOUR_MINIO_ENDPOINT"
+MINIO_ACCESS    = "YOUR_MINIO_ACCESS_KEY"
+MINIO_SECRET    = "YOUR_MINIO_SECRET_KEY"
+BUCKET          = "YOUR_BUCKET_NAME"
+
+# ── Buckets to always skip ────────────────────────────────────
+SKIP_BUCKETS = ['backups']
+
+# ── PostgreSQL connection ─────────────────────────────────────
+DB_PARAMS = {
+    "host":     "YOUR_DB_HOST",
+    "port":     5432,
+    "dbname":   "YOUR_DB_NAME",
+    "user":     "YOUR_DB_USER",
+    "password": "YOUR_DB_PASSWORD",
+    "sslmode":  "require"
+}
+
+
+# ── Supported file types and MIME types ───────────────────────
+MIME_TYPES = {
+    '.tif':     'image/tiff',
+    '.tiff':    'image/tiff',
+    '.geotiff': 'image/tiff',
+    '.png':     'image/png',
+    '.pdf':     'application/pdf',
+    '.nc':      'application/x-netcdf',
+    '.las':     'application/vnd.las',
+    '.laz':     'application/vnd.laszip',
+    '.geojson': 'application/geo+json',
+    '.shp':     'application/x-shapefile',
+    '.gpkg':    'application/geopackage+sqlite3',
+}
+
+# ── AOI place name to bbox lookup ────────────────────────────
+AOI_LOOKUP = {
+    'medway':   [0.48, 51.33, 0.74, 51.44],
+    'kent':     [0.27, 51.05, 1.45, 51.36],
+    'london':   [-0.51, 51.28, 0.33, 51.69],
+    'uk':       [-8.17, 49.95, 1.76, 60.84],
+}
+
+DEFAULT_BBOX = [-180, -90, 180, 90]
+DEFAULT_WKT  = 'POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))'
+LONDON_TZ    = zoneinfo.ZoneInfo("Europe/London")
+
+# ─────────────────────────────────────────────────────────────
+
+def get_all_buckets(s3):
+    """Auto-discover all accessible buckets, skipping excluded ones."""
+    response = s3.list_buckets()
+    buckets  = [
+        b['Name']
+        for b in response.get('Buckets', [])
+        if b['Name'] not in SKIP_BUCKETS
+    ]
+    return buckets
+
+def get_extension(key):
+    parts = key.lower().rsplit('.', 1)
+    return '.' + parts[1] if len(parts) == 2 else ''
+
+def get_mime_type(key):
+    return MIME_TYPES.get(get_extension(key), 'application/octet-stream')
+
+def get_title(key):
+    filename = key.split('/')[-1]
+    ext = get_extension(key)
+    return filename[:-len(ext)] if ext else filename
+
+def get_identifier(bucket, key):
+    return f"{bucket}/{key}"
+
+def format_file_size(size_bytes):
+    """Convert bytes to human readable size."""
+    if size_bytes < 1024:
+        return f"{size_bytes} B"
+    elif size_bytes < 1024 ** 2:
+        return f"{size_bytes / 1024:.1f} KB"
+    elif size_bytes < 1024 ** 3:
+        return f"{size_bytes / (1024 ** 2):.1f} MB"
+    else:
+        return f"{size_bytes / (1024 ** 3):.2f} GB"
+
+def parse_aoi(aoi_value):
+    """Convert AOI tag to bbox and WKT."""
+    if not aoi_value:
+        return DEFAULT_BBOX, DEFAULT_WKT
+    lookup = AOI_LOOKUP.get(aoi_value.strip().lower())
+    if lookup:
+        bbox = lookup
+    else:
+        try:
+            parts = [float(x.strip()) for x in aoi_value.split(',')]
+            if len(parts) == 4:
+                bbox = parts
+            else:
+                return DEFAULT_BBOX, DEFAULT_WKT
+        except ValueError:
+            return DEFAULT_BBOX, DEFAULT_WKT
+    xmin, ymin, xmax, ymax = bbox
+    wkt = f'POLYGON(({xmin} {ymin},{xmin} {ymax},{xmax} {ymax},{xmax} {ymin},{xmin} {ymin}))'
+    return bbox, wkt
+
+def parse_keywords(keywords_str):
+    """Split keywords on / or | or ; separators."""
+    if not keywords_str:
+        return []
+    for sep in ['/', '|', ';']:
+        if sep in keywords_str:
+            return [k.strip() for k in keywords_str.split(sep)]
+    return [keywords_str.strip()]
+
+def fetch_tags(s3, bucket, key):
+    """Fetch object tags from MinIO."""
+    try:
+        response = s3.get_object_tagging(Bucket=bucket, Key=key)
+        return {
+            tag['Key'].lower(): tag['Value']
+            for tag in response.get('TagSet', [])
+        }
+    except Exception as e:
+        print(f"  WARN: could not fetch tags for {key}: {e}")
+        return {}
+
+def fetch_object_info(s3, bucket, key):
+    """Fetch object metadata including size."""
+    try:
+        response = s3.head_object(Bucket=bucket, Key=key)
+        return {
+            'size':         response.get('ContentLength', 0),
+            'content_type': response.get('ContentType', ''),
+            'etag':         response.get('ETag', '').strip('"'),
+        }
+    except Exception:
+        return {'size': 0, 'content_type': '', 'etag': ''}
+
+def build_anytext(key, bucket, tags, size_str):
+    """Build rich searchable text string."""
+    parts = [
+        tags.get('title', ''),
+        tags.get('abstract', ''),
+        tags.get('keywords', '').replace('/', ' ').replace('|', ' '),
+        tags.get('organisation', ''),
+        tags.get('team', ''),
+        tags.get('project', ''),
+        tags.get('aoi', ''),
+        key,
+        bucket,
+        get_mime_type(key),
+        get_extension(key),
+        size_str,
+    ]
+    return ' '.join(p for p in parts if p)
+
+def build_stac_item(key, bucket, last_modified, tags, info, bbox):
+    """Build a STAC item JSON enriched with MinIO tags."""
+    title      = tags.get('title', get_title(key))
+    mime_type  = get_mime_type(key)
+    identifier = get_identifier(bucket, key)
+    size_str   = format_file_size(info['size'])
+
+    return {
+        "type": "Feature",
+        "stac_version": "1.0.0",
+        "id": identifier,
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+                [bbox[0], bbox[1]], [bbox[0], bbox[3]],
+                [bbox[2], bbox[3]], [bbox[2], bbox[1]],
+                [bbox[0], bbox[1]]
+            ]]
+        },
+        "bbox": bbox,
+        "properties": {
+            "datetime":        datetime.now(LONDON_TZ).isoformat(),
+            "title":           title,
+            "abstract":        tags.get('abstract', ''),
+            "keywords":        parse_keywords(tags.get('keywords', '')),
+            "type":            tags.get('type', 'dataset'),
+            "format":          mime_type,
+            "organisation":    tags.get('organisation', 'Systra UK'),
+            "team":            tags.get('team', ''),
+            "contact":         tags.get('contact', ''),
+            "project":         tags.get('project', ''),
+            "access":          tags.get('access', 'internal'),
+            "aoi":             tags.get('aoi', ''),
+            "file_size":       size_str,
+            "file_size_bytes": info['size'],
+            "etag":            info['etag'],
+            "bucket":          bucket,
+            "date_modified":   last_modified.astimezone(LONDON_TZ).isoformat(),
+        },
+        "assets": {
+            "data": {
+                "href":  f"{MINIO_ENDPOINT}/{bucket}/{key}",
+                "type":  mime_type,
+                "roles": ["data"],
+                "size":  info['size']
+            }
+        },
+        "links": [
+            {
+                "rel":  "self",
+                "href": f"{MINIO_ENDPOINT}/{bucket}/{key}",
+                "type": mime_type
+            }
+        ]
+    }
+
+def ingest_bucket(s3, cur, bucket):
+    """Ingest all tagged files from a single bucket."""
+    print(f"\n  Scanning bucket: {bucket}")
+
+    response = s3.list_objects_v2(Bucket=bucket)
+
+    if 'Contents' not in response:
+        print(f"  Empty bucket — skipping.")
+        return 0, 0, 0, 0
+
+    total = inserted = updated = skipped = failed = 0
+
+    for obj in response['Contents']:
+        key           = obj['Key']
+        last_modified = obj['LastModified']
+        size_bytes    = obj['Size']
+        ext           = get_extension(key)
+        total        += 1
+
+        # Skip JSON sidecars and unsupported types
+        if ext == '.json' or ext not in MIME_TYPES:
+            print(f"    SKIP: {key}")
+            skipped += 1
+            continue
+
+        # Skip files with no Title tag
+        tags = fetch_tags(s3, bucket, key)
+        if not tags.get('title'):
+            print(f"    SKIP (no Title tag): {key}")
+            skipped += 1
+            continue
+
+        try:
+            info      = fetch_object_info(s3, bucket, key)
+            size_str  = format_file_size(size_bytes)
+            bbox, wkt = parse_aoi(tags.get('aoi', ''))
+
+            keywords_list = parse_keywords(tags.get('keywords', ''))
+            keywords_str  = ', '.join(keywords_list)
+
+            item       = build_stac_item(key, bucket, last_modified, tags, info, bbox)
+            title      = tags.get('title', get_title(key))
+            mime_type  = get_mime_type(key)
+            anytext    = build_anytext(key, bucket, tags, size_str)
+            identifier = get_identifier(bucket, key)
+
+            print(f"\n    Processing: {key}")
+            print(f"      Title    : {title}")
+            print(f"      Type     : {tags.get('type', 'dataset')}")
+            print(f"      Format   : {mime_type}")
+            print(f"      Size     : {size_str}")
+            print(f"      AOI      : {tags.get('aoi', 'not set')} → {bbox}")
+            print(f"      Access   : {tags.get('access', 'internal')}")
+            print(f"      Contact  : {tags.get('contact', 'not set')}")
+
+            cur.execute("""
+                INSERT INTO p_pycsw.records (
+                    identifier, typename, schema,
+                    mdsource, insert_date, xml,
+                    anytext, title, abstract,
+                    keywords, type, format,
+                    source, organization, creator,
+                    publisher, date_modified,
+                    links, accessconstraints,
+                    wkt_geometry,
+                    distancevalue, distanceuom
+                )
+                VALUES (
+                    %s, %s, %s,
+                    %s, NOW(), %s,
+                    %s, %s, %s,
+                    %s, %s, %s,
+                    %s, %s, %s,
+                    %s, %s,
+                    %s, %s,
+                    %s,
+                    %s, %s
+                )
+                ON CONFLICT (identifier) DO UPDATE SET
+                    xml               = EXCLUDED.xml,
+                    anytext           = EXCLUDED.anytext,
+                    title             = EXCLUDED.title,
+                    abstract          = EXCLUDED.abstract,
+                    keywords          = EXCLUDED.keywords,
+                    type              = EXCLUDED.type,
+                    format            = EXCLUDED.format,
+                    organization      = EXCLUDED.organization,
+                    creator           = EXCLUDED.creator,
+                    publisher         = EXCLUDED.publisher,
+                    date_modified     = EXCLUDED.date_modified,
+                    links             = EXCLUDED.links,
+                    accessconstraints = EXCLUDED.accessconstraints,
+                    wkt_geometry      = EXCLUDED.wkt_geometry,
+                    distancevalue     = EXCLUDED.distancevalue,
+                    distanceuom       = EXCLUDED.distanceuom
+            """, (
+                identifier,
+                'stac:item',
+                'https://stac-extensions.github.io/eo/v1.0.0/schema.json',
+                'minio-ingest',
+                json.dumps(item),
+                anytext,
+                title,
+                tags.get('abstract', ''),
+                keywords_str,
+                tags.get('type', 'dataset'),
+                mime_type,
+                tags.get('project', ''),
+                tags.get('organisation', 'Systra UK'),
+                tags.get('team', ''),
+                tags.get('contact', ''),
+                last_modified.astimezone(LONDON_TZ).isoformat(),
+                json.dumps(item['links']),
+                tags.get('access', 'internal'),
+                wkt,
+                size_str,
+                'file'
+            ))
+
+            cur.connection.commit()
+
+            if cur.rowcount == 1:
+                inserted += 1
+                print(f"      Status   : INSERT ✓")
+            else:
+                updated += 1
+                print(f"      Status   : UPDATE ✓")
+
+        except Exception as e:
+            failed += 1
+            print(f"    FAILED: {key} — {e}")
+            cur.connection.rollback()
+            continue
+
+    return total, inserted, updated, skipped, failed
+
+def ingest():
+    """Main ingestion function — auto-discovers all buckets."""
+    s3   = boto3.client(
+        's3',
+        endpoint_url=MINIO_ENDPOINT,
+        aws_access_key_id=MINIO_ACCESS,
+        aws_secret_access_key=MINIO_SECRET
+    )
+    conn = psycopg2.connect(**DB_PARAMS)
+    cur  = conn.cursor()
+
+    # Auto-discover all buckets
+    buckets = get_all_buckets(s3)
+
+    print(f"""
+─────────────────────────────
+MinIO Auto-Discovery
+─────────────────────────────
+Endpoint       : {MINIO_ENDPOINT}
+Buckets found  : {len(buckets)}
+Skipping       : {SKIP_BUCKETS}
+─────────────────────────────""")
+
+    for bucket in buckets:
+        print(f"  {bucket}")
+    print()
+
+    grand_total = grand_inserted = grand_updated = grand_skipped = grand_failed = 0
+
+    for bucket in buckets:
+        result = ingest_bucket(s3, cur, bucket)
+        if len(result) == 5:
+            t, i, u, s, f      = result
+            grand_total        += t
+            grand_inserted     += i
+            grand_updated      += u
+            grand_skipped      += s
+            grand_failed       += f
+
+    cur.close()
+    conn.close()
+
+    print(f"""
+─────────────────────────────
+MinIO Ingestion complete
+─────────────────────────────
+Buckets scanned : {len(buckets)}
+Total files     : {grand_total}
+Inserted        : {grand_inserted}
+Updated         : {grand_updated}
+Skipped         : {grand_skipped}
+Failed          : {grand_failed}
+─────────────────────────────
+""")
+
+if __name__ == "__main__":
+    ingest()

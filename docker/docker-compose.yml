@@ -1,0 +1,42 @@
+services:
+
+  pycsw:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: pycsw
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    environment:
+      - PYCSW_CONFIG=/pycsw/config/pycsw.cfg
+    volumes:
+      - ../config/pycsw.cfg:/pycsw/config/pycsw.cfg:ro
+      - ../scripts:/pycsw/scripts:ro
+    networks:
+      - catalogue-network
+    healthcheck:
+      test: >
+        python -c "import urllib.request;
+        urllib.request.urlopen('http://localhost:8000/csw?service=CSW&version=2.0.2&request=GetCapabilities')"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ../nginx/pycsw.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - pycsw
+    networks:
+      - catalogue-network
+
+networks:
+  catalogue-network:
+    driver: bridge

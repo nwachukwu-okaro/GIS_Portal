@@ -1,0 +1,30 @@
+# Credentials — never commit these
+.env
+config/pycsw.cfg
+scripts/ingest_minio.py
+scripts/ingest_postgis.py
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+pycsw-env/
+venv/
+*.egg-info/
+
+# Django (for later)
+*.sqlite3
+media/
+staticfiles/
+
+# OS files
+.DS_Store
+Thumbs.db
+Thumbs.db:encdata
+
+# Docker sensitive
+.env*
