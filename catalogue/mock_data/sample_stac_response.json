@@ -1,0 +1,196 @@
+{
+  "type": "FeatureCollection",
+  "numberMatched": 6,
+  "numberReturned": 6,
+  "features": [
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "id": "surveys/medway_orthophoto_2026.tif",
+      "bbox": [0.48, 51.33, 0.74, 51.44],
+      "properties": {
+        "title": "Medway Orthophoto 2026",
+        "abstract": "High-resolution aerial orthophoto covering the Medway estuary, captured spring 2026 for the flood defence scheme survey.",
+        "keywords": ["orthophoto", "aerial", "medway", "survey"],
+        "type": "Map",
+        "format": "image/tiff",
+        "organisation": "Systra UK",
+        "team": "Geospatial",
+        "contact": "j.smith@systra.com",
+        "project": "Medway Flood Defence",
+        "access": "internal",
+        "aoi": "medway",
+        "file_size": "482.3 MB",
+        "file_size_bytes": 505741312,
+        "bucket": "surveys",
+        "date_modified": "2026-05-12T10:22:00+01:00"
+      },
+      "assets": {
+        "data": {
+          "href": "http://gisdb.systra.info:9000/surveys/medway_orthophoto_2026.tif",
+          "type": "image/tiff",
+          "roles": ["data"],
+          "size": 505741312
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "id": "reports/kent_ground_investigation.pdf",
+      "bbox": [0.27, 51.05, 1.45, 51.36],
+      "properties": {
+        "title": "Kent Ground Investigation Report",
+        "abstract": "Geotechnical ground investigation report for the Kent highway widening scheme, including borehole logs and lab test results.",
+        "keywords": ["geotechnical", "ground investigation", "kent"],
+        "type": "dataset",
+        "format": "application/pdf",
+        "organisation": "Systra UK",
+        "team": "Geotechnical",
+        "contact": "a.patel@systra.com",
+        "project": "Kent Highway Widening",
+        "access": "public",
+        "aoi": "kent",
+        "file_size": "12.8 MB",
+        "file_size_bytes": 13421772,
+        "bucket": "reports",
+        "date_modified": "2026-03-28T14:05:00+00:00"
+      },
+      "assets": {
+        "data": {
+          "href": "http://gisdb.systra.info:9000/reports/kent_ground_investigation.pdf",
+          "type": "application/pdf",
+          "roles": ["data"],
+          "size": 13421772
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "id": "thumbnails/london_site_photo_042.png",
+      "bbox": [-0.51, 51.28, 0.33, 51.69],
+      "properties": {
+        "title": "London Site Photo 042",
+        "abstract": "Site progress photograph, London Bridge station upgrade works, taken during monthly inspection.",
+        "keywords": ["site photo", "progress", "london"],
+        "type": "dataset",
+        "format": "image/png",
+        "organisation": "Systra UK",
+        "team": "Construction",
+        "contact": "r.jones@systra.com",
+        "project": "London Bridge Station Upgrade",
+        "access": "internal",
+        "aoi": "london",
+        "file_size": "3.1 MB",
+        "file_size_bytes": 3250585,
+        "bucket": "thumbnails",
+        "date_modified": "2026-06-02T09:15:00+01:00"
+      },
+      "assets": {
+        "data": {
+          "href": "http://gisdb.systra.info:9000/thumbnails/london_site_photo_042.png",
+          "type": "image/png",
+          "roles": ["data"],
+          "size": 3250585
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "id": "transport/road_network",
+      "bbox": [-8.17, 49.95, 1.76, 60.84],
+      "properties": {
+        "title": "UK Road Network",
+        "abstract": "National road centreline dataset with classification, used as the base network for transport modelling.",
+        "keywords": ["roads", "transport", "network", "uk"],
+        "type": "dataset",
+        "format": "PostGIS/LINESTRING",
+        "organisation": "Systra UK",
+        "contact": "d.evans@systra.com",
+        "access": "internal",
+        "crs": "EPSG:27700",
+        "geometry_type": "LINESTRING",
+        "row_count": 184532,
+        "table_size": "1240 MB",
+        "source": "Ordnance Survey OpenRoads",
+        "date_modified": "2026-04-15T11:40:00+01:00",
+        "schema": "transport",
+        "table": "road_network"
+      },
+      "assets": {
+        "data": {
+          "href": "postgresql://gisdb.systra.info:5432/uk_irl/transport/road_network",
+          "type": "PostGIS/LINESTRING",
+          "roles": ["data"],
+          "size": "1240 MB"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "id": "planning/site_boundaries",
+      "bbox": [-0.51, 51.28, 0.33, 51.69],
+      "properties": {
+        "title": "Project Site Boundaries",
+        "abstract": "Polygon boundaries for all active Systra project sites in the London area, maintained by the planning team.",
+        "keywords": ["boundaries", "planning", "sites", "london"],
+        "type": "Map",
+        "format": "PostGIS/POLYGON",
+        "organisation": "Systra UK",
+        "contact": "m.brown@systra.com",
+        "access": "public",
+        "crs": "EPSG:27700",
+        "geometry_type": "POLYGON",
+        "row_count": 47,
+        "table_size": "2.4 MB",
+        "source": "Planning Team",
+        "date_modified": "2026-07-01T16:30:00+01:00",
+        "schema": "planning",
+        "table": "site_boundaries"
+      },
+      "assets": {
+        "data": {
+          "href": "postgresql://gisdb.systra.info:5432/uk_irl/planning/site_boundaries",
+          "type": "PostGIS/POLYGON",
+          "roles": ["data"],
+          "size": "2.4 MB"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "id": "environment/flood_risk_zones",
+      "bbox": [0.48, 51.33, 0.74, 51.44],
+      "properties": {
+        "title": "Flood Risk Zones — Medway",
+        "abstract": "Environment Agency flood risk zone polygons clipped to the Medway study area, used for the flood defence scheme.",
+        "keywords": ["flood risk", "environment", "medway"],
+        "type": "dataset",
+        "format": "PostGIS/MULTIPOLYGON",
+        "organisation": "Systra UK",
+        "contact": "j.smith@systra.com",
+        "access": "internal",
+        "crs": "EPSG:27700",
+        "geometry_type": "MULTIPOLYGON",
+        "row_count": 312,
+        "table_size": "8.6 MB",
+        "source": "Environment Agency",
+        "date_modified": "2026-05-20T13:00:00+01:00",
+        "schema": "environment",
+        "table": "flood_risk_zones"
+      },
+      "assets": {
+        "data": {
+          "href": "postgresql://gisdb.systra.info:5432/uk_irl/environment/flood_risk_zones",
+          "type": "PostGIS/MULTIPOLYGON",
+          "roles": ["data"],
+          "size": "8.6 MB"
+        }
+      }
+    }
+  ]
+}
