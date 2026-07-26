@@ -1,0 +1,49 @@
+{
+  "transport/road_network": {
+    "columns": ["id", "road_name", "classification", "length_m", "geom"],
+    "rows": [
+      [1, "A2 Rochester Way", "A Road", 4820.5, "0102000020...clipped"],
+      [2, "M2 Motorway", "Motorway", 15230.0, "0102000020...clipped"],
+      [3, "High Street", "Local Road", 640.2, "0102000020...clipped"],
+      [4, "A228 Sheppey Way", "A Road", 9120.8, "0102000020...clipped"],
+      [5, "Station Approach", "Local Road", 310.0, "0102000020...clipped"],
+      [6, "A249 Iwade Road", "A Road", 6780.4, "0102000020...clipped"],
+      [7, "B2004 Knight Road", "B Road", 2140.6, "0102000020...clipped"],
+      [8, "Medway Bridge Approach", "A Road", 1580.3, "0102000020...clipped"],
+      [9, "Cuxton Road", "B Road", 3420.9, "0102000020...clipped"],
+      [10, "A278 Ambley Road", "A Road", 5290.1, "0102000020...clipped"],
+      [11, "Watling Street", "A Road", 8930.7, "0102000020...clipped"],
+      [12, "Frindsbury Hill", "Local Road", 780.5, "0102000020...clipped"]
+    ]
+  },
+  "planning/site_boundaries": {
+    "columns": ["id", "site_name", "project_code", "area_m2", "geom"],
+    "rows": [
+      [1, "London Bridge Station", "LBS-2026-01", 18420.5, "0106000020...clipped"],
+      [2, "Kent Highway Depot", "KHW-2025-07", 6230.0, "0106000020...clipped"],
+      [3, "Medway Flood Barrier Site", "MFD-2026-03", 42100.8, "0106000020...clipped"],
+      [4, "Stratford Interchange", "STR-2024-11", 27850.2, "0106000020...clipped"],
+      [5, "Canterbury Park & Ride", "CPR-2025-02", 9640.4, "0106000020...clipped"],
+      [6, "Ashford Rail Sidings", "ARS-2026-05", 15320.6, "0106000020...clipped"],
+      [7, "Gravesend Riverside", "GRV-2025-09", 11200.3, "0106000020...clipped"],
+      [8, "Dartford Crossing North", "DCN-2024-04", 33580.9, "0106000020...clipped"],
+      [9, "Maidstone Depot Extension", "MDE-2026-02", 7480.1, "0106000020...clipped"],
+      [10, "Chatham Waterfront", "CHW-2025-06", 19870.7, "0106000020...clipped"]
+    ]
+  },
+  "environment/flood_risk_zones": {
+    "columns": ["id", "zone_type", "risk_level", "area_ha", "geom"],
+    "rows": [
+      [1, "Fluvial", "High", 128.4, "0106000020...clipped"],
+      [2, "Tidal", "Medium", 342.7, "0106000020...clipped"],
+      [3, "Fluvial", "Low", 88.2, "0106000020...clipped"],
+      [4, "Surface Water", "Medium", 54.9, "0106000020...clipped"],
+      [5, "Tidal", "High", 210.6, "0106000020...clipped"],
+      [6, "Fluvial", "Medium", 96.3, "0106000020...clipped"],
+      [7, "Surface Water", "Low", 33.1, "0106000020...clipped"],
+      [8, "Tidal", "Medium", 175.8, "0106000020...clipped"],
+      [9, "Fluvial", "High", 142.0, "0106000020...clipped"],
+      [10, "Surface Water", "Medium", 61.5, "0106000020...clipped"]
+    ]
+  }
+}

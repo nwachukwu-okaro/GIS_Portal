@@ -1,11 +1,40 @@
+import csv
 import json
+import tempfile
 from pathlib import Path
 
+import boto3
+import psycopg2
 import requests
 from django.conf import settings
+from django.http import FileResponse, Http404, HttpResponse, StreamingHttpResponse
 from django.shortcuts import render
+from django.views.decorators.clickjacking import xframe_options_sameorigin
+from psycopg2 import sql
 
-MOCK_STAC_PATH = Path(__file__).resolve().parent / 'mock_data' / 'sample_stac_response.json'
+APP_DIR = Path(__file__).resolve().parent
+MOCK_STAC_PATH = APP_DIR / 'mock_data' / 'sample_stac_response.json'
+MOCK_TABLE_ROWS_PATH = APP_DIR / 'mock_data' / 'sample_table_rows.json'
+MOCK_FILES_DIR = APP_DIR / 'mock_data' / 'files'
+
+# Columns hidden from the PostGIS row preview — raw WKB isn't useful in a table.
+GEOMETRY_COLUMNS = {'geom', 'geometry', 'the_geom', 'wkb_geometry', 'shape'}
+
+IMAGE_FORMATS = {'image/png', 'image/jpeg', 'image/gif'}
+PDF_FORMATS = {'application/pdf'}
+
+
+def _is_stac_mock():
+    return settings.PYCSW_STAC_URL.strip().lower() == 'mock'
+
+
+def _is_minio_mock():
+    return not settings.MINIO_ACCESS_KEY or settings.MINIO_ACCESS_KEY == 'YOUR_MINIO_ACCESS_KEY'
+
+
+def _is_gis_db_mock():
+    user = settings.GIS_DB_CONFIG.get('user', '')
+    return not user or user == 'YOUR_DB_USER'
 
 
 def _load_mock_features():
@@ -15,11 +44,10 @@ def _load_mock_features():
 
 def _fetch_stac_features(query):
     """Return a list of STAC features, or None if the live search failed."""
-    stac_url = settings.PYCSW_STAC_URL.strip()
-
-    if stac_url.lower() == 'mock':
+    if _is_stac_mock():
         return _load_mock_features()
 
+    stac_url = settings.PYCSW_STAC_URL.strip()
     try:
         response = requests.get(
             f"{stac_url.rstrip('/')}/search",
@@ -28,6 +56,28 @@ def _fetch_stac_features(query):
         )
         response.raise_for_status()
         return response.json().get('features', [])
+    except (requests.RequestException, ValueError):
+        return None
+
+
+def _fetch_feature_by_id(identifier):
+    """Return the single STAC feature matching identifier, or None."""
+    if _is_stac_mock():
+        for feature in _load_mock_features():
+            if feature.get('id') == identifier:
+                return feature
+        return None
+
+    stac_url = settings.PYCSW_STAC_URL.strip()
+    try:
+        response = requests.get(
+            f"{stac_url.rstrip('/')}/search",
+            params={'ids': identifier, 'limit': 1},
+            timeout=10,
+        )
+        response.raise_for_status()
+        features = response.json().get('features', [])
+        return features[0] if features else None
     except (requests.RequestException, ValueError):
         return None
 
@@ -60,6 +110,48 @@ def _feature_to_result(feature):
         'href': feature.get('assets', {}).get('data', {}).get('href', ''),
         'date_modified': props.get('date_modified', ''),
     }
+
+
+def _feature_to_detail(feature):
+    props = feature.get('properties', {})
+    identifier = feature.get('id', '')
+    source = _feature_source(feature)
+
+    detail = {
+        'identifier': identifier,
+        'title': props.get('title') or identifier,
+        'abstract': props.get('abstract', ''),
+        'type': props.get('type', 'dataset'),
+        'format': props.get('format', ''),
+        'organisation': props.get('organisation', ''),
+        'team': props.get('team', ''),
+        'contact': props.get('contact', ''),
+        'project': props.get('project', ''),
+        'access': props.get('access', 'internal'),
+        'keywords': props.get('keywords') or [],
+        'size': props.get('file_size') or props.get('table_size', ''),
+        'date_modified': props.get('date_modified', ''),
+        'source': source,
+    }
+
+    if source == 'minio':
+        mime_type = props.get('format', '')
+        detail.update({
+            'mime_type': mime_type,
+            'is_image': mime_type in IMAGE_FORMATS,
+            'is_pdf': mime_type in PDF_FORMATS,
+            'mock_asset': props.get('mock_asset', ''),
+        })
+    elif source == 'postgis':
+        detail.update({
+            'schema': props.get('schema', ''),
+            'table': props.get('table', ''),
+            'crs': props.get('crs', ''),
+            'geometry_type': props.get('geometry_type', ''),
+            'row_count': props.get('row_count'),
+        })
+
+    return detail
 
 
 def _matches_query(result, query):
@@ -104,6 +196,246 @@ def search(request):
         'type_filter': type_filter,
         'source_filter': source_filter,
         'access_filter': access_filter,
-        'using_mock': settings.PYCSW_STAC_URL.strip().lower() == 'mock',
+        'using_mock': _is_stac_mock(),
     }
     return render(request, 'catalogue/search.html', context)
+
+
+def _visible_columns(columns):
+    return [i for i, col in enumerate(columns) if col.lower() not in GEOMETRY_COLUMNS]
+
+
+def _load_mock_table_rows(identifier):
+    with open(MOCK_TABLE_ROWS_PATH, encoding='utf-8') as f:
+        tables = json.load(f)
+
+    table = tables.get(identifier)
+    if not table:
+        return {'error': 'No sample rows are bundled for this table.'}
+
+    visible = _visible_columns(table['columns'])
+    return {
+        'columns': [table['columns'][i] for i in visible],
+        'rows': [[row[i] for i in visible] for row in table['rows']],
+    }
+
+
+def _fetch_table_preview(item):
+    if _is_gis_db_mock():
+        return _load_mock_table_rows(item['identifier'])
+
+    schema, table = item.get('schema', ''), item.get('table', '')
+    if not schema or not table:
+        return {'error': 'This record is missing schema/table metadata.'}
+
+    try:
+        conn = psycopg2.connect(**settings.GIS_DB_CONFIG)
+        try:
+            with conn.cursor() as cur:
+                query = sql.SQL('SELECT * FROM {}.{} LIMIT 100').format(
+                    sql.Identifier(schema), sql.Identifier(table)
+                )
+                cur.execute(query)
+                columns = [desc[0] for desc in cur.description]
+                rows = cur.fetchall()
+        finally:
+            conn.close()
+    except psycopg2.Error:
+        return {'error': 'Could not connect to the database to preview this table.'}
+
+    visible = _visible_columns(columns)
+    return {
+        'columns': [columns[i] for i in visible],
+        'rows': [[row[i] for i in visible] for row in rows],
+    }
+
+
+class _Echo:
+    """A file-like object that hands back whatever csv.writer sends it, for streaming."""
+
+    def write(self, value):
+        return value
+
+
+def _download_postgis_csv(item, table_name):
+    """Streams every row of the table as CSV, geometry columns excluded."""
+    if _is_gis_db_mock():
+        table = _load_mock_table_rows(item['identifier'])
+        if table.get('error'):
+            raise Http404(table['error'])
+        columns, rows = table['columns'], table['rows']
+
+        writer = csv.writer(_Echo())
+
+        def generate():
+            yield writer.writerow(columns)
+            for row in rows:
+                yield writer.writerow(row)
+
+        response = StreamingHttpResponse(generate(), content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="{table_name}.csv"'
+        return response
+
+    schema, table_id = item.get('schema', ''), item.get('table', '')
+    if not schema or not table_id:
+        raise Http404('This record is missing schema/table metadata.')
+
+    try:
+        conn = psycopg2.connect(**settings.GIS_DB_CONFIG)
+    except psycopg2.Error:
+        raise Http404('Could not connect to the database to export this table.')
+
+    cur = conn.cursor(name='catalogue_csv_export')  # server-side cursor: streams instead of loading all rows
+    query = sql.SQL('SELECT * FROM {}.{}').format(sql.Identifier(schema), sql.Identifier(table_id))
+    cur.execute(query)
+    columns = [desc[0] for desc in cur.description]
+    visible = _visible_columns(columns)
+
+    writer = csv.writer(_Echo())
+
+    def generate():
+        try:
+            yield writer.writerow([columns[i] for i in visible])
+            while True:
+                batch = cur.fetchmany(1000)
+                if not batch:
+                    break
+                for row in batch:
+                    yield writer.writerow([row[i] for i in visible])
+        finally:
+            cur.close()
+            conn.close()
+
+    response = StreamingHttpResponse(generate(), content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="{table_name}.csv"'
+    return response
+
+
+def _download_postgis_gpkg(item, table_name):
+    """Exports every row, including geometry, as a GeoPackage preserving CRS."""
+    if _is_gis_db_mock():
+        # No real geometry available offline — fall back to the CSV export.
+        return _download_postgis_csv(item, table_name)
+
+    import geopandas as gpd  # deferred: heavy GDAL-backed import, only needed on this path
+
+    schema, table_id = item.get('schema', ''), item.get('table', '')
+    if not schema or not table_id:
+        raise Http404('This record is missing schema/table metadata.')
+
+    try:
+        conn = psycopg2.connect(**settings.GIS_DB_CONFIG)
+        try:
+            query = sql.SQL('SELECT * FROM {}.{}').format(
+                sql.Identifier(schema), sql.Identifier(table_id)
+            )
+            gdf = gpd.read_postgis(
+                query.as_string(conn), conn, geom_col='geom', crs=item.get('crs') or None
+            )
+        finally:
+            conn.close()
+    except Exception:
+        raise Http404('Could not export this table as a GeoPackage.')
+
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        gpkg_path = Path(tmp_dir) / f'{table_name}.gpkg'
+        gdf.to_file(gpkg_path, driver='GPKG', engine='fiona')
+        data = gpkg_path.read_bytes()
+
+    response = HttpResponse(data, content_type='application/geopackage+sqlite3')
+    response['Content-Disposition'] = f'attachment; filename="{table_name}.gpkg"'
+    return response
+
+
+def postgis_download_csv(request, identifier):
+    feature = _fetch_feature_by_id(identifier)
+    if feature is None:
+        raise Http404('Record not found in the catalogue.')
+
+    item = _feature_to_detail(feature)
+    if item['source'] != 'postgis':
+        raise Http404('This record is not a PostGIS table.')
+
+    table_name = item.get('table') or identifier.rsplit('/', 1)[-1]
+    return _download_postgis_csv(item, table_name)
+
+
+def postgis_download_gpkg(request, identifier):
+    feature = _fetch_feature_by_id(identifier)
+    if feature is None:
+        raise Http404('Record not found in the catalogue.')
+
+    item = _feature_to_detail(feature)
+    if item['source'] != 'postgis':
+        raise Http404('This record is not a PostGIS table.')
+
+    table_name = item.get('table') or identifier.rsplit('/', 1)[-1]
+    return _download_postgis_gpkg(item, table_name)
+
+
+def detail(request, identifier):
+    feature = _fetch_feature_by_id(identifier)
+    if feature is None:
+        raise Http404('Record not found in the catalogue.')
+
+    item = _feature_to_detail(feature)
+    context = {
+        'item': item,
+        'using_minio_mock': _is_minio_mock(),
+        'using_gis_db_mock': _is_gis_db_mock(),
+    }
+
+    if item['source'] == 'postgis':
+        context['table_data'] = _fetch_table_preview(item)
+
+    return render(request, 'catalogue/detail.html', context)
+
+
+@xframe_options_sameorigin
+def asset(request, identifier):
+    """Streams a MinIO file inline (for preview) or as an attachment (?download=1)."""
+    feature = _fetch_feature_by_id(identifier)
+    if feature is None:
+        raise Http404('Record not found in the catalogue.')
+
+    item = _feature_to_detail(feature)
+    if item['source'] != 'minio':
+        raise Http404('This record has no downloadable file.')
+
+    as_attachment = bool(request.GET.get('download'))
+    filename = identifier.rsplit('/', 1)[-1]
+    mime_type = item.get('mime_type') or 'application/octet-stream'
+
+    if _is_minio_mock():
+        mock_filename = item.get('mock_asset', '')
+        file_path = MOCK_FILES_DIR / mock_filename if mock_filename else None
+        if not mock_filename or not file_path.exists():
+            raise Http404('No sample file bundled for this mock record.')
+        return FileResponse(
+            open(file_path, 'rb'),
+            content_type=mime_type,
+            as_attachment=as_attachment,
+            filename=filename,
+        )
+
+    bucket, _, key = identifier.partition('/')
+    s3 = boto3.client(
+        's3',
+        endpoint_url=settings.MINIO_ENDPOINT,
+        aws_access_key_id=settings.MINIO_ACCESS_KEY,
+        aws_secret_access_key=settings.MINIO_SECRET_KEY,
+    )
+    try:
+        obj = s3.get_object(Bucket=bucket, Key=key)
+    except Exception:
+        raise Http404('Could not retrieve the file from MinIO.')
+
+    response = FileResponse(
+        obj['Body'],
+        content_type=obj.get('ContentType') or mime_type,
+        as_attachment=as_attachment,
+        filename=filename,
+    )
+    if 'ContentLength' in obj:
+        response['Content-Length'] = obj['ContentLength']
+    return response
