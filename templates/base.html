@@ -23,6 +23,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'catalogue:search' %}">Search</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="uploadDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Upload
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="uploadDropdown">
+                            <li><a class="dropdown-item" href="{% url 'catalogue:upload' %}">File to MinIO</a></li>
+                            <li><a class="dropdown-item" href="{% url 'catalogue:spatial_upload' %}">Spatial data to PostGIS</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

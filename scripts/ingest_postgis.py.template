@@ -61,7 +61,9 @@ def parse_comment(comment):
         'project':      '',
         'source':       '',
         'contact':      '',
-        'version':      ''
+        'version':      '',
+        'aoi':          '',
+        'team':         ''
     }
     if not comment:
         return meta
@@ -107,6 +109,8 @@ def build_anytext(table_name, schema, meta, crs, row_count, geom_type, table_siz
         meta.get('organisation', ''),
         meta.get('project', ''),
         meta.get('source', ''),
+        meta.get('team', ''),
+        meta.get('aoi', ''),
         table_name,
         schema,
         f"EPSG:{crs}",
@@ -147,6 +151,8 @@ def build_stac_item(table_name, schema, meta, bbox, crs,
             "project":       meta.get('project', ''),
             "contact":       meta.get('contact', ''),
             "access":        meta.get('access', 'internal'),
+            "team":          meta.get('team', ''),
+            "aoi":           meta.get('aoi', ''),
             "crs":           f"EPSG:{crs}",
             "geometry_type": geom_type,
             "row_count":     row_count,

@@ -22,6 +22,8 @@
                 <option value="">Any type</option>
                 <option value="Map" {% if type_filter == "Map" %}selected{% endif %}>Map</option>
                 <option value="dataset" {% if type_filter == "dataset" %}selected{% endif %}>Dataset</option>
+                <option value="Report" {% if type_filter == "Report" %}selected{% endif %}>Report</option>
+                <option value="Service" {% if type_filter == "Service" %}selected{% endif %}>Service</option>
             </select>
         </div>
         <div class="col-6 col-md-2">
@@ -35,6 +37,7 @@
             <select name="access" class="form-select form-select-lg">
                 <option value="">Any access</option>
                 <option value="internal" {% if access_filter == "internal" %}selected{% endif %}>Internal</option>
+                <option value="restricted" {% if access_filter == "restricted" %}selected{% endif %}>Restricted</option>
                 <option value="public" {% if access_filter == "public" %}selected{% endif %}>Public</option>
             </select>
         </div>

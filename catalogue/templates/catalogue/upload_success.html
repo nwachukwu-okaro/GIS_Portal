@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Upload complete — Systra GIS Data Portal{% endblock %}
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 640px;">
+    <h1 class="h3 mb-3">
+        {% if result.mock %}Upload simulated{% else %}Upload complete{% endif %}
+    </h1>
+
+    {% if result.mock %}
+    <div class="alert alert-warning small py-2">
+        MinIO credentials are not configured in <code>.env</code> — no file was actually sent to
+        MinIO. This confirms what would have been uploaded and tagged.
+    </div>
+    {% else %}
+    <div class="alert alert-success small py-2">
+        The file was uploaded to MinIO and tagged with the metadata below.
+    </div>
+    {% endif %}
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <dl class="row small mb-0">
+                <dt class="col-4 text-muted fw-normal">File name</dt>
+                <dd class="col-8">{{ result.filename }}</dd>
+
+                <dt class="col-4 text-muted fw-normal">Bucket</dt>
+                <dd class="col-8">{{ result.bucket }}</dd>
+
+                <dt class="col-4 text-muted fw-normal">Size</dt>
+                <dd class="col-8">{{ result.size|filesizeformat }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <h2 class="h6">Metadata tags applied</h2>
+    <div class="table-responsive">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                {% for key, value in result.tags.items %}
+                <tr>
+                    <th class="text-muted fw-normal" style="width: 35%;">{{ key }}</th>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{% url 'catalogue:upload' %}" class="btn btn-outline-secondary">Upload another file</a>
+    <a href="{% url 'catalogue:search' %}" class="btn btn-primary">Back to search</a>
+</div>
+
+{% endblock %}
