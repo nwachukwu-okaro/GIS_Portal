@@ -1,52 +1,55 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en-gb">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Systra GIS Data Portal{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-    {% block extra_head %}{% endblock %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Systra GIS Data Portal{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+  {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-semibold" href="{% url 'catalogue:search' %}">
-                Systra GIS Data Portal
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMain">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:search' %}">Search</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="uploadDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Upload
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="uploadDropdown">
-                            <li><a class="dropdown-item" href="{% url 'catalogue:upload' %}">File to MinIO</a></li>
-                            <li><a class="dropdown-item" href="{% url 'catalogue:spatial_upload' %}">Spatial data to PostGIS</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+
+  <!-- ── Navbar ──────────────────────────────────────────────── -->
+  <nav class="systra-nav">
+    <a href="{% url 'catalogue:search' %}" class="systra-brand">
+      <img src="{% static 'images/systra_logo.png' %}" alt="Systra" class="systra-logo-img" />
+      <div class="systra-brand-divider"></div>
+      <div>
+        <div class="systra-portal-name">GIS Data Portal</div>
+        <div class="systra-portal-sub">Systra UK and Ireland</div>
+      </div>
+    </a>
+    <div class="systra-nav-links">
+      <a href="{% url 'catalogue:search' %}" class="systra-nav-link {% if request.resolver_match.url_name == 'search' %}active{% endif %}">
+        Search
+      </a>
+      <div class="systra-nav-dropdown">
+        <a href="#" class="systra-nav-link">Upload ▾</a>
+        <div class="systra-dropdown-menu">
+          <a href="{% url 'catalogue:upload' %}" class="systra-dropdown-item">Upload to MinIO</a>
+          <a href="{% url 'catalogue:spatial_upload' %}" class="systra-dropdown-item">Upload to PostGIS</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
-    <main class="container py-4">
-        {% block content %}{% endblock %}
-    </main>
+  <!-- ── Page content ────────────────────────────────────────── -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 
-    <footer class="text-center text-muted small py-4">
-        Systra GIS Data Portal
-    </footer>
+  <!-- ── Footer ──────────────────────────────────────────────── -->
+  <footer class="systra-footer">
+    <p class="systra-footer-text">
+      Having issues using this portal? Contact the GIS Team at
+      <a href="mailto:gis_uk@systra.com" class="systra-footer-email">gis_uk@systra.com</a>
+    </p>
+    <p class="systra-footer-copy">&copy; {% now "Y" %} Systra UK and Ireland &middot; GIS Data Portal</p>
+  </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    {% block extra_scripts %}{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
 </body>
 </html>

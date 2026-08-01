@@ -1,153 +1,204 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}{{ item.title }} — Systra GIS Data Portal{% endblock %}
 
 {% block content %}
 
-<a href="{% url 'catalogue:search' %}" class="link-secondary small text-decoration-none">&larr; Back to search</a>
-
-<div class="d-flex justify-content-between align-items-start mt-2 mb-3">
-    <h1 class="h3 mb-0">{{ item.title }}</h1>
-    <span class="badge fs-6 {% if item.source == 'postgis' %}bg-info-subtle text-info-emphasis{% else %}bg-primary-subtle text-primary-emphasis{% endif %}">
-        {% if item.source == 'postgis' %}PostGIS{% else %}MinIO{% endif %}
-    </span>
-</div>
-
-<div class="mb-3">
-    <span class="badge text-bg-secondary">{{ item.type }}</span>
-    <span class="badge text-bg-light border">{{ item.format }}</span>
-    <span class="badge {% if item.access == 'public' %}text-bg-success{% else %}text-bg-warning{% endif %}">
-        {{ item.access }}
-    </span>
-</div>
-
-<div class="row g-4">
-    <div class="col-lg-8">
-
-        {% if item.source == 'minio' %}
-
-            {% if using_minio_mock %}
-            <div class="alert alert-warning small py-2">
-                Showing a bundled sample file — MinIO credentials are not configured in <code>.env</code>.
-            </div>
-            {% endif %}
-
-            {% if item.is_image %}
-                <img src="{% url 'catalogue:asset' identifier=item.identifier %}"
-                     class="img-fluid rounded border mb-3" alt="{{ item.title }}">
-            {% elif item.is_pdf %}
-                <iframe src="{% url 'catalogue:asset' identifier=item.identifier %}"
-                        class="border rounded w-100 mb-3" style="height: 70vh;"></iframe>
-            {% else %}
-                <div class="border rounded p-4 text-center text-muted mb-3">
-                    No inline preview is available for {{ item.format|default:"this file type" }}.
-                </div>
-            {% endif %}
-
-            <a href="{% url 'catalogue:asset' identifier=item.identifier %}?download=1" class="btn btn-primary">
-                Download
-            </a>
-
-        {% elif item.source == 'postgis' %}
-
-            {% if using_gis_db_mock %}
-            <div class="alert alert-warning small py-2">
-                Showing bundled sample rows — the PostGIS connection is not configured in <code>.env</code>.
-                The "Download as GeoPackage" button below will download a CSV instead, since no real
-                geometry is available offline.
-            </div>
-            {% endif %}
-
-            <div class="mb-3 d-flex flex-wrap gap-2">
-                <a href="{% url 'catalogue:postgis_download_gpkg' identifier=item.identifier %}" class="btn btn-primary">
-                    Download as GeoPackage (.gpkg)
-                </a>
-                <a href="{% url 'catalogue:postgis_download_csv' identifier=item.identifier %}" class="btn btn-outline-secondary">
-                    Download as CSV (.csv)
-                </a>
-            </div>
-
-            {% if table_data.error %}
-                <div class="alert alert-danger">{{ table_data.error }}</div>
-            {% else %}
-                <p class="text-muted small">
-                    Showing {{ table_data.rows|length }} row{{ table_data.rows|length|pluralize }}
-                    {% if item.row_count %}of {{ item.row_count }} total{% endif %}
-                    from <code>{{ item.schema }}.{{ item.table }}</code>
-                </p>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered">
-                        <thead class="table-light">
-                            <tr>
-                                {% for col in table_data.columns %}<th>{{ col }}</th>{% endfor %}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for row in table_data.rows %}
-                            <tr>
-                                {% for value in row %}<td>{{ value }}</td>{% endfor %}
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% endif %}
-
-        {% else %}
-            <p class="text-muted">This record's storage location could not be determined.</p>
-        {% endif %}
-
+<!-- Header -->
+<div class="systra-detail-header">
+  <div class="systra-detail-header-inner">
+    <a href="{% url 'catalogue:search' %}" class="systra-back-link">&larr; Back to search</a>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+      <h1 class="systra-detail-title">{{ item.title }}</h1>
+      <span class="s-badge s-badge-source-{{ item.source }}" style="font-size:11px;margin-top:6px;flex-shrink:0;">
+        {{ item.source|upper }}
+      </span>
     </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+      {% if item.type %}<span class="s-badge s-badge-type">{{ item.type }}</span>{% endif %}
+      {% if item.format %}<span class="s-badge s-badge-fmt">{{ item.format }}</span>{% endif %}
+      {% if item.access %}<span class="s-badge s-badge-{{ item.access|lower }}">{{ item.access|title }}</span>{% endif %}
+    </div>
+  </div>
+</div>
 
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="h6">Details</h2>
-                <dl class="row small mb-0">
-                    <dt class="col-5 text-muted fw-normal">Organisation</dt>
-                    <dd class="col-7">{{ item.organisation|default:"—" }}</dd>
+<!-- Body -->
+<div class="systra-detail-body">
 
-                    {% if item.team %}
-                    <dt class="col-5 text-muted fw-normal">Team</dt>
-                    <dd class="col-7">{{ item.team }}</dd>
-                    {% endif %}
+  <!-- Main column -->
+  <div class="systra-detail-main">
 
-                    <dt class="col-5 text-muted fw-normal">Contact</dt>
-                    <dd class="col-7">{{ item.contact|default:"—" }}</dd>
+    {% if using_minio_mock and item.source == 'minio' %}
+    <div class="systra-alert systra-alert-warning">
+      Showing a bundled sample file — MinIO credentials are not configured in <code>.env</code>.
+    </div>
+    {% endif %}
 
-                    {% if item.project %}
-                    <dt class="col-5 text-muted fw-normal">Project</dt>
-                    <dd class="col-7">{{ item.project }}</dd>
-                    {% endif %}
+    {% if using_gis_db_mock and item.source == 'postgis' %}
+    <div class="systra-alert systra-alert-warning">
+      Showing sample table rows — PostGIS credentials are not configured in <code>.env</code>.
+    </div>
+    {% endif %}
 
-                    <dt class="col-5 text-muted fw-normal">Size</dt>
-                    <dd class="col-7">{{ item.size|default:"—" }}</dd>
+    <!-- MinIO preview -->
+    {% if item.source == 'minio' %}
 
-                    <dt class="col-5 text-muted fw-normal">Modified</dt>
-                    <dd class="col-7">{{ item.date_modified|default:"—" }}</dd>
+      <div class="systra-btn-row">
+        <a href="{% url 'catalogue:asset' identifier=item.identifier %}?download=1"
+           class="systra-btn systra-btn-primary">
+          &#11015; Download
+        </a>
+      </div>
 
-                    {% if item.source == 'postgis' %}
-                    <dt class="col-5 text-muted fw-normal">CRS</dt>
-                    <dd class="col-7">{{ item.crs|default:"—" }}</dd>
+      {% if item.is_image %}
+      <div class="systra-preview">
+        <img src="{% url 'catalogue:asset' identifier=item.identifier %}"
+             alt="{{ item.title }}" loading="lazy" />
+      </div>
 
-                    <dt class="col-5 text-muted fw-normal">Geometry</dt>
-                    <dd class="col-7">{{ item.geometry_type|default:"—" }}</dd>
-                    {% endif %}
-                </dl>
+      {% elif item.is_pdf %}
+      <div class="systra-preview">
+        <iframe src="{% url 'catalogue:asset' identifier=item.identifier %}"
+                title="{{ item.title }}"></iframe>
+      </div>
 
-                {% if item.keywords %}
-                <hr>
-                {% for kw in item.keywords %}
-                    <span class="badge text-bg-light border me-1 mb-1">{{ kw }}</span>
-                {% endfor %}
-                {% endif %}
-            </div>
+      {% else %}
+      <div class="systra-preview">
+        <div class="systra-preview-placeholder">
+          No inline preview available for this file type ({{ item.format }}).
+          Use the Download button above to open it.
         </div>
+      </div>
+      {% endif %}
 
-        {% if item.abstract %}
-        <p class="mt-3">{{ item.abstract }}</p>
-        {% endif %}
+    {% endif %}
+
+    <!-- PostGIS table preview -->
+    {% if item.source == 'postgis' %}
+
+      <div class="systra-btn-row">
+        <a href="{% url 'catalogue:postgis_download_gpkg' identifier=item.identifier %}"
+           class="systra-btn systra-btn-primary">
+          &#11015; Download as GeoPackage (.gpkg)
+        </a>
+        <a href="{% url 'catalogue:postgis_download_csv' identifier=item.identifier %}"
+           class="systra-btn systra-btn-outline">
+          &#11015; Download as CSV (.csv)
+        </a>
+      </div>
+
+      {% if table_data.error %}
+      <div class="systra-alert systra-alert-error">{{ table_data.error }}</div>
+
+      {% elif table_data.columns %}
+      <p class="systra-table-note">
+        Showing {{ table_data.rows|length }} rows from
+        <code style="color:var(--systra-red);">{{ item.schema }}.{{ item.table }}</code>
+      </p>
+      <div class="systra-table-wrap">
+        <table class="systra-table">
+          <thead>
+            <tr>
+              {% for col in table_data.columns %}
+              <th>{{ col }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in table_data.rows %}
+            <tr>
+              {% for cell in row %}
+              <td title="{{ cell }}">{{ cell }}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+    {% endif %}
+
+  </div>
+
+  <!-- Sidebar -->
+  <div class="systra-detail-sidebar">
+    <h6>Details</h6>
+
+    {% if item.organisation %}
+    <div class="systra-meta-row">
+      <span class="systra-meta-label">Organisation</span>
+      <span class="systra-meta-value">{{ item.organisation }}</span>
     </div>
+    {% endif %}
+
+    {% if item.team %}
+    <div class="systra-meta-row">
+      <span class="systra-meta-label">Team</span>
+      <span class="systra-meta-value">{{ item.team }}</span>
+    </div>
+    {% endif %}
+
+    {% if item.contact %}
+    <div class="systra-meta-row">
+      <span class="systra-meta-label">Contact</span>
+      <span class="systra-meta-value">
+        <a href="mailto:{{ item.contact }}" style="color:var(--systra-red);">{{ item.contact }}</a>
+      </span>
+    </div>
+    {% endif %}
+
+    {% if item.project %}
+    <div class="systra-meta-row">
+      <span class="systra-meta-label">Project</span>
+      <span class="systra-meta-value">{{ item.project }}</span>
+    </div>
+    {% endif %}
+
+    {% if item.size %}
+    <div class="systra-meta-row">
+      <span class="systra-meta-label">Size</span>
+      <span class="systra-meta-value">{{ item.size }}</span>
+    </div>
+    {% endif %}
+
+    {% if item.source == 'postgis' %}
+      {% if item.crs %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">CRS</span>
+        <span class="systra-meta-value">{{ item.crs }}</span>
+      </div>
+      {% endif %}
+      {% if item.geometry_type %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Geometry</span>
+        <span class="systra-meta-value">{{ item.geometry_type }}</span>
+      </div>
+      {% endif %}
+    {% endif %}
+
+    {% if item.date_modified %}
+    <div class="systra-meta-row">
+      <span class="systra-meta-label">Modified</span>
+      <span class="systra-meta-value">{{ item.date_modified|slice:":10" }}</span>
+    </div>
+    {% endif %}
+
+    {% if item.keywords %}
+    <div class="systra-keyword-tags">
+      {% for kw in item.keywords %}
+      <span class="systra-keyword-tag">{{ kw }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if item.abstract %}
+    <div class="systra-abstract-box">{{ item.abstract }}</div>
+    {% endif %}
+
+  </div>
+
 </div>
 
 {% endblock %}

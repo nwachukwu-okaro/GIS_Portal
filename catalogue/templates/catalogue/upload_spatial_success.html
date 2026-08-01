@@ -1,63 +1,83 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Spatial upload complete — Systra GIS Data Portal{% endblock %}
 
 {% block content %}
+<div class="systra-success-wrap">
 
-<div class="mx-auto" style="max-width: 640px;">
-    <h1 class="h3 mb-3">
-        {% if result.mock %}Load simulated{% else %}Table loaded{% endif %}
-    </h1>
+  <div class="systra-success-icon">&#10003;</div>
 
+  <h1 class="systra-success-title">Spatial data uploaded</h1>
+
+  <p class="systra-success-sub">
+    The data has been loaded into
+    <strong>{{ result.schema }}.{{ result.table_name }}</strong> in PostGIS.
     {% if result.mock %}
-    <div class="alert alert-warning small py-2">
-        The PostGIS connection is not configured in <code>.env</code> — no table was actually
-        created. Row count, CRS, and geometry type below were read from your uploaded file, so
-        this reflects what would have been loaded.
-    </div>
+      This was a simulated upload — no real data was written to the database.
     {% else %}
-    <div class="alert alert-success small py-2">
-        The file was loaded into PostGIS and the table comment was written with the metadata below.
-    </div>
+      The catalogue will be updated automatically on the next scheduled
+      ingestion run. Your dataset should appear in search results within 24 hours.
     {% endif %}
+  </p>
 
-    <div class="card mb-3">
-        <div class="card-body">
-            <dl class="row small mb-0">
-                <dt class="col-4 text-muted fw-normal">Schema</dt>
-                <dd class="col-8"><code>{{ result.schema }}</code></dd>
+  <!-- Spatial properties -->
+  <table class="systra-tags-table" style="margin-bottom:16px;">
+    <thead>
+      <tr>
+        <th colspan="2">Spatial properties detected</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:600;color:#444;">Schema</td>
+        <td style="color:#666;">{{ result.schema }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;color:#444;">Table name</td>
+        <td style="color:#666;font-family:monospace;">{{ result.table_name }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;color:#444;">Row count</td>
+        <td style="color:#666;">{{ result.row_count }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;color:#444;">Geometry type</td>
+        <td style="color:#666;">{{ result.geometry_type }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;color:#444;">CRS</td>
+        <td style="color:#666;">{{ result.crs }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-                <dt class="col-4 text-muted fw-normal">Table name</dt>
-                <dd class="col-8"><code>{{ result.table_name }}</code></dd>
+  <!-- Metadata stored as table comment -->
+  <table class="systra-tags-table">
+    <thead>
+      <tr>
+        <th>Metadata field</th>
+        <th>Value stored as table comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key, value in result.metadata.items %}
+      <tr>
+        <td style="font-weight:600;color:#444;text-transform:capitalize;">{{ key }}</td>
+        <td style="color:#666;">{{ value }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-                <dt class="col-4 text-muted fw-normal">Row count</dt>
-                <dd class="col-8">{{ result.row_count }}</dd>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+    <a href="{% url 'catalogue:spatial_upload' %}" class="systra-btn systra-btn-primary">
+      Upload another dataset
+    </a>
+    <a href="{% url 'catalogue:search' %}" class="systra-btn systra-btn-outline">
+      Back to search
+    </a>
+  </div>
 
-                <dt class="col-4 text-muted fw-normal">CRS</dt>
-                <dd class="col-8">{{ result.crs|default:"—" }}</dd>
-
-                <dt class="col-4 text-muted fw-normal">Geometry type</dt>
-                <dd class="col-8">{{ result.geometry_type }}</dd>
-            </dl>
-        </div>
-    </div>
-
-    <h2 class="h6">Table comment written</h2>
-    <div class="table-responsive">
-        <table class="table table-sm table-bordered">
-            <tbody>
-                {% for key, value in result.metadata.items %}
-                <tr>
-                    <th class="text-muted fw-normal" style="width: 35%;">{{ key }}</th>
-                    <td>{{ value }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <a href="{% url 'catalogue:spatial_upload' %}" class="btn btn-outline-secondary">Upload another file</a>
-    <a href="{% url 'catalogue:search' %}" class="btn btn-primary">Back to search</a>
 </div>
-
 {% endblock %}

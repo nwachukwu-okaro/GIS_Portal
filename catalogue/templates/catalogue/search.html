@@ -1,110 +1,118 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Search — Systra GIS Data Portal{% endblock %}
 
 {% block content %}
 
-<div class="search-hero p-4 p-md-5 mb-4">
-    <h1 class="h3 mb-3">Find GIS data</h1>
-    <form method="get" action="{% url 'catalogue:search' %}" class="row g-2">
-        <div class="col-12 col-md-6">
-            <input
-                type="text"
-                name="q"
-                value="{{ query }}"
-                class="form-control form-control-lg"
-                placeholder="Search by title, keyword, abstract…"
-                autofocus
-            >
-        </div>
-        <div class="col-6 col-md-2">
-            <select name="type" class="form-select form-select-lg">
-                <option value="">Any type</option>
-                <option value="Map" {% if type_filter == "Map" %}selected{% endif %}>Map</option>
-                <option value="dataset" {% if type_filter == "dataset" %}selected{% endif %}>Dataset</option>
-                <option value="Report" {% if type_filter == "Report" %}selected{% endif %}>Report</option>
-                <option value="Service" {% if type_filter == "Service" %}selected{% endif %}>Service</option>
-            </select>
-        </div>
-        <div class="col-6 col-md-2">
-            <select name="source" class="form-select form-select-lg">
-                <option value="">Any source</option>
-                <option value="minio" {% if source_filter == "minio" %}selected{% endif %}>MinIO</option>
-                <option value="postgis" {% if source_filter == "postgis" %}selected{% endif %}>PostGIS</option>
-            </select>
-        </div>
-        <div class="col-6 col-md-1">
-            <select name="access" class="form-select form-select-lg">
-                <option value="">Any access</option>
-                <option value="internal" {% if access_filter == "internal" %}selected{% endif %}>Internal</option>
-                <option value="restricted" {% if access_filter == "restricted" %}selected{% endif %}>Restricted</option>
-                <option value="public" {% if access_filter == "public" %}selected{% endif %}>Public</option>
-            </select>
-        </div>
-        <div class="col-6 col-md-1 d-grid">
-            <button type="submit" class="btn btn-primary btn-lg">Search</button>
-        </div>
+<!-- Hero / search bar -->
+<div class="systra-hero">
+  <div class="systra-hero-inner">
+    <h1>Find GIS data</h1>
+    <p class="systra-hero-sub">Search across MinIO files and PostGIS datasets in the Systra catalogue</p>
+    <form method="get" action="">
+      <div class="systra-search-row">
+        <input
+          class="systra-search-input"
+          type="text"
+          name="q"
+          value="{{ query }}"
+          placeholder="Search by title, keyword, abstract…"
+          autofocus
+        />
+        <select class="systra-search-select" name="type">
+          <option value="">Any type</option>
+          <option value="Map"     {% if type_filter == "Map"     %}selected{% endif %}>Map</option>
+          <option value="dataset" {% if type_filter == "dataset" %}selected{% endif %}>Dataset</option>
+          <option value="Report"  {% if type_filter == "Report"  %}selected{% endif %}>Report</option>
+          <option value="service" {% if type_filter == "service" %}selected{% endif %}>Service</option>
+        </select>
+        <select class="systra-search-select" name="source">
+          <option value="">Any source</option>
+          <option value="minio"   {% if source_filter == "minio"   %}selected{% endif %}>MinIO</option>
+          <option value="postgis" {% if source_filter == "postgis" %}selected{% endif %}>PostGIS</option>
+        </select>
+        <select class="systra-search-select" name="access">
+          <option value="">Any access</option>
+          <option value="internal"   {% if access_filter == "internal"   %}selected{% endif %}>Internal</option>
+          <option value="restricted" {% if access_filter == "restricted" %}selected{% endif %}>Restricted</option>
+          <option value="public"     {% if access_filter == "public"     %}selected{% endif %}>Public</option>
+        </select>
+        <button class="systra-search-btn" type="submit">Search</button>
+      </div>
     </form>
+  </div>
 </div>
 
-{% if using_mock %}
-<div class="alert alert-warning py-2 small">
-    Showing sample data — <code>PYCSW_STAC_URL</code> is set to <code>mock</code> in <code>.env</code>.
-    Point it at the live pycsw STAC endpoint to search real records.
-</div>
-{% endif %}
+<!-- Results -->
+<div style="padding: 20px 28px;">
+  <div style="max-width: 900px; margin: 0 auto;">
 
-{% if error %}
-<div class="alert alert-danger">{{ error }}</div>
-{% else %}
-<p class="text-muted mb-3">{{ result_count }} result{{ result_count|pluralize }} found</p>
+    {% if using_mock %}
+    <div class="systra-alert systra-alert-warning">
+      Showing sample data — <code>PYCSW_STAC_URL</code> is set to <code>mock</code> in <code>.env</code>.
+      Point it at the live pycsw endpoint to search real records.
+    </div>
+    {% endif %}
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
-    {% for result in results %}
-    <div class="col">
-        <div class="card result-card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h2 class="h6 mb-0">
-                        <a href="{% url 'catalogue:detail' identifier=result.identifier %}"
-                           class="stretched-link text-reset text-decoration-none">
-                            {{ result.title }}
-                        </a>
-                    </h2>
-                    <span class="badge {% if result.source == 'postgis' %}bg-info-subtle text-info-emphasis{% else %}bg-primary-subtle text-primary-emphasis{% endif %}">
-                        {% if result.source == 'postgis' %}PostGIS{% else %}MinIO{% endif %}
-                    </span>
-                </div>
+    {% if error %}
+    <div class="systra-alert systra-alert-error">{{ error }}</div>
+    {% endif %}
 
-                <div class="mb-2">
-                    <span class="badge text-bg-secondary">{{ result.type }}</span>
-                    <span class="badge text-bg-light border">{{ result.format }}</span>
-                    <span class="badge {% if result.access == 'public' %}text-bg-success{% else %}text-bg-warning{% endif %}">
-                        {{ result.access }}
-                    </span>
-                </div>
+    {% if not error %}
+<p class="systra-results-header">
+  {% if showing_latest %}
+    Showing the <strong>10 most recently updated</strong> datasets &mdash;
+    use the search box above to find specific data
+  {% elif query %}
+    <strong>{{ result_count }}</strong> result{{ result_count|pluralize }} for &ldquo;{{ query }}&rdquo;
+  {% else %}
+    <strong>{{ result_count }}</strong> record{{ result_count|pluralize }} found
+  {% endif %}
+</p>
 
-                <p class="result-abstract small flex-grow-1">{{ result.abstract|truncatewords:30 }}</p>
-
-                <dl class="row small mb-0">
-                    <dt class="col-5 text-muted fw-normal">Organisation</dt>
-                    <dd class="col-7">{{ result.organisation|default:"—" }}</dd>
-
-                    <dt class="col-5 text-muted fw-normal">Contact</dt>
-                    <dd class="col-7">{{ result.contact|default:"—" }}</dd>
-
-                    <dt class="col-5 text-muted fw-normal">Size</dt>
-                    <dd class="col-7">{{ result.size|default:"—" }}</dd>
-                </dl>
-            </div>
+    {% if results %}
+      {% for r in results %}
+      <a href="{% url 'catalogue:detail' identifier=r.identifier %}" class="systra-card">
+        <div class="systra-card-top">
+          <div class="systra-card-title">{{ r.title }}</div>
+          <span class="s-badge s-badge-source-{{ r.source }}">{{ r.source|upper }}</span>
         </div>
-    </div>
-    {% empty %}
-    <div class="col-12">
-        <p class="text-muted">No datasets matched your search.</p>
-    </div>
-    {% endfor %}
+        <div class="systra-card-badges">
+          {% if r.type %}<span class="s-badge s-badge-type">{{ r.type }}</span>{% endif %}
+          {% if r.format %}<span class="s-badge s-badge-fmt">{{ r.format }}</span>{% endif %}
+          {% if r.access %}
+            <span class="s-badge s-badge-{{ r.access|lower }}">{{ r.access|title }}</span>
+          {% endif %}
+        </div>
+        {% if r.abstract %}
+        <div class="systra-card-abstract">{{ r.abstract|truncatewords:28 }}</div>
+        {% endif %}
+        <div class="systra-card-meta">
+          {% if r.organisation %}<span><strong>Organisation</strong> {{ r.organisation }}</span>{% endif %}
+          {% if r.contact %}<span><strong>Contact</strong> {{ r.contact }}</span>{% endif %}
+          {% if r.size %}<span><strong>Size</strong> {{ r.size }}</span>{% endif %}
+          {% if r.date_modified %}<span><strong>Modified</strong> {{ r.date_modified|slice:":10" }}</span>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+
+    {% else %}
+      <div class="systra-empty">
+        <div class="systra-empty-icon">&#x1F50D;</div>
+        <h3>No results found</h3>
+        <p>
+          {% if query %}
+            No datasets match &ldquo;{{ query }}&rdquo;. Try a different keyword or clear the filters.
+          {% else %}
+            The catalogue is empty. Upload data via the Upload menu to get started.
+          {% endif %}
+        </p>
+      </div>
+    {% endif %}
+    {% endif %}
+
+  </div>
 </div>
-{% endif %}
 
 {% endblock %}

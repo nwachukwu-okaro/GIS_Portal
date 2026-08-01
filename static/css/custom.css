@@ -1,21 +1,830 @@
+/* ================================================================
+   Systra GIS Data Portal — custom.css
+   Brand colours:
+     --systra-red   : #C8102E  (primary)
+     --systra-red-dk: #A00C24  (hover/darker)
+     --systra-white : #FFFFFF
+     --systra-grey  : #F5F5F5  (page background)
+     --systra-border: #E0E0E0
+     --systra-text  : #222222
+     --systra-muted : #666666
+   ================================================================ */
+
+:root {
+  --systra-red:    #C8102E;
+  --systra-red-dk: #A00C24;
+  --systra-white:  #FFFFFF;
+  --systra-grey:   #F5F5F5;
+  --systra-border: #E0E0E0;
+  --systra-text:   #222222;
+  --systra-muted:  #666666;
+}
+
+/* ── Reset / base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
-    background-color: #f5f6f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--systra-grey);
+  color: var(--systra-text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.result-card {
-    transition: box-shadow 0.15s ease-in-out;
+main { flex: 1; }
+
+a { color: var(--systra-red); text-decoration: none; }
+a:hover { color: var(--systra-red-dk); text-decoration: underline; }
+
+/* ── Navbar ────────────────────────────────────────────────────── */
+.systra-nav {
+  background: var(--systra-red);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 62px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.result-card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+.systra-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
 }
 
-.result-abstract {
-    color: #495057;
+.systra-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
-.search-hero {
-    background-color: #212529;
-    color: #fff;
-    border-radius: 0.5rem;
+.systra-brand-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255,255,255,0.35);
+  flex-shrink: 0;
 }
+
+.systra-portal-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--systra-white);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.systra-portal-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.2px;
+}
+
+.systra-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.systra-nav-link {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.systra-nav-link:hover,
+.systra-nav-link.active {
+  background: rgba(255,255,255,0.18);
+  color: var(--systra-white);
+  text-decoration: none;
+}
+
+/* Upload dropdown */
+.systra-nav-dropdown {
+  position: relative;
+}
+
+.systra-nav-dropdown:hover .systra-dropdown-menu {
+  display: block;
+}
+
+.systra-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--systra-white);
+  border-radius: 4px;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 999;
+  margin-top: 4px;
+}
+
+.systra-dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--systra-text);
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.systra-dropdown-item:hover {
+  background: #FFF0F0;
+  color: var(--systra-red);
+  text-decoration: none;
+}
+
+/* ── Hero / search header ──────────────────────────────────────── */
+.systra-hero {
+  background: var(--systra-white);
+  padding: 32px 28px 28px;
+  border-bottom: 1px solid var(--systra-border);
+}
+
+.systra-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.systra-hero h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--systra-red);
+  margin-bottom: 4px;
+}
+
+.systra-hero-sub {
+  font-size: 13px;
+  color: var(--systra-muted);
+  margin-bottom: 20px;
+}
+
+/* ── Search bar ────────────────────────────────────────────────── */
+.systra-search-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.systra-search-input {
+  flex: 1;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 14px;
+  border: 2px solid var(--systra-border);
+  border-radius: 4px;
+  font-size: 14px;
+  background: var(--systra-white);
+  color: var(--systra-text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.systra-search-input:focus {
+  border-color: var(--systra-red);
+}
+
+.systra-search-select {
+  height: 42px;
+  padding: 0 10px;
+  border: 2px solid var(--systra-border);
+  border-radius: 4px;
+  font-size: 13px;
+  background: var(--systra-white);
+  color: var(--systra-text);
+  min-width: 120px;
+  outline: none;
+  cursor: pointer;
+}
+
+.systra-search-select:focus {
+  border-color: var(--systra-red);
+}
+
+.systra-search-btn {
+  height: 42px;
+  padding: 0 24px;
+  background: var(--systra-red);
+  color: var(--systra-white);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.systra-search-btn:hover {
+  background: var(--systra-red-dk);
+}
+
+/* ── Content area ──────────────────────────────────────────────── */
+.systra-content {
+  padding: 24px 28px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.systra-results-header {
+  font-size: 13px;
+  color: var(--systra-muted);
+  margin-bottom: 14px;
+}
+
+.systra-results-header strong {
+  color: var(--systra-red);
+  font-weight: 700;
+}
+
+/* ── Result cards ──────────────────────────────────────────────── */
+.systra-card {
+  background: var(--systra-white);
+  border-radius: 6px;
+  border: 1px solid var(--systra-border);
+  border-left: 5px solid var(--systra-red);
+  padding: 16px 18px 14px 20px;
+  margin-bottom: 10px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.systra-card:hover {
+  border-color: var(--systra-red);
+  box-shadow: 0 2px 8px rgba(200,16,46,0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.systra-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.systra-card-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--systra-text);
+}
+
+.systra-card:hover .systra-card-title {
+  color: var(--systra-red);
+}
+
+.systra-card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.systra-card-abstract {
+  font-size: 14px;
+  color: var(--systra-muted);
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.systra-card-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #999;
+  flex-wrap: wrap;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 8px;
+}
+
+.systra-card-meta span strong {
+  color: #555;
+  font-weight: 600;
+}
+
+/* ── Badges ────────────────────────────────────────────────────── */
+.s-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.s-badge-source-minio   { background: #FEECEC; color: #8B0000; }
+.s-badge-source-postgis { background: #FEECEC; color: #8B0000; }
+.s-badge-type           { background: #FFF0F0; color: var(--systra-red); border: 1px solid #fcc; }
+.s-badge-fmt            { background: #F5F5F5; color: #666; }
+.s-badge-internal       { background: #FEECEC; color: #8B0000; }
+.s-badge-restricted     { background: #FFF3E0; color: #7A4000; }
+.s-badge-public         { background: #F0FFF0; color: #2A7A2A; }
+
+/* ── Detail page ───────────────────────────────────────────────── */
+.systra-detail-header {
+  background: var(--systra-white);
+  border-bottom: 1px solid var(--systra-border);
+  padding: 28px 28px 24px;
+}
+
+.systra-detail-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.systra-back-link {
+  font-size: 13px;
+  color: var(--systra-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+.systra-back-link:hover { color: var(--systra-red); text-decoration: none; }
+
+.systra-detail-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--systra-text);
+  margin-bottom: 10px;
+}
+
+.systra-detail-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .systra-detail-body { grid-template-columns: 1fr; }
+}
+
+.systra-detail-main {}
+
+.systra-detail-sidebar {
+  background: var(--systra-white);
+  border-radius: 6px;
+  border: 1px solid var(--systra-border);
+  padding: 20px;
+  height: fit-content;
+}
+
+.systra-detail-sidebar h6 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--systra-red);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--systra-red);
+}
+
+.systra-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 13px;
+}
+
+.systra-meta-row:last-child { border-bottom: none; }
+.systra-meta-label { color: var(--systra-muted); white-space: nowrap; }
+.systra-meta-value { color: var(--systra-text); font-weight: 500; text-align: right; }
+
+.systra-keyword-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.systra-keyword-tag {
+  background: #FFF0F0;
+  color: var(--systra-red);
+  border: 1px solid #fcc;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.systra-abstract-box {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #f5f5f5;
+  font-size: 13px;
+  color: var(--systra-muted);
+  line-height: 1.6;
+}
+
+/* Preview area */
+.systra-preview {
+  background: var(--systra-white);
+  border-radius: 6px;
+  border: 1px solid var(--systra-border);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.systra-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.systra-preview iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  display: block;
+}
+
+.systra-preview-placeholder {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--systra-muted);
+  font-size: 14px;
+}
+
+/* Download buttons */
+.systra-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.systra-btn-primary {
+  background: var(--systra-red);
+  color: var(--systra-white);
+}
+
+.systra-btn-primary:hover {
+  background: var(--systra-red-dk);
+  color: var(--systra-white);
+  text-decoration: none;
+}
+
+.systra-btn-outline {
+  background: var(--systra-white);
+  color: var(--systra-red);
+  border: 2px solid var(--systra-red);
+}
+
+.systra-btn-outline:hover {
+  background: #FFF0F0;
+  color: var(--systra-red-dk);
+  text-decoration: none;
+}
+
+.systra-btn-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+/* Table preview */
+.systra-table-wrap {
+  background: var(--systra-white);
+  border-radius: 6px;
+  border: 1px solid var(--systra-border);
+  overflow: auto;
+  max-height: 520px;
+}
+
+.systra-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.systra-table th {
+  background: var(--systra-red);
+  color: var(--systra-white);
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: left;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+.systra-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  color: var(--systra-text);
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.systra-table tr:nth-child(even) td { background: #fafafa; }
+.systra-table tr:hover td { background: #FFF5F5; }
+
+.systra-table-note {
+  font-size: 12px;
+  color: var(--systra-muted);
+  padding: 6px 0 12px;
+}
+
+/* ── Upload forms ──────────────────────────────────────────────── */
+.systra-form-wrap {
+  max-width: 760px;
+  margin: 28px auto;
+  padding: 28px 36px;
+}
+
+.systra-form-card {
+  background: var(--systra-white);
+  border-radius: 6px;
+  border: 1px solid var(--systra-border);
+  padding: 28px 32px;
+}
+
+.systra-form-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--systra-red);
+  margin-bottom: 6px;
+}
+
+.systra-form-sub {
+  font-size: 13px;
+  color: var(--systra-muted);
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--systra-red);
+}
+
+.systra-form-section {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--systra-red);
+  margin: 20px 0 10px;
+}
+
+.systra-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--systra-text);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.systra-label .req {
+  color: var(--systra-red);
+  margin-left: 2px;
+}
+
+.systra-input,
+.systra-textarea,
+.systra-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 2px solid var(--systra-border);
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--systra-text);
+  background: var(--systra-white);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.systra-input:focus,
+.systra-textarea:focus,
+.systra-select:focus {
+  border-color: var(--systra-red);
+}
+
+.systra-textarea { resize: vertical; min-height: 90px; }
+
+.systra-hint {
+  font-size: 11px;
+  color: var(--systra-muted);
+  margin-top: 3px;
+}
+
+.systra-field-error {
+  font-size: 11px;
+  color: var(--systra-red);
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+.systra-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .systra-form-row { grid-template-columns: 1fr; }
+}
+
+.systra-form-group { margin-bottom: 16px; }
+
+.systra-file-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px dashed var(--systra-border);
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.systra-file-input:hover { border-color: var(--systra-red); }
+
+.systra-form-submit {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--systra-border);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ── Alerts / banners ──────────────────────────────────────────── */
+.systra-alert {
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  border-left: 4px solid;
+}
+
+.systra-alert-warning {
+  background: #FFF8E1;
+  border-color: #F9A825;
+  color: #7A4F00;
+}
+
+.systra-alert-error {
+  background: #FEECEC;
+  border-color: var(--systra-red);
+  color: #8B0000;
+}
+
+.systra-alert-success {
+  background: #F0FFF4;
+  border-color: #2A7A2A;
+  color: #1A5C2A;
+}
+
+/* ── Success pages ─────────────────────────────────────────────── */
+.systra-success-wrap {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 0 28px;
+  text-align: center;
+}
+
+.systra-success-icon {
+  width: 64px;
+  height: 64px;
+  background: #F0FFF4;
+  border: 2px solid #2A7A2A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+}
+
+.systra-success-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--systra-text);
+  margin-bottom: 8px;
+}
+
+.systra-success-sub {
+  font-size: 14px;
+  color: var(--systra-muted);
+  margin-bottom: 28px;
+}
+
+.systra-tags-table {
+  width: 100%;
+  background: var(--systra-white);
+  border-radius: 6px;
+  border: 1px solid var(--systra-border);
+  font-size: 13px;
+  text-align: left;
+  margin-bottom: 24px;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.systra-tags-table th {
+  background: var(--systra-red);
+  color: var(--systra-white);
+  padding: 10px 14px;
+  font-weight: 600;
+}
+
+.systra-tags-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.systra-tags-table tr:last-child td { border-bottom: none; }
+.systra-tags-table tr:nth-child(even) td { background: #fafafa; }
+
+/* ── Empty state ───────────────────────────────────────────────── */
+.systra-empty {
+  text-align: center;
+  padding: 56px 24px;
+  color: var(--systra-muted);
+}
+
+.systra-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.systra-empty h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--systra-text);
+  margin-bottom: 6px;
+}
+
+.systra-empty p { font-size: 14px; }
+
+/* ── Footer ────────────────────────────────────────────────────── */
+.systra-footer {
+  background: var(--systra-red);
+  padding: 18px 28px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.systra-footer-text {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.systra-footer-email {
+  color: var(--systra-white);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.systra-footer-email:hover { color: rgba(255,255,255,0.8); }
+
+.systra-footer-copy {
+  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  margin: 0;
+}
+
+/* ── Utilities ─────────────────────────────────────────────────── */
+.text-systra-red   { color: var(--systra-red); }
+.text-systra-muted { color: var(--systra-muted); }
+.bg-systra-red     { background: var(--systra-red); }
