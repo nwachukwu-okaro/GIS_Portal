@@ -1,0 +1,119 @@
+version: 1
+columns:
+  objectid:
+    description: Source-system object identifier.
+    semantic_role: identifier
+  fid:
+    description: Feature identifier assigned by the source or import process.
+    semantic_role: identifier
+  name:
+    description: Name of the represented feature.
+    semantic_role: feature_name
+  gsscode:
+    description: Government Statistical Service code for the represented geography.
+    semantic_role: geographic_code
+  hyperlink:
+    description: Link supplied by the publisher for the corresponding source record.
+    semantic_role: source_record_url
+  easting:
+    description: Easting coordinate in the dataset coordinate reference system.
+    semantic_role: x_coordinate
+  northing:
+    description: Northing coordinate in the dataset coordinate reference system.
+    semantic_role: y_coordinate
+  latitude:
+    description: Latitude coordinate, normally expressed in decimal degrees.
+    semantic_role: latitude
+  longitude:
+    description: Longitude coordinate, normally expressed in decimal degrees.
+    semantic_role: longitude
+  area_ha:
+    description: Area of the feature in hectares.
+    semantic_role: area
+  areahectares:
+    description: Area of the feature in hectares.
+    semantic_role: area
+  geom:
+    description: Spatial geometry of the represented feature.
+    semantic_role: geometry
+  geometry:
+    description: Spatial geometry of the represented feature.
+    semantic_role: geometry
+  regdate:
+    description: Date on which the source record was registered.
+    semantic_role: date
+  amenddate:
+    description: Date on which the source record was last amended.
+    semantic_role: date
+  capturescale:
+    description: Map scale at which the source geometry was captured.
+    semantic_role: scale
+  listentry:
+    description: Historic England List Entry number — unique identifier for a designated heritage asset.
+    semantic_role: heritage_asset_identifier
+
+patterns:
+  - suffix: _d
+    description: Human-readable description associated with the corresponding coded attribute.
+    semantic_role: description
+  - suffix: _code
+    description: Code assigned by the source dataset.
+    semantic_role: code
+  - suffix: _id
+    description: Identifier assigned by the source dataset.
+    semantic_role: identifier
+  - suffix: _date
+    description: Date associated with the represented feature or source record.
+    semantic_role: date
+  - suffix: _name
+    description: Name associated with the represented feature.
+    semantic_role: feature_name
+
+schemas:
+  a_british_geological_survey:
+    columns:
+      lex: {description: "BGS Lexicon code — short alphanumeric code uniquely identifying the named lithostratigraphic or lithodemic unit.", semantic_role: geological_unit_code, joinable: true}
+      lex_d: {description: "Lexicon description — full name of the lithostratigraphic or lithodemic unit corresponding to the lex code.", semantic_role: geological_unit_name, related_column: lex}
+      lex_rcs: {description: "Combined lexicon and Rock Classification Scheme code linking the named unit to its rock type.", semantic_role: geological_unit_rock_code, joinable: true}
+      rcs: {description: "Rock Classification Scheme code — short code for the lithological rock type.", semantic_role: rock_classification_code, joinable: true}
+      rcs_d: {description: "Rock Classification Scheme description — full plain-English description of the rock type.", semantic_role: rock_type_description, related_column: rcs}
+      rank: {description: "Geological unit rank such as formation, group, member, intrusion or supergroup.", semantic_role: geological_unit_rank}
+      bed_eq: {description: "Bed-level equivalent code for the geological unit.", semantic_role: geological_unit_code, joinable: true}
+      bed_eq_d: {description: "Bed-level equivalent description.", semantic_role: geological_unit_name, related_column: bed_eq}
+      mb_eq: {description: "Member-level equivalent code.", semantic_role: geological_unit_code, joinable: true}
+      mb_eq_d: {description: "Member-level equivalent description.", semantic_role: geological_unit_name, related_column: mb_eq}
+      fm_eq: {description: "Formation-level equivalent code.", semantic_role: geological_unit_code, joinable: true}
+      fm_eq_d: {description: "Formation-level equivalent description.", semantic_role: geological_unit_name, related_column: fm_eq}
+      subgp_eq: {description: "Subgroup-level equivalent code.", semantic_role: geological_unit_code, joinable: true}
+      subgp_eq_d: {description: "Subgroup-level equivalent description.", semantic_role: geological_unit_name, related_column: subgp_eq}
+      gp_eq: {description: "Group-level equivalent code.", semantic_role: geological_unit_code, joinable: true}
+      gp_eq_d: {description: "Group-level equivalent description.", semantic_role: geological_unit_name, related_column: gp_eq}
+      supgp_eq: {description: "Supergroup-level equivalent code.", semantic_role: geological_unit_code, joinable: true}
+      supgp_eq_d: {description: "Supergroup-level equivalent description.", semantic_role: geological_unit_name, related_column: supgp_eq}
+      max_time_d: {description: "Maximum (oldest) geological time period label for the unit.", semantic_role: geological_time_label}
+      min_time_d: {description: "Minimum (youngest) geological time period label for the unit.", semantic_role: geological_time_label}
+      max_time_y: {description: "Maximum age in years before present.", semantic_role: geological_age_years, unit: years_before_present}
+      min_time_y: {description: "Minimum age in years before present.", semantic_role: geological_age_years, unit: years_before_present}
+      max_index: {description: "BGS numerical index for the older time boundary.", semantic_role: geological_time_index}
+      min_index: {description: "BGS numerical index for the younger time boundary.", semantic_role: geological_time_index}
+  a_historic_england:
+    columns:
+      listentry: {description: "Historic England List Entry number — unique identifier for a designated heritage asset.", semantic_role: heritage_asset_identifier, identifier_system: NHLE, joinable: true}
+      regdate: {description: "Date the site was officially registered or designated.", semantic_role: designation_date}
+      amenddate: {description: "Date the designation was last amended or updated.", semantic_role: amendment_date}
+      capturescale: {description: "Map scale at which the boundary was originally captured.", semantic_role: capture_scale}
+      hyperlink: {description: "URL linking to the official Historic England record for this asset.", semantic_role: source_record_url}
+      area_ha: {description: "Area of the feature in hectares.", semantic_role: area, unit: hectares}
+      ngr: {description: "National Grid Reference — alphanumeric grid coordinate in British National Grid.", semantic_role: geographic_reference, identifier_system: OS_NGR}
+      easting: {description: "Easting coordinate in British National Grid (EPSG:27700).", semantic_role: x_coordinate, unit: metres}
+      northing: {description: "Northing coordinate in British National Grid (EPSG:27700).", semantic_role: y_coordinate, unit: metres}
+  a_os_built_up_areas:
+    columns:
+      gsscode: {description: "Government Statistical Service code — unique identifier for administrative or statistical geographies.", semantic_role: geographic_identifier, identifier_system: ONS_GSS, joinable: true}
+      name1_text: {description: "Primary place name or feature name.", semantic_role: feature_name, searchable: true}
+      name1_language: {description: "Language of the primary name (for example ENG for English or CYM for Welsh).", semantic_role: language_code}
+      name2_text: {description: "Secondary or alternative place name.", semantic_role: alternative_name, searchable: true}
+      name2_language: {description: "Language of the secondary name.", semantic_role: language_code}
+      areahectares: {description: "Area of the polygon feature in hectares.", semantic_role: area, unit: hectares}
+      geometry_area_m: {description: "Area of the polygon feature in square metres.", semantic_role: area, unit: square_metres}
+      fid: {description: "Feature identifier — unique integer ID assigned to each feature in the dataset.", semantic_role: record_identifier, joinable: false}

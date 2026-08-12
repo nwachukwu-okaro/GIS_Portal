@@ -1,0 +1,312 @@
+version: 1
+defaults:
+  verification_status: needs_review
+  licence_name: null
+  licence_url: null
+  attribution: null
+
+x-os-open: &os_open_licence
+  licence_name: Open Government Licence
+  licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+  attribution: Contains OS data © Crown copyright and database right [year]
+  licence_scope: OS OpenData product.
+
+schemas:
+  a_british_geological_survey:
+    organisation: British Geological Survey
+    product: BGS geological data
+    source_url: https://www.bgs.ac.uk/geological-data/
+    themes: [geology, earth science]
+    geographic_coverage: Great Britain
+    licence_name: Open Government Licence
+    licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    attribution: Contains British Geological Survey materials © UKRI [year]
+    licence_scope: Verify the licence against the individual BGS product; not all BGS products are open.
+  a_department_for_education:
+    organisation: Department for Education
+    source_url: https://www.get-information-schools.service.gov.uk/
+    themes: [education, schools]
+    geographic_coverage: England
+  a_dft:
+    organisation: Department for Transport
+    source_url: https://www.data.gov.uk/search?filters%5Bpublisher%5D=Department+for+Transport
+    themes: [transport]
+  a_environment_agency:
+    organisation: Environment Agency
+    source_url: https://environment.data.gov.uk/
+    themes: [environment, flooding, water]
+    geographic_coverage: England
+    licence_name: Open Government Licence
+    licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    licence_scope: Schema default only; verify dataset-specific restrictions and third-party rights.
+  a_forestry_commission:
+    organisation: Forestry Commission
+    source_url: https://www.forestresearch.gov.uk/tools-and-resources/national-forest-inventory/
+    themes: [forestry, environment]
+  a_greater_manchester_ecology_unit:
+    organisation: Greater Manchester Ecology Unit
+    source_url: https://www.gmenvironment.org.uk/gmeu/
+    themes: [ecology, environment]
+  a_historic_england:
+    organisation: Historic England
+    product: National Heritage List for England spatial data
+    source_url: https://historicengland.org.uk/listing/the-list/map-data/
+    themes: [heritage, planning]
+    geographic_coverage: England
+    licence_name: Open Government Licence
+    licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    attribution: Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year]
+    licence_scope: Verify against the individual Historic England download metadata.
+  a_hm_land_registry:
+    organisation: HM Land Registry
+    source_url: https://use-land-property-data.service.gov.uk/
+    themes: [land, property]
+  a_ireland_cso: &ireland_cso
+    organisation: Central Statistics Office Ireland
+    source_url: https://www.cso.ie/en/databases/
+    themes: [statistics, census]
+    geographic_coverage: Ireland
+  a_irishrail:
+    organisation: Iarnrod Eireann / Irish Rail
+    source_url: https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data
+    themes: [rail, transport]
+    geographic_coverage: Ireland
+  a_irl_central_statistics_office: *ireland_cso
+  a_irl_datagov_open_data:
+    organisation: Government of Ireland
+    source_url: https://data.gov.ie/
+    themes: [open data]
+    geographic_coverage: Ireland
+  a_irl_department_of_housing_lg_heritage:
+    organisation: Department of Housing, Local Government and Heritage
+    source_url: https://www.gov.ie/en/organisation/department-of-housing-local-government-and-heritage/
+    themes: [housing, local government, heritage]
+    geographic_coverage: Ireland
+  a_irl_environmental_protection_agency:
+    organisation: Environmental Protection Agency Ireland
+    source_url: https://gis.epa.ie/GetData/Download
+    themes: [environment]
+    geographic_coverage: Ireland
+  a_irl_galway_cc:
+    organisation: Galway County Council
+    source_url: https://data.gov.ie/organization/galway-county-council
+    themes: [local government, open data]
+    geographic_coverage: County Galway
+  a_irl_geological_survey:
+    organisation: Geological Survey Ireland
+    source_url: https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx
+    themes: [geology, earth science]
+    geographic_coverage: Ireland
+  a_irl_mayo_cc:
+    organisation: Mayo County Council
+    source_url: https://data.gov.ie/organization/mayo-county-council
+    themes: [local government, open data]
+    geographic_coverage: County Mayo
+  a_irl_meath_cc:
+    organisation: Meath County Council
+    source_url: https://data.gov.ie/organization/meath-county-council
+    themes: [local government, open data]
+    geographic_coverage: County Meath
+  a_irl_national_built_heritage_service:
+    organisation: National Built Heritage Service
+    source_url: https://www.buildingsofireland.ie/
+    themes: [heritage, buildings]
+    geographic_coverage: Ireland
+  a_irl_spatial_data_exchange:
+    organisation: Government of Ireland
+    source_url: https://data.gov.ie/
+    themes: [spatial data, open data]
+    geographic_coverage: Ireland
+  a_national_highways:
+    organisation: National Highways
+    source_url: https://developer.data.nationalhighways.co.uk/
+    themes: [roads, transport]
+    geographic_coverage: England
+  a_national_lidar_programme:
+    organisation: Environment Agency
+    product: National LIDAR Programme
+    source_url: https://www.data.gov.uk/dataset/f0db0249-f17b-4036-9e65-309148c97ce4/national-lidar-programme
+    themes: [lidar, elevation, terrain]
+    geographic_coverage: England
+  a_natural_england:
+    organisation: Natural England
+    source_url: https://naturalengland-defra.opendata.arcgis.com/
+    themes: [environment, conservation]
+    geographic_coverage: England
+    licence_name: Open Government Licence
+    licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    licence_scope: Schema default only; Natural England datasets may have third-party or non-commercial restrictions.
+  a_network_rail:
+    organisation: Network Rail
+    source_url: https://www.networkrail.co.uk/who-we-are/transparency-and-ethics/transparency/open-data-feeds/
+    themes: [rail, transport]
+    geographic_coverage: Great Britain
+  a_nisra_nireland:
+    organisation: Northern Ireland Statistics and Research Agency
+    source_url: https://www.nisra.gov.uk/statistics/geography/geographic-data
+    themes: [statistics, census, boundaries]
+    geographic_coverage: Northern Ireland
+  a_npws_ireland:
+    organisation: National Parks and Wildlife Service Ireland
+    source_url: https://www.npws.ie/maps-and-data
+    themes: [nature conservation, protected areas]
+    geographic_coverage: Ireland
+  a_nrs_scotland:
+    organisation: National Records of Scotland
+    source_url: https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+    themes: [statistics, census, boundaries]
+    geographic_coverage: Scotland
+  a_ons_england_wales:
+    organisation: Office for National Statistics
+    source_url: https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+    themes: [statistics, census, boundaries]
+    geographic_coverage: England and Wales
+    licence_name: Open Government Licence v3.0
+    licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    attribution: "Source: Office for National Statistics licensed under the Open Government Licence v.3.0"
+    licence_scope: Digital boundaries may also require OS attribution; postcode and UPRN products have additional rights.
+  a_ons_nrs_nirsa_census_data:
+    organisation: UK national statistical authorities
+    source_url: https://www.ons.gov.uk/census
+    themes: [statistics, census]
+    geographic_coverage: United Kingdom
+    notes: Multi-publisher data from ONS, NRS and NISRA; inspect table-level provenance.
+  a_open_street_map:
+    organisation: OpenStreetMap contributors
+    product: OpenStreetMap
+    source_url: https://www.openstreetmap.org/
+    documentation_url: https://wiki.openstreetmap.org/wiki/Overpass_API
+    licence_name: Open Data Commons Open Database License
+    licence_url: https://www.openstreetmap.org/copyright
+    attribution: OpenStreetMap contributors
+    verification_status: verified
+    themes: [mapping, transport, places]
+    geographic_coverage: Global
+  a_os_addressbase_core:
+    organisation: Ordnance Survey
+    product: AddressBase Core
+    source_url: https://www.ordnancesurvey.co.uk/products/addressbase-core
+    themes: [addresses, property]
+    geographic_coverage: Great Britain
+  a_os_addressbase_premium:
+    organisation: Ordnance Survey
+    product: AddressBase Premium
+    source_url: https://www.ordnancesurvey.co.uk/products/addressbase-premium
+    themes: [addresses, property]
+    geographic_coverage: Great Britain
+  a_os_boundaryline:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: Boundary-Line
+    source_url: https://www.ordnancesurvey.co.uk/products/boundary-line
+    themes: [administrative boundaries]
+    geographic_coverage: Great Britain
+  a_os_built_up_areas:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Built Up Areas
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-built-up-areas
+    themes: [built environment, settlements]
+    geographic_coverage: Great Britain
+  a_os_codepoint:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: Code-Point Open
+    source_url: https://www.ordnancesurvey.co.uk/products/code-point-open
+    themes: [postcodes, addresses]
+    geographic_coverage: Great Britain
+  a_os_codepoint_polygon:
+    organisation: Ordnance Survey
+    product: Code-Point with Polygons
+    source_url: https://www.ordnancesurvey.co.uk/products/codepoint-with-polygons
+    themes: [postcodes, boundaries]
+    geographic_coverage: Great Britain
+  a_os_open_data:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS OpenData
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-data
+    themes: [mapping, open data]
+    geographic_coverage: Great Britain
+  a_os_open_greenspace:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Greenspace
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-greenspace
+    themes: [greenspace, recreation]
+    geographic_coverage: Great Britain
+  a_os_open_map_local:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Map Local
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-map-local
+    themes: [mapping, topography]
+    geographic_coverage: Great Britain
+  a_os_open_names:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Names
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-names
+    themes: [place names, gazetteer]
+    geographic_coverage: Great Britain
+  a_os_open_rivers:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Rivers
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-rivers
+    themes: [rivers, hydrography]
+    geographic_coverage: Great Britain
+  a_os_open_roads:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Roads
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-roads
+    themes: [roads, transport]
+    geographic_coverage: Great Britain
+  a_os_open_terrain_50:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Terrain 50
+    source_url: https://www.ordnancesurvey.co.uk/products/os-terrain-50
+    themes: [elevation, terrain]
+    geographic_coverage: Great Britain
+  a_os_zoomstack:
+    <<: *os_open_licence
+    organisation: Ordnance Survey
+    product: OS Open Zoomstack
+    source_url: https://www.ordnancesurvey.co.uk/products/os-open-zoomstack
+    themes: [mapping, basemap]
+    geographic_coverage: Great Britain
+  a_overture_maps:
+    organisation: Overture Maps Foundation
+    product: Overture Maps
+    source_url: https://docs.overturemaps.org/
+    themes: [mapping, places, transport]
+    geographic_coverage: Global
+  a_oxfordshire_county_council:
+    organisation: Oxfordshire County Council
+    source_url: https://insight.oxfordshire.gov.uk/cms/open-data
+    themes: [local government, open data]
+    geographic_coverage: Oxfordshire
+  a_sport_england:
+    organisation: Sport England
+    product: Active Places
+    source_url: https://www.sportengland.org/research-and-data/data/active-places
+    themes: [sport, facilities]
+    geographic_coverage: England
+  a_sustrans:
+    organisation: Sustrans
+    source_url: https://data.sustrans.org.uk/
+    themes: [active travel, cycling, walking]
+    geographic_coverage: United Kingdom
+  a_tfgm:
+    organisation: Transport for Greater Manchester
+    source_url: https://developer.tfgm.com/
+    themes: [public transport, transport]
+    geographic_coverage: Greater Manchester
+  a_verisk_sample:
+    organisation: Verisk
+    source_url: https://www.verisk.com/en-gb/
+    themes: [commercial sample data]
+    verification_status: restricted_needs_review
+    notes: Confirm product, licence and permitted use before exposing this data.
