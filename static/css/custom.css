@@ -526,12 +526,16 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   background: var(--systra-white);
   border-radius: 6px;
   border: 1px solid var(--systra-border);
-  overflow: auto;
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
   max-height: 520px;
 }
 
 .systra-table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
   font-size: 13px;
 }

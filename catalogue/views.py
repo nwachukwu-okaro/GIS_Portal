@@ -52,7 +52,7 @@ import pandas as pd
 import psycopg2
 import requests
 from django.conf import settings
-from django.http import FileResponse, Http404, HttpResponse, StreamingHttpResponse
+from django.http import FileResponse, Http404, HttpResponse, JsonResponse, StreamingHttpResponse
 from django.shortcuts import redirect, render
 from django.utils.text import get_valid_filename
 from django.views.decorators.clickjacking import xframe_options_sameorigin
@@ -718,6 +718,7 @@ def _feature_to_detail(feature):
             'crs':           props.get('crs', ''),
             'geometry_type': props.get('geometry_type', ''),
             'row_count':     props.get('row_count'),
+            'column_count':  None,
         })
 
     return detail
@@ -886,6 +887,65 @@ def _fetch_table_preview(item):
     }
 
 
+def _fetch_table_geojson(item):
+    """
+    Returns a GeoJSON FeatureCollection (dict) for the first 100 rows of a
+    PostGIS table, reprojected to WGS84 for web mapping.
+
+    Feature order matches _fetch_table_preview's row order (same LIMIT 100,
+    no explicit ORDER BY), so the detail page's zoomToFeature(index) can
+    correlate a clicked table row with the matching map feature.
+
+    Not available in mock mode — there is no real geometry to reproject —
+    so callers should gate map rendering on show_map (postgis AND not mock).
+    """
+    schema = item.get('schema', '')
+    table  = item.get('table', '')
+    if not schema or not table:
+        return {'type': 'FeatureCollection', 'features': []}
+
+    try:
+        conn = _db_connect()
+        try:
+            with conn.cursor() as cur:
+                query = sql.SQL(
+                    'SELECT *, ST_AsGeoJSON(ST_Transform({geom}, 4326)) AS __geojson_geom '
+                    'FROM {schema}.{table} LIMIT 100'
+                ).format(
+                    geom=sql.Identifier('geom'),
+                    schema=sql.Identifier(schema),
+                    table=sql.Identifier(table),
+                )
+                cur.execute(query)
+                columns = [desc[0] for desc in cur.description]
+                rows    = cur.fetchall()
+        finally:
+            conn.close()
+    except psycopg2.Error:
+        return {'type': 'FeatureCollection', 'features': []}
+
+    geom_idx = columns.index('__geojson_geom')
+    visible  = _visible_columns(columns[:-1])  # exclude synthetic geojson column
+
+    features = []
+    for row in rows:
+        geom_raw = row[geom_idx]
+        if not geom_raw:
+            continue
+        try:
+            geometry = json.loads(geom_raw)
+        except (TypeError, ValueError):
+            continue
+        properties = {columns[i]: row[i] for i in visible}
+        features.append({
+            'type':       'Feature',
+            'geometry':   geometry,
+            'properties': properties,
+        })
+
+    return {'type': 'FeatureCollection', 'features': features}
+
+
 # ── 9. PostGIS download views ─────────────────────────────────────────────────
 
 class _Echo:
@@ -1016,6 +1076,26 @@ def _download_postgis_gpkg(item, table_name):
     return response
 
 
+def postgis_geojson(request, identifier):
+    """
+    URL-facing view: returns the table's preview rows as a GeoJSON
+    FeatureCollection for the Leaflet map on the detail page.
+
+    Returns an empty FeatureCollection (rather than 404) in mock mode or
+    when the table has no rows, so the map JS can render an empty map
+    gracefully instead of erroring.
+    """
+    feature = _fetch_feature_by_id(identifier)
+    if feature is None:
+        raise Http404('Record not found.')
+    item = _feature_to_detail(feature)
+    if item['source'] != 'postgis':
+        raise Http404('This record is not a PostGIS table.')
+    if _is_gis_db_mock():
+        return JsonResponse({'type': 'FeatureCollection', 'features': []})
+    return JsonResponse(_fetch_table_geojson(item))
+
+
 def postgis_download_csv(request, identifier):
     """URL-facing view: validates the record then delegates to _download_postgis_csv."""
     feature = _fetch_feature_by_id(identifier)
@@ -1064,10 +1144,14 @@ def detail(request, identifier):
         'item':               item,
         'using_minio_mock':   _is_minio_mock(),
         'using_gis_db_mock':  _is_gis_db_mock(),
+        'show_map':           item['source'] == 'postgis' and not _is_gis_db_mock(),
     }
 
     if item['source'] == 'postgis':
-        context['table_data'] = _fetch_table_preview(item)
+        table_data = _fetch_table_preview(item)
+        context['table_data'] = table_data
+        if table_data.get('columns'):
+            item['column_count'] = len(table_data['columns'])
 
     return render(request, 'catalogue/detail.html', context)
 
