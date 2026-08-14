@@ -32,9 +32,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
-main { flex: 1; }
+main {
+  flex: 1;
+  min-width: 0;
+}
 
 a { color: var(--systra-red); text-decoration: none; }
 a:hover { color: var(--systra-red-dk); text-decoration: underline; }
