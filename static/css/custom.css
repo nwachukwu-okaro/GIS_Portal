@@ -384,7 +384,9 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   .systra-detail-body { grid-template-columns: 1fr; }
 }
 
-.systra-detail-main {}
+.systra-detail-main {
+  min-width: 0;
+}
 
 .systra-detail-sidebar {
   background: var(--systra-white);

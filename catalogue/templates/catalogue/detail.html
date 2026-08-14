@@ -153,16 +153,22 @@
     {% endif %}
 
     {% if item.source == 'postgis' %}
-      {% if item.row_count or item.size %}
+      {% if item.row_count != None %}
       <div class="systra-meta-row">
         <span class="systra-meta-label">Row count</span>
-        <span class="systra-meta-value">{{ item.row_count|default:item.size }}</span>
+        <span class="systra-meta-value">{{ item.row_count }}</span>
       </div>
       {% endif %}
       {% if item.column_count %}
       <div class="systra-meta-row">
         <span class="systra-meta-label">Column count</span>
         <span class="systra-meta-value">{{ item.column_count }}</span>
+      </div>
+      {% endif %}
+      {% if item.size %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Size</span>
+        <span class="systra-meta-value">{{ item.size }}</span>
       </div>
       {% endif %}
       {% if item.crs %}

@@ -887,6 +887,51 @@ def _fetch_table_preview(item):
     }
 
 
+def _fetch_table_stats(item):
+    """
+    Returns a live {'row_count': int, 'size': str} dict for a PostGIS table.
+
+    row_count is a real SELECT COUNT(*); size is pg_size_pretty(pg_total_
+    relation_size(...)) — the same query ingest_postgis.py.template uses.
+
+    Computed on the fly (not read from the pycsw 'distancevalue' column)
+    because distancevalue means different things depending on which ingest
+    script wrote the record: ingest_postgis.py stores a disk-size string
+    there, while ingest_authoritative.py stores the row count. Querying
+    both values directly avoids that ambiguity and works the same way for
+    every PostGIS record regardless of source.
+
+    Returns None on any DB error or missing schema/table, so callers can
+    fall back to whatever summary figure is already available (e.g. mock
+    data's bundled table_size).
+    """
+    schema = item.get('schema', '')
+    table  = item.get('table', '')
+    if not schema or not table:
+        return None
+
+    try:
+        conn = _db_connect()
+        try:
+            with conn.cursor() as cur:
+                query = sql.SQL(
+                    'SELECT COUNT(*), pg_size_pretty(pg_total_relation_size({rel})) '
+                    'FROM {schema}.{table}'
+                ).format(
+                    rel=sql.Literal(f'{schema}.{table}'),
+                    schema=sql.Identifier(schema),
+                    table=sql.Identifier(table),
+                )
+                cur.execute(query)
+                row_count, size = cur.fetchone()
+        finally:
+            conn.close()
+    except psycopg2.Error:
+        return None
+
+    return {'row_count': row_count, 'size': size}
+
+
 def _fetch_table_geojson(item):
     """
     Returns a GeoJSON FeatureCollection (dict) for the first 100 rows of a
@@ -1152,6 +1197,16 @@ def detail(request, identifier):
         context['table_data'] = table_data
         if table_data.get('columns'):
             item['column_count'] = len(table_data['columns'])
+
+        if not _is_gis_db_mock():
+            # Live row count + disk size — overrides whatever _feature_to_detail
+            # derived from the pycsw 'distancevalue' column, which holds a real
+            # size string for ingest_postgis.py records but the row count for
+            # ingest_authoritative.py records. See _fetch_table_stats docstring.
+            stats = _fetch_table_stats(item)
+            if stats:
+                item['row_count'] = stats['row_count']
+                item['size']      = stats['size']
 
     return render(request, 'catalogue/detail.html', context)
 
