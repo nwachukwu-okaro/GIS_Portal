@@ -5,17 +5,18 @@
 
 {% block content %}
 
-<!-- Header -->
 <div class="systra-detail-header">
   <div class="systra-detail-header-inner">
     <a href="{% url 'catalogue:search' %}" class="systra-back-link">&larr; Back to search</a>
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+
+    <div class="systra-detail-title-row">
       <h1 class="systra-detail-title">{{ item.title }}</h1>
-      <span class="s-badge s-badge-source-{{ item.source }}" style="font-size:11px;margin-top:6px;flex-shrink:0;">
+      <span class="s-badge s-badge-source-{{ item.source }} systra-source-badge">
         {{ item.source|upper }}
       </span>
     </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+
+    <div class="systra-detail-badges">
       {% if item.type %}<span class="s-badge s-badge-type">{{ item.type }}</span>{% endif %}
       {% if item.format %}<span class="s-badge s-badge-fmt">{{ item.format }}</span>{% endif %}
       {% if item.access %}<span class="s-badge s-badge-{{ item.access|lower }}">{{ item.access|title }}</span>{% endif %}
@@ -23,10 +24,8 @@
   </div>
 </div>
 
-<!-- Body -->
 <div class="systra-detail-body">
 
-  <!-- Main column -->
   <div class="systra-detail-main">
 
     {% if using_minio_mock and item.source == 'minio' %}
@@ -41,7 +40,6 @@
     </div>
     {% endif %}
 
-    <!-- MinIO preview -->
     {% if item.source == 'minio' %}
 
       <div class="systra-btn-row">
@@ -74,7 +72,6 @@
 
     {% endif %}
 
-    <!-- PostGIS table preview -->
     {% if item.source == 'postgis' %}
 
       <div class="systra-btn-row">
@@ -100,33 +97,39 @@
         Showing {{ table_data.rows|length }} rows from
         <code style="color:var(--systra-red);">{{ item.schema }}.{{ item.table }}</code>
       </p>
-      <div class="systra-table-wrap">
-        <table class="systra-table">
-          <thead>
-            <tr>
-              {% if show_map %}<th></th>{% endif %}
-              {% for col in table_data.columns %}
-              <th>{{ col }}</th>
+
+      <div class="systra-table-section">
+        <div class="systra-table-wrap">
+          <table class="systra-table">
+            <thead>
+              <tr>
+                {% if show_map %}<th></th>{% endif %}
+                {% for col in table_data.columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in table_data.rows %}
+              <tr>
+                {% if show_map %}
+                <td>
+                  <button type="button"
+                          class="systra-row-zoom-btn"
+                          onclick="zoomToFeature({{ forloop.counter0 }})"
+                          title="Zoom to this feature on the map">
+                    &#8982;
+                  </button>
+                </td>
+                {% endif %}
+                {% for cell in row %}
+                <td title="{{ cell }}">{{ cell }}</td>
+                {% endfor %}
+              </tr>
               {% endfor %}
-            </tr>
-          </thead>
-          <tbody>
-            {% for row in table_data.rows %}
-            <tr>
-              {% if show_map %}
-              <td>
-                <button type="button" class="systra-row-zoom-btn"
-                        onclick="zoomToFeature({{ forloop.counter0 }})"
-                        title="Zoom to this feature on the map">&#8982;</button>
-              </td>
-              {% endif %}
-              {% for cell in row %}
-              <td title="{{ cell }}">{{ cell }}</td>
-              {% endfor %}
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
       {% endif %}
 
@@ -134,8 +137,7 @@
 
   </div>
 
-  <!-- Sidebar -->
-  <div class="systra-detail-sidebar">
+  <aside class="systra-detail-sidebar">
     <h6>Details</h6>
 
     {% if item.organisation %}
@@ -210,8 +212,7 @@
     {% if item.abstract %}
     <div class="systra-abstract-box">{{ item.abstract }}</div>
     {% endif %}
-
-  </div>
+  </aside>
 
 </div>
 
@@ -220,27 +221,6 @@
 {% block extra_css %}
 {% if show_map %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<style>
-  .systra-map {
-    width: 100%;
-    height: 360px;
-    border-radius: 6px;
-    border: 1px solid var(--systra-border);
-    margin-bottom: 14px;
-  }
-  .systra-row-zoom-btn {
-    background: none;
-    border: none;
-    color: var(--systra-red);
-    cursor: pointer;
-    font-size: 16px;
-    line-height: 1;
-    padding: 2px 4px;
-  }
-  .systra-row-zoom-btn:hover {
-    color: var(--systra-text);
-  }
-</style>
 {% endif %}
 {% endblock %}
 
@@ -290,7 +270,7 @@
         if (featureLayers.length) {
           map.fitBounds(layer.getBounds(), { padding: [20, 20] });
         } else {
-          map.setView([54.5, -3], 5); // fallback view centred on the UK
+          map.setView([54.5, -3], 5);
         }
       })
       .catch(function () {
