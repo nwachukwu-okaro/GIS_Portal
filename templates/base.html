@@ -22,9 +22,11 @@
       </div>
     </a>
     <div class="systra-nav-links">
+      {% if request.user.is_authenticated %}
       <a href="{% url 'catalogue:search' %}" class="systra-nav-link {% if request.resolver_match.url_name == 'search' %}active{% endif %}">
         Search
       </a>
+      {% if perms.accounts.upload_data %}
       <div class="systra-nav-dropdown">
         <a href="#" class="systra-nav-link">Upload ▾</a>
         <div class="systra-dropdown-menu">
@@ -32,6 +34,13 @@
           <a href="{% url 'catalogue:spatial_upload' %}" class="systra-dropdown-item">Upload to PostGIS</a>
         </div>
       </div>
+      {% endif %}
+      <a href="{% url 'accounts:profile' %}" class="systra-nav-link">{{ request.user.email }}</a>
+      <form method="post" action="{% url 'accounts:logout' %}" class="systra-nav-logout-form">
+        {% csrf_token %}
+        <button type="submit" class="systra-nav-link systra-nav-logout">Sign out</button>
+      </form>
+      {% endif %}
     </div>
   </nav>
 

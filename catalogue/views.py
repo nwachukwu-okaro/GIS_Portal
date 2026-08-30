@@ -52,6 +52,7 @@ import pandas as pd
 import psycopg2
 import requests
 from django.conf import settings
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse, StreamingHttpResponse
 from django.shortcuts import redirect, render
 from django.utils.text import get_valid_filename
@@ -742,6 +743,7 @@ def _matches_query(result, query):
 
 # ── 7. Search view ────────────────────────────────────────────────────────────
 
+@login_required
 def search(request):
     """
     Main search and homepage view.
@@ -1121,6 +1123,7 @@ def _download_postgis_gpkg(item, table_name):
     return response
 
 
+@login_required
 def postgis_geojson(request, identifier):
     """
     URL-facing view: returns the table's preview rows as a GeoJSON
@@ -1141,6 +1144,7 @@ def postgis_geojson(request, identifier):
     return JsonResponse(_fetch_table_geojson(item))
 
 
+@login_required
 def postgis_download_csv(request, identifier):
     """URL-facing view: validates the record then delegates to _download_postgis_csv."""
     feature = _fetch_feature_by_id(identifier)
@@ -1153,6 +1157,7 @@ def postgis_download_csv(request, identifier):
     return _download_postgis_csv(item, table_name)
 
 
+@login_required
 def postgis_download_gpkg(request, identifier):
     """URL-facing view: validates the record then delegates to _download_postgis_gpkg."""
     feature = _fetch_feature_by_id(identifier)
@@ -1167,6 +1172,7 @@ def postgis_download_gpkg(request, identifier):
 
 # ── 10. Detail view ───────────────────────────────────────────────────────────
 
+@login_required
 def detail(request, identifier):
     """
     Detail page for a single catalogue record.
@@ -1213,6 +1219,7 @@ def detail(request, identifier):
 
 # ── 11. MinIO asset streaming view ────────────────────────────────────────────
 
+@login_required
 @xframe_options_sameorigin
 def asset(request, identifier):
     """
@@ -1368,6 +1375,8 @@ def _perform_upload(data):
     }
 
 
+@login_required
+@permission_required('accounts.upload_data', raise_exception=True)
 def upload(request):
     """
     MinIO file upload form.
@@ -1406,6 +1415,8 @@ def upload(request):
     })
 
 
+@login_required
+@permission_required('accounts.upload_data', raise_exception=True)
 def upload_success(request):
     """
     Success confirmation page after a MinIO upload.
@@ -1688,6 +1699,8 @@ def _perform_spatial_upload(data):
     }
 
 
+@login_required
+@permission_required('accounts.upload_data', raise_exception=True)
 def spatial_upload(request):
     """
     PostGIS spatial data upload form.
@@ -1727,6 +1740,8 @@ def spatial_upload(request):
     })
 
 
+@login_required
+@permission_required('accounts.upload_data', raise_exception=True)
 def spatial_upload_success(request):
     """
     Success confirmation page after a PostGIS spatial upload.

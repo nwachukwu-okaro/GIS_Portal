@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
     'catalogue',
 ]
 
@@ -65,7 +66,9 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 # ── Database ─────────────────────────────────────────────────────────
 # Falls back to SQLite if real credentials are not set in .env.
 # When real credentials are present, uses PostgreSQL with the pycsw
-# schema so Django tables are created where we have write permission.
+# p_gisportal schema. p_pycsw is deliberately not in the search path: it has
+# an older Django migration history and catalogue queries address
+# p_pycsw.records explicitly.
 
 _gis_db_user = os.environ.get('GIS_DB_USER', '')
 
@@ -80,7 +83,7 @@ if _gis_db_user and _gis_db_user not in ('', 'YOUR_DB_USER'):
             'PASSWORD': os.environ.get('GIS_DB_PASSWORD', ''),
             'OPTIONS': {
                 'sslmode': os.environ.get('GIS_DB_SSLMODE', 'require'),
-                'options': '-c search_path=p_pycsw,public',
+                'options': '-c search_path=p_gisportal,public',
             },
         }
     }
@@ -98,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'catalogue:search'
+LOGOUT_REDIRECT_URL = 'accounts:login'
 
 LANGUAGE_CODE = 'en-gb'
 TIME_ZONE = 'Europe/London'

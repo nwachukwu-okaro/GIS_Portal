@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in — Systra GIS Data Portal{% endblock %}
+
+{% block content %}
+<div class="systra-auth-wrap">
+  <div class="systra-auth-card">
+    <h1>Sign in</h1>
+    <p class="systra-auth-intro">Use your approved Systra GIS Portal account.</p>
+
+    {% if form.non_field_errors %}
+    <div class="systra-alert systra-alert-error">
+      Your email address or password was not recognised.
+    </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'accounts:login' %}">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      <div class="systra-form-group">
+        <label class="systra-label" for="{{ form.username.id_for_label }}">Email address</label>
+        <input class="systra-input" type="email" name="username"
+               id="{{ form.username.id_for_label }}" autocomplete="email"
+               autofocus required value="{{ form.username.value|default:'' }}" />
+      </div>
+
+      <div class="systra-form-group">
+        <label class="systra-label" for="{{ form.password.id_for_label }}">Password</label>
+        <input class="systra-input" type="password" name="password"
+               id="{{ form.password.id_for_label }}" autocomplete="current-password" required />
+      </div>
+
+      <button class="systra-btn systra-btn-primary systra-auth-submit" type="submit">Sign in</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
