@@ -1,0 +1,331 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_network_rail/nwr_gtcl_nodes_20251215",
+  "schema": "a_network_rail",
+  "table": "nwr_gtcl_nodes_20251215",
+  "title": "Nwr Gtcl Nodes 20251215",
+  "description": "Nwr Gtcl Nodes 20251215 is an authoritative dataset published by Network Rail. It represents nwr gtcl nodes 20251215 features using multipoint geometry.",
+  "feature_concept": "nwr_gtcl_nodes_20251215",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Network Rail",
+    "product": null,
+    "source_url": "https://www.networkrail.co.uk/who-we-are/transparency-and-ethics/transparency/open-data-feeds/",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "rail",
+    "transport"
+  ],
+  "geographic_coverage": "Great Britain",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOINT",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -5.841334748935504,
+      "ymin": 50.12177649642106,
+      "xmax": 1.834689988172236,
+      "ymax": 58.589993542533854
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 37489,
+  "primary_key": [
+    "id"
+  ],
+  "indexes": [
+    {
+      "name": "nwr_gtcl_nodes_20251215_geom_1769591817161",
+      "definition": "CREATE INDEX nwr_gtcl_nodes_20251215_geom_1769591817161 ON a_network_rail.nwr_gtcl_nodes_20251215 USING gist (geom)"
+    },
+    {
+      "name": "nwr_gtcl_nodes_20251215_pkey",
+      "definition": "CREATE UNIQUE INDEX nwr_gtcl_nodes_20251215_pkey ON a_network_rail.nwr_gtcl_nodes_20251215 USING btree (id)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "assetid",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "9002033169",
+          "9002029094",
+          "9002018846",
+          "9002034448",
+          "9002035135"
+        ],
+        "null_fraction": 0.0008,
+        "estimated_distinct": -0.99901307,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "valancy",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0023666667,
+        "estimated_distinct": 4.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "source",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "FE EXTRACTION"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "superceded",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "YES",
+          "NO"
+        ],
+        "null_fraction": 0.0023666667,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geometry_updated",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "YES",
+          "NO"
+        ],
+        "null_fraction": 0.0023666667,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "id",
+      "data_type": "bigint",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "assetid",
+      "valancy",
+      "source",
+      "superceded",
+      "geometry_updated",
+      "id"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "nwr",
+    "gtcl",
+    "nodes",
+    "20251215",
+    "network",
+    "rail",
+    "transport",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.145398+00:00"
+  }
+}

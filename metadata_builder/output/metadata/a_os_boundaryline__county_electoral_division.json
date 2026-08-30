@@ -1,0 +1,644 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_os_boundaryline/county_electoral_division",
+  "schema": "a_os_boundaryline",
+  "table": "county_electoral_division",
+  "title": "County Electoral Division",
+  "description": "County Electoral Division is part of Boundary-Line, published by Ordnance Survey. It represents county electoral division features using multipolygon geometry.",
+  "feature_concept": "county_electoral_division",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Ordnance Survey",
+    "product": "Boundary-Line",
+    "source_url": "https://www.ordnancesurvey.co.uk/products/boundary-line",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Contains OS data © Crown copyright and database right [year]",
+    "verification_status": "needs_review",
+    "licence_scope": "OS OpenData product."
+  },
+  "themes": [
+    "administrative boundaries"
+  ],
+  "geographic_coverage": "Great Britain",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -4.680962561158824,
+      "ymin": 50.20182422547671,
+      "xmax": 1.768949893554714,
+      "ymax": 54.239557496845464
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 1398,
+  "primary_key": [
+    "fid"
+  ],
+  "indexes": [
+    {
+      "name": "county_electoral_division_geom_1784758524181",
+      "definition": "CREATE INDEX county_electoral_division_geom_1784758524181 ON a_os_boundaryline.county_electoral_division USING gist (geom)"
+    },
+    {
+      "name": "county_electoral_division_pkey",
+      "definition": "CREATE UNIQUE INDEX county_electoral_division_pkey ON a_os_boundaryline.county_electoral_division USING btree (fid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "Name",
+      "data_type": "varchar(100)",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Hollington &Wishing Tree ED",
+          "Ermine & Cathedral ED",
+          "Market Harborough West & Foxton ED",
+          "Tadworth, Walton and Kingswood ED",
+          "Tavistock ED"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.99141634,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "Area_Code",
+      "data_type": "varchar(3)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "CED"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Area_Description",
+      "data_type": "varchar(50)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "County Electoral Division"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "File_Name",
+      "data_type": "varchar(100)",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "GLOUCESTERSHIRE_COUNTY",
+          "LINCOLNSHIRE_COUNTY",
+          "HERTFORDSHIRE_COUNTY",
+          "KENT_COUNTY",
+          "DEVON_COUNTY"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 21.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Feature_Serial_Number",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "Collection_Serial_Number",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "Global_Polygon_ID",
+      "data_type": "integer",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Admin_Unit_ID",
+      "data_type": "integer",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.99856937,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Census_Code",
+      "data_type": "varchar(9)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "999999999"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Hectares",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "Non_Inland_Area",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.2267525,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "Area_Type_Code",
+      "data_type": "varchar(2)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "VA"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Area_Type_Description",
+      "data_type": "varchar(25)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "CIVIL VOTING AREA"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "Non_Area_Type_Code",
+      "data_type": "varchar(3)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 1.0,
+        "estimated_distinct": 0.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "Non_Area_Type_Description",
+      "data_type": "varchar(36)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 1.0,
+        "estimated_distinct": 0.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "fid",
+      "data_type": "bigint",
+      "description": "Feature identifier assigned by the source or import process.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "Name",
+      "Area_Code",
+      "Area_Description",
+      "File_Name",
+      "Feature_Serial_Number",
+      "Collection_Serial_Number",
+      "Global_Polygon_ID",
+      "Admin_Unit_ID",
+      "Census_Code",
+      "Hectares",
+      "Non_Inland_Area",
+      "Area_Type_Code",
+      "Area_Type_Description",
+      "Non_Area_Type_Code",
+      "Non_Area_Type_Description",
+      "fid"
+    ],
+    "searchable_columns": [
+      "Name",
+      "File_Name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "county",
+    "electoral",
+    "division",
+    "os",
+    "boundaryline",
+    "ordnance",
+    "survey",
+    "administrative",
+    "boundaries",
+    "name",
+    "area",
+    "code",
+    "file",
+    "global",
+    "polygon",
+    "id",
+    "admin",
+    "unit",
+    "census",
+    "type",
+    "non",
+    "fid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:59.602152+00:00"
+  }
+}

@@ -1,0 +1,49 @@
+# Census2021 Ts054 Ltla
+
+## Overview
+
+- **Identifier:** `a_ons_england_wales/census2021_ts054_ltla`
+- **Source organisation:** Office for National Statistics
+- **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Schema:** `a_ons_england_wales`
+- **Table:** `census2021_ts054_ltla`
+- **Geometry:** Non-spatial
+- **CRS:** Not applicable or unknown
+- **Rows:** 331
+- **Metadata status:** source_mapped
+
+## Description
+
+Census2021 Ts054 Ltla is an authoritative dataset published by Office for National Statistics. It contains records relating to census2021 ts054 ltla.
+
+## Columns
+
+| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
+|---|---|---|---|---|---|---|
+| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
+| `total_all_households` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `owned` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `owned_owns_outright` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `owned_owns_with_a_mortgage_or_loan` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `shared_ownership` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `shared_ownership_shared_ownership` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `social_rented` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `social_rented_rents_from_council_or_local_authority` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `social_rented_other_social_rented` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `private_rented` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `private_rented_private_landlord_or_letting_agency` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `private_rented_other_private_rented` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `lives_rent_free` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+
+## Supported operations
+
+- filter
+- select
+- attribute_join
+- export
+
+## Provenance
+
+Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.

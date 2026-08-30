@@ -1,0 +1,322 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_natural_england/blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL",
+  "schema": "a_natural_england",
+  "table": "blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL",
+  "title": "Blue Green Infra Heat Mitigation Index Hmi Grid Ogl",
+  "description": "Blue Green Infra Heat Mitigation Index Hmi Grid Ogl is an authoritative dataset published by Natural England. It represents blue green infra heat mitigation index hmi grid ogl features using multipolygon geometry.",
+  "feature_concept": "blue_green_infra_heat_mitigation_index_hmi_grid_ogl",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Natural England",
+    "product": null,
+    "source_url": "https://naturalengland-defra.opendata.arcgis.com/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": "Schema default only; Natural England datasets may have third-party or non-commercial restrictions."
+  },
+  "themes": [
+    "environment",
+    "conservation"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -6.418746497885298,
+      "ymin": 49.864551267785885,
+      "xmax": 1.764598287199737,
+      "ymax": 55.81155625292661
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 2102902,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "blue_green_infra_Heat_Mitigation_Index_HMI_G_geom_1768259673485",
+      "definition": "CREATE INDEX \"blue_green_infra_Heat_Mitigation_Index_HMI_G_geom_1768259673485\" ON a_natural_england.\"blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL\" USING gist (geom)"
+    },
+    {
+      "name": "blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL_pkey",
+      "definition": "CREATE UNIQUE INDEX \"blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL_pkey\" ON a_natural_england.\"blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL\" USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "objectid",
+      "data_type": "integer",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "urban",
+      "data_type": "smallint",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "orig_area",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 12.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "mandmadearea",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 57504.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "percmanmade",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 57504.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "heatmiti",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0004,
+        "estimated_distinct": -0.18623723,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "objectid",
+      "urban",
+      "orig_area",
+      "mandmadearea",
+      "percmanmade",
+      "heatmiti"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "blue",
+    "green",
+    "infra",
+    "heat",
+    "mitigation",
+    "index",
+    "hmi",
+    "grid",
+    "ogl",
+    "natural",
+    "england",
+    "environment",
+    "conservation",
+    "objectid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.088090+00:00"
+  }
+}

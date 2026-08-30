@@ -1,0 +1,571 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_geological_survey/geoheritage_unaudited_sites",
+  "schema": "a_irl_geological_survey",
+  "table": "geoheritage_unaudited_sites",
+  "title": "Geoheritage Unaudited Sites",
+  "description": "Geoheritage Unaudited Sites is an authoritative dataset published by Geological Survey Ireland. It represents geoheritage unaudited sites features using polygon geometry.",
+  "feature_concept": "geoheritage_unaudited_sites",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Geological Survey Ireland",
+    "product": null,
+    "source_url": "https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "geology",
+    "earth science"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "POLYGON",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -10.549890621998369,
+      "ymin": 51.769375006625665,
+      "xmax": -9.21173023721157,
+      "ymax": 52.57437088837245
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 116,
+  "primary_key": [
+    "gus_id"
+  ],
+  "indexes": [
+    {
+      "name": "geoheritage_unaudited_sites_geom_1764239349385",
+      "definition": "CREATE INDEX geoheritage_unaudited_sites_geom_1764239349385 ON a_irl_geological_survey.geoheritage_unaudited_sites USING gist (geom)"
+    },
+    {
+      "name": "geoheritage_unaudited_sites_pkey",
+      "definition": "CREATE UNIQUE INDEX geoheritage_unaudited_sites_pkey ON a_irl_geological_survey.geoheritage_unaudited_sites USING btree (gus_id)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "gus_id",
+      "data_type": "integer",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "site_name",
+      "data_type": "varchar(100)",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Puffin Sound",
+          "Kilcummin",
+          "Parkmore Point",
+          "Sauce Creek",
+          "Plover Hill"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.87068963,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "theme",
+      "data_type": "varchar(10)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "IGH 2",
+          "IGH 3",
+          "IGH 16",
+          "IGH 13",
+          "IGH 1"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.12931034,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "county",
+      "data_type": "varchar(50)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Kerry"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "features",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Includes Upper Old Red Sandstone.",
+          "Silurian in contact with Dingle Group",
+          "Devonian fish fossils",
+          "Residual tower karst",
+          "Glacially-breached watershed"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.79310346,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "townland",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Rusheen More, Drominaharee / Glenfesk",
+          "Gneevegullia, Rathmore",
+          "Cappagh (Ed Flesk) / Eskduff Mountain",
+          "Barrow",
+          "Tubbrid Td., Kenmare"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.5258621,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "description",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Rhyolite complex (Lough Guitane intrusions)",
+          "Devonian Dingle Group overturned strata",
+          "Stratigraphy - magma mixing with wet sediments",
+          "Extensive slate mine caverns in purple slate.  Mined in the 19th C and used widely in Ireland and the UK [e.g. Marylebone station, London].",
+          "Road section and cliff section. Inch conglomerate. The foreshore has two outcropping conglomerates and is the type site of one of them - the Inch Conglomerate. Landslides, solifluction deposits and mass wasting along cliff coast."
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.8103448,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "references",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Duncan, M. (1999)  A study of some Irish Lower Carboniferous Fish Microvertebrates.  Unpubl. Ph.D. thesis, Trinity College Dublin.",
+          "Warren, W. P. 1991. Glacial deposits of southwest Ireland. Glacial Deposits on Great Britain and Ireland. A. A. Balkema Publishers, Rotterdam, Netherlands, pp 350.    Harrison, S. & Mighall, T.M. (eds), 2002. The Quaternary of South West Ireland. Field G",
+          "Barr, F.T. (1966) Upper Cretaceous foraminifera from the Ballydeenlea chalk, County Kerry, Ireland.  Palaeontology  9, 492-510.",
+          "Avison, Mark",
+          " "
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.2672414,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "designat",
+      "data_type": "varchar(50)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "CGS, recommended for Geological NHA",
+          "CGS, may be recommended for Geological NHA",
+          "CGS"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "x_ig",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.8189655,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "y_ig",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.7758621,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "x_itm",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9137931,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "y_itm",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9137931,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "gus_id",
+      "site_name",
+      "theme",
+      "county",
+      "features",
+      "townland",
+      "description",
+      "references",
+      "designat",
+      "x_ig",
+      "y_ig",
+      "x_itm",
+      "y_itm"
+    ],
+    "searchable_columns": [
+      "site_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "geoheritage",
+    "unaudited",
+    "sites",
+    "irl",
+    "geological",
+    "survey",
+    "ireland",
+    "geology",
+    "earth",
+    "science",
+    "gus",
+    "id",
+    "site",
+    "name",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.950437+00:00"
+  }
+}

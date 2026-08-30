@@ -1,0 +1,690 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_nisra_nireland/boundary_census_religion_and_ethnicity_data_2021_dea",
+  "schema": "a_nisra_nireland",
+  "table": "boundary_census_religion_and_ethnicity_data_2021_dea",
+  "title": "Boundary Census Religion And Ethnicity Data 2021 Dea",
+  "description": "Boundary Census Religion And Ethnicity Data 2021 Dea is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It represents boundary census religion and ethnicity data 2021 dea features using multipolygon geometry.",
+  "feature_concept": "boundary_census_religion_and_ethnicity_data_2021_dea",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Northern Ireland Statistics and Research Agency",
+    "product": null,
+    "source_url": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "statistics",
+    "census",
+    "boundaries"
+  ],
+  "geographic_coverage": "Northern Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 4326,
+    "crs": "EPSG:4326",
+    "bbox_wgs84": {
+      "xmin": -8.177502469510731,
+      "ymin": 54.02272436084089,
+      "xmax": -5.432789421998587,
+      "ymax": 55.31298429024288
+    },
+    "units": null,
+    "is_geographic": true
+  },
+  "row_count": 80,
+  "primary_key": [],
+  "indexes": [],
+  "columns": [
+    {
+      "name": "geocode",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "N10000605",
+          "N10000703",
+          "N10001103",
+          "N10000706",
+          "N10000405"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geography",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Ormiston",
+          "Larne Lough",
+          "Sperrin",
+          "Glengormley Urban",
+          "Three Mile Water"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "year",
+      "data_type": "bigint",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "population",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Usual residents in the area"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "ethnic_group_other_ethnic_groups",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "176",
+          "356",
+          "155",
+          "716",
+          "407"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.975,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "ethnic_group_white",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "19,188",
+          "31,473",
+          "16,794",
+          "21,521",
+          "34,239"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_or_religion_brought_up_in_catholic",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "15,607",
+          "4,874",
+          "1,541",
+          "12,436",
+          "5,754"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_or_religion_brought_up_in_other_religions",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "207",
+          "532",
+          "407",
+          "202",
+          "395"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9875,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_or_religion_brought_up_in_protestant_other_christian_i",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "17,369",
+          "8,547",
+          "5,677",
+          "14,831",
+          "4,386"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_catholic",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "21,840",
+          "13,375",
+          "10,677",
+          "2,025",
+          "8,334"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_church_of_ireland",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "1,734",
+          "4,228",
+          "2,565",
+          "2,413",
+          "2,665"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.975,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_methodist",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "75",
+          "96",
+          "552",
+          "730",
+          "383"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.95,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_no_religion_not_stated",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "1,474",
+          "5,971",
+          "5,414",
+          "6,283",
+          "5,825"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_other_christian_religions",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "732",
+          "3,388",
+          "515",
+          "1,184",
+          "464"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_other_religions",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "96",
+          "327",
+          "135",
+          "206",
+          "121"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "religion_presbyterian",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "2,059",
+          "5,319",
+          "7,353",
+          "7,562",
+          "3,686"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": false
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "geocode",
+      "geography",
+      "year",
+      "population",
+      "ethnic_group_other_ethnic_groups",
+      "ethnic_group_white",
+      "religion_or_religion_brought_up_in_catholic",
+      "religion_or_religion_brought_up_in_other_religions",
+      "religion_or_religion_brought_up_in_protestant_other_christian_i",
+      "religion_catholic",
+      "religion_church_of_ireland",
+      "religion_methodist",
+      "religion_no_religion_not_stated",
+      "religion_other_christian_religions",
+      "religion_other_religions",
+      "religion_presbyterian"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "boundary",
+    "census",
+    "religion",
+    "ethnicity",
+    "2021",
+    "dea",
+    "nisra",
+    "nireland",
+    "northern",
+    "ireland",
+    "statistics",
+    "research",
+    "agency",
+    "boundaries",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.255044+00:00"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_natural_england/blue_green_infra_PRoW_Higher_Rights_OGL",
+  "schema": "a_natural_england",
+  "table": "blue_green_infra_PRoW_Higher_Rights_OGL",
+  "title": "Blue Green Infra Prow Higher Rights Ogl",
+  "description": "Blue Green Infra Prow Higher Rights Ogl is an authoritative dataset published by Natural England. It represents blue green infra prow higher rights ogl features using multilinestring geometry.",
+  "feature_concept": "blue_green_infra_prow_higher_rights_ogl",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Natural England",
+    "product": null,
+    "source_url": "https://naturalengland-defra.opendata.arcgis.com/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": "Schema default only; Natural England datasets may have third-party or non-commercial restrictions."
+  },
+  "themes": [
+    "environment",
+    "conservation"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTILINESTRING",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -5.710661876805371,
+      "ymin": 49.96014345771232,
+      "xmax": 1.751415463083472,
+      "ymax": 55.80506336614042
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 83882,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "blue_green_infra_PRoW_Higher_Rights_OGL_geom_1768259676404",
+      "definition": "CREATE INDEX \"blue_green_infra_PRoW_Higher_Rights_OGL_geom_1768259676404\" ON a_natural_england.\"blue_green_infra_PRoW_Higher_Rights_OGL\" USING gist (geom)"
+    },
+    {
+      "name": "blue_green_infra_PRoW_Higher_Rights_OGL_pkey",
+      "definition": "CREATE UNIQUE INDEX \"blue_green_infra_PRoW_Higher_Rights_OGL_pkey\" ON a_natural_england.\"blue_green_infra_PRoW_Higher_Rights_OGL\" USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "objectid",
+      "data_type": "integer",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "name",
+      "data_type": "varchar(254)",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "City of Plymouth Rights of Way",
+          "Ealing Rights of Way",
+          "City of Southampton Rights of Way",
+          "Trafford Rights of Way",
+          "Wakefield Rights of Way"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 107.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "folderpath",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "West Berkshire Rights of Way/Bridleway/WB|LAMB|66",
+          "Oxfordshire Rights of Way/BOAT/ON|365|28",
+          "West Sussex Rights of Way/Bridleway/WS|LUR|2014",
+          "Derbyshire Rights of Way/Bridleway/DY|Dale Abbey-E3|9",
+          "North Yorkshire Rights of Way/Bridleway/NY|25.28|202"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.13706158,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "type",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Byway Open to All Traffic",
+          "Bridleway",
+          "Restricted Byway"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "objectid",
+      "name",
+      "folderpath",
+      "type"
+    ],
+    "searchable_columns": [
+      "name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "blue",
+    "green",
+    "infra",
+    "prow",
+    "higher",
+    "rights",
+    "ogl",
+    "natural",
+    "england",
+    "environment",
+    "conservation",
+    "objectid",
+    "name",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.119325+00:00"
+  }
+}

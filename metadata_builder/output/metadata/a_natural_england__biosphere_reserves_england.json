@@ -1,0 +1,299 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_natural_england/biosphere_reserves_england",
+  "schema": "a_natural_england",
+  "table": "biosphere_reserves_england",
+  "title": "Biosphere Reserves England",
+  "description": "version: 20251009\nSource: https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::biosphere-reserves-england/about\n\nAttribution: © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [year]. Attribution statement: © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [year].",
+  "feature_concept": "biosphere_reserves_england",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Natural England",
+    "product": null,
+    "source_url": "https://naturalengland-defra.opendata.arcgis.com/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": "Schema default only; Natural England datasets may have third-party or non-commercial restrictions."
+  },
+  "themes": [
+    "environment",
+    "conservation"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -4.889166921185651,
+      "ymin": 50.55381129890022,
+      "xmax": 0.096716645981963,
+      "ymax": 51.29257316732354
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 3,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "biosphere_reserves_england_geom_1763946104119",
+      "definition": "CREATE INDEX biosphere_reserves_england_geom_1763946104119 ON a_natural_england.biosphere_reserves_england USING gist (geom)"
+    },
+    {
+      "name": "biosphere_reserves_england_pkey",
+      "definition": "CREATE UNIQUE INDEX biosphere_reserves_england_pkey ON a_natural_england.biosphere_reserves_england USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "varchar",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Isle of Wight",
+          "North Devon",
+          "Brighton and Lewes Downs"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "status",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Declared"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "area",
+      "data_type": "real",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "globalid",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "{BD136733-C7D1-41B2-BE7C-E552CC2BA800}",
+          "{CBF570F0-3C44-4776-8B75-BDD0F6F622E7}",
+          "{9498F81B-2EE4-4C9A-9D1F-21EC356C032D}"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "objectid",
+      "data_type": "bigint",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "name",
+      "status",
+      "area",
+      "globalid",
+      "objectid"
+    ],
+    "searchable_columns": [
+      "name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "biosphere",
+    "reserves",
+    "england",
+    "natural",
+    "environment",
+    "conservation",
+    "name",
+    "objectid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "database_comment",
+    "description_confidence": "verified"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.069119+00:00"
+  }
+}

@@ -1,0 +1,546 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_natural_england/priority_habitats_inventory_england",
+  "schema": "a_natural_england",
+  "table": "priority_habitats_inventory_england",
+  "title": "Priority Habitats Inventory England",
+  "description": "Version: 20251118\nSource: https://www.data.gov.uk/dataset/4b6ddab7-6c0f-4407-946e-d6499f19fcde/priority-habitats-inventory-england\n\nAttribution:\n© Natural England 2025.\nContains OS data © Crown copyright and database rights 2022. OS\nAC0000851168.\nContains data supplied by and reproduced with permission of Arnside\nand Silverdale AONB and Lancaster City Council.\nContains data created and provided by Cumbria Biodiversity Data\nCentre on behalf of Cumbria Wildlife Trust. The data has been\nextracted from Cumbria Wildlife Trust’s Grassland Inventory and is used\nunder a CC BY 4.0 International Licence.\nContains, or is based on, information supplied by the Forestry\nCommission. © Crown copyright and database right 2022. Ordnance\nSurvey 100021242.\nContains data created and provided by the National Trust, used under a\nCC BY 4.0 International Licence.\nContains Environment Agency data © Environment Agency copyright\nand/or database right 2015. All rights reserved. Contains Ordnance\nSurvey data © Crown copyright and database right 2014.\nContains Northumberland National Park Authority data licenced under\nthe Open Government Licence v3.0.\nContains, or is derived from, information supplied by Natural England\nand the Ordnance Survey. © Crown copyright and database rights 2022.\nOrdnance Survey AC0000851168.\n© Natural England 2021 © Crown Copyright and database rights 2021.\nOrdnance Survey AC0000851168. © Environment Agency 2021.\nContains, or is derived from, Rural Payments Agency data. © Rural\nPayments Agency. Contains Ordnance Survey data. Crown copyright\nand database right 2023.\nContains North Yorkshire Council data © North Yorkshire Council.",
+  "feature_concept": "priority_habitats_inventory_england",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Natural England",
+    "product": null,
+    "source_url": "https://naturalengland-defra.opendata.arcgis.com/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": "Schema default only; Natural England datasets may have third-party or non-commercial restrictions."
+  },
+  "themes": [
+    "environment",
+    "conservation"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -6.401221354318602,
+      "ymin": 49.869903641868476,
+      "xmax": 1.757371969827581,
+      "ymax": 55.811097668576046
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 799637,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "priority_habitats_inventory_england_geom_1763947030488",
+      "definition": "CREATE INDEX priority_habitats_inventory_england_geom_1763947030488 ON a_natural_england.priority_habitats_inventory_england USING gist (geom)"
+    },
+    {
+      "name": "priority_habitats_inventory_england_pkey",
+      "definition": "CREATE UNIQUE INDEX priority_habitats_inventory_england_pkey ON a_natural_england.priority_habitats_inventory_england USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "mainhabs",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Blanket bog",
+          "Blanket bog,Deciduous woodland",
+          "Calaminarian grassland",
+          "Coastal and floodplain grazing marsh",
+          "Coastal and floodplain grazing marsh,Coastal saltmarsh"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 64.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "habcodes",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "BLBOG",
+          "BLBOG, DWOOD",
+          "CALAM",
+          "CFPGM",
+          "CFPGM, LMEAD"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 64.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "featdesc",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "",
+          "Anthills",
+          "Anthills,Waxcap grassland",
+          "Countryside Stewardship Option",
+          "Countryside Stewardship Option,Degraded(Lowland raised bog)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 20.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "featcodes",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "",
+          "ANTHL",
+          "ANTHL, WAXCP",
+          "CSOPT",
+          "CSOPT, DEGRD(LRBOG)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 20.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "otherclass",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "",
+          "Annex1(6410)",
+          "Annex1(6410, H3140, H7230), NVC(M24, M24a)",
+          "Annex1(6410, H3140), NVC(M22a, M24)",
+          "Annex1(6410, H3140), NVC(M22b, M24)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1045.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "addhabs",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "",
+          "BLBOG",
+          "BLBOG, CALAM",
+          "BLBOG, CALAM, DWOOD",
+          "BLBOG, CALAM, DWOOD, UFFSW"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 325.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "primsource",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "",
+          "10k raster colour map digitised 2007 (CFPGM)",
+          "[11] Herefordshire Biological Record Centre 2003 (LHEAT)",
+          "1980 Devon Heaths Report - A Survey of Selected Heathlands in Devon (LHEAT)",
+          "1999 ESCC aerial photos (LHEAT)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1355.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "areaha",
+      "data_type": "real",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2232.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "version",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Sep_25"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "uid",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "PHID08390855_000596029",
+          "PHID08586274_000864191",
+          "PHID08593921_000912771",
+          "PHID08612143_000882407",
+          "PHID08617506_000638141"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "globalid",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "{000013A0-03AF-4B6E-9E02-ADD90684D1BD}",
+          "{00002678-F9D2-4B6E-8784-C9BCABD5179D}",
+          "{000032BD-EF77-4605-811D-F640F08B2F20}",
+          "{00005329-8BE1-45DB-A350-D2BCF338EA78}",
+          "{00007363-0542-407C-994D-B13C2ABB03C1}"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "objectid",
+      "data_type": "bigint",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "mainhabs",
+      "habcodes",
+      "featdesc",
+      "featcodes",
+      "otherclass",
+      "addhabs",
+      "primsource",
+      "areaha",
+      "version",
+      "uid",
+      "globalid",
+      "objectid"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "priority",
+    "habitats",
+    "inventory",
+    "england",
+    "natural",
+    "environment",
+    "conservation",
+    "objectid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "database_comment",
+    "description_confidence": "verified"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.134336+00:00"
+  }
+}

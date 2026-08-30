@@ -1,0 +1,535 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_galway_cc/athenry_lap_zoning_2024_2030",
+  "schema": "a_irl_galway_cc",
+  "table": "athenry_lap_zoning_2024_2030",
+  "title": "Athenry Lap Zoning 2024 2030",
+  "description": "Athenry Lap Zoning 2024 2030 is an authoritative dataset published by Galway County Council. It represents athenry lap zoning 2024 2030 features using multipolygon geometry.",
+  "feature_concept": "athenry_lap_zoning_2024_2030",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Galway County Council",
+    "product": null,
+    "source_url": "https://data.gov.ie/organization/galway-county-council",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "local government",
+    "open data"
+  ],
+  "geographic_coverage": "County Galway",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -8.781623369719744,
+      "ymin": 53.28463155217859,
+      "xmax": -8.72304577525618,
+      "ymax": 53.315869549742835
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 583,
+  "primary_key": [
+    "luz_pk"
+  ],
+  "indexes": [
+    {
+      "name": "athenry_lap_zoning_2024_2030_geom_1786291755813",
+      "definition": "CREATE INDEX athenry_lap_zoning_2024_2030_geom_1786291755813 ON a_irl_galway_cc.athenry_lap_zoning_2024_2030 USING gist (geom)"
+    },
+    {
+      "name": "athenry_lap_zoning_2024_2030_pkey",
+      "definition": "CREATE UNIQUE INDEX athenry_lap_zoning_2024_2030_pkey ON a_irl_galway_cc.athenry_lap_zoning_2024_2030 USING btree (luz_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "object_id",
+      "data_type": "smallint",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "zoning_abb",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 1.0,
+        "estimated_distinct": 0.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "zoning",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Agriculture",
+          "Transport Infrastructure",
+          "Residential (Phase 2)",
+          "Business & Technology",
+          "Tourism"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 17.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "status",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "ADOPTED"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "town",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Athenry"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "plan_name",
+      "data_type": "varchar",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Athenry LAP 2024-2030"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "opportunit",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "OPT1",
+          "OPT2"
+        ],
+        "null_fraction": 0.99656945,
+        "estimated_distinct": -0.0034305453,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "policy_obj",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "ASP 19",
+          "ASP 25",
+          "ASP 26",
+          "ASP 6"
+        ],
+        "null_fraction": 0.9931389,
+        "estimated_distinct": -0.0068610907,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "policy_o_1",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Business and Enterprise\nb) Any future development at the existing Arrabawn site on the R437 shall consider access arrangements to the Athenry Town Walls in order to facilitate permeability at this location",
+          "New Playground/Recreational Area\nIt is a policy objective of Galway County Council to support and encourage the development of new playground/recreational areas in Athenry as identified on Map 2.",
+          "Tourism Development\nd) Support tourism based enterprises at this location (identified on Map 2) with due recognition and respect to Athenry Castle and surrounding Town Walls.",
+          "Urban Framework Plan in Residential Phase 2 lands (Caheroyn).\na) It is a policy objective of Galway County Council to prepare an Urban Framework Plan on Residential Phase 2 lands within 18 months of the adoption of the local area plan. These lands are id"
+        ],
+        "null_fraction": 0.9931389,
+        "estimated_distinct": -0.0068610907,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "globabl_id",
+      "data_type": "varchar",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "7b2d55c6-31e3-485f-97d4-9d65a0e66f9f",
+          "1e146e90-e326-4dcf-a099-1007e36d1371",
+          "6723ce5c-56ce-4853-9e0f-540b24a8a012",
+          "7df94249-6afe-4484-9ba8-1ee7773506a0",
+          "c4672f76-e2a2-48de-a2df-36dfefbbc3e5"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "myplan_gzt",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 1.0,
+        "estimated_distinct": 0.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "luz_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "object_id",
+      "zoning_abb",
+      "zoning",
+      "status",
+      "town",
+      "plan_name",
+      "opportunit",
+      "policy_obj",
+      "policy_o_1",
+      "globabl_id",
+      "myplan_gzt",
+      "luz_pk"
+    ],
+    "searchable_columns": [
+      "plan_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "athenry",
+    "lap",
+    "zoning",
+    "2024",
+    "2030",
+    "irl",
+    "galway",
+    "cc",
+    "county",
+    "council",
+    "local",
+    "government",
+    "open",
+    "object",
+    "id",
+    "plan",
+    "name",
+    "globabl",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.913610+00:00"
+  }
+}

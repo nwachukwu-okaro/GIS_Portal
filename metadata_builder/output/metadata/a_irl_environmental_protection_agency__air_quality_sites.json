@@ -1,0 +1,917 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_environmental_protection_agency/air_quality_sites",
+  "schema": "a_irl_environmental_protection_agency",
+  "table": "air_quality_sites",
+  "title": "Air Quality Sites",
+  "description": "Air Quality Sites is an authoritative dataset published by Environmental Protection Agency Ireland. It represents air quality sites features using point geometry.",
+  "feature_concept": "air_quality_sites",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Environmental Protection Agency Ireland",
+    "product": null,
+    "source_url": "https://gis.epa.ie/GetData/Download",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "environment"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "POINT",
+    "srid": 29902,
+    "crs": "EPSG:29902",
+    "bbox_wgs84": {
+      "xmin": -10.24098565584609,
+      "ymin": 51.855000442732845,
+      "xmax": -6.12207599979228,
+      "ymax": 55.35847221997623
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 43,
+  "primary_key": [
+    "aqih_pk"
+  ],
+  "indexes": [
+    {
+      "name": "air_quality_sites_geom_1763566125397",
+      "definition": "CREATE INDEX air_quality_sites_geom_1763566125397 ON a_irl_environmental_protection_agency.air_quality_sites USING gist (geom)"
+    },
+    {
+      "name": "air_quality_sites_pkey",
+      "definition": "CREATE UNIQUE INDEX air_quality_sites_pkey ON a_irl_environmental_protection_agency.air_quality_sites USING btree (aqih_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "aqih_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "name",
+      "data_type": "varchar(254)",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Bodkin Roundabout",
+          "Longford\r\n",
+          "Rathmines",
+          "Dun Laoghaire",
+          "Winetavern Street"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "code",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "KK3",
+          "DL02",
+          "D22",
+          "WD01",
+          "D13"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "location",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Donegal",
+          "Cork",
+          "Mayo",
+          "Clare",
+          "Roscommon"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "status",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Current Monitoring Site"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "url",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "http://www.epa.ie/air/quality/data/ta/",
+          "http://www.epa.ie/air/quality/data/br/",
+          "http://www.epa.ie/air/quality/data/sa/",
+          "http://www.epa.ie/air/quality/data/wat/",
+          "http://www.epa.ie/air/quality/data/rt/"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "easting",
+      "data_type": "double precision",
+      "description": "Easting coordinate in the dataset coordinate reference system.",
+      "semantic_role": "x_coordinate",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "northing",
+      "data_type": "double precision",
+      "description": "Northing coordinate in the dataset coordinate reference system.",
+      "semantic_role": "y_coordinate",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "address1",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "UCC",
+          "Ordnance Survey",
+          "CIT, Bishopstown",
+          "Revenue Commissioners",
+          "Irish Water site ref 50-518IW"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "address2",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Winetavern Street, Dublin 18",
+          "Rathmines",
+          "Dun Laoghaire",
+          "Phoenix Park",
+          "Buncrana, Co Donegal"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "region",
+      "data_type": "varchar(20)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Dublin City",
+          "Small Towns",
+          "Cork City",
+          "Rural East",
+          "Large Towns"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "coverage",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Rural Industrial",
+          "Rural",
+          "Suburban",
+          "Suburban Background",
+          "suburban"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "operator",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Cork City Council",
+          "Met Eireann",
+          "EPA",
+          "DCC",
+          "South Dublin County Council"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "eio_net_code",
+      "data_type": "varchar(20)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "IE12345"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "para_1",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Sulphur dioxide",
+          "PM10",
+          "Oxides of Nitrogen",
+          "PM2.5",
+          "Sulphur Dioxide"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_2",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Carbon Monoxide",
+          "nitrogen dioxide",
+          "Benzene",
+          "PM10",
+          "Oxides of Nitrogen"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_3",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "PM10",
+          "Oxides of Nitrogen",
+          "Sulphur Dioxide",
+          "NULL",
+          "Nitrogen Dioxide"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_4",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Carbon Monoxide",
+          "Oxides of Nitrogen",
+          "PM2.5",
+          "sulphur dioxide",
+          "NULL"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_5",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Carbon Monoxide",
+          "Benzene",
+          "Metals",
+          "Ozone",
+          "NULL"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_6",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Lead",
+          "PM2.5",
+          "NULL"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_7",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Benzene",
+          "NULL"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "para_8",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Lead",
+          "NULL"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "operational",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "aqih_pk",
+      "name",
+      "code",
+      "location",
+      "status",
+      "url",
+      "easting",
+      "northing",
+      "address1",
+      "address2",
+      "region",
+      "coverage",
+      "operator",
+      "eio_net_code",
+      "para_1",
+      "para_2",
+      "para_3",
+      "para_4",
+      "para_5",
+      "para_6",
+      "para_7",
+      "para_8",
+      "operational"
+    ],
+    "searchable_columns": [
+      "name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "air",
+    "quality",
+    "sites",
+    "irl",
+    "environmental",
+    "protection",
+    "agency",
+    "ireland",
+    "environment",
+    "name",
+    "easting",
+    "northing",
+    "eio",
+    "net",
+    "code",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.869330+00:00"
+  }
+}

@@ -1,0 +1,476 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_os_open_rivers/watercourse_link",
+  "schema": "a_os_open_rivers",
+  "table": "watercourse_link",
+  "title": "Watercourse Link",
+  "description": "Watercourse Link is part of OS Open Rivers, published by Ordnance Survey. It represents watercourse link features using linestring geometry.",
+  "feature_concept": "watercourse_link",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Ordnance Survey",
+    "product": "OS Open Rivers",
+    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-rivers",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Contains OS data © Crown copyright and database right [year]",
+    "verification_status": "needs_review",
+    "licence_scope": "OS OpenData product."
+  },
+  "themes": [
+    "rivers",
+    "hydrography"
+  ],
+  "geographic_coverage": "Great Britain",
+  "geometry": {
+    "column": "geom",
+    "type": "LINESTRING",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -7.524878910620849,
+      "ymin": 49.97461621173399,
+      "xmax": 1.756275861722249,
+      "ymax": 60.82522772535523
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 193040,
+  "primary_key": [
+    "fid"
+  ],
+  "indexes": [
+    {
+      "name": "watercourse_link_geom_1763592387728",
+      "definition": "CREATE INDEX watercourse_link_geom_1763592387728 ON a_os_open_rivers.watercourse_link USING gist (geom)"
+    },
+    {
+      "name": "watercourse_link_pkey",
+      "definition": "CREATE UNIQUE INDEX watercourse_link_pkey ON a_os_open_rivers.watercourse_link USING btree (fid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "00001889-D9F6-4219-8EF8-519BCCA904F0",
+          "0000B03E-04B2-457D-B53A-70F45B21F7EF",
+          "0000B891-05FB-4070-A245-3640740AE55C",
+          "0000F192-F61C-4E04-88A4-FE04F7F6867D",
+          "000120F2-0E9F-4936-B22A-2AB0DFC7938D"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "flow_direction",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "in direction",
+          "in opposite direction"
+        ],
+        "null_fraction": 0.00036666667,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "length",
+      "data_type": "real",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3852.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "fictitious",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "0"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "form",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "canal",
+          "inlandRiver",
+          "lake",
+          "tidalRiver"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 4.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "watercourse_name",
+      "data_type": "varchar",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Afon y Fron",
+          "Steall a' Mhuinean",
+          "Woodhayne Range",
+          "Eglingham Burn",
+          "Uidhe Lìn"
+        ],
+        "null_fraction": 0.45236668,
+        "estimated_distinct": 13027.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "watercourse_name_alternative",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Abbey Burn",
+          "Abbey Stream",
+          "Abhainn an t-Srath Chuileannaich",
+          "Abhainn Bharagail",
+          "Abhainn Cuileig"
+        ],
+        "null_fraction": 0.97253335,
+        "estimated_distinct": 546.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "start_node",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "00001FC3-4DE9-4172-B46C-3635C2BACB4E",
+          "0000B21E-086E-4C7B-9365-78D623F43278",
+          "0000B660-8B95-41F8-8B2E-EA49FC164985",
+          "00018EC5-DEDB-47BD-8699-0E18B5D3F523",
+          "0001960E-FE24-4355-94D9-191ED413CE20"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.98787296,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "end_node",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "6F277368-C412-4F10-931A-0E620A181902",
+          "310D9E4E-012C-4384-85AF-7109C6BDEEB0",
+          "11726086-981D-4E79-97E7-A0568B9F54C2",
+          "6081CBB1-57DE-45EA-81B2-02B814B07C76",
+          "4723DE20-956D-4F11-8D4C-226CAA9B85E1"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.5867074,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "fid",
+      "data_type": "integer",
+      "description": "Feature identifier assigned by the source or import process.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "id",
+      "flow_direction",
+      "length",
+      "fictitious",
+      "form",
+      "watercourse_name",
+      "watercourse_name_alternative",
+      "start_node",
+      "end_node",
+      "fid"
+    ],
+    "searchable_columns": [
+      "watercourse_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "watercourse",
+    "link",
+    "os",
+    "open",
+    "rivers",
+    "ordnance",
+    "survey",
+    "hydrography",
+    "name",
+    "fid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:59.671964+00:00"
+  }
+}

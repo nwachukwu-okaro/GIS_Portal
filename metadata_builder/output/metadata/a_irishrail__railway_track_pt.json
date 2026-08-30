@@ -1,0 +1,232 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irishrail/railway_track_pt",
+  "schema": "a_irishrail",
+  "table": "railway_track_pt",
+  "title": "Railway Track Pt",
+  "description": "Railway Track Pt is an authoritative dataset published by Iarnrod Eireann / Irish Rail. It represents railway track pt features using multipoint geometry.",
+  "feature_concept": "railway_track_pt",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Iarnrod Eireann / Irish Rail",
+    "product": null,
+    "source_url": "https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "rail",
+    "transport"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOINT",
+    "srid": 29903,
+    "crs": "EPSG:29903",
+    "bbox_wgs84": {
+      "xmin": -9.699183727182705,
+      "ymin": 51.84627448526872,
+      "xmax": -6.034981504031848,
+      "ymax": 54.27400185590677
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 478313,
+  "primary_key": [],
+  "indexes": [
+    {
+      "name": "railway_track_pt_geom_1777633903102",
+      "definition": "CREATE INDEX railway_track_pt_geom_1777633903102 ON a_irishrail.railway_track_pt USING gist (geom)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "railway_track_pt_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "z",
+      "data_type": "real",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 12172.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "text_string",
+      "data_type": "varchar(8)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "0.16",
+          "0.17",
+          "0.18",
+          "0.19",
+          "0.2"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 12175.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "railway_track_pt_pk",
+      "z",
+      "text_string"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "railway",
+    "track",
+    "pt",
+    "irishrail",
+    "iarnrod",
+    "eireann",
+    "irish",
+    "rail",
+    "transport",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.544425+00:00"
+  }
+}

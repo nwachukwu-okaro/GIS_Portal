@@ -1,0 +1,552 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_meath_cc/record_of_protected_structures",
+  "schema": "a_irl_meath_cc",
+  "table": "record_of_protected_structures",
+  "title": "Record Of Protected Structures",
+  "description": "Record Of Protected Structures is an authoritative dataset published by Meath County Council. It represents record of protected structures features using point geometry.",
+  "feature_concept": "record_of_protected_structures",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Meath County Council",
+    "product": null,
+    "source_url": "https://data.gov.ie/organization/meath-county-council",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "local government",
+    "open data"
+  ],
+  "geographic_coverage": "County Meath",
+  "geometry": {
+    "column": "geom",
+    "type": "POINT",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -7.306271683893221,
+      "ymin": 53.39300342882254,
+      "xmax": -6.213299483096806,
+      "ymax": 53.89826751726409
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 1410,
+  "primary_key": [
+    "rps_pk"
+  ],
+  "indexes": [
+    {
+      "name": "record_of_protected_structures_geom_1763581030901",
+      "definition": "CREATE INDEX record_of_protected_structures_geom_1763581030901 ON a_irl_meath_cc.record_of_protected_structures USING gist (geom)"
+    },
+    {
+      "name": "record_of_protected_structures_pkey",
+      "definition": "CREATE UNIQUE INDEX record_of_protected_structures_pkey ON a_irl_meath_cc.record_of_protected_structures USING btree (rps_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "rps_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "la_rps_id",
+      "data_type": "double precision",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "niah_reg_n",
+      "data_type": "double precision",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.7078014,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "municipal_",
+      "data_type": "varchar(36)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Trim",
+          "Ratoath",
+          "Navan",
+          "Laytown/Bettystown",
+          "Ashbourne"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 6.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "townland",
+      "data_type": "varchar(58)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "CHURCH HILL GLEBE",
+          "DONAGHMORE",
+          "CASTLETOWN",
+          "CROSSAKEEL",
+          "BELVIEW"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.25957447,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "town",
+      "data_type": "varchar(34)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Donapatrick",
+          "Clongill",
+          "Ashboune",
+          "Fosterstown",
+          "Ballivor"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 96.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "street_tow",
+      "data_type": "varchar(90)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Galtrim",
+          "Rosnaree",
+          "Aclare Cottage Demense",
+          "Agher",
+          "Kilaconnigan"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.37021276,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "cdp_settle",
+      "data_type": "varchar(116)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Clonard",
+          "Bettystown/Laytown/Mornington East /Donacarney/ Mornington",
+          "Ballivor",
+          "Carnaross",
+          "Baile Ghib"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 38.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "structure_",
+      "data_type": "varchar(100)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Hamwood gate lodge",
+          "St Finians Church of Ireland",
+          "St Columcille's Church, Fletcherstown",
+          "Bellewstown Church",
+          "Nagle's Castle"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.78794324,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "structur00",
+      "data_type": "varchar(18)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "50",
+          "16",
+          "63",
+          "62",
+          "05-Jun"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 51.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "building_t",
+      "data_type": "varchar(100)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Hairdressers/ Retail",
+          "Solicitor's Office",
+          "Kiln",
+          "Church - Former",
+          "Cottage (Terraced)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.22198582,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "description",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Terraced three-bay two-storey house c. 1780, with dormer attic. Timber shopfront and domestic doorcase, c. 1910",
+          "Four-bay single-storey house with windbreak porch, thatched roof of oaten straw, with two-bay slate roofed addition to gable end, roughcast rendered walls and sash windows.",
+          "Limetone milepost c. 1795 inscribed on three faces \" 6 \"",
+          "Detached three-bay two-storey roughcast rendered parochial house, built c.1869, with central entrance porch. Timber sash windows with stone sills. Hipped slate roof with rendered chimneystacks and clay pots.incl.Detached four-bay two-storey outbuilding.",
+          "A good example of the Greek Classical revival, c.1840. Frontispiece of three bays, two-storeys, with single bay pedimented breakfront, Wyatt window in the centre, tetrastyle doric porch. Stone outbuildings to rear of house. Walled Garden."
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.91985816,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "rps_pk",
+      "la_rps_id",
+      "niah_reg_n",
+      "municipal_",
+      "townland",
+      "town",
+      "street_tow",
+      "cdp_settle",
+      "structure_",
+      "structur00",
+      "building_t",
+      "description"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "record",
+    "protected",
+    "structures",
+    "irl",
+    "meath",
+    "cc",
+    "county",
+    "council",
+    "local",
+    "government",
+    "open",
+    "la",
+    "rps",
+    "id",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.007225+00:00"
+  }
+}

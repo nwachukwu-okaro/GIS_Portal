@@ -1,0 +1,277 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_environment_agency/flood_zones_2_3_rivers_and_sea",
+  "schema": "a_environment_agency",
+  "table": "flood_zones_2_3_rivers_and_sea",
+  "title": "Flood Zones 2 3 Rivers And Sea",
+  "description": "version: 20251120\nSource: https://www.data.gov.uk/dataset/104434b0-5263-4c90-9b1e-e43b1d57c750/flood-map-for-planning-flood-zones1\n\nAttribution: © Environment Agency copyright and/or database right 2025. All rights reserved.",
+  "feature_concept": "flood_zones_2_3_rivers_and_sea",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Environment Agency",
+    "product": null,
+    "source_url": "https://environment.data.gov.uk/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": "Schema default only; verify dataset-specific restrictions and third-party rights."
+  },
+  "themes": [
+    "environment",
+    "flooding",
+    "water"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -6.36658096516489,
+      "ymin": 49.88224305617544,
+      "xmax": 1.763601627366952,
+      "ymax": 55.811634313435896
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 12804126,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "flood_zones_2_3_rivers_and_sea_geom_1763950027785",
+      "definition": "CREATE INDEX flood_zones_2_3_rivers_and_sea_geom_1763950027785 ON a_environment_agency.flood_zones_2_3_rivers_and_sea USING gist (geom)"
+    },
+    {
+      "name": "flood_zones_2_3_rivers_and_sea_pkey",
+      "definition": "CREATE UNIQUE INDEX flood_zones_2_3_rivers_and_sea_pkey ON a_environment_agency.flood_zones_2_3_rivers_and_sea USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "origin",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "direct rainfall model",
+          "direct rainfall model and recorded",
+          "local evidence",
+          "local evidence and recorded",
+          "modelled"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 9.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "flood_zone",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "FZ2",
+          "FZ3"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "flood_source",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "river",
+          "river and sea",
+          "river / undefined",
+          "sea",
+          "undefined"
+        ],
+        "null_fraction": 0.0163,
+        "estimated_distinct": 5.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "objectid",
+      "data_type": "bigint",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "origin",
+      "flood_zone",
+      "flood_source",
+      "objectid"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "flood",
+    "zones",
+    "rivers",
+    "sea",
+    "environment",
+    "agency",
+    "flooding",
+    "water",
+    "objectid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "database_comment",
+    "description_confidence": "verified"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Schema default only; verify dataset-specific restrictions and third-party rights."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:54.689412+00:00"
+  }
+}

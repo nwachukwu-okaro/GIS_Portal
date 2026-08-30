@@ -1,0 +1,275 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_os_open_greenspace/access_point",
+  "schema": "a_os_open_greenspace",
+  "table": "access_point",
+  "title": "Access Point",
+  "description": "Access Point is part of OS Open Greenspace, published by Ordnance Survey. It represents access point features using point geometry.",
+  "feature_concept": "access_point",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Ordnance Survey",
+    "product": "OS Open Greenspace",
+    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-greenspace",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Contains OS data © Crown copyright and database right [year]",
+    "verification_status": "needs_review",
+    "licence_scope": "OS OpenData product."
+  },
+  "themes": [
+    "greenspace",
+    "recreation"
+  ],
+  "geographic_coverage": "Great Britain",
+  "geometry": {
+    "column": "geom",
+    "type": "POINT",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -8.566909196016445,
+      "ymin": 49.89329793101848,
+      "xmax": 1.760894168951543,
+      "ymax": 60.80430658922406
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 355705,
+  "primary_key": [
+    "fid"
+  ],
+  "indexes": [
+    {
+      "name": "access_point_geom_1763592105373",
+      "definition": "CREATE INDEX access_point_geom_1763592105373 ON a_os_open_greenspace.access_point USING gist (geom)"
+    },
+    {
+      "name": "access_point_pkey",
+      "definition": "CREATE UNIQUE INDEX access_point_pkey ON a_os_open_greenspace.access_point USING btree (fid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "00000A60-FB68-4D9D-820F-3B782405BB67",
+          "00005487-78F5-46FA-9577-CF97FA7EAB61",
+          "00006F56-CD60-4A4C-A6BB-AC5049D5A242",
+          "00008142-D93F-4E9D-86DD-576D6AED916D",
+          "00008A54-E5CE-4A0A-8CF4-855405C17067"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "access_type",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Motor Vehicle",
+          "Motor Vehicle And Pedestrian",
+          "Pedestrian"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "ref_to_greenspace_site",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "49E9C767-CCCB-A491-E063-8CCAA00A0EF3",
+          "49E9C72C-191E-A491-E063-8CCAA00A0EF3",
+          "49E9C6FC-A022-A491-E063-8CCAA00A0EF3",
+          "49E9C762-4771-A491-E063-8CCAA00A0EF3",
+          "49E9C6F4-50EE-A491-E063-8CCAA00A0EF3"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.22179615,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "fid",
+      "data_type": "bigint",
+      "description": "Feature identifier assigned by the source or import process.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "id",
+      "access_type",
+      "ref_to_greenspace_site",
+      "fid"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "access",
+    "point",
+    "os",
+    "open",
+    "greenspace",
+    "ordnance",
+    "survey",
+    "recreation",
+    "fid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:59.633295+00:00"
+  }
+}

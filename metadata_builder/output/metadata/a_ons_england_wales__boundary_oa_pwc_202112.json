@@ -1,0 +1,276 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_ons_england_wales/boundary_oa_pwc_202112",
+  "schema": "a_ons_england_wales",
+  "table": "boundary_oa_pwc_202112",
+  "title": "Boundary Oa Pwc 202112",
+  "description": "Boundary Oa Pwc 202112 is an authoritative dataset published by Office for National Statistics. It represents boundary oa pwc 202112 features using geometry geometry.",
+  "feature_concept": "boundary_oa_pwc_202112",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Office for National Statistics",
+    "product": null,
+    "source_url": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence v3.0",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Source: Office for National Statistics licensed under the Open Government Licence v.3.0",
+    "verification_status": "needs_review",
+    "licence_scope": "Digital boundaries may also require OS attribution; postcode and UPRN products have additional rights."
+  },
+  "themes": [
+    "statistics",
+    "census",
+    "boundaries"
+  ],
+  "geographic_coverage": "England and Wales",
+  "geometry": {
+    "column": "geom",
+    "type": "GEOMETRY",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -6.352766427499284,
+      "ymin": 49.91334683729468,
+      "xmax": 1.755877717280312,
+      "ymax": 55.78628786523336
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 188880,
+  "primary_key": [
+    "id"
+  ],
+  "indexes": [
+    {
+      "name": "boundary_oa_pwc_202112_geom_1780702141293",
+      "definition": "CREATE INDEX boundary_oa_pwc_202112_geom_1780702141293 ON a_ons_england_wales.boundary_oa_pwc_202112 USING gist (geom)"
+    },
+    {
+      "name": "boundary_oa_pwc_202112_pkey",
+      "definition": "CREATE UNIQUE INDEX boundary_oa_pwc_202112_pkey ON a_ons_england_wales.boundary_oa_pwc_202112 USING btree (id)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "fid",
+      "data_type": "bigint",
+      "description": "Feature identifier assigned by the source or import process.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "oa21cd",
+      "data_type": "varchar(10)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "E00000001",
+          "E00000003",
+          "E00000005",
+          "E00000007",
+          "E00000010"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "globalid",
+      "data_type": "varchar(38)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "{00000601-B3EC-4A04-B15A-C792322BC50B}",
+          "{00003DD8-E1D3-43BC-8164-7BE926CF5FBD}",
+          "{0000E740-936C-44AD-A61C-9C2DAB10200E}",
+          "{0000F242-2540-407B-8C0F-512998BC59AD}",
+          "{00017621-0528-4649-98F9-0AA200F33B2D}"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "id",
+      "fid",
+      "oa21cd",
+      "globalid"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "boundary",
+    "oa",
+    "pwc",
+    "202112",
+    "ons",
+    "england",
+    "wales",
+    "office",
+    "national",
+    "statistics",
+    "census",
+    "boundaries",
+    "fid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:58.027477+00:00"
+  }
+}

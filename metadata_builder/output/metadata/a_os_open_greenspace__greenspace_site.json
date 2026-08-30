@@ -1,0 +1,378 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_os_open_greenspace/greenspace_site",
+  "schema": "a_os_open_greenspace",
+  "table": "greenspace_site",
+  "title": "Greenspace Site",
+  "description": "Greenspace Site is part of OS Open Greenspace, published by Ordnance Survey. It represents greenspace site features using multipolygon geometry.",
+  "feature_concept": "greenspace_site",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Ordnance Survey",
+    "product": "OS Open Greenspace",
+    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-greenspace",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Contains OS data © Crown copyright and database right [year]",
+    "verification_status": "needs_review",
+    "licence_scope": "OS OpenData product."
+  },
+  "themes": [
+    "greenspace",
+    "recreation"
+  ],
+  "geographic_coverage": "Great Britain",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -8.57460710057021,
+      "ymin": 49.893017280989504,
+      "xmax": 1.761148266884612,
+      "ymax": 60.80477700513473
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 165978,
+  "primary_key": [
+    "fid"
+  ],
+  "indexes": [
+    {
+      "name": "greenspace_site_geom_1784927809864",
+      "definition": "CREATE INDEX greenspace_site_geom_1784927809864 ON a_os_open_greenspace.greenspace_site USING gist (geom)"
+    },
+    {
+      "name": "greenspace_site_pkey",
+      "definition": "CREATE UNIQUE INDEX greenspace_site_pkey ON a_os_open_greenspace.greenspace_site USING btree (fid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "1A188594-A570-4DB5-AA7C-2FD7F80555F4",
+          "244038F6-2773-4CF9-90D2-B53E400CE054",
+          "254C70A5-7E7F-4EC8-821A-173C3DD17914",
+          "29512BC8-082C-4F99-AD04-722C8FCA2EE2",
+          "3031D7A7-6592-4D5E-80A0-ED9DA25C9BB7"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "function",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Allotments Or Community Growing Spaces",
+          "Bowling Green",
+          "Cemetery",
+          "Golf Course",
+          "Other Sports Facility"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 10.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "distinctive_name_1",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "St Martin's Burial Ground",
+          "Longford Commnty Garden",
+          "Holy Cross Roman Catholic Church",
+          "St John the Baptist's Parish Church",
+          "Melville Road Allotments"
+        ],
+        "null_fraction": 0.7291,
+        "estimated_distinct": 11741.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "distinctive_name_2",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Aberavon Leisure and Fitness Centre",
+          "Achfary",
+          "Ainon Chapel",
+          "Akrill Memorial Methodist Church",
+          "All Souls' Church"
+        ],
+        "null_fraction": 0.99756664,
+        "estimated_distinct": -0.0024333596,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "distinctive_name_3",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Bro Ffestiniog Leisure Centre",
+          "David Wilson",
+          "Greyfriars",
+          "Kearsney Abbey",
+          "Kebel College Boathouse"
+        ],
+        "null_fraction": 0.9999667,
+        "estimated_distinct": -3.3318996e-05,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "distinctive_name_4",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Barratt",
+          "Bendrigg"
+        ],
+        "null_fraction": 1.0,
+        "estimated_distinct": 0.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "fid",
+      "data_type": "bigint",
+      "description": "Feature identifier assigned by the source or import process.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "id",
+      "function",
+      "distinctive_name_1",
+      "distinctive_name_2",
+      "distinctive_name_3",
+      "distinctive_name_4",
+      "fid"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "greenspace",
+    "site",
+    "os",
+    "open",
+    "ordnance",
+    "survey",
+    "recreation",
+    "fid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:59.634766+00:00"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_national_lidar_programme/qgis_projects",
+  "schema": "a_national_lidar_programme",
+  "table": "qgis_projects",
+  "title": "Qgis Projects",
+  "description": "Qgis Projects is part of National LIDAR Programme, published by Environment Agency. It contains records relating to qgis projects.",
+  "feature_concept": "qgis_projects",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Environment Agency",
+    "product": "National LIDAR Programme",
+    "source_url": "https://www.data.gov.uk/dataset/f0db0249-f17b-4036-9e65-309148c97ce4/national-lidar-programme",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "lidar",
+    "elevation",
+    "terrain"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": null,
+    "type": null,
+    "srid": null,
+    "crs": null,
+    "bbox_wgs84": null,
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 1,
+  "primary_key": [
+    "name"
+  ],
+  "indexes": [
+    {
+      "name": "qgis_projects_pkey",
+      "definition": "CREATE UNIQUE INDEX qgis_projects_pkey ON a_national_lidar_programme.qgis_projects USING btree (name)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "text",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "National LiDAR Programme Data"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "metadata",
+      "data_type": "jsonb",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "content",
+      "data_type": "bytea",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "attribute_join": true,
+    "export": true
+  },
+  "operation_requirements": {},
+  "discovery_hints": {
+    "filterable_columns": [
+      "name",
+      "metadata",
+      "content"
+    ],
+    "searchable_columns": [
+      "name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "qgis",
+    "projects",
+    "national",
+    "lidar",
+    "programme",
+    "environment",
+    "agency",
+    "elevation",
+    "terrain",
+    "name"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.063839+00:00"
+  }
+}

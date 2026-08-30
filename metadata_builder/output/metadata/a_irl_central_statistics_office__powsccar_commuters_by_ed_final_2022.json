@@ -1,0 +1,428 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_central_statistics_office/powsccar_commuters_by_ed_final_2022",
+  "schema": "a_irl_central_statistics_office",
+  "table": "powsccar_commuters_by_ed_final_2022",
+  "title": "Powsccar Commuters By Ed Final 2022",
+  "description": "Using information coded from Question 36 What is the FULL NAME and ADDRESS of your place of work, school, college or childcare? in Census 2022 for POWSCCAR, CSO has developed a set of aggregate commuting counts. These counts are presented at CSO Electoral Division (ED) and county level.\n\nThe counts are based on origin and destination EDs for workers, students and children who are usually resident in Ireland. The counts include persons who work/study from home and persons who had no fixed place of work.\n\nJourneys by workers/students and childcare from the Republic of Ireland to destinations in both Northern Ireland and overseas are included.\n\nIn order to maintain confidentiality, the following measures have been taken prior to publication:\n\nElectoral divisions to which fewer than 10 persons commuted have been suppressed.\nRecords where no work, school, college or childcare was codable for a worker, student or child have been removed.",
+  "feature_concept": "powsccar_commuters_by_ed_final_2022",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Central Statistics Office Ireland",
+    "product": null,
+    "source_url": "https://www.cso.ie/en/databases/",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "statistics",
+    "census"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": null,
+    "type": null,
+    "srid": null,
+    "crs": null,
+    "bbox_wgs84": null,
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 339607,
+  "primary_key": [
+    "cbef_pk"
+  ],
+  "indexes": [
+    {
+      "name": "powsccar_commuters_by_ed_final_2022_pkey",
+      "definition": "CREATE UNIQUE INDEX powsccar_commuters_by_ed_final_2022_pkey ON a_irl_central_statistics_office.powsccar_commuters_by_ed_final_2022 USING btree (cbef_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "cbef_pk",
+      "data_type": "integer",
+      "description": "Surrogate primary key for the row",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "residence_csoed_guid",
+      "data_type": "varchar",
+      "description": "Geographic Unique Identification (GUID) Code for origin CSO Electoral Division (ED)",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "06698531-f7f7-4058-a15f-7d455ef0dd94",
+          "21a09083-a130-47d2-8690-23338d5ecf18",
+          "23519126-bd85-4c40-a1e2-26c5d2b7e51c",
+          "268c20e2-7574-4e64-ac7a-9383e368fcb7",
+          "2ae19629-16a1-13a3-e055-000000000001"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3398.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "residence_csoed_label",
+      "data_type": "varchar",
+      "description": "Name of origin CSO ED",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "ABBEY",
+          "ABBEY A",
+          "ABBEY B",
+          "ABBEY C",
+          "ABBEY D"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3080.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "residence_county",
+      "data_type": "varchar",
+      "description": "County code for origin county",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "CC",
+          "CE",
+          "CK",
+          "CN",
+          "CW"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 31.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "residence_county_label",
+      "data_type": "varchar",
+      "description": "Name of origin county",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Carlow",
+          "Cavan",
+          "Clare",
+          "Cork City",
+          "Cork County"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 31.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "powscc_csoed_guid",
+      "data_type": "varchar",
+      "description": "GUID for destination CSO ED (LGD code for Northern Ireland or 98 for Overseas)",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "21a09083-a130-47d2-8690-23338d5ecf18",
+          "23519126-bd85-4c40-a1e2-26c5d2b7e51c",
+          "268c20e2-7574-4e64-ac7a-9383e368fcb7",
+          "2ae19629-16a1-13a3-e055-000000000001",
+          "2ae19629-16a2-13a3-e055-000000000001"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2885.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "powscc_csoed_label",
+      "data_type": "varchar",
+      "description": "Name of destination CSO ED (LGD name for Northern Ireland or Overseas)",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "ABBEY",
+          "ABBEY A",
+          "ABBEY B",
+          "ABBEY C",
+          "ABBEY D"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2641.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "powscc_county",
+      "data_type": "varchar",
+      "description": "County code for destination county (NI for Northern Ireland or 98 for Overseas)",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "98",
+          "CC",
+          "CE",
+          "CK",
+          "CN"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 35.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "powscc_county_label",
+      "data_type": "varchar",
+      "description": "Name of destination county (Northern Ireland or Overseas)",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Carlow",
+          "Cavan",
+          "Clare",
+          "Cork City",
+          "Cork County"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 35.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    },
+    {
+      "name": "count",
+      "data_type": "smallint",
+      "description": "Number of persons commuting",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 334.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "database_comment",
+      "confidence": "verified"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "attribute_join": true,
+    "export": true
+  },
+  "operation_requirements": {},
+  "discovery_hints": {
+    "filterable_columns": [
+      "cbef_pk",
+      "residence_csoed_guid",
+      "residence_csoed_label",
+      "residence_county",
+      "residence_county_label",
+      "powscc_csoed_guid",
+      "powscc_csoed_label",
+      "powscc_county",
+      "powscc_county_label",
+      "count"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "powsccar",
+    "commuters",
+    "ed",
+    "final",
+    "2022",
+    "irl",
+    "central",
+    "statistics",
+    "office",
+    "ireland",
+    "census"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "database_comment",
+    "description_confidence": "verified"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.709392+00:00"
+  }
+}

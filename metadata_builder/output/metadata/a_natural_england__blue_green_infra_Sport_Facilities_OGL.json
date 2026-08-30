@@ -1,0 +1,666 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_natural_england/blue_green_infra_Sport_Facilities_OGL",
+  "schema": "a_natural_england",
+  "table": "blue_green_infra_Sport_Facilities_OGL",
+  "title": "Blue Green Infra Sport Facilities Ogl",
+  "description": "Blue Green Infra Sport Facilities Ogl is an authoritative dataset published by Natural England. It represents blue green infra sport facilities ogl features using multipoint geometry.",
+  "feature_concept": "blue_green_infra_sport_facilities_ogl",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Natural England",
+    "product": null,
+    "source_url": "https://naturalengland-defra.opendata.arcgis.com/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": "Schema default only; Natural England datasets may have third-party or non-commercial restrictions."
+  },
+  "themes": [
+    "environment",
+    "conservation"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOINT",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -6.32121345318061,
+      "ymin": 49.91310346492405,
+      "xmax": 1.7570875643049,
+      "ymax": 55.787086581337874
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 44114,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "blue_green_infra_Sport_Facilities_OGL_geom_176825969025",
+      "definition": "CREATE INDEX \"blue_green_infra_Sport_Facilities_OGL_geom_176825969025\" ON a_natural_england.\"blue_green_infra_Sport_Facilities_OGL\" USING gist (geom)"
+    },
+    {
+      "name": "blue_green_infra_Sport_Facilities_OGL_pkey",
+      "definition": "CREATE UNIQUE INDEX \"blue_green_infra_Sport_Facilities_OGL_pkey\" ON a_natural_england.\"blue_green_infra_Sport_Facilities_OGL\" USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "objectid",
+      "data_type": "integer",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "site_name",
+      "data_type": "varchar(254)",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "LEYBOURNE CHASE",
+          "TUPTON HALL SCHOOL",
+          "STOKE CITY FC (CLAYTON WOOD TRAINING GROUND)",
+          "HIGHGATE GOLF CLUB",
+          "BALFOUR PRIMARY SCHOOL"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.41408622,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "post_code",
+      "data_type": "varchar(254)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "EX2 8SW",
+          "LS29 6EB",
+          "CH4 8JQ",
+          "LA9 4PQ",
+          "B74 4LT"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.40182254,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "ownership",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Other Independent Special School",
+          "Local Authority",
+          "Foundation School",
+          "Independent School approved for SEN Pupils",
+          "Other Independent School"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 26.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "management",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Other",
+          "School/College/University (in house)",
+          "Community Organisation",
+          "MOD",
+          "CSSC"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 13.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "facility_type",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Artificial Grass Pitch",
+          "Golf",
+          "Outdoor Tennis Courts",
+          "Grass Pitches"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 4.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "access_group",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Public Access"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "access_type",
+      "data_type": "varchar(255)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Free Public Access",
+          "Registered Membership use",
+          "Sports Club / Community Association",
+          "Pay and Play"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 4.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "lsoa_code",
+      "data_type": "varchar(255)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "E01028889",
+          "E01031205",
+          "E01006986",
+          "E01027817",
+          "E01028716"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.28154328,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "msoa_code",
+      "data_type": "varchar(255)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "E02004640",
+          "E02001077",
+          "E02003097",
+          "E02001443",
+          "E02003093"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.12952805,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "local_authority_code",
+      "data_type": "varchar(255)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "E07000040",
+          "E09000018",
+          "E08000016",
+          "E07000090",
+          "E07000229"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 308.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "local_authority_name",
+      "data_type": "varchar(255)",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Babergh",
+          "Hertsmere",
+          "East Cambridgeshire",
+          "Swale",
+          "Wealden"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 308.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "county_code",
+      "data_type": "varchar(255)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "E10000003",
+          "E10000024",
+          "E10000013",
+          "E10000023",
+          "E10000030"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 26.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "county_name",
+      "data_type": "varchar(255)",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Suffolk",
+          "Greater London Authority",
+          "Worcestershire",
+          "Lincolnshire",
+          "Oxfordshire"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 26.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "site_id",
+      "data_type": "integer",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.00013333333,
+        "estimated_distinct": -0.42007074,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "objectid",
+      "site_name",
+      "post_code",
+      "ownership",
+      "management",
+      "facility_type",
+      "access_group",
+      "access_type",
+      "lsoa_code",
+      "msoa_code",
+      "local_authority_code",
+      "local_authority_name",
+      "county_code",
+      "county_name",
+      "site_id"
+    ],
+    "searchable_columns": [
+      "site_name",
+      "local_authority_name",
+      "county_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "blue",
+    "green",
+    "infra",
+    "sport",
+    "facilities",
+    "ogl",
+    "natural",
+    "england",
+    "environment",
+    "conservation",
+    "objectid",
+    "site",
+    "name",
+    "post",
+    "code",
+    "lsoa",
+    "msoa",
+    "local",
+    "authority",
+    "county",
+    "id",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.122011+00:00"
+  }
+}

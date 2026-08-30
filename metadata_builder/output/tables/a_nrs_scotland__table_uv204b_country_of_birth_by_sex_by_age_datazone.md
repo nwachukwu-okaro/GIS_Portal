@@ -1,0 +1,395 @@
+# Table Uv204b Country Of Birth By Sex By Age Datazone
+
+## Overview
+
+- **Identifier:** `a_nrs_scotland/table_uv204b_country_of_birth_by_sex_by_age_datazone`
+- **Source organisation:** National Records of Scotland
+- **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Schema:** `a_nrs_scotland`
+- **Table:** `table_uv204b_country_of_birth_by_sex_by_age_datazone`
+- **Geometry:** Non-spatial
+- **CRS:** Not applicable or unknown
+- **Rows:** 2938
+- **Metadata status:** source_mapped
+
+## Description
+
+Table Uv204b Country Of Birth By Sex By Age Datazone is an authoritative dataset published by National Records of Scotland. It contains records relating to table uv204b country of birth by sex by age datazone.
+
+## Columns
+
+| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
+|---|---|---|---|---|---|---|
+| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
+| `all_people_total_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_other_europe_eu_countries_other_eu_acce` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_other_europe_eu_countries_other_member_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_other_europe_eu_countries_republic_of_i` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_total_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_other_europe_eu_countries_other_eu_accessio` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_other_europe_eu_countries_other_member_coun` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_other_europe_eu_countries_republic_of_irela` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_total_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_other_europe_eu_countries_other_eu_accession_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_other_europe_eu_countries_other_member_countr` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_other_europe_eu_countries_republic_of_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_total_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_other_europe_eu_countries_other_eu_acces` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_other_europe_eu_countries_other_member_c` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_other_europe_eu_countries_republic_of_ir` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_other_europe_eu_countries_other_eu_accession` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_other_europe_eu_countries_other_member_count` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_other_europe_eu_countries_republic_of_irelan` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_0_15_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_other_europe_eu_countries_other_eu_accession_c` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_other_europe_eu_countries_other_member_countri` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_other_europe_eu_countries_republic_of_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_0_15_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_other_europe_eu_countries_other_eu_acce` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_other_europe_eu_countries_other_member_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_other_europe_eu_countries_republic_of_i` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_other_europe_eu_countries_other_eu_accessio` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_other_europe_eu_countries_other_member_coun` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_other_europe_eu_countries_republic_of_irela` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_16_24_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_other_europe_eu_countries_other_eu_accession_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_other_europe_eu_countries_other_member_countr` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_other_europe_eu_countries_republic_of_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_16_24_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_other_europe_eu_countries_other_eu_acce` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_other_europe_eu_countries_other_member_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_other_europe_eu_countries_republic_of_i` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_other_europe_eu_countries_other_eu_accessio` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_other_europe_eu_countries_other_member_coun` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_other_europe_eu_countries_republic_of_irela` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_25_34_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_other_europe_eu_countries_other_eu_accession_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_other_europe_eu_countries_other_member_countr` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_other_europe_eu_countries_republic_of_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_25_34_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_other_europe_eu_countries_other_eu_acce` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_other_europe_eu_countries_other_member_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_other_europe_eu_countries_republic_of_i` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_other_europe_eu_countries_other_eu_accessio` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_other_europe_eu_countries_other_member_coun` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_other_europe_eu_countries_republic_of_irela` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_35_49_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_other_europe_eu_countries_other_eu_accession_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_other_europe_eu_countries_other_member_countr` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_other_europe_eu_countries_republic_of_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_35_49_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_other_europe_eu_countries_other_eu_acce` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_other_europe_eu_countries_other_member_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_other_europe_eu_countries_republic_of_i` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_other_europe_eu_countries_other_eu_accessio` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_other_europe_eu_countries_other_member_coun` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_other_europe_eu_countries_republic_of_irela` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_50_64_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_other_europe_eu_countries_other_eu_accession_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_other_europe_eu_countries_other_member_countr` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_other_europe_eu_countries_republic_of_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_50_64_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_other_europe_eu_countries_other_e` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_other_europe_eu_countries_other_m` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_other_europe_eu_countries_republi` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_united_kingdom_uk_part_not_specif` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_other_europe_eu_countries_other_eu_ac` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_other_europe_eu_countries_other_membe` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_other_europe_eu_countries_republic_of` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `female_65_and_over_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_africa` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_antartica_and_oceania_and_other` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_channel_islands_and_isle_of_man` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_other_europe_eu_countries_other_eu_acce` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_other_europe_eu_countries_other_member_` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_other_europe_eu_countries_republic_of_i` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_other_europe_non_eu_countries` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_united_kingdom_england` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_united_kingdom_northern_ireland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_united_kingdom_scotland` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_united_kingdom_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_united_kingdom_uk_part_not_specified` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_europe_united_kingdom_wales` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_middle_east_and_asia` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `male_65_and_over_the_americas_and_the_caribbean` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+
+## Supported operations
+
+- filter
+- select
+- attribute_join
+- export
+
+## Metadata warnings
+
+- Licence has not yet been verified.
+
+## Provenance
+
+Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.

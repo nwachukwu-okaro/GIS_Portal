@@ -1,0 +1,308 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_ons_nrs_nirsa_census_data/variable_dictionary",
+  "schema": "a_ons_nrs_nirsa_census_data",
+  "table": "variable_dictionary",
+  "title": "Variable Dictionary",
+  "description": "Variable Dictionary is an authoritative dataset published by UK national statistical authorities. It represents variable dictionary features using geometry geometry.",
+  "feature_concept": "variable_dictionary",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "UK national statistical authorities",
+    "product": null,
+    "source_url": "https://www.ons.gov.uk/census",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "statistics",
+    "census"
+  ],
+  "geographic_coverage": "United Kingdom",
+  "geometry": {
+    "column": "geom",
+    "type": "GEOMETRY",
+    "srid": 0,
+    "crs": null,
+    "bbox_wgs84": null,
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 25,
+  "primary_key": [],
+  "indexes": [
+    {
+      "name": "variable_dictionary_geom_1779353355933",
+      "definition": "CREATE INDEX variable_dictionary_geom_1779353355933 ON a_ons_nrs_nirsa_census_data.variable_dictionary USING gist (geom)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "table name",
+      "data_type": "varchar(58)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Year of arrival in the UK",
+          "National Statistics Socio-economic Classification (NS-SEC)",
+          "Country of birth",
+          "Marital and civil partnership status",
+          "Residence type"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "uk table id",
+      "data_type": "varchar(5)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "uk061",
+          "uk062",
+          "uk029",
+          "uk015",
+          "uk021"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "unit",
+      "data_type": "varchar(9)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Household",
+          "Person"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "population scope",
+      "data_type": "varchar(285)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Persons Aged 16 or over and in full time employment the week before the census. Scotland: Persons Aged 16 or over and in full time employment the week before the census (including full-time students if they gave a work address as the address they primarily travel to for work or study)",
+          "Persons Age d5 or Over (Aged 3 or Over for Scotland)",
+          "Persons Aged 16 or Over",
+          "Persons Aged 16 or over and in full time employment the week before the census.",
+          "All Households"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "notes",
+      "data_type": "varchar(957)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "1. The variable wording differs slightly between countries but the definitions match. 2. An aggregated \"Disabled under the Equality Act\" is created from the subdivisions for Northern Ireland and Scotland.",
+          "-",
+          "1. Aggregated variables for Part-time and Full-time are created from the subdivisions for Northern Ireland and Scotland to match the England table.",
+          "1. The censuses each differ in the variables for subdivisions of the EU, therefore only the total EU variable is included in the unified table. 2. The variable \"Country of birth: British Overseas\" only included in the England and Wales table, it is therefore not used in the unified table.",
+          "1. The Northern Irish questionnaire differed slightly from the rest of the nations - of note is that \"Gypsy or Irish Traveller\" and \"Roma\" were not considered subdivisions of \"White\" as they are for the remaining nations. Due to these differences subdivisions of \"White\" are not available in the unified tables.  2. The subdivisions of \"Asian\" ethnicity differ in the Northern Ireland table in two ways. No variable is provided for Bangladeshi, this variable is included in the unified table with all counts for Northern Ireland being set to zero. An additional variable for the Filipino ethnic group is available, this variable is aggregated into the \"Other Asian\" variable in the combined table. 3. Northern Ireland Table Ethnic Group - 5 Categories is not used as the aggregations are different from the rest of the UK, ie \"Arab\" is considered part of the \"Asian\" aggregation. The Northern Ireland aggregations are instead created by combining variables."
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": false
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "table name",
+      "uk table id",
+      "unit",
+      "population scope",
+      "notes"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "variable",
+    "dictionary",
+    "ons",
+    "nrs",
+    "nirsa",
+    "census",
+    "uk",
+    "national",
+    "statistical",
+    "authorities",
+    "statistics",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:59.573227+00:00"
+  }
+}

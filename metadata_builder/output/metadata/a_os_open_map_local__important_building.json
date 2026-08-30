@@ -1,0 +1,349 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_os_open_map_local/important_building",
+  "schema": "a_os_open_map_local",
+  "table": "important_building",
+  "title": "Important Building",
+  "description": "Contains OS data © Crown copyright and database right 2026",
+  "feature_concept": "important_building",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Ordnance Survey",
+    "product": "OS Open Map Local",
+    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-map-local",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Contains OS data © Crown copyright and database right [year]",
+    "verification_status": "needs_review",
+    "licence_scope": "OS OpenData product."
+  },
+  "themes": [
+    "mapping",
+    "topography"
+  ],
+  "geographic_coverage": "Great Britain",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -7.516491038507559,
+      "ymin": 49.8919131226488,
+      "xmax": 1.76075535716207,
+      "ymax": 60.80957188392294
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 240808,
+  "primary_key": [
+    "fid"
+  ],
+  "indexes": [
+    {
+      "name": "important_building_geom_1777307722431",
+      "definition": "CREATE INDEX important_building_geom_1777307722431 ON a_os_open_map_local.important_building USING gist (geom)"
+    },
+    {
+      "name": "important_building_pkey",
+      "definition": "CREATE UNIQUE INDEX important_building_pkey ON a_os_open_map_local.important_building USING btree (fid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "00005060-0EA3-4700-BC20-5012CF3BEA3D",
+          "0000546E-A4E0-46DE-B010-B655DE551D58",
+          "000063E2-D625-4C3E-B74B-C74F722AA341",
+          "00009066-64F8-44E0-950E-C08DB443CA82",
+          "000093FE-0DE2-4739-A680-C01E11E01E2B"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "building_theme",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Air Transport",
+          "Attraction And Leisure",
+          "Cultural Facility",
+          "Education",
+          "Emergency Service"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 11.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "classification",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Airport",
+          "Art Gallery",
+          "Bus Station",
+          "Coach Station",
+          "Fire Station"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 28.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "distinctive_name",
+      "data_type": "varchar",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "The Trinity Voluntary Aided Church of England Primary School",
+          "Woodside Park Synagogue",
+          "Brighton Unitarian Church",
+          "Hallfield Primary School",
+          "The Crossley Heath School"
+        ],
+        "null_fraction": 0.116,
+        "estimated_distinct": -0.10225989,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "feature_code",
+      "data_type": "integer",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 11.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "fid",
+      "data_type": "integer",
+      "description": "Feature identifier assigned by the source or import process.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "id",
+      "building_theme",
+      "classification",
+      "distinctive_name",
+      "feature_code",
+      "fid"
+    ],
+    "searchable_columns": [
+      "distinctive_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "important",
+    "building",
+    "os",
+    "open",
+    "map",
+    "local",
+    "ordnance",
+    "survey",
+    "mapping",
+    "topography",
+    "distinctive",
+    "name",
+    "feature",
+    "code",
+    "fid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "database_comment",
+    "description_confidence": "verified"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": []
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:59.644410+00:00"
+  }
+}

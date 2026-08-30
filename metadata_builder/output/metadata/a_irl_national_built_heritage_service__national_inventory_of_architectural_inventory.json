@@ -1,0 +1,859 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_national_built_heritage_service/national_inventory_of_architectural_inventory",
+  "schema": "a_irl_national_built_heritage_service",
+  "table": "national_inventory_of_architectural_inventory",
+  "title": "National Inventory Of Architectural Inventory",
+  "description": "National Inventory Of Architectural Inventory is an authoritative dataset published by National Built Heritage Service. It represents national inventory of architectural inventory features using point geometry.",
+  "feature_concept": "national_inventory_of_architectural_inventory",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "National Built Heritage Service",
+    "product": null,
+    "source_url": "https://www.buildingsofireland.ie/",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "heritage",
+    "buildings"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "POINT",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -10.514248493601235,
+      "ymin": 51.41338203019053,
+      "xmax": 169.32385210438235,
+      "ymax": 78.26385901055187
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 43322,
+  "primary_key": [
+    "niah_pk"
+  ],
+  "indexes": [
+    {
+      "name": "national_inventory_of_architectural_inventor_geom_1784204554861",
+      "definition": "CREATE INDEX national_inventory_of_architectural_inventor_geom_1784204554861 ON a_irl_national_built_heritage_service.national_inventory_of_architectural_inventory USING gist (geom)"
+    },
+    {
+      "name": "national_inventory_of_architectural_inventory_pkey",
+      "definition": "CREATE UNIQUE INDEX national_inventory_of_architectural_inventory_pkey ON a_irl_national_built_heritage_service.national_inventory_of_architectural_inventory USING btree (niah_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "reg_no",
+      "data_type": "bigint",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "name",
+      "data_type": "varchar",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Oughaval Graveyard",
+          "John O'Grady",
+          "Fethard Rectory",
+          "James Joyce Cultural Centre",
+          "Bansha House"
+        ],
+        "null_fraction": 0.3936,
+        "estimated_distinct": -0.395942,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "number",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "5 - 6",
+          "494",
+          "72-98",
+          "19 - 20",
+          "Warehouse No.2"
+        ],
+        "null_fraction": 0.788,
+        "estimated_distinct": 611.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "street1",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Frenchman's Lane",
+          "Lower Branch Road",
+          "Leighlin Bridge Road",
+          "Medlicott Street",
+          "Buckingham Street Lower"
+        ],
+        "null_fraction": 0.4551,
+        "estimated_distinct": 2888.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "street2",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Lower Branch Road",
+          "Magazine Road",
+          "Back Road",
+          "Mayor's Walk (off)",
+          "Newman's Mall"
+        ],
+        "null_fraction": 0.9113333,
+        "estimated_distinct": 1156.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "town",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Rathnew",
+          "Redgate",
+          "Ballyvourney",
+          "Walkinstown Green",
+          "Littleton"
+        ],
+        "null_fraction": 0.27603334,
+        "estimated_distinct": 1604.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "townland",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "BALLYRIHY",
+          "DONAGHMORE",
+          "MOUNTJESSOP",
+          "BALLYCULLENBEG",
+          "TINNALYRA"
+        ],
+        "null_fraction": 0.0617,
+        "estimated_distinct": -0.18027791,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "county",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Wicklow",
+          "Roscommon",
+          "Louth",
+          "Offaly",
+          "Galway"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 26.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "county_id",
+      "data_type": "varchar",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "KD",
+          "WX",
+          "KE",
+          "DG",
+          "SL"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 31.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "planauth",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "KS",
+          "EN",
+          "CB",
+          "DD",
+          "CK"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 80.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "composition",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "21st lock on the Grand Canal, built c.1795, with limestone lock walls splayed at either end.  Lock gates still in use.  Stop plank grooves to lock walls.  Derelict three-bay single-storey former lock keeper's house on north bank of canal with limestone eaves course and window surrounds and remains of cast-iron casement windows.",
+          "Abandoned section of Ulster Canal, built c.1839, consisting of approximately 360m of overgrown, stagnant channel from partially visible stone culvert under replacement bridge supporting Dawson Street at west end, to replacement timber sluice just before now filled-in tunnel beneath Old Cross Square at east end.",
+          "A collection of fourteen life-size statues depicting the Stations of the Cross, erected c.1927.  Constructed of plaster with freestanding stone structures/buildings with stylised Classical detailing forming part of the setting at a number of the Stations.  Located to the west of Multyfarnham Abbey in mature, landscaped grounds.",
+          "A five-bay single-storey thatched house, built c.1780, having a single-storey outbuilding attached to the south gable end. Lobby entry plan. Pitched thatched roof with roughcast rendered chimneystacks and having cement verges to either gable end (north and south). Wet dash rendered walls with whitewash finish.  Square-headed window openings with cut stone sills and two-over-two pane timber sash windows. Square-headed door opening with timber sheeted door and half-door. Interior intact with cast-iron range surviving. Dwelling set within farmyard with modern house to the north and outbuildings to east and west. Set well back from road, at a right angle to the road alignment, to the west of Kilbeggan.",
+          "A freestanding bi-centennial memorial of the 1798 rebellion, erected in 1998.  The monument is constructed of rock-faced coursed granite with a flower head motif.  The stone is surmounted by a ‘crown’ fashioned from bronze pikes.  It is prominently sited on the wide pavement at the Y junction in the centre of the village."
+        ],
+        "null_fraction": 0.0001,
+        "estimated_distinct": -0.98718894,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "appraisal",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          ",",
+          "17th-century churches are a rare commodity, largely intact 17th-century churches even scarcer.  Despite the small porch and lean-to additions this particular example has maintained much of its original form and as such is possibly one of the most noteworthy churches in the whole county.",
+          "19th-century school caretaker’s houses such as this are something of a rarity, and for this reason alone this building is of value.  It is, however, also generally well preserved, and mainly due to its small proportions, a valuable asset to the streetscape.",
+          "1 - Suspicion of interior",
+          "23 Seatown Place forms the central house in a terrace of identical structures.  It has retained its form and proportion, which is heightened by the retention of original features.  The decorative railings, together with the limestone detailing on the predominantly red brick façade, enliven the structure, which plays a positive role in the streetscape as well as making a positive addition to the architectural heritage of Dundalk."
+        ],
+        "null_fraction": 0.0614,
+        "estimated_distinct": -0.8824847,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "datefrom",
+      "data_type": "bigint",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 249.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "dateto",
+      "data_type": "bigint",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 242.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "rating",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Regional",
+          "International",
+          "National"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 3.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "original_type",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "foot bridge",
+          "aqueduct",
+          "pier/jetty",
+          "church/chapel",
+          "mill, unknown process"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 285.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "image_link",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "http://www.buildingsofireland.ie/niah/images/survey_specific/fullsize/22501171_1.jpg",
+          "http://www.buildingsofireland.ie/niah/images/survey_specific/fullsize/14404906_1.jpg",
+          "http://www.buildingsofireland.ie/niah/images/survey_specific/fullsize/15403006_1.jpg",
+          "http://www.buildingsofireland.ie/niah/images/survey_specific/fullsize/16321029_1.jpg",
+          "http://www.buildingsofireland.ie/niah/images/survey_specific/fullsize/14323005_1.jpg"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "website_link",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "http://www.buildingsofireland.ie/niah/search.jsp?type=record&county=WX&regno=15505003",
+          "http://www.buildingsofireland.ie/niah/search.jsp?type=record&county=LF&regno=13402723",
+          "http://www.buildingsofireland.ie/niah/search.jsp?type=record&county=CC&regno=20514640",
+          "http://www.buildingsofireland.ie/niah/search.jsp?type=record&county=FI&regno=11304001",
+          "http://www.buildingsofireland.ie/niah/search.jsp?type=record&county=LC&regno=21821004"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "survey_id",
+      "data_type": "varchar",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "SURV006",
+          "SURV024",
+          "SURV004",
+          "SURV001",
+          "SURV008"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 31.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "niah_area",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "NIAH Survey of Connacht",
+          "NIAH Survey of Munster",
+          "NIAH Survey of Ulster",
+          "NIAH Survey of Dublin",
+          "NIAH Survey of Leinster"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 5.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "niah_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "reg_no",
+      "name",
+      "number",
+      "street1",
+      "street2",
+      "town",
+      "townland",
+      "county",
+      "county_id",
+      "planauth",
+      "composition",
+      "appraisal",
+      "datefrom",
+      "dateto",
+      "rating",
+      "original_type",
+      "image_link",
+      "website_link",
+      "survey_id",
+      "niah_area",
+      "niah_pk"
+    ],
+    "searchable_columns": [
+      "name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "national",
+    "inventory",
+    "architectural",
+    "irl",
+    "built",
+    "heritage",
+    "service",
+    "buildings",
+    "name",
+    "county",
+    "id",
+    "survey",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.042785+00:00"
+  }
+}

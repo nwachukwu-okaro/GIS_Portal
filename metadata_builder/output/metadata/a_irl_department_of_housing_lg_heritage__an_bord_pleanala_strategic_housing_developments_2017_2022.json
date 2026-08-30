@@ -1,0 +1,508 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_department_of_housing_lg_heritage/an_bord_pleanala_strategic_housing_developments_2017_2022",
+  "schema": "a_irl_department_of_housing_lg_heritage",
+  "table": "an_bord_pleanala_strategic_housing_developments_2017_2022",
+  "title": "An Bord Pleanala Strategic Housing Developments 2017 2022",
+  "description": "An Bord Pleanala Strategic Housing Developments 2017 2022 is an authoritative dataset published by Department of Housing, Local Government and Heritage. It represents an bord pleanala strategic housing developments 2017 2022 features using multipolygon geometry.",
+  "feature_concept": "an_bord_pleanala_strategic_housing_developments_2017_2022",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Department of Housing, Local Government and Heritage",
+    "product": null,
+    "source_url": "https://www.gov.ie/en/organisation/department-of-housing-local-government-and-heritage/",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "housing",
+    "local government",
+    "heritage"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -9.521917371403903,
+      "ymin": 51.81153706886983,
+      "xmax": -6.05970476224173,
+      "ymax": 53.997485766565966
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 528,
+  "primary_key": [
+    "shd_pk"
+  ],
+  "indexes": [
+    {
+      "name": "an_bord_pleanala_strategic_housing_developme_geom_1764339113555",
+      "definition": "CREATE INDEX an_bord_pleanala_strategic_housing_developme_geom_1764339113555 ON a_irl_department_of_housing_lg_heritage.an_bord_pleanala_strategic_housing_developments_2017_2022 USING gist (geom)"
+    },
+    {
+      "name": "an_bord_pleanala_strategic_housing_developments_2017_2022_pkey",
+      "definition": "CREATE UNIQUE INDEX an_bord_pleanala_strategic_housing_developments_2017_2022_pkey ON a_irl_department_of_housing_lg_heritage.an_bord_pleanala_strategic_housing_developments_2017_2022 USING btree (shd_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "shd_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "abpcaseid",
+      "data_type": "varchar(6)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "304423",
+          "309999",
+          "305476",
+          "307656",
+          "305820"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9848485,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "devdesc",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "485 no. residential units (484 no. apartments and 1 no. house), creche and all associated site works.",
+          "Demolition of existing buildings, construction of 172 no. apartments, childcare facility and associated site works.",
+          "125 no. residential units (107 no. houses, 18 no. apartments), creche and associated site works.",
+          "Demolition of existing buildings and construction of 102 no. residential units, existing vehicular access to be replaced with pedestrian and cycle accessess. provision of new vehicular and pedestrian access route to serve the proposed development via Wat",
+          "1,614 no. Build to Rent apartments, and associated site works."
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9621212,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "devaddress",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Riverside, Kilcullen, Co. Kildare. (www.riversideshd.ie)",
+          "A site comprised of The Old Glass Factory and no's. 113-117 Cork Street and no's. 118-122 Cork Street, Dublin 8.\n(www.corkstreetsharedliving.com)",
+          "Cunningham House, Trinity Hall, Dartry, Dublin 6. (www.tcdplanning2.ie)",
+          "Northwood Crescent, Santry, Dublin 9. (www.northwoodshd.com)",
+          "Coolough Road, Terryland, Co. Galway.\n(www.cooloughstudentresidences.ie)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9640151,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "lodgedon",
+      "data_type": "timestamp",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.7291667,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "decision",
+      "data_type": "varchar(39)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Withdrawn",
+          "Application declared withdrawn",
+          "Grant Perm.w Conditions (Order 2)",
+          " ",
+          "Grant Perm. w   Conditions"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 15.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "decided_on",
+      "data_type": "timestamp",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.115530305,
+        "estimated_distinct": -0.6609849,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "linkabpweb",
+      "data_type": "varchar(41)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "https://www.pleanala.ie/en-ie/case/313302",
+          "https://www.pleanala.ie/en-ie/case/307230",
+          "https://www.pleanala.ie/en-ie/case/312003",
+          "https://www.pleanala.ie/en-ie/case/313442",
+          "https://www.pleanala.ie/en-ie/case/313207"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9848485,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "planingaty",
+      "data_type": "varchar(37)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Dublin City Council North",
+          "Kildare County Council",
+          "Cork City Council",
+          "Clare County Council",
+          "Wexford County Council"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 26.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "category",
+      "data_type": "varchar(21)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Housing",
+          "Strategic Housing Dev"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "updated_on",
+      "data_type": "timestamp",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "shd_pk",
+      "abpcaseid",
+      "devdesc",
+      "devaddress",
+      "lodgedon",
+      "decision",
+      "decided_on",
+      "linkabpweb",
+      "planingaty",
+      "category",
+      "updated_on"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "bord",
+    "pleanala",
+    "strategic",
+    "housing",
+    "developments",
+    "2017",
+    "2022",
+    "irl",
+    "department",
+    "lg",
+    "heritage",
+    "local",
+    "government",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.846948+00:00"
+  }
+}

@@ -22,7 +22,19 @@ media/
 staticfiles/
 
 # metadata_builder — generated output, regenerated on the production server
-metadata_builder/output/
+
+metadata_builder/output/raw_schema.json
+metadata_builder/output/run_report.txt
+metadata_builder/output/run_report.json
+metadata_builder/output/build_state.json
+metadata_builder/output/cron.log
+metadata_builder/output/logs/
+
+# These should be tracked:
+# metadata_builder/output/tables/    ← ALLOW
+# metadata_builder/output/agent_index.json  ← ALLOW
+# metadata_builder/output/metadata/  ← ALLOW
+
 
 # OS files
 .DS_Store

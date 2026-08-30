@@ -1,0 +1,392 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_ireland_cso/gaeltacht_language_planning_area_boundary",
+  "schema": "a_ireland_cso",
+  "table": "gaeltacht_language_planning_area_boundary",
+  "title": "Gaeltacht Language Planning Area Boundary",
+  "description": "Gaeltacht Language Planning Area Boundary is an authoritative dataset published by Central Statistics Office Ireland. It represents gaeltacht language planning area boundary features using geometry geometry.",
+  "feature_concept": "gaeltacht_language_planning_area_boundary",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Central Statistics Office Ireland",
+    "product": null,
+    "source_url": "https://www.cso.ie/en/databases/",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "statistics",
+    "census"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "shape",
+    "type": "GEOMETRY",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -1.726726454611386,
+      "ymin": 54.56334885267014,
+      "xmax": 2.676080404240864,
+      "ymax": 58.37783677935943
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 26,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "gaeltacht_language_planning_area_boundary_pkey",
+      "definition": "CREATE UNIQUE INDEX gaeltacht_language_planning_area_boundary_pkey ON a_ireland_cso.gaeltacht_language_planning_area_boundary USING btree (objectid)"
+    },
+    {
+      "name": "gaeltacht_language_planning_area_boundary_shape_1779366766332",
+      "definition": "CREATE INDEX gaeltacht_language_planning_area_boundary_shape_1779366766332 ON a_ireland_cso.gaeltacht_language_planning_area_boundary USING gist (shape)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "gpa_id",
+      "data_type": "text",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "69026",
+          "59027",
+          "69025",
+          "69029",
+          "59022"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "gpa_name",
+      "data_type": "text",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Toraigh",
+          "Maigh Eo Thuaidh",
+          "Conamara Láir",
+          "An tEachréidh",
+          "Tuaisceart Dhún na nGall"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "gpa_name_e",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Muskerry",
+          "Mid Region Gaeltacht",
+          "Cois Fharraige",
+          "Arranmore",
+          "North Donegal"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "contae",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Contae na Mí",
+          "Contae Mhaigh Eo",
+          "Contae Chorcaí",
+          "Contae Dhún na nGall",
+          "Contae na Gaillimhe"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "county",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Waterford",
+          "Cork",
+          "Donegal",
+          "Meath",
+          "Kerry"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "guid",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "6AE7ECAC-7E6E-4E13-B43F-D379C2464701",
+          "8C7577BA-D09E-4704-A9BD-E57A0629892F",
+          "3751E648-A867-496A-B7FB-BCA4A067FA78",
+          "24D3D467-7219-431F-B2E0-4A240AB499B1",
+          "0843489B-31A4-4F8A-A3D8-DC5C3B0D7D95"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "objectid",
+      "data_type": "bigint",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "shape",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "geometry_rule",
+      "confidence": "generated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "gpa_id",
+      "gpa_name",
+      "gpa_name_e",
+      "contae",
+      "county",
+      "guid",
+      "objectid"
+    ],
+    "searchable_columns": [
+      "gpa_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "gaeltacht",
+    "language",
+    "planning",
+    "area",
+    "boundary",
+    "ireland",
+    "cso",
+    "central",
+    "statistics",
+    "office",
+    "census",
+    "gpa",
+    "id",
+    "name",
+    "objectid",
+    "shape"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.115398+00:00"
+  }
+}

@@ -1,0 +1,41 @@
+# Census2021 Ts074 Rgn
+
+## Overview
+
+- **Identifier:** `a_ons_england_wales/census2021_ts074_rgn`
+- **Source organisation:** Office for National Statistics
+- **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Schema:** `a_ons_england_wales`
+- **Table:** `census2021_ts074_rgn`
+- **Geometry:** Non-spatial
+- **CRS:** Not applicable or unknown
+- **Rows:** 10
+- **Metadata status:** source_mapped
+
+## Description
+
+Census2021 Ts074 Rgn is an authoritative dataset published by Office for National Statistics. It contains records relating to census2021 ts074 rgn.
+
+## Columns
+
+| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
+|---|---|---|---|---|---|---|
+| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
+| `total_all_households` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `household_reference_person_previously_served_in_regular_uk_arme` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `household_reference_person_previously_served_in_reserve_uk_arme` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `household_reference_person_previously_served_in_both_regular_an` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `household_reference_person_has_not_previously_served_in_regular` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+
+## Supported operations
+
+- filter
+- select
+- attribute_join
+- export
+
+## Provenance
+
+Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.

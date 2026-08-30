@@ -1,0 +1,387 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_meath_cc/recorded_registered_and_national_monuments",
+  "schema": "a_irl_meath_cc",
+  "table": "recorded_registered_and_national_monuments",
+  "title": "Recorded Registered And National Monuments",
+  "description": "Recorded Registered And National Monuments is an authoritative dataset published by Meath County Council. It represents recorded registered and national monuments features using point geometry.",
+  "feature_concept": "recorded_registered_and_national_monuments",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Meath County Council",
+    "product": null,
+    "source_url": "https://data.gov.ie/organization/meath-county-council",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "local government",
+    "open data"
+  ],
+  "geographic_coverage": "County Meath",
+  "geometry": {
+    "column": "geom",
+    "type": "POINT",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -7.327601570449201,
+      "ymin": 53.346681079230784,
+      "xmax": -6.213423305506884,
+      "ymax": 53.91513716668335
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 4284,
+  "primary_key": [
+    "rrnm_pk"
+  ],
+  "indexes": [
+    {
+      "name": "recorded_registered_and_national_monuments_geom_1763581441131",
+      "definition": "CREATE INDEX recorded_registered_and_national_monuments_geom_1763581441131 ON a_irl_meath_cc.recorded_registered_and_national_monuments USING gist (geom)"
+    },
+    {
+      "name": "recorded_registered_and_national_monuments_pkey",
+      "definition": "CREATE UNIQUE INDEX recorded_registered_and_national_monuments_pkey ON a_irl_meath_cc.recorded_registered_and_national_monuments USING btree (rrnm_pk)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "rrnm_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "entity_id",
+      "data_type": "varchar(7)",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "ME03035",
+          "ME01678",
+          "ME04536",
+          "ME02371",
+          "ME04411"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "class_code",
+      "data_type": "varchar(4)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "PLCC",
+          "THRA",
+          "ARMO",
+          "FIWE",
+          "HOUS"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 209.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "class_description",
+      "data_type": "varchar(60)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Cross - Wayside cross (present location)",
+          "Holed stone",
+          "Timber circle",
+          "Cremation pit",
+          "Promontory fort - inland"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 209.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "smrs",
+      "data_type": "varchar(100)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "ME031-033055-",
+          "ME003-016----",
+          "ME031-033001-",
+          "ME015-127----",
+          "ME036-048025-"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "townland",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "GRENNANSTOWN",
+          "STIRRUPSTOWN",
+          "CURRAGHTOWN (Deece Lower By.)",
+          "NEWTOWN (Navan Upper By.)",
+          "GAULSTOWN (Duleek Lower By.)"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.22782446,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "map_label",
+      "data_type": "varchar(100)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "National Monument Service - Recorded, Registered & National Monument"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "rrnm_pk",
+      "entity_id",
+      "class_code",
+      "class_description",
+      "smrs",
+      "townland",
+      "map_label"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "recorded",
+    "registered",
+    "national",
+    "monuments",
+    "irl",
+    "meath",
+    "cc",
+    "county",
+    "council",
+    "local",
+    "government",
+    "open",
+    "entity",
+    "id",
+    "class",
+    "code",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.027163+00:00"
+  }
+}

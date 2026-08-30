@@ -1,0 +1,652 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_irl_geological_survey/public_water_supply_source_protection_areas_20k",
+  "schema": "a_irl_geological_survey",
+  "table": "public_water_supply_source_protection_areas_20k",
+  "title": "Public Water Supply Source Protection Areas 20k",
+  "description": "Public Water Supply Source Protection Areas 20k is an authoritative dataset published by Geological Survey Ireland. It represents public water supply source protection areas 20k features using multipolygon geometry.",
+  "feature_concept": "public_water_supply_source_protection_areas_20k",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Geological Survey Ireland",
+    "product": null,
+    "source_url": "https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "geology",
+    "earth science"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 2157,
+    "crs": "EPSG:2157",
+    "bbox_wgs84": {
+      "xmin": -9.81254244459986,
+      "ymin": 51.65871468460343,
+      "xmax": -6.146650783233876,
+      "ymax": 55.287975170329915
+    },
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 357,
+  "primary_key": [
+    "pwsspa_pk"
+  ],
+  "indexes": [
+    {
+      "name": "public_water_supply_source_protection_areas_20k_pkey",
+      "definition": "CREATE UNIQUE INDEX public_water_supply_source_protection_areas_20k_pkey ON a_irl_geological_survey.public_water_supply_source_protection_areas_20k USING btree (pwsspa_pk)"
+    },
+    {
+      "name": "public_water_supply_source_protection_areas__geom_176423941324",
+      "definition": "CREATE INDEX public_water_supply_source_protection_areas__geom_176423941324 ON a_irl_geological_survey.public_water_supply_source_protection_areas_20k USING gist (geom)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "pwsspa_pk",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "spa_id",
+      "data_type": "varchar(25)",
+      "description": "Identifier assigned by the source dataset.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "IE_GSI_SPA_106",
+          "IE_GSI_SPA_337",
+          "IE_GSI_SPA_148",
+          "IE_GSI_SPA_153",
+          "IE_GSI_SPA_32"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "spa_code",
+      "data_type": "varchar(10)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "SO",
+          "SI"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "spa_name",
+      "data_type": "varchar(150)",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "LONGWOOD PWS",
+          "KILMAINE PWS",
+          "TOBERGAL (SW REGION) PWS",
+          "WATERGRASSHILL PWS",
+          "CARRAIGNADOURA GWS"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.54901963,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "datasource",
+      "data_type": "varchar(10)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "IW SCC",
+          "EPA",
+          "IW",
+          "SCC",
+          "GSI"
+        ],
+        "null_fraction": 0.008403362,
+        "estimated_distinct": 5.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "dw_code",
+      "data_type": "varchar(15)",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "0200PUB0107",
+          "0500PUB1206",
+          "0500PUB1216",
+          "0500PUB1222",
+          "0500PUB1503"
+        ],
+        "null_fraction": 0.9019608,
+        "estimated_distinct": 20.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "eu_report",
+      "data_type": "varchar(20)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "0200PUB0114",
+          "0500PUB2208",
+          "IEGBNI_NW_G_031",
+          "IE_SE_G_001_26_002",
+          "IE_SH_G_008_08_001"
+        ],
+        "null_fraction": 0.9719888,
+        "estimated_distinct": 7.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "county",
+      "data_type": "varchar(20)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Wicklow",
+          "Roscommon",
+          "Offaly",
+          "Louth",
+          "Limerick"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 23.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "report_url",
+      "data_type": "varchar(254)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "https://gsi.geodata.gov.ie/downloads/Groundwater/Reports/SPZ/WW_PWSS_SPZ_Redcross_March_2003_GSI.pdf",
+          "https://gsi.geodata.gov.ie/downloads/Groundwater/Reports/SPZ/OY_PWSS_SPZ_Dunkerrin_Village_Well_March_2005_GSI.pdf",
+          "https://gsi.geodata.gov.ie/downloads/Groundwater/Reports/SPZ/RN_PWSS_SPZ_Mount_Talbot_Cloonlaughnan_Springs_April_2003_GSI.pdf",
+          "https://gsi.geodata.gov.ie/downloads/Groundwater/Reports/SPZ/KK_PWSS_SPZ_Piltown_Fiddown_May_2002_GSI.pdf",
+          "https://gsi.geodata.gov.ie/downloads/Groundwater/Reports/SPZ/CK_RWSS_SPZ_Whitegate_Dower_Spring_May_2002_GSI.pdf"
+        ],
+        "null_fraction": 0.011204482,
+        "estimated_distinct": -0.5406163,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "rep_creator",
+      "data_type": "varchar(50)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "EPA/CDM",
+          "PCONROY/RMEEHAN",
+          "EPA/TOBIN",
+          "IW/Robbie Meehan",
+          "GSI/PatAGroves"
+        ],
+        "null_fraction": 0.008403362,
+        "estimated_distinct": 18.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "active",
+      "data_type": "varchar(20)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "No",
+          "Yes"
+        ],
+        "null_fraction": 0.30812326,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "gsi_review",
+      "data_type": "varchar(10)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "No",
+          "Yes"
+        ],
+        "null_fraction": 0.025210084,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "publish",
+      "data_type": "varchar(10)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "No",
+          "Yes"
+        ],
+        "null_fraction": 0.039215688,
+        "estimated_distinct": 2.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "reportdate",
+      "data_type": "date",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.030812325,
+        "estimated_distinct": -0.20728292,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "updatedate",
+      "data_type": "date",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.9831933,
+        "estimated_distinct": 3.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "pwsspa_pk",
+      "spa_id",
+      "spa_code",
+      "spa_name",
+      "datasource",
+      "dw_code",
+      "eu_report",
+      "county",
+      "report_url",
+      "rep_creator",
+      "active",
+      "gsi_review",
+      "publish",
+      "reportdate",
+      "updatedate"
+    ],
+    "searchable_columns": [
+      "spa_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "public",
+    "water",
+    "supply",
+    "source",
+    "protection",
+    "areas",
+    "20k",
+    "irl",
+    "geological",
+    "survey",
+    "ireland",
+    "geology",
+    "earth",
+    "science",
+    "spa",
+    "id",
+    "code",
+    "name",
+    "dw",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:55.962130+00:00"
+  }
+}

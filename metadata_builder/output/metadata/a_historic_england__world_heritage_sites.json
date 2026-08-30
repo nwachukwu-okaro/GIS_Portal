@@ -1,0 +1,532 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_historic_england/world_heritage_sites",
+  "schema": "a_historic_england",
+  "table": "world_heritage_sites",
+  "title": "World Heritage Sites",
+  "description": "Version: 20251124\nSource: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=10\n\nAttribution: © Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year].",
+  "feature_concept": "world_heritage_sites",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Historic England",
+    "product": "National Heritage List for England spatial data",
+    "source_url": "https://historicengland.org.uk/listing/the-list/map-data/",
+    "documentation_url": null,
+    "licence_name": "Open Government Licence",
+    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "attribution": "Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year]",
+    "verification_status": "needs_review",
+    "licence_scope": "Verify against the individual Historic England download metadata."
+  },
+  "themes": [
+    "heritage",
+    "planning"
+  ],
+  "geographic_coverage": "England",
+  "geometry": {
+    "column": "geom",
+    "type": "MULTIPOLYGON",
+    "srid": 27700,
+    "crs": "EPSG:27700",
+    "bbox_wgs84": {
+      "xmin": -5.710650051386434,
+      "ymin": 50.0886546976461,
+      "xmax": 1.096214425031085,
+      "ymax": 55.07424544022319
+    },
+    "units": "metres",
+    "is_geographic": false
+  },
+  "row_count": 28,
+  "primary_key": [
+    "objectid"
+  ],
+  "indexes": [
+    {
+      "name": "world_heritage_sites_geom_1764019622761",
+      "definition": "CREATE INDEX world_heritage_sites_geom_1764019622761 ON a_historic_england.world_heritage_sites USING gist (geom)"
+    },
+    {
+      "name": "world_heritage_sites_pkey",
+      "definition": "CREATE UNIQUE INDEX world_heritage_sites_pkey ON a_historic_england.world_heritage_sites USING btree (objectid)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "listentry",
+      "data_type": "integer",
+      "description": "Historic England List Entry number — unique identifier for a designated heritage asset.",
+      "semantic_role": "heritage_asset_identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": true,
+      "identifier_system": "NHLE",
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "name",
+      "data_type": "varchar(1000)",
+      "description": "Name of the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Jodrell Bank Observatory",
+          "Durham Castle and Cathedral",
+          "Saltaire",
+          "Frontiers of the Roman Empire (Hadrian's Wall)",
+          "Blenheim Palace"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "inscrdate",
+      "data_type": "timestamp",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "amenddate",
+      "data_type": "timestamp",
+      "description": "Date the designation was last amended or updated.",
+      "semantic_role": "amendment_date",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "notes",
+      "data_type": "varchar(240)",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Buffer Zone",
+          "Core Area"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "capturescale",
+      "data_type": "varchar(15)",
+      "description": "Map scale at which the boundary was originally captured.",
+      "semantic_role": "capture_scale",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "1:100000",
+          "1:10000",
+          "1:2,500",
+          "1:5000",
+          "1:500000"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "hyperlink",
+      "data_type": "varchar(255)",
+      "description": "URL linking to the official Historic England record for this asset.",
+      "semantic_role": "source_record_url",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "https://historicengland.org.uk/listing/the-list/list-entry/1000096",
+          "https://historicengland.org.uk/listing/the-list/list-entry/1000089",
+          "https://historicengland.org.uk/listing/the-list/list-entry/1000100",
+          "https://historicengland.org.uk/listing/the-list/list-entry/1000105",
+          "https://historicengland.org.uk/listing/the-list/list-entry/1466112"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "area_ha",
+      "data_type": "double precision",
+      "description": "Area of the feature in hectares.",
+      "semantic_role": "area",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": "hectares",
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "ngr",
+      "data_type": "varchar(1000000)",
+      "description": "National Grid Reference — alphanumeric grid coordinate in British National Grid.",
+      "semantic_role": "geographic_reference",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": "OS_NGR",
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "NZ 27280 42027",
+          "SJ2464540248",
+          "TR 15865 57777, TR 15538 57840, TR 15124 57977",
+          "SJ6834303444",
+          "TQ 18266 76695"
+        ],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "easting",
+      "data_type": "real",
+      "description": "Easting coordinate in British National Grid (EPSG:27700).",
+      "semantic_role": "x_coordinate",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": "metres",
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "northing",
+      "data_type": "real",
+      "description": "Northing coordinate in British National Grid (EPSG:27700).",
+      "semantic_role": "y_coordinate",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": "metres",
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "objectid",
+      "data_type": "bigint",
+      "description": "Source-system object identifier.",
+      "semantic_role": "identifier",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    },
+    {
+      "name": "geom",
+      "data_type": "geometry",
+      "description": "Spatial geometry of the represented feature.",
+      "semantic_role": "geometry",
+      "filterable": false,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": null,
+        "estimated_distinct": null,
+        "statistics_source": null
+      },
+      "provenance": "column_dictionary",
+      "confidence": "curated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "reproject": true,
+    "validate_geometry": true,
+    "buffer": true,
+    "clip": true,
+    "intersect": true,
+    "spatial_join": true,
+    "export": true
+  },
+  "operation_requirements": {
+    "buffer": {
+      "requires_projected_crs": true,
+      "current_crs_suitable": true
+    },
+    "intersect": {
+      "requires_matching_crs": true
+    },
+    "clip": {
+      "requires_matching_crs": true
+    },
+    "spatial_join": {
+      "requires_matching_crs": true
+    }
+  },
+  "discovery_hints": {
+    "filterable_columns": [
+      "listentry",
+      "name",
+      "inscrdate",
+      "amenddate",
+      "notes",
+      "capturescale",
+      "hyperlink",
+      "area_ha",
+      "ngr",
+      "easting",
+      "northing",
+      "objectid"
+    ],
+    "searchable_columns": [
+      "name"
+    ],
+    "joinable_columns": [
+      "listentry"
+    ],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "world",
+    "heritage",
+    "sites",
+    "historic",
+    "england",
+    "planning",
+    "listentry",
+    "name",
+    "amenddate",
+    "capturescale",
+    "hyperlink",
+    "area",
+    "ha",
+    "ngr",
+    "easting",
+    "northing",
+    "objectid",
+    "geom"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "database_comment",
+    "description_confidence": "verified"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Verify against the individual Historic England download metadata."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:54.709468+00:00"
+  }
+}

@@ -1,0 +1,227 @@
+# Uv202b National Identity By Sex By Age Oa
+
+## Overview
+
+- **Identifier:** `a_nrs_scotland/uv202b_national_identity_by_sex_by_age_oa`
+- **Source organisation:** National Records of Scotland
+- **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Schema:** `a_nrs_scotland`
+- **Table:** `uv202b_national_identity_by_sex_by_age_oa`
+- **Geometry:** Non-spatial
+- **CRS:** Not applicable or unknown
+- **Rows:** 46369
+- **Metadata status:** source_mapped
+
+## Description
+
+Uv202b National Identity By Sex By Age Oa is an authoritative dataset published by National Records of Scotland. It contains records relating to uv202b national identity by sex by age oa.
+
+## Columns
+
+| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
+|---|---|---|---|---|---|---|
+| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
+| `all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_identity_only_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `british_identity_only_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_british_identities_only_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scottish_and_any_other_identities_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `english_identity_only_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_all_people_65_an` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_female_65_and_ov` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `any_other_combination_of_uk_identities_uk_only_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_all_people_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_only_1_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_all_people_65_and_o` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_female_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_total` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `other_identity_and_at_least_one_uk_identity_male_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+
+## Supported operations
+
+- filter
+- select
+- attribute_join
+- export
+
+## Metadata warnings
+
+- Licence has not yet been verified.
+
+## Provenance
+
+Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.

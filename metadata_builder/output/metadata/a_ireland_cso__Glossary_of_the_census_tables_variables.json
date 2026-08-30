@@ -1,0 +1,257 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_ireland_cso/Glossary_of_the_census_tables_variables",
+  "schema": "a_ireland_cso",
+  "table": "Glossary_of_the_census_tables_variables",
+  "title": "Glossary Of The Census Tables Variables",
+  "description": "Glossary Of The Census Tables Variables is an authoritative dataset published by Central Statistics Office Ireland. It contains records relating to glossary of the census tables variables.",
+  "feature_concept": "glossary_of_the_census_tables_variables",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "Central Statistics Office Ireland",
+    "product": null,
+    "source_url": "https://www.cso.ie/en/databases/",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "statistics",
+    "census"
+  ],
+  "geographic_coverage": "Ireland",
+  "geometry": {
+    "column": null,
+    "type": null,
+    "srid": null,
+    "crs": null,
+    "bbox_wgs84": null,
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 790,
+  "primary_key": [
+    "id"
+  ],
+  "indexes": [
+    {
+      "name": "Glossary_of the census_tables_variables_pkey",
+      "definition": "CREATE UNIQUE INDEX \"Glossary_of the census_tables_variables_pkey\" ON a_ireland_cso.\"Glossary_of_the_census_tables_variables\" USING btree (id)"
+    }
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "integer",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "themes",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Theme 8: Principal Status ",
+          "Theme 4: Families ",
+          "Theme 12: Disability, Carers, General Health and Smoking",
+          "Theme 7: Volunteers",
+          "Theme 1: Sex, Age and Marital Status "
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 15.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "tables within themes",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Table 4: Population aged 15 years and over by working from home",
+          "Table 1: Persons at work by industry and sex",
+          "Table 1: Overall prevalence of persons with disability (to some and/or to a great extent) by sex",
+          "Table 2: Persons in private households by socio-economic group of reference person",
+          "Table 3: Population aged 5 years and over by journey time to work, school or college "
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 48.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "column names",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "T4_1_4PP",
+          "T1_1AGE12M",
+          "T10_4_NSM",
+          "T8_1_LFFJT",
+          "T1_1AGE80_84M"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -1.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "description of field",
+      "data_type": "varchar",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "3 bedrooms (No. of households)",
+          "Building and construction - Total",
+          "Total Perons",
+          "Daily within and less often outside the education system - Females",
+          "Persons who never work from home"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.86329114,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "attribute_join": true,
+    "export": true
+  },
+  "operation_requirements": {},
+  "discovery_hints": {
+    "filterable_columns": [
+      "id",
+      "themes",
+      "tables within themes",
+      "column names",
+      "description of field"
+    ],
+    "searchable_columns": [],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "glossary",
+    "census",
+    "tables",
+    "variables",
+    "ireland",
+    "cso",
+    "central",
+    "statistics",
+    "office"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:54.713013+00:00"
+  }
+}

@@ -1,0 +1,60 @@
+# Country Of Birth And Nationality Data 2021 Dz
+
+## Overview
+
+- **Identifier:** `a_nisra_nireland/country_of_birth_and_nationality_data_2021_dz`
+- **Source organisation:** Northern Ireland Statistics and Research Agency
+- **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Schema:** `a_nisra_nireland`
+- **Table:** `country_of_birth_and_nationality_data_2021_dz`
+- **Geometry:** Non-spatial
+- **CRS:** Not applicable or unknown
+- **Rows:** 3780
+- **Metadata status:** source_mapped
+
+## Description
+
+Country Of Birth And Nationality Data 2021 Dz is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to country of birth and nationality data 2021 dz.
+
+## Columns
+
+| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
+|---|---|---|---|---|---|---|
+| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `population` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `country_of_birth_england` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `country_of_birth_northern_ireland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `country_of_birth_other_countries` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `country_of_birth_republic_of_ireland` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `country_of_birth_scotland` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `country_of_birth_wales` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_british_irish_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_british_northern_irish_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_british_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_british_irish_northern_irish_onl` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_irish_northern_irish_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_irish_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_northern_irish_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `national_identity_person_based_other_national_identities` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `passport_s_held_ireland_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `passport_s_held_no_passport` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `passport_s_held_other_passport_s` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `passport_s_held_uk_ireland` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `passport_s_held_uk_only` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+
+## Supported operations
+
+- filter
+- select
+- attribute_join
+- export
+
+## Metadata warnings
+
+- Licence has not yet been verified.
+
+## Provenance
+
+Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.

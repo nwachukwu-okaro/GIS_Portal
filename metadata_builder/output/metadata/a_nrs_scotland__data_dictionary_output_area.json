@@ -1,0 +1,299 @@
+{
+  "metadata_version": 1,
+  "identifier": "a_nrs_scotland/data_dictionary_output_area",
+  "schema": "a_nrs_scotland",
+  "table": "data_dictionary_output_area",
+  "title": "Data Dictionary Output Area",
+  "description": "Data Dictionary Output Area is an authoritative dataset published by National Records of Scotland. It contains records relating to data dictionary output area.",
+  "feature_concept": "data_dictionary_output_area",
+  "synonyms": [],
+  "publisher": {
+    "organisation": "National Records of Scotland",
+    "product": null,
+    "source_url": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
+    "documentation_url": null,
+    "licence_name": null,
+    "licence_url": null,
+    "attribution": null,
+    "verification_status": "needs_review",
+    "licence_scope": null
+  },
+  "themes": [
+    "statistics",
+    "census",
+    "boundaries"
+  ],
+  "geographic_coverage": "Scotland",
+  "geometry": {
+    "column": null,
+    "type": null,
+    "srid": null,
+    "crs": null,
+    "bbox_wgs84": null,
+    "units": null,
+    "is_geographic": false
+  },
+  "row_count": 2162,
+  "primary_key": [],
+  "indexes": [],
+  "columns": [
+    {
+      "name": "theme",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Ethnicity, Identity, Language & Religion",
+          "Armed Forces",
+          "Health, Disability & Unpaid Care",
+          "Migration",
+          "Housing"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 7.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "table_code",
+      "data_type": "text",
+      "description": "Code assigned by the source dataset.",
+      "semantic_role": "code",
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "UV602",
+          "UV205B",
+          "UV415",
+          "UV704",
+          "UV211B"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 56.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "source_file",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "UV210_-_English_language_skills.csv",
+          "UV801_-_Year_of_arrival_in_UK.csv",
+          "UV201_-_Ethnic_group.csv",
+          "UV302b_-_General_health_by_age__6_.csv",
+          "UV802_-_Age_of_arrival_in_UK.csv"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 56.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "original_label",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "Europe: Ireland | Male | 35 - 49",
+          "Other Christian | Male | 25 - 34",
+          "Europe: United Kingdom: Total | Male | 50 - 64",
+          "Other religion | Female | 35 - 49",
+          "Activities of Household as Employers; Undifferentiated Goods - and Services - Producing Activities of Households for Own Use"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.8302498,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    },
+    {
+      "name": "processed_column_name",
+      "data_type": "text",
+      "description": "Name associated with the represented feature.",
+      "semantic_role": "feature_name",
+      "filterable": true,
+      "searchable": true,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "europe_united_kingdom_male_65_plus",
+          "african_other_african_ethnic_grp",
+          "europe_united_kingdom_50_64",
+          "roman_catholic_50_64",
+          "all_employed_incl_students_65_plus_travel_work_age"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": -0.9907493,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "column_dictionary_pattern",
+      "confidence": "curated"
+    },
+    {
+      "name": "output_file",
+      "data_type": "text",
+      "description": "Source attribute; its precise meaning has not yet been documented.",
+      "semantic_role": null,
+      "filterable": true,
+      "searchable": false,
+      "joinable": false,
+      "identifier_system": null,
+      "entity_type": null,
+      "geography_type": null,
+      "geography_version": null,
+      "unit": null,
+      "related_column": null,
+      "measure_concept": null,
+      "population": null,
+      "statistic_type": null,
+      "reference_period": null,
+      "aggregation_method": null,
+      "value_profile": {
+        "examples": [
+          "scotland_education_oa.csv",
+          "scotland_housing_oa.csv",
+          "scotland_ethnicity_identity_language_religion_oa.csv",
+          "scotland_labour_market_oa.csv",
+          "scotland_health_disability_unpaid_care_oa.csv"
+        ],
+        "null_fraction": 0.0,
+        "estimated_distinct": 7.0,
+        "statistics_source": "pg_stats"
+      },
+      "provenance": "safe_fallback",
+      "confidence": "generated"
+    }
+  ],
+  "capabilities": {
+    "filter": true,
+    "select": true,
+    "attribute_join": true,
+    "export": true
+  },
+  "operation_requirements": {},
+  "discovery_hints": {
+    "filterable_columns": [
+      "theme",
+      "table_code",
+      "source_file",
+      "original_label",
+      "processed_column_name",
+      "output_file"
+    ],
+    "searchable_columns": [
+      "processed_column_name"
+    ],
+    "joinable_columns": [],
+    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+  },
+  "keywords": [
+    "dictionary",
+    "output",
+    "area",
+    "nrs",
+    "scotland",
+    "national",
+    "records",
+    "statistics",
+    "census",
+    "boundaries",
+    "code",
+    "processed",
+    "column",
+    "name"
+  ],
+  "provenance": {
+    "technical_metadata": "PostGIS",
+    "publisher_metadata": "metadata_builder/config/sources.yml",
+    "description": "deterministic_template",
+    "description_confidence": "generated"
+  },
+  "quality": {
+    "metadata_status": "source_mapped",
+    "warnings": [
+      "Licence has not yet been verified."
+    ]
+  },
+  "build": {
+    "builder_version": 1,
+    "generated_at": "2026-08-12T13:29:56.697787+00:00"
+  }
+}
