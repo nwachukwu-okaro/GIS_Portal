@@ -465,6 +465,17 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   border-bottom: 2px solid var(--systra-red);
 }
 
+.systra-sidebar-section + .systra-sidebar-section {
+  margin-top: 18px;
+}
+
+.systra-sidebar-about p {
+  margin: 0;
+  color: var(--systra-text);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
 .systra-meta-row {
   display: flex;
   justify-content: space-between;
@@ -483,9 +494,8 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #f5f5f5;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .systra-keyword-tag {
@@ -505,6 +515,78 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   font-size: 12px;
   color: var(--systra-muted);
   line-height: 1.6;
+}
+
+.systra-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.systra-metadata-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--systra-red);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.systra-metadata-link:hover {
+  color: #8b0000;
+  text-decoration: underline;
+}
+
+.systra-attribution {
+  margin: 10px 0 0;
+  color: var(--systra-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.systra-technical-details {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--systra-border);
+}
+
+.systra-technical-details summary {
+  color: var(--systra-red);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.systra-technical-details summary:hover {
+  color: #8b0000;
+}
+
+.systra-technical-field {
+  margin-top: 10px;
+}
+
+.systra-technical-field > span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--systra-muted);
+  font-size: 11px;
+}
+
+.systra-technical-field code {
+  display: block;
+  max-width: 100%;
+  padding: 5px 6px;
+  border-radius: 3px;
+  background: #f7f7f7;
+  color: var(--systra-text);
+  font-size: 10px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 /* ── MinIO preview ─────────────────────────────────────────────── */

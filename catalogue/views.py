@@ -219,7 +219,8 @@ def _fetch_record_from_db(identifier):
                         type,               -- Map / dataset / Report / service
                         format,             -- MIME type or PostGIS/POINT etc.
                         date_modified,      -- last modified timestamp
-                        source              -- project name
+                        source,             -- project name
+                        xml                 -- canonical metadata_builder JSON
                     FROM p_pycsw.records
                     WHERE identifier = %s
                     LIMIT 1
@@ -227,6 +228,16 @@ def _fetch_record_from_db(identifier):
                 row = cur.fetchone()
                 if not row:
                     return {}
+                rich_metadata = {}
+                if row[15]:
+                    try:
+                        parsed_xml = json.loads(row[15]) if isinstance(row[15], str) else row[15]
+                        if isinstance(parsed_xml, dict) and parsed_xml.get('identifier') == identifier:
+                            rich_metadata = parsed_xml
+                    except (TypeError, ValueError, json.JSONDecodeError):
+                        # Other pycsw records may contain XML rather than JSON.
+                        pass
+
                 return {
                     'size':          row[0] or '',
                     'geom_type':     row[1] or '',
@@ -243,6 +254,7 @@ def _fetch_record_from_db(identifier):
                     'format':        row[12] or '',
                     'date_modified': str(row[13]) if row[13] else '',
                     'project':       row[14] or '',
+                    'rich_metadata': rich_metadata,
                 }
         finally:
             conn.close()
@@ -608,6 +620,7 @@ def _fetch_feature_by_id(identifier):
                 'crs':           db.get('crs', ''),
                 'geometry_type': db.get('geom_type', ''),
                 'row_count':     None,
+                'rich_metadata': db.get('rich_metadata', {}),
             },
             'assets': {'data': {'href': href}},
             'bbox':    [-180, -90, 180, 90],
@@ -696,6 +709,7 @@ def _feature_to_detail(feature):
         'size':          props.get('file_size') or props.get('table_size', ''),
         'date_modified': props.get('date_modified', ''),
         'source':        source,
+        'rich_metadata': props.get('rich_metadata') or {},
     }
 
     if source == 'minio':
@@ -721,6 +735,31 @@ def _feature_to_detail(feature):
             'row_count':     props.get('row_count'),
             'column_count':  None,
         })
+
+        metadata = detail['rich_metadata']
+        if metadata:
+            publisher = metadata.get('publisher') or {}
+            geometry = metadata.get('geometry') or {}
+            bbox = geometry.get('bbox_wgs84') or {}
+            columns = metadata.get('columns') or []
+
+            detail.update({
+                'abstract': metadata.get('description') or detail['abstract'],
+                'organisation': publisher.get('organisation') or detail['organisation'],
+                'source_url': publisher.get('source_url') or metadata.get('official_dataset_url'),
+                'documentation_url': publisher.get('documentation_url'),
+                'documentation_sources': metadata.get('documentation_sources') or [],
+                'licence_name': publisher.get('licence_name'),
+                'licence_url': publisher.get('licence_url'),
+                'attribution': publisher.get('attribution'),
+                'geographic_coverage': metadata.get('geographic_coverage'),
+                'bbox_wgs84': bbox,
+                'metadata_status': (metadata.get('quality') or {}).get('metadata_status'),
+                'row_count': metadata.get('row_count', detail['row_count']),
+                'column_count': len(columns) if columns else detail['column_count'],
+                'crs': geometry.get('crs') or detail['crs'],
+                'geometry_type': geometry.get('type') or detail['geometry_type'],
+            })
 
     return detail
 
@@ -1213,6 +1252,21 @@ def detail(request, identifier):
             if stats:
                 item['row_count'] = stats['row_count']
                 item['size']      = stats['size']
+
+        if isinstance(item.get('row_count'), int):
+            item['row_count_display'] = f"{item['row_count']:,}"
+        elif item.get('row_count') is not None:
+            try:
+                item['row_count_display'] = f"{int(item['row_count']):,}"
+            except (TypeError, ValueError):
+                item['row_count_display'] = str(item['row_count'])
+
+        bbox = item.get('bbox_wgs84') or {}
+        if all(key in bbox for key in ('xmin', 'ymin', 'xmax', 'ymax')):
+            item['extent_display'] = (
+                f"{bbox['xmin']:.6f}, {bbox['ymin']:.6f} — "
+                f"{bbox['xmax']:.6f}, {bbox['ymax']:.6f}"
+            )
 
     return render(request, 'catalogue/detail.html', context)
 

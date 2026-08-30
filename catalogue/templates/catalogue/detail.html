@@ -138,79 +138,128 @@
   </div>
 
   <aside class="systra-detail-sidebar">
-    <h6>Details</h6>
-
-    {% if item.organisation %}
-    <div class="systra-meta-row">
-      <span class="systra-meta-label">Organisation</span>
-      <span class="systra-meta-value">{{ item.organisation }}</span>
-    </div>
+    {% if item.abstract %}
+    <section class="systra-sidebar-section systra-sidebar-about">
+      <h6>About this dataset</h6>
+      <p>{{ item.abstract }}</p>
+    </section>
     {% endif %}
 
-    {% if item.project %}
-    <div class="systra-meta-row">
-      <span class="systra-meta-label">Source</span>
-      <span class="systra-meta-value">{{ item.project }}</span>
-    </div>
-    {% endif %}
+    <section class="systra-sidebar-section">
+      <h6>Dataset details</h6>
 
-    {% if item.source == 'postgis' %}
-      {% if item.row_count != None %}
+      {% if item.organisation %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">Row count</span>
-        <span class="systra-meta-value">{{ item.row_count }}</span>
+        <span class="systra-meta-label">Organisation</span>
+        <span class="systra-meta-value">{{ item.organisation }}</span>
       </div>
       {% endif %}
-      {% if item.column_count %}
+
+      {% if item.geographic_coverage %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">Column count</span>
-        <span class="systra-meta-value">{{ item.column_count }}</span>
+        <span class="systra-meta-label">Coverage</span>
+        <span class="systra-meta-value">{{ item.geographic_coverage }}</span>
       </div>
       {% endif %}
-      {% if item.size %}
-      <div class="systra-meta-row">
-        <span class="systra-meta-label">Size</span>
-        <span class="systra-meta-value">{{ item.size }}</span>
-      </div>
-      {% endif %}
-      {% if item.crs %}
-      <div class="systra-meta-row">
-        <span class="systra-meta-label">CRS</span>
-        <span class="systra-meta-value">{{ item.crs }}</span>
-      </div>
-      {% endif %}
-      {% if item.geometry_type %}
-      <div class="systra-meta-row">
-        <span class="systra-meta-label">Geometry type</span>
-        <span class="systra-meta-value">{{ item.geometry_type }}</span>
-      </div>
-      {% endif %}
-    {% elif item.source == 'minio' %}
-      {% if item.size %}
+
+      {% if item.source == 'postgis' %}
+        {% if item.row_count != None %}
+        <div class="systra-meta-row">
+          <span class="systra-meta-label">Features</span>
+          <span class="systra-meta-value">{{ item.row_count_display|default:item.row_count }}</span>
+        </div>
+        {% endif %}
+        {% if item.column_count %}
+        <div class="systra-meta-row">
+          <span class="systra-meta-label">Columns</span>
+          <span class="systra-meta-value">{{ item.column_count }}</span>
+        </div>
+        {% endif %}
+        {% if item.size %}
+        <div class="systra-meta-row">
+          <span class="systra-meta-label">Database size</span>
+          <span class="systra-meta-value">{{ item.size }}</span>
+        </div>
+        {% endif %}
+        {% if item.geometry_type %}
+        <div class="systra-meta-row">
+          <span class="systra-meta-label">Geometry</span>
+          <span class="systra-meta-value">{{ item.geometry_type|title }}</span>
+        </div>
+        {% endif %}
+        {% if item.crs %}
+        <div class="systra-meta-row">
+          <span class="systra-meta-label">CRS</span>
+          <span class="systra-meta-value">{{ item.crs }}</span>
+        </div>
+        {% endif %}
+      {% elif item.source == 'minio' and item.size %}
       <div class="systra-meta-row">
         <span class="systra-meta-label">File size</span>
         <span class="systra-meta-value">{{ item.size }}</span>
       </div>
       {% endif %}
-    {% endif %}
+    </section>
 
-    {% if item.date_modified %}
-    <div class="systra-meta-row">
-      <span class="systra-meta-label">Modified</span>
-      <span class="systra-meta-value">{{ item.date_modified|slice:":10" }}</span>
-    </div>
+    {% if item.source_url or item.licence_name or item.documentation_url or item.documentation_sources or item.attribution %}
+    <section class="systra-sidebar-section">
+      <h6>Source and licence</h6>
+      <div class="systra-sidebar-links">
+        {% if item.source_url %}
+        <a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" class="systra-metadata-link">
+          View official source <span aria-hidden="true">&#8599;</span>
+        </a>
+        {% endif %}
+        {% if item.licence_name %}
+        {% if item.licence_url %}<a href="{{ item.licence_url }}" target="_blank" rel="noopener noreferrer" class="systra-metadata-link">{% endif %}
+          {{ item.licence_name }}{% if item.licence_url %} <span aria-hidden="true">&#8599;</span>{% endif %}
+        {% if item.licence_url %}</a>{% endif %}
+        {% endif %}
+        {% if item.documentation_url %}
+        <a href="{{ item.documentation_url }}" target="_blank" rel="noopener noreferrer" class="systra-metadata-link">
+          Documentation <span aria-hidden="true">&#8599;</span>
+        </a>
+        {% endif %}
+        {% for document in item.documentation_sources %}
+        <a href="{{ document.url }}" target="_blank" rel="noopener noreferrer" class="systra-metadata-link">
+          {{ document.title|default:"Documentation" }} <span aria-hidden="true">&#8599;</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% if item.attribution %}<p class="systra-attribution">{{ item.attribution }}</p>{% endif %}
+    </section>
     {% endif %}
 
     {% if item.keywords %}
-    <div class="systra-keyword-tags">
-      {% for kw in item.keywords %}
-      <span class="systra-keyword-tag">{{ kw }}</span>
-      {% endfor %}
-    </div>
+    <section class="systra-sidebar-section">
+      <h6>Keywords</h6>
+      <div class="systra-keyword-tags">
+        {% for kw in item.keywords %}
+        <span class="systra-keyword-tag">{{ kw }}</span>
+        {% endfor %}
+      </div>
+    </section>
     {% endif %}
 
-    {% if item.abstract %}
-    <div class="systra-abstract-box">{{ item.abstract }}</div>
+    {% if item.identifier or item.schema or item.table or item.extent_display or item.metadata_status %}
+    <details class="systra-technical-details">
+      <summary>Technical details</summary>
+      {% if item.identifier %}
+      <div class="systra-technical-field"><span>Identifier</span><code>{{ item.identifier }}</code></div>
+      {% endif %}
+      {% if item.schema %}
+      <div class="systra-technical-field"><span>Schema</span><code>{{ item.schema }}</code></div>
+      {% endif %}
+      {% if item.table %}
+      <div class="systra-technical-field"><span>Table</span><code>{{ item.table }}</code></div>
+      {% endif %}
+      {% if item.extent_display %}
+      <div class="systra-technical-field"><span>WGS84 extent</span><code>{{ item.extent_display }}</code></div>
+      {% endif %}
+      {% if item.metadata_status %}
+      <div class="systra-technical-field"><span>Metadata status</span><code>{{ item.metadata_status }}</code></div>
+      {% endif %}
+    </details>
     {% endif %}
   </aside>
 
