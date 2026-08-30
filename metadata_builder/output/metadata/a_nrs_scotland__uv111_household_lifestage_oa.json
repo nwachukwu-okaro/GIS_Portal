@@ -74,8 +74,8 @@
     {
       "name": "all_households",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for all households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -96,14 +96,14 @@
         "estimated_distinct": 90.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_under_35_total",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged under 35 total in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -124,14 +124,14 @@
         "estimated_distinct": 70.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_under_35one_person_household",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged under 35one person household in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -152,14 +152,14 @@
         "estimated_distinct": 49.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_under_35_two_or_more_person_household_no_dependent_chi",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged under 35 two or more person household number dependent chi in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -180,14 +180,14 @@
         "estimated_distinct": 51.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_under_35_two_or_more_person_household_with_dependent_c",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged under 35 two or more person household with dependent c in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -208,14 +208,14 @@
         "estimated_distinct": 28.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_35_to_54_total",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 35 to 54 total in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -236,14 +236,14 @@
         "estimated_distinct": 66.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_35_to_54_one_person_household",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 35 to 54 one person household in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -264,14 +264,14 @@
         "estimated_distinct": 41.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_35_to_54_two_or_more_person_household_no_dependent_chi",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 35 to 54 two or more person household number dependent chi in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -292,14 +292,14 @@
         "estimated_distinct": 21.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_35_to_54_two_or_more_person_household_with_dependent_c",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 35 to 54 two or more person household with dependent c in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -320,14 +320,14 @@
         "estimated_distinct": 56.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_55_to_64_total",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 55 to 64 total in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -348,14 +348,14 @@
         "estimated_distinct": 39.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_55_to_64_one_person_household",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 55 to 64 one person household in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -376,14 +376,14 @@
         "estimated_distinct": 27.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_55_to_64_two_or_more_person_household_no_dependent_chi",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 55 to 64 two or more person household number dependent chi in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -404,14 +404,14 @@
         "estimated_distinct": 31.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_55_to_64_two_or_more_person_household_with_dependent_c",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 55 to 64 two or more person household with dependent c in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -432,14 +432,14 @@
         "estimated_distinct": 10.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_65_to_74_total",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 65 to 74 total in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -460,14 +460,14 @@
         "estimated_distinct": 32.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_65_to_74_one_person_household",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 65 to 74 one person household in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -488,14 +488,14 @@
         "estimated_distinct": 28.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_65_to_74_two_or_more_person_household_no_dependent_chi",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 65 to 74 two or more person household number dependent chi in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -516,14 +516,14 @@
         "estimated_distinct": 24.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_65_to_74two_or_more_person_household_with_dependent_ch",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 65 to 74two or more person household with dependent ch in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -544,14 +544,14 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_75_and_over_total",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 75 and over total in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -572,14 +572,14 @@
         "estimated_distinct": 59.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_75_and_over_one_person_household",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 75 and over one person household in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -600,14 +600,14 @@
         "estimated_distinct": 51.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_75_and_over_two_or_more_person_household_no_dependent",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 75 and over two or more person household number dependent in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -628,14 +628,14 @@
         "estimated_distinct": 24.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "hrp_aged_75_and_over_two_or_more_person_household_with_dependen",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for hrp aged 75 and over two or more person household with dependen in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -656,8 +656,8 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     }
   ],
   "capabilities": {
@@ -725,6 +725,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:57.199099+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:57.199099+00:00",
+    "curated_at": "2026-08-30T20:17:03.092643+00:00"
+  },
+  "column_count": 22
 }

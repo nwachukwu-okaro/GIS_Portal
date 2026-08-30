@@ -54,8 +54,8 @@
     {
       "name": "nr4_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for nr4 pk in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -76,14 +76,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "noise_round_type",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied noise round type for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -109,13 +109,13 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "name",
       "data_type": "varchar(50)",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -148,8 +148,8 @@
     {
       "name": "type",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied type for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -176,14 +176,14 @@
         "estimated_distinct": 7.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "report_period",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied report period for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -206,14 +206,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "db_low",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for db low in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -234,14 +234,14 @@
         "estimated_distinct": 8.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "db_high",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for db high in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -262,14 +262,14 @@
         "estimated_distinct": 8.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "db_value",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied db value for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -296,14 +296,14 @@
         "estimated_distinct": 9.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "time",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied time for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -327,8 +327,8 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "local_authority_name",
@@ -401,8 +401,8 @@
     {
       "name": "url_text",
       "data_type": "varchar(30)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied url text for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -425,14 +425,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "url",
       "data_type": "varchar(500)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied url for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -453,8 +453,8 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -564,6 +564,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.910126+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:55.910126+00:00",
+    "curated_at": "2026-08-30T20:16:37.693080+00:00"
+  },
+  "column_count": 14
 }

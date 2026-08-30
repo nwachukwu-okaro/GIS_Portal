@@ -39,8 +39,8 @@
     {
       "name": "guid",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-assigned guid for the record.",
+      "semantic_role": "source_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -67,14 +67,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geogid",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-assigned geogid for the record.",
+      "semantic_role": "source_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -101,14 +101,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geogdesc",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied geogdesc for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -135,14 +135,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "ur_category",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for ur category in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -163,14 +163,14 @@
         "estimated_distinct": 6.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "ur_category_desc",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied ur category description for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -197,14 +197,14 @@
         "estimated_distinct": 6.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "one_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for one person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -225,14 +225,14 @@
         "estimated_distinct": 96.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "married_couple_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for married couple households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -253,14 +253,14 @@
         "estimated_distinct": 59.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "cohabiting_couple_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for cohabiting couple households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -281,14 +281,14 @@
         "estimated_distinct": 43.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "married_couple_with_children_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for married couple with children households hhs in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -309,14 +309,14 @@
         "estimated_distinct": 113.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "cohabiting_couple_with_children_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for cohabiting couple with children households hhs in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -337,14 +337,14 @@
         "estimated_distinct": 30.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_father_with_children_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent father with children households hhs value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -365,14 +365,14 @@
         "estimated_distinct": 13.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_mother_and_children_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent mother and children households hhs value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -393,14 +393,14 @@
         "estimated_distinct": 66.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "couple_and_others_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for couple and others households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -421,14 +421,14 @@
         "estimated_distinct": 23.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "couple_with_children_and_others_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for couple with children and others households hhs in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -449,14 +449,14 @@
         "estimated_distinct": 19.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_father_with_children_others_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent father with children others hhs value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -477,14 +477,14 @@
         "estimated_distinct": 7.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_mother_with_children_others_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent mother with children others hhs value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -505,14 +505,14 @@
         "estimated_distinct": 17.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "two_or_more_family_units_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for two or more family units households hhs in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -533,14 +533,14 @@
         "estimated_distinct": 14.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nonfamily_households_and_relations_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric nonfamily households and relations households hhs value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -561,14 +561,14 @@
         "estimated_distinct": 21.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "two_or_more_nonrelated_persons_households_hhs",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric two or more nonrelated persons households hhs value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -589,14 +589,14 @@
         "estimated_distinct": 88.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "total_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for total households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -617,14 +617,14 @@
         "estimated_distinct": 223.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "one_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for one person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -645,14 +645,14 @@
         "estimated_distinct": 96.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "married_couple_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for married couple households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -673,14 +673,14 @@
         "estimated_distinct": 59.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "cohabiting_couple_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for cohabiting couple households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -701,14 +701,14 @@
         "estimated_distinct": 43.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "married_couple_with_children_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for married couple with children households persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -729,14 +729,14 @@
         "estimated_distinct": 382.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "cohabiting_couple_with_children_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for cohabiting couple with children households persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -757,14 +757,14 @@
         "estimated_distinct": 100.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_father_with_children_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent father with children households persons value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -785,14 +785,14 @@
         "estimated_distinct": 29.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_mother_and_children_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent mother and children households persons value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -813,14 +813,14 @@
         "estimated_distinct": 156.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "couple_and_others_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for couple and others households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -841,14 +841,14 @@
         "estimated_distinct": 62.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "couple_with_children_and_others_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for couple with children and others households persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -869,14 +869,14 @@
         "estimated_distinct": 75.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_father_with_children_others_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent father with children others persons value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -897,14 +897,14 @@
         "estimated_distinct": 20.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lone_parent_mother_with_children_others_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric lone parent mother with children others persons value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -925,14 +925,14 @@
         "estimated_distinct": 54.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "two_or_more_family_units_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for two or more family units households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -953,14 +953,14 @@
         "estimated_distinct": 56.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nonfamily_households_and_relations_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric nonfamily households and relations households persons value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -981,14 +981,14 @@
         "estimated_distinct": 46.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "two_or_more_nonrelated_persons_households_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric two or more nonrelated persons households persons value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1009,14 +1009,14 @@
         "estimated_distinct": 202.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "total_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for total households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1037,14 +1037,14 @@
         "estimated_distinct": 572.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_1_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 1 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1065,14 +1065,14 @@
         "estimated_distinct": 96.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_2_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 2 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1093,14 +1093,14 @@
         "estimated_distinct": 109.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_3_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 3 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1121,14 +1121,14 @@
         "estimated_distinct": 71.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_4_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 4 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1149,14 +1149,14 @@
         "estimated_distinct": 72.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_5_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 5 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1177,14 +1177,14 @@
         "estimated_distinct": 46.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_6_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 6 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1205,14 +1205,14 @@
         "estimated_distinct": 23.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_7_person_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 7 person households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1233,14 +1233,14 @@
         "estimated_distinct": 13.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_8_or_more_persons_households_no_of_households",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 8 or more persons households number of households in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1261,14 +1261,14 @@
         "estimated_distinct": 12.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "total_households_no_of_households_1",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for total households number of households 1 in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1289,14 +1289,14 @@
         "estimated_distinct": 223.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_1_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 1 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1317,14 +1317,14 @@
         "estimated_distinct": 96.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_2_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 2 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1345,14 +1345,14 @@
         "estimated_distinct": 109.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_3_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 3 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1373,14 +1373,14 @@
         "estimated_distinct": 71.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_4_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 4 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1401,14 +1401,14 @@
         "estimated_distinct": 72.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_5_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 5 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1429,14 +1429,14 @@
         "estimated_distinct": 46.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_6_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 6 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1457,14 +1457,14 @@
         "estimated_distinct": 23.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_7_person_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 7 person households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1485,14 +1485,14 @@
         "estimated_distinct": 13.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_8_or_more_persons_households_no_of_persons",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 8 or more persons households number of persons in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1513,14 +1513,14 @@
         "estimated_distinct": 55.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "total_households_no_of_persons_1",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for total households number of persons 1 in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1541,8 +1541,8 @@
         "estimated_distinct": 572.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     }
   ],
   "capabilities": {
@@ -1638,6 +1638,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.359040+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:55.359040+00:00",
+    "curated_at": "2026-08-30T20:16:33.033995+00:00"
+  },
+  "column_count": 53
 }

@@ -5,11 +5,15 @@
 - **Identifier:** `a_ons_england_wales/boundary_lad_dec_2024_uk_buc`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
+- **WGS84 extent:** `[-8.650007, 49.882346, 1.763680, 60.860846]`
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_lad_dec_2024_uk_buc`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 361
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description
@@ -24,11 +28,11 @@ Boundary Lad Dec 2024 UK Buc is an authoritative dataset published by Office for
 | `lad24cd` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `lad24nm` | `varchar(36)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `lad24nmw` | `varchar(24)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bng_e` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bng_n` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `long` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lat` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar(38)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `bng_e` | `integer` | Count or numeric value for bng e in the represented area. | statistical_value | Yes | No | No |
+| `bng_n` | `integer` | Count or numeric value for bng n in the represented area. | statistical_value | Yes | No | No |
+| `long` | `real` | Numeric long value recorded for the feature. | measure | Yes | No | No |
+| `lat` | `real` | Numeric lat value recorded for the feature. | measure | Yes | No | No |
+| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
 | `shape` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

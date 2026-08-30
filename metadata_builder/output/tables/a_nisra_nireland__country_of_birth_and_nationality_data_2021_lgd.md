@@ -5,11 +5,13 @@
 - **Identifier:** `a_nisra_nireland/country_of_birth_and_nationality_data_2021_lgd`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
 - **Schema:** `a_nisra_nireland`
 - **Table:** `country_of_birth_and_nationality_data_2021_lgd`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 11
+- **Columns:** 23
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,29 +22,29 @@ Country Of Birth And Nationality Data 2021 Lgd is an authoritative dataset publi
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `population` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `country_of_birth_england` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `country_of_birth_northern_ireland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `country_of_birth_other_countries` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `country_of_birth_republic_of_ireland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `country_of_birth_scotland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `country_of_birth_wales` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_british_and_irish_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_british_and_northern_irish_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_british_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_british_irish_and_northern_irish_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_irish_and_northern_irish_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_irish_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_northern_irish_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `national_identity_other_national_identities` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `passports_held_ireland_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `passports_held_no_passport` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `passports_held_other_passports` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `passports_held_united_kingdom_and_ireland_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `passports_held_united_kingdom_only` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `population` | `text` | Publisher-supplied population for the represented feature or record. | source_attribute | Yes | No | No |
+| `country_of_birth_england` | `text` | Count or numeric value for country of birth england in the represented area. | statistical_value | Yes | No | No |
+| `country_of_birth_northern_ireland` | `text` | Publisher-supplied country of birth northern ireland for the represented feature or record. | source_attribute | Yes | No | No |
+| `country_of_birth_other_countries` | `text` | Publisher-supplied country of birth other countries for the represented feature or record. | source_attribute | Yes | No | No |
+| `country_of_birth_republic_of_ireland` | `text` | Count or numeric value for country of birth republic of ireland in the represented area. | statistical_value | Yes | No | No |
+| `country_of_birth_scotland` | `text` | Count or numeric value for country of birth scotland in the represented area. | statistical_value | Yes | No | No |
+| `country_of_birth_wales` | `bigint` | Count or numeric value for country of birth wales in the represented area. | statistical_value | Yes | No | No |
+| `national_identity_british_and_irish_only` | `text` | Publisher-supplied national identity british and irish only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_british_and_northern_irish_only` | `text` | Publisher-supplied national identity british and northern irish only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_british_only` | `text` | Publisher-supplied national identity british only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_british_irish_and_northern_irish_only` | `text` | Publisher-supplied national identity british irish and northern irish only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_irish_and_northern_irish_only` | `text` | Publisher-supplied national identity irish and northern irish only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_irish_only` | `text` | Publisher-supplied national identity irish only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_northern_irish_only` | `text` | Publisher-supplied national identity northern irish only for the represented feature or record. | source_attribute | Yes | No | No |
+| `national_identity_other_national_identities` | `text` | Publisher-supplied national identity other national identities for the represented feature or record. | source_attribute | Yes | No | No |
+| `passports_held_ireland_only` | `text` | Publisher-supplied passports held ireland only for the represented feature or record. | source_attribute | Yes | No | No |
+| `passports_held_no_passport` | `text` | Publisher-supplied passports held number passport for the represented feature or record. | source_attribute | Yes | No | No |
+| `passports_held_other_passports` | `text` | Publisher-supplied passports held other passports for the represented feature or record. | source_attribute | Yes | No | No |
+| `passports_held_united_kingdom_and_ireland_only` | `text` | Publisher-supplied passports held united kingdom and ireland only for the represented feature or record. | source_attribute | Yes | No | No |
+| `passports_held_united_kingdom_only` | `text` | Publisher-supplied passports held united kingdom only for the represented feature or record. | source_attribute | Yes | No | No |
 
 ## Supported operations
 

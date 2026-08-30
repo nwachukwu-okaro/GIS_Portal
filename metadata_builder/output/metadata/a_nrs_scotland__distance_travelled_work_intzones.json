@@ -40,8 +40,8 @@
     {
       "name": "geography",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied geography for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -68,14 +68,14 @@
         "estimated_distinct": -0.9984399,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "all_people_aged_16_and_over_in_employment_the_week_before_the_c",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied all people aged 16 and over in employment the week before the c for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -102,14 +102,14 @@
         "estimated_distinct": -0.74882996,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "mainly_work_from_home",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied mainly work from home for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -136,14 +136,14 @@
         "estimated_distinct": -0.5124805,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "less_than_2km",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied less than 2km for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -170,14 +170,14 @@
         "estimated_distinct": -0.31357256,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_2km_to_less_than_5km",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied t 2km to less than 5km for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -204,14 +204,14 @@
         "estimated_distinct": -0.41887677,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_5km_to_less_than_10km",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied t 5km to less than 10km for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -238,14 +238,14 @@
         "estimated_distinct": -0.3822153,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_10km_to_less_than_20km",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied t 10km to less than 20km for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -272,14 +272,14 @@
         "estimated_distinct": -0.35647425,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_20km_to_less_than_30km",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 20km to less than 30km in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -300,14 +300,14 @@
         "estimated_distinct": -0.22386895,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_30km_to_less_than_40km",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 30km to less than 40km in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -328,14 +328,14 @@
         "estimated_distinct": -0.13572542,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_40km_to_less_than_60km",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 40km to less than 60km in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -356,14 +356,14 @@
         "estimated_distinct": -0.10218409,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "t_60km_and_over",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for t 60km and over in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -384,14 +384,14 @@
         "estimated_distinct": 94.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "other_no_fixed_place_of_work_or_working_outside_the_uk",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for other number fixed place of work or working outside the uk in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -412,8 +412,8 @@
         "estimated_distinct": -0.28939158,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     }
   ],
   "capabilities": {
@@ -469,6 +469,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.701754+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:56.701754+00:00",
+    "curated_at": "2026-08-30T20:17:02.216075+00:00"
+  },
+  "column_count": 12
 }

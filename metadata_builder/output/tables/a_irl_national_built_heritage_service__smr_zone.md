@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_national_built_heritage_service/smr_zone`
 - **Source organisation:** National Built Heritage Service
 - **Source:** https://www.buildingsofireland.ie/
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-15.923815, 31.172954, 172.617639, 64.210928]`
 - **Schema:** `a_irl_national_built_heritage_service`
 - **Table:** `smr_zone`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 82731
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,7 +24,7 @@ Smr Zone is an authoritative dataset published by National Built Heritage Servic
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `zone_id` | `varchar` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `smrz_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `smrz_pk` | `integer` | Count or numeric value for smrz pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Terrain 50
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-terrain-50
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-8.648602, 49.867264, 1.750138, 60.855457]`
 - **Schema:** `a_os_open_terrain_50`
 - **Table:** `spot_height`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:27700
 - **Rows:** 235955
+- **Columns:** 5
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +25,9 @@ Contains OS data © Crown copyright and database right 2026
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `property_value` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `spot_height_type` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `varchar` | Publisher-assigned identifier for the record. | source_identifier | Yes | No | No |
+| `property_value` | `double precision` | Count or numeric value for property value in the represented area. | statistical_value | Yes | No | No |
+| `spot_height_type` | `varchar` | Publisher-supplied spot height type for the represented feature or record. | source_attribute | Yes | No | No |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 

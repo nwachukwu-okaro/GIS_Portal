@@ -55,8 +55,8 @@
     {
       "name": "pwsspa_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for pwsspa pk in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -77,8 +77,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "spa_id",
@@ -182,8 +182,8 @@
     {
       "name": "datasource",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied datasource for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -210,8 +210,8 @@
         "estimated_distinct": 5.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "dw_code",
@@ -250,8 +250,8 @@
     {
       "name": "eu_report",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied eu report for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -278,14 +278,14 @@
         "estimated_distinct": 7.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "county",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied county for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -312,14 +312,14 @@
         "estimated_distinct": 23.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "report_url",
       "data_type": "varchar(254)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied report url for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -346,14 +346,14 @@
         "estimated_distinct": -0.5406163,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "rep_creator",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied rep creator for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -380,14 +380,14 @@
         "estimated_distinct": 18.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "active",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied active for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -411,14 +411,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "gsi_review",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied gsi review for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -442,14 +442,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "publish",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied publish for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -473,14 +473,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "reportdate",
       "data_type": "date",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date or year recorded for reportdate.",
+      "semantic_role": "date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -501,14 +501,14 @@
         "estimated_distinct": -0.20728292,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "updatedate",
       "data_type": "date",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date or year recorded for updatedate.",
+      "semantic_role": "date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -529,8 +529,8 @@
         "estimated_distinct": 3.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -647,6 +647,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.962130+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:55.962130+00:00",
+    "curated_at": "2026-08-30T20:16:39.993892+00:00"
+  },
+  "column_count": 16
 }

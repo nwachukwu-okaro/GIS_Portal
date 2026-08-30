@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Zoomstack
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-zoomstack
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-7.448727, 49.913600, 1.282248, 60.191828]`
 - **Schema:** `a_os_zoomstack`
 - **Table:** `airports`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:27700
 - **Rows:** 45
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,8 +25,8 @@ Airports is part of OS Open Zoomstack, published by Ordnance Survey. It represen
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `name` | `varchar` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `id` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `name` | `varchar` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

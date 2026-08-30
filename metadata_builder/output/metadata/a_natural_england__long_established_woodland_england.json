@@ -55,7 +55,7 @@
     {
       "name": "name",
       "data_type": "varchar",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -89,8 +89,8 @@
     {
       "name": "theme",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied theme for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -113,14 +113,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "themname",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied themname for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -143,14 +143,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "status",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied status for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -173,14 +173,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "themid",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-assigned themid for the record.",
+      "semantic_role": "source_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -207,14 +207,14 @@
         "estimated_distinct": -0.99905443,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "x_coord",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for x coord in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -235,14 +235,14 @@
         "estimated_distinct": -0.96827066,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "y_coord",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for y coord in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -263,14 +263,14 @@
         "estimated_distinct": -0.9699517,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "area",
       "data_type": "real",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric area value recorded for the feature.",
+      "semantic_role": "measure",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -291,14 +291,14 @@
         "estimated_distinct": -0.9997899,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "perimeter",
       "data_type": "real",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for perimeter in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -319,14 +319,14 @@
         "estimated_distinct": -0.9996848,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "county",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied county for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -353,14 +353,14 @@
         "estimated_distinct": 12.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "globalid",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-assigned globalid for the record.",
+      "semantic_role": "source_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -387,13 +387,13 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -518,6 +518,9 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.127120+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:56.127120+00:00",
+    "curated_at": "2026-08-30T20:16:51.599613+00:00"
+  },
+  "local_dataset_version": "20251028 (28 October 2025)",
+  "column_count": 13
 }

@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_environmental_protection_agency/river_net_routes`
 - **Source organisation:** Environmental Protection Agency Ireland
 - **Source:** https://gis.epa.ie/GetData/Download
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.468183, 51.450434, -6.005639, 55.380124]`
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `river_net_routes`
 - **Geometry:** LINESTRING
 - **CRS:** EPSG:29903
 - **Rows:** 102108
+- **Columns:** 12
 - **Metadata status:** source_mapped
 
 ## Description
@@ -23,14 +26,14 @@ River Net Routes is an authoritative dataset published by Environmental Protecti
 | `segment_code` | `varchar(20)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `epa_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `epa_code` | `varchar(5)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `stream_order` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `continua` | `varchar(1)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `stream_order` | `integer` | Count or numeric value for stream order in the represented area. | statistical_value | Yes | No | No |
+| `continua` | `varchar(1)` | Publisher-supplied continua for the represented feature or record. | source_attribute | Yes | No | No |
 | `river_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `lake_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `transitional_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `segment_length` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `segment_length` | `double precision` | Numeric segment length value recorded for the feature. | measure | Yes | No | No |
 | `coastal_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `rnr_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `rnr_pk` | `integer` | Count or numeric value for rnr pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

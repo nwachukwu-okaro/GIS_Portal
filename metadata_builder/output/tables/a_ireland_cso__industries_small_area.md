@@ -5,11 +5,13 @@
 - **Identifier:** `a_ireland_cso/industries_small_area`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
 - **Schema:** `a_ireland_cso`
 - **Table:** `industries_small_area`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 18920
+- **Columns:** 32
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,38 +22,38 @@ Industries Small Area is an authoritative dataset published by Central Statistic
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `guid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogdesc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category_desc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `agriculture_forestry_and_fishing_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `building_and_construction_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `manufacturing_industries_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `commerce_and_trade_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `transport_and_communications_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `public_administration_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `professional_services_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `agriculture_forestry_and_fishing_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `building_and_construction_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `manufacturing_industries_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `commerce_and_trade_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `transport_and_communications_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `public_administration_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `professional_services_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `agriculture_forestry_and_fishing_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `building_and_construction_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `manufacturing_industries_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `commerce_and_trade_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `transport_and_communications_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `public_administration_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `professional_services_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
+| `geogid` | `text` | Publisher-assigned geogid for the record. | source_identifier | Yes | No | No |
+| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. | source_attribute | Yes | No | No |
+| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. | statistical_value | Yes | No | No |
+| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. | source_attribute | Yes | No | No |
+| `agriculture_forestry_and_fishing_males` | `bigint` | Count or numeric value for agriculture forestry and fishing males in the represented area. | statistical_value | Yes | No | No |
+| `building_and_construction_males` | `bigint` | Count or numeric value for building and construction males in the represented area. | statistical_value | Yes | No | No |
+| `manufacturing_industries_males` | `bigint` | Count or numeric value for manufacturing industries males in the represented area. | statistical_value | Yes | No | No |
+| `commerce_and_trade_males` | `bigint` | Count or numeric value for commerce and trade males in the represented area. | statistical_value | Yes | No | No |
+| `transport_and_communications_males` | `bigint` | Count or numeric value for transport and communications males in the represented area. | statistical_value | Yes | No | No |
+| `public_administration_males` | `bigint` | Count or numeric value for public administration males in the represented area. | statistical_value | Yes | No | No |
+| `professional_services_males` | `bigint` | Count or numeric value for professional services males in the represented area. | statistical_value | Yes | No | No |
+| `other_males` | `bigint` | Count or numeric value for other males in the represented area. | statistical_value | Yes | No | No |
+| `total_males` | `bigint` | Count or numeric value for total males in the represented area. | statistical_value | Yes | No | No |
+| `agriculture_forestry_and_fishing_females` | `bigint` | Count or numeric value for agriculture forestry and fishing females in the represented area. | statistical_value | Yes | No | No |
+| `building_and_construction_females` | `bigint` | Count or numeric value for building and construction females in the represented area. | statistical_value | Yes | No | No |
+| `manufacturing_industries_females` | `bigint` | Count or numeric value for manufacturing industries females in the represented area. | statistical_value | Yes | No | No |
+| `commerce_and_trade_females` | `bigint` | Count or numeric value for commerce and trade females in the represented area. | statistical_value | Yes | No | No |
+| `transport_and_communications_females` | `bigint` | Count or numeric value for transport and communications females in the represented area. | statistical_value | Yes | No | No |
+| `public_administration_females` | `bigint` | Count or numeric value for public administration females in the represented area. | statistical_value | Yes | No | No |
+| `professional_services_females` | `bigint` | Count or numeric value for professional services females in the represented area. | statistical_value | Yes | No | No |
+| `other_females` | `bigint` | Count or numeric value for other females in the represented area. | statistical_value | Yes | No | No |
+| `total_females` | `bigint` | Count or numeric value for total females in the represented area. | statistical_value | Yes | No | No |
+| `agriculture_forestry_and_fishing_total` | `bigint` | Count or numeric value for agriculture forestry and fishing total in the represented area. | statistical_value | Yes | No | No |
+| `building_and_construction_total` | `bigint` | Count or numeric value for building and construction total in the represented area. | statistical_value | Yes | No | No |
+| `manufacturing_industries_total` | `bigint` | Count or numeric value for manufacturing industries total in the represented area. | statistical_value | Yes | No | No |
+| `commerce_and_trade_total` | `bigint` | Count or numeric value for commerce and trade total in the represented area. | statistical_value | Yes | No | No |
+| `transport_and_communications_total` | `bigint` | Count or numeric value for transport and communications total in the represented area. | statistical_value | Yes | No | No |
+| `public_administration_total` | `bigint` | Count or numeric value for public administration total in the represented area. | statistical_value | Yes | No | No |
+| `professional_services_total` | `bigint` | Count or numeric value for professional services total in the represented area. | statistical_value | Yes | No | No |
+| `other_total` | `bigint` | Count or numeric value for other total in the represented area. | statistical_value | Yes | No | No |
+| `total` | `bigint` | Count or numeric value for total in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

@@ -54,8 +54,8 @@
     {
       "name": "clc18_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Count or numeric value for clc18 pk in the represented area.",
+      "semantic_role": "statistical_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -76,14 +76,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "code_18",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied code 18 for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -110,14 +110,14 @@
         "estimated_distinct": 29.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "class_description",
       "data_type": "varchar(200)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied class description for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -144,13 +144,13 @@
         "estimated_distinct": 29.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "area_ha",
       "data_type": "double precision",
-      "description": "Area of the feature in hectares.",
+      "description": "Area enclosed by the feature, measured in hectares.",
       "semantic_role": "area",
       "filterable": true,
       "searchable": false,
@@ -270,6 +270,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.882643+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:55.882643+00:00",
+    "curated_at": "2026-08-30T20:16:37.668028+00:00"
+  },
+  "column_count": 5
 }

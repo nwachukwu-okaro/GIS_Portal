@@ -3,9 +3,9 @@
   "identifier": "a_environment_agency/rofsw_model_origin",
   "schema": "a_environment_agency",
   "table": "rofsw_model_origin",
-  "title": "Rofsw Model Origin",
-  "description": "Rofsw Model Origin is an authoritative dataset published by Environment Agency. It represents rofsw model origin features using multipolygon geometry.",
-  "feature_concept": "rofsw_model_origin",
+  "title": "Risk of Flooding from Surface Water - Model Origin",
+  "description": "Areas identifying the model source and vintage used in the national Risk of Flooding from Surface Water mapping.",
+  "feature_concept": "surface_water_flood_model_origin",
   "synonyms": [],
   "publisher": {
     "organisation": "Environment Agency",
@@ -52,8 +52,8 @@
     {
       "name": "model",
       "data_type": "varchar(254)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name or description of the flood model that produced the feature.",
+      "semantic_role": "flood_model_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -76,14 +76,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "scale",
       "data_type": "varchar(8)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Geographic scale of the model, such as National.",
+      "semantic_role": "model_scale",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -106,14 +106,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "model_year",
       "data_type": "smallint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Year associated with the flood-model version or run.",
+      "semantic_role": "model_year",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -134,14 +134,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "flood_source",
       "data_type": "varchar(16)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Source of flooding represented, such as river, sea or surface water.",
+      "semantic_role": "flood_source",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -164,18 +164,18 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "uuid",
       "data_type": "char(36)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Globally unique identifier for the model-origin record.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "UUID",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -198,8 +198,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -281,17 +281,19 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
       "Schema default only; verify dataset-specific restrictions and third-party rights."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.690593+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.690593+00:00",
+    "curated_at": "2026-08-30T20:14:25.865266+00:00"
+  },
+  "column_count": 6
 }

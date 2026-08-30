@@ -5,11 +5,14 @@
 - **Identifier:** `a_ireland_cso/boundary_census_disability_carers_health_smoking_small_area`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-1.726726, 54.563349, 3.417194, 58.519873]`
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_disability_carers_health_smoking_small_area`
 - **Geometry:** GEOMETRY
 - **CRS:** EPSG:27700
 - **Rows:** 18919
+- **Columns:** 37
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,42 +24,42 @@ Boundary Census Disability Carers Health Smoking Small Area is an authoritative 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `guid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogdesc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category_desc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_perons` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `males_1` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `females_1` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_good_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_good_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_good_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `good_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `good_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `good_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `fair_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `fair_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `fair_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bad_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bad_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bad_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_bad_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_bad_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_bad_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_stated_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_stated_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_stated_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_males` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_females` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_1` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `persons_who_smoke` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `persons_who_dont_smoke` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `non_stated` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total_persons` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
+| `geogid` | `text` | Publisher-assigned geogid for the record. | source_identifier | Yes | No | No |
+| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. | source_attribute | Yes | No | No |
+| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. | statistical_value | Yes | No | No |
+| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. | source_attribute | Yes | No | No |
+| `males` | `bigint` | Count or numeric value for males in the represented area. | statistical_value | Yes | No | No |
+| `females` | `bigint` | Count or numeric value for females in the represented area. | statistical_value | Yes | No | No |
+| `total_perons` | `bigint` | Count or numeric value for total perons in the represented area. | statistical_value | Yes | No | No |
+| `males_1` | `bigint` | Count or numeric value for males 1 in the represented area. | statistical_value | Yes | No | No |
+| `females_1` | `bigint` | Count or numeric value for females 1 in the represented area. | statistical_value | Yes | No | No |
+| `total` | `bigint` | Count or numeric value for total in the represented area. | statistical_value | Yes | No | No |
+| `very_good_males` | `bigint` | Count or numeric value for very good males in the represented area. | statistical_value | Yes | No | No |
+| `very_good_females` | `bigint` | Count or numeric value for very good females in the represented area. | statistical_value | Yes | No | No |
+| `very_good_total` | `bigint` | Count or numeric value for very good total in the represented area. | statistical_value | Yes | No | No |
+| `good_males` | `bigint` | Count or numeric value for good males in the represented area. | statistical_value | Yes | No | No |
+| `good_females` | `bigint` | Count or numeric value for good females in the represented area. | statistical_value | Yes | No | No |
+| `good_total` | `bigint` | Count or numeric value for good total in the represented area. | statistical_value | Yes | No | No |
+| `fair_males` | `bigint` | Count or numeric value for fair males in the represented area. | statistical_value | Yes | No | No |
+| `fair_females` | `bigint` | Count or numeric value for fair females in the represented area. | statistical_value | Yes | No | No |
+| `fair_total` | `bigint` | Count or numeric value for fair total in the represented area. | statistical_value | Yes | No | No |
+| `bad_males` | `bigint` | Count or numeric value for bad males in the represented area. | statistical_value | Yes | No | No |
+| `bad_females` | `bigint` | Count or numeric value for bad females in the represented area. | statistical_value | Yes | No | No |
+| `bad_total` | `bigint` | Count or numeric value for bad total in the represented area. | statistical_value | Yes | No | No |
+| `very_bad_males` | `bigint` | Count or numeric value for very bad males in the represented area. | statistical_value | Yes | No | No |
+| `very_bad_females` | `bigint` | Count or numeric value for very bad females in the represented area. | statistical_value | Yes | No | No |
+| `very_bad_total` | `bigint` | Count or numeric value for very bad total in the represented area. | statistical_value | Yes | No | No |
+| `not_stated_males` | `bigint` | Count or numeric value for not stated males in the represented area. | statistical_value | Yes | No | No |
+| `not_stated_females` | `bigint` | Count or numeric value for not stated females in the represented area. | statistical_value | Yes | No | No |
+| `not_stated_total` | `bigint` | Count or numeric value for not stated total in the represented area. | statistical_value | Yes | No | No |
+| `total_males` | `bigint` | Count or numeric value for total males in the represented area. | statistical_value | Yes | No | No |
+| `total_females` | `bigint` | Count or numeric value for total females in the represented area. | statistical_value | Yes | No | No |
+| `total_1` | `bigint` | Count or numeric value for total 1 in the represented area. | statistical_value | Yes | No | No |
+| `persons_who_smoke` | `bigint` | Count or numeric value for persons who smoke in the represented area. | statistical_value | Yes | No | No |
+| `persons_who_dont_smoke` | `bigint` | Count or numeric value for persons who dont smoke in the represented area. | statistical_value | Yes | No | No |
+| `non_stated` | `bigint` | Count or numeric value for non stated in the represented area. | statistical_value | Yes | No | No |
+| `total_persons` | `bigint` | Count or numeric value for total persons in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

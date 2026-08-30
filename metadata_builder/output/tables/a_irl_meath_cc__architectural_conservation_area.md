@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_meath_cc/architectural_conservation_area`
 - **Source organisation:** Meath County Council
 - **Source:** https://data.gov.ie/organization/meath-county-council
+- **Geographic coverage:** County Meath
+- **WGS84 extent:** `[-7.167175, 53.418413, -6.238061, 53.792893]`
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `architectural_conservation_area`
 - **Geometry:** POLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 23
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,11 +23,11 @@ Architectural Conservation Area is an authoritative dataset published by Meath C
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `aca_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `aca` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `aca_pk` | `integer` | Count or numeric value for aca pk in the represented area. | statistical_value | Yes | No | No |
+| `aca` | `varchar(100)` | Publisher-supplied aca for the represented feature or record. | source_attribute | Yes | No | No |
 | `plan_name` | `varchar(120)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `map_label` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `more_information` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. | source_attribute | Yes | No | No |
+| `more_information` | `varchar(254)` | Publisher-supplied more information for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/census2021_ts074_msoa`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts074_msoa`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 7264
+- **Columns:** 8
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,14 +23,14 @@ Census2021 Ts074 Msoa is an authoritative dataset published by Office for Nation
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `total_all_households` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_reference_person_previously_served_in_regular_uk_arme` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_reference_person_previously_served_in_reserve_uk_arme` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_reference_person_previously_served_in_both_regular_an` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_reference_person_has_not_previously_served_in_regular` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. | statistical_value | Yes | No | No |
+| `household_reference_person_previously_served_in_regular_uk_arme` | `bigint` | Count or numeric value for household reference person previously served in regular uk arme in the represented area. | statistical_value | Yes | No | No |
+| `household_reference_person_previously_served_in_reserve_uk_arme` | `bigint` | Count or numeric value for household reference person previously served in reserve uk arme in the represented area. | statistical_value | Yes | No | No |
+| `household_reference_person_previously_served_in_both_regular_an` | `bigint` | Count or numeric value for household reference person previously served in both regular an in the represented area. | statistical_value | Yes | No | No |
+| `household_reference_person_has_not_previously_served_in_regular` | `bigint` | Count or numeric value for household reference person has not previously served in regular in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_national_built_heritage_service/national_inventory_of_architectural_inventory`
 - **Source organisation:** National Built Heritage Service
 - **Source:** https://www.buildingsofireland.ie/
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.514248, 51.413382, 169.323852, 78.263859]`
 - **Schema:** `a_irl_national_built_heritage_service`
 - **Table:** `national_inventory_of_architectural_inventory`
 - **Geometry:** POINT
 - **CRS:** EPSG:2157
 - **Rows:** 43322
+- **Columns:** 22
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,27 +23,27 @@ National Inventory Of Architectural Inventory is an authoritative dataset publis
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `reg_no` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `name` | `varchar` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `number` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `reg_no` | `bigint` | Count or numeric value for reg number in the represented area. | statistical_value | Yes | No | No |
+| `name` | `varchar` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `number` | `varchar` | Publisher-supplied number for the represented feature or record. | source_attribute | Yes | No | No |
 | `street1` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `street2` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `town` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `townland` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `county` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `town` | `varchar` | Publisher-supplied town for the represented feature or record. | source_attribute | Yes | No | No |
+| `townland` | `varchar` | Publisher-supplied townland for the represented feature or record. | source_attribute | Yes | No | No |
+| `county` | `varchar` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
 | `county_id` | `varchar` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `planauth` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `composition` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `appraisal` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `datefrom` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `dateto` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `rating` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `original_type` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `image_link` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `website_link` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `planauth` | `varchar` | Publisher-supplied planauth for the represented feature or record. | source_attribute | Yes | No | No |
+| `composition` | `varchar` | Publisher-supplied composition for the represented feature or record. | source_attribute | Yes | No | No |
+| `appraisal` | `varchar` | Publisher-supplied appraisal for the represented feature or record. | source_attribute | Yes | No | No |
+| `datefrom` | `bigint` | Count or numeric value for datefrom in the represented area. | statistical_value | Yes | No | No |
+| `dateto` | `bigint` | Count or numeric value for dateto in the represented area. | statistical_value | Yes | No | No |
+| `rating` | `varchar` | Publisher-supplied rating for the represented feature or record. | source_attribute | Yes | No | No |
+| `original_type` | `varchar` | Publisher-supplied original type for the represented feature or record. | source_attribute | Yes | No | No |
+| `image_link` | `varchar` | Publisher-supplied image link for the represented feature or record. | source_attribute | Yes | No | No |
+| `website_link` | `varchar` | Publisher-supplied website link for the represented feature or record. | source_attribute | Yes | No | No |
 | `survey_id` | `varchar` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `niah_area` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `niah_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `niah_area` | `varchar` | Publisher-supplied niah area for the represented feature or record. | source_attribute | Yes | No | No |
+| `niah_pk` | `integer` | Count or numeric value for niah pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

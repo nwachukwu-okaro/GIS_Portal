@@ -123,8 +123,8 @@
     {
       "name": "gpa_name_e",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied gpa name e for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -151,14 +151,14 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "contae",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied contae for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -185,14 +185,14 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "county",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied county for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -219,14 +219,14 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "guid",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-assigned guid for the record.",
+      "semantic_role": "source_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -253,13 +253,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -387,6 +387,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.115398+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:55.115398+00:00",
+    "curated_at": "2026-08-30T20:16:32.633071+00:00"
+  },
+  "column_count": 8
 }

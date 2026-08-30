@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_central_statistics_office/electoral_divisions_national_statistics_boundaries_2022`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.662960, 51.419897, -5.996278, 55.446580]`
 - **Schema:** `a_irl_central_statistics_office`
 - **Table:** `electoral_divisions_national_statistics_boundaries_2022`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 3420
+- **Columns:** 12
 - **Metadata status:** source_mapped
 
 ## Description
@@ -28,17 +31,17 @@ LEA d65ef6e7-75e6-49d9-bda9-d4690e8f68dc KILLINEY-SHANKILL redrawn<o:p></o:p>
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `ed_guid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ed_official` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ed_english` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ed_gaeilge` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ed_id_str` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ed_part_count` | `smallint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `ed_guid` | `text` | Publisher-assigned ed guid for the record. | source_identifier | Yes | No | No |
+| `ed_official` | `text` | Publisher-supplied ed official for the represented feature or record. | source_attribute | Yes | No | No |
+| `ed_english` | `text` | Publisher-supplied ed english for the represented feature or record. | source_attribute | Yes | No | No |
+| `ed_gaeilge` | `text` | Publisher-supplied ed gaeilge for the represented feature or record. | source_attribute | Yes | No | No |
+| `ed_id_str` | `text` | Publisher-supplied ed identifier str for the represented feature or record. | source_attribute | Yes | No | No |
+| `ed_part_count` | `smallint` | Count or numeric value for ed part count in the represented area. | statistical_value | Yes | No | No |
 | `county_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `county_english` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `county_gaeilge` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `cso_lea` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `objectid` | `integer` | Source-system object identifier. | identifier | Yes | No | No |
+| `county_english` | `text` | Publisher-supplied county english for the represented feature or record. | source_attribute | Yes | No | No |
+| `county_gaeilge` | `text` | Publisher-supplied county gaeilge for the represented feature or record. | source_attribute | Yes | No | No |
+| `cso_lea` | `text` | Publisher-supplied cso lea for the represented feature or record. | source_attribute | Yes | No | No |
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -5,11 +5,13 @@
 - **Identifier:** `a_ireland_cso/motorcar_pc_and_internet_access_small_area`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
 - **Schema:** `a_ireland_cso`
 - **Table:** `motorcar_pc_and_internet_access_small_area`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 18920
+- **Columns:** 17
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,23 +22,23 @@ Motorcar Pc And Internet Access Small Area is an authoritative dataset published
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `guid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogdesc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category_desc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no_motor_car` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `t_1_motor_car` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `t_2_motor_cars` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `t_3_motor_cars` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `t_4_or_more_motor_cars` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_stated` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `broadband` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_internet_connection` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no_internet_connection` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `type_of_internet_connection_not_stated` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_internet_connections` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
+| `geogid` | `text` | Publisher-assigned geogid for the record. | source_identifier | Yes | No | No |
+| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. | source_attribute | Yes | No | No |
+| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. | statistical_value | Yes | No | No |
+| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. | source_attribute | Yes | No | No |
+| `no_motor_car` | `bigint` | Count or numeric value for number motor car in the represented area. | statistical_value | Yes | No | No |
+| `t_1_motor_car` | `bigint` | Count or numeric value for t 1 motor car in the represented area. | statistical_value | Yes | No | No |
+| `t_2_motor_cars` | `bigint` | Count or numeric value for t 2 motor cars in the represented area. | statistical_value | Yes | No | No |
+| `t_3_motor_cars` | `bigint` | Count or numeric value for t 3 motor cars in the represented area. | statistical_value | Yes | No | No |
+| `t_4_or_more_motor_cars` | `bigint` | Count or numeric value for t 4 or more motor cars in the represented area. | statistical_value | Yes | No | No |
+| `not_stated` | `bigint` | Count or numeric value for not stated in the represented area. | statistical_value | Yes | No | No |
+| `total` | `bigint` | Count or numeric value for total in the represented area. | statistical_value | Yes | No | No |
+| `broadband` | `bigint` | Count or numeric value for broadband in the represented area. | statistical_value | Yes | No | No |
+| `other_internet_connection` | `bigint` | Count or numeric value for other internet connection in the represented area. | statistical_value | Yes | No | No |
+| `no_internet_connection` | `bigint` | Count or numeric value for number internet connection in the represented area. | statistical_value | Yes | No | No |
+| `type_of_internet_connection_not_stated` | `bigint` | Count or numeric value for type of internet connection not stated in the represented area. | statistical_value | Yes | No | No |
+| `all_internet_connections` | `bigint` | Count or numeric value for all internet connections in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

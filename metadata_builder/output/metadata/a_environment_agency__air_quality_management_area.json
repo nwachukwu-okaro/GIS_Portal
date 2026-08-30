@@ -3,8 +3,8 @@
   "identifier": "a_environment_agency/air_quality_management_area",
   "schema": "a_environment_agency",
   "table": "air_quality_management_area",
-  "title": "Air Quality Management Area",
-  "description": "version: 20251122\nSource: https://www.planning.data.gov.uk/dataset/air-quality-management-area\n\nAttribution: © Crown copyright and database rights 2025 licenced under Defra's Public Sector Mapping Agreement with Ordnance Survey (licence No. 100022861)",
+  "title": "Air Quality Management Areas",
+  "description": "Boundaries of Air Quality Management Areas declared by UK local authorities where air-quality objectives are unlikely to be met.",
   "feature_concept": "air_quality_management_area",
   "synonyms": [],
   "publisher": {
@@ -56,8 +56,8 @@
     {
       "name": "dataset",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Machine-readable name of the source dataset.",
+      "semantic_role": "dataset_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -80,8 +80,8 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "end_date",
@@ -116,8 +116,8 @@
     {
       "name": "entity",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Unique identifier assigned to the published geographic entity.",
+      "semantic_role": "entity_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -144,8 +144,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "entry_date",
@@ -184,7 +184,7 @@
     {
       "name": "name",
       "data_type": "varchar",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -218,8 +218,8 @@
     {
       "name": "organisation_entity",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Identifier of the organisation responsible for the entity record.",
+      "semantic_role": "responsible_organisation_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -242,14 +242,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "prefix",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Dataset prefix used to construct or classify the entity identifier.",
+      "semantic_role": "dataset_prefix",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -272,14 +272,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "quality",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Source quality classification recorded for the geographic entity.",
+      "semantic_role": "data_quality_class",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -302,14 +302,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "reference",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher reference number for the Air Quality Management Area.",
+      "semantic_role": "aqma_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -336,8 +336,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "start_date",
@@ -372,8 +372,8 @@
     {
       "name": "typology",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Entity type classification, such as geography.",
+      "semantic_role": "entity_type",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -396,14 +396,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "documentation_url",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "URL of the official detailed record for the Air Quality Management Area.",
+      "semantic_role": "source_record_url",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -430,14 +430,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "notes",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Related local-authority geographic code recorded against the area.",
+      "semantic_role": "local_authority_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -464,14 +464,14 @@
         "estimated_distinct": -0.41967872,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "aqma_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal primary-key value for the imported Air Quality Management Area.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -492,8 +492,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -592,17 +592,19 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
       "Schema default only; verify dataset-specific restrictions and third-party rights."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.687945+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.687945+00:00",
+    "curated_at": "2026-08-30T20:14:25.853154+00:00"
+  },
+  "column_count": 15
 }

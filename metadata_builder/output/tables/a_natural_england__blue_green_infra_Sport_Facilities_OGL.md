@@ -5,11 +5,15 @@
 - **Identifier:** `a_natural_england/blue_green_infra_Sport_Facilities_OGL`
 - **Source organisation:** Natural England
 - **Source:** https://naturalengland-defra.opendata.arcgis.com/
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-6.321213, 49.913103, 1.757088, 55.787087]`
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_Sport_Facilities_OGL`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:27700
 - **Rows:** 44114
+- **Columns:** 16
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,14 +24,14 @@ Blue Green Infra Sport Facilities Ogl is an authoritative dataset published by N
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `objectid` | `integer` | Source-system object identifier. | identifier | Yes | No | No |
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
 | `site_name` | `varchar(254)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `post_code` | `varchar(254)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `ownership` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `management` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `facility_type` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `access_group` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `access_type` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `ownership` | `varchar(254)` | Publisher-supplied ownership for the represented feature or record. | source_attribute | Yes | No | No |
+| `management` | `varchar(254)` | Publisher-supplied management for the represented feature or record. | source_attribute | Yes | No | No |
+| `facility_type` | `varchar(255)` | Publisher-supplied facility type for the represented feature or record. | source_attribute | Yes | No | No |
+| `access_group` | `varchar(255)` | Publisher-supplied access group for the represented feature or record. | source_attribute | Yes | No | No |
+| `access_type` | `varchar(255)` | Publisher-supplied access type for the represented feature or record. | source_attribute | Yes | No | No |
 | `lsoa_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `msoa_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `local_authority_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |

@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/census2021_ts055_lsoa`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts055_lsoa`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 35672
+- **Columns:** 13
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,19 +23,19 @@ Census2021 Ts055 Lsoa is an authoritative dataset published by Office for Nation
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `total_all_usual_residents` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `armed_forces_base_address` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `another_address_when_working_away_from_home` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `holiday_home` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `student_s_term_time_address` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `student_s_home_address` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `another_parent_or_guardian_s_address` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `partner_s_address` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `second_address_type_not_specified` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `total_all_usual_residents` | `bigint` | Count or numeric value for total all usual residents in the represented area. | statistical_value | Yes | No | No |
+| `armed_forces_base_address` | `bigint` | Count or numeric value for armed forces base address in the represented area. | statistical_value | Yes | No | No |
+| `another_address_when_working_away_from_home` | `bigint` | Count or numeric value for another address when working away from home in the represented area. | statistical_value | Yes | No | No |
+| `holiday_home` | `bigint` | Count or numeric value for holiday home in the represented area. | statistical_value | Yes | No | No |
+| `student_s_term_time_address` | `bigint` | Count or numeric value for student s term time address in the represented area. | statistical_value | Yes | No | No |
+| `student_s_home_address` | `bigint` | Count or numeric value for student s home address in the represented area. | statistical_value | Yes | No | No |
+| `another_parent_or_guardian_s_address` | `bigint` | Count or numeric value for another parent or guardian s address in the represented area. | statistical_value | Yes | No | No |
+| `partner_s_address` | `bigint` | Count or numeric value for partner s address in the represented area. | statistical_value | Yes | No | No |
+| `other` | `bigint` | Count or numeric value for other in the represented area. | statistical_value | Yes | No | No |
+| `second_address_type_not_specified` | `bigint` | Count or numeric value for second address type not specified in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

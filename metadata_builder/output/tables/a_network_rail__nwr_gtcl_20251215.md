@@ -5,11 +5,14 @@
 - **Identifier:** `a_network_rail/nwr_gtcl_20251215`
 - **Source organisation:** Network Rail
 - **Source:** https://www.networkrail.co.uk/who-we-are/transparency-and-ethics/transparency/open-data-feeds/
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-5.845925, 50.121776, 1.834690, 58.589994]`
 - **Schema:** `a_network_rail`
 - **Table:** `nwr_gtcl_20251215`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:27700
 - **Rows:** 48103
+- **Columns:** 8
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,13 +23,13 @@ Nwr Gtcl 20251215 is an authoritative dataset published by Network Rail. It repr
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `assetid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `elr` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `trid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `source` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `superceded` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geometry_updated` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `id` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `assetid` | `text` | Publisher-assigned assetid for the record. | source_identifier | Yes | No | No |
+| `elr` | `text` | Publisher-supplied elr for the represented feature or record. | source_attribute | Yes | No | No |
+| `trid` | `text` | Publisher-assigned trid for the record. | source_identifier | Yes | No | No |
+| `source` | `text` | Publisher-supplied source for the represented feature or record. | source_attribute | Yes | No | No |
+| `superceded` | `text` | Publisher-supplied superceded for the represented feature or record. | source_attribute | Yes | No | No |
+| `geometry_updated` | `text` | Publisher-supplied geometry updated for the represented feature or record. | source_attribute | Yes | No | No |
+| `id` | `bigint` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

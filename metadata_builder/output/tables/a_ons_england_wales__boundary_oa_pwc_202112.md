@@ -5,11 +5,15 @@
 - **Identifier:** `a_ons_england_wales/boundary_oa_pwc_202112`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
+- **WGS84 extent:** `[-6.352766, 49.913347, 1.755878, 55.786288]`
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_oa_pwc_202112`
 - **Geometry:** GEOMETRY
 - **CRS:** EPSG:27700
 - **Rows:** 188880
+- **Columns:** 5
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,10 +24,10 @@ Boundary Oa Pwc 202112 is an authoritative dataset published by Office for Natio
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `oa21cd` | `varchar(10)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar(38)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

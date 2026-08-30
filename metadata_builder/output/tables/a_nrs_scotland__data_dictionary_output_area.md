@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/data_dictionary_output_area`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `data_dictionary_output_area`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 2162
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,12 +22,12 @@ Data Dictionary Output Area is an authoritative dataset published by National Re
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `theme` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `theme` | `text` | Publisher-supplied theme for the represented feature or record. | source_attribute | Yes | No | No |
 | `table_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `source_file` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `original_label` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `source_file` | `text` | Publisher-supplied source file for the represented feature or record. | source_attribute | Yes | No | No |
+| `original_label` | `text` | Publisher-supplied original label for the represented feature or record. | source_attribute | Yes | No | No |
 | `processed_column_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `output_file` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `output_file` | `text` | Publisher-supplied output file for the represented feature or record. | source_attribute | Yes | No | No |
 
 ## Supported operations
 

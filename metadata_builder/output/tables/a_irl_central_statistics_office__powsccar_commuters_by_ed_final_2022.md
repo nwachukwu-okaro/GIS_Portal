@@ -5,11 +5,13 @@
 - **Identifier:** `a_irl_central_statistics_office/powsccar_commuters_by_ed_final_2022`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
 - **Schema:** `a_irl_central_statistics_office`
 - **Table:** `powsccar_commuters_by_ed_final_2022`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 339607
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description

@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_meath_cc/land_use_zoning_objective`
 - **Source organisation:** Meath County Council
 - **Source:** https://data.gov.ie/organization/meath-county-council
+- **Geographic coverage:** County Meath
+- **WGS84 extent:** `[-7.343668, 53.381919, -6.212613, 53.917668]`
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `land_use_zoning_objective`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 2201
+- **Columns:** 15
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,20 +23,20 @@ Land Use Zoning Objective is an authoritative dataset published by Meath County 
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `luzo_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `guid` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `luzo_pk` | `integer` | Count or numeric value for luzo pk in the represented area. | statistical_value | Yes | No | No |
+| `guid` | `double precision` | Count or numeric value for guid in the represented area. | statistical_value | Yes | No | No |
 | `site_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `zoning_code` | `varchar(6)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `zoning_description` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `zoning_objective` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `area_acres` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `area_hectares` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `residential` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `settlement` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `settlement_01` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `zoning_description` | `varchar(100)` | Publisher-supplied zoning description for the represented feature or record. | source_attribute | Yes | No | No |
+| `zoning_objective` | `varchar(254)` | Publisher-supplied zoning objective for the represented feature or record. | source_attribute | Yes | No | No |
+| `area_acres` | `real` | Numeric area acres value recorded for the feature. | measure | Yes | No | No |
+| `area_hectares` | `real` | Numeric area hectares value recorded for the feature. | measure | Yes | No | No |
+| `residential` | `varchar(100)` | Publisher-supplied residential for the represented feature or record. | source_attribute | Yes | No | No |
+| `settlement` | `double precision` | Count or numeric value for settlement in the represented area. | statistical_value | Yes | No | No |
+| `settlement_01` | `varchar(100)` | Publisher-supplied settlement 01 for the represented feature or record. | source_attribute | Yes | No | No |
 | `plan_name` | `varchar(120)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `lifetime` | `varchar(25)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `more_info` | `varchar(250)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `lifetime` | `varchar(25)` | Publisher-supplied lifetime for the represented feature or record. | source_attribute | Yes | No | No |
+| `more_info` | `varchar(250)` | Publisher-supplied more info for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

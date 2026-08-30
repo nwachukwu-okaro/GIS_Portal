@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/uv901_uk_armed_forces_veterans_oa`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv901_uk_armed_forces_veterans_oa`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 46368
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +23,9 @@ Uv901 UK Armed Forces Veterans Oa is an authoritative dataset published by Natio
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `all_people_aged_16_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `uk_armed_forces_veteran` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_a_uk_armed_forces_veteran` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_aged_16_and_over` | `double precision` | Count or numeric value for all people aged 16 and over in the represented area. | statistical_value | Yes | No | No |
+| `uk_armed_forces_veteran` | `double precision` | Count or numeric value for uk armed forces veteran in the represented area. | statistical_value | Yes | No | No |
+| `not_a_uk_armed_forces_veteran` | `double precision` | Count or numeric value for not a uk armed forces veteran in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

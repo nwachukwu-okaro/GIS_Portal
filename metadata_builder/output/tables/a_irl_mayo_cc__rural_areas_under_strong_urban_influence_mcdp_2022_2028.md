@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_mayo_cc/rural_areas_under_strong_urban_influence_mcdp_2022_2028`
 - **Source organisation:** Mayo County Council
 - **Source:** https://data.gov.ie/organization/mayo-county-council
+- **Geographic coverage:** County Mayo
+- **WGS84 extent:** `[-9.891384, 53.602042, -8.743192, 54.162191]`
 - **Schema:** `a_irl_mayo_cc`
 - **Table:** `rural_areas_under_strong_urban_influence_mcdp_2022_2028`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:3857
 - **Rows:** 6
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,7 +25,7 @@ Rural Areas Under Strong Urban Influence Mcdp 2022 2028 is an authoritative data
 |---|---|---|---|---|---|---|
 | `field1` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `object_id` | `integer` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `rasui_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `rasui_pk` | `integer` | Count or numeric value for rasui pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

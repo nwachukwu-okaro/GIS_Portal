@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_environmental_protection_agency/licensed_facilities_ipc_26052025`
 - **Source organisation:** Environmental Protection Agency Ireland
 - **Source:** https://gis.epa.ie/GetData/Download
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.239738, 51.688928, -6.111532, 55.064460]`
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `licensed_facilities_ipc_26052025`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:29903
 - **Rows:** 166
+- **Columns:** 14
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,18 +24,18 @@ Licensed Facilities Ipc 26052025 is an authoritative dataset published by Enviro
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `registration_code` | `varchar(50)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `name` | `varchar(250)` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `date_from` | `date` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sub_category` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `category` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `licence_status_type` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `active_licence_number` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `major_class_of_activity` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `name` | `varchar(250)` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `date_from` | `date` | Publisher-supplied date from for the represented feature or record. | source_attribute | Yes | No | No |
+| `sub_category` | `varchar(100)` | Publisher-supplied sub category for the represented feature or record. | source_attribute | Yes | No | No |
+| `category` | `varchar(50)` | Publisher-supplied category for the represented feature or record. | source_attribute | Yes | No | No |
+| `licence_status_type` | `varchar(100)` | Publisher-supplied licence status type for the represented feature or record. | source_attribute | Yes | No | No |
+| `active_licence_number` | `varchar(50)` | Publisher-supplied active licence number for the represented feature or record. | source_attribute | Yes | No | No |
+| `major_class_of_activity` | `varchar(50)` | Publisher-supplied major class of activity for the represented feature or record. | source_attribute | Yes | No | No |
 | `licence_type_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `address` | `varchar(250)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `easting` | `double precision` | Easting coordinate in the dataset coordinate reference system. | x_coordinate | Yes | No | No |
-| `northing` | `double precision` | Northing coordinate in the dataset coordinate reference system. | y_coordinate | Yes | No | No |
-| `lfipc_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `address` | `varchar(250)` | Publisher-supplied address for the represented feature or record. | source_attribute | Yes | No | No |
+| `easting` | `double precision` | Easting coordinate in metres in the dataset's projected coordinate reference system. | x_coordinate | Yes | No | No |
+| `northing` | `double precision` | Northing coordinate in metres in the dataset's projected coordinate reference system. | y_coordinate | Yes | No | No |
+| `lfipc_pk` | `integer` | Count or numeric value for lfipc pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

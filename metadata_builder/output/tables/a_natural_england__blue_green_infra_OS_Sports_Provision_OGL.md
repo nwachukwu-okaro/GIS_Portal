@@ -5,11 +5,15 @@
 - **Identifier:** `a_natural_england/blue_green_infra_OS_Sports_Provision_OGL`
 - **Source organisation:** Natural England
 - **Source:** https://naturalengland-defra.opendata.arcgis.com/
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-6.333381, 49.912104, 1.758236, 55.788363]`
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_OS_Sports_Provision_OGL`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 74573
+- **Columns:** 16
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,21 +24,21 @@ Blue Green Infra OS Sports Provision Ogl is an authoritative dataset published b
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `objectid` | `integer` | Source-system object identifier. | identifier | Yes | No | No |
-| `dataset` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `accessible` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `angst` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `naturalness` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `typologytitle` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `license` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `greenspacetopology` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `habitat` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `designation` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `attribute` | `varchar(8000)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `typologycode` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `orig_area` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `perc_manmade` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `vxcount` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
+| `dataset` | `varchar(255)` | Publisher-supplied dataset for the represented feature or record. | source_attribute | Yes | No | No |
+| `accessible` | `varchar(255)` | Publisher-supplied accessible for the represented feature or record. | source_attribute | Yes | No | No |
+| `angst` | `varchar(255)` | Publisher-supplied angst for the represented feature or record. | source_attribute | Yes | No | No |
+| `naturalness` | `integer` | Count or numeric value for naturalness in the represented area. | statistical_value | Yes | No | No |
+| `typologytitle` | `varchar(255)` | Publisher-supplied typologytitle for the represented feature or record. | source_attribute | Yes | No | No |
+| `license` | `varchar(255)` | Publisher-supplied license for the represented feature or record. | source_attribute | Yes | No | No |
+| `greenspacetopology` | `integer` | Count or numeric value for greenspacetopology in the represented area. | statistical_value | Yes | No | No |
+| `habitat` | `integer` | Count or numeric value for habitat in the represented area. | statistical_value | Yes | No | No |
+| `designation` | `integer` | Count or numeric value for designation in the represented area. | statistical_value | Yes | No | No |
+| `attribute` | `varchar(8000)` | Publisher-supplied attribute for the represented feature or record. | source_attribute | Yes | No | No |
+| `typologycode` | `varchar(255)` | Publisher-assigned typologycode for the record. | source_identifier | Yes | No | No |
+| `orig_area` | `double precision` | Numeric orig area value recorded for the feature. | measure | Yes | No | No |
+| `perc_manmade` | `double precision` | Count or numeric value for perc manmade in the represented area. | statistical_value | Yes | No | No |
+| `vxcount` | `integer` | Count or numeric value for vxcount in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

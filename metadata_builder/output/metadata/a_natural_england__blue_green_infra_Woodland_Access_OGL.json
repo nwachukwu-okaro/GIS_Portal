@@ -55,7 +55,7 @@
     {
       "name": "objectid",
       "data_type": "integer",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -83,8 +83,8 @@
     {
       "name": "accesslevel",
       "data_type": "varchar(255)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Publisher-supplied accesslevel for the represented feature or record.",
+      "semantic_role": "source_attribute",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -109,13 +109,13 @@
         "estimated_distinct": 3.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "area_ha",
       "data_type": "double precision",
-      "description": "Area of the feature in hectares.",
+      "description": "Area enclosed by the feature, measured in hectares.",
       "semantic_role": "area",
       "filterable": true,
       "searchable": false,
@@ -233,6 +233,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.123531+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:56.123531+00:00",
+    "curated_at": "2026-08-30T20:16:51.575414+00:00"
+  },
+  "column_count": 4
 }

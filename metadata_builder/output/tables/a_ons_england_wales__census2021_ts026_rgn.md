@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/census2021_ts026_rgn`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts026_rgn`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 10
+- **Columns:** 9
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,15 +23,15 @@ Census2021 Ts026 Rgn is an authoritative dataset published by Office for Nationa
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `total_all_households` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `one_person_household` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_household_members_have_the_same_main_language` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `main_language_differs_between_generations_but_not_within_partne` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `main_language_differs_within_partnerships` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `any_other_combination_of_multiple_main_languages` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. | statistical_value | Yes | No | No |
+| `one_person_household` | `bigint` | Count or numeric value for one person household in the represented area. | statistical_value | Yes | No | No |
+| `all_household_members_have_the_same_main_language` | `bigint` | Count or numeric value for all household members have the same main language in the represented area. | statistical_value | Yes | No | No |
+| `main_language_differs_between_generations_but_not_within_partne` | `bigint` | Count or numeric value for main language differs between generations but not within partne in the represented area. | statistical_value | Yes | No | No |
+| `main_language_differs_within_partnerships` | `bigint` | Count or numeric value for main language differs within partnerships in the represented area. | statistical_value | Yes | No | No |
+| `any_other_combination_of_multiple_main_languages` | `bigint` | Count or numeric value for any other combination of multiple main languages in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

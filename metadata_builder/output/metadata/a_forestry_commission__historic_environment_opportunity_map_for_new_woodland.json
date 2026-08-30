@@ -55,7 +55,7 @@
     {
       "name": "objectid",
       "data_type": "integer",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -83,8 +83,8 @@
     {
       "name": "opportunit",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Suitability class for woodland creation based on historic-environment constraints, such as Favourable, Neutral or Unsuitable.",
+      "semantic_role": "woodland_opportunity_class",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -111,13 +111,13 @@
         "estimated_distinct": 5.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "area_ha",
       "data_type": "double precision",
-      "description": "Area of the feature in hectares.",
+      "description": "Area enclosed by the feature, measured in hectares.",
       "semantic_role": "area",
       "filterable": true,
       "searchable": false,
@@ -145,8 +145,8 @@
     {
       "name": "fcid",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Forestry Commission identifier assigned to the mapped opportunity feature.",
+      "semantic_role": "feature_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -167,8 +167,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -264,6 +264,9 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.692906+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.692906+00:00",
+    "curated_at": "2026-08-30T20:15:12.594665+00:00"
+  },
+  "local_dataset_version": "20250408 (8 April 2025)",
+  "column_count": 5
 }

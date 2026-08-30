@@ -5,11 +5,13 @@
 - **Identifier:** `a_ireland_cso/boundary_census_commuting_working_fro_home_childcare_small_area`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_commuting_working_fro_home_childcare_small_area`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 0
+- **Columns:** 2
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,7 +22,7 @@ Boundary Census Commuting Working Fro Home Childcare Small Area is an authoritat
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `objectid` | `bigint` | Source-system object identifier. | identifier | Yes | No | No |
+| `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
 | `shape` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

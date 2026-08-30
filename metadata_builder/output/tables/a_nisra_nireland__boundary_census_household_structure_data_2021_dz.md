@@ -5,11 +5,14 @@
 - **Identifier:** `a_nisra_nireland/boundary_census_household_structure_data_2021_dz`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
+- **WGS84 extent:** `[-8.177484, 54.022725, -5.432790, 55.312985]`
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_household_structure_data_2021_dz`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:29902
 - **Rows:** 3780
+- **Columns:** 15
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,20 +23,20 @@ Boundary Census Household Structure Data 2021 Dz is an authoritative dataset pub
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `population` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_composition_one_person_household` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_composition_other_household_types` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_composition_single_family_all_pension_age_and_over` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_composition_single_family_cohabiting_couple_family` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_composition_single_family_lone_parent_family` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `household_composition_single_family_married_or_civil_partnershi` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `number_of_dependent_children_no_dependent_children` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `number_of_dependent_children_one` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `number_of_dependent_children_three_or_more` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `number_of_dependent_children_two` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `population` | `text` | Publisher-supplied population for the represented feature or record. | source_attribute | Yes | No | No |
+| `household_composition_one_person_household` | `bigint` | Publisher-supplied household composition one person household for the represented feature or record. | source_attribute | Yes | No | No |
+| `household_composition_other_household_types` | `bigint` | Count or numeric value for household composition other household types in the represented area. | statistical_value | Yes | No | No |
+| `household_composition_single_family_all_pension_age_and_over` | `bigint` | Count or numeric value for household composition single family all pension age and over in the represented area. | statistical_value | Yes | No | No |
+| `household_composition_single_family_cohabiting_couple_family` | `bigint` | Publisher-supplied household composition single family cohabiting couple family for the represented feature or record. | source_attribute | Yes | No | No |
+| `household_composition_single_family_lone_parent_family` | `bigint` | Publisher-supplied household composition single family lone parent family for the represented feature or record. | source_attribute | Yes | No | No |
+| `household_composition_single_family_married_or_civil_partnershi` | `bigint` | Publisher-supplied household composition single family married or civil partnershi for the represented feature or record. | source_attribute | Yes | No | No |
+| `number_of_dependent_children_no_dependent_children` | `bigint` | Count or numeric value for number of dependent children number dependent children in the represented area. | statistical_value | Yes | No | No |
+| `number_of_dependent_children_one` | `bigint` | Count or numeric value for number of dependent children one in the represented area. | statistical_value | Yes | No | No |
+| `number_of_dependent_children_three_or_more` | `bigint` | Count or numeric value for number of dependent children three or more in the represented area. | statistical_value | Yes | No | No |
+| `number_of_dependent_children_two` | `bigint` | Count or numeric value for number of dependent children two in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

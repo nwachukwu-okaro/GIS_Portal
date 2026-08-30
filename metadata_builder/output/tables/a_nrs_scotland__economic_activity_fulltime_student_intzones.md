@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/economic_activity_fulltime_student_intzones`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `economic_activity_fulltime_student_intzones`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 1284
+- **Columns:** 14
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,20 +22,20 @@ Economic Activity Fulltime Student Intzones is an authoritative dataset publishe
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_2` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_3` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_4` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_5` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_6` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_7` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_8` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_9` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_10` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_11` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_12` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_13` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unnamed_14` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `unnamed_2` | `bigint` | Count or numeric value for unnamed 2 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_3` | `bigint` | Count or numeric value for unnamed 3 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_4` | `bigint` | Count or numeric value for unnamed 4 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_5` | `bigint` | Count or numeric value for unnamed 5 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_6` | `bigint` | Count or numeric value for unnamed 6 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_7` | `bigint` | Count or numeric value for unnamed 7 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_8` | `bigint` | Count or numeric value for unnamed 8 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_9` | `bigint` | Count or numeric value for unnamed 9 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_10` | `bigint` | Count or numeric value for unnamed 10 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_11` | `bigint` | Count or numeric value for unnamed 11 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_12` | `bigint` | Count or numeric value for unnamed 12 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_13` | `bigint` | Count or numeric value for unnamed 13 in the represented area. | statistical_value | Yes | No | No |
+| `unnamed_14` | `bigint` | Count or numeric value for unnamed 14 in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

@@ -4,9 +4,15 @@
   "schema": "a_department_for_education",
   "table": "education_establishments",
   "title": "Education Establishments",
-  "description": "Version: 20251203\nSource: https://get-information-schools.service.gov.uk/Downloads\n\nAttribution: Not informed in data source.",
-  "feature_concept": "education_establishments",
-  "synonyms": [],
+  "description": "Locations and administrative details of education establishments from the Department for Education's Get Information about Schools service, including identifiers, status dates, pupil statistics, addresses, leadership, inspection links and specialist provision.",
+  "feature_concept": "education_establishment",
+  "synonyms": [
+    "schools",
+    "colleges",
+    "education providers",
+    "Get Information about Schools",
+    "GIAS"
+  ],
   "publisher": {
     "organisation": "Department for Education",
     "product": null,
@@ -46,12 +52,12 @@
     {
       "name": "urn",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Unique Reference Number assigned by the Department for Education to the establishment.",
+      "semantic_role": "education_establishment_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "DfE_URN",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -68,8 +74,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "la_code",
@@ -136,8 +142,8 @@
     {
       "name": "establishmentnumber",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "DfE establishment number used with the local-authority code to identify a school.",
+      "semantic_role": "establishment_number",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -158,16 +164,16 @@
         "estimated_distinct": 3429.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "establishmentname",
       "data_type": "varchar(96)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Official name of the education establishment.",
+      "semantic_role": "feature_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -192,8 +198,8 @@
         "estimated_distinct": -0.7506136,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "typeofestablishment_code",
@@ -445,8 +451,8 @@
     {
       "name": "opendate",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the establishment opened in its current registered form.",
+      "semantic_role": "opening_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -473,8 +479,8 @@
         "estimated_distinct": 2334.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "reasonestablishmentclosed_code",
@@ -541,8 +547,8 @@
     {
       "name": "closedate",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the establishment closed; empty for establishments not recorded as closed.",
+      "semantic_role": "closure_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -569,8 +575,8 @@
         "estimated_distinct": 1865.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "phaseofeducation_code",
@@ -637,8 +643,8 @@
     {
       "name": "statutorylowage",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Lowest statutory age of pupils admitted by the establishment.",
+      "semantic_role": "minimum_pupil_age",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -659,14 +665,14 @@
         "estimated_distinct": 20.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "statutoryhighage",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Highest statutory age of pupils admitted by the establishment.",
+      "semantic_role": "maximum_pupil_age",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -687,8 +693,8 @@
         "estimated_distinct": 26.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "boarders_code",
@@ -1132,8 +1138,8 @@
     {
       "name": "schoolcapacity",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Recorded number of pupil places available at the establishment.",
+      "semantic_role": "pupil_capacity",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1154,8 +1160,8 @@
         "estimated_distinct": 1658.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "specialclasses_code",
@@ -1220,8 +1226,8 @@
     {
       "name": "censusdate",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "School census date to which pupil counts and related statistics apply.",
+      "semantic_role": "reference_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1248,14 +1254,14 @@
         "estimated_distinct": 9.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "numberofpupils",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Total pupils recorded on roll at the census date.",
+      "semantic_role": "pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1276,14 +1282,14 @@
         "estimated_distinct": 1685.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "numberofboys",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Number of boys recorded on roll at the census date.",
+      "semantic_role": "male_pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1304,14 +1310,14 @@
         "estimated_distinct": 1014.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "numberofgirls",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Number of girls recorded on roll at the census date.",
+      "semantic_role": "female_pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1332,14 +1338,14 @@
         "estimated_distinct": 1010.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "percentagefsm",
       "data_type": "real",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Percentage of pupils eligible for free school meals.",
+      "semantic_role": "free_school_meals_percentage",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1347,7 +1353,7 @@
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
-      "unit": null,
+      "unit": "percent",
       "related_column": null,
       "measure_concept": null,
       "population": null,
@@ -1360,8 +1366,8 @@
         "estimated_distinct": 804.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "trustschoolflag_code",
@@ -1656,12 +1662,12 @@
     {
       "name": "ukprn",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "UK Provider Reference Number assigned to the education provider.",
+      "semantic_role": "provider_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "UKPRN",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -1678,14 +1684,14 @@
         "estimated_distinct": -0.64091504,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "feheidentifier",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Identifier used for a further- or higher-education provider.",
+      "semantic_role": "further_higher_education_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1706,8 +1712,8 @@
         "estimated_distinct": 523.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "furthereducationtype_name",
@@ -1746,8 +1752,8 @@
     {
       "name": "lastchangeddate",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the establishment record was last changed.",
+      "semantic_role": "record_update_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1774,14 +1780,14 @@
         "estimated_distinct": 580.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "street",
       "data_type": "varchar(73)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Street component of the establishment's postal address.",
+      "semantic_role": "address_street",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1808,14 +1814,14 @@
         "estimated_distinct": -0.38594878,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "locality",
       "data_type": "varchar(53)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Locality component of the establishment's postal address.",
+      "semantic_role": "address_locality",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1842,14 +1848,14 @@
         "estimated_distinct": -0.17078923,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "address3",
       "data_type": "varchar(94)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Additional address line supplied for the establishment.",
+      "semantic_role": "address_line",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1876,14 +1882,14 @@
         "estimated_distinct": 2276.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "town",
       "data_type": "varchar(30)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Postal town or city of the establishment.",
+      "semantic_role": "address_town",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1910,8 +1916,8 @@
         "estimated_distinct": 1893.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "county_name",
@@ -1950,12 +1956,12 @@
     {
       "name": "postcode",
       "data_type": "varchar(8)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Postcode of the establishment's registered site.",
+      "semantic_role": "postcode",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "UK_POSTCODE",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -1978,14 +1984,14 @@
         "estimated_distinct": -0.55875134,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "schoolwebsite",
       "data_type": "varchar(123)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Website address published for the establishment.",
+      "semantic_role": "website_url",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2012,14 +2018,14 @@
         "estimated_distinct": -0.4650445,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "telephonenum",
       "data_type": "numeric",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Telephone number published for the establishment.",
+      "semantic_role": "telephone_number",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2040,8 +2046,8 @@
         "estimated_distinct": -0.5098558,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "headtitle_name",
@@ -2080,8 +2086,8 @@
     {
       "name": "headfirstname",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Given name of the recorded headteacher or establishment leader.",
+      "semantic_role": "headteacher_given_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2108,14 +2114,14 @@
         "estimated_distinct": 3049.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "headlastname",
       "data_type": "varchar(67)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Family name of the recorded headteacher or establishment leader.",
+      "semantic_role": "headteacher_family_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2142,14 +2148,14 @@
         "estimated_distinct": -0.20561053,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "headpreferredjobtitle",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Preferred job title of the recorded establishment leader.",
+      "semantic_role": "headteacher_job_title",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2176,8 +2182,8 @@
         "estimated_distinct": 272.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bsoinspectoratename_name",
@@ -2216,8 +2222,8 @@
     {
       "name": "inspectoratereport",
       "data_type": "varchar(215)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "URL of the establishment's published inspectorate report where available.",
+      "semantic_role": "inspection_report_url",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2244,14 +2250,14 @@
         "estimated_distinct": 331.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "dateoflastinspectionvisit",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date of the most recent recorded inspection visit.",
+      "semantic_role": "last_inspection_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2278,14 +2284,14 @@
         "estimated_distinct": 203.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nextinspectionvisit",
       "data_type": "varchar(1)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Source indicator for the next inspection visit where one is recorded.",
+      "semantic_role": "next_inspection_indicator",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2306,8 +2312,8 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "teenmoth_name",
@@ -2344,8 +2350,8 @@
     {
       "name": "teenmothplaces",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Number of places provided specifically for teenage mothers.",
+      "semantic_role": "teenage_mother_place_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2366,8 +2372,8 @@
         "estimated_distinct": 14.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "ccf_name",
@@ -2468,8 +2474,8 @@
     {
       "name": "placespru",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Number of places recorded for pupil referral unit provision.",
+      "semantic_role": "pru_place_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -2490,8 +2496,8 @@
         "estimated_distinct": 80.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "ftprov_name",
@@ -3057,8 +3063,8 @@
     {
       "name": "resourcedprovisiononroll",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Pupils on roll in designated resourced special-educational-needs provision.",
+      "semantic_role": "resourced_provision_pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3079,14 +3085,14 @@
         "estimated_distinct": 133.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "resourcedprovisioncapacity",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Recorded capacity of designated resourced special-educational-needs provision.",
+      "semantic_role": "resourced_provision_capacity",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3107,14 +3113,14 @@
         "estimated_distinct": 120.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "senunitonroll",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Pupils on roll in the establishment's special educational needs unit.",
+      "semantic_role": "sen_unit_pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3135,14 +3141,14 @@
         "estimated_distinct": 127.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "senunitcapacity",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Recorded pupil capacity of the special educational needs unit.",
+      "semantic_role": "sen_unit_capacity",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3163,8 +3169,8 @@
         "estimated_distinct": 107.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "gor_code",
@@ -3543,7 +3549,7 @@
     {
       "name": "easting",
       "data_type": "double precision",
-      "description": "Easting coordinate in the dataset coordinate reference system.",
+      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system.",
       "semantic_role": "x_coordinate",
       "filterable": true,
       "searchable": false,
@@ -3571,7 +3577,7 @@
     {
       "name": "northing",
       "data_type": "double precision",
-      "description": "Northing coordinate in the dataset coordinate reference system.",
+      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system.",
       "semantic_role": "y_coordinate",
       "filterable": true,
       "searchable": false,
@@ -3701,8 +3707,8 @@
     {
       "name": "senstat",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Pupils with a statement of SEN or an Education, Health and Care plan.",
+      "semantic_role": "statutory_sen_pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3723,14 +3729,14 @@
         "estimated_distinct": 120.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "sennostat",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Pupils receiving SEN support without a statement or Education, Health and Care plan.",
+      "semantic_role": "nonstatutory_sen_pupil_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3751,8 +3757,8 @@
         "estimated_distinct": 232.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "boardingestablishment_name",
@@ -3789,10 +3795,10 @@
     {
       "name": "propsname",
       "data_type": "varchar(70)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name of the proprietor or owning body recorded for the establishment.",
+      "semantic_role": "proprietor_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -3817,8 +3823,8 @@
         "estimated_distinct": 2716.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "previousla_code",
@@ -3885,8 +3891,8 @@
     {
       "name": "previousestablishmentnumber",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Previous DfE establishment number associated with this record.",
+      "semantic_role": "previous_establishment_number",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -3907,8 +3913,8 @@
         "estimated_distinct": 2260.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "country_name",
@@ -3947,12 +3953,12 @@
     {
       "name": "uprn",
       "data_type": "numeric",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Unique Property Reference Number for the establishment site.",
+      "semantic_role": "property_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "UPRN",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -3969,16 +3975,16 @@
         "estimated_distinct": -0.4868653,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "sitename",
       "data_type": "varchar(39)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name used to identify the establishment site or premises.",
+      "semantic_role": "site_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -4001,8 +4007,8 @@
         "estimated_distinct": -3.3318996e-05,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "qabname_code",
@@ -4125,8 +4131,8 @@
     {
       "name": "qabreport",
       "data_type": "varchar(6)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Quality-assurance or inspection body associated with the published report, such as Ofsted.",
+      "semantic_role": "inspection_body",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -4149,18 +4155,18 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "chnumber",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Companies House number recorded for the proprietor or operating organisation.",
+      "semantic_role": "company_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "Companies_House",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -4177,8 +4183,8 @@
         "estimated_distinct": -0.00016665459,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "msoa_code",
@@ -4251,8 +4257,8 @@
     {
       "name": "fsm",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Number of pupils recorded as eligible for free school meals.",
+      "semantic_role": "free_school_meals_count",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -4273,14 +4279,14 @@
         "estimated_distinct": 612.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "accreditationexpirydate",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the establishment's recorded accreditation expires.",
+      "semantic_role": "accreditation_expiry_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -4307,8 +4313,8 @@
         "estimated_distinct": -0.00023335218,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     }
   ],
   "capabilities": {
@@ -4577,17 +4583,22 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
-      "Licence has not yet been verified."
+      "Pupil statistics relate to the stated census date and may not represent current enrolment.",
+      "Check GIAS for the latest establishment status and contact details."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.679819+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.679819+00:00",
+    "curated_at": "2026-08-30T20:12:31.555189+00:00"
+  },
+  "local_dataset_version": "20251203 (3 December 2025)",
+  "official_dataset_url": "https://get-information-schools.service.gov.uk/Downloads",
+  "column_count": 135
 }

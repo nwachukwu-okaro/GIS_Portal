@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_geological_survey/geoheritage_unaudited_sites`
 - **Source organisation:** Geological Survey Ireland
 - **Source:** https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.549891, 51.769375, -9.211730, 52.574371]`
 - **Schema:** `a_irl_geological_survey`
 - **Table:** `geoheritage_unaudited_sites`
 - **Geometry:** POLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 116
+- **Columns:** 14
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,17 +25,17 @@ Geoheritage Unaudited Sites is an authoritative dataset published by Geological 
 |---|---|---|---|---|---|---|
 | `gus_id` | `integer` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
 | `site_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `theme` | `varchar(10)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `county` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `features` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `townland` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `description` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `references` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `designat` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `x_ig` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `y_ig` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `x_itm` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `y_itm` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `theme` | `varchar(10)` | Publisher-supplied theme for the represented feature or record. | source_attribute | Yes | No | No |
+| `county` | `varchar(50)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
+| `features` | `varchar(255)` | Publisher-supplied features for the represented feature or record. | source_attribute | Yes | No | No |
+| `townland` | `varchar(255)` | Publisher-supplied townland for the represented feature or record. | source_attribute | Yes | No | No |
+| `description` | `varchar(255)` | Publisher-supplied description for the represented feature or record. | source_attribute | Yes | No | No |
+| `references` | `varchar(255)` | Publisher-supplied references for the represented feature or record. | source_attribute | Yes | No | No |
+| `designat` | `varchar(50)` | Publisher-supplied designat for the represented feature or record. | source_attribute | Yes | No | No |
+| `x_ig` | `integer` | Count or numeric value for x ig in the represented area. | statistical_value | Yes | No | No |
+| `y_ig` | `integer` | Count or numeric value for y ig in the represented area. | statistical_value | Yes | No | No |
+| `x_itm` | `double precision` | Count or numeric value for x itm in the represented area. | statistical_value | Yes | No | No |
+| `y_itm` | `double precision` | Count or numeric value for y itm in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

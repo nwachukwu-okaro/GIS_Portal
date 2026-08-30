@@ -3,8 +3,8 @@
   "identifier": "a_environment_agency/statutory_main_river",
   "schema": "a_environment_agency",
   "table": "statutory_main_river",
-  "title": "Statutory Main River",
-  "description": "Statutory Main River is an authoritative dataset published by Environment Agency. It represents statutory main river features using multicurve geometry.",
+  "title": "Statutory Main Rivers",
+  "description": "Line network of watercourses legally designated as Main River in England, where the Environment Agency has permissive powers for flood-risk management.",
   "feature_concept": "statutory_main_river",
   "synonyms": [],
   "publisher": {
@@ -112,8 +112,8 @@
     {
       "name": "status",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Legal or operational classification of the watercourse, such as Main River.",
+      "semantic_role": "river_status",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -136,14 +136,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "length_km",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Calculated length of the watercourse feature in kilometres.",
+      "semantic_role": "length",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -151,7 +151,7 @@
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
-      "unit": null,
+      "unit": "kilometres",
       "related_column": null,
       "measure_concept": null,
       "population": null,
@@ -164,14 +164,14 @@
         "estimated_distinct": -0.9903268,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "shape_length",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Source GIS length measurement for the line geometry in dataset units.",
+      "semantic_role": "geometry_length",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -192,8 +192,8 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     }
   ],
   "capabilities": {
@@ -247,17 +247,19 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
       "Schema default only; verify dataset-specific restrictions and third-party rights."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.691728+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.691728+00:00",
+    "curated_at": "2026-08-30T20:14:25.868026+00:00"
+  },
+  "column_count": 5
 }

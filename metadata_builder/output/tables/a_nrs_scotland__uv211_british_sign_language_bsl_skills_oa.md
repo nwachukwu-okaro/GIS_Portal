@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/uv211_british_sign_language_bsl_skills_oa`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv211_british_sign_language_bsl_skills_oa`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 46369
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +23,9 @@ Uv211 British Sign Language Bsl Skills Oa is an authoritative dataset published 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `all_people_aged_3_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bsl_user` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_a_bsl_user` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
+| `bsl_user` | `double precision` | Count or numeric value for bsl user in the represented area. | statistical_value | Yes | No | No |
+| `not_a_bsl_user` | `double precision` | Count or numeric value for not a bsl user in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

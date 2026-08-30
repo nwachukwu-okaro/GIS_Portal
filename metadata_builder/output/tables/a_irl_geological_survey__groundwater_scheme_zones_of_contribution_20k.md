@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_geological_survey/groundwater_scheme_zones_of_contribution_20k`
 - **Source organisation:** Geological Survey Ireland
 - **Source:** https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.046017, 51.626105, -6.017837, 55.327257]`
 - **Schema:** `a_irl_geological_survey`
 - **Table:** `groundwater_scheme_zones_of_contribution_20k`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 254
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,11 +23,11 @@ Groundwater Scheme Zones Of Contribution 20k is an authoritative dataset publish
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `gwsz_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `gwsz_pk` | `integer` | Count or numeric value for gwsz pk in the represented area. | statistical_value | Yes | No | No |
 | `gws_zoc_id` | `varchar(25)` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
 | `gws_name` | `varchar(50)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `year` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `consultant` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `year` | `integer` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `consultant` | `varchar(50)` | Publisher-supplied consultant for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

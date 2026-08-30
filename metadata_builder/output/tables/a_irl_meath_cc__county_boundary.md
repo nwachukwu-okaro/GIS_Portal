@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_meath_cc/county_boundary`
 - **Source organisation:** Meath County Council
 - **Source:** https://data.gov.ie/organization/meath-county-council
+- **Geographic coverage:** County Meath
+- **WGS84 extent:** `[-7.343668, 53.381919, -6.212613, 53.917668]`
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `county_boundary`
 - **Geometry:** POLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 1
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,8 +23,8 @@ County Boundary is an authoritative dataset published by Meath County Council. I
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `county` | `varchar(25)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `cb_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `county` | `varchar(25)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
+| `cb_pk` | `integer` | Count or numeric value for cb pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

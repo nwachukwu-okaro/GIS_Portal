@@ -3,10 +3,15 @@
   "identifier": "a_british_geological_survey/borehole_records",
   "schema": "a_british_geological_survey",
   "table": "borehole_records",
-  "title": "Borehole Records",
-  "description": "Contains British Geological Survey materials © UKRI 2026",
-  "feature_concept": "borehole_records",
-  "synonyms": [],
+  "title": "BGS Borehole Records",
+  "description": "Point index of BGS borehole records, providing registration references, National Grid locations, drilling length and date information, confidentiality status and links to available online records or logs.",
+  "feature_concept": "borehole_record",
+  "synonyms": [
+    "boreholes",
+    "ground investigation",
+    "drilling records",
+    "borehole logs"
+  ],
   "publisher": {
     "organisation": "British Geological Survey",
     "product": "BGS geological data",
@@ -55,8 +60,8 @@
     {
       "name": "qs",
       "data_type": "varchar(6)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "BGS quarter-sheet code locating the borehole record, such as HP60NW.",
+      "semantic_role": "map_sheet_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -83,14 +88,14 @@
         "estimated_distinct": 4962.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "numb",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Sequential borehole number within the BGS map-sheet reference.",
+      "semantic_role": "borehole_number",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -111,14 +116,14 @@
         "estimated_distinct": 5669.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bsuff",
       "data_type": "varchar(4)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Suffix used to distinguish boreholes sharing the same sheet and sequence number.",
+      "semantic_role": "borehole_suffix",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -145,14 +150,14 @@
         "estimated_distinct": 1420.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "regno",
       "data_type": "varchar(51)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "BGS borehole registration number, formed from the sheet code, number and optional suffix.",
+      "semantic_role": "borehole_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -179,14 +184,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "rt",
       "data_type": "varchar(2)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "BGS code identifying the borehole record type, such as BJ, OE or SE.",
+      "semantic_role": "borehole_record_type_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -211,14 +216,14 @@
         "estimated_distinct": 3.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "grid_refer",
       "data_type": "varchar(14)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Ordnance Survey National Grid Reference for the borehole location.",
+      "semantic_role": "geographic_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -245,14 +250,14 @@
         "estimated_distinct": -0.62411827,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "confidenti",
       "data_type": "varchar(1)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Y/N flag indicating whether access to the borehole record is confidential.",
+      "semantic_role": "confidentiality_flag",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -276,14 +281,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "strtheight",
       "data_type": "real",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Ground or start elevation of the borehole location relative to the recorded vertical datum.",
+      "semantic_role": "borehole_start_elevation",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -304,13 +309,13 @@
         "estimated_distinct": 10530.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "name",
       "data_type": "varchar(150)",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -344,8 +349,8 @@
     {
       "name": "length",
       "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Recorded drilled length or total depth of the borehole, normally in metres.",
+      "semantic_role": "borehole_length",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -366,8 +371,8 @@
         "estimated_distinct": 2617.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bgs_id",
@@ -400,8 +405,8 @@
     {
       "name": "date_known",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Recorded borehole date or year value where the drilling date is known.",
+      "semantic_role": "borehole_date_value",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -422,14 +427,14 @@
         "estimated_distinct": 207.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "date_k_typ",
       "data_type": "varchar(68)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Qualifier describing the borehole date, such as DRILLED DATE, CIRCA, PRE or NOT ENTERED.",
+      "semantic_role": "borehole_date_qualifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -456,14 +461,14 @@
         "estimated_distinct": 8.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "date_enter",
       "data_type": "date",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the borehole record was entered into the source database.",
+      "semantic_role": "record_entry_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -484,14 +489,14 @@
         "estimated_distinct": 4057.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "ags_log_ur",
       "data_type": "varchar(254)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "URL for viewing the corresponding BGS borehole record or AGS log online.",
+      "semantic_role": "source_record_url",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -518,8 +523,8 @@
         "estimated_distinct": -0.031199992,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -617,17 +622,21 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
-      "Verify the licence against the individual BGS product; not all BGS products are open."
+      "A map point identifies a borehole record location and does not describe subsurface conditions by itself.",
+      "Some records or logs may be confidential or unavailable online.",
+      "Verify reuse terms against the individual BGS product licence."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.677626+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.677626+00:00",
+    "curated_at": "2026-08-30T20:11:02.055023+00:00"
+  },
+  "column_count": 16
 }

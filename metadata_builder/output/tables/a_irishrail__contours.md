@@ -5,11 +5,14 @@
 - **Identifier:** `a_irishrail/contours`
 - **Source organisation:** Iarnrod Eireann / Irish Rail
 - **Source:** https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-9.706042, 51.846086, -6.034629, 54.274006]`
 - **Schema:** `a_irishrail`
 - **Table:** `contours`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:29903
 - **Rows:** 365055
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,8 +23,8 @@ Contours is an authoritative dataset published by Iarnrod Eireann / Irish Rail. 
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `contour_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `contour_type` | `varchar(5)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `contour_pk` | `integer` | Count or numeric value for contour pk in the represented area. | statistical_value | Yes | No | No |
+| `contour_type` | `varchar(5)` | Publisher-supplied contour type for the represented feature or record. | source_attribute | Yes | No | No |
 | `z` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 

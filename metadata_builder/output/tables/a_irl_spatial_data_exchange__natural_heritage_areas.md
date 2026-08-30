@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_spatial_data_exchange/natural_heritage_areas`
 - **Source organisation:** Government of Ireland
 - **Source:** https://data.gov.ie/
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.108587, 51.542751, -6.066586, 55.218897]`
 - **Schema:** `a_irl_spatial_data_exchange`
 - **Table:** `natural_heritage_areas`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 171
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,13 +25,13 @@ Natural Heritage Areas is an authoritative dataset published by Government of Ir
 |---|---|---|---|---|---|---|
 | `site_code` | `varchar(6)` | Code assigned by the source dataset. | code | Yes | No | No |
 | `site_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `county` | `varchar(2)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `version` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ha` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `source_crs` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `source_scale` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `url` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `nha_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `county` | `varchar(2)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
+| `version` | `double precision` | Count or numeric value for version in the represented area. | statistical_value | Yes | No | No |
+| `ha` | `double precision` | Count or numeric value for ha in the represented area. | statistical_value | Yes | No | No |
+| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. | source_attribute | Yes | No | No |
+| `source_scale` | `varchar(50)` | Publisher-supplied source scale for the represented feature or record. | source_attribute | Yes | No | No |
+| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. | source_attribute | Yes | No | No |
+| `nha_pk` | `integer` | Count or numeric value for nha pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

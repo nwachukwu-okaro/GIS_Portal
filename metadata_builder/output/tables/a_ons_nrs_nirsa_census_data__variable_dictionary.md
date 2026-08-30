@@ -5,11 +5,13 @@
 - **Identifier:** `a_ons_nrs_nirsa_census_data/variable_dictionary`
 - **Source organisation:** UK national statistical authorities
 - **Source:** https://www.ons.gov.uk/census
+- **Geographic coverage:** United Kingdom
 - **Schema:** `a_ons_nrs_nirsa_census_data`
 - **Table:** `variable_dictionary`
 - **Geometry:** GEOMETRY
 - **CRS:** Not applicable or unknown
 - **Rows:** 25
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,11 +22,11 @@ Variable Dictionary is an authoritative dataset published by UK national statist
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `table name` | `varchar(58)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `uk table id` | `varchar(5)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unit` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `population scope` | `varchar(285)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `notes` | `varchar(957)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `table name` | `varchar(58)` | Publisher-supplied table name for the represented feature or record. | source_attribute | Yes | No | No |
+| `uk table id` | `varchar(5)` | Publisher-assigned uk table identifier for the record. | source_identifier | Yes | No | No |
+| `unit` | `varchar(9)` | Publisher-supplied unit for the represented feature or record. | source_attribute | Yes | No | No |
+| `population scope` | `varchar(285)` | Publisher-supplied population scope for the represented feature or record. | source_attribute | Yes | No | No |
+| `notes` | `varchar(957)` | Publisher-supplied notes for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

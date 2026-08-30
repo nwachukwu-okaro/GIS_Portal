@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** Boundary-Line
 - **Source:** https://www.ordnancesurvey.co.uk/products/boundary-line
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-5.670302, 51.374542, -2.649864, 53.435798]`
 - **Schema:** `a_os_boundaryline`
 - **Table:** `community_ward`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 1698
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +25,9 @@ Community Ward is part of Boundary-Line, published by Ordnance Survey. It repres
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `Name` | `varchar(100)` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `Area_Description` | `varchar(35)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `Community` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `Name` | `varchar(100)` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `Area_Description` | `varchar(35)` | Publisher-supplied area description for the represented feature or record. | source_attribute | Yes | No | No |
+| `Community` | `varchar(100)` | Publisher-supplied community for the represented feature or record. | source_attribute | Yes | No | No |
 | `File_Name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |

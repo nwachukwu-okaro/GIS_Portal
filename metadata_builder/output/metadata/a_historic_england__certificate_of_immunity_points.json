@@ -3,10 +3,14 @@
   "identifier": "a_historic_england/certificate_of_immunity_points",
   "schema": "a_historic_england",
   "table": "certificate_of_immunity_points",
-  "title": "Certificate Of Immunity Points",
-  "description": "Version: 20251124\nSource: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=2\n\nAttribution: © Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year].",
-  "feature_concept": "certificate_of_immunity_points",
-  "synonyms": [],
+  "title": "Certificates of Immunity from Listing",
+  "description": "Point locations of buildings with a Certificate of Immunity from Listing published on the National Heritage List for England. A certificate confirms that the Secretary of State does not intend to list the building and normally prevents a Building Preservation Notice for five years.",
+  "feature_concept": "certificate_of_immunity",
+  "synonyms": [
+    "certificate of immunity",
+    "COI",
+    "listing immunity"
+  ],
   "publisher": {
     "organisation": "Historic England",
     "product": "National Heritage List for England spatial data",
@@ -83,7 +87,7 @@
     {
       "name": "name",
       "data_type": "varchar(1000)",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -117,8 +121,8 @@
     {
       "name": "coistart",
       "data_type": "timestamp",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the Certificate of Immunity took effect.",
+      "semantic_role": "certificate_start_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -139,14 +143,14 @@
         "estimated_distinct": -0.46411484,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "coiexpire",
       "data_type": "timestamp",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the Certificate of Immunity expires, normally five years after issue.",
+      "semantic_role": "certificate_expiry_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -167,8 +171,8 @@
         "estimated_distinct": -0.46411484,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "capturescale",
@@ -331,7 +335,7 @@
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -453,17 +457,35 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "source_verified",
     "warnings": [
-      "Verify against the individual Historic England download metadata."
+      "Check the official dataset before relying on whether a certificate remains current.",
+      "objectid may change when the dataset is republished."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.700534+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.700534+00:00",
+    "curated_at": "2026-08-30T20:00:42.753178+00:00"
+  },
+  "local_dataset_version": "20251124 (24 November 2025)",
+  "official_dataset_updated": "28 August 2026",
+  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=2",
+  "documentation_sources": [
+    {
+      "role": "documentation",
+      "title": "Historic England, Download Listing Data - GIS Shapefiles",
+      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
+    },
+    {
+      "role": "guidance",
+      "title": "Historic England, Building Preservation Notices and Certificates of Immunity",
+      "url": "https://historicengland.org.uk/listing/protect-historic-places/building-preservation-notices-and-certificates-of-immunity/"
+    }
+  ],
+  "column_count": 11
 }

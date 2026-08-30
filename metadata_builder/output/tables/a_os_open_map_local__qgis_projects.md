@@ -6,11 +6,14 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Map Local
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-map-local
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
 - **Schema:** `a_os_open_map_local`
 - **Table:** `qgis_projects`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 1
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +24,9 @@ Qgis Projects is part of OS Open Map Local, published by Ordnance Survey. It con
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `name` | `text` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `metadata` | `jsonb` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `content` | `bytea` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `name` | `text` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `metadata` | `jsonb` | Publisher-supplied metadata for the represented feature or record. | source_attribute | Yes | No | No |
+| `content` | `bytea` | Publisher-supplied content for the represented feature or record. | source_attribute | Yes | No | No |
 
 ## Supported operations
 

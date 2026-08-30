@@ -5,11 +5,15 @@
 - **Identifier:** `a_tfgm/cycle_hubs_2022`
 - **Source organisation:** Transport for Greater Manchester
 - **Source:** https://developer.tfgm.com/
+- **Local dataset version:** 20220903 (3 September 2022)
+- **Geographic coverage:** Greater Manchester
+- **WGS84 extent:** `[-2.518667, 53.377326, -2.093716, 53.616457]`
 - **Schema:** `a_tfgm`
 - **Table:** `cycle_hubs_2022`
 - **Geometry:** POINT
 - **CRS:** EPSG:27700
 - **Rows:** 20
+- **Columns:** 17
 - **Metadata status:** source_mapped
 
 ## Description
@@ -23,23 +27,23 @@ Attribution: Contains Transport for Greater Manchester data. Contains OS data ©
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `bigint` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `hub_name` | `varchar(30)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `easting` | `bigint` | Easting coordinate in the dataset coordinate reference system. | x_coordinate | Yes | No | No |
-| `northing` | `bigint` | Northing coordinate in the dataset coordinate reference system. | y_coordinate | Yes | No | No |
-| `capacity` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `open_mon_f` | `varchar(20)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `open_sat` | `varchar(20)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `open_sun` | `varchar(20)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lockers` | `varchar(4)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `showers` | `varchar(4)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `membership` | `varchar(10)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `descriptio` | `varchar(200)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `district` | `varchar(10)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hotlink` | `varchar(200)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `open` | `varchar(1)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `easting` | `bigint` | Easting coordinate in metres in the dataset's projected coordinate reference system. | x_coordinate | Yes | No | No |
+| `northing` | `bigint` | Northing coordinate in metres in the dataset's projected coordinate reference system. | y_coordinate | Yes | No | No |
+| `capacity` | `bigint` | Count or numeric value for capacity in the represented area. | statistical_value | Yes | No | No |
+| `open_mon_f` | `varchar(20)` | Publisher-supplied open mon female for the represented feature or record. | source_attribute | Yes | No | No |
+| `open_sat` | `varchar(20)` | Publisher-supplied open sat for the represented feature or record. | source_attribute | Yes | No | No |
+| `open_sun` | `varchar(20)` | Publisher-supplied open sun for the represented feature or record. | source_attribute | Yes | No | No |
+| `lockers` | `varchar(4)` | Publisher-supplied lockers for the represented feature or record. | source_attribute | Yes | No | No |
+| `showers` | `varchar(4)` | Publisher-supplied showers for the represented feature or record. | source_attribute | Yes | No | No |
+| `membership` | `varchar(10)` | Publisher-supplied membership for the represented feature or record. | source_attribute | Yes | No | No |
+| `descriptio` | `varchar(200)` | Publisher-supplied descriptio for the represented feature or record. | source_attribute | Yes | No | No |
+| `district` | `varchar(10)` | Publisher-supplied district for the represented feature or record. | source_attribute | Yes | No | No |
+| `hotlink` | `varchar(200)` | Publisher-supplied hotlink for the represented feature or record. | source_attribute | Yes | No | No |
+| `open` | `varchar(1)` | Publisher-supplied open for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `cycle_hubs_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `cycle_hubs_pk` | `integer` | Count or numeric value for cycle hubs pk in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

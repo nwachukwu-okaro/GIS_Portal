@@ -4,9 +4,13 @@
   "schema": "a_historic_england",
   "table": "scheduled_monuments",
   "title": "Scheduled Monuments",
-  "description": "Version: 20251124\nSource: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=6\n\nAttribution: © Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year].",
-  "feature_concept": "scheduled_monuments",
-  "synonyms": [],
+  "description": "Boundary polygons of nationally important archaeological sites scheduled under the Ancient Monuments and Archaeological Areas Act 1979 and recorded on the National Heritage List for England.",
+  "feature_concept": "scheduled_monument",
+  "synonyms": [
+    "scheduled monuments",
+    "protected archaeology",
+    "ancient monuments"
+  ],
   "publisher": {
     "organisation": "Historic England",
     "product": "National Heritage List for England spatial data",
@@ -83,7 +87,7 @@
     {
       "name": "name",
       "data_type": "varchar(1000)",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -117,8 +121,8 @@
     {
       "name": "scheddate",
       "data_type": "timestamp",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the monument was first scheduled.",
+      "semantic_role": "designation_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -139,8 +143,8 @@
         "estimated_distinct": -0.19991,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "amenddate",
@@ -359,7 +363,7 @@
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -484,17 +488,35 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "source_verified",
     "warnings": [
-      "Verify against the individual Historic England download metadata."
+      "This local snapshot predates the latest official dataset update.",
+      "Consult the official List entry for the legal designation description."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.708015+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.708015+00:00",
+    "curated_at": "2026-08-30T20:00:42.769730+00:00"
+  },
+  "local_dataset_version": "20251124 (24 November 2025)",
+  "official_dataset_updated": "28 August 2026",
+  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=6",
+  "documentation_sources": [
+    {
+      "role": "documentation",
+      "title": "Historic England, Download Listing Data - GIS Shapefiles",
+      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
+    },
+    {
+      "role": "guidance",
+      "title": "Historic England, Understanding List Entries",
+      "url": "https://historicengland.org.uk/listing/the-list/understanding-list-entries/"
+    }
+  ],
+  "column_count": 12
 }

@@ -55,8 +55,8 @@
     {
       "name": "ogc_fid",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal OGC feature identifier assigned during publication.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -77,8 +77,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "gml_id",
@@ -117,8 +117,8 @@
     {
       "name": "inspireid",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "INSPIRE identifier assigned to the cadastral parcel feature.",
+      "semantic_role": "inspire_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -139,14 +139,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "label",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Numeric label used to identify or display the cadastral parcel.",
+      "semantic_role": "parcel_label",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -167,14 +167,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nationalcadastralreference",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "National cadastral reference associated with the parcel polygon.",
+      "semantic_role": "cadastral_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -195,14 +195,14 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "validfrom",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date and time from which the cadastral feature is valid in the source dataset.",
+      "semantic_role": "valid_from_datetime",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -229,14 +229,14 @@
         "estimated_distinct": 67934.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "beginlifespanversion",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date and time when this version of the INSPIRE feature began its lifecycle.",
+      "semantic_role": "lifecycle_start_datetime",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -263,8 +263,8 @@
         "estimated_distinct": 146415.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "fid",
@@ -390,6 +390,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.711381+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.711381+00:00",
+    "curated_at": "2026-08-30T20:15:13.429457+00:00"
+  },
+  "column_count": 9
 }

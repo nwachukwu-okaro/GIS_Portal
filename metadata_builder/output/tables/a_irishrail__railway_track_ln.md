@@ -5,11 +5,14 @@
 - **Identifier:** `a_irishrail/railway_track_ln`
 - **Source organisation:** Iarnrod Eireann / Irish Rail
 - **Source:** https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-9.699184, 51.846274, -6.034981, 54.274002]`
 - **Schema:** `a_irishrail`
 - **Table:** `railway_track_ln`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:29903
 - **Rows:** 10891
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,8 +23,8 @@ Railway Track Ln is an authoritative dataset published by Iarnrod Eireann / Iris
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `railway_track_ln_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `route` | `varchar(200)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `railway_track_ln_pk` | `integer` | Count or numeric value for railway track ln pk in the represented area. | statistical_value | Yes | No | No |
+| `route` | `varchar(200)` | Publisher-supplied route for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -5,11 +5,14 @@
 - **Identifier:** `a_nrs_scotland/boundary_census_scotland_scotland_armed_forces_intzones`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
+- **WGS84 extent:** `[-8.650007, 54.633238, -0.724609, 60.860766]`
 - **Schema:** `a_nrs_scotland`
 - **Table:** `boundary_census_scotland_scotland_armed_forces_intzones`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 1280
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,9 +25,9 @@ Boundary Census Scotland Scotland Armed Forces Intzones is an authoritative data
 |---|---|---|---|---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
 | `geography_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `all_households` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hh_has_af_veteran` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hh_no_af_veteran` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_households` | `bigint` | Count or numeric value for all households in the represented area. | statistical_value | Yes | No | No |
+| `hh_has_af_veteran` | `bigint` | Count or numeric value for households has af veteran in the represented area. | statistical_value | Yes | No | No |
+| `hh_no_af_veteran` | `bigint` | Count or numeric value for households number af veteran in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

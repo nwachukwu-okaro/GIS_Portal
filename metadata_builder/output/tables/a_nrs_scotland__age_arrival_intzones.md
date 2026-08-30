@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/age_arrival_intzones`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `age_arrival_intzones`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 1284
+- **Columns:** 9
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,15 +22,15 @@ Age Arrival Intzones is an authoritative dataset published by National Records o
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `born_in_the_uk` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `col_0_15` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `col_16_24` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `col_25_34` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `col_35_49` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `col_50_64` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `col_65_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `all_people` | `double precision` | Count or numeric value for all people in the represented area. | statistical_value | Yes | No | No |
+| `born_in_the_uk` | `double precision` | Count or numeric value for born in the uk in the represented area. | statistical_value | Yes | No | No |
+| `col_0_15` | `double precision` | Count or numeric value for col 0 15 in the represented area. | statistical_value | Yes | No | No |
+| `col_16_24` | `double precision` | Count or numeric value for col 16 24 in the represented area. | statistical_value | Yes | No | No |
+| `col_25_34` | `double precision` | Count or numeric value for col 25 34 in the represented area. | statistical_value | Yes | No | No |
+| `col_35_49` | `double precision` | Count or numeric value for col 35 49 in the represented area. | statistical_value | Yes | No | No |
+| `col_50_64` | `double precision` | Count or numeric value for col 50 64 in the represented area. | statistical_value | Yes | No | No |
+| `col_65_and_over` | `double precision` | Count or numeric value for col 65 and over in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

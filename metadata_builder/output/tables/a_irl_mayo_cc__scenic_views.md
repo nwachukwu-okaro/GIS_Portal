@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_mayo_cc/scenic_views`
 - **Source organisation:** Mayo County Council
 - **Source:** https://data.gov.ie/organization/mayo-county-council
+- **Geographic coverage:** County Mayo
+- **WGS84 extent:** `[-10.184021, 53.564058, -8.868611, 54.313116]`
 - **Schema:** `a_irl_mayo_cc`
 - **Table:** `scenic_views`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:3857
 - **Rows:** 178
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,8 +24,8 @@ Scenic Views is an authoritative dataset published by Mayo County Council. It re
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `scenic_view` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sv_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `scenic_view` | `varchar` | Publisher-supplied scenic view for the represented feature or record. | source_attribute | Yes | No | No |
+| `sv_pk` | `integer` | Count or numeric value for sv pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -5,11 +5,14 @@
 - **Identifier:** `a_nrs_scotland/boundary_census_scotland_education_intzones`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
+- **WGS84 extent:** `[-8.650007, 54.633238, -0.724609, 60.860766]`
 - **Schema:** `a_nrs_scotland`
 - **Table:** `boundary_census_scotland_education_intzones`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 1280
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,13 +25,13 @@ Boundary Census Scotland Education Intzones is an authoritative dataset publishe
 |---|---|---|---|---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
 | `geography_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `all_people_16plus` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no_quals` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lower_school_quals` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `upper_school_quals` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `apprenticeship` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `fe_and_sub_degree_he_incl_hnc_hnd` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `degree_level_or_above` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_16plus` | `bigint` | Count or numeric value for all people 16plus in the represented area. | statistical_value | Yes | No | No |
+| `no_quals` | `bigint` | Count or numeric value for number quals in the represented area. | statistical_value | Yes | No | No |
+| `lower_school_quals` | `bigint` | Count or numeric value for lower school quals in the represented area. | statistical_value | Yes | No | No |
+| `upper_school_quals` | `bigint` | Count or numeric value for upper school quals in the represented area. | statistical_value | Yes | No | No |
+| `apprenticeship` | `bigint` | Count or numeric value for apprenticeship in the represented area. | statistical_value | Yes | No | No |
+| `fe_and_sub_degree_he_incl_hnc_hnd` | `bigint` | Count or numeric value for fe and sub degree he incl hnc hnd in the represented area. | statistical_value | Yes | No | No |
+| `degree_level_or_above` | `bigint` | Count or numeric value for degree level or above in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

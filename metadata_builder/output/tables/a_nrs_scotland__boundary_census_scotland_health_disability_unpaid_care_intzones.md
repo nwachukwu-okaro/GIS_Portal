@@ -5,11 +5,14 @@
 - **Identifier:** `a_nrs_scotland/boundary_census_scotland_health_disability_unpaid_care_intzones`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
+- **WGS84 extent:** `[-8.650007, 54.633238, -0.724609, 60.860766]`
 - **Schema:** `a_nrs_scotland`
 - **Table:** `boundary_census_scotland_health_disability_unpaid_care_intzones`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 1280
+- **Columns:** 28
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,31 +25,31 @@ Boundary Census Scotland Health Disability Unpaid Care Intzones is an authoritat
 |---|---|---|---|---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
 | `geography_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `general_health_all_people` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_good` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `good` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `fair` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bad` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `very_bad` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lt_disability_all_people` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `daily_activities_limited_a_lot` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `daily_activities_limited_a_little` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `daily_activities_not_limited` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lt_health_all_people` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hearing_impairment` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `vision_impairment` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `speech_impairment` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `learning_disability_or_difficulty` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `physical_disability` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `mental_health_condition` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `long_term_illness` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_people_3plus` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no_unpaid_care` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_unpaid_carers` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unpaid_care_1_19hrs_pw` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unpaid_care_20_34hrs_pw` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unpaid_care_35_49hrs_pw` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `unpaid_care_50plus_hrs_pw` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `general_health_all_people` | `bigint` | Count or numeric value for general health all people in the represented area. | statistical_value | Yes | No | No |
+| `very_good` | `bigint` | Count or numeric value for very good in the represented area. | statistical_value | Yes | No | No |
+| `good` | `bigint` | Count or numeric value for good in the represented area. | statistical_value | Yes | No | No |
+| `fair` | `bigint` | Count or numeric value for fair in the represented area. | statistical_value | Yes | No | No |
+| `bad` | `bigint` | Count or numeric value for bad in the represented area. | statistical_value | Yes | No | No |
+| `very_bad` | `bigint` | Count or numeric value for very bad in the represented area. | statistical_value | Yes | No | No |
+| `lt_disability_all_people` | `bigint` | Count or numeric value for lt disability all people in the represented area. | statistical_value | Yes | No | No |
+| `daily_activities_limited_a_lot` | `bigint` | Count or numeric value for daily activities limited a lot in the represented area. | statistical_value | Yes | No | No |
+| `daily_activities_limited_a_little` | `bigint` | Count or numeric value for daily activities limited a little in the represented area. | statistical_value | Yes | No | No |
+| `daily_activities_not_limited` | `bigint` | Count or numeric value for daily activities not limited in the represented area. | statistical_value | Yes | No | No |
+| `lt_health_all_people` | `bigint` | Count or numeric value for lt health all people in the represented area. | statistical_value | Yes | No | No |
+| `hearing_impairment` | `bigint` | Count or numeric value for hearing impairment in the represented area. | statistical_value | Yes | No | No |
+| `vision_impairment` | `bigint` | Count or numeric value for vision impairment in the represented area. | statistical_value | Yes | No | No |
+| `speech_impairment` | `bigint` | Count or numeric value for speech impairment in the represented area. | statistical_value | Yes | No | No |
+| `learning_disability_or_difficulty` | `bigint` | Count or numeric value for learning disability or difficulty in the represented area. | statistical_value | Yes | No | No |
+| `physical_disability` | `bigint` | Count or numeric value for physical disability in the represented area. | statistical_value | Yes | No | No |
+| `mental_health_condition` | `bigint` | Count or numeric value for mental health condition in the represented area. | statistical_value | Yes | No | No |
+| `long_term_illness` | `bigint` | Numeric long term illness value recorded for the feature. | measure | Yes | No | No |
+| `all_people_3plus` | `bigint` | Count or numeric value for all people 3plus in the represented area. | statistical_value | Yes | No | No |
+| `no_unpaid_care` | `bigint` | Count or numeric value for number unpaid care in the represented area. | statistical_value | Yes | No | No |
+| `all_unpaid_carers` | `bigint` | Count or numeric value for all unpaid carers in the represented area. | statistical_value | Yes | No | No |
+| `unpaid_care_1_19hrs_pw` | `bigint` | Count or numeric value for unpaid care 1 19hrs pw in the represented area. | statistical_value | Yes | No | No |
+| `unpaid_care_20_34hrs_pw` | `bigint` | Count or numeric value for unpaid care 20 34hrs pw in the represented area. | statistical_value | Yes | No | No |
+| `unpaid_care_35_49hrs_pw` | `bigint` | Count or numeric value for unpaid care 35 49hrs pw in the represented area. | statistical_value | Yes | No | No |
+| `unpaid_care_50plus_hrs_pw` | `bigint` | Count or numeric value for unpaid care 50plus hrs pw in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

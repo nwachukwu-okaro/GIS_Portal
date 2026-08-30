@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_meath_cc/protected_view_and_prospect`
 - **Source organisation:** Meath County Council
 - **Source:** https://data.gov.ie/organization/meath-county-council
+- **Geographic coverage:** County Meath
+- **WGS84 extent:** `[-6.960533, 53.396144, -6.229006, 53.853611]`
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `protected_view_and_prospect`
 - **Geometry:** POINT
 - **CRS:** EPSG:2157
 - **Rows:** 77
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,8 +23,8 @@ Protected View And Prospect is an authoritative dataset published by Meath Count
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `pvp_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `map_label` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `pvp_pk` | `integer` | Count or numeric value for pvp pk in the represented area. | statistical_value | Yes | No | No |
+| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

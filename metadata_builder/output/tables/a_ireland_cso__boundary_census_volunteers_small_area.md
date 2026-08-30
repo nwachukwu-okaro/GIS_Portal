@@ -5,11 +5,14 @@
 - **Identifier:** `a_ireland_cso/boundary_census_volunteers_small_area`
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-1.726726, 54.563349, 3.417194, 58.519873]`
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_volunteers_small_area`
 - **Geometry:** GEOMETRY
 - **CRS:** EPSG:27700
 - **Rows:** 18919
+- **Columns:** 7
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,12 +24,12 @@ Boundary Census Volunteers Small Area is an authoritative dataset published by C
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `guid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geogdesc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ur_category_desc` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `number_of_volunteers` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
+| `geogid` | `text` | Publisher-assigned geogid for the record. | source_identifier | Yes | No | No |
+| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. | source_attribute | Yes | No | No |
+| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. | statistical_value | Yes | No | No |
+| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. | source_attribute | Yes | No | No |
+| `number_of_volunteers` | `bigint` | Count or numeric value for number of volunteers in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

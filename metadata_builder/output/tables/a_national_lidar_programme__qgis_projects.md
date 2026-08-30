@@ -6,11 +6,13 @@
 - **Source organisation:** Environment Agency
 - **Product:** National LIDAR Programme
 - **Source:** https://www.data.gov.uk/dataset/f0db0249-f17b-4036-9e65-309148c97ce4/national-lidar-programme
+- **Geographic coverage:** England
 - **Schema:** `a_national_lidar_programme`
 - **Table:** `qgis_projects`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 1
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +23,9 @@ Qgis Projects is part of National LIDAR Programme, published by Environment Agen
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `name` | `text` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `metadata` | `jsonb` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `content` | `bytea` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `name` | `text` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `metadata` | `jsonb` | Publisher-supplied metadata for the represented feature or record. | source_attribute | Yes | No | No |
+| `content` | `bytea` | Publisher-supplied content for the represented feature or record. | source_attribute | Yes | No | No |
 
 ## Supported operations
 

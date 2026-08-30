@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/income_data_net_annual_income`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `income_data_net_annual_income`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 7264
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description
@@ -26,10 +29,10 @@ Income Data Net Annual Income is an authoritative dataset published by Office fo
 | `local_authority_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `region_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
 | `region_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `disposable_net_annual_income` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `upper_confidence_limit` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lower_confidence_limit` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `confidence_interval` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `disposable_net_annual_income` | `text` | Publisher-supplied disposable net annual income for the represented feature or record. | source_attribute | Yes | No | No |
+| `upper_confidence_limit` | `text` | Publisher-supplied upper confidence limit for the represented feature or record. | source_attribute | Yes | No | No |
+| `lower_confidence_limit` | `text` | Publisher-supplied lower confidence limit for the represented feature or record. | source_attribute | Yes | No | No |
+| `confidence_interval` | `text` | Publisher-supplied confidence interval for the represented feature or record. | source_attribute | Yes | No | No |
 
 ## Supported operations
 

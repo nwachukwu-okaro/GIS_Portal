@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/census2021_ts039asp_rgn`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts039asp_rgn`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 10
+- **Columns:** 7
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,13 +23,13 @@ Census2021 Ts039asp Rgn is an authoritative dataset published by Office for Nati
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `provides_no_unpaid_care` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `provides_19_or_less_hours_unpaid_care_a_week` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `provides_20_to_49_hours_unpaid_care_a_week` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `provides_50_or_more_hours_unpaid_carea_week` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `provides_no_unpaid_care` | `double precision` | Count or numeric value for provides number unpaid care in the represented area. | statistical_value | Yes | No | No |
+| `provides_19_or_less_hours_unpaid_care_a_week` | `double precision` | Count or numeric value for provides 19 or less hours unpaid care a week in the represented area. | statistical_value | Yes | No | No |
+| `provides_20_to_49_hours_unpaid_care_a_week` | `double precision` | Count or numeric value for provides 20 to 49 hours unpaid care a week in the represented area. | statistical_value | Yes | No | No |
+| `provides_50_or_more_hours_unpaid_carea_week` | `double precision` | Numeric provides 50 or more hours unpaid carea week value recorded for the feature. | measure | Yes | No | No |
 
 ## Supported operations
 

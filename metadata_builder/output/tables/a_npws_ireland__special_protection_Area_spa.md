@@ -5,11 +5,14 @@
 - **Identifier:** `a_npws_ireland/special_protection_Area_spa`
 - **Source organisation:** National Parks and Wildlife Service Ireland
 - **Source:** https://www.npws.ie/maps-and-data
+- **Geographic coverage:** Ireland
+- **WGS84 extent:** `[-10.687972, 51.447492, -5.947508, 55.449953]`
 - **Schema:** `a_npws_ireland`
 - **Table:** `special_protection_Area_spa`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 199
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,16 +23,16 @@ Special Protection Area Spa is an authoritative dataset published by National Pa
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `sitecode` | `varchar(6)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `sitecode` | `varchar(6)` | Publisher-assigned sitecode for the record. | source_identifier | Yes | No | No |
 | `site_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `version` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `county` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ha` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `source_crs` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sourcscale` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `url` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `version` | `double precision` | Count or numeric value for version in the represented area. | statistical_value | Yes | No | No |
+| `county` | `varchar(50)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
+| `ha` | `double precision` | Count or numeric value for ha in the represented area. | statistical_value | Yes | No | No |
+| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. | source_attribute | Yes | No | No |
+| `sourcscale` | `varchar(50)` | Publisher-supplied sourcscale for the represented feature or record. | source_attribute | Yes | No | No |
+| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. | source_attribute | Yes | No | No |
 
 ## Supported operations
 

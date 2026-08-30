@@ -5,11 +5,16 @@
 - **Identifier:** `a_natural_england/biosphere_reserves_england`
 - **Source organisation:** Natural England
 - **Source:** https://naturalengland-defra.opendata.arcgis.com/
+- **Local dataset version:** 20251009 (9 October 2025)
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-4.889167, 50.553811, 0.096717, 51.292573]`
 - **Schema:** `a_natural_england`
 - **Table:** `biosphere_reserves_england`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 3
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -23,11 +28,11 @@ Attribution: © Natural England copyright. Contains Ordnance Survey data © Crow
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `name` | `varchar` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `status` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `area` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `objectid` | `bigint` | Source-system object identifier. | identifier | Yes | No | No |
+| `name` | `varchar` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `status` | `varchar` | Publisher-supplied status for the represented feature or record. | source_attribute | Yes | No | No |
+| `area` | `real` | Numeric area value recorded for the feature. | measure | Yes | No | No |
+| `globalid` | `varchar` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
+| `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

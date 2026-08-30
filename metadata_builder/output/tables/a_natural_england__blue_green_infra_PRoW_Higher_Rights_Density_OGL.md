@@ -5,11 +5,15 @@
 - **Identifier:** `a_natural_england/blue_green_infra_PRoW_Higher_Rights_Density_OGL`
 - **Source organisation:** Natural England
 - **Source:** https://naturalengland-defra.opendata.arcgis.com/
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-6.418557, 49.864685, 1.763546, 55.811072]`
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_PRoW_Higher_Rights_Density_OGL`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 131369
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,11 +24,11 @@ Blue Green Infra Prow Higher Rights Density Ogl is an authoritative dataset publ
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `objectid` | `integer` | Source-system object identifier. | identifier | Yes | No | No |
-| `boat_length_m` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `restricted_byway_length_m` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bridleway_length_m` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `higher_rights_m` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
+| `boat_length_m` | `integer` | Numeric boat length male value recorded for the feature. | measure | Yes | No | No |
+| `restricted_byway_length_m` | `integer` | Numeric restricted byway length male value recorded for the feature. | measure | Yes | No | No |
+| `bridleway_length_m` | `integer` | Numeric bridleway length male value recorded for the feature. | measure | Yes | No | No |
+| `higher_rights_m` | `double precision` | Count or numeric value for higher rights male in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

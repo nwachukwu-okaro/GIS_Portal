@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/main_language_intzone`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `main_language_intzone`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 1284
+- **Columns:** 7
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,13 +22,13 @@ Main Language Intzone is an authoritative dataset published by National Records 
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_people_aged_3_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `english` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `scots` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sign_language` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_language` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
+| `english` | `double precision` | Count or numeric value for english in the represented area. | statistical_value | Yes | No | No |
+| `scots` | `double precision` | Count or numeric value for scots in the represented area. | statistical_value | Yes | No | No |
+| `gaelic` | `double precision` | Count or numeric value for gaelic in the represented area. | statistical_value | Yes | No | No |
+| `sign_language` | `double precision` | Count or numeric value for sign language in the represented area. | statistical_value | Yes | No | No |
+| `other_language` | `double precision` | Count or numeric value for other language in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

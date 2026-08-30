@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Built Up Areas
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-built-up-areas
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-7.506172, 49.910887, 1.758406, 60.462597]`
 - **Schema:** `a_os_built_up_areas`
 - **Table:** `os_open_non_built_up_extents`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 8258
+- **Columns:** 9
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,7 +25,7 @@ OS Open Non Built Up Extents is part of OS Open Built Up Areas, published by Ord
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `relatedtogsscode` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `relatedtogsscode` | `varchar` | Publisher-assigned relatedtogsscode for the record. | source_identifier | Yes | No | No |
 | `name1_text` | `varchar` | Primary place name or feature name. | feature_name | Yes | Yes | No |
 | `name1_language` | `varchar` | Language of the primary name (for example ENG for English or CYM for Welsh). | language_code | Yes | No | No |
 | `name2_text` | `varchar` | Secondary or alternative place name. | alternative_name | Yes | Yes | No |

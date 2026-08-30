@@ -4,9 +4,13 @@
   "schema": "a_historic_england",
   "table": "conservation_areas",
   "title": "Conservation Areas",
-  "description": "Version: 20250702\nSource: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::conservation-areas/explore\n\nAttribution: © Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year].",
-  "feature_concept": "conservation_areas",
-  "synonyms": [],
+  "description": "Boundaries of conservation areas designated by local planning authorities in England for their special architectural or historic interest. The dataset is compiled and published by Historic England.",
+  "feature_concept": "conservation_area",
+  "synonyms": [
+    "conservation areas",
+    "protected historic areas",
+    "local designation"
+  ],
   "publisher": {
     "organisation": "Historic England",
     "product": "National Heritage List for England spatial data",
@@ -55,8 +59,8 @@
     {
       "name": "uid",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Unique identifier assigned to the conservation-area record by the source dataset.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -77,13 +81,13 @@
         "estimated_distinct": -0.994,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "name",
       "data_type": "varchar(150)",
-      "description": "Name of the represented feature.",
+      "description": "Official or publisher-assigned name of the represented feature.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -117,8 +121,8 @@
     {
       "name": "date_of_de",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the local planning authority designated the conservation area.",
+      "semantic_role": "designation_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -145,14 +149,14 @@
         "estimated_distinct": -0.361,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "date_updat",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which the conservation-area record or boundary was last updated.",
+      "semantic_role": "update_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -179,16 +183,16 @@
         "estimated_distinct": -0.244,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "lpa",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Local planning authority responsible for designating and managing the conservation area.",
+      "semantic_role": "responsible_organisation",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -213,14 +217,14 @@
         "estimated_distinct": 253.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "capture_sc",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Map scale used to capture the conservation-area boundary.",
+      "semantic_role": "capture_scale",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -247,14 +251,14 @@
         "estimated_distinct": 13.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "x",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "British National Grid easting in metres for the area's reference location.",
+      "semantic_role": "x_coordinate",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -262,7 +266,7 @@
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
-      "unit": null,
+      "unit": "metres",
       "related_column": null,
       "measure_concept": null,
       "population": null,
@@ -275,14 +279,14 @@
         "estimated_distinct": -0.98425,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "y",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "British National Grid northing in metres for the area's reference location.",
+      "semantic_role": "y_coordinate",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -290,7 +294,7 @@
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
-      "unit": null,
+      "unit": "metres",
       "related_column": null,
       "measure_concept": null,
       "population": null,
@@ -303,13 +307,13 @@
         "estimated_distinct": -0.988125,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "table_override",
+      "confidence": "curated"
     },
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -421,17 +425,35 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "source_verified",
     "warnings": [
-      "Verify against the individual Historic England download metadata."
+      "Local planning authorities are the designating bodies; consult the relevant authority for the latest legal boundary.",
+      "objectid may change when the dataset is republished."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.702243+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.702243+00:00",
+    "curated_at": "2026-08-30T20:00:42.753178+00:00"
+  },
+  "local_dataset_version": "20250702 (2 July 2025)",
+  "official_dataset_updated": "2 July 2025",
+  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::conservation-areas/explore",
+  "documentation_sources": [
+    {
+      "role": "documentation",
+      "title": "Historic England, Download Listing Data - GIS Shapefiles",
+      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
+    },
+    {
+      "role": "guidance",
+      "title": "Historic England, Designating and Managing a Conservation Area",
+      "url": "https://historicengland.org.uk/advice/planning/conservation-areas/"
+    }
+  ],
+  "column_count": 10
 }

@@ -4,7 +4,22 @@
   "schema": "a_historic_england",
   "table": "battlefields",
   "title": "Registered Battlefields",
-  "description": "Version: 20251124\nSource: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=8\n\nAttribution: © Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year].",
+  "description": "Authoritative boundary polygons for the 47 historic battlefields registered in England. Each feature represents one registered battlefield and includes its National Heritage List for England identifier, official name, registration dates, mapped area, location reference and link to the official designation record. The register supports recognition, conservation and consideration of nationally important battlefield sites in planning decisions.",
+  "local_dataset_version": "20251124 (24 November 2025)",
+  "official_dataset_updated": "28 August 2026",
+  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=8",
+  "documentation_sources": [
+    {
+      "role": "documentation",
+      "title": "Historic England, Download Listing Data - GIS Shapefiles",
+      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
+    },
+    {
+      "role": "guidance",
+      "title": "Historic England, What Are Registered Battlefields?",
+      "url": "https://historicengland.org.uk/listing/what-is-designation/registered-battlefields/"
+    }
+  ],
   "feature_concept": "registered_battlefield",
   "synonyms": [
     "battlefields",
@@ -42,6 +57,7 @@
     "is_geographic": false
   },
   "row_count": 47,
+  "column_count": 12,
   "primary_key": [
     "objectid"
   ],
@@ -59,7 +75,7 @@
     {
       "name": "listentry",
       "data_type": "integer",
-      "description": "Historic England List Entry number — unique identifier for a designated heritage asset.",
+      "description": "Unique seven-digit National Heritage List for England entry number, such as 1000000.",
       "semantic_role": "heritage_asset_identifier",
       "filterable": true,
       "searchable": false,
@@ -81,13 +97,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "name",
       "data_type": "text",
-      "description": "Name of the represented feature.",
+      "description": "Official registered battlefield name, usually including the battle year, such as Edgehill 1642.",
       "semantic_role": "feature_name",
       "filterable": true,
       "searchable": true,
@@ -105,23 +121,20 @@
       "aggregation_method": null,
       "value_profile": {
         "examples": [
-          "Battle of Northallerton 1138",
-          "Battle of Edgehill 1642",
-          "Battle of Edgcote 1469",
-          "Battle of Newburn Ford 1640",
-          "Battle of Lewes 1264"
+          "Battle of Hastings",
+          "Battle of Bosworth"
         ],
         "null_fraction": null,
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "regdate",
       "data_type": "timestamp",
-      "description": "Date the site was officially registered or designated.",
+      "description": "Date the battlefield was first entered on the Register.",
       "semantic_role": "designation_date",
       "filterable": true,
       "searchable": false,
@@ -143,13 +156,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "amenddate",
       "data_type": "timestamp",
-      "description": "Date the designation was last amended or updated.",
+      "description": "Date the registration record was most recently amended; empty where no amendment is recorded.",
       "semantic_role": "amendment_date",
       "filterable": true,
       "searchable": false,
@@ -171,13 +184,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "capturescale",
       "data_type": "varchar(15)",
-      "description": "Map scale at which the boundary was originally captured.",
+      "description": "Map scale used to capture the battlefield boundary, such as 1:10000 or 1:25000.",
       "semantic_role": "capture_scale",
       "filterable": true,
       "searchable": false,
@@ -194,21 +207,18 @@
       "reference_period": null,
       "aggregation_method": null,
       "value_profile": {
-        "examples": [
-          "1:10000",
-          "1:25000"
-        ],
+        "examples": [],
         "null_fraction": null,
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "hyperlink",
       "data_type": "varchar(255)",
-      "description": "URL linking to the official Historic England record for this asset.",
+      "description": "URL of the battlefield's official Historic England List entry.",
       "semantic_role": "source_record_url",
       "filterable": true,
       "searchable": false,
@@ -225,24 +235,18 @@
       "reference_period": null,
       "aggregation_method": null,
       "value_profile": {
-        "examples": [
-          "https://historicengland.org.uk/listing/the-list/list-entry/1000042",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1000040",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1000023",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1000004",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1000002"
-        ],
+        "examples": [],
         "null_fraction": null,
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "area_ha",
       "data_type": "real",
-      "description": "Area of the feature in hectares.",
+      "description": "Area enclosed by the registered battlefield boundary, measured in hectares.",
       "semantic_role": "area",
       "filterable": true,
       "searchable": false,
@@ -264,13 +268,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "ngr",
       "data_type": "varchar(1000000)",
-      "description": "National Grid Reference — alphanumeric grid coordinate in British National Grid.",
+      "description": "Ordnance Survey National Grid Reference used to locate the battlefield.",
       "semantic_role": "geographic_reference",
       "filterable": true,
       "searchable": false,
@@ -287,24 +291,18 @@
       "reference_period": null,
       "aggregation_method": null,
       "value_profile": {
-        "examples": [
-          "SO8898831323",
-          "SE 48727 52446",
-          "TQ 24514 97590",
-          "SP 18490 28243",
-          "NY 38369 67713"
-        ],
+        "examples": [],
         "null_fraction": null,
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "easting",
       "data_type": "real",
-      "description": "Easting coordinate in British National Grid (EPSG:27700).",
+      "description": "British National Grid easting in metres for the battlefield's reference location.",
       "semantic_role": "x_coordinate",
       "filterable": true,
       "searchable": false,
@@ -326,13 +324,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "northing",
       "data_type": "real",
-      "description": "Northing coordinate in British National Grid (EPSG:27700).",
+      "description": "British National Grid northing in metres for the battlefield's reference location.",
       "semantic_role": "y_coordinate",
       "filterable": true,
       "searchable": false,
@@ -354,13 +352,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "schema_column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "ArcGIS source-system row identifier; not a persistent heritage asset identifier.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -382,13 +380,13 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     },
     {
       "name": "geom",
       "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
+      "description": "Multipolygon boundary of the registered battlefield in British National Grid coordinates.",
       "semantic_role": "geometry",
       "filterable": false,
       "searchable": false,
@@ -410,7 +408,7 @@
         "estimated_distinct": null,
         "statistics_source": null
       },
-      "provenance": "column_dictionary",
+      "provenance": "table_override",
       "confidence": "curated"
     }
   ],
@@ -487,17 +485,20 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "source_verified",
     "warnings": [
-      "Verify against the individual Historic England download metadata."
+      "This local table is version 20251124, while Historic England reports a newer official dataset update dated 28 August 2026.",
+      "Check the official Historic England dataset before analyses that require the latest registration boundaries or attributes.",
+      "objectid is a source-system identifier and may change when the dataset is republished."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.699196+00:00"
+    "generated_at": "2026-08-30T19:58:32.771610+00:00",
+    "curated_at": "2026-08-30T20:00:42.753178+00:00"
   }
 }

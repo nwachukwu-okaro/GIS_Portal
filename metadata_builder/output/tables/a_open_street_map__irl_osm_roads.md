@@ -6,11 +6,15 @@
 - **Source organisation:** OpenStreetMap contributors
 - **Product:** OpenStreetMap
 - **Source:** https://www.openstreetmap.org/
+- **Licence:** [Open Data Commons Open Database License](https://www.openstreetmap.org/copyright)
+- **Geographic coverage:** Global
+- **WGS84 extent:** `[-10.661116, 51.426477, -5.434320, 55.432810]`
 - **Schema:** `a_open_street_map`
 - **Table:** `irl_osm_roads`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:4326
 - **Rows:** 1485675
+- **Columns:** 12
 - **Metadata status:** source_mapped
 
 ## Description
@@ -29,15 +33,15 @@ LEGAL: You are free to copy, distribute, transmit and adapt this data, as long a
 | `osm_id` | `text` | Unique identifier assigned by the OpenStreetMap database. | Unclassified | Yes | No | No |
 | `code` | `integer` | Standardized feature class code. | Unclassified | Yes | No | No |
 | `fclass` | `text` | The primary classification of the road (e.g., motorway, primary, residential). | Unclassified | Yes | No | No |
-| `name` | `text` | The local name of the road (often in English or Irish depending on local tagging). | Unclassified | Yes | No | No |
+| `name` | `text` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | No | No |
 | `ref` | `text` | The official road reference number (e.g., M50, N11, R132). | Unclassified | Yes | No | No |
 | `oneway` | `text` | Traffic flow direction: "F" (Forward/With Digitizing), "T" (Towards/Against Digitizing), or "B" (Both). | Unclassified | Yes | No | No |
 | `maxspeed` | `integer` | The posted speed limit in km/h. | Unclassified | Yes | No | No |
-| `layer` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bridge` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `tunnel` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `irlosmr_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geom` | `geometry` | Geometry column: EPSG:4326 (WGS 84) or EPSG:3857 (Web Mercator) depending on import settings. | geometry | No | No | No |
+| `layer` | `integer` | Count or numeric value for layer in the represented area. | statistical_value | Yes | No | No |
+| `bridge` | `text` | Publisher-supplied bridge for the represented feature or record. | source_attribute | Yes | No | No |
+| `tunnel` | `text` | Publisher-supplied tunnel for the represented feature or record. | source_attribute | Yes | No | No |
+| `irlosmr_pk` | `integer` | Count or numeric value for irlosmr pk in the represented area. | statistical_value | Yes | No | No |
+| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations
 

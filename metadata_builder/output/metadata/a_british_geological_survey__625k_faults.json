@@ -3,10 +3,14 @@
   "identifier": "a_british_geological_survey/625k_faults",
   "schema": "a_british_geological_survey",
   "table": "625k_faults",
-  "title": "625k Faults",
-  "description": "Contains British Geological Survey materials © UKRI 2026",
-  "feature_concept": "625k_faults",
-  "synonyms": [],
+  "title": "BGS Geology 625K - Faults",
+  "description": "Generalised 1:625,000-scale linework representing mapped geological faults and thrust faults in Great Britain.",
+  "feature_concept": "geological_fault",
+  "synonyms": [
+    "faults",
+    "thrust faults",
+    "geological structures"
+  ],
   "publisher": {
     "organisation": "British Geological Survey",
     "product": "BGS geological data",
@@ -55,8 +59,8 @@
     {
       "name": "category",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Map-series category assigned to the fault feature, such as 625k.",
+      "semantic_role": "map_series_category",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -79,14 +83,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "feature",
       "data_type": "varchar(60)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Fault feature type, such as a fault or thrust fault with hanging-wall barbs.",
+      "semantic_role": "fault_feature_type",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -110,8 +114,8 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "feature_d",
@@ -147,8 +151,8 @@
     {
       "name": "fltname_c",
       "data_type": "varchar(6)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Source code for the named fault, where a recognised fault name is available.",
+      "semantic_role": "fault_name_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -169,8 +173,8 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "fltname_d",
@@ -203,8 +207,8 @@
     {
       "name": "sheet",
       "data_type": "varchar(60)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name of the source geological map sheet or digital layer.",
+      "semantic_role": "source_map_sheet",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -227,14 +231,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "version",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Version number of the published BGS dataset.",
+      "semantic_role": "dataset_version",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -257,14 +261,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "released",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which this version of the dataset was released.",
+      "semantic_role": "release_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -287,14 +291,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nom_scale",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nominal map scale denominator, such as 625000 for 1:625,000 mapping.",
+      "semantic_role": "nominal_scale",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -317,14 +321,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nom_os_yr",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nominal year or edition of the Ordnance Survey base mapping.",
+      "semantic_role": "os_base_map_year",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -347,14 +351,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nom_bgs_yr",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nominal year of the BGS geological compilation.",
+      "semantic_role": "geological_compilation_year",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -377,14 +381,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "mslink",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal source-system link identifier used by the original mapping database.",
+      "semantic_role": "source_system_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -405,14 +409,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "625f_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Primary-key value for a 1:625,000 fault feature.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -433,8 +437,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -530,17 +534,21 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
-      "Verify the licence against the individual BGS product; not all BGS products are open."
+      "Fault positions are generalised for regional-scale use and should not be treated as surveyed site boundaries.",
+      "Verify reuse terms against the individual BGS product licence."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.671329+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.671329+00:00",
+    "curated_at": "2026-08-30T20:11:02.055023+00:00"
+  },
+  "local_dataset_version": "5.17 (released 23 April 2008)",
+  "column_count": 14
 }

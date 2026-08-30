@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_galway_cc/strategic_flood_risk_assessment_cdp_2022_2028`
 - **Source organisation:** Galway County Council
 - **Source:** https://data.gov.ie/organization/galway-county-council
+- **Geographic coverage:** County Galway
+- **WGS84 extent:** `[-10.033216, 53.079719, -8.194687, 53.622603]`
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `strategic_flood_risk_assessment_cdp_2022_2028`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 30
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,10 +24,10 @@ Strategic Flood Risk Assessment Cdp 2022 2028 is an authoritative dataset publis
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `object_id` | `smallint` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `flood_zone` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `town` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `plan` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sfra_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `flood_zone` | `varchar` | Publisher-supplied flood zone for the represented feature or record. | source_attribute | Yes | No | No |
+| `town` | `varchar` | Publisher-supplied town for the represented feature or record. | source_attribute | Yes | No | No |
+| `plan` | `varchar` | Publisher-supplied plan for the represented feature or record. | source_attribute | Yes | No | No |
+| `sfra_pk` | `integer` | Count or numeric value for sfra pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

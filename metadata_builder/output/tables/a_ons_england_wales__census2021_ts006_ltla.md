@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/census2021_ts006_ltla`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts006_ltla`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 331
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,10 +23,10 @@ Census2021 Ts006 Ltla is an authoritative dataset published by Office for Nation
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `persons_per_square_kilometre` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `persons_per_square_kilometre` | `double precision` | Count or numeric value for persons per square kilometre in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

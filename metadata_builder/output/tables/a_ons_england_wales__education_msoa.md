@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/education_msoa`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `education_msoa`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 7264
+- **Columns:** 14
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,20 +23,20 @@ Education Msoa is an authoritative dataset published by Office for National Stat
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `highest_qual_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no_qualifications` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `level_1_and_entry_level_qualifications` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `level_2_qualifications` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `apprenticeship` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `level_3_qualifications` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `level_4_qualifications_and_above` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_qualifications` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `student_indicator_total` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `student` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_a_student` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `highest_qual_total` | `bigint` | Count or numeric value for highest qual total in the represented area. | statistical_value | Yes | No | No |
+| `no_qualifications` | `bigint` | Count or numeric value for number qualifications in the represented area. | statistical_value | Yes | No | No |
+| `level_1_and_entry_level_qualifications` | `bigint` | Count or numeric value for level 1 and entry level qualifications in the represented area. | statistical_value | Yes | No | No |
+| `level_2_qualifications` | `bigint` | Count or numeric value for level 2 qualifications in the represented area. | statistical_value | Yes | No | No |
+| `apprenticeship` | `bigint` | Count or numeric value for apprenticeship in the represented area. | statistical_value | Yes | No | No |
+| `level_3_qualifications` | `bigint` | Count or numeric value for level 3 qualifications in the represented area. | statistical_value | Yes | No | No |
+| `level_4_qualifications_and_above` | `bigint` | Count or numeric value for level 4 qualifications and above in the represented area. | statistical_value | Yes | No | No |
+| `other_qualifications` | `bigint` | Count or numeric value for other qualifications in the represented area. | statistical_value | Yes | No | No |
+| `student_indicator_total` | `bigint` | Count or numeric value for student indicator total in the represented area. | statistical_value | Yes | No | No |
+| `student` | `bigint` | Count or numeric value for student in the represented area. | statistical_value | Yes | No | No |
+| `not_a_student` | `bigint` | Count or numeric value for not a student in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

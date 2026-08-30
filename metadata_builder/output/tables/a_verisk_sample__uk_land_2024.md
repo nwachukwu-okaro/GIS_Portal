@@ -5,11 +5,13 @@
 - **Identifier:** `a_verisk_sample/uk_land_2024`
 - **Source organisation:** Verisk
 - **Source:** https://www.verisk.com/en-gb/
+- **WGS84 extent:** `[-2.730521, 53.327298, -1.909622, 53.685719]`
 - **Schema:** `a_verisk_sample`
 - **Table:** `uk_land_2024`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 31863
+- **Columns:** 7
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,10 +23,10 @@ UK Land 2024 is an authoritative dataset published by Verisk. It represents uk l
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `landuse_code` | `double precision` | Code assigned by the source dataset. | code | Yes | No | No |
-| `landuse_text` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `high_level_landuse` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `luid` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `date_created` | `date` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `landuse_text` | `text` | Publisher-supplied landuse text for the represented feature or record. | source_attribute | Yes | No | No |
+| `high_level_landuse` | `text` | Publisher-supplied high level landuse for the represented feature or record. | source_attribute | Yes | No | No |
+| `luid` | `text` | Publisher-assigned luid for the record. | source_identifier | Yes | No | No |
+| `date_created` | `date` | Publisher-supplied date created for the represented feature or record. | source_attribute | Yes | No | No |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 

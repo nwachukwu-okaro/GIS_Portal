@@ -113,15 +113,21 @@ def normalised_source_profile(config, schema):
     return profile
 
 
-def column_metadata(column, schema, geometry_column, dictionary, samples=None, profile=None):
+def column_metadata(
+    column, schema, geometry_column, dictionary, samples=None, profile=None,
+    table_override=None,
+):
     name = column['name']
+    table_exact = (table_override or {}).get(name.lower())
     schema_exact = (
         dictionary.get('schemas', {}).get(schema, {}).get('columns', {}).get(name.lower())
     )
-    exact = schema_exact or dictionary.get('columns', {}).get(name.lower())
-    provenance = 'database_comment' if column.get('comment') else None
-    description = column.get('comment')
-    semantic_role = None
+    exact = table_exact or schema_exact or dictionary.get('columns', {}).get(name.lower())
+    provenance = 'table_override' if table_exact else (
+        'database_comment' if column.get('comment') else None
+    )
+    description = table_exact.get('description') if table_exact else column.get('comment')
+    semantic_role = table_exact.get('semantic_role') if table_exact else None
 
     if not description and exact:
         description = exact.get('description')
@@ -178,7 +184,9 @@ def column_metadata(column, schema, geometry_column, dictionary, samples=None, p
         },
         'provenance': provenance,
         'confidence': 'verified' if provenance == 'database_comment' else (
-            'curated' if provenance and 'column_dictionary' in provenance else 'generated'
+            'curated' if provenance and (
+                'column_dictionary' in provenance or provenance == 'table_override'
+            ) else 'generated'
         ),
     }
 
@@ -249,12 +257,18 @@ def build_record(table, sources, overrides, dictionary):
         column_metadata(
             column, table['schema'], table.get('geometry_column'), dictionary,
             sample_values.get(column['name'], []), column_profiles.get(column['name'], {}),
+            override.get('columns', {}),
         )
         for column in table.get('columns', [])
     ]
-    description, description_source, description_confidence = infer_description(
-        table, title, profile, feature_concept,
-    )
+    if override.get('description'):
+        description = override['description']
+        description_source = 'table_override'
+        description_confidence = 'curated'
+    else:
+        description, description_source, description_confidence = infer_description(
+            table, title, profile, feature_concept,
+        )
     geometry_type = table.get('geometry_type')
     capabilities = GEOMETRY_CAPABILITIES if geometry_type else NONSPATIAL_CAPABILITIES
     record = {
@@ -264,6 +278,10 @@ def build_record(table, sources, overrides, dictionary):
         'table': table['table'],
         'title': title,
         'description': description,
+        'local_dataset_version': override.get('local_dataset_version'),
+        'official_dataset_updated': override.get('official_dataset_updated'),
+        'official_dataset_url': override.get('official_dataset_url'),
+        'documentation_sources': override.get('documentation_sources', []),
         'feature_concept': feature_concept,
         'synonyms': override.get('synonyms', []),
         'publisher': {
@@ -289,6 +307,7 @@ def build_record(table, sources, overrides, dictionary):
             'is_geographic': table.get('srid') == 4326,
         },
         'row_count': table.get('row_count'),
+        'column_count': len(columns),
         'primary_key': table.get('primary_key') or [],
         'indexes': table.get('indexes') or [],
         'columns': columns,
@@ -334,6 +353,10 @@ def build_record(table, sources, overrides, dictionary):
         record['quality']['warnings'].append('Licence has not yet been verified.')
     if profile.get('licence_scope') and 'verify' in profile['licence_scope'].lower():
         record['quality']['warnings'].append(profile['licence_scope'])
+    if override.get('metadata_status'):
+        record['quality']['metadata_status'] = override['metadata_status']
+    if override.get('warnings') is not None:
+        record['quality']['warnings'] = list(override['warnings'])
     return record, fingerprint(table, profile, override, dictionary)
 
 
@@ -364,12 +387,37 @@ def markdown_for(record):
         lines.append(f"- **Product:** {publisher['product']}")
     if publisher.get('source_url'):
         lines.append(f"- **Source:** {publisher['source_url']}")
+    if record.get('official_dataset_url'):
+        lines.append(f"- **Official dataset page:** {record['official_dataset_url']}")
+    for source in record.get('documentation_sources', []):
+        if source.get('role') == 'documentation':
+            lines.append(f"- **Official documentation:** {source['url']}")
+            break
+    if record.get('local_dataset_version'):
+        lines.append(f"- **Local dataset version:** {record['local_dataset_version']}")
+    if record.get('official_dataset_updated'):
+        lines.append(f"- **Official dataset last updated:** {record['official_dataset_updated']}")
+    if publisher.get('licence_name'):
+        licence = publisher['licence_name']
+        if publisher.get('licence_url'):
+            licence = f"[{licence}]({publisher['licence_url']})"
+        lines.append(f"- **Licence:** {licence}")
+    if record.get('geographic_coverage'):
+        lines.append(f"- **Geographic coverage:** {record['geographic_coverage']}")
+    bbox = geometry.get('bbox_wgs84') or {}
+    if all(key in bbox for key in ('xmin', 'ymin', 'xmax', 'ymax')):
+        lines.append(
+            "- **WGS84 extent:** "
+            f"`[{bbox['xmin']:.6f}, {bbox['ymin']:.6f}, "
+            f"{bbox['xmax']:.6f}, {bbox['ymax']:.6f}]`"
+        )
     lines.extend([
         f"- **Schema:** `{record['schema']}`",
         f"- **Table:** `{record['table']}`",
         f"- **Geometry:** {geometry.get('type') or 'Non-spatial'}",
         f"- **CRS:** {geometry.get('crs') or 'Not applicable or unknown'}",
         f"- **Rows:** {record.get('row_count') if record.get('row_count') is not None else 'Unknown'}",
+        f"- **Columns:** {record.get('column_count', len(record['columns']))}",
         f"- **Metadata status:** {record['quality']['metadata_status']}",
         '', '## Description', '', record['description'], '', '## Columns', '',
         '| Column | Data type | Meaning | Semantic role | Filter | Search | Join |',
@@ -396,6 +444,9 @@ def markdown_for(record):
         lines.extend(f"- {warning}" for warning in record['quality']['warnings'])
     lines.extend(['', '## Provenance', '',
                   'Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.', ''])
+    if record.get('documentation_sources'):
+        lines.extend(f"- {source['title']}: {source['url']}" for source in record['documentation_sources'])
+        lines.append('')
     return '\n'.join(lines)
 
 

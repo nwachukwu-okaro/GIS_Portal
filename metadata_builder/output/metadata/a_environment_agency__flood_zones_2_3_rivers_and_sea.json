@@ -3,9 +3,9 @@
   "identifier": "a_environment_agency/flood_zones_2_3_rivers_and_sea",
   "schema": "a_environment_agency",
   "table": "flood_zones_2_3_rivers_and_sea",
-  "title": "Flood Zones 2 3 Rivers And Sea",
-  "description": "version: 20251120\nSource: https://www.data.gov.uk/dataset/104434b0-5263-4c90-9b1e-e43b1d57c750/flood-map-for-planning-flood-zones1\n\nAttribution: © Environment Agency copyright and/or database right 2025. All rights reserved.",
-  "feature_concept": "flood_zones_2_3_rivers_and_sea",
+  "title": "Flood Zones 2 and 3 - Rivers and Sea",
+  "description": "Modelled Flood Zone 2 and Flood Zone 3 extents showing land at risk from flooding from rivers or the sea, without accounting for defences.",
+  "feature_concept": "fluvial_tidal_flood_zone",
   "synonyms": [],
   "publisher": {
     "organisation": "Environment Agency",
@@ -56,8 +56,8 @@
     {
       "name": "origin",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Evidence or modelling source used to define the flood-zone extent.",
+      "semantic_role": "flood_model_origin",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -84,14 +84,14 @@
         "estimated_distinct": 9.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "flood_zone",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Flood-zone class, such as FZ2 or FZ3.",
+      "semantic_role": "flood_zone_class",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -115,14 +115,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "flood_source",
       "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Source of flooding represented, such as river, sea or surface water.",
+      "semantic_role": "flood_source",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -149,13 +149,13 @@
         "estimated_distinct": 5.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -261,17 +261,19 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
       "Schema default only; verify dataset-specific restrictions and third-party rights."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.689412+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.689412+00:00",
+    "curated_at": "2026-08-30T20:14:25.853154+00:00"
+  },
+  "column_count": 5
 }

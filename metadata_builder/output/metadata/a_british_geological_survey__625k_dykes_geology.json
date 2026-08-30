@@ -3,10 +3,14 @@
   "identifier": "a_british_geological_survey/625k_dykes_geology",
   "schema": "a_british_geological_survey",
   "table": "625k_dykes_geology",
-  "title": "625k Dykes Geology",
-  "description": "Contains British Geological Survey materials © UKRI 2026",
-  "feature_concept": "625k_dykes_geology",
-  "synonyms": [],
+  "title": "BGS Geology 625K - Dykes",
+  "description": "Generalised 1:625,000-scale mapped dyke features for Great Britain, classified by BGS geological unit, rock type and geological age.",
+  "feature_concept": "dyke_geology",
+  "synonyms": [
+    "dykes",
+    "igneous intrusions",
+    "geology"
+  ],
   "publisher": {
     "organisation": "British Geological Survey",
     "product": "BGS geological data",
@@ -190,8 +194,8 @@
     {
       "name": "rcs_x",
       "data_type": "varchar(50)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Expanded Rock Classification Scheme expression describing one or more rock types present in the unit.",
+      "semantic_role": "rock_composition",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -217,8 +221,8 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "rcs_d",
@@ -841,8 +845,8 @@
     {
       "name": "max_age",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Oldest chronostratigraphic age assigned to the geological unit.",
+      "semantic_role": "oldest_geological_age",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -863,14 +867,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "min_age",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Youngest chronostratigraphic age assigned to the geological unit.",
+      "semantic_role": "youngest_geological_age",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -891,14 +895,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "max_epoch",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Oldest geological epoch assigned to the unit.",
+      "semantic_role": "oldest_geological_epoch",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -921,14 +925,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "min_epoch",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Youngest geological epoch assigned to the unit.",
+      "semantic_role": "youngest_geological_epoch",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -951,14 +955,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "max_subper",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Oldest geological subperiod assigned to the unit.",
+      "semantic_role": "oldest_geological_subperiod",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -979,14 +983,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "min_ubper",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Youngest geological subperiod assigned to the unit; field name is retained from the source data.",
+      "semantic_role": "youngest_geological_subperiod",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1007,14 +1011,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "maax_period",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Oldest geological period assigned to the unit; field name is retained from the source data.",
+      "semantic_role": "oldest_geological_period",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1041,14 +1045,14 @@
         "estimated_distinct": 6.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "min_period",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Youngest geological period assigned to the unit.",
+      "semantic_role": "youngest_geological_period",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1075,14 +1079,14 @@
         "estimated_distinct": 5.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "max_era",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Oldest geological era assigned to the unit.",
+      "semantic_role": "oldest_geological_era",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1108,14 +1112,14 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "min_era",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Youngest geological era assigned to the unit.",
+      "semantic_role": "youngest_geological_era",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1141,14 +1145,14 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "max_eon",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Oldest geological eon assigned to the unit.",
+      "semantic_role": "oldest_geological_eon",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1173,14 +1177,14 @@
         "estimated_distinct": 3.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "min_eon",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Youngest geological eon assigned to the unit.",
+      "semantic_role": "youngest_geological_eon",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1204,8 +1208,8 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "prev_name",
@@ -1240,8 +1244,8 @@
     {
       "name": "bgstype",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "BGS code identifying the geological dataset or layer type, such as 625k_BEDROCK.",
+      "semantic_role": "dataset_type_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1264,14 +1268,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lex_rcs_i",
       "data_type": "varchar(20)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal composite identifier combining BGS lexicon and rock-classification references.",
+      "semantic_role": "geological_unit_rock_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1298,8 +1302,8 @@
         "estimated_distinct": 17.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lex_rcs_d",
@@ -1372,8 +1376,8 @@
     {
       "name": "age_onegl",
       "data_type": "varchar(32)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Generalised geological age label used for map display and broad classification.",
+      "semantic_role": "generalised_geological_age",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1400,14 +1404,14 @@
         "estimated_distinct": 6.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bgsref",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal BGS reference number for the mapped geological feature.",
+      "semantic_role": "source_record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1428,14 +1432,14 @@
         "estimated_distinct": 11.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bgsref_lex",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal BGS reference number for the associated lexicon unit.",
+      "semantic_role": "lexicon_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1456,14 +1460,14 @@
         "estimated_distinct": 9.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bgsref_fm",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal BGS reference number for the associated formation.",
+      "semantic_role": "formation_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1484,14 +1488,14 @@
         "estimated_distinct": 9.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bgsref_gp",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal BGS reference number for the associated geological group.",
+      "semantic_role": "group_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1512,14 +1516,14 @@
         "estimated_distinct": 9.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bgsref_rk",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal BGS reference number for the associated rock classification.",
+      "semantic_role": "rock_reference",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1540,14 +1544,14 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "sheet",
       "data_type": "varchar(60)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name of the source geological map sheet or digital layer.",
+      "semantic_role": "source_map_sheet",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1570,14 +1574,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "version",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Version number of the published BGS dataset.",
+      "semantic_role": "dataset_version",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1600,14 +1604,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "released",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date on which this version of the dataset was released.",
+      "semantic_role": "release_date",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1630,14 +1634,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nom_scale",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nominal map scale denominator, such as 625000 for 1:625,000 mapping.",
+      "semantic_role": "nominal_scale",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1660,14 +1664,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nom_os_yr",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nominal year or edition of the Ordnance Survey base mapping.",
+      "semantic_role": "os_base_map_year",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1690,14 +1694,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nom_bgs_yr",
       "data_type": "varchar(10)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nominal year of the BGS geological compilation.",
+      "semantic_role": "geological_compilation_year",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1720,14 +1724,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "mslink",
       "data_type": "bigint",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal source-system link identifier used by the original mapping database.",
+      "semantic_role": "source_system_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1748,14 +1752,14 @@
         "estimated_distinct": 17.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "625dg_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Primary-key value for a 1:625,000 dyke geology feature.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1776,8 +1780,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -1942,17 +1946,21 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
-      "Verify the licence against the individual BGS product; not all BGS products are open."
+      "Generalised regional mapping is not suitable for site-scale geological interpretation.",
+      "Verify reuse terms against the individual BGS product licence."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.667724+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.667724+00:00",
+    "curated_at": "2026-08-30T20:11:02.036707+00:00"
+  },
+  "local_dataset_version": "5.17 (released 11 February 2008)",
+  "column_count": 57
 }

@@ -5,11 +5,14 @@
 - **Identifier:** `a_national_highways/air_quality_annual_evaluation_report`
 - **Source organisation:** National Highways
 - **Source:** https://developer.data.nationalhighways.co.uk/
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-4.140956, 50.391032, 0.754152, 55.008339]`
 - **Schema:** `a_national_highways`
 - **Table:** `air_quality_annual_evaluation_report`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:27700
 - **Rows:** 256
+- **Columns:** 16
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,21 +23,21 @@ Air Quality Annual Evaluation Report is an authoritative dataset published by Na
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `objectid` | `smallint` | Source-system object identifier. | identifier | Yes | No | No |
-| `pcm_link_i` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `objectid` | `smallint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
+| `pcm_link_i` | `integer` | Count or numeric value for pcm link i in the represented area. | statistical_value | Yes | No | No |
 | `road_name` | `varchar` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `road_descr` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `qf_within_` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no2_conc` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `annual_eva` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `annual_e_1` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `local_no2_` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `datasets_r` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `aer_based_` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `commentary` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `view_techn` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `smallint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `road_descr` | `varchar` | Publisher-supplied road descr for the represented feature or record. | source_attribute | Yes | No | No |
+| `qf_within_` | `varchar` | Publisher-supplied qf within for the represented feature or record. | source_attribute | Yes | No | No |
+| `no2_conc` | `varchar` | Publisher-supplied no2 conc for the represented feature or record. | source_attribute | Yes | No | No |
+| `annual_eva` | `varchar` | Publisher-supplied annual eva for the represented feature or record. | source_attribute | Yes | No | No |
+| `annual_e_1` | `varchar` | Publisher-supplied annual e 1 for the represented feature or record. | source_attribute | Yes | No | No |
+| `local_no2_` | `varchar` | Publisher-supplied local no2 for the represented feature or record. | source_attribute | Yes | No | No |
+| `datasets_r` | `varchar` | Publisher-supplied datasets r for the represented feature or record. | source_attribute | Yes | No | No |
+| `aer_based_` | `varchar` | Publisher-supplied aer based for the represented feature or record. | source_attribute | Yes | No | No |
+| `commentary` | `varchar` | Publisher-supplied commentary for the represented feature or record. | source_attribute | Yes | No | No |
+| `view_techn` | `varchar` | Publisher-supplied view techn for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `smallint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `globalid` | `varchar` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

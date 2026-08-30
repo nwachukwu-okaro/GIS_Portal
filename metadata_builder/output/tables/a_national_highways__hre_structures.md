@@ -5,11 +5,14 @@
 - **Identifier:** `a_national_highways/hre_structures`
 - **Source organisation:** National Highways
 - **Source:** https://developer.data.nationalhighways.co.uk/
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-5.422375, 50.114472, 1.748077, 57.678794]`
 - **Schema:** `a_national_highways`
 - **Table:** `hre_structures`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 3287
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,8 +24,8 @@ Hre Structures is an authoritative dataset published by National Highways. It re
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `fid` | `smallint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `long_descr` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `long_descr` | `varchar` | Publisher-supplied long descr for the represented feature or record. | source_attribute | Yes | No | No |
+| `globalid` | `varchar` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

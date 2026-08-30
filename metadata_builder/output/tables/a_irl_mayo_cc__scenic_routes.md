@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_mayo_cc/scenic_routes`
 - **Source organisation:** Mayo County Council
 - **Source:** https://data.gov.ie/organization/mayo-county-council
+- **Geographic coverage:** County Mayo
+- **WGS84 extent:** `[-10.192775, 53.543198, -8.870419, 54.310350]`
 - **Schema:** `a_irl_mayo_cc`
 - **Table:** `scenic_routes`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:3857
 - **Rows:** 54
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,8 +24,8 @@ Scenic Routes is an authoritative dataset published by Mayo County Council. It r
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `id` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sr_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `double precision` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
+| `sr_pk` | `integer` | Count or numeric value for sr pk in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

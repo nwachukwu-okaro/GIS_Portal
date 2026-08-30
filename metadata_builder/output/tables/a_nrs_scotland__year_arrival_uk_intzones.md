@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/year_arrival_uk_intzones`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `year_arrival_uk_intzones`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 1284
+- **Columns:** 15
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,21 +22,21 @@ Year Arrival UK Intzones is an authoritative dataset published by National Recor
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_people` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `born_in_the_uk` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_before_1941` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_1941_1950` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_1951_1960` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_1961_1970` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_1971_1980` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_1981_1990` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_1991_2000` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_2001_2010` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_2011_2013` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_2014_2016` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_2017_2019` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `arrived_2020_2022` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `all_people` | `double precision` | Count or numeric value for all people in the represented area. | statistical_value | Yes | No | No |
+| `born_in_the_uk` | `double precision` | Count or numeric value for born in the uk in the represented area. | statistical_value | Yes | No | No |
+| `arrived_before_1941` | `double precision` | Count or numeric value for arrived before 1941 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_1941_1950` | `double precision` | Count or numeric value for arrived 1941 1950 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_1951_1960` | `double precision` | Count or numeric value for arrived 1951 1960 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_1961_1970` | `double precision` | Count or numeric value for arrived 1961 1970 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_1971_1980` | `double precision` | Count or numeric value for arrived 1971 1980 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_1981_1990` | `double precision` | Count or numeric value for arrived 1981 1990 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_1991_2000` | `double precision` | Count or numeric value for arrived 1991 2000 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_2001_2010` | `double precision` | Count or numeric value for arrived 2001 2010 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_2011_2013` | `double precision` | Count or numeric value for arrived 2011 2013 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_2014_2016` | `double precision` | Count or numeric value for arrived 2014 2016 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_2017_2019` | `double precision` | Count or numeric value for arrived 2017 2019 in the represented area. | statistical_value | Yes | No | No |
+| `arrived_2020_2022` | `double precision` | Count or numeric value for arrived 2020 2022 in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

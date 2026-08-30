@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Zoomstack
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-zoomstack
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-7.506677, 49.911390, 1.763915, 60.400108]`
 - **Schema:** `a_os_zoomstack`
 - **Table:** `urban_areas`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 5592
+- **Columns:** 3
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,8 +25,8 @@ Urban Areas is part of OS Open Zoomstack, published by Ordnance Survey. It repre
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `type` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `id` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `type` | `varchar` | Publisher-supplied type for the represented feature or record. | source_attribute | Yes | No | No |
+| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

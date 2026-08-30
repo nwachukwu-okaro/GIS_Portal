@@ -5,11 +5,14 @@
 - **Identifier:** `a_nisra_nireland/boundary_census_language_data_2021_sdz`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
+- **WGS84 extent:** `[-8.177484, 54.022725, -5.432790, 55.312985]`
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_language_data_2021_sdz`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:29902
 - **Rows:** 850
+- **Columns:** 11
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,16 +23,16 @@ Boundary Census Language Data 2021 Sdz is an authoritative dataset published by 
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `population` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `knowledge_of_irish_no_ability_in_irish` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `knowledge_of_irish_some_ability_in_irish` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `knowledge_of_ulster_scots_no_ability_in_ulster_scots` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `knowledge_of_ulster_scots_some_ability_in_ulster_scots` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `main_language_english` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `main_language_other_languages` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `population` | `text` | Publisher-supplied population for the represented feature or record. | source_attribute | Yes | No | No |
+| `knowledge_of_irish_no_ability_in_irish` | `text` | Count or numeric value for knowledge of irish number ability in irish in the represented area. | statistical_value | Yes | No | No |
+| `knowledge_of_irish_some_ability_in_irish` | `text` | Count or numeric value for knowledge of irish some ability in irish in the represented area. | statistical_value | Yes | No | No |
+| `knowledge_of_ulster_scots_no_ability_in_ulster_scots` | `text` | Count or numeric value for knowledge of ulster scots number ability in ulster scots in the represented area. | statistical_value | Yes | No | No |
+| `knowledge_of_ulster_scots_some_ability_in_ulster_scots` | `text` | Count or numeric value for knowledge of ulster scots some ability in ulster scots in the represented area. | statistical_value | Yes | No | No |
+| `main_language_english` | `text` | Count or numeric value for main language english in the represented area. | statistical_value | Yes | No | No |
+| `main_language_other_languages` | `text` | Count or numeric value for main language other languages in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

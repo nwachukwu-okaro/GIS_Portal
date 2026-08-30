@@ -5,11 +5,14 @@
 - **Identifier:** `a_nisra_nireland/boundary_lgd2012`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
+- **WGS84 extent:** `[-8.177503, 54.022724, -5.432784, 55.312985]`
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_lgd2012`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:4326
 - **Rows:** 11
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,12 +23,12 @@ Boundary Lgd2012 is an authoritative dataset published by Northern Ireland Stati
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `lgdname` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `area` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lgdcode` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `objectid` | `integer` | Source-system object identifier. | identifier | Yes | No | No |
+| `lgdname` | `varchar` | Publisher-supplied lgdname for the represented feature or record. | source_attribute | Yes | No | No |
+| `area` | `double precision` | Numeric area value recorded for the feature. | measure | Yes | No | No |
+| `lgdcode` | `varchar` | Publisher-assigned lgdcode for the record. | source_identifier | Yes | No | No |
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
 
 ## Supported operations
 

@@ -5,11 +5,14 @@
 - **Identifier:** `a_nisra_nireland/boundary_census_sexual_orientation_data_2021_dz`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
+- **WGS84 extent:** `[-8.177484, 54.022725, -5.432790, 55.312985]`
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_sexual_orientation_data_2021_dz`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:29902
 - **Rows:** 3780
+- **Columns:** 8
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,13 +23,13 @@ Boundary Census Sexual Orientation Data 2021 Dz is an authoritative dataset publ
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `population` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sexual_orientation_gay_lesbian_bisexual_or_other_sexual_orienta` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sexual_orientation_prefer_not_to_say_or_not_stated` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `sexual_orientation_straight_or_heterosexual` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `population` | `text` | Publisher-supplied population for the represented feature or record. | source_attribute | Yes | No | No |
+| `sexual_orientation_gay_lesbian_bisexual_or_other_sexual_orienta` | `bigint` | Publisher-supplied sexual orientation gay lesbian bisexual or other sexual orienta for the represented feature or record. | source_attribute | Yes | No | No |
+| `sexual_orientation_prefer_not_to_say_or_not_stated` | `bigint` | Publisher-supplied sexual orientation prefer not to say or not stated for the represented feature or record. | source_attribute | Yes | No | No |
+| `sexual_orientation_straight_or_heterosexual` | `text` | Publisher-supplied sexual orientation straight or heterosexual for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -5,11 +5,13 @@
 - **Identifier:** `a_ons_nrs_nirsa_census_data/census_data`
 - **Source organisation:** UK national statistical authorities
 - **Source:** https://www.ons.gov.uk/census
+- **Geographic coverage:** United Kingdom
 - **Schema:** `a_ons_nrs_nirsa_census_data`
 - **Table:** `census_data`
 - **Geometry:** GEOMETRY
 - **CRS:** Not applicable or unknown
 - **Rows:** 239023
+- **Columns:** 217
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,7 +22,7 @@ Census Data is an authoritative dataset published by UK national statistical aut
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `oa` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `oa` | `varchar(9)` | Publisher-supplied oa for the represented feature or record. | source_attribute | Yes | No | No |
 | `uk001001` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `uk001002` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `uk001003` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
@@ -176,7 +178,7 @@ Census Data is an authoritative dataset published by UK national statistical aut
 | `uk059001` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `uk059002` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `uk059003` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `uk059_uk059004` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `uk059_uk059004` | `bigint` | Count or numeric value for uk059 uk059004 in the represented area. | statistical_value | Yes | No | No |
 | `uk059005` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `uk059006` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
 | `uk059007` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |

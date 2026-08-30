@@ -5,11 +5,13 @@
 - **Identifier:** `a_greater_manchester_ecology_unit/greater_manchester_acb`
 - **Source organisation:** Greater Manchester Ecology Unit
 - **Source:** https://www.gmenvironment.org.uk/gmeu/
+- **WGS84 extent:** `[-2.727031, 53.327182, -1.909622, 53.685720]`
 - **Schema:** `a_greater_manchester_ecology_unit`
 - **Table:** `greater_manchester_acb`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 12796
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,7 +24,7 @@ Greater Manchester Acb is an authoritative dataset published by Greater Manchest
 |---|---|---|---|---|---|---|
 | `lnrs_id` | `varchar(254)` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
 | `acb_id` | `integer` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `gmacb_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `gmacb_pk` | `integer` | Internal primary-key value for the Greater Manchester biodiversity area record. | record_identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

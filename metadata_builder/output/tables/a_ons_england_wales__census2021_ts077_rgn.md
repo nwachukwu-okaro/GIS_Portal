@@ -5,11 +5,14 @@
 - **Identifier:** `a_ons_england_wales/census2021_ts077_rgn`
 - **Source organisation:** Office for National Statistics
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
+- **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England and Wales
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts077_rgn`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 10
+- **Columns:** 9
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,15 +23,15 @@ Census2021 Ts077 Rgn is an authoritative dataset published by Office for Nationa
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `date` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `total_all_usual_residents_aged_16_years_and_over` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `straight_or_heterosexual` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `gay_or_lesbian` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bisexual` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `all_other_sexual_orientations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `not_answered` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `total_all_usual_residents_aged_16_years_and_over` | `bigint` | Count or numeric value for total all usual residents aged 16 years and over in the represented area. | statistical_value | Yes | No | No |
+| `straight_or_heterosexual` | `bigint` | Count or numeric value for straight or heterosexual in the represented area. | statistical_value | Yes | No | No |
+| `gay_or_lesbian` | `bigint` | Count or numeric value for gay or lesbian in the represented area. | statistical_value | Yes | No | No |
+| `bisexual` | `bigint` | Count or numeric value for bisexual in the represented area. | statistical_value | Yes | No | No |
+| `all_other_sexual_orientations` | `bigint` | Count or numeric value for all other sexual orientations in the represented area. | statistical_value | Yes | No | No |
+| `not_answered` | `bigint` | Count or numeric value for not answered in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

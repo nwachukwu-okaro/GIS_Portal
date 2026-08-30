@@ -5,11 +5,14 @@
 - **Identifier:** `a_nisra_nireland/boundary_census_religion_and_ethnicity_data_2021_lgd`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
+- **WGS84 extent:** `[-8.177503, 54.022724, -5.432784, 55.312985]`
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_religion_and_ethnicity_data_2021_lgd`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:4326
 - **Rows:** 11
+- **Columns:** 17
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,22 +23,22 @@ Boundary Census Religion And Ethnicity Data 2021 Lgd is an authoritative dataset
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `population` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ethnic_group_other_ethnic_group` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ethnic_group_white` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_or_religion_brought_up_in_catholic` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_or_religion_brought_up_in_other_religions` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_or_religion_brought_up_in_protestant_and_other_christi` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_catholic` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_church_of_ireland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_methodist_church_in_ireland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_no_religion_not_stated` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_other_christian_including_christian_related` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_other_religions` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `religion_presbyterian_church_in_ireland` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `population` | `text` | Publisher-supplied population for the represented feature or record. | source_attribute | Yes | No | No |
+| `ethnic_group_other_ethnic_group` | `text` | Publisher-supplied ethnic group other ethnic group for the represented feature or record. | source_attribute | Yes | No | No |
+| `ethnic_group_white` | `text` | Publisher-supplied ethnic group white for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_or_religion_brought_up_in_catholic` | `text` | Publisher-supplied religion or religion brought up in catholic for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_or_religion_brought_up_in_other_religions` | `text` | Publisher-supplied religion or religion brought up in other religions for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_or_religion_brought_up_in_protestant_and_other_christi` | `text` | Publisher-supplied religion or religion brought up in protestant and other christi for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_catholic` | `text` | Publisher-supplied religion catholic for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_church_of_ireland` | `text` | Publisher-supplied religion church of ireland for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_methodist_church_in_ireland` | `text` | Publisher-supplied religion methodist church in ireland for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_no_religion_not_stated` | `text` | Publisher-supplied religion number religion not stated for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_other_christian_including_christian_related` | `text` | Publisher-supplied religion other christian including christian related for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_other_religions` | `text` | Publisher-supplied religion other religions for the represented feature or record. | source_attribute | Yes | No | No |
+| `religion_presbyterian_church_in_ireland` | `text` | Publisher-supplied religion presbyterian church in ireland for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

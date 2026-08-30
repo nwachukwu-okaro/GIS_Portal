@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Map Local
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-map-local
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-5.936316, 50.142870, 1.721511, 58.575236]`
 - **Schema:** `a_os_open_map_local`
 - **Table:** `electricity_transmission_line`
 - **Geometry:** MULTILINESTRING
 - **CRS:** EPSG:27700
 - **Rows:** 3414
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,7 +25,7 @@ Contains OS data © Crown copyright and database right 2026
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `varchar` | Publisher-assigned identifier for the record. | source_identifier | Yes | No | No |
 | `feature_code` | `integer` | Code assigned by the source dataset. | code | Yes | No | No |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |

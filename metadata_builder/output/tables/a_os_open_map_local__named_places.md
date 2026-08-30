@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Map Local
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-map-local
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-8.643782, 49.870843, 1.766548, 60.836509]`
 - **Schema:** `a_os_open_map_local`
 - **Table:** `named_places`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:27700
 - **Rows:** 480723
+- **Columns:** 8
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,12 +25,12 @@ Contains OS data © Crown copyright and database right 2026
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `classification` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `varchar` | Publisher-assigned identifier for the record. | source_identifier | Yes | No | No |
+| `classification` | `varchar` | Publisher-supplied classification for the represented feature or record. | source_attribute | Yes | No | No |
 | `distinctive_name` | `varchar` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `feature_code` | `integer` | Code assigned by the source dataset. | code | Yes | No | No |
-| `font_height` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `text_orientation` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `font_height` | `varchar` | Publisher-supplied font height for the represented feature or record. | source_attribute | Yes | No | No |
+| `text_orientation` | `integer` | Count or numeric value for text orientation in the represented area. | statistical_value | Yes | No | No |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 

@@ -4,10 +4,238 @@ tables:
     title: BGS Geology 625K - Bedrock
     feature_concept: bedrock_geology
     synonyms: [bedrock, geology, geological formations, rock types]
+    description: >-
+      Generalised 1:625,000-scale bedrock geology polygons for Great Britain. Features identify the mapped
+      lithostratigraphic unit, rock classification and oldest-to-youngest geological age range.
+    local_dataset_version: "5.17 (released February 2008)"
+    metadata_status: context_curated
+    warnings: ["Generalised regional mapping is not suitable for site-scale geological interpretation.", "Verify reuse terms against the individual BGS product licence."]
+  a_british_geological_survey.625k_dykes_geology:
+    title: BGS Geology 625K - Dykes
+    feature_concept: dyke_geology
+    synonyms: [dykes, igneous intrusions, geology]
+    description: >-
+      Generalised 1:625,000-scale mapped dyke features for Great Britain, classified by BGS geological unit,
+      rock type and geological age.
+    local_dataset_version: "5.17 (released 11 February 2008)"
+    metadata_status: context_curated
+    warnings: ["Generalised regional mapping is not suitable for site-scale geological interpretation.", "Verify reuse terms against the individual BGS product licence."]
+  a_british_geological_survey.625k_faults:
+    title: BGS Geology 625K - Faults
+    feature_concept: geological_fault
+    synonyms: [faults, thrust faults, geological structures]
+    description: >-
+      Generalised 1:625,000-scale linework representing mapped geological faults and thrust faults in Great Britain.
+    local_dataset_version: "5.17 (released 23 April 2008)"
+    metadata_status: context_curated
+    warnings: ["Fault positions are generalised for regional-scale use and should not be treated as surveyed site boundaries.", "Verify reuse terms against the individual BGS product licence."]
+  a_british_geological_survey.625k_superficial_geology:
+    title: BGS Geology 625K - Superficial Deposits
+    feature_concept: superficial_geology
+    synonyms: [superficial deposits, quaternary geology, sediments]
+    description: >-
+      Generalised 1:625,000-scale polygons of superficial deposits across Great Britain, including deposit names,
+      sediment or rock classifications and geological age ranges.
+    local_dataset_version: "1.10 (released 30 April 2003)"
+    metadata_status: context_curated
+    warnings: ["Generalised regional mapping is not suitable for site-scale ground investigation.", "Verify reuse terms against the individual BGS product licence."]
+  a_british_geological_survey.borehole_records:
+    title: BGS Borehole Records
+    feature_concept: borehole_record
+    synonyms: [boreholes, ground investigation, drilling records, borehole logs]
+    description: >-
+      Point index of BGS borehole records, providing registration references, National Grid locations, drilling
+      length and date information, confidentiality status and links to available online records or logs.
+    metadata_status: context_curated
+    warnings: ["A map point identifies a borehole record location and does not describe subsurface conditions by itself.", "Some records or logs may be confidential or unavailable online.", "Verify reuse terms against the individual BGS product licence."]
+  a_department_for_education.education_establishments:
+    title: Education Establishments
+    feature_concept: education_establishment
+    synonyms: [schools, colleges, education providers, Get Information about Schools, GIAS]
+    description: >-
+      Locations and administrative details of education establishments from the Department for Education's
+      Get Information about Schools service, including identifiers, status dates, pupil statistics, addresses,
+      leadership, inspection links and specialist provision.
+    local_dataset_version: "20251203 (3 December 2025)"
+    official_dataset_url: https://get-information-schools.service.gov.uk/Downloads
+    metadata_status: context_curated
+    warnings: ["Pupil statistics relate to the stated census date and may not represent current enrolment.", "Check GIAS for the latest establishment status and contact details."]
+  a_dft.bus_stops_naptan:
+    title: NaPTAN Bus Stops
+    feature_concept: public_transport_stop
+    synonyms: [bus stops, NaPTAN, public transport access points]
+    description: >-
+      Point locations and reference attributes for bus stops from the National Public Transport Access Nodes
+      dataset, including national identifiers, passenger-facing names, locality hierarchy, stop classifications,
+      timing status and record lifecycle information.
+    metadata_status: context_curated
+    warnings: ["Use ATCOCode as the persistent stop identifier; local plate and public codes may differ.", "Inactive or deleted records should be excluded when identifying currently usable stops."]
+  a_environment_agency.air_quality_management_area:
+    title: Air Quality Management Areas
+    feature_concept: air_quality_management_area
+    description: Boundaries of Air Quality Management Areas declared by UK local authorities where air-quality objectives are unlikely to be met.
+    metadata_status: context_curated
+  a_environment_agency.flood_zones_2_3_rivers_and_sea:
+    title: Flood Zones 2 and 3 - Rivers and Sea
+    feature_concept: fluvial_tidal_flood_zone
+    description: Modelled Flood Zone 2 and Flood Zone 3 extents showing land at risk from flooding from rivers or the sea, without accounting for defences.
+    metadata_status: context_curated
+  a_environment_agency.rofsw_model_origin:
+    title: Risk of Flooding from Surface Water - Model Origin
+    feature_concept: surface_water_flood_model_origin
+    description: Areas identifying the model source and vintage used in the national Risk of Flooding from Surface Water mapping.
+    metadata_status: context_curated
+  a_environment_agency.statutory_main_river:
+    title: Statutory Main Rivers
+    feature_concept: statutory_main_river
+    description: Line network of watercourses legally designated as Main River in England, where the Environment Agency has permissive powers for flood-risk management.
+    metadata_status: context_curated
   a_historic_england.battlefields:
     title: Registered Battlefields
     feature_concept: registered_battlefield
     synonyms: [battlefields, historic battlefields, heritage battlefield]
+    description: >-
+      Authoritative boundary polygons for the 47 historic battlefields registered in England.
+      Each feature represents one registered battlefield and includes its National Heritage List
+      for England identifier, official name, registration dates, mapped area, location reference
+      and link to the official designation record. The register supports recognition, conservation
+      and consideration of nationally important battlefield sites in planning decisions.
+    local_dataset_version: "20251124 (24 November 2025)"
+    official_dataset_updated: 28 August 2026
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=8
+    metadata_status: source_verified
+    warnings:
+      - This local table is version 20251124, while Historic England reports a newer official dataset update dated 28 August 2026.
+      - Check the official Historic England dataset before analyses that require the latest registration boundaries or attributes.
+      - objectid is a source-system identifier and may change when the dataset is republished.
+    documentation_sources: &historic_england_sources
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, What Are Registered Battlefields?", url: "https://historicengland.org.uk/listing/what-is-designation/registered-battlefields/"}
+    columns:
+      listentry: {description: "Unique seven-digit National Heritage List for England entry number, such as 1000000.", semantic_role: heritage_asset_identifier, identifier_system: NHLE, joinable: true}
+      name: {description: "Official registered battlefield name, usually including the battle year, such as Edgehill 1642.", semantic_role: feature_name, searchable: true}
+      regdate: {description: "Date the battlefield was first entered on the Register.", semantic_role: designation_date}
+      amenddate: {description: "Date the registration record was most recently amended; empty where no amendment is recorded.", semantic_role: amendment_date}
+      capturescale: {description: "Map scale used to capture the battlefield boundary, such as 1:10000 or 1:25000.", semantic_role: capture_scale}
+      hyperlink: {description: "URL of the battlefield's official Historic England List entry.", semantic_role: source_record_url}
+      area_ha: {description: "Area enclosed by the registered battlefield boundary, measured in hectares.", semantic_role: area, unit: hectares}
+      ngr: {description: "Ordnance Survey National Grid Reference used to locate the battlefield.", semantic_role: geographic_reference, identifier_system: OS_NGR}
+      easting: {description: "British National Grid easting in metres for the battlefield's reference location.", semantic_role: x_coordinate, unit: metres}
+      northing: {description: "British National Grid northing in metres for the battlefield's reference location.", semantic_role: y_coordinate, unit: metres}
+      objectid: {description: "ArcGIS source-system row identifier; not a persistent heritage asset identifier.", semantic_role: identifier}
+      geom: {description: "Multipolygon boundary of the registered battlefield in British National Grid coordinates.", semantic_role: geometry}
+  a_historic_england.certificate_of_immunity_points:
+    title: Certificates of Immunity from Listing
+    feature_concept: certificate_of_immunity
+    synonyms: [certificate of immunity, COI, listing immunity]
+    description: >-
+      Point locations of buildings with a Certificate of Immunity from Listing published on the
+      National Heritage List for England. A certificate confirms that the Secretary of State does
+      not intend to list the building and normally prevents a Building Preservation Notice for five years.
+    local_dataset_version: "20251124 (24 November 2025)"
+    official_dataset_updated: 28 August 2026
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=2
+    metadata_status: source_verified
+    warnings: ["Check the official dataset before relying on whether a certificate remains current.", "objectid may change when the dataset is republished."]
+    documentation_sources:
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, Building Preservation Notices and Certificates of Immunity", url: "https://historicengland.org.uk/listing/protect-historic-places/building-preservation-notices-and-certificates-of-immunity/"}
+    columns:
+      coistart: {description: "Date on which the Certificate of Immunity took effect.", semantic_role: certificate_start_date}
+      coiexpire: {description: "Date on which the Certificate of Immunity expires, normally five years after issue.", semantic_role: certificate_expiry_date}
+  a_historic_england.conservation_areas:
+    title: Conservation Areas
+    feature_concept: conservation_area
+    synonyms: [conservation areas, protected historic areas, local designation]
+    description: >-
+      Boundaries of conservation areas designated by local planning authorities in England for
+      their special architectural or historic interest. The dataset is compiled and published by Historic England.
+    local_dataset_version: "20250702 (2 July 2025)"
+    official_dataset_updated: 2 July 2025
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::conservation-areas/explore
+    metadata_status: source_verified
+    warnings: ["Local planning authorities are the designating bodies; consult the relevant authority for the latest legal boundary.", "objectid may change when the dataset is republished."]
+    documentation_sources:
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, Designating and Managing a Conservation Area", url: "https://historicengland.org.uk/advice/planning/conservation-areas/"}
+    columns:
+      uid: {description: "Unique identifier assigned to the conservation-area record by the source dataset.", semantic_role: record_identifier}
+      date_of_de: {description: "Date on which the local planning authority designated the conservation area.", semantic_role: designation_date}
+      date_updat: {description: "Date on which the conservation-area record or boundary was last updated.", semantic_role: update_date}
+      lpa: {description: "Local planning authority responsible for designating and managing the conservation area.", semantic_role: responsible_organisation, searchable: true}
+      capture_sc: {description: "Map scale used to capture the conservation-area boundary.", semantic_role: capture_scale}
+      x: {description: "British National Grid easting in metres for the area's reference location.", semantic_role: x_coordinate, unit: metres}
+      y: {description: "British National Grid northing in metres for the area's reference location.", semantic_role: y_coordinate, unit: metres}
+  a_historic_england.listed_building_points:
+    title: Listed Building Points
+    feature_concept: listed_building
+    synonyms: [listed buildings, protected buildings, NHLE]
+    description: >-
+      Point locations of nationally listed buildings in England from the National Heritage List
+      for England, including each building's List Entry number, official name, grade and listing dates.
+    local_dataset_version: "20251124 (24 November 2025)"
+    official_dataset_updated: 28 August 2026
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=0
+    metadata_status: source_verified
+    warnings: ["This local snapshot predates the latest official dataset update.", "Point locations are discovery aids; consult the official List entry for designation details."]
+    documentation_sources:
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, Understanding List Entries", url: "https://historicengland.org.uk/listing/the-list/understanding-list-entries/"}
+    columns:
+      grade: {description: "Statutory listing grade: I, II* or II, indicating the building's level of special interest.", semantic_role: designation_grade}
+      listdate: {description: "Date on which the building was first added to the statutory List.", semantic_role: designation_date}
+  a_historic_england.parks_and_gardens:
+    title: Registered Parks and Gardens
+    feature_concept: registered_park_or_garden
+    synonyms: [registered parks, registered gardens, designed landscapes]
+    description: >-
+      Boundary polygons of parks and gardens of special historic interest registered in England,
+      with their National Heritage List identifiers, grades, registration dates and official records.
+    local_dataset_version: "20251124 (24 November 2025)"
+    official_dataset_updated: 28 August 2026
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=7
+    metadata_status: source_verified
+    warnings: ["This local snapshot predates the latest official dataset update.", "objectid may change when the dataset is republished."]
+    documentation_sources:
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, Understanding List Entries", url: "https://historicengland.org.uk/listing/the-list/understanding-list-entries/"}
+    columns:
+      grade: {description: "Registration grade: I, II* or II, indicating the site's level of historic interest.", semantic_role: designation_grade}
+  a_historic_england.scheduled_monuments:
+    title: Scheduled Monuments
+    feature_concept: scheduled_monument
+    synonyms: [scheduled monuments, protected archaeology, ancient monuments]
+    description: >-
+      Boundary polygons of nationally important archaeological sites scheduled under the Ancient
+      Monuments and Archaeological Areas Act 1979 and recorded on the National Heritage List for England.
+    local_dataset_version: "20251124 (24 November 2025)"
+    official_dataset_updated: 28 August 2026
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=6
+    metadata_status: source_verified
+    warnings: ["This local snapshot predates the latest official dataset update.", "Consult the official List entry for the legal designation description."]
+    documentation_sources:
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, Understanding List Entries", url: "https://historicengland.org.uk/listing/the-list/understanding-list-entries/"}
+    columns:
+      scheddate: {description: "Date on which the monument was first scheduled.", semantic_role: designation_date}
+  a_historic_england.world_heritage_sites:
+    title: World Heritage Sites
+    feature_concept: world_heritage_site
+    synonyms: [world heritage sites, UNESCO, cultural heritage]
+    description: >-
+      Boundary polygons for World Heritage Sites in England recorded by Historic England, including
+      their National Heritage List identifiers, inscription dates and official record links.
+    local_dataset_version: "20251124 (24 November 2025)"
+    official_dataset_updated: 28 August 2026
+    official_dataset_url: https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=10
+    metadata_status: source_verified
+    warnings: ["This local snapshot predates the latest official dataset update.", "Some World Heritage Sites contain multiple component polygons or records."]
+    documentation_sources:
+      - {role: documentation, title: "Historic England, Download Listing Data - GIS Shapefiles", url: "https://historicengland.org.uk/listing/the-list/data-downloads/"}
+      - {role: guidance, title: "Historic England, Understanding List Entries", url: "https://historicengland.org.uk/listing/the-list/understanding-list-entries/"}
+    columns:
+      inscrdate: {description: "Date on which the site was inscribed on the UNESCO World Heritage List.", semantic_role: inscription_date}
+      notes: {description: "Additional source note about the World Heritage Site record or boundary.", semantic_role: note, searchable: true}
   a_os_built_up_areas.os_open_built_up_areas:
     title: OS Open Built Up Areas
     feature_concept: built_up_area

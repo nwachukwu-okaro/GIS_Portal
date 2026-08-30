@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_meath_cc/landscape_character_area`
 - **Source organisation:** Meath County Council
 - **Source:** https://data.gov.ie/organization/meath-county-council
+- **Geographic coverage:** County Meath
+- **WGS84 extent:** `[-7.342768, 53.381706, -6.211721, 53.917564]`
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `landscape_character_area`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 20
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,9 +23,9 @@ Landscape Character Area is an authoritative dataset published by Meath County C
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `lca_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `description` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `character` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `lca_pk` | `integer` | Count or numeric value for lca pk in the represented area. | statistical_value | Yes | No | No |
+| `description` | `varchar(50)` | Publisher-supplied description for the represented feature or record. | source_attribute | Yes | No | No |
+| `character` | `varchar(100)` | Publisher-supplied character for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

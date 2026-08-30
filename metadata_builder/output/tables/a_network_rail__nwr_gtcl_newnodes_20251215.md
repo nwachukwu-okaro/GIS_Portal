@@ -5,11 +5,14 @@
 - **Identifier:** `a_network_rail/nwr_gtcl_newnodes_20251215`
 - **Source organisation:** Network Rail
 - **Source:** https://www.networkrail.co.uk/who-we-are/transparency-and-ethics/transparency/open-data-feeds/
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-4.606090, 51.322594, 1.716912, 55.155648]`
 - **Schema:** `a_network_rail`
 - **Table:** `nwr_gtcl_newnodes_20251215`
 - **Geometry:** MULTIPOINT
 - **CRS:** EPSG:27700
 - **Rows:** 3555
+- **Columns:** 4
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,9 +23,9 @@ Nwr Gtcl Newnodes 20251215 is an authoritative dataset published by Network Rail
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `source` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `valancy` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `id` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `source` | `text` | Publisher-supplied source for the represented feature or record. | source_attribute | Yes | No | No |
+| `valancy` | `bigint` | Count or numeric value for valancy in the represented area. | statistical_value | Yes | No | No |
+| `id` | `bigint` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

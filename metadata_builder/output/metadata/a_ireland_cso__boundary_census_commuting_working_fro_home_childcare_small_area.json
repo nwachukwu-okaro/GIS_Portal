@@ -46,7 +46,7 @@
     {
       "name": "objectid",
       "data_type": "bigint",
-      "description": "Source-system object identifier.",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
       "semantic_role": "identifier",
       "filterable": true,
       "searchable": false,
@@ -166,6 +166,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.750577+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.750577+00:00",
+    "curated_at": "2026-08-30T20:16:31.934468+00:00"
+  },
+  "column_count": 2
 }

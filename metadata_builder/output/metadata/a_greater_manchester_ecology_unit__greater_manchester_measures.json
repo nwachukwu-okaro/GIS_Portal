@@ -55,8 +55,8 @@
     {
       "name": "gmm_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal primary-key value for the Greater Manchester ecological measure.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -77,8 +77,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "lnrs_id",
@@ -167,10 +167,10 @@
     {
       "name": "pm_desc",
       "data_type": "varchar(250)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Description of the proposed ecological measure or habitat intervention.",
+      "semantic_role": "measure_description",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -195,16 +195,16 @@
         "estimated_distinct": 26.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "priority_1",
       "data_type": "varchar(250)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Primary nature-recovery priority associated with the proposed measure.",
+      "semantic_role": "nature_recovery_priority",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -229,8 +229,8 @@
         "estimated_distinct": 18.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -327,6 +327,8 @@
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.697995+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.697995+00:00",
+    "curated_at": "2026-08-30T20:15:13.040490+00:00"
+  },
+  "column_count": 7
 }

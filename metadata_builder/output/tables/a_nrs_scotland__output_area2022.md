@@ -5,11 +5,14 @@
 - **Identifier:** `a_nrs_scotland/output_area2022`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
+- **WGS84 extent:** `[-7.114367, 54.633220, -1.764393, 57.701742]`
 - **Schema:** `a_nrs_scotland`
 - **Table:** `output_area2022`
 - **Geometry:** GEOMETRY
 - **CRS:** EPSG:2157
 - **Rows:** 24000
+- **Columns:** 12
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,17 +23,17 @@ Output Area2022 is an authoritative dataset published by National Records of Sco
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `code` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hhcount` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `popcount` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `council` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `code` | `varchar(9)` | Publisher-assigned code for the record. | source_identifier | Yes | No | No |
+| `hhcount` | `integer` | Count or numeric value for hhcount in the represented area. | statistical_value | Yes | No | No |
+| `popcount` | `integer` | Count or numeric value for popcount in the represented area. | statistical_value | Yes | No | No |
+| `council` | `varchar(9)` | Publisher-supplied council for the represented feature or record. | source_attribute | Yes | No | No |
 | `sqkm` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hect` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `masterpc` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `easting` | `varchar(6)` | Easting coordinate in the dataset coordinate reference system. | x_coordinate | Yes | No | No |
-| `northing` | `varchar(7)` | Northing coordinate in the dataset coordinate reference system. | y_coordinate | Yes | No | No |
-| `shape_leng` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `shape_area` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `hect` | `double precision` | Count or numeric value for hect in the represented area. | statistical_value | Yes | No | No |
+| `masterpc` | `varchar(9)` | Publisher-supplied masterpc for the represented feature or record. | source_attribute | Yes | No | No |
+| `easting` | `varchar(6)` | Easting coordinate in metres in the dataset's projected coordinate reference system. | x_coordinate | Yes | No | No |
+| `northing` | `varchar(7)` | Northing coordinate in metres in the dataset's projected coordinate reference system. | y_coordinate | Yes | No | No |
+| `shape_leng` | `double precision` | Count or numeric value for shape leng in the represented area. | statistical_value | Yes | No | No |
+| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. | measure | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

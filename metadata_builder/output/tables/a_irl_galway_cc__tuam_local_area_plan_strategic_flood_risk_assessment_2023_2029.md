@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_galway_cc/tuam_local_area_plan_strategic_flood_risk_assessment_2023_2029`
 - **Source organisation:** Galway County Council
 - **Source:** https://data.gov.ie/organization/galway-county-council
+- **Geographic coverage:** County Galway
+- **WGS84 extent:** `[-8.887475, 53.503134, -8.827930, 53.531496]`
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `tuam_local_area_plan_strategic_flood_risk_assessment_2023_2029`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:2157
 - **Rows:** 2
+- **Columns:** 6
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,9 +24,9 @@ Tuam Local Area Plan Strategic Flood Risk Assessment 2023 2029 is an authoritati
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `object_id` | `integer` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `flood_zone` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `description` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `town` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `flood_zone` | `varchar` | Publisher-supplied flood zone for the represented feature or record. | source_attribute | Yes | No | No |
+| `description` | `varchar` | Publisher-supplied description for the represented feature or record. | source_attribute | Yes | No | No |
+| `town` | `varchar` | Publisher-supplied town for the represented feature or record. | source_attribute | Yes | No | No |
 | `plan_name` | `varchar` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 

@@ -3,10 +3,14 @@
   "identifier": "a_dft/bus_stops_naptan",
   "schema": "a_dft",
   "table": "bus_stops_naptan",
-  "title": "Bus Stops Naptan",
-  "description": "version: 20251202\nSource: https://beta-naptan.dft.gov.uk/Download/National\n\nAttribution: Not specified in the source",
-  "feature_concept": "bus_stops_naptan",
-  "synonyms": [],
+  "title": "NaPTAN Bus Stops",
+  "description": "Point locations and reference attributes for bus stops from the National Public Transport Access Nodes dataset, including national identifiers, passenger-facing names, locality hierarchy, stop classifications, timing status and record lifecycle information.",
+  "feature_concept": "public_transport_stop",
+  "synonyms": [
+    "bus stops",
+    "NaPTAN",
+    "public transport access points"
+  ],
   "publisher": {
     "organisation": "Department for Transport",
     "product": null,
@@ -62,12 +66,12 @@
     {
       "name": "atcocode",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Unique national ATCO identifier for the stop point.",
+      "semantic_role": "stop_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "ATCO",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -90,18 +94,18 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "naptancode",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Short public-facing NaPTAN code printed or displayed for the stop.",
+      "semantic_role": "public_stop_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "NaPTAN",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -124,14 +128,14 @@
         "estimated_distinct": -0.9418,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "platecode",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Local code shown on the physical stop plate where supplied.",
+      "semantic_role": "stop_plate_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -158,14 +162,14 @@
         "estimated_distinct": -0.13660629,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "cleardowncode",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Code used by some operators to clear or identify the stop in operational systems.",
+      "semantic_role": "operational_stop_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -186,16 +190,16 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "commonname",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Primary name by which the stop is publicly known.",
+      "semantic_role": "feature_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -220,14 +224,14 @@
         "estimated_distinct": -0.16054468,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "commonnamelang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the primary stop name.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -248,16 +252,16 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "shortcommonname",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Abbreviated public name for the stop where supplied.",
+      "semantic_role": "short_feature_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -282,14 +286,14 @@
         "estimated_distinct": 19431.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "shortcommonnamelang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the abbreviated stop name.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -310,16 +314,16 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "landmark",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nearby landmark used to help passengers locate the stop.",
+      "semantic_role": "landmark",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -344,14 +348,14 @@
         "estimated_distinct": 33180.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "landmarklang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the landmark text.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -372,16 +376,16 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "street",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Street or road on which the stop is located.",
+      "semantic_role": "street_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -406,14 +410,14 @@
         "estimated_distinct": 25615.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "streetlang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the street name.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -434,14 +438,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "crossing",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Nearby crossing or intersecting street used to describe the stop location.",
+      "semantic_role": "crossing_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -462,14 +466,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "crossinglang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the crossing description.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -490,14 +494,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "indicator",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Location indicator distinguishing the stop, such as a stand, bay, direction or outside landmark.",
+      "semantic_role": "stop_indicator",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -524,14 +528,14 @@
         "estimated_distinct": 2104.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "indicatorlang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the stop indicator.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -552,14 +556,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "bearing",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Compass direction faced or served by the stop, such as N, SW or E.",
+      "semantic_role": "compass_bearing",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -586,18 +590,18 @@
         "estimated_distinct": 8.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "nptglocalitycode",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "National Public Transport Gazetteer code for the stop's locality.",
+      "semantic_role": "locality_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
-      "identifier_system": null,
+      "identifier_system": "NPTG",
       "entity_type": null,
       "geography_type": null,
       "geography_version": null,
@@ -620,16 +624,16 @@
         "estimated_distinct": 19479.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "localityname",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "NPTG locality name associated with the stop.",
+      "semantic_role": "locality_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -654,14 +658,14 @@
         "estimated_distinct": 16935.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "parentlocalityname",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name of the parent locality containing the stop locality.",
+      "semantic_role": "parent_locality_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -688,14 +692,14 @@
         "estimated_distinct": 1160.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "grandparentlocalityname",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Name of the higher-level locality containing the parent locality.",
+      "semantic_role": "grandparent_locality_name",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -716,16 +720,16 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "town",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Town or settlement recorded for the stop location.",
+      "semantic_role": "town_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -750,14 +754,14 @@
         "estimated_distinct": 2680.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "townlang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the town name, such as EN.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -780,16 +784,16 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "suburb",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Suburb or neighbourhood recorded for the stop.",
+      "semantic_role": "suburb_name",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -814,14 +818,14 @@
         "estimated_distinct": 3004.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "suburblang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the suburb name.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -844,14 +848,14 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "localitycentre",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Boolean indicator showing whether the stop represents a locality centre.",
+      "semantic_role": "locality_centre_flag",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -877,14 +881,14 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "gridtype",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Coordinate grid system used for the stop location, such as UKOS.",
+      "semantic_role": "coordinate_system_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -907,13 +911,13 @@
         "estimated_distinct": 1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "easting",
       "data_type": "real",
-      "description": "Easting coordinate in the dataset coordinate reference system.",
+      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system.",
       "semantic_role": "x_coordinate",
       "filterable": true,
       "searchable": false,
@@ -941,7 +945,7 @@
     {
       "name": "northing",
       "data_type": "real",
-      "description": "Northing coordinate in the dataset coordinate reference system.",
+      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system.",
       "semantic_role": "y_coordinate",
       "filterable": true,
       "searchable": false,
@@ -1025,8 +1029,8 @@
     {
       "name": "stoptype",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "NaPTAN stop-classification code identifying the transport stop or access-point type.",
+      "semantic_role": "stop_type_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1053,14 +1057,14 @@
         "estimated_distinct": 17.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "busstoptype",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "NaPTAN bus-stop subtype, such as marked, hail-and-ride, flexible or unmarked.",
+      "semantic_role": "bus_stop_type_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1086,14 +1090,14 @@
         "estimated_distinct": 4.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "timingstatus",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Operational timing-point status used in public transport scheduling.",
+      "semantic_role": "timing_status",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1120,14 +1124,14 @@
         "estimated_distinct": 6.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "defaultwaittime",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Default interchange waiting time recorded for the stop.",
+      "semantic_role": "default_wait_time",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1148,16 +1152,16 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "notes",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Additional publisher note about the stop record.",
+      "semantic_role": "note",
       "filterable": true,
-      "searchable": false,
+      "searchable": true,
       "joinable": false,
       "identifier_system": null,
       "entity_type": null,
@@ -1176,14 +1180,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "noteslang",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Language code for the stop notes.",
+      "semantic_role": "language_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1204,14 +1208,14 @@
         "estimated_distinct": 0.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "administrativeareacode",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "NPTG administrative-area code responsible for the stop record.",
+      "semantic_role": "administrative_area_code",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1232,14 +1236,14 @@
         "estimated_distinct": 148.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "creationdatetime",
       "data_type": "timestamp",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date and time when the stop record was created.",
+      "semantic_role": "record_creation_datetime",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1260,14 +1264,14 @@
         "estimated_distinct": 7068.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "modificationdatetime",
       "data_type": "timestamp",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Date and time when the stop record was last modified.",
+      "semantic_role": "record_update_datetime",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1288,14 +1292,14 @@
         "estimated_distinct": -0.11612918,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "revisionnumber",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Revision sequence number of the NaPTAN record.",
+      "semantic_role": "record_revision",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1316,14 +1320,14 @@
         "estimated_distinct": 187.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "modification",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Change action represented by the record, such as new, revise or delete.",
+      "semantic_role": "change_action",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1348,14 +1352,14 @@
         "estimated_distinct": 3.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "status",
       "data_type": "varchar",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Lifecycle status of the stop record, such as active, inactive or pending.",
+      "semantic_role": "record_status",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1380,14 +1384,14 @@
         "estimated_distinct": 2.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "stop_pk",
       "data_type": "integer",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
+      "description": "Internal primary-key value for the imported stop record.",
+      "semantic_role": "record_identifier",
       "filterable": true,
       "searchable": false,
       "joinable": false,
@@ -1408,8 +1412,8 @@
         "estimated_distinct": -1.0,
         "statistics_source": "pg_stats"
       },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "provenance": "schema_column_dictionary",
+      "confidence": "curated"
     },
     {
       "name": "geom",
@@ -1533,17 +1537,20 @@
   "provenance": {
     "technical_metadata": "PostGIS",
     "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
+    "description": "table_override",
+    "description_confidence": "curated"
   },
   "quality": {
-    "metadata_status": "source_mapped",
+    "metadata_status": "context_curated",
     "warnings": [
-      "Licence has not yet been verified."
+      "Use ATCOCode as the persistent stop identifier; local plate and public codes may differ.",
+      "Inactive or deleted records should be excluded when identifying currently usable stops."
     ]
   },
   "build": {
     "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.685474+00:00"
-  }
+    "generated_at": "2026-08-12T13:29:54.685474+00:00",
+    "curated_at": "2026-08-30T20:13:35.115464+00:00"
+  },
+  "column_count": 45
 }

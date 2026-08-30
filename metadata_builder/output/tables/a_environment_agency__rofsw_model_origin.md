@@ -1,30 +1,34 @@
-# Rofsw Model Origin
+# Risk of Flooding from Surface Water - Model Origin
 
 ## Overview
 
 - **Identifier:** `a_environment_agency/rofsw_model_origin`
 - **Source organisation:** Environment Agency
 - **Source:** https://environment.data.gov.uk/
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-2.585311, 55.292710, -2.001546, 55.806273]`
 - **Schema:** `a_environment_agency`
 - **Table:** `rofsw_model_origin`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 1000
-- **Metadata status:** source_mapped
+- **Columns:** 6
+- **Metadata status:** context_curated
 
 ## Description
 
-Rofsw Model Origin is an authoritative dataset published by Environment Agency. It represents rofsw model origin features using multipolygon geometry.
+Areas identifying the model source and vintage used in the national Risk of Flooding from Surface Water mapping.
 
 ## Columns
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `model` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `scale` | `varchar(8)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `model_year` | `smallint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `flood_source` | `varchar(16)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `uuid` | `char(36)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `model` | `varchar(254)` | Name or description of the flood model that produced the feature. | flood_model_name | Yes | No | No |
+| `scale` | `varchar(8)` | Geographic scale of the model, such as National. | model_scale | Yes | No | No |
+| `model_year` | `smallint` | Year associated with the flood-model version or run. | model_year | Yes | No | No |
+| `flood_source` | `varchar(16)` | Source of flooding represented, such as river, sea or surface water. | flood_source | Yes | No | No |
+| `uuid` | `char(36)` | Globally unique identifier for the model-origin record. | record_identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

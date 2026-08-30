@@ -5,11 +5,13 @@
 - **Identifier:** `a_nrs_scotland/table_uv208_gaelic_language_skills_datazone`
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
+- **Geographic coverage:** Scotland
 - **Schema:** `a_nrs_scotland`
 - **Table:** `table_uv208_gaelic_language_skills_datazone`
 - **Geometry:** Non-spatial
 - **CRS:** Not applicable or unknown
 - **Rows:** 7392
+- **Columns:** 9
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,14 +23,14 @@ Table Uv208 Gaelic Language Skills Datazone is an authoritative dataset publishe
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `all_people_aged_3_and_over` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `no_skills_in_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `other_combination_of_skills_in_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `reads_but_does_not_speak_or_write_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `speaks_and_reads_but_does_not_write_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `speaks_but_does_not_read_or_write_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `speaks_reads_and_writes_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `understands_but_does_not_speak_read_or_write_gaelic` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
+| `no_skills_in_gaelic` | `double precision` | Count or numeric value for number skills in gaelic in the represented area. | statistical_value | Yes | No | No |
+| `other_combination_of_skills_in_gaelic` | `double precision` | Count or numeric value for other combination of skills in gaelic in the represented area. | statistical_value | Yes | No | No |
+| `reads_but_does_not_speak_or_write_gaelic` | `double precision` | Count or numeric value for reads but does not speak or write gaelic in the represented area. | statistical_value | Yes | No | No |
+| `speaks_and_reads_but_does_not_write_gaelic` | `double precision` | Count or numeric value for speaks and reads but does not write gaelic in the represented area. | statistical_value | Yes | No | No |
+| `speaks_but_does_not_read_or_write_gaelic` | `double precision` | Count or numeric value for speaks but does not read or write gaelic in the represented area. | statistical_value | Yes | No | No |
+| `speaks_reads_and_writes_gaelic` | `double precision` | Count or numeric value for speaks reads and writes gaelic in the represented area. | statistical_value | Yes | No | No |
+| `understands_but_does_not_speak_read_or_write_gaelic` | `double precision` | Count or numeric value for understands but does not speak read or write gaelic in the represented area. | statistical_value | Yes | No | No |
 
 ## Supported operations
 

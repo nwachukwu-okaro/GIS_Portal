@@ -5,11 +5,14 @@
 - **Identifier:** `a_irl_meath_cc/quarry_register`
 - **Source organisation:** Meath County Council
 - **Source:** https://data.gov.ie/organization/meath-county-council
+- **Geographic coverage:** County Meath
+- **WGS84 extent:** `[-7.294228, 53.385624, -6.218810, 53.901445]`
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `quarry_register`
 - **Geometry:** POINT
 - **CRS:** EPSG:2157
 - **Rows:** 318
+- **Columns:** 8
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,13 +23,13 @@ Quarry Register is an authoritative dataset published by Meath County Council. I
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `qr_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `ref_no` | `varchar(10)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `location_o` | `varchar(104)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `townland` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `municipal_` | `varchar(40)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `more_info` | `varchar(254)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `map_label` | `varchar(100)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `qr_pk` | `integer` | Count or numeric value for qr pk in the represented area. | statistical_value | Yes | No | No |
+| `ref_no` | `varchar(10)` | Publisher-supplied reference number for the represented feature or record. | source_attribute | Yes | No | No |
+| `location_o` | `varchar(104)` | Publisher-supplied location o for the represented feature or record. | source_attribute | Yes | No | No |
+| `townland` | `varchar(50)` | Publisher-supplied townland for the represented feature or record. | source_attribute | Yes | No | No |
+| `municipal_` | `varchar(40)` | Publisher-supplied municipal for the represented feature or record. | source_attribute | Yes | No | No |
+| `more_info` | `varchar(254)` | Publisher-supplied more info for the represented feature or record. | source_attribute | Yes | No | No |
+| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

@@ -5,11 +5,14 @@
 - **Identifier:** `a_nisra_nireland/boundary_census_labour_market_and_qualifications_data_2021_dz`
 - **Source organisation:** Northern Ireland Statistics and Research Agency
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
+- **Geographic coverage:** Northern Ireland
+- **WGS84 extent:** `[-8.177484, 54.022725, -5.432790, 55.312985]`
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_labour_market_and_qualifications_data_2021_dz`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:29902
 - **Rows:** 3780
+- **Columns:** 35
 - **Metadata status:** source_mapped
 
 ## Description
@@ -20,40 +23,40 @@ Boundary Census Labour Market And Qualifications Data 2021 Dz is an authoritativ
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `geocode` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `geography` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `year` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `economic_activity_economically_inactive` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `economic_activity_in_employment` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `economic_activity_unemployed` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_apprenticeship` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_level_1` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_level_2` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_level_3` | `text` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_level_4_and_above` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_no_qualifications` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `highest_level_of_qualifications_other` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hours_worked_per_week_15_hours_or_less` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hours_worked_per_week_16_30_hours` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hours_worked_per_week_31_48_hours` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hours_worked_per_week_49_hours` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_agriculture_energy_and_water` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_construction` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_distribution_hotels_and_restaurants` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_financial_real_estate_professional_and_a` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_manufacturing` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_other` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_public_administration_education_and_heal` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `industry_of_employment_transport_and_communication` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_administrative_and_secretarial_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_associate_professional_and_technical_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_caring_leisure_and_other_service_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_elementary_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_managers_directors_and_senior_officials` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_process_plant_and_machine_operatives` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_professional_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_sales_and_customer_service_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `occupation_skilled_trades_occupations` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
+| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
+| `economic_activity_economically_inactive` | `text` | Publisher-supplied economic activity economically inactive for the represented feature or record. | source_attribute | Yes | No | No |
+| `economic_activity_in_employment` | `bigint` | Publisher-supplied economic activity in employment for the represented feature or record. | source_attribute | Yes | No | No |
+| `economic_activity_unemployed` | `bigint` | Publisher-supplied economic activity unemployed for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_apprenticeship` | `bigint` | Publisher-supplied highest level of qualifications apprenticeship for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_level_1` | `bigint` | Publisher-supplied highest level of qualifications level 1 for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_level_2` | `bigint` | Publisher-supplied highest level of qualifications level 2 for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_level_3` | `text` | Publisher-supplied highest level of qualifications level 3 for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_level_4_and_above` | `bigint` | Publisher-supplied highest level of qualifications level 4 and above for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_no_qualifications` | `bigint` | Publisher-supplied highest level of qualifications number qualifications for the represented feature or record. | source_attribute | Yes | No | No |
+| `highest_level_of_qualifications_other` | `bigint` | Count or numeric value for highest level of qualifications other in the represented area. | statistical_value | Yes | No | No |
+| `hours_worked_per_week_15_hours_or_less` | `bigint` | Publisher-supplied hours worked per week 15 hours or less for the represented feature or record. | source_attribute | Yes | No | No |
+| `hours_worked_per_week_16_30_hours` | `bigint` | Publisher-supplied hours worked per week 16 30 hours for the represented feature or record. | source_attribute | Yes | No | No |
+| `hours_worked_per_week_31_48_hours` | `bigint` | Publisher-supplied hours worked per week 31 48 hours for the represented feature or record. | source_attribute | Yes | No | No |
+| `hours_worked_per_week_49_hours` | `bigint` | Publisher-supplied hours worked per week 49 hours for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_agriculture_energy_and_water` | `bigint` | Publisher-supplied industry of employment agriculture energy and water for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_construction` | `bigint` | Publisher-supplied industry of employment construction for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_distribution_hotels_and_restaurants` | `bigint` | Publisher-supplied industry of employment distribution hotels and restaurants for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_financial_real_estate_professional_and_a` | `bigint` | Publisher-supplied industry of employment financial real estate professional and a for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_manufacturing` | `bigint` | Publisher-supplied industry of employment manufacturing for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_other` | `bigint` | Count or numeric value for industry of employment other in the represented area. | statistical_value | Yes | No | No |
+| `industry_of_employment_public_administration_education_and_heal` | `bigint` | Publisher-supplied industry of employment public administration education and heal for the represented feature or record. | source_attribute | Yes | No | No |
+| `industry_of_employment_transport_and_communication` | `bigint` | Publisher-supplied industry of employment transport and communication for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_administrative_and_secretarial_occupations` | `bigint` | Publisher-supplied occupation administrative and secretarial occupations for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_associate_professional_and_technical_occupations` | `bigint` | Publisher-supplied occupation associate professional and technical occupations for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_caring_leisure_and_other_service_occupations` | `bigint` | Publisher-supplied occupation caring leisure and other service occupations for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_elementary_occupations` | `bigint` | Publisher-supplied occupation elementary occupations for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_managers_directors_and_senior_officials` | `bigint` | Publisher-supplied occupation managers directors and senior officials for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_process_plant_and_machine_operatives` | `bigint` | Publisher-supplied occupation process plant and machine operatives for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_professional_occupations` | `bigint` | Publisher-supplied occupation professional occupations for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_sales_and_customer_service_occupations` | `bigint` | Publisher-supplied occupation sales and customer service occupations for the represented feature or record. | source_attribute | Yes | No | No |
+| `occupation_skilled_trades_occupations` | `bigint` | Publisher-supplied occupation skilled trades occupations for the represented feature or record. | source_attribute | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

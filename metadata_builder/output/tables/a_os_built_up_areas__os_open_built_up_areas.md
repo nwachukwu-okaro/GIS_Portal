@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Built Up Areas
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-built-up-areas
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-7.509500, 49.910214, 1.763227, 60.480482]`
 - **Schema:** `a_os_built_up_areas`
 - **Table:** `os_open_built_up_areas`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 8716
+- **Columns:** 9
 - **Metadata status:** source_mapped
 
 ## Description

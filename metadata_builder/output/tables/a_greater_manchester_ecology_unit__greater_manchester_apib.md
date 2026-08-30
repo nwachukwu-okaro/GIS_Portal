@@ -5,11 +5,13 @@
 - **Identifier:** `a_greater_manchester_ecology_unit/greater_manchester_apib`
 - **Source organisation:** Greater Manchester Ecology Unit
 - **Source:** https://www.gmenvironment.org.uk/gmeu/
+- **WGS84 extent:** `[-2.723911, 53.345913, -1.909622, 53.685117]`
 - **Schema:** `a_greater_manchester_ecology_unit`
 - **Table:** `greater_manchester_apib`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 2059
+- **Columns:** 7
 - **Metadata status:** source_mapped
 
 ## Description
@@ -22,10 +24,10 @@ Greater Manchester Apib is an authoritative dataset published by Greater Manches
 |---|---|---|---|---|---|---|
 | `lnrs_id` | `numeric` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
 | `apib_id` | `numeric` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `apib_type` | `varchar(6)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `apib_type` | `varchar(6)` | Type of area important for biodiversity, such as SAC, SPA, LWS or irreplaceable habitat. | biodiversity_area_type | Yes | No | No |
 | `apib_name` | `varchar(60)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `apib_site_` | `varchar(50)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `gmapib_pk` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `apib_site_` | `varchar(50)` | Source identifier of the biodiversity site represented by the feature. | biodiversity_site_identifier | Yes | No | No |
+| `gmapib_pk` | `integer` | Internal primary-key value for the Greater Manchester APIB record. | record_identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
 ## Supported operations

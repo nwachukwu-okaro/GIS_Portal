@@ -6,11 +6,15 @@
 - **Source organisation:** Ordnance Survey
 - **Product:** OS Open Map Local
 - **Source:** https://www.ordnancesurvey.co.uk/products/os-open-map-local
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** Great Britain
+- **WGS84 extent:** `[-7.507545, 49.892352, 1.761098, 60.760263]`
 - **Schema:** `a_os_open_map_local`
 - **Table:** `functional_site`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 37845
+- **Columns:** 7
 - **Metadata status:** source_mapped
 
 ## Description
@@ -21,11 +25,11 @@ Contains OS data © Crown copyright and database right 2026
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `id` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `classification` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `id` | `varchar` | Publisher-assigned identifier for the record. | source_identifier | Yes | No | No |
+| `classification` | `varchar` | Publisher-supplied classification for the represented feature or record. | source_attribute | Yes | No | No |
 | `distinctive_name` | `varchar` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
 | `feature_code` | `integer` | Code assigned by the source dataset. | code | Yes | No | No |
-| `site_theme` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `site_theme` | `varchar` | Publisher-supplied site theme for the represented feature or record. | source_attribute | Yes | No | No |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 

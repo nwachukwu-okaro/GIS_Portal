@@ -5,11 +5,16 @@
 - **Identifier:** `a_natural_england/areas_of_outstanding_natural_beauty_england`
 - **Source organisation:** Natural England
 - **Source:** https://naturalengland-defra.opendata.arcgis.com/
+- **Local dataset version:** 20251009 (9 October 2025)
+- **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- **Geographic coverage:** England
+- **WGS84 extent:** `[-6.462536, 49.854671, 1.729622, 55.748905]`
 - **Schema:** `a_natural_england`
 - **Table:** `areas_of_outstanding_natural_beauty_england`
 - **Geometry:** MULTIPOLYGON
 - **CRS:** EPSG:27700
 - **Rows:** 33
+- **Columns:** 10
 - **Metadata status:** source_mapped
 
 ## Description
@@ -23,14 +28,14 @@ Attribution: © Natural England copyright. Contains Ordnance Survey data © Crow
 
 | Column | Data type | Meaning | Semantic role | Filter | Search | Join |
 |---|---|---|---|---|---|---|
-| `code` | `integer` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `name` | `varchar(200)` | Name of the represented feature. | feature_name | Yes | Yes | No |
-| `measure` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `code` | `integer` | Count or numeric value for code in the represented area. | statistical_value | Yes | No | No |
+| `name` | `varchar(200)` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
+| `measure` | `real` | Count or numeric value for measure in the represented area. | statistical_value | Yes | No | No |
 | `desig_date` | `varchar(14)` | Date associated with the represented feature or source record. | date | Yes | No | No |
-| `hotlink` | `varchar(200)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `stat_area` | `varchar(32)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `shape_length` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `shape_area` | `real` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
+| `hotlink` | `varchar(200)` | Publisher-supplied hotlink for the represented feature or record. | source_attribute | Yes | No | No |
+| `stat_area` | `varchar(32)` | Publisher-supplied stat area for the represented feature or record. | source_attribute | Yes | No | No |
+| `shape_length` | `real` | Numeric shape length value recorded for the feature. | measure | Yes | No | No |
+| `shape_area` | `real` | Numeric shape area value recorded for the feature. | measure | Yes | No | No |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
 | `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
 
