@@ -81,6 +81,101 @@
     "keywords": {"type": "array", "items": {"type": "string"}},
     "provenance": {"type": "object"},
     "quality": {"type": "object"},
-    "build": {"type": "object"}
+    "build": {"type": "object"},
+
+    "topic_category": {
+      "type": "string",
+      "description": "UK GEMINI2 element 5 (Topic Category) — ISO 19115 MD_TopicCategoryCode, the main theme of the resource.",
+      "enum": [
+        "farming", "biota", "boundaries", "climatologyMeteorologyAtmosphere",
+        "economy", "elevation", "environment", "geoscientificInformation",
+        "health", "imageryBaseMapsEarthCover", "intelligenceMilitary",
+        "inlandWaters", "location", "oceans", "planningCadastre", "society",
+        "structure", "transportation", "utilitiesCommunication"
+      ]
+    },
+    "temporal_extent": {
+      "type": ["object", "null"],
+      "description": "UK GEMINI2 element 7 (Temporal Extent) — the date/date range covered by the resource's content (not its publication date). Null when no date column could be found and manual entry is needed.",
+      "required": ["begin", "end", "note", "source"],
+      "properties": {
+        "begin": {"type": ["string", "null"], "format": "date"},
+        "end": {"type": ["string", "null"], "format": "date"},
+        "note": {"type": ["string", "null"]},
+        "source": {"type": ["string", "null"]}
+      }
+    },
+    "dataset_reference_date": {
+      "type": ["object", "null"],
+      "description": "UK GEMINI2 element 8 (Dataset Reference Date) — an identifying date for the resource itself.",
+      "required": ["date", "date_type"],
+      "properties": {
+        "date": {"type": "string", "format": "date"},
+        "date_type": {"type": "string", "enum": ["publication", "revision", "creation"]}
+      }
+    },
+    "lineage": {
+      "type": ["string", "null"],
+      "description": "UK GEMINI2 element 10 (Lineage) — information about the events or source data used in constructing the resource."
+    },
+    "dataset_language": {
+      "type": "string",
+      "description": "UK GEMINI2 element 3 (Dataset Language) — ISO 639-2 three-letter code.",
+      "default": "eng"
+    },
+    "metadata_language": {
+      "type": "string",
+      "description": "UK GEMINI2 element 33 (Metadata Language) — ISO 639-2 three-letter code.",
+      "default": "eng"
+    },
+    "metadata_point_of_contact": {
+      "type": "object",
+      "description": "UK GEMINI2 element 35 (Metadata Point of Contact) — party responsible for the metadata itself.",
+      "required": ["organisation", "email", "role"],
+      "properties": {
+        "organisation": {"type": "string", "minLength": 1},
+        "email": {"type": "string", "format": "email"},
+        "role": {"type": "string"}
+      }
+    },
+    "use_constraints": {
+      "type": ["string", "null"],
+      "description": "UK GEMINI2 element 26 (Use Constraints) — full licence statement, including a URL."
+    },
+    "limitations_on_public_access": {
+      "type": ["string", "null"],
+      "description": "UK GEMINI2 element 25 (Limitations on Public Access)."
+    },
+    "frequency_of_update": {
+      "type": ["string", "null"],
+      "description": "ISO 19115 MD_MaintenanceFrequencyCode (optional under GEMINI2).",
+      "enum": [
+        "continual", "daily", "weekly", "fortnightly", "monthly", "quarterly",
+        "biannually", "annually", "asNeeded", "irregular", "notPlanned", "unknown", null
+      ]
+    },
+    "conformity": {
+      "type": "string",
+      "description": "UK GEMINI2 element 41 (Conformity) statement, kept as free text here rather than GEMINI's full Specification/Degree/Explanation structure.",
+      "default": "Not evaluated — internal use"
+    },
+    "spatial_resolution": {
+      "type": ["string", "null"],
+      "description": "Ground sample distance / grid resolution for raster-derived or gridded data (e.g. '50 metres' for OS Terrain 50). Curated per table in table_overrides.yml from confirmed official documentation only - never inferred or guessed. Null when not documented or not applicable (see 'equivalent_scale' for cartographic-scale products, and Task 6's build.py scoring for the point-geometry exemption)."
+    },
+    "equivalent_scale": {
+      "type": ["string", "null"],
+      "description": "Nominal cartographic scale for vector map products digitised at a stated scale (e.g. '1:625,000' for BGS Geology 625k). Curated per table in table_overrides.yml from confirmed official documentation only - never inferred or guessed. Null when not documented or not applicable."
+    },
+    "gemini_tier": {
+      "type": ["integer", "null"],
+      "enum": [1, 2, 3, null],
+      "description": "Internal compliance tier against UK GEMINI2 mandatory/recommended elements — see build.py's compliance scoring. Null means the record does not yet meet even Tier 1 (\"Below Tier 1 — Non-compliant\")."
+    },
+    "missing_mandatory_fields": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Names of GEMINI2 mandatory elements absent from this record."
+    }
   }
 }

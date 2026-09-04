@@ -46,9 +46,30 @@ GEOMETRY_CAPABILITIES = [
 ]
 NONSPATIAL_CAPABILITIES = ['filter', 'select', 'attribute_join', 'export']
 
+PLACEHOLDER_COLUMN_DESCRIPTION = 'Source attribute; its precise meaning has not yet been documented.'
+
+# Geometry types with no meaningful spatial resolution/scale, per Task 6.
+POINT_GEOMETRY_TYPES = {'POINT', 'MULTIPOINT'}
+
 
 def utc_now():
     return datetime.now(timezone.utc).isoformat()
+
+
+def parse_human_date(value):
+    """
+    table_overrides.yml stores 'official_dataset_updated' as a human-readable
+    string (e.g. '28 August 2026'), used as-is elsewhere for Markdown display.
+    UK GEMINI2's Dataset Reference Date needs ISO 8601, so this converts it -
+    returning None (not the raw string) when the format can't be parsed,
+    rather than writing a value that would fail metadata_record.schema.json.
+    """
+    if not value:
+        return None
+    try:
+        return datetime.strptime(str(value).strip(), '%d %B %Y').strftime('%Y-%m-%d')
+    except ValueError:
+        return None
 
 
 def read_yaml(path):
@@ -148,7 +169,7 @@ def column_metadata(
         provenance = provenance or 'geometry_rule'
 
     if not description:
-        description = 'Source attribute; its precise meaning has not yet been documented.'
+        description = PLACEHOLDER_COLUMN_DESCRIPTION
         provenance = 'safe_fallback'
 
     lower_type = column.get('data_type', '').lower()
@@ -271,6 +292,29 @@ def build_record(table, sources, overrides, dictionary):
         )
     geometry_type = table.get('geometry_type')
     capabilities = GEOMETRY_CAPABILITIES if geometry_type else NONSPATIAL_CAPABILITIES
+
+    # UK GEMINI2 element 26 (Use Constraints) - derived from the same licence
+    # fields already resolved into 'publisher', not a separate sources.yml key.
+    licence_name = profile.get('licence_name')
+    licence_url = profile.get('licence_url')
+    if licence_name and licence_url:
+        use_constraints = f'{licence_name} — {licence_url}'
+    else:
+        use_constraints = licence_name or licence_url or None
+
+    # UK GEMINI2 element 8 (Dataset Reference Date). Uses the curated
+    # 'official_dataset_updated' table_overrides.yml value (a revision date
+    # from the source organisation) when one exists. Deliberately NOT
+    # defaulted to today's build date when absent - that would be Systra's
+    # rebuild time, not the resource's own reference date, and this codebase
+    # marks unknown information as unknown rather than inventing it (see
+    # metadata_builder/README.md). Left null and flagged for manual entry
+    # (table_overrides.yml) instead.
+    official_updated = parse_human_date(override.get('official_dataset_updated'))
+    dataset_reference_date = (
+        {'date': official_updated, 'date_type': 'revision'} if official_updated else None
+    )
+
     record = {
         'metadata_version': 1,
         'identifier': identifier,
@@ -345,6 +389,33 @@ def build_record(table, sources, overrides, dictionary):
             'builder_version': BUILDER_VERSION,
             'generated_at': utc_now(),
         },
+
+        # UK GEMINI2 fields (see metadata_builder/config/metadata_record.schema.json).
+        # topic_category, lineage, dataset_language, metadata_language,
+        # metadata_point_of_contact and conformity come straight from
+        # sources.yml via 'profile'; temporal_extent comes from extract_schema.py's
+        # auto-detection; use_constraints and dataset_reference_date are derived
+        # above. limitations_on_public_access and frequency_of_update are read
+        # from 'profile' too, but sources.yml does not currently set either
+        # default for any schema, so both are null until sources.yml is
+        # extended or a table_overrides.yml entry supplies them.
+        'topic_category': profile.get('topic_category'),
+        'temporal_extent': table.get('temporal_extent'),
+        'dataset_reference_date': dataset_reference_date,
+        'lineage': profile.get('lineage'),
+        'dataset_language': profile.get('dataset_language'),
+        'metadata_language': profile.get('metadata_language'),
+        'metadata_point_of_contact': profile.get('metadata_point_of_contact'),
+        'use_constraints': use_constraints,
+        'limitations_on_public_access': profile.get('limitations_on_public_access'),
+        'frequency_of_update': profile.get('frequency_of_update'),
+        'conformity': profile.get('conformity'),
+        # Curated per table (not per schema, unlike the fields above) in
+        # table_overrides.yml, from confirmed official documentation only -
+        # see metadata_record.schema.json. Most tables have neither: only
+        # add an entry when a source's own documentation states one.
+        'spatial_resolution': override.get('spatial_resolution'),
+        'equivalent_scale': override.get('equivalent_scale'),
     }
     record['keywords'] = keywords_for(table, title, profile, override, columns)
     if not profile.get('source_url'):
@@ -373,6 +444,97 @@ def validate_record(record):
     if geom_column and geom_column not in names:
         errors.append(f'Geometry column {geom_column!r} is missing from columns')
     return errors
+
+
+def _present(value):
+    """True when value is neither None, an empty string, nor an empty list/dict."""
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, (list, dict)):
+        return bool(value)
+    return True
+
+
+def gemini_compliance(record):
+    """
+    Scores a built record against UK GEMINI2 Tier 1/2/3 requirements (see
+    Task 6). Returns (gemini_tier, missing_mandatory_fields):
+      - gemini_tier: 3, 2, 1, or 0 for below Tier 1.
+      - missing_mandatory_fields: the union of every unmet check across all
+        three tiers (not just whichever tier is currently blocking), so it
+        doubles as a full to-do list toward Tier 3, not just the next tier up.
+    """
+    publisher = record.get('publisher') or {}
+    missing = []
+
+    # Tier 1 (minimum). 'abstract' maps to record['description'] - this
+    # codebase's own name for the same concept; there is no separate
+    # 'abstract' field. 'access_constraints' accepts either
+    # limitations_on_public_access or publisher.licence_name, per spec.
+    tier1_checks = [
+        ('title', _present(record.get('title'))),
+        ('abstract', _present(record.get('description'))),
+        ('keywords', len(record.get('keywords') or []) >= 3),
+        ('responsible_organisation', _present(publisher.get('organisation'))),
+        ('access_constraints', (
+            _present(record.get('limitations_on_public_access'))
+            or _present(publisher.get('licence_name'))
+        )),
+        ('licence_name', _present(publisher.get('licence_name'))),
+        ('source_url', _present(publisher.get('source_url'))),
+    ]
+    missing.extend(name for name, ok in tier1_checks if not ok)
+    tier1_ok = all(ok for _name, ok in tier1_checks)
+
+    # Tier 2 (GEMINI compliant).
+    tier2_checks = [
+        ('topic_category', _present(record.get('topic_category'))),
+        ('temporal_extent', _present(record.get('temporal_extent'))),
+        ('dataset_reference_date', _present(record.get('dataset_reference_date'))),
+        ('lineage', _present(record.get('lineage'))),
+        ('use_constraints', _present(record.get('use_constraints'))),
+        ('metadata_point_of_contact', _present(record.get('metadata_point_of_contact'))),
+        ('conformity', _present(record.get('conformity'))),
+    ]
+    missing.extend(name for name, ok in tier2_checks if not ok)
+    tier2_ok = tier1_ok and all(ok for _name, ok in tier2_checks)
+
+    # Tier 3 (full quality). Spatial resolution / equivalent scale is skipped
+    # for point geometries (per spec) and, by the same "no meaningful
+    # resolution" reasoning, for tables with no geometry at all.
+    no_placeholder_columns = not any(
+        c.get('description') == PLACEHOLDER_COLUMN_DESCRIPTION for c in record.get('columns', [])
+    )
+    frequency_ok = _present(record.get('frequency_of_update'))
+    geometry_type = (record.get('geometry', {}).get('type') or '').upper()
+    resolution_applicable = bool(geometry_type) and geometry_type not in POINT_GEOMETRY_TYPES
+    resolution_ok = (
+        not resolution_applicable
+        or _present(record.get('spatial_resolution'))
+        or _present(record.get('equivalent_scale'))
+    )
+    if not no_placeholder_columns:
+        missing.append('column_descriptions')
+    if not frequency_ok:
+        missing.append('frequency_of_update')
+    if not resolution_ok:
+        missing.append('spatial_resolution_or_equivalent_scale')
+    tier3_ok = tier2_ok and no_placeholder_columns and frequency_ok and resolution_ok
+
+    if tier3_ok:
+        tier = 3
+    elif tier2_ok:
+        tier = 2
+    elif tier1_ok:
+        tier = 1
+    else:
+        # Not an integer 0 - metadata_record.schema.json's gemini_tier enum
+        # is [1, 2, 3, null]; null means "does not meet even Tier 1".
+        tier = None
+
+    return tier, missing
 
 
 def markdown_for(record):
@@ -602,6 +764,26 @@ def report_text(report):
     return '\n'.join(lines)
 
 
+def compliance_summary_text(compliance_counts):
+    tier3 = compliance_counts.get(3, 0)
+    tier2 = compliance_counts.get(2, 0)
+    tier1 = compliance_counts.get(1, 0)
+    below = compliance_counts.get(None, 0)
+    total = tier3 + tier2 + tier1 + below
+    return (
+        '═══════════════════════════════════════════\n'
+        ' UK GEMINI 2.2 Compliance Summary\n'
+        '═══════════════════════════════════════════\n'
+        f' Tier 3 — Full quality:         {tier3:>3} tables\n'
+        f' Tier 2 — GEMINI compliant:     {tier2:>3} tables\n'
+        f' Tier 1 — Minimum only:         {tier1:>3} tables\n'
+        f' Below Tier 1 — Non-compliant:  {below:>3} tables\n'
+        ' ───────────────────────────────────────────\n'
+        f' Total:                         {total:>3} tables\n'
+        '═══════════════════════════════════════════'
+    )
+
+
 def run(args):
     started = utc_now()
     sources = read_yaml(CONFIG_DIR / 'sources.yml')
@@ -613,9 +795,13 @@ def run(args):
     state.setdefault('tables', {})
     # A targeted or retry run must merge into the existing catalogue rather
     # than replacing unrelated successful entries.
+    # WARNING: running without --schema replaces agent_index.json entirely.
+    # Always use --schema for mock/dev testing to avoid overwriting
+    # the production index. Restore with: git checkout metadata_builder/output/agent_index.json
     existing_index = read_json(INDEX_PATH, {}) if (args.schemas or args.retry_failed) else {}
     index = existing_index if isinstance(existing_index, dict) else {}
     results = []
+    compliance_counts = Counter()
 
     retry_ids = None
     if args.retry_failed:
@@ -639,6 +825,9 @@ def run(args):
             validation_errors = validate_record(record)
             if validation_errors:
                 raise ValueError('; '.join(validation_errors))
+            gemini_tier, missing_mandatory_fields = gemini_compliance(record)
+            record['gemini_tier'] = gemini_tier
+            record['missing_mandatory_fields'] = missing_mandatory_fields
             previous = state['tables'].get(identifier, {})
             unchanged = (
                 not args.full_rebuild and previous.get('fingerprint') == digest
@@ -646,11 +835,19 @@ def run(args):
             )
             if unchanged:
                 record = read_json(metadata_path)
+                # Re-apply today's scoring even though the file on disk is not
+                # rewritten, so the compliance summary and index always reflect
+                # the current scoring rules rather than whatever tier (or no
+                # tier at all, for records built before Task 6) is cached
+                # there from a previous run.
+                record['gemini_tier'] = gemini_tier
+                record['missing_mandatory_fields'] = missing_mandatory_fields
                 status = 'unchanged'
             else:
                 write_json(metadata_path, record)
                 atomic_write(markdown_path, markdown_for(record))
                 status = 'built'
+            compliance_counts[gemini_tier] += 1
             index[identifier] = index_entry(record, metadata_path, markdown_path)
             state['tables'][identifier] = {
                 'fingerprint': digest, 'status': 'successful',
@@ -681,6 +878,9 @@ def run(args):
     write_json(REPORT_JSON_PATH, report)
     atomic_write(REPORT_TEXT_PATH, report_text(report))
     print('\n' + report_text(report))
+    summary = compliance_summary_text(compliance_counts)
+    print(summary)
+    atomic_write(OUTPUT_DIR / 'gemini_compliance_summary.txt', summary + '\n')
     return 1 if report['totals']['failed'] else 0
 
 
@@ -699,6 +899,17 @@ def parse_args():
 
 
 def main():
+    # The compliance summary uses box-drawing/em-dash characters (Task 6).
+    # Some terminals (e.g. Windows consoles on a legacy codepage) can't
+    # encode them and raise UnicodeEncodeError on print(), which would
+    # otherwise abort the whole run right at the final summary. Not needed
+    # on Linux production (UTF-8 locale by default), but harmless there too.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, 'reconfigure'):
+            try:
+                stream.reconfigure(encoding='utf-8')
+            except (ValueError, OSError):
+                pass
     try:
         return run(parse_args())
     except Exception as exc:

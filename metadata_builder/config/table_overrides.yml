@@ -10,6 +10,7 @@ tables:
     local_dataset_version: "5.17 (released February 2008)"
     metadata_status: context_curated
     warnings: ["Generalised regional mapping is not suitable for site-scale geological interpretation.", "Verify reuse terms against the individual BGS product licence."]
+    equivalent_scale: "1:625,000"
   a_british_geological_survey.625k_dykes_geology:
     title: BGS Geology 625K - Dykes
     feature_concept: dyke_geology
@@ -20,6 +21,7 @@ tables:
     local_dataset_version: "5.17 (released 11 February 2008)"
     metadata_status: context_curated
     warnings: ["Generalised regional mapping is not suitable for site-scale geological interpretation.", "Verify reuse terms against the individual BGS product licence."]
+    equivalent_scale: "1:625,000"
   a_british_geological_survey.625k_faults:
     title: BGS Geology 625K - Faults
     feature_concept: geological_fault
@@ -29,6 +31,7 @@ tables:
     local_dataset_version: "5.17 (released 23 April 2008)"
     metadata_status: context_curated
     warnings: ["Fault positions are generalised for regional-scale use and should not be treated as surveyed site boundaries.", "Verify reuse terms against the individual BGS product licence."]
+    equivalent_scale: "1:625,000"
   a_british_geological_survey.625k_superficial_geology:
     title: BGS Geology 625K - Superficial Deposits
     feature_concept: superficial_geology
@@ -39,6 +42,7 @@ tables:
     local_dataset_version: "1.10 (released 30 April 2003)"
     metadata_status: context_curated
     warnings: ["Generalised regional mapping is not suitable for site-scale ground investigation.", "Verify reuse terms against the individual BGS product licence."]
+    equivalent_scale: "1:625,000"
   a_british_geological_survey.borehole_records:
     title: BGS Borehole Records
     feature_concept: borehole_record
@@ -240,3 +244,10 @@ tables:
     title: OS Open Built Up Areas
     feature_concept: built_up_area
     synonyms: [built-up areas, settlements, urban areas]
+  a_os_open_terrain_50.contour_line:
+    # Confirmed via OS's own technical specification: OS Terrain 50's grid
+    # is built on 50m post spacing - https://www.ordnancesurvey.co.uk/documents/product-support/tech-spec/terrain-50-technical-specification.pdf
+    # land_water_boundary and spot_height are NOT given a value here:
+    # land_water_boundary is a digitised coastline, not sampled from the 50m
+    # grid, and spot_height is exempt anyway (point geometry).
+    spatial_resolution: "50 metres (OS Terrain 50 grid post spacing)"

@@ -27,6 +27,22 @@ SCHEMA_PREFIX = 'a_'
 TEXT_TYPES = {'character varying', 'text', 'character'}
 SAMPLE_LIMIT = 5
 
+# UK GEMINI2 element 7 (Temporal Extent) auto-detection. Column names are
+# matched case-insensitively as substrings (not exact equality), so e.g.
+# 'amenddate' matches the 'date' pattern and 'survey_date_recorded' matches
+# 'survey_date'. Most of these overlap with plain 'date' by design - they're
+# kept as explicit patterns for columns that would otherwise be missed, e.g.
+# 'timestamp' and 'valid_from'/'valid_to', which contain no 'date' substring.
+TEMPORAL_EXTENT_COLUMN_PATTERNS = (
+    'date', 'regdate', 'survey_date', 'created_date', 'updated_date',
+    'start_date', 'end_date', 'valid_from', 'valid_to', 'datetime', 'timestamp',
+)
+# Only real date/timestamp PostgreSQL types are considered - a text column
+# that happens to be named e.g. 'date_type' should not be treated as a date.
+TEMPORAL_EXTENT_PG_TYPES = {
+    'date', 'timestamp without time zone', 'timestamp with time zone',
+}
+
 # Same env vars / defaults as portal/settings.py's GIS_DB_CONFIG.
 DB_CONFIG = {
     'host': os.environ.get('GIS_DB_HOST', 'gisdb.systra.info'),
@@ -173,6 +189,45 @@ def _get_table_comment(cur, schema, table):
     return cur.fetchone()[0]
 
 
+def _find_temporal_extent_column(columns):
+    """
+    Returns the name of the first column (in table column order) whose name
+    matches a UK GEMINI2 temporal-extent pattern and whose PostgreSQL type is
+    a real date/timestamp type, or None if no such column exists.
+    """
+    for name, data_type, _char_len, _udt in columns:
+        if data_type not in TEMPORAL_EXTENT_PG_TYPES:
+            continue
+        lower_name = name.lower()
+        if any(pattern in lower_name for pattern in TEMPORAL_EXTENT_COLUMN_PATTERNS):
+            return name
+    return None
+
+
+def _get_temporal_extent(cur, schema, table, columns):
+    """
+    UK GEMINI2 element 7 (Temporal Extent), auto-detected from a date/
+    timestamp column per metadata_builder Task 3. Returns None when no
+    matching column exists, so the record is flagged for manual entry.
+    """
+    column_name = _find_temporal_extent_column(columns)
+    if not column_name:
+        return None
+
+    cur.execute(
+        sql.SQL('SELECT MIN({col}), MAX({col}) FROM {schema}.{table} WHERE {col} IS NOT NULL').format(
+            col=sql.Identifier(column_name), schema=sql.Identifier(schema), table=sql.Identifier(table)
+        )
+    )
+    begin, end = cur.fetchone()
+    return {
+        'begin': begin.isoformat() if begin is not None else None,
+        'end': end.isoformat() if end is not None else None,
+        'note': f'Detected from column: {column_name}',
+        'source': 'auto_detected_from_column',
+    }
+
+
 def _get_sample_values(cur, schema, table, columns, geom_col):
     samples = {}
     for col_name, data_type, _char_len, _udt in columns:
@@ -235,6 +290,7 @@ def _extract_table(cur, schema, table):
         'row_count': _get_row_count(cur, schema, table),
         'bbox_wgs84': _get_bbox_wgs84(cur, schema, table, geom_col),
         'table_comment': _get_table_comment(cur, schema, table),
+        'temporal_extent': _get_temporal_extent(cur, schema, table, columns),
         'primary_key': _get_primary_key(cur, schema, table),
         'indexes': _get_indexes(cur, schema, table),
         'sample_values': _get_sample_values(cur, schema, table, columns, geom_col),
@@ -380,6 +436,10 @@ def extract_mock(requested_schemas=None):
             'table_comment': None,
             'primary_key': [],
             'indexes': [],
+            # No row-level data was supplied for the mock tables (e.g. no real
+            # MIN/MAX for battlefields.regdate), so temporal_extent is left
+            # None rather than invented, same as sample_values below.
+            'temporal_extent': None,
             # No row-level data was supplied for the mock tables, so sample
             # values are left empty rather than invented.
             'sample_values': {
