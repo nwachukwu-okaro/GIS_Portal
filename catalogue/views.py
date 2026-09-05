@@ -220,7 +220,8 @@ def _fetch_record_from_db(identifier):
                         format,             -- MIME type or PostGIS/POINT etc.
                         date_modified,      -- last modified timestamp
                         source,             -- project name
-                        xml                 -- canonical metadata_builder JSON
+                        xml,                -- canonical metadata_builder JSON (legacy, being superseded)
+                        metadata_json       -- structured {gemini, technical, columns} JSONB - single source of truth
                     FROM p_pycsw.records
                     WHERE identifier = %s
                     LIMIT 1
@@ -237,6 +238,18 @@ def _fetch_record_from_db(identifier):
                     except (TypeError, ValueError, json.JSONDecodeError):
                         # Other pycsw records may contain XML rather than JSON.
                         pass
+
+                # metadata_json is JSONB - psycopg2 normally decodes it to a
+                # dict automatically, but this handles a raw string too in
+                # case the column is read via a driver/cast that doesn't.
+                metadata_json = row[16]
+                if isinstance(metadata_json, str):
+                    try:
+                        metadata_json = json.loads(metadata_json)
+                    except (TypeError, ValueError, json.JSONDecodeError):
+                        metadata_json = None
+                if not isinstance(metadata_json, dict):
+                    metadata_json = None
 
                 return {
                     'size':          row[0] or '',
@@ -255,6 +268,7 @@ def _fetch_record_from_db(identifier):
                     'date_modified': str(row[13]) if row[13] else '',
                     'project':       row[14] or '',
                     'rich_metadata': rich_metadata,
+                    'metadata_json': metadata_json,
                 }
         finally:
             conn.close()
@@ -621,6 +635,7 @@ def _fetch_feature_by_id(identifier):
                 'geometry_type': db.get('geom_type', ''),
                 'row_count':     None,
                 'rich_metadata': db.get('rich_metadata', {}),
+                'metadata_json': db.get('metadata_json'),
             },
             'assets': {'data': {'href': href}},
             'bbox':    [-180, -90, 180, 90],
@@ -710,6 +725,7 @@ def _feature_to_detail(feature):
         'date_modified': props.get('date_modified', ''),
         'source':        source,
         'rich_metadata': props.get('rich_metadata') or {},
+        'metadata_json': props.get('metadata_json'),
     }
 
     if source == 'minio':
@@ -760,6 +776,21 @@ def _feature_to_detail(feature):
                 'crs': geometry.get('crs') or detail['crs'],
                 'geometry_type': geometry.get('type') or detail['geometry_type'],
             })
+
+        # p_pycsw.records.metadata_json - the structured {gemini, technical,
+        # columns} JSONB column (see scripts/ingest_authoritative.py), now the
+        # single source of truth in place of parsing the legacy 'xml' column
+        # above. Independent of rich_metadata: populated once
+        # ingest_authoritative.py has run against this record, regardless of
+        # whether the older 'xml' blob also parsed successfully.
+        gemini_json = (detail['metadata_json'] or {}).get('gemini') or {}
+        detail.update({
+            'topic_category':         gemini_json.get('topic_category'),
+            'lineage':                gemini_json.get('lineage'),
+            'use_constraints':        gemini_json.get('use_constraints'),
+            'temporal_extent':        gemini_json.get('temporal_extent'),
+            'data_dictionary_columns': (detail['metadata_json'] or {}).get('columns') or [],
+        })
 
     return detail
 

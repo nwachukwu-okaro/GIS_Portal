@@ -133,6 +133,32 @@
       </div>
       {% endif %}
 
+      {% if item.data_dictionary_columns %}
+      <div class="systra-table-section">
+        <h6>Data Dictionary</h6>
+        <div class="systra-table-wrap">
+          <table class="systra-table">
+            <thead>
+              <tr>
+                <th>Column</th>
+                <th>Data type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for col in item.data_dictionary_columns %}
+              <tr>
+                <td><code>{{ col.name }}</code></td>
+                <td>{{ col.data_type }}</td>
+                <td>{{ col.description|default:"—" }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+
     {% endif %}
 
   </div>
@@ -200,6 +226,39 @@
       </div>
       {% endif %}
     </section>
+
+    {% if item.source == 'postgis' %}
+    {% if item.topic_category or item.lineage or item.use_constraints or item.temporal_extent %}
+    <section class="systra-sidebar-section">
+      <h6>UK GEMINI2 metadata</h6>
+
+      {% if item.topic_category %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Topic category</span>
+        <span class="systra-meta-value">{{ item.topic_category }}</span>
+      </div>
+      {% endif %}
+
+      {% if item.temporal_extent.begin or item.temporal_extent.end %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Temporal extent</span>
+        <span class="systra-meta-value">{{ item.temporal_extent.begin|default:"?" }} to {{ item.temporal_extent.end|default:"?" }}</span>
+      </div>
+      {% endif %}
+
+      {% if item.use_constraints %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Use constraints</span>
+        <span class="systra-meta-value">{{ item.use_constraints }}</span>
+      </div>
+      {% endif %}
+
+      {% if item.lineage %}
+      <p class="systra-lineage-text"><strong>Lineage:</strong> {{ item.lineage }}</p>
+      {% endif %}
+    </section>
+    {% endif %}
+    {% endif %}
 
     {% if item.source_url or item.licence_name or item.documentation_url or item.documentation_sources or item.attribution %}
     <section class="systra-sidebar-section">

@@ -573,6 +573,44 @@ def markdown_for(record):
             f"`[{bbox['xmin']:.6f}, {bbox['ymin']:.6f}, "
             f"{bbox['xmax']:.6f}, {bbox['ymax']:.6f}]`"
         )
+    # UK GEMINI2 fields (Tasks 1-6) - each shown only when present and not
+    # null, per Task 3.
+    if record.get('topic_category'):
+        lines.append(f"- **Topic category:** {record['topic_category']}")
+    temporal_extent = record.get('temporal_extent') or {}
+    if temporal_extent.get('begin') or temporal_extent.get('end'):
+        lines.append(
+            "- **Temporal extent:** "
+            f"{temporal_extent.get('begin') or '?'} to {temporal_extent.get('end') or '?'}"
+        )
+    dataset_reference_date = record.get('dataset_reference_date') or {}
+    if dataset_reference_date.get('date'):
+        lines.append(
+            f"- **Dataset reference date:** {dataset_reference_date['date']} "
+            f"({dataset_reference_date.get('date_type', 'unspecified')})"
+        )
+    if record.get('dataset_language'):
+        lines.append(f"- **Dataset language:** {record['dataset_language']}")
+    if record.get('metadata_language'):
+        lines.append(f"- **Metadata language:** {record['metadata_language']}")
+    if record.get('use_constraints'):
+        lines.append(f"- **Use constraints:** {record['use_constraints']}")
+    if record.get('limitations_on_public_access'):
+        lines.append(f"- **Limitations on public access:** {record['limitations_on_public_access']}")
+    if record.get('frequency_of_update'):
+        lines.append(f"- **Frequency of update:** {record['frequency_of_update']}")
+    if record.get('spatial_resolution'):
+        lines.append(f"- **Spatial resolution:** {record['spatial_resolution']}")
+    if record.get('equivalent_scale'):
+        lines.append(f"- **Equivalent scale:** {record['equivalent_scale']}")
+    if record.get('conformity'):
+        lines.append(f"- **Conformity:** {record['conformity']}")
+    if record.get('gemini_tier'):
+        lines.append(f"- **UK GEMINI2 compliance tier:** {record['gemini_tier']}")
+    if record.get('missing_mandatory_fields'):
+        lines.append(
+            f"- **Missing for full compliance:** {', '.join(record['missing_mandatory_fields'])}"
+        )
     lines.extend([
         f"- **Schema:** `{record['schema']}`",
         f"- **Table:** `{record['table']}`",
@@ -581,7 +619,22 @@ def markdown_for(record):
         f"- **Rows:** {record.get('row_count') if record.get('row_count') is not None else 'Unknown'}",
         f"- **Columns:** {record.get('column_count', len(record['columns']))}",
         f"- **Metadata status:** {record['quality']['metadata_status']}",
-        '', '## Description', '', record['description'], '', '## Columns', '',
+        '', '## Description', '', record['description'], '',
+    ])
+    if record.get('lineage'):
+        lines.extend(['## Lineage', '', record['lineage'], ''])
+    contact = record.get('metadata_point_of_contact') or {}
+    if contact.get('organisation') or contact.get('email') or contact.get('role'):
+        lines.extend(['## Metadata point of contact', ''])
+        if contact.get('organisation'):
+            lines.append(f"- **Organisation:** {contact['organisation']}")
+        if contact.get('email'):
+            lines.append(f"- **Email:** {contact['email']}")
+        if contact.get('role'):
+            lines.append(f"- **Role:** {contact['role']}")
+        lines.append('')
+    lines.extend([
+        '## Columns', '',
         '| Column | Data type | Meaning | Semantic role | Filter | Search | Join |',
         '|---|---|---|---|---|---|---|',
     ])
