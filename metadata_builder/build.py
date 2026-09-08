@@ -537,6 +537,69 @@ def gemini_compliance(record):
     return tier, missing
 
 
+def clean_record_for_output(record):
+    """
+    Trims the full internal record (built by build_record()) down to the
+    {gemini, columns} shape written to output/metadata/*.json - the public/
+    agent-facing contract. The full internal record - with 'publisher',
+    'geometry', 'capabilities', 'quality', etc. - keeps being used for
+    markdown_for(), index_entry() and gemini_compliance(); only the file
+    written to disk is trimmed.
+
+    'schema' and 'table' are kept inside 'gemini' even though they aren't
+    part of the primary GEMINI field list, since a per-table record without
+    them would be hard to identify at a glance; 'row_count'/'column_count'
+    are dropped entirely rather than kept in some other subsection, since
+    neither is in the GEMINI field list either.
+    """
+    publisher = record.get('publisher') or {}
+    geometry = record.get('geometry') or {}
+    dataset_reference_date = record.get('dataset_reference_date') or {}
+
+    gemini = {
+        'title': record.get('title'),
+        'abstract': record.get('description'),
+        'alternative_title': record.get('alternative_title'),
+        'topic_category': record.get('topic_category'),
+        'keywords': record.get('keywords') or [],
+        'temporal_extent': record.get('temporal_extent'),
+        'dataset_reference_date': dataset_reference_date.get('date'),
+        'dataset_reference_date_type': dataset_reference_date.get('date_type'),
+        'lineage': record.get('lineage'),
+        'responsible_organisation': publisher.get('organisation'),
+        'resource_locator': publisher.get('source_url'),
+        'unique_identifier': record.get('identifier'),
+        'schema': record.get('schema'),
+        'table': record.get('table'),
+        'bounding_box': geometry.get('bbox_wgs84'),
+        'spatial_reference_system': geometry.get('crs'),
+        'limitations_on_public_access': record.get('limitations_on_public_access'),
+        'use_constraints': record.get('use_constraints'),
+        'spatial_resolution': record.get('spatial_resolution'),
+        'equivalent_scale': record.get('equivalent_scale'),
+        'conformity': record.get('conformity'),
+        'metadata_language': record.get('metadata_language'),
+        'dataset_language': record.get('dataset_language'),
+        'metadata_point_of_contact': record.get('metadata_point_of_contact'),
+        'frequency_of_update': record.get('frequency_of_update'),
+        'gemini_tier': record.get('gemini_tier'),
+        'missing_mandatory_fields': record.get('missing_mandatory_fields') or [],
+    }
+
+    columns = []
+    for column in record.get('columns', []):
+        description = column.get('description')
+        if not description or description == PLACEHOLDER_COLUMN_DESCRIPTION:
+            description = None
+        columns.append({
+            'name': column.get('name'),
+            'type': column.get('data_type'),
+            'description': description,
+        })
+
+    return {'gemini': gemini, 'columns': columns}
+
+
 def markdown_for(record):
     publisher = record['publisher']
     geometry = record['geometry']
@@ -635,33 +698,17 @@ def markdown_for(record):
         lines.append('')
     lines.extend([
         '## Columns', '',
-        '| Column | Data type | Meaning | Semantic role | Filter | Search | Join |',
-        '|---|---|---|---|---|---|---|',
+        '| Column | Type | Description |',
+        '|---|---|---|',
     ])
     for column in record['columns']:
-        description = str(column['description']).replace('|', '\\|').replace('\n', ' ')
-        lines.append(
-            f"| `{column['name']}` | `{column['data_type']}` | {description} | "
-            f"{column.get('semantic_role') or 'Unclassified'} | "
-            f"{'Yes' if column['filterable'] else 'No'} | "
-            f"{'Yes' if column['searchable'] else 'No'} | "
-            f"{'Yes' if column['joinable'] else 'No'} |"
-        )
-    lines.extend(['', '## Supported operations', ''])
-    lines.extend(f"- {name}" for name, enabled in record['capabilities'].items() if enabled)
-    if record.get('operation_requirements'):
-        lines.extend(['', '## Operation requirements', '',
-                      '- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.',
-                      '- Buffer operations require a suitable projected coordinate reference system.',
-                      '- Reprojection is performed on working outputs; source tables remain unchanged.'])
-    if record['quality']['warnings']:
-        lines.extend(['', '## Metadata warnings', ''])
-        lines.extend(f"- {warning}" for warning in record['quality']['warnings'])
-    lines.extend(['', '## Provenance', '',
-                  'Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.', ''])
-    if record.get('documentation_sources'):
-        lines.extend(f"- {source['title']}: {source['url']}" for source in record['documentation_sources'])
-        lines.append('')
+        description = column.get('description')
+        if not description or description == PLACEHOLDER_COLUMN_DESCRIPTION:
+            description = ''
+        else:
+            description = str(description).replace('|', '\\|').replace('\n', ' ')
+        lines.append(f"| `{column['name']}` | `{column['data_type']}` | {description} |")
+    lines.append('')
     return '\n'.join(lines)
 
 
@@ -887,17 +934,16 @@ def run(args):
                 and metadata_path.exists() and markdown_path.exists()
             )
             if unchanged:
-                record = read_json(metadata_path)
-                # Re-apply today's scoring even though the file on disk is not
-                # rewritten, so the compliance summary and index always reflect
-                # the current scoring rules rather than whatever tier (or no
-                # tier at all, for records built before Task 6) is cached
-                # there from a previous run.
-                record['gemini_tier'] = gemini_tier
-                record['missing_mandatory_fields'] = missing_mandatory_fields
+                # Not re-read from metadata_path: the file on disk only holds
+                # the trimmed {gemini, columns} output (clean_record_for_output()),
+                # not the full record that index_entry()/markdown_for() need.
+                # build_record() is deterministic for identical inputs - which
+                # is the whole premise fingerprinting relies on - so the record
+                # already built above is equivalent to what's on disk; only the
+                # write is skipped, not the computation.
                 status = 'unchanged'
             else:
-                write_json(metadata_path, record)
+                write_json(metadata_path, clean_record_for_output(record))
                 atomic_write(markdown_path, markdown_for(record))
                 status = 'built'
             compliance_counts[gemini_tier] += 1
