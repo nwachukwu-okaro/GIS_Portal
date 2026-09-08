@@ -80,6 +80,40 @@ GEOMETRY_COLUMNS = {'geom', 'geometry', 'the_geom', 'wkb_geometry', 'shape'}
 IMAGE_FORMATS = {'image/png', 'image/jpeg', 'image/gif', 'image/tiff'}
 PDF_FORMATS   = {'application/pdf'}
 
+# ── UK GEMINI2 display labels ─────────────────────────────────────
+# ISO 19115 MD_TopicCategoryCode -> plain-English label, for the detail
+# page's "Topic Category" row. Falls back to the raw code if unrecognised.
+TOPIC_CATEGORY_LABELS = {
+    'farming':                          'Farming',
+    'biota':                            'Biota',
+    'boundaries':                       'Boundaries',
+    'climatologyMeteorologyAtmosphere': 'Climatology, Meteorology and Atmosphere',
+    'economy':                          'Economy',
+    'elevation':                        'Elevation',
+    'environment':                      'Environment',
+    'geoscientificInformation':         'Geoscientific Information',
+    'health':                           'Health',
+    'imageryBaseMapsEarthCover':        'Imagery, Base Maps and Earth Cover',
+    'intelligenceMilitary':             'Intelligence and Military',
+    'inlandWaters':                     'Inland Waters',
+    'location':                         'Location',
+    'oceans':                           'Oceans',
+    'planningCadastre':                 'Planning and Cadastre',
+    'society':                          'Society',
+    'structure':                        'Structure',
+    'transportation':                   'Transportation',
+    'utilitiesCommunication':           'Utilities and Communication',
+}
+
+# gemini_tier (see metadata_builder/build.py's gemini_compliance()) -> the
+# detail page's "GEMINI Compliance" row. Tier 0/None (below Tier 1) has no
+# entry here deliberately - the template only shows this row when scored.
+GEMINI_TIER_LABELS = {
+    1: 'Tier 1 — Minimum',
+    2: 'Tier 2 — Compliant',
+    3: 'Tier 3 — Full quality',
+}
+
 # ── Upload exclusion lists ────────────────────────────────────────
 # Buckets and schemas that are never offered as upload destinations.
 # These mirror the exclusions in the ingestion scripts.
@@ -777,19 +811,26 @@ def _feature_to_detail(feature):
                 'geometry_type': geometry.get('type') or detail['geometry_type'],
             })
 
-        # p_pycsw.records.metadata_json - the structured {gemini, technical,
-        # columns} JSONB column (see scripts/ingest_authoritative.py), now the
-        # single source of truth in place of parsing the legacy 'xml' column
-        # above. Independent of rich_metadata: populated once
-        # ingest_authoritative.py has run against this record, regardless of
-        # whether the older 'xml' blob also parsed successfully.
+        # p_pycsw.records.metadata_json - the structured {gemini, columns}
+        # JSONB column (see scripts/ingest_authoritative.py), now the single
+        # source of truth in place of parsing the legacy 'xml' column above.
+        # Independent of rich_metadata: populated once ingest_authoritative.py
+        # has run against this record, regardless of whether the older 'xml'
+        # blob also parsed successfully.
         gemini_json = (detail['metadata_json'] or {}).get('gemini') or {}
+        topic_category = gemini_json.get('topic_category')
+        gemini_tier = gemini_json.get('gemini_tier')
         detail.update({
-            'topic_category':         gemini_json.get('topic_category'),
-            'lineage':                gemini_json.get('lineage'),
-            'use_constraints':        gemini_json.get('use_constraints'),
-            'temporal_extent':        gemini_json.get('temporal_extent'),
-            'data_dictionary_columns': (detail['metadata_json'] or {}).get('columns') or [],
+            'topic_category':              topic_category,
+            'topic_category_display':      TOPIC_CATEGORY_LABELS.get(topic_category, topic_category),
+            'lineage':                     gemini_json.get('lineage'),
+            'use_constraints':             gemini_json.get('use_constraints'),
+            'limitations_on_public_access': gemini_json.get('limitations_on_public_access'),
+            'temporal_extent':             gemini_json.get('temporal_extent'),
+            'dataset_reference_date':      gemini_json.get('dataset_reference_date'),
+            'dataset_reference_date_type': gemini_json.get('dataset_reference_date_type'),
+            'gemini_tier':                 gemini_tier,
+            'gemini_tier_display':         GEMINI_TIER_LABELS.get(gemini_tier),
         })
 
     return detail

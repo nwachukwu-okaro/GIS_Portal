@@ -11,10 +11,14 @@ p_pycsw.records is the single source of truth for portal search, QGIS
 MetaSearch, and the LLM agent - the agent no longer reads
 metadata_builder/output/metadata/*.json directly. Those files are still this
 script's INPUT (metadata_builder/build.py's canonical output), but every
-GEMINI2 field, technical detail and column description they contain is also
-written into the metadata_json JSONB column here (see build_metadata_json()),
-structured as {gemini, technical, columns}. Run
-scripts/migrate_add_metadata_json.py once before the first run of this
+GEMINI2 field and column description they contain is also written into the
+metadata_json JSONB column here (see build_metadata_json()), structured as
+{gemini, columns} - deliberately just those two sections; technical details
+that don't serve the portal/agent read path (capabilities, discovery_hints,
+provenance, quality, build) stay out of metadata_json. A handful of existing
+p_pycsw.records/pycsw-schema columns (topicategory, lineage, time_begin,
+time_end, title_alternate) are also populated from the same gemini values.
+Run scripts/migrate_add_metadata_json.py once before the first run of this
 script, to add schema_name/table_name/metadata_json to p_pycsw.records.
 
 Credentials: read from .env using the same GIS_DB_HOST/PORT/NAME/USER/
@@ -147,75 +151,85 @@ def load_metadata_files():
     return files
 
 
+PLACEHOLDER_COLUMN_DESCRIPTION = 'Source attribute; its precise meaning has not yet been documented.'
+
+
+def _blank_to_none(value):
+    """
+    Recursively turns '' (and whitespace-only strings) into None, anywhere
+    inside a dict/list. Used on the whole 'gemini' section per the cleanup
+    spec: no empty strings, no "N/A"/"Not stated" placeholders - just null.
+    """
+    if isinstance(value, str):
+        return value if value.strip() else None
+    if isinstance(value, dict):
+        return {key: _blank_to_none(v) for key, v in value.items()}
+    if isinstance(value, list):
+        return [_blank_to_none(v) for v in value]
+    return value
+
+
 def build_metadata_json(data):
     """
     Builds the structured JSONB payload for p_pycsw.records.metadata_json:
-    {gemini, technical, columns}. This is now the agent's read path in place
-    of the standalone metadata_builder/output/metadata/*.json file.
+    {gemini, columns} only - no technical/capabilities/discovery_hints/
+    provenance/quality/build sections; those live in the 'xml' column's full
+    dump already, or aren't needed by the portal/agent read path this column
+    serves. This is the agent's read path in place of the standalone
+    metadata_builder/output/metadata/*.json file.
     """
     publisher = data.get('publisher') or {}
     geometry = data.get('geometry') or {}
     columns = data.get('columns') or []
-    quality = data.get('quality') or {}
-    build = data.get('build') or {}
+    dataset_reference_date = data.get('dataset_reference_date') or {}
+
+    licence_name = publisher.get('licence_name')
+    licence_url = publisher.get('licence_url')
+    if licence_name and licence_url:
+        use_constraints = f'{licence_name} — {licence_url}'
+    else:
+        use_constraints = licence_name or licence_url or None
 
     gemini = {
         'title': data.get('title'),
-        'alternative_title': data.get('alternative_title'),
         'abstract': data.get('description'),
+        'alternative_title': data.get('alternative_title'),
         'topic_category': data.get('topic_category'),
         'keywords': data.get('keywords') or [],
         'temporal_extent': data.get('temporal_extent'),
-        'dataset_reference_date': data.get('dataset_reference_date'),
+        'dataset_reference_date': dataset_reference_date.get('date'),
+        'dataset_reference_date_type': dataset_reference_date.get('date_type'),
         'lineage': data.get('lineage'),
-        'responsible_organisation': publisher,
-        'limitations_on_public_access': data.get('limitations_on_public_access'),
-        'use_constraints': data.get('use_constraints'),
-        'spatial_resolution': data.get('spatial_resolution'),
-        # Not explicitly requested alongside spatial_resolution, but its
-        # confirmed-only sibling from the same Task 6 scoring work (e.g. BGS
-        # 625k's "1:625,000") - included so it isn't silently dropped.
-        'equivalent_scale': data.get('equivalent_scale'),
-        'conformity': data.get('conformity'),
-        'metadata_language': data.get('metadata_language'),
-        'dataset_language': data.get('dataset_language'),
-        'metadata_point_of_contact': data.get('metadata_point_of_contact'),
+        'responsible_organisation': publisher.get('organisation'),
         'resource_locator': publisher.get('source_url'),
         'unique_identifier': data.get('identifier'),
         'bounding_box': geometry.get('bbox_wgs84'),
         'spatial_reference_system': geometry.get('crs'),
+        'limitations_on_public_access': data.get('limitations_on_public_access'),
+        'use_constraints': use_constraints,
+        'spatial_resolution': data.get('spatial_resolution'),
+        'conformity': data.get('conformity'),
+        'metadata_language': data.get('metadata_language'),
+        'dataset_language': data.get('dataset_language'),
+        'metadata_point_of_contact': data.get('metadata_point_of_contact'),
+        'frequency_of_update': data.get('frequency_of_update'),
         'gemini_tier': data.get('gemini_tier'),
         'missing_mandatory_fields': data.get('missing_mandatory_fields') or [],
-        'frequency_of_update': data.get('frequency_of_update'),
     }
+    gemini = _blank_to_none(gemini)
 
-    technical = {
-        'schema': data.get('schema'),
-        'table': data.get('table'),
-        'geometry_type': geometry.get('type'),
-        'crs': geometry.get('crs'),
-        'row_count': data.get('row_count'),
-        'column_count': data.get('column_count') if data.get('column_count') is not None else len(columns),
-        'bbox_wgs84': geometry.get('bbox_wgs84'),
-        'metadata_status': quality.get('metadata_status'),
-        'build_timestamp': build.get('generated_at'),
-    }
-
-    column_list = [
-        {
+    column_list = []
+    for col in columns:
+        description = col.get('description')
+        if not description or description == PLACEHOLDER_COLUMN_DESCRIPTION:
+            description = None
+        column_list.append({
             'name': col.get('name'),
-            'data_type': col.get('data_type'),
-            'description': col.get('description'),
-            'semantic_role': col.get('semantic_role'),
-            'filterable': col.get('filterable'),
-            'searchable': col.get('searchable'),
-            'joinable': col.get('joinable'),
-            'sample_values': (col.get('value_profile') or {}).get('examples') or None,
-        }
-        for col in columns
-    ]
+            'type': col.get('data_type'),
+            'description': description,
+        })
 
-    return {'gemini': gemini, 'technical': technical, 'columns': column_list}
+    return {'gemini': gemini, 'columns': column_list}
 
 
 def build_record(data):
@@ -242,6 +256,10 @@ def build_record(data):
     crs = geometry.get('crs') or ''
     row_count = data.get('row_count')
 
+    metadata_json = build_metadata_json(data)
+    gemini_section = metadata_json.get('gemini') or {}
+    temporal_extent = gemini_section.get('temporal_extent') or {}
+
     record = {
         'identifier': identifier,
         'typename': RECORD_TYPENAME,
@@ -265,7 +283,15 @@ def build_record(data):
         'links': official_url,
         'schema_name': schema,
         'table_name': table,
-        'metadata_json': json.dumps(build_metadata_json(data), default=str),
+        'metadata_json': json.dumps(metadata_json, default=str),
+        # Task 2: existing p_pycsw.records/pycsw-schema columns, populated
+        # from the same metadata_json.gemini values rather than recomputed
+        # separately, so they can never drift from what metadata_json shows.
+        'topicategory': gemini_section.get('topic_category'),
+        'lineage': gemini_section.get('lineage'),
+        'time_begin': temporal_extent.get('begin'),
+        'time_end': temporal_extent.get('end'),
+        'title_alternate': gemini_section.get('alternative_title'),
     }
     record['anytext'] = _build_anytext(data, organisation)
     return record, None
@@ -278,7 +304,8 @@ UPSERT_SQL = """
         source, organization, creator, publisher,
         links, crs, accessconstraints, wkt_geometry,
         distancevalue, distanceuom,
-        schema_name, table_name, metadata_json
+        schema_name, table_name, metadata_json,
+        topicategory, lineage, time_begin, time_end, title_alternate
     )
     VALUES (
         %(identifier)s, %(typename)s, %(schema)s, %(mdsource)s, NOW(), %(xml)s,
@@ -286,7 +313,8 @@ UPSERT_SQL = """
         %(source)s, %(organization)s, %(creator)s, %(publisher)s,
         %(links)s, %(crs)s, %(accessconstraints)s, %(wkt_geometry)s,
         %(distancevalue)s, %(distanceuom)s,
-        %(schema_name)s, %(table_name)s, %(metadata_json)s::jsonb
+        %(schema_name)s, %(table_name)s, %(metadata_json)s::jsonb,
+        %(topicategory)s, %(lineage)s, %(time_begin)s, %(time_end)s, %(title_alternate)s
     )
     ON CONFLICT (identifier) DO UPDATE SET
         mdsource          = EXCLUDED.mdsource,
@@ -309,7 +337,12 @@ UPSERT_SQL = """
         distanceuom       = EXCLUDED.distanceuom,
         schema_name       = EXCLUDED.schema_name,
         table_name        = EXCLUDED.table_name,
-        metadata_json     = EXCLUDED.metadata_json
+        metadata_json     = EXCLUDED.metadata_json,
+        topicategory      = EXCLUDED.topicategory,
+        lineage           = EXCLUDED.lineage,
+        time_begin        = EXCLUDED.time_begin,
+        time_end          = EXCLUDED.time_end,
+        title_alternate   = EXCLUDED.title_alternate
     RETURNING (xmax = 0) AS inserted
 """
 

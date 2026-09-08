@@ -133,32 +133,6 @@
       </div>
       {% endif %}
 
-      {% if item.data_dictionary_columns %}
-      <div class="systra-table-section">
-        <h6>Data Dictionary</h6>
-        <div class="systra-table-wrap">
-          <table class="systra-table">
-            <thead>
-              <tr>
-                <th>Column</th>
-                <th>Data type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for col in item.data_dictionary_columns %}
-              <tr>
-                <td><code>{{ col.name }}</code></td>
-                <td>{{ col.data_type }}</td>
-                <td>{{ col.description|default:"—" }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      {% endif %}
-
     {% endif %}
 
   </div>
@@ -176,7 +150,7 @@
 
       {% if item.organisation %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">Organisation</span>
+        <span class="systra-meta-label">Responsible Organisation</span>
         <span class="systra-meta-value">{{ item.organisation }}</span>
       </div>
       {% endif %}
@@ -188,10 +162,17 @@
       </div>
       {% endif %}
 
+      {% if item.date_modified %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Metadata Date</span>
+        <span class="systra-meta-value">{{ item.date_modified }}</span>
+      </div>
+      {% endif %}
+
       {% if item.source == 'postgis' %}
         {% if item.row_count != None %}
         <div class="systra-meta-row">
-          <span class="systra-meta-label">Features</span>
+          <span class="systra-meta-label">Row Count</span>
           <span class="systra-meta-value">{{ item.row_count_display|default:item.row_count }}</span>
         </div>
         {% endif %}
@@ -221,35 +202,56 @@
         {% endif %}
       {% elif item.source == 'minio' and item.size %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">File size</span>
+        <span class="systra-meta-label">File Size</span>
         <span class="systra-meta-value">{{ item.size }}</span>
       </div>
       {% endif %}
     </section>
 
     {% if item.source == 'postgis' %}
-    {% if item.topic_category or item.lineage or item.use_constraints or item.temporal_extent %}
+    {% if item.topic_category or item.lineage or item.use_constraints or item.limitations_on_public_access or item.temporal_extent or item.dataset_reference_date or item.gemini_tier_display %}
     <section class="systra-sidebar-section">
-      <h6>UK GEMINI2 metadata</h6>
+      <h6>UK GEMINI 2.2 Metadata</h6>
 
       {% if item.topic_category %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">Topic category</span>
-        <span class="systra-meta-value">{{ item.topic_category }}</span>
+        <span class="systra-meta-label">Topic Category</span>
+        <span class="systra-meta-value">{{ item.topic_category_display }}</span>
       </div>
       {% endif %}
 
       {% if item.temporal_extent.begin or item.temporal_extent.end %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">Temporal extent</span>
+        <span class="systra-meta-label">Temporal Extent</span>
         <span class="systra-meta-value">{{ item.temporal_extent.begin|default:"?" }} to {{ item.temporal_extent.end|default:"?" }}</span>
+      </div>
+      {% endif %}
+
+      {% if item.dataset_reference_date %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Dataset Reference Date</span>
+        <span class="systra-meta-value">{{ item.dataset_reference_date }}{% if item.dataset_reference_date_type %} ({{ item.dataset_reference_date_type }}){% endif %}</span>
       </div>
       {% endif %}
 
       {% if item.use_constraints %}
       <div class="systra-meta-row">
-        <span class="systra-meta-label">Use constraints</span>
+        <span class="systra-meta-label">Use Constraints</span>
         <span class="systra-meta-value">{{ item.use_constraints }}</span>
+      </div>
+      {% endif %}
+
+      {% if item.limitations_on_public_access %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">Limitations on Public Access</span>
+        <span class="systra-meta-value">{{ item.limitations_on_public_access }}</span>
+      </div>
+      {% endif %}
+
+      {% if item.gemini_tier_display %}
+      <div class="systra-meta-row">
+        <span class="systra-meta-label">GEMINI Compliance</span>
+        <span class="systra-meta-value">{{ item.gemini_tier_display }}</span>
       </div>
       {% endif %}
 
@@ -266,7 +268,7 @@
       <div class="systra-sidebar-links">
         {% if item.source_url %}
         <a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" class="systra-metadata-link">
-          View official source <span aria-hidden="true">&#8599;</span>
+          Resource Locator <span aria-hidden="true">&#8599;</span>
         </a>
         {% endif %}
         {% if item.licence_name %}
