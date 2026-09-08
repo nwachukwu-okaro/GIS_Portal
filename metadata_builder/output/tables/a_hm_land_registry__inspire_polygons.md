@@ -6,6 +6,11 @@
 - **Source organisation:** HM Land Registry
 - **Source:** https://use-land-property-data.service.gov.uk/
 - **WGS84 extent:** `[-6.418949, 49.864637, 1.763316, 55.811678]`
+- **Topic category:** planningCadastre
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_hm_land_registry`
 - **Table:** `inspire_polygons`
 - **Geometry:** MULTIPOLYGON
@@ -18,42 +23,26 @@
 
 Inspire Polygons is an authoritative dataset published by HM Land Registry. It represents inspire polygons features using multipolygon geometry.
 
+## Lineage
+
+Published by HM Land Registry as open land and property data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `ogc_fid` | `integer` | Internal OGC feature identifier assigned during publication. | record_identifier | Yes | No | No |
-| `gml_id` | `text` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `inspireid` | `integer` | INSPIRE identifier assigned to the cadastral parcel feature. | inspire_identifier | Yes | No | No |
-| `label` | `integer` | Numeric label used to identify or display the cadastral parcel. | parcel_label | Yes | No | No |
-| `nationalcadastralreference` | `integer` | National cadastral reference associated with the parcel polygon. | cadastral_reference | Yes | No | No |
-| `validfrom` | `text` | Date and time from which the cadastral feature is valid in the source dataset. | valid_from_datetime | Yes | No | No |
-| `beginlifespanversion` | `text` | Date and time when this version of the INSPIRE feature began its lifecycle. | lifecycle_start_datetime | Yes | No | No |
-| `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `ogc_fid` | `integer` | Internal OGC feature identifier assigned during publication. |
+| `gml_id` | `text` | Identifier assigned by the source dataset. |
+| `inspireid` | `integer` | INSPIRE identifier assigned to the cadastral parcel feature. |
+| `label` | `integer` | Numeric label used to identify or display the cadastral parcel. |
+| `nationalcadastralreference` | `integer` | National cadastral reference associated with the parcel polygon. |
+| `validfrom` | `text` | Date and time from which the cadastral feature is valid in the source dataset. |
+| `beginlifespanversion` | `text` | Date and time when this version of the INSPIRE feature began its lifecycle. |
+| `fid` | `bigint` | Feature identifier assigned by the source or import process. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -9,6 +9,13 @@
 - **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** Great Britain
 - **WGS84 extent:** `[-7.509500, 49.910214, 1.763227, 60.480482]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_built_up_areas`
 - **Table:** `os_open_built_up_areas`
 - **Geometry:** MULTIPOLYGON
@@ -21,38 +28,26 @@
 
 OS Open Built Up Areas is part of OS Open Built Up Areas, published by Ordnance Survey. It represents built up area features using multipolygon geometry.
 
+## Lineage
+
+Published by Ordnance Survey as part of OS Open Built Up Areas. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `gsscode` | `varchar` | Government Statistical Service code — unique identifier for administrative or statistical geographies. | geographic_identifier | Yes | No | Yes |
-| `name1_text` | `varchar` | Primary place name or feature name. | feature_name | Yes | Yes | No |
-| `name1_language` | `varchar` | Language of the primary name (for example ENG for English or CYM for Welsh). | language_code | Yes | No | No |
-| `name2_text` | `varchar` | Secondary or alternative place name. | alternative_name | Yes | Yes | No |
-| `name2_language` | `varchar` | Language of the secondary name. | language_code | Yes | No | No |
-| `areahectares` | `double precision` | Area of the polygon feature in hectares. | area | Yes | No | No |
-| `geometry_area_m` | `double precision` | Area of the polygon feature in square metres. | area | Yes | No | No |
-| `fid` | `bigint` | Feature identifier — unique integer ID assigned to each feature in the dataset. | record_identifier | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `gsscode` | `varchar` | Government Statistical Service code — unique identifier for administrative or statistical geographies. |
+| `name1_text` | `varchar` | Primary place name or feature name. |
+| `name1_language` | `varchar` | Language of the primary name (for example ENG for English or CYM for Welsh). |
+| `name2_text` | `varchar` | Secondary or alternative place name. |
+| `name2_language` | `varchar` | Language of the secondary name. |
+| `areahectares` | `double precision` | Area of the polygon feature in hectares. |
+| `geometry_area_m` | `double precision` | Area of the polygon feature in square metres. |
+| `fid` | `bigint` | Feature identifier — unique integer ID assigned to each feature in the dataset. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

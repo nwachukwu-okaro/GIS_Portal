@@ -8,6 +8,11 @@
 - **Source:** https://www.ordnancesurvey.co.uk/products/addressbase-premium
 - **Geographic coverage:** Great Britain
 - **WGS84 extent:** `[-6.362094, 50.230649, 1.752721, 58.963640]`
+- **Topic category:** location
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_addressbase_premium`
 - **Table:** `nhs_hospitals_medical_facilities`
 - **Geometry:** GEOMETRY
@@ -20,39 +25,23 @@
 
 Nhs Hospitals Medical Facilities is part of AddressBase Premium, published by Ordnance Survey. It represents nhs hospitals medical facilities features using geometry geometry.
 
+## Lineage
+
+Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. | statistical_value | Yes | No | No |
-| `ctyua24nm` | `varchar(36)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `classification_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `organisation` | `text` | Publisher-supplied organisation for the represented feature or record. | source_attribute | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `nhs_category` | `text` | Publisher-supplied nhs category for the represented feature or record. | source_attribute | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. |
+| `ctyua24nm` | `varchar(36)` |  |
+| `classification_code` | `text` | Code assigned by the source dataset. |
+| `organisation` | `text` | Publisher-supplied organisation for the represented feature or record. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |
+| `nhs_category` | `text` | Publisher-supplied nhs category for the represented feature or record. |

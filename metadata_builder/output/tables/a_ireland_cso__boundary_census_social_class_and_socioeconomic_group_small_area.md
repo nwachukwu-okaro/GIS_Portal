@@ -7,6 +7,11 @@
 - **Source:** https://www.cso.ie/en/databases/
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-1.726726, 54.563349, 3.417194, 58.519873]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_social_class_and_socioeconomic_group_small_area`
 - **Geometry:** GEOMETRY
@@ -19,87 +24,71 @@
 
 Boundary Census Social Class And Socioeconomic Group Small Area is an authoritative dataset published by Central Statistics Office Ireland. It represents boundary census social class and socioeconomic group small area features using geometry geometry.
 
+## Lineage
+
+Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
-| `geogid` | `text` | Publisher-assigned geogid for the record. | source_identifier | Yes | No | No |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. | source_attribute | Yes | No | No |
-| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. | statistical_value | Yes | No | No |
-| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. | source_attribute | Yes | No | No |
-| `professional_workers_males` | `bigint` | Count or numeric value for professional workers males in the represented area. | statistical_value | Yes | No | No |
-| `managerial_and_technical_males` | `bigint` | Count or numeric value for managerial and technical males in the represented area. | statistical_value | Yes | No | No |
-| `nonmanual_males` | `bigint` | Count or numeric value for nonmanual males in the represented area. | statistical_value | Yes | No | No |
-| `skilled_manual_males` | `bigint` | Count or numeric value for skilled manual males in the represented area. | statistical_value | Yes | No | No |
-| `semiskilled_males` | `bigint` | Count or numeric value for semiskilled males in the represented area. | statistical_value | Yes | No | No |
-| `unskilled_males` | `bigint` | Count or numeric value for unskilled males in the represented area. | statistical_value | Yes | No | No |
-| `all_others_gainfully_occupied_and_unknown_males` | `bigint` | Count or numeric value for all others gainfully occupied and unknown males in the represented area. | statistical_value | Yes | No | No |
-| `total_males` | `bigint` | Count or numeric value for total males in the represented area. | statistical_value | Yes | No | No |
-| `professional_workers_females` | `bigint` | Count or numeric value for professional workers females in the represented area. | statistical_value | Yes | No | No |
-| `managerial_and_technical_females` | `bigint` | Count or numeric value for managerial and technical females in the represented area. | statistical_value | Yes | No | No |
-| `nonmanual_females` | `bigint` | Count or numeric value for nonmanual females in the represented area. | statistical_value | Yes | No | No |
-| `skilled_manual_females` | `bigint` | Count or numeric value for skilled manual females in the represented area. | statistical_value | Yes | No | No |
-| `semiskilled_females` | `bigint` | Count or numeric value for semiskilled females in the represented area. | statistical_value | Yes | No | No |
-| `unskilled_females` | `bigint` | Count or numeric value for unskilled females in the represented area. | statistical_value | Yes | No | No |
-| `all_others_gainfully_occupied_and_unknown_females` | `bigint` | Count or numeric value for all others gainfully occupied and unknown females in the represented area. | statistical_value | Yes | No | No |
-| `total_females` | `bigint` | Count or numeric value for total females in the represented area. | statistical_value | Yes | No | No |
-| `professional_workers_total` | `bigint` | Count or numeric value for professional workers total in the represented area. | statistical_value | Yes | No | No |
-| `managerial_and_technical_total` | `bigint` | Count or numeric value for managerial and technical total in the represented area. | statistical_value | Yes | No | No |
-| `nonmanual_total` | `bigint` | Count or numeric value for nonmanual total in the represented area. | statistical_value | Yes | No | No |
-| `skilled_manual_total` | `bigint` | Count or numeric value for skilled manual total in the represented area. | statistical_value | Yes | No | No |
-| `semiskilled_total` | `bigint` | Count or numeric value for semiskilled total in the represented area. | statistical_value | Yes | No | No |
-| `unskilled_total` | `bigint` | Count or numeric value for unskilled total in the represented area. | statistical_value | Yes | No | No |
-| `all_others_gainfully_occupied_and_unknown_total` | `bigint` | Count or numeric value for all others gainfully occupied and unknown total in the represented area. | statistical_value | Yes | No | No |
-| `total` | `bigint` | Count or numeric value for total in the represented area. | statistical_value | Yes | No | No |
-| `a_employers_and_managers_no_of_households` | `bigint` | Count or numeric value for a employers and managers number of households in the represented area. | statistical_value | Yes | No | No |
-| `b_higher_professional_no_of_households` | `bigint` | Count or numeric value for b higher professional number of households in the represented area. | statistical_value | Yes | No | No |
-| `c_lower_professional_no_of_households` | `bigint` | Count or numeric value for c lower professional number of households in the represented area. | statistical_value | Yes | No | No |
-| `d_nonmanual_no_of_households` | `bigint` | Count or numeric value for d nonmanual number of households in the represented area. | statistical_value | Yes | No | No |
-| `e_manual_skilled_no_of_households` | `bigint` | Count or numeric value for e manual skilled number of households in the represented area. | statistical_value | Yes | No | No |
-| `f_semiskilled_no_of_households` | `bigint` | Count or numeric value for female semiskilled number of households in the represented area. | statistical_value | Yes | No | No |
-| `g_unskilled_no_of_households` | `bigint` | Count or numeric value for g unskilled number of households in the represented area. | statistical_value | Yes | No | No |
-| `h_own_account_workers_no_of_households` | `bigint` | Count or numeric value for h own account workers number of households in the represented area. | statistical_value | Yes | No | No |
-| `i_farmers_no_of_households` | `bigint` | Count or numeric value for i farmers number of households in the represented area. | statistical_value | Yes | No | No |
-| `j_agricultural_workers_no_of_households` | `bigint` | Count or numeric value for j agricultural workers number of households in the represented area. | statistical_value | Yes | No | No |
-| `z_all_others_gainfully_occupied_and_unknown_no_of_households` | `bigint` | Count or numeric value for z all others gainfully occupied and unknown number of households in the represented area. | statistical_value | Yes | No | No |
-| `total_no_of_households` | `bigint` | Count or numeric value for total number of households in the represented area. | statistical_value | Yes | No | No |
-| `a_employers_and_managers_no_of_persons` | `bigint` | Count or numeric value for a employers and managers number of persons in the represented area. | statistical_value | Yes | No | No |
-| `b_higher_professional_no_of_persons` | `bigint` | Count or numeric value for b higher professional number of persons in the represented area. | statistical_value | Yes | No | No |
-| `c_lower_professional_no_of_persons` | `bigint` | Count or numeric value for c lower professional number of persons in the represented area. | statistical_value | Yes | No | No |
-| `d_nonmanual_no_of_persons` | `bigint` | Count or numeric value for d nonmanual number of persons in the represented area. | statistical_value | Yes | No | No |
-| `e_manual_skilled_no_of_persons` | `bigint` | Count or numeric value for e manual skilled number of persons in the represented area. | statistical_value | Yes | No | No |
-| `f_semiskilled_no_of_persons` | `bigint` | Count or numeric value for female semiskilled number of persons in the represented area. | statistical_value | Yes | No | No |
-| `g_unskilled_no_of_persons` | `bigint` | Count or numeric value for g unskilled number of persons in the represented area. | statistical_value | Yes | No | No |
-| `h_own_account_workers_no_of_persons` | `bigint` | Count or numeric value for h own account workers number of persons in the represented area. | statistical_value | Yes | No | No |
-| `i_farmers_no_of_persons` | `bigint` | Count or numeric value for i farmers number of persons in the represented area. | statistical_value | Yes | No | No |
-| `j_agricultural_workers_no_of_persons` | `bigint` | Count or numeric value for j agricultural workers number of persons in the represented area. | statistical_value | Yes | No | No |
-| `z_all_others_gainfully_occupied_and_unknown_no_of_persons` | `bigint` | Count or numeric value for z all others gainfully occupied and unknown number of persons in the represented area. | statistical_value | Yes | No | No |
-| `total_no_of_persons` | `bigint` | Count or numeric value for total number of persons in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geom` | `geometry` | Spatial geometry of the represented feature. |
+| `guid` | `text` | Publisher-assigned guid for the record. |
+| `geogid` | `text` | Publisher-assigned geogid for the record. |
+| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
+| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. |
+| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. |
+| `professional_workers_males` | `bigint` | Count or numeric value for professional workers males in the represented area. |
+| `managerial_and_technical_males` | `bigint` | Count or numeric value for managerial and technical males in the represented area. |
+| `nonmanual_males` | `bigint` | Count or numeric value for nonmanual males in the represented area. |
+| `skilled_manual_males` | `bigint` | Count or numeric value for skilled manual males in the represented area. |
+| `semiskilled_males` | `bigint` | Count or numeric value for semiskilled males in the represented area. |
+| `unskilled_males` | `bigint` | Count or numeric value for unskilled males in the represented area. |
+| `all_others_gainfully_occupied_and_unknown_males` | `bigint` | Count or numeric value for all others gainfully occupied and unknown males in the represented area. |
+| `total_males` | `bigint` | Count or numeric value for total males in the represented area. |
+| `professional_workers_females` | `bigint` | Count or numeric value for professional workers females in the represented area. |
+| `managerial_and_technical_females` | `bigint` | Count or numeric value for managerial and technical females in the represented area. |
+| `nonmanual_females` | `bigint` | Count or numeric value for nonmanual females in the represented area. |
+| `skilled_manual_females` | `bigint` | Count or numeric value for skilled manual females in the represented area. |
+| `semiskilled_females` | `bigint` | Count or numeric value for semiskilled females in the represented area. |
+| `unskilled_females` | `bigint` | Count or numeric value for unskilled females in the represented area. |
+| `all_others_gainfully_occupied_and_unknown_females` | `bigint` | Count or numeric value for all others gainfully occupied and unknown females in the represented area. |
+| `total_females` | `bigint` | Count or numeric value for total females in the represented area. |
+| `professional_workers_total` | `bigint` | Count or numeric value for professional workers total in the represented area. |
+| `managerial_and_technical_total` | `bigint` | Count or numeric value for managerial and technical total in the represented area. |
+| `nonmanual_total` | `bigint` | Count or numeric value for nonmanual total in the represented area. |
+| `skilled_manual_total` | `bigint` | Count or numeric value for skilled manual total in the represented area. |
+| `semiskilled_total` | `bigint` | Count or numeric value for semiskilled total in the represented area. |
+| `unskilled_total` | `bigint` | Count or numeric value for unskilled total in the represented area. |
+| `all_others_gainfully_occupied_and_unknown_total` | `bigint` | Count or numeric value for all others gainfully occupied and unknown total in the represented area. |
+| `total` | `bigint` | Count or numeric value for total in the represented area. |
+| `a_employers_and_managers_no_of_households` | `bigint` | Count or numeric value for a employers and managers number of households in the represented area. |
+| `b_higher_professional_no_of_households` | `bigint` | Count or numeric value for b higher professional number of households in the represented area. |
+| `c_lower_professional_no_of_households` | `bigint` | Count or numeric value for c lower professional number of households in the represented area. |
+| `d_nonmanual_no_of_households` | `bigint` | Count or numeric value for d nonmanual number of households in the represented area. |
+| `e_manual_skilled_no_of_households` | `bigint` | Count or numeric value for e manual skilled number of households in the represented area. |
+| `f_semiskilled_no_of_households` | `bigint` | Count or numeric value for female semiskilled number of households in the represented area. |
+| `g_unskilled_no_of_households` | `bigint` | Count or numeric value for g unskilled number of households in the represented area. |
+| `h_own_account_workers_no_of_households` | `bigint` | Count or numeric value for h own account workers number of households in the represented area. |
+| `i_farmers_no_of_households` | `bigint` | Count or numeric value for i farmers number of households in the represented area. |
+| `j_agricultural_workers_no_of_households` | `bigint` | Count or numeric value for j agricultural workers number of households in the represented area. |
+| `z_all_others_gainfully_occupied_and_unknown_no_of_households` | `bigint` | Count or numeric value for z all others gainfully occupied and unknown number of households in the represented area. |
+| `total_no_of_households` | `bigint` | Count or numeric value for total number of households in the represented area. |
+| `a_employers_and_managers_no_of_persons` | `bigint` | Count or numeric value for a employers and managers number of persons in the represented area. |
+| `b_higher_professional_no_of_persons` | `bigint` | Count or numeric value for b higher professional number of persons in the represented area. |
+| `c_lower_professional_no_of_persons` | `bigint` | Count or numeric value for c lower professional number of persons in the represented area. |
+| `d_nonmanual_no_of_persons` | `bigint` | Count or numeric value for d nonmanual number of persons in the represented area. |
+| `e_manual_skilled_no_of_persons` | `bigint` | Count or numeric value for e manual skilled number of persons in the represented area. |
+| `f_semiskilled_no_of_persons` | `bigint` | Count or numeric value for female semiskilled number of persons in the represented area. |
+| `g_unskilled_no_of_persons` | `bigint` | Count or numeric value for g unskilled number of persons in the represented area. |
+| `h_own_account_workers_no_of_persons` | `bigint` | Count or numeric value for h own account workers number of persons in the represented area. |
+| `i_farmers_no_of_persons` | `bigint` | Count or numeric value for i farmers number of persons in the represented area. |
+| `j_agricultural_workers_no_of_persons` | `bigint` | Count or numeric value for j agricultural workers number of persons in the represented area. |
+| `z_all_others_gainfully_occupied_and_unknown_no_of_persons` | `bigint` | Count or numeric value for z all others gainfully occupied and unknown number of persons in the represented area. |
+| `total_no_of_persons` | `bigint` | Count or numeric value for total number of persons in the represented area. |

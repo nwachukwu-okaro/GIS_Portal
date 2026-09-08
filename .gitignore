@@ -45,3 +45,8 @@ Thumbs.db:encdata
 # Docker sensitive
 .env*
 !.env.example
+
+# pycsw credentials — never commit
+pycsw/config/pycsw.cfg
+pycsw/scripts/ingest_minio.py
+pycsw/scripts/ingest_postgis.py

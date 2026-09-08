@@ -7,6 +7,11 @@
 - **Source:** https://www.cso.ie/en/databases/
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-1.726726, 54.563349, 3.417194, 58.519873]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `local_electoral_area_boundary`
 - **Geometry:** GEOMETRY
@@ -19,40 +24,24 @@
 
 Local Electoral Area Boundary is an authoritative dataset published by Central Statistics Office Ireland. It represents local electoral area boundary features using geometry geometry.
 
+## Lineage
+
+Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `lea_guid` | `text` | Publisher-assigned lea guid for the record. | source_identifier | Yes | No | No |
-| `lea_official` | `text` | Publisher-supplied lea official for the represented feature or record. | source_attribute | Yes | No | No |
-| `cso_lea` | `text` | Publisher-supplied cso lea for the represented feature or record. | source_attribute | Yes | No | No |
-| `lea_id` | `text` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `county` | `text` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
-| `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
-| `shape` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `lea_guid` | `text` | Publisher-assigned lea guid for the record. |
+| `lea_official` | `text` | Publisher-supplied lea official for the represented feature or record. |
+| `cso_lea` | `text` | Publisher-supplied cso lea for the represented feature or record. |
+| `lea_id` | `text` | Identifier assigned by the source dataset. |
+| `county` | `text` | Publisher-supplied county for the represented feature or record. |
+| `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
+| `shape` | `geometry` | Spatial geometry of the represented feature. |

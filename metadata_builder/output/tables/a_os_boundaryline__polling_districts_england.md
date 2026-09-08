@@ -9,6 +9,13 @@
 - **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** Great Britain
 - **WGS84 extent:** `[-5.747107, 49.956393, 1.768912, 55.811668]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_boundaryline`
 - **Table:** `polling_districts_england`
 - **Geometry:** MULTIPOLYGON
@@ -21,36 +28,24 @@
 
 Polling Districts England is part of Boundary-Line, published by Ordnance Survey. It represents polling districts england features using multipolygon geometry.
 
+## Lineage
+
+Published by Ordnance Survey as part of Boundary-Line. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `PD_ID` | `varchar(10)` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `County` | `varchar(100)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
-| `Distric_Bo` | `varchar(100)` | Publisher-supplied distric bo for the represented feature or record. | source_attribute | Yes | No | No |
-| `Ward` | `varchar(100)` | Publisher-supplied ward for the represented feature or record. | source_attribute | Yes | No | No |
-| `Parish` | `varchar(100)` | Publisher-supplied parish for the represented feature or record. | source_attribute | Yes | No | No |
-| `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `PD_ID` | `varchar(10)` | Identifier assigned by the source dataset. |
+| `County` | `varchar(100)` | Publisher-supplied county for the represented feature or record. |
+| `Distric_Bo` | `varchar(100)` | Publisher-supplied distric bo for the represented feature or record. |
+| `Ward` | `varchar(100)` | Publisher-supplied ward for the represented feature or record. |
+| `Parish` | `varchar(100)` | Publisher-supplied parish for the represented feature or record. |
+| `fid` | `bigint` | Feature identifier assigned by the source or import process. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -7,6 +7,11 @@
 - **Source:** https://gis.epa.ie/GetData/Download
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-10.468183, 51.450434, -6.005639, 55.380124]`
+- **Topic category:** environment
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `river_net_routes`
 - **Geometry:** LINESTRING
@@ -19,45 +24,29 @@
 
 River Net Routes is an authoritative dataset published by Environmental Protection Agency Ireland. It represents river net routes features using linestring geometry.
 
+## Lineage
+
+Published by the Environmental Protection Agency Ireland as open environmental data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `segment_code` | `varchar(20)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `epa_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `epa_code` | `varchar(5)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `stream_order` | `integer` | Count or numeric value for stream order in the represented area. | statistical_value | Yes | No | No |
-| `continua` | `varchar(1)` | Publisher-supplied continua for the represented feature or record. | source_attribute | Yes | No | No |
-| `river_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `lake_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `transitional_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `segment_length` | `double precision` | Numeric segment length value recorded for the feature. | measure | Yes | No | No |
-| `coastal_water_body_code` | `varchar(100)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `rnr_pk` | `integer` | Count or numeric value for rnr pk in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `segment_code` | `varchar(20)` | Code assigned by the source dataset. |
+| `epa_name` | `varchar(100)` | Name associated with the represented feature. |
+| `epa_code` | `varchar(5)` | Code assigned by the source dataset. |
+| `stream_order` | `integer` | Count or numeric value for stream order in the represented area. |
+| `continua` | `varchar(1)` | Publisher-supplied continua for the represented feature or record. |
+| `river_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
+| `lake_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
+| `transitional_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
+| `segment_length` | `double precision` | Numeric segment length value recorded for the feature. |
+| `coastal_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
+| `rnr_pk` | `integer` | Count or numeric value for rnr pk in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

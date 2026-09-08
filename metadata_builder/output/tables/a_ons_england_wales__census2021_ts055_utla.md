@@ -7,6 +7,13 @@
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
 - **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England and Wales
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts055_utla`
 - **Geometry:** Non-spatial
@@ -19,31 +26,30 @@
 
 Census2021 Ts055 Utla is an authoritative dataset published by Office for National Statistics. It contains records relating to census2021 ts055 utla.
 
+## Lineage
+
+Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
-| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `total_all_usual_residents` | `bigint` | Count or numeric value for total all usual residents in the represented area. | statistical_value | Yes | No | No |
-| `armed_forces_base_address` | `bigint` | Count or numeric value for armed forces base address in the represented area. | statistical_value | Yes | No | No |
-| `another_address_when_working_away_from_home` | `bigint` | Count or numeric value for another address when working away from home in the represented area. | statistical_value | Yes | No | No |
-| `holiday_home` | `bigint` | Count or numeric value for holiday home in the represented area. | statistical_value | Yes | No | No |
-| `student_s_term_time_address` | `bigint` | Count or numeric value for student s term time address in the represented area. | statistical_value | Yes | No | No |
-| `student_s_home_address` | `bigint` | Count or numeric value for student s home address in the represented area. | statistical_value | Yes | No | No |
-| `another_parent_or_guardian_s_address` | `bigint` | Count or numeric value for another parent or guardian s address in the represented area. | statistical_value | Yes | No | No |
-| `partner_s_address` | `bigint` | Count or numeric value for partner s address in the represented area. | statistical_value | Yes | No | No |
-| `other` | `bigint` | Count or numeric value for other in the represented area. | statistical_value | Yes | No | No |
-| `second_address_type_not_specified` | `bigint` | Count or numeric value for second address type not specified in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `date` | `bigint` | Count or numeric value for date in the represented area. |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `geography_code` | `text` | Code assigned by the source dataset. |
+| `total_all_usual_residents` | `bigint` | Count or numeric value for total all usual residents in the represented area. |
+| `armed_forces_base_address` | `bigint` | Count or numeric value for armed forces base address in the represented area. |
+| `another_address_when_working_away_from_home` | `bigint` | Count or numeric value for another address when working away from home in the represented area. |
+| `holiday_home` | `bigint` | Count or numeric value for holiday home in the represented area. |
+| `student_s_term_time_address` | `bigint` | Count or numeric value for student s term time address in the represented area. |
+| `student_s_home_address` | `bigint` | Count or numeric value for student s home address in the represented area. |
+| `another_parent_or_guardian_s_address` | `bigint` | Count or numeric value for another parent or guardian s address in the represented area. |
+| `partner_s_address` | `bigint` | Count or numeric value for partner s address in the represented area. |
+| `other` | `bigint` | Count or numeric value for other in the represented area. |
+| `second_address_type_not_specified` | `bigint` | Count or numeric value for second address type not specified in the represented area. |

@@ -1,0 +1,434 @@
+import json
+import psycopg2
+import zoneinfo
+from datetime import datetime
+
+# ── PostgreSQL connection ─────────────────────────────────────
+DB_PARAMS = {
+    "host":     "YOUR_DB_HOST",
+    "port":     5432,
+    "dbname":   "YOUR_DB_NAME",
+    "user":     "YOUR_DB_USER",
+    "password": "YOUR_DB_PASSWORD",
+    "sslmode":  "require"
+}
+
+# ── Schemas to always skip ────────────────────────────────────
+SKIP_SCHEMAS = [
+    'pg_catalog', 'information_schema',
+    'pg_toast', 'pycsw', 'tiger',
+    'topology', 'public'
+]
+
+# ── Settings ──────────────────────────────────────────────────
+LONDON_TZ     = zoneinfo.ZoneInfo("Europe/London")
+CATALOGUE_URL = "http://YOUR_SERVER_HOSTNAME/csw"
+DB_HOST       = "YOUR_DB_HOST"
+DB_NAME       = "YOUR_DB_NAME"
+# ─────────────────────────────────────────────────────────────
+
+def get_all_schemas(cur):
+    """
+    Auto-discover all schemas that have tables with
+    structured comments containing title:
+    Ignores system schemas automatically.
+    """
+    cur.execute("""
+        SELECT DISTINCT t.schemaname
+        FROM pg_tables t
+        JOIN pg_class c ON c.relname = t.tablename
+        JOIN pg_namespace n ON n.oid = c.relnamespace
+        WHERE t.schemaname NOT IN %s
+        AND n.nspname = t.schemaname
+        AND pg_catalog.obj_description(c.oid) LIKE '%%title:%%'
+        ORDER BY t.schemaname
+    """, (tuple(SKIP_SCHEMAS),))
+    return [row[0] for row in cur.fetchall()]
+
+def clean_table_name(name):
+    """Convert table_name to Title Case."""
+    return ' '.join(word.capitalize() for word in name.split('_'))
+
+def parse_comment(comment):
+    """Parse structured table comment into metadata dict."""
+    meta = {
+        'title':        '',
+        'abstract':     '',
+        'keywords':     '',
+        'type':         'dataset',
+        'access':       'internal',
+        'organisation': 'Systra UK',
+        'project':      '',
+        'source':       '',
+        'contact':      '',
+        'version':      ''
+    }
+    if not comment:
+        return meta
+    for line in comment.strip().splitlines():
+        if ':' in line:
+            key, _, value = line.partition(':')
+            key   = key.strip().lower()
+            value = value.strip()
+            if key in meta:
+                meta[key] = value
+    return meta
+
+def parse_keywords(keywords_str):
+    """Split keywords on / or | or ; separators."""
+    if not keywords_str:
+        return []
+    for sep in ['/', '|', ';']:
+        if sep in keywords_str:
+            return [k.strip() for k in keywords_str.split(sep)]
+    return [keywords_str.strip()]
+
+def bbox_to_wkt(bbox_str):
+    """Convert PostgreSQL BOX string to bbox list and WKT polygon."""
+    try:
+        coords     = bbox_str.replace('BOX(', '').replace(')', '')
+        ll, ur     = coords.split(',')
+        xmin, ymin = map(float, ll.strip().split())
+        xmax, ymax = map(float, ur.strip().split())
+        wkt = (
+            f'POLYGON(({xmin} {ymin},{xmin} {ymax},'
+            f'{xmax} {ymax},{xmax} {ymin},{xmin} {ymin}))'
+        )
+        return [xmin, ymin, xmax, ymax], wkt
+    except Exception:
+        return [-180, -90, 180, 90], 'POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))'
+
+def build_anytext(table_name, schema, meta, crs, row_count, geom_type, table_size):
+    """Build rich searchable text string."""
+    parts = [
+        meta.get('title', ''),
+        meta.get('abstract', ''),
+        meta.get('keywords', '').replace('/', ' ').replace('|', ' '),
+        meta.get('organisation', ''),
+        meta.get('project', ''),
+        meta.get('source', ''),
+        table_name,
+        schema,
+        f"EPSG:{crs}",
+        geom_type,
+        f"{row_count} records",
+        table_size
+    ]
+    return ' '.join(p for p in parts if p)
+
+def build_stac_item(table_name, schema, meta, bbox, crs,
+                    row_count, geom_type, table_size, last_modified):
+    """Build a STAC item JSON for a PostGIS table."""
+    title      = meta['title'] or clean_table_name(table_name)
+    keywords   = parse_keywords(meta.get('keywords', ''))
+    identifier = f"{schema}/{table_name}"
+
+    return {
+        "type": "Feature",
+        "stac_version": "1.0.0",
+        "id": identifier,
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+                [bbox[0], bbox[1]], [bbox[0], bbox[3]],
+                [bbox[2], bbox[3]], [bbox[2], bbox[1]],
+                [bbox[0], bbox[1]]
+            ]]
+        },
+        "bbox": bbox,
+        "properties": {
+            "datetime":      datetime.now(LONDON_TZ).isoformat(),
+            "title":         title,
+            "abstract":      meta.get('abstract', ''),
+            "keywords":      keywords,
+            "type":          meta.get('type', 'dataset'),
+            "format":        f"PostGIS/{geom_type}",
+            "organisation":  meta.get('organisation', 'Systra UK'),
+            "project":       meta.get('project', ''),
+            "contact":       meta.get('contact', ''),
+            "access":        meta.get('access', 'internal'),
+            "crs":           f"EPSG:{crs}",
+            "geometry_type": geom_type,
+            "row_count":     row_count,
+            "table_size":    table_size,
+            "source":        meta.get('source', ''),
+            "date_modified": last_modified.astimezone(LONDON_TZ).isoformat() if last_modified else '',
+            "schema":        schema,
+            "table":         table_name
+        },
+        "assets": {
+            "data": {
+                "href":  f"postgresql://{DB_HOST}:5432/{DB_NAME}/{schema}/{table_name}",
+                "type":  f"PostGIS/{geom_type}",
+                "roles": ["data"],
+                "size":  table_size
+            }
+        },
+        "links": [
+            {
+                "rel":   "self",
+                "href":  f"postgresql://{DB_HOST}:5432/{DB_NAME}/{schema}/{table_name}",
+                "type":  f"PostGIS/{geom_type}",
+                "title": title
+            }
+        ]
+    }
+
+def get_schema_tables(cur, schema):
+    """Get all tables in schema with structured comments."""
+    cur.execute("""
+        SELECT 
+            t.tablename,
+            pg_catalog.obj_description(c.oid) as comment,
+            t.tableowner
+        FROM pg_tables t
+        JOIN pg_class c ON c.relname = t.tablename
+        JOIN pg_namespace n ON n.oid = c.relnamespace
+        WHERE t.schemaname = %s
+        AND n.nspname = %s
+        AND pg_catalog.obj_description(c.oid) LIKE '%%title:%%'
+        ORDER BY t.tablename
+    """, (schema, schema))
+    return cur.fetchall()
+
+def get_table_stats(cur, schema, table_name):
+    """Get bbox, row count, CRS, geometry type, table size and last modified."""
+
+    # Bbox, row count and CRS
+    cur.execute(f"""
+        SELECT 
+            ST_Extent(ST_Transform(geom, 4326))::text as bbox,
+            COUNT(*) as row_count,
+            Find_SRID(%s, %s, 'geom') as crs
+        FROM {schema}.{table_name}
+    """, (schema, table_name))
+    stats = cur.fetchone()
+
+    # Geometry type
+    cur.execute(f"""
+        SELECT GeometryType(geom) as geom_type
+        FROM {schema}.{table_name}
+        WHERE geom IS NOT NULL
+        LIMIT 1
+    """)
+    geom_row  = cur.fetchone()
+    geom_type = geom_row[0] if geom_row else 'GEOMETRY'
+
+    # Table size
+    cur.execute("""
+        SELECT pg_size_pretty(
+            pg_total_relation_size(%s)
+        ) as table_size
+    """, (f"{schema}.{table_name}",))
+    size_row   = cur.fetchone()
+    table_size = size_row[0] if size_row else 'unknown'
+
+    # Last modified
+    cur.execute("""
+        SELECT 
+            GREATEST(last_vacuum, last_autovacuum,
+                     last_analyze, last_autoanalyze) as last_modified
+        FROM pg_stat_user_tables
+        WHERE schemaname = %s
+        AND relname = %s
+    """, (schema, table_name))
+    stat_row      = cur.fetchone()
+    last_modified = stat_row[0] if stat_row else None
+
+    return stats[0], stats[1], stats[2], geom_type, table_size, last_modified
+
+def ingest_schema(cur, cat_cur, schema):
+    """Ingest all commented tables from a single schema."""
+    tables = get_schema_tables(cur, schema)
+
+    if not tables:
+        print(f"  No commented tables found in {schema}")
+        return 0, 0, 0, 0, 0
+
+    print(f"  Found {len(tables)} tables in {schema}:")
+    for t in tables:
+        print(f"    - {t[0]}")
+    print()
+
+    total = inserted = updated = skipped = failed = 0
+
+    for table_name, comment, owner in tables:
+        total += 1
+
+        try:
+            meta = parse_comment(comment)
+
+            bbox_str, row_count, crs, geom_type, table_size, last_modified = \
+                get_table_stats(cur, schema, table_name)
+
+            bbox, wkt = bbox_to_wkt(bbox_str) if bbox_str else (
+                [-180, -90, 180, 90],
+                'POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))'
+            )
+
+            title        = meta['title'] or clean_table_name(table_name)
+            keywords     = parse_keywords(meta.get('keywords', ''))
+            keywords_str = ', '.join(keywords)
+            anytext      = build_anytext(
+                table_name, schema, meta, crs,
+                row_count, geom_type, table_size
+            )
+            identifier   = f"{schema}/{table_name}"
+            item         = build_stac_item(
+                table_name, schema, meta, bbox, crs,
+                row_count, geom_type, table_size, last_modified
+            )
+
+            print(f"    Processing : {table_name}")
+            print(f"      Title    : {title}")
+            print(f"      Rows     : {row_count}")
+            print(f"      Size     : {table_size}")
+            print(f"      Geometry : {geom_type}")
+            print(f"      CRS      : EPSG:{crs}")
+            print(f"      BBox     : {bbox}")
+            print(f"      Access   : {meta.get('access', 'internal')}")
+            print(f"      Contact  : {meta.get('contact', 'not set')}")
+
+            cat_cur.execute("""
+                INSERT INTO p_pycsw.records (
+                    identifier, typename, schema,
+                    mdsource, insert_date, xml,
+                    anytext, title, abstract,
+                    keywords, type, format,
+                    source, organization, creator,
+                    publisher, date_modified,
+                    links, crs, lineage,
+                    accessconstraints, wkt_geometry,
+                    distancevalue, distanceuom
+                )
+                VALUES (
+                    %s, %s, %s,
+                    %s, NOW(), %s,
+                    %s, %s, %s,
+                    %s, %s, %s,
+                    %s, %s, %s,
+                    %s, %s,
+                    %s, %s, %s,
+                    %s, %s,
+                    %s, %s
+                )
+                ON CONFLICT (identifier) DO UPDATE SET
+                    xml               = EXCLUDED.xml,
+                    anytext           = EXCLUDED.anytext,
+                    title             = EXCLUDED.title,
+                    abstract          = EXCLUDED.abstract,
+                    keywords          = EXCLUDED.keywords,
+                    type              = EXCLUDED.type,
+                    format            = EXCLUDED.format,
+                    organization      = EXCLUDED.organization,
+                    creator           = EXCLUDED.creator,
+                    publisher         = EXCLUDED.publisher,
+                    date_modified     = EXCLUDED.date_modified,
+                    links             = EXCLUDED.links,
+                    crs               = EXCLUDED.crs,
+                    lineage           = EXCLUDED.lineage,
+                    accessconstraints = EXCLUDED.accessconstraints,
+                    wkt_geometry      = EXCLUDED.wkt_geometry,
+                    distancevalue     = EXCLUDED.distancevalue,
+                    distanceuom       = EXCLUDED.distanceuom
+            """, (
+                identifier,
+                'stac:item',
+                'https://stac-extensions.github.io/eo/v1.0.0/schema.json',
+                'postgis-ingest',
+                json.dumps(item),
+                anytext,
+                title,
+                meta.get('abstract', ''),
+                keywords_str,
+                meta.get('type', 'dataset'),
+                f"PostGIS/{geom_type}",
+                meta.get('source', ''),
+                meta.get('organisation', 'Systra UK'),
+                meta.get('project', ''),
+                meta.get('contact', ''),
+                last_modified.isoformat() if last_modified else '',
+                json.dumps(item['links']),
+                f"EPSG:{crs}",
+                meta.get('source', ''),
+                meta.get('access', 'internal'),
+                wkt,
+                table_size,
+                geom_type
+            ))
+
+            cat_cur.connection.commit()
+
+            if cat_cur.rowcount == 1:
+                inserted += 1
+                print(f"      Status   : INSERT ✓\n")
+            else:
+                updated += 1
+                print(f"      Status   : UPDATE ✓\n")
+
+        except Exception as e:
+            failed += 1
+            print(f"    FAILED: {table_name} — {e}\n")
+            cat_cur.connection.rollback()
+            continue
+
+    return total, inserted, updated, skipped, failed
+
+def ingest():
+    """Main ingestion function — auto-discovers all schemas."""
+    conn    = psycopg2.connect(**DB_PARAMS)
+    cur     = conn.cursor()
+    cat_cur = conn.cursor()
+
+    schemas = get_all_schemas(cur)
+
+    print(f"""
+─────────────────────────────
+PostGIS Auto-Discovery
+─────────────────────────────
+Database       : {DB_NAME}
+Host           : {DB_HOST}
+Schemas found  : {len(schemas)}
+Skipping       : {SKIP_SCHEMAS}
+─────────────────────────────""")
+
+    if not schemas:
+        print("\nNo schemas with commented tables found.")
+        cur.close()
+        conn.close()
+        return
+
+    for s in schemas:
+        print(f"  {s}")
+    print()
+
+    grand_total = grand_inserted = grand_updated = grand_skipped = grand_failed = 0
+
+    for schema in schemas:
+        print(f"\n── Schema: {schema} ──")
+        t, i, u, s, f  = ingest_schema(cur, cat_cur, schema)
+        grand_total    += t
+        grand_inserted += i
+        grand_updated  += u
+        grand_skipped  += s
+        grand_failed   += f
+
+    cur.close()
+    cat_cur.close()
+    conn.close()
+
+    print(f"""
+─────────────────────────────
+PostGIS Ingestion complete
+─────────────────────────────
+Schemas scanned : {len(schemas)}
+Total tables    : {grand_total}
+Inserted        : {grand_inserted}
+Updated         : {grand_updated}
+Skipped         : {grand_skipped}
+Failed          : {grand_failed}
+─────────────────────────────
+""")
+
+if __name__ == "__main__":
+    ingest()

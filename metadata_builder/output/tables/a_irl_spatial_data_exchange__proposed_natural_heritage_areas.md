@@ -7,6 +7,11 @@
 - **Source:** https://data.gov.ie/
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-10.549752, 51.418022, -5.990496, 55.449214]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_spatial_data_exchange`
 - **Table:** `proposed_natural_heritage_areas`
 - **Geometry:** MULTIPOLYGON
@@ -19,43 +24,27 @@
 
 Proposed Natural Heritage Areas is an authoritative dataset published by Government of Ireland. It represents proposed natural heritage areas features using multipolygon geometry.
 
+## Lineage
+
+Published by the Government of Ireland as part of the national spatial data exchange. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `pnha_pk` | `integer` | Count or numeric value for pnha pk in the represented area. | statistical_value | Yes | No | No |
-| `site_code` | `varchar(6)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `site_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `county` | `varchar(2)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
-| `version` | `double precision` | Count or numeric value for version in the represented area. | statistical_value | Yes | No | No |
-| `ha` | `double precision` | Count or numeric value for ha in the represented area. | statistical_value | Yes | No | No |
-| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. | source_attribute | Yes | No | No |
-| `source_scale` | `varchar(50)` | Publisher-supplied source scale for the represented feature or record. | source_attribute | Yes | No | No |
-| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. | source_attribute | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `pnha_pk` | `integer` | Count or numeric value for pnha pk in the represented area. |
+| `site_code` | `varchar(6)` | Code assigned by the source dataset. |
+| `site_name` | `varchar(100)` | Name associated with the represented feature. |
+| `county` | `varchar(2)` | Publisher-supplied county for the represented feature or record. |
+| `version` | `double precision` | Count or numeric value for version in the represented area. |
+| `ha` | `double precision` | Count or numeric value for ha in the represented area. |
+| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. |
+| `source_scale` | `varchar(50)` | Publisher-supplied source scale for the represented feature or record. |
+| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

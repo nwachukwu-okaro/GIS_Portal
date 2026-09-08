@@ -6,6 +6,11 @@
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
 - **Geographic coverage:** Scotland
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `table_uv212b_main_language_by_age_datazone`
 - **Geometry:** Non-spatial
@@ -18,65 +23,60 @@
 
 Table Uv212b Main Language By Age Datazone is an authoritative dataset published by National Records of Scotland. It contains records relating to table uv212b main language by age datazone.
 
+## Lineage
+
+Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `col_16_24_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 16 24 all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `col_16_24_english` | `double precision` | Count or numeric value for col 16 24 english in the represented area. | statistical_value | Yes | No | No |
-| `col_16_24_gaelic` | `double precision` | Count or numeric value for col 16 24 gaelic in the represented area. | statistical_value | Yes | No | No |
-| `col_16_24_other_language` | `double precision` | Count or numeric value for col 16 24 other language in the represented area. | statistical_value | Yes | No | No |
-| `col_16_24_scots` | `double precision` | Count or numeric value for col 16 24 scots in the represented area. | statistical_value | Yes | No | No |
-| `col_16_24_sign_language` | `double precision` | Count or numeric value for col 16 24 sign language in the represented area. | statistical_value | Yes | No | No |
-| `col_25_34_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 25 34 all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `col_25_34_english` | `double precision` | Count or numeric value for col 25 34 english in the represented area. | statistical_value | Yes | No | No |
-| `col_25_34_gaelic` | `double precision` | Count or numeric value for col 25 34 gaelic in the represented area. | statistical_value | Yes | No | No |
-| `col_25_34_other_language` | `double precision` | Count or numeric value for col 25 34 other language in the represented area. | statistical_value | Yes | No | No |
-| `col_25_34_scots` | `double precision` | Count or numeric value for col 25 34 scots in the represented area. | statistical_value | Yes | No | No |
-| `col_25_34_sign_language` | `double precision` | Count or numeric value for col 25 34 sign language in the represented area. | statistical_value | Yes | No | No |
-| `col_35_49_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 35 49 all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `col_35_49_english` | `double precision` | Count or numeric value for col 35 49 english in the represented area. | statistical_value | Yes | No | No |
-| `col_35_49_gaelic` | `double precision` | Count or numeric value for col 35 49 gaelic in the represented area. | statistical_value | Yes | No | No |
-| `col_35_49_other_language` | `double precision` | Count or numeric value for col 35 49 other language in the represented area. | statistical_value | Yes | No | No |
-| `col_35_49_scots` | `double precision` | Count or numeric value for col 35 49 scots in the represented area. | statistical_value | Yes | No | No |
-| `col_35_49_sign_language` | `double precision` | Count or numeric value for col 35 49 sign language in the represented area. | statistical_value | Yes | No | No |
-| `col_50_64_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 50 64 all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `col_50_64_english` | `double precision` | Count or numeric value for col 50 64 english in the represented area. | statistical_value | Yes | No | No |
-| `col_50_64_gaelic` | `double precision` | Count or numeric value for col 50 64 gaelic in the represented area. | statistical_value | Yes | No | No |
-| `col_50_64_other_language` | `double precision` | Count or numeric value for col 50 64 other language in the represented area. | statistical_value | Yes | No | No |
-| `col_50_64_scots` | `double precision` | Count or numeric value for col 50 64 scots in the represented area. | statistical_value | Yes | No | No |
-| `col_50_64_sign_language` | `double precision` | Count or numeric value for col 50 64 sign language in the represented area. | statistical_value | Yes | No | No |
-| `all_people_aged_3_and_over_all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `all_people_aged_3_and_over_english` | `double precision` | Count or numeric value for all people aged 3 and over english in the represented area. | statistical_value | Yes | No | No |
-| `all_people_aged_3_and_over_gaelic` | `double precision` | Count or numeric value for all people aged 3 and over gaelic in the represented area. | statistical_value | Yes | No | No |
-| `all_people_aged_3_and_over_other_language` | `double precision` | Count or numeric value for all people aged 3 and over other language in the represented area. | statistical_value | Yes | No | No |
-| `all_people_aged_3_and_over_scots` | `double precision` | Count or numeric value for all people aged 3 and over scots in the represented area. | statistical_value | Yes | No | No |
-| `all_people_aged_3_and_over_sign_language` | `double precision` | Count or numeric value for all people aged 3 and over sign language in the represented area. | statistical_value | Yes | No | No |
-| `col_65_and_over_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 65 and over all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `col_65_and_over_english` | `double precision` | Count or numeric value for col 65 and over english in the represented area. | statistical_value | Yes | No | No |
-| `col_65_and_over_gaelic` | `double precision` | Count or numeric value for col 65 and over gaelic in the represented area. | statistical_value | Yes | No | No |
-| `col_65_and_over_other_language` | `double precision` | Count or numeric value for col 65 and over other language in the represented area. | statistical_value | Yes | No | No |
-| `col_65_and_over_scots` | `double precision` | Count or numeric value for col 65 and over scots in the represented area. | statistical_value | Yes | No | No |
-| `col_65_and_over_sign_language` | `double precision` | Count or numeric value for col 65 and over sign language in the represented area. | statistical_value | Yes | No | No |
-| `mar_15_all_people_aged_3_and_over` | `double precision` | Count or numeric value for mar 15 all people aged 3 and over in the represented area. | statistical_value | Yes | No | No |
-| `mar_15_english` | `double precision` | Count or numeric value for mar 15 english in the represented area. | statistical_value | Yes | No | No |
-| `mar_15_gaelic` | `double precision` | Count or numeric value for mar 15 gaelic in the represented area. | statistical_value | Yes | No | No |
-| `mar_15_other_language` | `double precision` | Count or numeric value for mar 15 other language in the represented area. | statistical_value | Yes | No | No |
-| `mar_15_scots` | `double precision` | Count or numeric value for mar 15 scots in the represented area. | statistical_value | Yes | No | No |
-| `mar_15_sign_language` | `double precision` | Count or numeric value for mar 15 sign language in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geography_code` | `text` | Code assigned by the source dataset. |
+| `col_16_24_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 16 24 all people aged 3 and over in the represented area. |
+| `col_16_24_english` | `double precision` | Count or numeric value for col 16 24 english in the represented area. |
+| `col_16_24_gaelic` | `double precision` | Count or numeric value for col 16 24 gaelic in the represented area. |
+| `col_16_24_other_language` | `double precision` | Count or numeric value for col 16 24 other language in the represented area. |
+| `col_16_24_scots` | `double precision` | Count or numeric value for col 16 24 scots in the represented area. |
+| `col_16_24_sign_language` | `double precision` | Count or numeric value for col 16 24 sign language in the represented area. |
+| `col_25_34_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 25 34 all people aged 3 and over in the represented area. |
+| `col_25_34_english` | `double precision` | Count or numeric value for col 25 34 english in the represented area. |
+| `col_25_34_gaelic` | `double precision` | Count or numeric value for col 25 34 gaelic in the represented area. |
+| `col_25_34_other_language` | `double precision` | Count or numeric value for col 25 34 other language in the represented area. |
+| `col_25_34_scots` | `double precision` | Count or numeric value for col 25 34 scots in the represented area. |
+| `col_25_34_sign_language` | `double precision` | Count or numeric value for col 25 34 sign language in the represented area. |
+| `col_35_49_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 35 49 all people aged 3 and over in the represented area. |
+| `col_35_49_english` | `double precision` | Count or numeric value for col 35 49 english in the represented area. |
+| `col_35_49_gaelic` | `double precision` | Count or numeric value for col 35 49 gaelic in the represented area. |
+| `col_35_49_other_language` | `double precision` | Count or numeric value for col 35 49 other language in the represented area. |
+| `col_35_49_scots` | `double precision` | Count or numeric value for col 35 49 scots in the represented area. |
+| `col_35_49_sign_language` | `double precision` | Count or numeric value for col 35 49 sign language in the represented area. |
+| `col_50_64_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 50 64 all people aged 3 and over in the represented area. |
+| `col_50_64_english` | `double precision` | Count or numeric value for col 50 64 english in the represented area. |
+| `col_50_64_gaelic` | `double precision` | Count or numeric value for col 50 64 gaelic in the represented area. |
+| `col_50_64_other_language` | `double precision` | Count or numeric value for col 50 64 other language in the represented area. |
+| `col_50_64_scots` | `double precision` | Count or numeric value for col 50 64 scots in the represented area. |
+| `col_50_64_sign_language` | `double precision` | Count or numeric value for col 50 64 sign language in the represented area. |
+| `all_people_aged_3_and_over_all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over all people aged 3 and over in the represented area. |
+| `all_people_aged_3_and_over_english` | `double precision` | Count or numeric value for all people aged 3 and over english in the represented area. |
+| `all_people_aged_3_and_over_gaelic` | `double precision` | Count or numeric value for all people aged 3 and over gaelic in the represented area. |
+| `all_people_aged_3_and_over_other_language` | `double precision` | Count or numeric value for all people aged 3 and over other language in the represented area. |
+| `all_people_aged_3_and_over_scots` | `double precision` | Count or numeric value for all people aged 3 and over scots in the represented area. |
+| `all_people_aged_3_and_over_sign_language` | `double precision` | Count or numeric value for all people aged 3 and over sign language in the represented area. |
+| `col_65_and_over_all_people_aged_3_and_over` | `double precision` | Count or numeric value for col 65 and over all people aged 3 and over in the represented area. |
+| `col_65_and_over_english` | `double precision` | Count or numeric value for col 65 and over english in the represented area. |
+| `col_65_and_over_gaelic` | `double precision` | Count or numeric value for col 65 and over gaelic in the represented area. |
+| `col_65_and_over_other_language` | `double precision` | Count or numeric value for col 65 and over other language in the represented area. |
+| `col_65_and_over_scots` | `double precision` | Count or numeric value for col 65 and over scots in the represented area. |
+| `col_65_and_over_sign_language` | `double precision` | Count or numeric value for col 65 and over sign language in the represented area. |
+| `mar_15_all_people_aged_3_and_over` | `double precision` | Count or numeric value for mar 15 all people aged 3 and over in the represented area. |
+| `mar_15_english` | `double precision` | Count or numeric value for mar 15 english in the represented area. |
+| `mar_15_gaelic` | `double precision` | Count or numeric value for mar 15 gaelic in the represented area. |
+| `mar_15_other_language` | `double precision` | Count or numeric value for mar 15 other language in the represented area. |
+| `mar_15_scots` | `double precision` | Count or numeric value for mar 15 scots in the represented area. |
+| `mar_15_sign_language` | `double precision` | Count or numeric value for mar 15 sign language in the represented area. |

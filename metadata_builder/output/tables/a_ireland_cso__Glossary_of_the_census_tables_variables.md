@@ -6,6 +6,11 @@
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
 - **Geographic coverage:** Ireland
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_ireland_cso`
 - **Table:** `Glossary_of_the_census_tables_variables`
 - **Geometry:** Non-spatial
@@ -18,27 +23,22 @@
 
 Glossary Of The Census Tables Variables is an authoritative dataset published by Central Statistics Office Ireland. It contains records relating to glossary of the census tables variables.
 
+## Lineage
+
+Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
-| `themes` | `varchar` | Publisher-supplied themes for the represented feature or record. | source_attribute | Yes | No | No |
-| `tables within themes` | `varchar` | Publisher-supplied tables within themes for the represented feature or record. | source_attribute | Yes | No | No |
-| `column names` | `varchar` | Publisher-supplied column names for the represented feature or record. | source_attribute | Yes | No | No |
-| `description of field` | `varchar` | Publisher-supplied description of field for the represented feature or record. | source_attribute | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `themes` | `varchar` | Publisher-supplied themes for the represented feature or record. |
+| `tables within themes` | `varchar` | Publisher-supplied tables within themes for the represented feature or record. |
+| `column names` | `varchar` | Publisher-supplied column names for the represented feature or record. |
+| `description of field` | `varchar` | Publisher-supplied description of field for the represented feature or record. |

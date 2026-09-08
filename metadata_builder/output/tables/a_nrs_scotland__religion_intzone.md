@@ -6,6 +6,11 @@
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
 - **Geographic coverage:** Scotland
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `religion_intzone`
 - **Geometry:** Non-spatial
@@ -18,36 +23,31 @@
 
 Religion Intzone is an authoritative dataset published by National Records of Scotland. It contains records relating to religion intzone.
 
+## Lineage
+
+Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. | statistical_value | Yes | No | No |
-| `church_of_scotland` | `double precision` | Count or numeric value for church of scotland in the represented area. | statistical_value | Yes | No | No |
-| `roman_catholic` | `double precision` | Count or numeric value for roman catholic in the represented area. | statistical_value | Yes | No | No |
-| `other_christian` | `double precision` | Count or numeric value for other christian in the represented area. | statistical_value | Yes | No | No |
-| `buddhist` | `double precision` | Count or numeric value for buddhist in the represented area. | statistical_value | Yes | No | No |
-| `hindu` | `double precision` | Count or numeric value for hindu in the represented area. | statistical_value | Yes | No | No |
-| `jewish` | `double precision` | Count or numeric value for jewish in the represented area. | statistical_value | Yes | No | No |
-| `muslim` | `double precision` | Count or numeric value for muslim in the represented area. | statistical_value | Yes | No | No |
-| `sikh` | `double precision` | Count or numeric value for sikh in the represented area. | statistical_value | Yes | No | No |
-| `pagan` | `double precision` | Count or numeric value for pagan in the represented area. | statistical_value | Yes | No | No |
-| `other_religion` | `double precision` | Count or numeric value for other religion in the represented area. | statistical_value | Yes | No | No |
-| `no_religion` | `double precision` | Count or numeric value for number religion in the represented area. | statistical_value | Yes | No | No |
-| `religion_not_stated` | `double precision` | Count or numeric value for religion not stated in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
+| `church_of_scotland` | `double precision` | Count or numeric value for church of scotland in the represented area. |
+| `roman_catholic` | `double precision` | Count or numeric value for roman catholic in the represented area. |
+| `other_christian` | `double precision` | Count or numeric value for other christian in the represented area. |
+| `buddhist` | `double precision` | Count or numeric value for buddhist in the represented area. |
+| `hindu` | `double precision` | Count or numeric value for hindu in the represented area. |
+| `jewish` | `double precision` | Count or numeric value for jewish in the represented area. |
+| `muslim` | `double precision` | Count or numeric value for muslim in the represented area. |
+| `sikh` | `double precision` | Count or numeric value for sikh in the represented area. |
+| `pagan` | `double precision` | Count or numeric value for pagan in the represented area. |
+| `other_religion` | `double precision` | Count or numeric value for other religion in the represented area. |
+| `no_religion` | `double precision` | Count or numeric value for number religion in the represented area. |
+| `religion_not_stated` | `double precision` | Count or numeric value for religion not stated in the represented area. |

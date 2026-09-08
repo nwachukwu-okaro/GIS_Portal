@@ -7,6 +7,11 @@
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
 - **Geographic coverage:** Northern Ireland
 - **WGS84 extent:** `[-8.177484, 54.022725, -5.432790, 55.312985]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_travel_to_work_or_study_data_2021_dz`
 - **Geometry:** MULTIPOLYGON
@@ -19,44 +24,28 @@
 
 Boundary Census Travel To Work Or Study Data 2021 Dz is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It represents boundary census travel to work or study data 2021 dz features using multipolygon geometry.
 
+## Lineage
+
+Published by the Northern Ireland Statistics and Research Agency as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. | source_identifier | Yes | No | No |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
-| `year` | `bigint` | Count or numeric value for year in the represented area. | statistical_value | Yes | No | No |
-| `address_one_year_ago_different_address_outside_northern_ireland` | `bigint` | Publisher-supplied address one year ago different address outside northern ireland for the represented feature or record. | source_attribute | Yes | No | No |
-| `address_one_year_ago_different_address_within_northern_ireland` | `bigint` | Publisher-supplied address one year ago different address within northern ireland for the represented feature or record. | source_attribute | Yes | No | No |
-| `address_one_year_ago_lived_at_same_address` | `text` | Publisher-supplied address one year ago lived at same address for the represented feature or record. | source_attribute | Yes | No | No |
-| `year_of_arrival_to_live_in_ni_arrived_2001_2010` | `bigint` | Publisher-supplied year of arrival to live in ni arrived 2001 2010 for the represented feature or record. | source_attribute | Yes | No | No |
-| `year_of_arrival_to_live_in_ni_arrived_2011_2021` | `text` | Publisher-supplied year of arrival to live in ni arrived 2011 2021 for the represented feature or record. | source_attribute | Yes | No | No |
-| `year_of_arrival_to_live_in_ni_arrived_before_2001` | `bigint` | Publisher-supplied year of arrival to live in ni arrived before 2001 for the represented feature or record. | source_attribute | Yes | No | No |
-| `year_of_arrival_to_live_in_ni_born_in_northern_ireland` | `text` | Publisher-supplied year of arrival to live in ni born in northern ireland for the represented feature or record. | source_attribute | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geocode` | `text` | Publisher-assigned geocode for the record. |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `year` | `bigint` | Count or numeric value for year in the represented area. |
+| `address_one_year_ago_different_address_outside_northern_ireland` | `bigint` | Publisher-supplied address one year ago different address outside northern ireland for the represented feature or record. |
+| `address_one_year_ago_different_address_within_northern_ireland` | `bigint` | Publisher-supplied address one year ago different address within northern ireland for the represented feature or record. |
+| `address_one_year_ago_lived_at_same_address` | `text` | Publisher-supplied address one year ago lived at same address for the represented feature or record. |
+| `year_of_arrival_to_live_in_ni_arrived_2001_2010` | `bigint` | Publisher-supplied year of arrival to live in ni arrived 2001 2010 for the represented feature or record. |
+| `year_of_arrival_to_live_in_ni_arrived_2011_2021` | `text` | Publisher-supplied year of arrival to live in ni arrived 2011 2021 for the represented feature or record. |
+| `year_of_arrival_to_live_in_ni_arrived_before_2001` | `bigint` | Publisher-supplied year of arrival to live in ni arrived before 2001 for the represented feature or record. |
+| `year_of_arrival_to_live_in_ni_born_in_northern_ireland` | `text` | Publisher-supplied year of arrival to live in ni born in northern ireland for the represented feature or record. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

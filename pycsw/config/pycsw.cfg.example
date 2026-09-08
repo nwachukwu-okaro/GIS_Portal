@@ -1,0 +1,49 @@
+[server]
+home=/pycsw
+url=http://YOUR_SERVER_HOSTNAME/csw
+mimetype=application/xml; charset=UTF-8
+encoding=UTF-8
+language=en-US
+maxrecords=100
+loglevel=DEBUG
+logfile=/tmp/pycsw.log
+federatedcatalogues=
+pretty_print=true
+gzip_compresslevel=9
+domainquerytype=range
+domaincounts=false
+spatial_ranking=false
+profiles=apiso
+
+[manager]
+transactions=false
+allowed_ips=127.0.0.1
+
+[metadata:main]
+identification_title=Systra GIS Geospatial Catalogue
+identification_abstract=Systra UK and Ireland authoritative geospatial data catalogue
+identification_keywords=geospatial,GIS,Systra
+identification_keywords_type=theme
+identification_fees=None
+identification_accessconstraints=None
+provider_name=Systra UK and Ireland
+provider_url=https://www.systra.com
+contact_name=GIS Team
+contact_position=GIS Solutions Developer
+contact_address=Systra UK and Ireland
+contact_city=London
+contact_stateorprovince=England
+contact_postalcode=EC1A 1AA
+contact_country=United Kingdom
+contact_phone=+44 0000 000000
+contact_fax=+44 0000 000000
+contact_email=gis_uk@systra.com
+contact_url=https://www.systra.com
+contact_hours=09:00 - 17:30 Monday to Friday
+contact_instructions=During hours of service
+contact_role=pointOfContact
+
+[repository]
+database=postgresql://YOUR_DB_USER:YOUR_DB_PASSWORD@YOUR_DB_HOST:5432/YOUR_DB_NAME
+table=p_pycsw.records
+mappings=pycsw.config.mappings

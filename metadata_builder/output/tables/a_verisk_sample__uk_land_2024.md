@@ -6,6 +6,12 @@
 - **Source organisation:** Verisk
 - **Source:** https://www.verisk.com/en-gb/
 - **WGS84 extent:** `[-2.730521, 53.327298, -1.909622, 53.685719]`
+- **Topic category:** planningCadastre
+- **Temporal extent:** 2024-05-31 to 2024-05-31
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_verisk_sample`
 - **Table:** `uk_land_2024`
 - **Geometry:** MULTIPOLYGON
@@ -18,40 +24,24 @@
 
 UK Land 2024 is an authoritative dataset published by Verisk. It represents uk land 2024 features using multipolygon geometry.
 
+## Lineage
+
+Published by Verisk as commercial sample data. Confirm licence and permitted use before treating as production lineage. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `landuse_code` | `double precision` | Code assigned by the source dataset. | code | Yes | No | No |
-| `landuse_text` | `text` | Publisher-supplied landuse text for the represented feature or record. | source_attribute | Yes | No | No |
-| `high_level_landuse` | `text` | Publisher-supplied high level landuse for the represented feature or record. | source_attribute | Yes | No | No |
-| `luid` | `text` | Publisher-assigned luid for the record. | source_identifier | Yes | No | No |
-| `date_created` | `date` | Publisher-supplied date created for the represented feature or record. | source_attribute | Yes | No | No |
-| `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `landuse_code` | `double precision` | Code assigned by the source dataset. |
+| `landuse_text` | `text` | Publisher-supplied landuse text for the represented feature or record. |
+| `high_level_landuse` | `text` | Publisher-supplied high level landuse for the represented feature or record. |
+| `luid` | `text` | Publisher-assigned luid for the record. |
+| `date_created` | `date` | Publisher-supplied date created for the represented feature or record. |
+| `fid` | `bigint` | Feature identifier assigned by the source or import process. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

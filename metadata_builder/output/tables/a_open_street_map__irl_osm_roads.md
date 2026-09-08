@@ -9,6 +9,13 @@
 - **Licence:** [Open Data Commons Open Database License](https://www.openstreetmap.org/copyright)
 - **Geographic coverage:** Global
 - **WGS84 extent:** `[-10.661116, 51.426477, -5.434320, 55.432810]`
+- **Topic category:** location
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Data Commons Open Database License — https://www.openstreetmap.org/copyright
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_open_street_map`
 - **Table:** `irl_osm_roads`
 - **Geometry:** MULTILINESTRING
@@ -26,41 +33,29 @@ ATTRIBUTION: "© OpenStreetMap contributors".
 LINEAGE: Data downloaded as .gpkg and imported into PostGIS. 
 LEGAL: You are free to copy, distribute, transmit and adapt this data, as long as you credit OpenStreetMap and its contributors. If you alter or build upon this data, you may distribute the result only under the same license.
 
+## Lineage
+
+Published by OpenStreetMap contributors as part of OpenStreetMap. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `osm_id` | `text` | Unique identifier assigned by the OpenStreetMap database. | Unclassified | Yes | No | No |
-| `code` | `integer` | Standardized feature class code. | Unclassified | Yes | No | No |
-| `fclass` | `text` | The primary classification of the road (e.g., motorway, primary, residential). | Unclassified | Yes | No | No |
-| `name` | `text` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | No | No |
-| `ref` | `text` | The official road reference number (e.g., M50, N11, R132). | Unclassified | Yes | No | No |
-| `oneway` | `text` | Traffic flow direction: "F" (Forward/With Digitizing), "T" (Towards/Against Digitizing), or "B" (Both). | Unclassified | Yes | No | No |
-| `maxspeed` | `integer` | The posted speed limit in km/h. | Unclassified | Yes | No | No |
-| `layer` | `integer` | Count or numeric value for layer in the represented area. | statistical_value | Yes | No | No |
-| `bridge` | `text` | Publisher-supplied bridge for the represented feature or record. | source_attribute | Yes | No | No |
-| `tunnel` | `text` | Publisher-supplied tunnel for the represented feature or record. | source_attribute | Yes | No | No |
-| `irlosmr_pk` | `integer` | Count or numeric value for irlosmr pk in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `osm_id` | `text` | Unique identifier assigned by the OpenStreetMap database. |
+| `code` | `integer` | Standardized feature class code. |
+| `fclass` | `text` | The primary classification of the road (e.g., motorway, primary, residential). |
+| `name` | `text` | The local name of the road (often in English or Irish depending on local tagging). |
+| `ref` | `text` | The official road reference number (e.g., M50, N11, R132). |
+| `oneway` | `text` | Traffic flow direction: "F" (Forward/With Digitizing), "T" (Towards/Against Digitizing), or "B" (Both). |
+| `maxspeed` | `integer` | The posted speed limit in km/h. |
+| `layer` | `integer` | Count or numeric value for layer in the represented area. |
+| `bridge` | `text` | Publisher-supplied bridge for the represented feature or record. |
+| `tunnel` | `text` | Publisher-supplied tunnel for the represented feature or record. |
+| `irlosmr_pk` | `integer` | Count or numeric value for irlosmr pk in the represented area. |
+| `geom` | `geometry` | Geometry column: EPSG:4326 (WGS 84) or EPSG:3857 (Web Mercator) depending on import settings. |

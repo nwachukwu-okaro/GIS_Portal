@@ -7,6 +7,13 @@
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
 - **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England and Wales
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts045_ltla`
 - **Geometry:** Non-spatial
@@ -19,26 +26,25 @@
 
 Census2021 Ts045 Ltla is an authoritative dataset published by Office for National Statistics. It contains records relating to census2021 ts045 ltla.
 
+## Lineage
+
+Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. | statistical_value | Yes | No | No |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
-| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. | statistical_value | Yes | No | No |
-| `no_cars_or_vans_in_household` | `bigint` | Count or numeric value for number cars or vans in household in the represented area. | statistical_value | Yes | No | No |
-| `col_1_car_or_van_in_household` | `bigint` | Count or numeric value for col 1 car or van in household in the represented area. | statistical_value | Yes | No | No |
-| `col_2_cars_or_vans_in_household` | `bigint` | Count or numeric value for col 2 cars or vans in household in the represented area. | statistical_value | Yes | No | No |
-| `col_3_or_more_cars_or_vans_in_household` | `bigint` | Count or numeric value for col 3 or more cars or vans in household in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `date` | `bigint` | Count or numeric value for date in the represented area. |
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `geography_code` | `text` | Code assigned by the source dataset. |
+| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. |
+| `no_cars_or_vans_in_household` | `bigint` | Count or numeric value for number cars or vans in household in the represented area. |
+| `col_1_car_or_van_in_household` | `bigint` | Count or numeric value for col 1 car or van in household in the represented area. |
+| `col_2_cars_or_vans_in_household` | `bigint` | Count or numeric value for col 2 cars or vans in household in the represented area. |
+| `col_3_or_more_cars_or_vans_in_household` | `bigint` | Count or numeric value for col 3 or more cars or vans in household in the represented area. |

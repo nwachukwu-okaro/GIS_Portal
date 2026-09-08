@@ -9,6 +9,13 @@
 - **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** Great Britain
 - **WGS84 extent:** `[-8.643782, 49.870843, 1.766548, 60.836509]`
+- **Topic category:** transportation
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_zoomstack`
 - **Table:** `names`
 - **Geometry:** MULTIPOINT
@@ -21,36 +28,24 @@
 
 Names is part of OS Open Zoomstack, published by Ordnance Survey. It represents names features using multipoint geometry.
 
+## Lineage
+
+Published by Ordnance Survey as part of OS Open Zoomstack. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `type` | `varchar` | Publisher-supplied type for the represented feature or record. | source_attribute | Yes | No | No |
-| `name1` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `name1language` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `name2` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `name2language` | `varchar` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `type` | `varchar` | Publisher-supplied type for the represented feature or record. |
+| `name1` | `varchar` |  |
+| `name1language` | `varchar` |  |
+| `name2` | `varchar` |  |
+| `name2language` | `varchar` |  |
+| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

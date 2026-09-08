@@ -7,6 +7,11 @@
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
 - **Geographic coverage:** Scotland
 - **WGS84 extent:** `[-8.650007, 54.633238, -0.724609, 60.860766]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nrs_scotland`
 - **Table:** `boundary_intermediatezone_2011`
 - **Geometry:** MULTIPOLYGON
@@ -19,42 +24,26 @@
 
 Boundary Intermediatezone 2011 is an authoritative dataset published by National Records of Scotland. It represents boundary intermediatezone 2011 features using multipolygon geometry.
 
+## Lineage
+
+Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `interzone` | `varchar(10)` | Publisher-supplied interzone for the represented feature or record. | source_attribute | Yes | No | No |
-| `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
-| `totpop2011` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `respop2011` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `hhcnt2011` | `bigint` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `stdareakm2` | `double precision` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `stdareaha` | `double precision` | Numeric stdareaha value recorded for the feature. | measure | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |
+| `interzone` | `varchar(10)` | Publisher-supplied interzone for the represented feature or record. |
+| `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. |
+| `totpop2011` | `bigint` |  |
+| `respop2011` | `bigint` |  |
+| `hhcnt2011` | `bigint` |  |
+| `stdareakm2` | `double precision` |  |
+| `stdareaha` | `double precision` | Numeric stdareaha value recorded for the feature. |

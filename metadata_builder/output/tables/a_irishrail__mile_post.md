@@ -7,6 +7,11 @@
 - **Source:** https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-9.699179, 51.846434, -6.035095, 54.272267]`
+- **Topic category:** transportation
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_irishrail`
 - **Table:** `mile_post`
 - **Geometry:** MULTIPOINT
@@ -19,38 +24,22 @@
 
 Mile Post is an authoritative dataset published by Iarnrod Eireann / Irish Rail. It represents mile post features using multipoint geometry.
 
+## Lineage
+
+Published by Iarnrod Eireann / Irish Rail as open transport data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `mile_post_pk` | `integer` | Count or numeric value for mile post pk in the represented area. | statistical_value | Yes | No | No |
-| `route` | `varchar` | Publisher-supplied route for the represented feature or record. | source_attribute | Yes | No | No |
-| `mile` | `integer` | Count or numeric value for mile in the represented area. | statistical_value | Yes | No | No |
-| `quarter` | `smallint` | Count or numeric value for quarter in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `mile_post_pk` | `integer` | Count or numeric value for mile post pk in the represented area. |
+| `route` | `varchar` | Publisher-supplied route for the represented feature or record. |
+| `mile` | `integer` | Count or numeric value for mile in the represented area. |
+| `quarter` | `smallint` | Count or numeric value for quarter in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

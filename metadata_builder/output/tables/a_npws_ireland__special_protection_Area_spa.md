@@ -7,6 +7,11 @@
 - **Source:** https://www.npws.ie/maps-and-data
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-10.687972, 51.447492, -5.947508, 55.449953]`
+- **Topic category:** environment
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_npws_ireland`
 - **Table:** `special_protection_Area_spa`
 - **Geometry:** MULTIPOLYGON
@@ -19,43 +24,27 @@
 
 Special Protection Area Spa is an authoritative dataset published by National Parks and Wildlife Service Ireland. It represents special protection area spa features using multipolygon geometry.
 
+## Lineage
+
+Published by the National Parks and Wildlife Service Ireland as open protected-areas data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `sitecode` | `varchar(6)` | Publisher-assigned sitecode for the record. | source_identifier | Yes | No | No |
-| `site_name` | `varchar(100)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `version` | `double precision` | Count or numeric value for version in the represented area. | statistical_value | Yes | No | No |
-| `county` | `varchar(50)` | Publisher-supplied county for the represented feature or record. | source_attribute | Yes | No | No |
-| `ha` | `double precision` | Count or numeric value for ha in the represented area. | statistical_value | Yes | No | No |
-| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. | source_attribute | Yes | No | No |
-| `sourcscale` | `varchar(50)` | Publisher-supplied sourcscale for the represented feature or record. | source_attribute | Yes | No | No |
-| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. | source_attribute | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |
+| `sitecode` | `varchar(6)` | Publisher-assigned sitecode for the record. |
+| `site_name` | `varchar(100)` | Name associated with the represented feature. |
+| `version` | `double precision` | Count or numeric value for version in the represented area. |
+| `county` | `varchar(50)` | Publisher-supplied county for the represented feature or record. |
+| `ha` | `double precision` | Count or numeric value for ha in the represented area. |
+| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. |
+| `sourcscale` | `varchar(50)` | Publisher-supplied sourcscale for the represented feature or record. |
+| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. |

@@ -8,6 +8,13 @@
 - **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England
 - **WGS84 extent:** `[-6.418601, 49.864674, 1.763680, 55.811091]`
+- **Topic category:** environment
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_Module11_AGI_Statistics_LSOA_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -20,101 +27,89 @@
 
 Blue Green Infra Module11 Agi Statistics Lsoa Ogl is an authoritative dataset published by Natural England. It represents blue green infra module11 agi statistics lsoa ogl features using multipolygon geometry.
 
+## Lineage
+
+Published by Natural England as open environmental and conservation data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
-| `lsoa21cd` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lsoa21nm` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar(255)` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
-| `lad22cd` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lad22nm` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `msoa21cd` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `msoa21nm` | `varchar(255)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `age_total_2021` | `integer` | Count or numeric value for age total 2021 in the represented area. | statistical_value | Yes | No | No |
-| `population_2021` | `integer` | Numeric population 2021 value recorded for the feature. | measure | Yes | No | No |
-| `lnrs_id` | `varchar(255)` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `lnrs_name` | `varchar(255)` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `oa_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `area_ha` | `double precision` | Area enclosed by the feature, measured in hectares. | area | Yes | No | No |
-| `area_m` | `double precision` | Numeric area male value recorded for the feature. | measure | Yes | No | No |
-| `totalagi_area` | `double precision` | Numeric totalagi area value recorded for the feature. | measure | Yes | No | No |
-| `totalagi_per1000pop` | `double precision` | Count or numeric value for totalagi per1000pop in the represented area. | statistical_value | Yes | No | No |
-| `totalagi_limited_area` | `double precision` | Numeric totalagi limited area value recorded for the feature. | measure | Yes | No | No |
-| `totalagi_limited_per1000pop` | `double precision` | Count or numeric value for totalagi limited per1000pop in the represented area. | statistical_value | Yes | No | No |
-| `totalagilnr_area` | `double precision` | Numeric totalagilnr area value recorded for the feature. | measure | Yes | No | No |
-| `totalagi_lnr_per1000pop` | `double precision` | Count or numeric value for totalagi lnr per1000pop in the represented area. | statistical_value | Yes | No | No |
-| `totalagi_accessland_area` | `double precision` | Numeric totalagi accessland area value recorded for the feature. | measure | Yes | No | No |
-| `totalagi_accessland_per1000pop` | `double precision` | Count or numeric value for totalagi accessland per1000pop in the represented area. | statistical_value | Yes | No | No |
-| `totalagi_coastalmargin_area` | `double precision` | Numeric totalagi coastalmargin area value recorded for the feature. | measure | Yes | No | No |
-| `totalagi_coastalmargin_per1000p` | `double precision` | Count or numeric value for totalagi coastalmargin per1000p in the represented area. | statistical_value | Yes | No | No |
-| `gardenspace_totalarea_m` | `double precision` | Numeric gardenspace totalarea male value recorded for the feature. | measure | Yes | No | No |
-| `gardenspace_totalarea_ha` | `double precision` | Numeric gardenspace totalarea ha value recorded for the feature. | measure | Yes | No | No |
-| `gardenspace_m_per1000pop` | `double precision` | Count or numeric value for gardenspace male per1000pop in the represented area. | statistical_value | Yes | No | No |
-| `gardenspace_ha_per1000pop` | `double precision` | Count or numeric value for gardenspace ha per1000pop in the represented area. | statistical_value | Yes | No | No |
-| `gardenspace_perclsoa` | `double precision` | Count or numeric value for gardenspace perclsoa in the represented area. | statistical_value | Yes | No | No |
-| `inlandwaterside_length` | `double precision` | Numeric inlandwaterside length value recorded for the feature. | measure | Yes | No | No |
-| `accesswaterside_length` | `double precision` | Numeric accesswaterside length value recorded for the feature. | measure | Yes | No | No |
-| `accesswaterside_percentage` | `double precision` | Percentage for the accesswaterside percentage measure in the represented area. | percentage | Yes | No | No |
-| `age_total_2021_2022` | `double precision` | Count or numeric value for age total 2021 2022 in the represented area. | statistical_value | Yes | No | No |
-| `close2home_percentage` | `double precision` | Percentage for the close2home percentage measure in the represented area. | percentage | Yes | No | No |
-| `cohort_under16` | `double precision` | Count or numeric value for cohort under16 in the represented area. | statistical_value | Yes | No | No |
-| `cohort_65plus` | `double precision` | Count or numeric value for cohort 65plus in the represented area. | statistical_value | Yes | No | No |
-| `popn_close2home_under16` | `double precision` | Count or numeric value for popn close2home under16 in the represented area. | statistical_value | Yes | No | No |
-| `popn_close2home_65plus` | `double precision` | Count or numeric value for popn close2home 65plus in the represented area. | statistical_value | Yes | No | No |
-| `imd_decile` | `double precision` | Count or numeric value for imd decile in the represented area. | statistical_value | Yes | No | No |
-| `angstbuff200_area` | `double precision` | Numeric angstbuff200 area value recorded for the feature. | measure | Yes | No | No |
-| `angstbuff200_percentage` | `double precision` | Percentage for the angstbuff200 percentage measure in the represented area. | percentage | Yes | No | No |
-| `angstbuff300_area` | `double precision` | Numeric angstbuff300 area value recorded for the feature. | measure | Yes | No | No |
-| `angstbuff300_percentage` | `double precision` | Percentage for the angstbuff300 percentage measure in the represented area. | percentage | Yes | No | No |
-| `angstbuff1k_area` | `double precision` | Numeric angstbuff1k area value recorded for the feature. | measure | Yes | No | No |
-| `angstbuff1k_percentage` | `double precision` | Percentage for the angstbuff1k percentage measure in the represented area. | percentage | Yes | No | No |
-| `angstbuff2k_area` | `double precision` | Numeric angstbuff2k area value recorded for the feature. | measure | Yes | No | No |
-| `angstbuff2k_percentage` | `double precision` | Percentage for the angstbuff2k percentage measure in the represented area. | percentage | Yes | No | No |
-| `angstbuff5k_area` | `double precision` | Numeric angstbuff5k area value recorded for the feature. | measure | Yes | No | No |
-| `angstbuff5k_percentage` | `double precision` | Percentage for the angstbuff5k percentage measure in the represented area. | percentage | Yes | No | No |
-| `angstbuff10k_area` | `double precision` | Numeric angstbuff10k area value recorded for the feature. | measure | Yes | No | No |
-| `angstbuff10k_percentage` | `double precision` | Percentage for the angstbuff10k percentage measure in the represented area. | percentage | Yes | No | No |
-| `population_density_2021` | `double precision` | Numeric population density 2021 value recorded for the feature. | measure | Yes | No | No |
-| `angst200_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst300_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst1k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst2k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst5k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst10k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst200_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst300_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst1k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst2k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst5k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst10k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. | code | Yes | No | No |
-| `angst200_l1_status` | `varchar(512)` | Publisher-supplied angst200 l1 status for the represented feature or record. | source_attribute | Yes | No | No |
-| `angst300_l1_status` | `varchar(512)` | Publisher-supplied angst300 l1 status for the represented feature or record. | source_attribute | Yes | No | No |
-| `angst1k_l1_status` | `varchar(512)` | Publisher-supplied angst1k l1 status for the represented feature or record. | source_attribute | Yes | No | No |
-| `angst2k_l1_status` | `varchar(512)` | Publisher-supplied angst2k l1 status for the represented feature or record. | source_attribute | Yes | No | No |
-| `angst5k_l1_status` | `varchar(512)` | Publisher-supplied angst5k l1 status for the represented feature or record. | source_attribute | Yes | No | No |
-| `angst10k_l1_status` | `varchar(512)` | Publisher-supplied angst10k l1 status for the represented feature or record. | source_attribute | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
+| `lsoa21cd` | `varchar(255)` |  |
+| `lsoa21nm` | `varchar(255)` |  |
+| `globalid` | `varchar(255)` | Publisher-assigned globalid for the record. |
+| `lad22cd` | `varchar(255)` |  |
+| `lad22nm` | `varchar(255)` |  |
+| `msoa21cd` | `varchar(255)` |  |
+| `msoa21nm` | `varchar(255)` |  |
+| `age_total_2021` | `integer` | Count or numeric value for age total 2021 in the represented area. |
+| `population_2021` | `integer` | Numeric population 2021 value recorded for the feature. |
+| `lnrs_id` | `varchar(255)` | Identifier assigned by the source dataset. |
+| `lnrs_name` | `varchar(255)` | Name associated with the represented feature. |
+| `oa_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `area_ha` | `double precision` | Area enclosed by the feature, measured in hectares. |
+| `area_m` | `double precision` | Numeric area male value recorded for the feature. |
+| `totalagi_area` | `double precision` | Numeric totalagi area value recorded for the feature. |
+| `totalagi_per1000pop` | `double precision` | Count or numeric value for totalagi per1000pop in the represented area. |
+| `totalagi_limited_area` | `double precision` | Numeric totalagi limited area value recorded for the feature. |
+| `totalagi_limited_per1000pop` | `double precision` | Count or numeric value for totalagi limited per1000pop in the represented area. |
+| `totalagilnr_area` | `double precision` | Numeric totalagilnr area value recorded for the feature. |
+| `totalagi_lnr_per1000pop` | `double precision` | Count or numeric value for totalagi lnr per1000pop in the represented area. |
+| `totalagi_accessland_area` | `double precision` | Numeric totalagi accessland area value recorded for the feature. |
+| `totalagi_accessland_per1000pop` | `double precision` | Count or numeric value for totalagi accessland per1000pop in the represented area. |
+| `totalagi_coastalmargin_area` | `double precision` | Numeric totalagi coastalmargin area value recorded for the feature. |
+| `totalagi_coastalmargin_per1000p` | `double precision` | Count or numeric value for totalagi coastalmargin per1000p in the represented area. |
+| `gardenspace_totalarea_m` | `double precision` | Numeric gardenspace totalarea male value recorded for the feature. |
+| `gardenspace_totalarea_ha` | `double precision` | Numeric gardenspace totalarea ha value recorded for the feature. |
+| `gardenspace_m_per1000pop` | `double precision` | Count or numeric value for gardenspace male per1000pop in the represented area. |
+| `gardenspace_ha_per1000pop` | `double precision` | Count or numeric value for gardenspace ha per1000pop in the represented area. |
+| `gardenspace_perclsoa` | `double precision` | Count or numeric value for gardenspace perclsoa in the represented area. |
+| `inlandwaterside_length` | `double precision` | Numeric inlandwaterside length value recorded for the feature. |
+| `accesswaterside_length` | `double precision` | Numeric accesswaterside length value recorded for the feature. |
+| `accesswaterside_percentage` | `double precision` | Percentage for the accesswaterside percentage measure in the represented area. |
+| `age_total_2021_2022` | `double precision` | Count or numeric value for age total 2021 2022 in the represented area. |
+| `close2home_percentage` | `double precision` | Percentage for the close2home percentage measure in the represented area. |
+| `cohort_under16` | `double precision` | Count or numeric value for cohort under16 in the represented area. |
+| `cohort_65plus` | `double precision` | Count or numeric value for cohort 65plus in the represented area. |
+| `popn_close2home_under16` | `double precision` | Count or numeric value for popn close2home under16 in the represented area. |
+| `popn_close2home_65plus` | `double precision` | Count or numeric value for popn close2home 65plus in the represented area. |
+| `imd_decile` | `double precision` | Count or numeric value for imd decile in the represented area. |
+| `angstbuff200_area` | `double precision` | Numeric angstbuff200 area value recorded for the feature. |
+| `angstbuff200_percentage` | `double precision` | Percentage for the angstbuff200 percentage measure in the represented area. |
+| `angstbuff300_area` | `double precision` | Numeric angstbuff300 area value recorded for the feature. |
+| `angstbuff300_percentage` | `double precision` | Percentage for the angstbuff300 percentage measure in the represented area. |
+| `angstbuff1k_area` | `double precision` | Numeric angstbuff1k area value recorded for the feature. |
+| `angstbuff1k_percentage` | `double precision` | Percentage for the angstbuff1k percentage measure in the represented area. |
+| `angstbuff2k_area` | `double precision` | Numeric angstbuff2k area value recorded for the feature. |
+| `angstbuff2k_percentage` | `double precision` | Percentage for the angstbuff2k percentage measure in the represented area. |
+| `angstbuff5k_area` | `double precision` | Numeric angstbuff5k area value recorded for the feature. |
+| `angstbuff5k_percentage` | `double precision` | Percentage for the angstbuff5k percentage measure in the represented area. |
+| `angstbuff10k_area` | `double precision` | Numeric angstbuff10k area value recorded for the feature. |
+| `angstbuff10k_percentage` | `double precision` | Percentage for the angstbuff10k percentage measure in the represented area. |
+| `population_density_2021` | `double precision` | Numeric population density 2021 value recorded for the feature. |
+| `angst200_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `angst300_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `angst1k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `angst2k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `angst5k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `angst10k_pop_inequality_code` | `varchar(255)` | Code assigned by the source dataset. |
+| `angst200_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. |
+| `angst300_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. |
+| `angst1k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. |
+| `angst2k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. |
+| `angst5k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. |
+| `angst10k_imd_inequality_code` | `varchar(512)` | Code assigned by the source dataset. |
+| `angst200_l1_status` | `varchar(512)` | Publisher-supplied angst200 l1 status for the represented feature or record. |
+| `angst300_l1_status` | `varchar(512)` | Publisher-supplied angst300 l1 status for the represented feature or record. |
+| `angst1k_l1_status` | `varchar(512)` | Publisher-supplied angst1k l1 status for the represented feature or record. |
+| `angst2k_l1_status` | `varchar(512)` | Publisher-supplied angst2k l1 status for the represented feature or record. |
+| `angst5k_l1_status` | `varchar(512)` | Publisher-supplied angst5k l1 status for the represented feature or record. |
+| `angst10k_l1_status` | `varchar(512)` | Publisher-supplied angst10k l1 status for the represented feature or record. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

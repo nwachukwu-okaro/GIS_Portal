@@ -7,6 +7,13 @@
 - **Source:** https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries
 - **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England and Wales
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `income_data_net_annual_income`
 - **Geometry:** Non-spatial
@@ -19,28 +26,27 @@
 
 Income Data Net Annual Income is an authoritative dataset published by Office for National Statistics. It contains records relating to income data net annual income.
 
+## Lineage
+
+Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `msoa_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `msoa_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `local_authority_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `local_authority_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `region_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `region_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `disposable_net_annual_income` | `text` | Publisher-supplied disposable net annual income for the represented feature or record. | source_attribute | Yes | No | No |
-| `upper_confidence_limit` | `text` | Publisher-supplied upper confidence limit for the represented feature or record. | source_attribute | Yes | No | No |
-| `lower_confidence_limit` | `text` | Publisher-supplied lower confidence limit for the represented feature or record. | source_attribute | Yes | No | No |
-| `confidence_interval` | `text` | Publisher-supplied confidence interval for the represented feature or record. | source_attribute | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `msoa_code` | `text` | Code assigned by the source dataset. |
+| `msoa_name` | `text` | Name associated with the represented feature. |
+| `local_authority_code` | `text` | Code assigned by the source dataset. |
+| `local_authority_name` | `text` | Name associated with the represented feature. |
+| `region_code` | `text` | Code assigned by the source dataset. |
+| `region_name` | `text` | Name associated with the represented feature. |
+| `disposable_net_annual_income` | `text` | Publisher-supplied disposable net annual income for the represented feature or record. |
+| `upper_confidence_limit` | `text` | Publisher-supplied upper confidence limit for the represented feature or record. |
+| `lower_confidence_limit` | `text` | Publisher-supplied lower confidence limit for the represented feature or record. |
+| `confidence_interval` | `text` | Publisher-supplied confidence interval for the represented feature or record. |

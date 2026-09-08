@@ -7,6 +7,11 @@
 - **Source:** https://www.cso.ie/en/databases/
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-10.682125, 51.420091, -5.996278, 55.446936]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `province_boundary`
 - **Geometry:** GEOMETRY
@@ -19,42 +24,26 @@
 
 Province Boundary is an authoritative dataset published by Central Statistics Office Ireland. It represents province boundary features using geometry geometry.
 
+## Lineage
+
+Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
-| `province` | `text` | Publisher-supplied province for the represented feature or record. | source_attribute | Yes | No | No |
-| `pv_id` | `integer` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
-| `centroid_x` | `double precision` | Count or numeric value for centroid x in the represented area. | statistical_value | Yes | No | No |
-| `centroid_y` | `double precision` | Count or numeric value for centroid y in the represented area. | statistical_value | Yes | No | No |
-| `area` | `double precision` | Numeric area value recorded for the feature. | measure | Yes | No | No |
-| `esri_oid` | `bigint` | Count or numeric value for esri oid in the represented area. | statistical_value | Yes | No | No |
-| `shape` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
+| `province` | `text` | Publisher-supplied province for the represented feature or record. |
+| `pv_id` | `integer` | Identifier assigned by the source dataset. |
+| `guid` | `text` | Publisher-assigned guid for the record. |
+| `centroid_x` | `double precision` | Count or numeric value for centroid x in the represented area. |
+| `centroid_y` | `double precision` | Count or numeric value for centroid y in the represented area. |
+| `area` | `double precision` | Numeric area value recorded for the feature. |
+| `esri_oid` | `bigint` | Count or numeric value for esri oid in the represented area. |
+| `shape` | `geometry` | Spatial geometry of the represented feature. |

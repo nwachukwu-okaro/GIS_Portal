@@ -6,6 +6,11 @@
 - **Source organisation:** Central Statistics Office Ireland
 - **Source:** https://www.cso.ie/en/databases/
 - **Geographic coverage:** Ireland
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_irl_central_statistics_office`
 - **Table:** `powsccar_commuters_by_ed_final_2022`
 - **Geometry:** Non-spatial
@@ -27,32 +32,27 @@ In order to maintain confidentiality, the following measures have been taken pri
 Electoral divisions to which fewer than 10 persons commuted have been suppressed.
 Records where no work, school, college or childcare was codable for a worker, student or child have been removed.
 
+## Lineage
+
+Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `cbef_pk` | `integer` | Surrogate primary key for the row | Unclassified | Yes | No | No |
-| `residence_csoed_guid` | `varchar` | Geographic Unique Identification (GUID) Code for origin CSO Electoral Division (ED) | Unclassified | Yes | No | No |
-| `residence_csoed_label` | `varchar` | Name of origin CSO ED | Unclassified | Yes | No | No |
-| `residence_county` | `varchar` | County code for origin county | Unclassified | Yes | No | No |
-| `residence_county_label` | `varchar` | Name of origin county | Unclassified | Yes | No | No |
-| `powscc_csoed_guid` | `varchar` | GUID for destination CSO ED (LGD code for Northern Ireland or 98 for Overseas) | Unclassified | Yes | No | No |
-| `powscc_csoed_label` | `varchar` | Name of destination CSO ED (LGD name for Northern Ireland or Overseas) | Unclassified | Yes | No | No |
-| `powscc_county` | `varchar` | County code for destination county (NI for Northern Ireland or 98 for Overseas) | Unclassified | Yes | No | No |
-| `powscc_county_label` | `varchar` | Name of destination county (Northern Ireland or Overseas) | Unclassified | Yes | No | No |
-| `count` | `smallint` | Number of persons commuting | Unclassified | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `cbef_pk` | `integer` | Surrogate primary key for the row |
+| `residence_csoed_guid` | `varchar` | Geographic Unique Identification (GUID) Code for origin CSO Electoral Division (ED) |
+| `residence_csoed_label` | `varchar` | Name of origin CSO ED |
+| `residence_county` | `varchar` | County code for origin county |
+| `residence_county_label` | `varchar` | Name of origin county |
+| `powscc_csoed_guid` | `varchar` | GUID for destination CSO ED (LGD code for Northern Ireland or 98 for Overseas) |
+| `powscc_csoed_label` | `varchar` | Name of destination CSO ED (LGD name for Northern Ireland or Overseas) |
+| `powscc_county` | `varchar` | County code for destination county (NI for Northern Ireland or 98 for Overseas) |
+| `powscc_county_label` | `varchar` | Name of destination county (Northern Ireland or Overseas) |
+| `count` | `smallint` | Number of persons commuting |

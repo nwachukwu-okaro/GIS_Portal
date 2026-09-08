@@ -8,6 +8,13 @@
 - **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England and Wales
 - **WGS84 extent:** `[-8.650007, 49.864798, 1.763680, 60.860745]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_lad_dec_2024_uk_bgc`
 - **Geometry:** MULTIPOLYGON
@@ -20,39 +27,27 @@
 
 Boundary Lad Dec 2024 UK Bgc is an authoritative dataset published by Office for National Statistics. It represents boundary lad dec 2024 uk bgc features using multipolygon geometry.
 
+## Lineage
+
+Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `fid` | `integer` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `lad24cd` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lad24nm` | `varchar(36)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lad24nmw` | `varchar(24)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `bng_e` | `integer` | Count or numeric value for bng e in the represented area. | statistical_value | Yes | No | No |
-| `bng_n` | `integer` | Count or numeric value for bng n in the represented area. | statistical_value | Yes | No | No |
-| `long` | `real` | Numeric long value recorded for the feature. | measure | Yes | No | No |
-| `lat` | `real` | Numeric lat value recorded for the feature. | measure | Yes | No | No |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
-| `shape` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `fid` | `integer` | Feature identifier assigned by the source or import process. |
+| `lad24cd` | `varchar(9)` |  |
+| `lad24nm` | `varchar(36)` |  |
+| `lad24nmw` | `varchar(24)` |  |
+| `bng_e` | `integer` | Count or numeric value for bng e in the represented area. |
+| `bng_n` | `integer` | Count or numeric value for bng n in the represented area. |
+| `long` | `real` | Numeric long value recorded for the feature. |
+| `lat` | `real` | Numeric lat value recorded for the feature. |
+| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `shape` | `geometry` | Spatial geometry of the represented feature. |

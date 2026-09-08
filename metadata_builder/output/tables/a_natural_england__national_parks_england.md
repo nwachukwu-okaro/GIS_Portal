@@ -5,10 +5,17 @@
 - **Identifier:** `a_natural_england/national_parks_england`
 - **Source organisation:** Natural England
 - **Source:** https://naturalengland-defra.opendata.arcgis.com/
-- **Local dataset version:** 20251009 (9 October 2025)
 - **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England
 - **WGS84 extent:** `[-4.165771, 50.392027, 1.728156, 55.591511]`
+- **Topic category:** environment
+- **Temporal extent:** 1951-04-17T00:00:00 to 2010-03-31T00:00:00
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `national_parks_england`
 - **Geometry:** MULTIPOLYGON
@@ -24,37 +31,25 @@ Source: https://www.data.gov.uk/dataset/334e1b27-e193-4ef5-b14e-696b58bb7e95/nat
 
 Attribution: © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [year]. Attribution statement: © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [year].
 
+## Lineage
+
+Published by Natural England as open environmental and conservation data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `code` | `smallint` | Count or numeric value for code in the represented area. | statistical_value | Yes | No | No |
-| `name` | `varchar(200)` | Official or publisher-assigned name of the represented feature. | feature_name | Yes | Yes | No |
-| `measure` | `double precision` | Count or numeric value for measure in the represented area. | statistical_value | Yes | No | No |
-| `desig_date` | `timestamp` | Date associated with the represented feature or source record. | date | Yes | No | No |
-| `hotlink` | `varchar(200)` | Publisher-supplied hotlink for the represented feature or record. | source_attribute | Yes | No | No |
-| `status` | `varchar(32)` | Publisher-supplied status for the represented feature or record. | source_attribute | Yes | No | No |
-| `fid` | `bigint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `code` | `smallint` | Count or numeric value for code in the represented area. |
+| `name` | `varchar(200)` | Official or publisher-assigned name of the represented feature. |
+| `measure` | `double precision` | Count or numeric value for measure in the represented area. |
+| `desig_date` | `timestamp` | Date associated with the represented feature or source record. |
+| `hotlink` | `varchar(200)` | Publisher-supplied hotlink for the represented feature or record. |
+| `status` | `varchar(32)` | Publisher-supplied status for the represented feature or record. |
+| `fid` | `bigint` | Feature identifier assigned by the source or import process. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

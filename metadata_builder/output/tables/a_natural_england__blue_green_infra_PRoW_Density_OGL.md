@@ -8,6 +8,13 @@
 - **Licence:** [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England
 - **WGS84 extent:** `[-6.418557, 49.864685, 1.763546, 55.811072]`
+- **Topic category:** environment
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_PRoW_Density_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -20,36 +27,24 @@
 
 Blue Green Infra Prow Density Ogl is an authoritative dataset published by Natural England. It represents blue green infra prow density ogl features using multipolygon geometry.
 
+## Lineage
+
+Published by Natural England as open environmental and conservation data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
-| `total_prow_m` | `double precision` | Count or numeric value for total prow male in the represented area. | statistical_value | Yes | No | No |
-| `footpath_length_m` | `integer` | Numeric footpath length male value recorded for the feature. | measure | Yes | No | No |
-| `boat_length_m` | `integer` | Numeric boat length male value recorded for the feature. | measure | Yes | No | No |
-| `restricted_byway_length_m` | `integer` | Numeric restricted byway length male value recorded for the feature. | measure | Yes | No | No |
-| `bridleway_length_m` | `integer` | Numeric bridleway length male value recorded for the feature. | measure | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
+| `total_prow_m` | `double precision` | Count or numeric value for total prow male in the represented area. |
+| `footpath_length_m` | `integer` | Numeric footpath length male value recorded for the feature. |
+| `boat_length_m` | `integer` | Numeric boat length male value recorded for the feature. |
+| `restricted_byway_length_m` | `integer` | Numeric restricted byway length male value recorded for the feature. |
+| `bridleway_length_m` | `integer` | Numeric bridleway length male value recorded for the feature. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

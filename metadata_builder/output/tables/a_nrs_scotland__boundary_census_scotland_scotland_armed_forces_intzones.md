@@ -7,6 +7,11 @@
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
 - **Geographic coverage:** Scotland
 - **WGS84 extent:** `[-8.650007, 54.633238, -0.724609, 60.860766]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nrs_scotland`
 - **Table:** `boundary_census_scotland_scotland_armed_forces_intzones`
 - **Geometry:** MULTIPOLYGON
@@ -19,39 +24,23 @@
 
 Boundary Census Scotland Scotland Armed Forces Intzones is an authoritative dataset published by National Records of Scotland. It represents boundary census scotland scotland armed forces intzones features using multipolygon geometry.
 
+## Lineage
+
+Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geography_code` | `text` | Code assigned by the source dataset. | code | Yes | No | No |
-| `geography_name` | `text` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `all_households` | `bigint` | Count or numeric value for all households in the represented area. | statistical_value | Yes | No | No |
-| `hh_has_af_veteran` | `bigint` | Count or numeric value for households has af veteran in the represented area. | statistical_value | Yes | No | No |
-| `hh_no_af_veteran` | `bigint` | Count or numeric value for households number af veteran in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geography_code` | `text` | Code assigned by the source dataset. |
+| `geography_name` | `text` | Name associated with the represented feature. |
+| `all_households` | `bigint` | Count or numeric value for all households in the represented area. |
+| `hh_has_af_veteran` | `bigint` | Count or numeric value for households has af veteran in the represented area. |
+| `hh_no_af_veteran` | `bigint` | Count or numeric value for households number af veteran in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

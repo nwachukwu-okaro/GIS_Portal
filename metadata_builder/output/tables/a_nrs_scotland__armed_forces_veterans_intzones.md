@@ -6,6 +6,11 @@
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
 - **Geographic coverage:** Scotland
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `armed_forces_veterans_intzones`
 - **Geometry:** Non-spatial
@@ -18,26 +23,21 @@
 
 Armed Forces Veterans Intzones is an authoritative dataset published by National Records of Scotland. It contains records relating to armed forces veterans intzones.
 
+## Lineage
+
+Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
-| `total` | `double precision` | Count or numeric value for total in the represented area. | statistical_value | Yes | No | No |
-| `household_contains_at_least_one_uk_armed_forces_veteran` | `double precision` | Count or numeric value for household contains at least one uk armed forces veteran in the represented area. | statistical_value | Yes | No | No |
-| `household_contains_no_uk_armed_forces_veterans` | `double precision` | Count or numeric value for household contains number uk armed forces veterans in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `total` | `double precision` | Count or numeric value for total in the represented area. |
+| `household_contains_at_least_one_uk_armed_forces_veteran` | `double precision` | Count or numeric value for household contains at least one uk armed forces veteran in the represented area. |
+| `household_contains_no_uk_armed_forces_veterans` | `double precision` | Count or numeric value for household contains number uk armed forces veterans in the represented area. |

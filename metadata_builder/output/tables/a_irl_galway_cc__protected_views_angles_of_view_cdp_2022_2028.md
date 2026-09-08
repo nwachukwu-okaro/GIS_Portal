@@ -7,6 +7,11 @@
 - **Source:** https://data.gov.ie/organization/galway-county-council
 - **Geographic coverage:** County Galway
 - **WGS84 extent:** `[-10.167256, 53.004080, -7.978482, 53.620748]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `protected_views_angles_of_view_cdp_2022_2028`
 - **Geometry:** MULTIPOLYGON
@@ -19,43 +24,27 @@
 
 Protected Views Angles Of View Cdp 2022 2028 is an authoritative dataset published by Galway County Council. It represents protected views angles of view cdp 2022 2028 features using multipolygon geometry.
 
+## Lineage
+
+Published by Galway County Council as open local government data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `description_of_view` | `varchar` | Publisher-supplied description of view for the represented feature or record. | source_attribute | Yes | No | No |
-| `location_of_view` | `varchar` | Publisher-supplied location of view for the represented feature or record. | source_attribute | Yes | No | No |
-| `object_id` | `integer` | Identifier assigned by the source dataset. | identifier | Yes | No | No |
-| `photos_report` | `varchar` | Publisher-supplied photos report for the represented feature or record. | source_attribute | Yes | No | No |
-| `significance` | `varchar` | Publisher-supplied significance for the represented feature or record. | source_attribute | Yes | No | No |
-| `view_angle` | `integer` | Count or numeric value for view angle in the represented area. | statistical_value | Yes | No | No |
-| `view_rotation` | `integer` | Count or numeric value for view rotation in the represented area. | statistical_value | Yes | No | No |
-| `vp_name` | `varchar` | Name associated with the represented feature. | feature_name | Yes | Yes | No |
-| `vp_ref` | `integer` | Count or numeric value for vp reference in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `description_of_view` | `varchar` | Publisher-supplied description of view for the represented feature or record. |
+| `location_of_view` | `varchar` | Publisher-supplied location of view for the represented feature or record. |
+| `object_id` | `integer` | Identifier assigned by the source dataset. |
+| `photos_report` | `varchar` | Publisher-supplied photos report for the represented feature or record. |
+| `significance` | `varchar` | Publisher-supplied significance for the represented feature or record. |
+| `view_angle` | `integer` | Count or numeric value for view angle in the represented area. |
+| `view_rotation` | `integer` | Count or numeric value for view rotation in the represented area. |
+| `vp_name` | `varchar` | Name associated with the represented feature. |
+| `vp_ref` | `integer` | Count or numeric value for vp reference in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -7,6 +7,11 @@
 - **Source:** https://www.nisra.gov.uk/statistics/geography/geographic-data
 - **Geographic coverage:** Northern Ireland
 - **WGS84 extent:** `[-8.177484, 54.022725, -5.432790, 55.312985]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_sdz2021`
 - **Geometry:** MULTIPOLYGON
@@ -19,44 +24,28 @@
 
 Boundary Sdz2021 is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It represents boundary sdz2021 features using multipolygon geometry.
 
+## Lineage
+
+Published by the Northern Ireland Statistics and Research Agency as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-| `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. | identifier | Yes | No | No |
-| `sdz2021_cd` | `varchar(10)` | Publisher-supplied sdz2021 cd for the represented feature or record. | source_attribute | Yes | No | No |
-| `sdz2021_nm` | `varchar(32)` | Publisher-supplied sdz2021 nm for the represented feature or record. | source_attribute | Yes | No | No |
-| `dea2014_cd` | `varchar(254)` | Publisher-supplied dea2014 cd for the represented feature or record. | source_attribute | Yes | No | No |
-| `dea2014_nm` | `varchar(26)` | Publisher-supplied dea2014 nm for the represented feature or record. | source_attribute | Yes | No | No |
-| `lgd2014_cd` | `varchar(9)` | Publisher-supplied lgd2014 cd for the represented feature or record. | source_attribute | Yes | No | No |
-| `lgd2014_nm` | `varchar(36)` | Publisher-supplied lgd2014 nm for the represented feature or record. | source_attribute | Yes | No | No |
-| `shape_length` | `double precision` | Numeric shape length value recorded for the feature. | measure | Yes | No | No |
-| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. | measure | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |
+| `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
+| `sdz2021_cd` | `varchar(10)` | Publisher-supplied sdz2021 cd for the represented feature or record. |
+| `sdz2021_nm` | `varchar(32)` | Publisher-supplied sdz2021 nm for the represented feature or record. |
+| `dea2014_cd` | `varchar(254)` | Publisher-supplied dea2014 cd for the represented feature or record. |
+| `dea2014_nm` | `varchar(26)` | Publisher-supplied dea2014 nm for the represented feature or record. |
+| `lgd2014_cd` | `varchar(9)` | Publisher-supplied lgd2014 cd for the represented feature or record. |
+| `lgd2014_nm` | `varchar(36)` | Publisher-supplied lgd2014 nm for the represented feature or record. |
+| `shape_length` | `double precision` | Numeric shape length value recorded for the feature. |
+| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. |

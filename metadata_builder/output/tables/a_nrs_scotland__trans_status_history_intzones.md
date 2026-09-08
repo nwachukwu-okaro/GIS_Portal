@@ -6,6 +6,11 @@
 - **Source organisation:** National Records of Scotland
 - **Source:** https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products
 - **Geographic coverage:** Scotland
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `trans_status_history_intzones`
 - **Geometry:** Non-spatial
@@ -18,27 +23,22 @@
 
 Trans Status History Intzones is an authoritative dataset published by National Records of Scotland. It contains records relating to trans status history intzones.
 
+## Lineage
+
+Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. | source_attribute | Yes | No | No |
-| `unnamed_2` | `bigint` | Count or numeric value for unnamed 2 in the represented area. | statistical_value | Yes | No | No |
-| `unnamed_3` | `bigint` | Count or numeric value for unnamed 3 in the represented area. | statistical_value | Yes | No | No |
-| `unnamed_4` | `bigint` | Count or numeric value for unnamed 4 in the represented area. | statistical_value | Yes | No | No |
-| `unnamed_5` | `bigint` | Count or numeric value for unnamed 5 in the represented area. | statistical_value | Yes | No | No |
-
-## Supported operations
-
-- filter
-- select
-- attribute_join
-- export
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `unnamed_2` | `bigint` | Count or numeric value for unnamed 2 in the represented area. |
+| `unnamed_3` | `bigint` | Count or numeric value for unnamed 3 in the represented area. |
+| `unnamed_4` | `bigint` | Count or numeric value for unnamed 4 in the represented area. |
+| `unnamed_5` | `bigint` | Count or numeric value for unnamed 5 in the represented area. |

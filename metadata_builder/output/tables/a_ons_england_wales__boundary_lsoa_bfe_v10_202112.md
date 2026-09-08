@@ -8,6 +8,13 @@
 - **Licence:** [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 - **Geographic coverage:** England and Wales
 - **WGS84 extent:** `[-6.418945, 49.864637, 1.768912, 55.811668]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+- **Conformity:** Not evaluated — internal use
+- **UK GEMINI2 compliance tier:** 1
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_lsoa_bfe_v10_202112`
 - **Geometry:** GEOMETRY
@@ -20,37 +27,25 @@
 
 Boundary Lsoa Bfe V10 202112 is an authoritative dataset published by Office for National Statistics. It represents boundary lsoa bfe v10 202112 features using geometry geometry.
 
+## Lineage
+
+Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. | statistical_value | Yes | No | No |
-| `lsoa21cd` | `varchar(9)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `lsoa21nm` | `varchar(40)` | Source attribute; its precise meaning has not yet been documented. | Unclassified | Yes | No | No |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
-| `residents_total` | `integer` | Count or numeric value for residents total in the represented area. | statistical_value | Yes | No | No |
-| `residents_household` | `integer` | Count or numeric value for residents household in the represented area. | statistical_value | Yes | No | No |
-| `residents_communal_establishment` | `integer` | Count or numeric value for residents communal establishment in the represented area. | statistical_value | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `lsoa21cd` | `varchar(9)` |  |
+| `lsoa21nm` | `varchar(40)` |  |
+| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `residents_total` | `integer` | Count or numeric value for residents total in the represented area. |
+| `residents_household` | `integer` | Count or numeric value for residents household in the represented area. |
+| `residents_communal_establishment` | `integer` | Count or numeric value for residents communal establishment in the represented area. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

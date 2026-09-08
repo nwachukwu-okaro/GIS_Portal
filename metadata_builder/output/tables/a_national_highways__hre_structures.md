@@ -7,6 +7,11 @@
 - **Source:** https://developer.data.nationalhighways.co.uk/
 - **Geographic coverage:** England
 - **WGS84 extent:** `[-5.422375, 50.114472, 1.748077, 57.678794]`
+- **Topic category:** transportation
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_national_highways`
 - **Table:** `hre_structures`
 - **Geometry:** MULTIPOLYGON
@@ -19,37 +24,21 @@
 
 Hre Structures is an authoritative dataset published by National Highways. It represents hre structures features using multipolygon geometry.
 
+## Lineage
+
+Published by National Highways as open roads data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `fid` | `smallint` | Feature identifier assigned by the source or import process. | identifier | Yes | No | No |
-| `long_descr` | `varchar` | Publisher-supplied long descr for the represented feature or record. | source_attribute | Yes | No | No |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. | source_identifier | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `fid` | `smallint` | Feature identifier assigned by the source or import process. |
+| `long_descr` | `varchar` | Publisher-supplied long descr for the represented feature or record. |
+| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |

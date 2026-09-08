@@ -7,6 +7,11 @@
 - **Source:** https://www.cso.ie/en/databases/
 - **Geographic coverage:** Ireland
 - **WGS84 extent:** `[-10.682125, 51.420091, -5.996278, 55.446936]`
+- **Topic category:** boundaries
+- **Dataset language:** eng
+- **Metadata language:** eng
+- **Conformity:** Not evaluated — internal use
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_occupations_province`
 - **Geometry:** GEOMETRY
@@ -19,71 +24,55 @@
 
 Boundary Census Occupations Province is an authoritative dataset published by Central Statistics Office Ireland. It represents boundary census occupations province features using geometry geometry.
 
+## Lineage
+
+Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.
+
+## Metadata point of contact
+
+- **Organisation:** Systra UK and Ireland
+- **Email:** gis_uk@systra.com
+- **Role:** pointOfContact
+
 ## Columns
 
-| Column | Data type | Meaning | Semantic role | Filter | Search | Join |
-|---|---|---|---|---|---|---|
-| `guid` | `text` | Publisher-assigned guid for the record. | source_identifier | Yes | No | No |
-| `geogid` | `text` | Publisher-assigned geogid for the record. | source_identifier | Yes | No | No |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. | source_attribute | Yes | No | No |
-| `managers_directors_and_senior_officials_males` | `bigint` | Count or numeric value for managers directors and senior officials males in the represented area. | statistical_value | Yes | No | No |
-| `professional_occupations_males` | `bigint` | Count or numeric value for professional occupations males in the represented area. | statistical_value | Yes | No | No |
-| `associate_professional_and_technical_occupations_males` | `bigint` | Count or numeric value for associate professional and technical occupations males in the represented area. | statistical_value | Yes | No | No |
-| `administrative_and_secretarial_occupations_males` | `bigint` | Count or numeric value for administrative and secretarial occupations males in the represented area. | statistical_value | Yes | No | No |
-| `skilled_trades_occupations_males` | `bigint` | Count or numeric value for skilled trades occupations males in the represented area. | statistical_value | Yes | No | No |
-| `caring_leisure_and_other_service_occupations_males` | `bigint` | Count or numeric value for caring leisure and other service occupations males in the represented area. | statistical_value | Yes | No | No |
-| `sales_and_customer_service_occupations_males` | `bigint` | Count or numeric value for sales and customer service occupations males in the represented area. | statistical_value | Yes | No | No |
-| `process_plant_and_machine_operatives_males` | `bigint` | Count or numeric value for process plant and machine operatives males in the represented area. | statistical_value | Yes | No | No |
-| `elementary_occupations_males` | `bigint` | Count or numeric value for elementary occupations males in the represented area. | statistical_value | Yes | No | No |
-| `not_stated_males` | `bigint` | Count or numeric value for not stated males in the represented area. | statistical_value | Yes | No | No |
-| `total_males` | `bigint` | Count or numeric value for total males in the represented area. | statistical_value | Yes | No | No |
-| `managers_directors_and_senior_officials_females` | `bigint` | Count or numeric value for managers directors and senior officials females in the represented area. | statistical_value | Yes | No | No |
-| `professional_occupations_females` | `bigint` | Count or numeric value for professional occupations females in the represented area. | statistical_value | Yes | No | No |
-| `associate_professional_and_technical_occupations_females` | `bigint` | Count or numeric value for associate professional and technical occupations females in the represented area. | statistical_value | Yes | No | No |
-| `administrative_and_secretarial_occupations_females` | `bigint` | Count or numeric value for administrative and secretarial occupations females in the represented area. | statistical_value | Yes | No | No |
-| `skilled_trades_occupations_females` | `bigint` | Count or numeric value for skilled trades occupations females in the represented area. | statistical_value | Yes | No | No |
-| `caring_leisure_and_other_service_occupations_females` | `bigint` | Count or numeric value for caring leisure and other service occupations females in the represented area. | statistical_value | Yes | No | No |
-| `sales_and_customer_service_occupations_females` | `bigint` | Count or numeric value for sales and customer service occupations females in the represented area. | statistical_value | Yes | No | No |
-| `process_plant_and_machine_operatives_females` | `bigint` | Count or numeric value for process plant and machine operatives females in the represented area. | statistical_value | Yes | No | No |
-| `elementary_occupations_females` | `bigint` | Count or numeric value for elementary occupations females in the represented area. | statistical_value | Yes | No | No |
-| `not_stated_females` | `bigint` | Count or numeric value for not stated females in the represented area. | statistical_value | Yes | No | No |
-| `total_females` | `bigint` | Count or numeric value for total females in the represented area. | statistical_value | Yes | No | No |
-| `managers_directors_and_senior_officials_total` | `bigint` | Count or numeric value for managers directors and senior officials total in the represented area. | statistical_value | Yes | No | No |
-| `professional_occupations_total` | `bigint` | Count or numeric value for professional occupations total in the represented area. | statistical_value | Yes | No | No |
-| `associate_professional_and_technical_occupations_total` | `bigint` | Count or numeric value for associate professional and technical occupations total in the represented area. | statistical_value | Yes | No | No |
-| `administrative_and_secretarial_occupations_total` | `bigint` | Count or numeric value for administrative and secretarial occupations total in the represented area. | statistical_value | Yes | No | No |
-| `skilled_trades_occupations_total` | `bigint` | Count or numeric value for skilled trades occupations total in the represented area. | statistical_value | Yes | No | No |
-| `caring_leisure_and_other_service_occupations_total` | `bigint` | Count or numeric value for caring leisure and other service occupations total in the represented area. | statistical_value | Yes | No | No |
-| `sales_and_customer_service_occupations_total` | `bigint` | Count or numeric value for sales and customer service occupations total in the represented area. | statistical_value | Yes | No | No |
-| `process_plant_and_machine_operatives_total` | `bigint` | Count or numeric value for process plant and machine operatives total in the represented area. | statistical_value | Yes | No | No |
-| `elementary_occupations_total` | `bigint` | Count or numeric value for elementary occupations total in the represented area. | statistical_value | Yes | No | No |
-| `not_stated_total` | `bigint` | Count or numeric value for not stated total in the represented area. | statistical_value | Yes | No | No |
-| `total` | `bigint` | Count or numeric value for total in the represented area. | statistical_value | Yes | No | No |
-| `area` | `double precision` | Numeric area value recorded for the feature. | measure | Yes | No | No |
-| `geom` | `geometry` | Spatial geometry of the represented feature. | geometry | No | No | No |
-
-## Supported operations
-
-- filter
-- select
-- reproject
-- validate_geometry
-- buffer
-- clip
-- intersect
-- spatial_join
-- export
-
-## Operation requirements
-
-- Intersect, clip and spatial-join inputs must use matching coordinate reference systems.
-- Buffer operations require a suitable projected coordinate reference system.
-- Reprojection is performed on working outputs; source tables remain unchanged.
-
-## Metadata warnings
-
-- Licence has not yet been verified.
-
-## Provenance
-
-Technical facts were extracted from PostGIS. Publisher information was inherited from the curated schema source registry.
+| Column | Type | Description |
+|---|---|---|
+| `guid` | `text` | Publisher-assigned guid for the record. |
+| `geogid` | `text` | Publisher-assigned geogid for the record. |
+| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
+| `managers_directors_and_senior_officials_males` | `bigint` | Count or numeric value for managers directors and senior officials males in the represented area. |
+| `professional_occupations_males` | `bigint` | Count or numeric value for professional occupations males in the represented area. |
+| `associate_professional_and_technical_occupations_males` | `bigint` | Count or numeric value for associate professional and technical occupations males in the represented area. |
+| `administrative_and_secretarial_occupations_males` | `bigint` | Count or numeric value for administrative and secretarial occupations males in the represented area. |
+| `skilled_trades_occupations_males` | `bigint` | Count or numeric value for skilled trades occupations males in the represented area. |
+| `caring_leisure_and_other_service_occupations_males` | `bigint` | Count or numeric value for caring leisure and other service occupations males in the represented area. |
+| `sales_and_customer_service_occupations_males` | `bigint` | Count or numeric value for sales and customer service occupations males in the represented area. |
+| `process_plant_and_machine_operatives_males` | `bigint` | Count or numeric value for process plant and machine operatives males in the represented area. |
+| `elementary_occupations_males` | `bigint` | Count or numeric value for elementary occupations males in the represented area. |
+| `not_stated_males` | `bigint` | Count or numeric value for not stated males in the represented area. |
+| `total_males` | `bigint` | Count or numeric value for total males in the represented area. |
+| `managers_directors_and_senior_officials_females` | `bigint` | Count or numeric value for managers directors and senior officials females in the represented area. |
+| `professional_occupations_females` | `bigint` | Count or numeric value for professional occupations females in the represented area. |
+| `associate_professional_and_technical_occupations_females` | `bigint` | Count or numeric value for associate professional and technical occupations females in the represented area. |
+| `administrative_and_secretarial_occupations_females` | `bigint` | Count or numeric value for administrative and secretarial occupations females in the represented area. |
+| `skilled_trades_occupations_females` | `bigint` | Count or numeric value for skilled trades occupations females in the represented area. |
+| `caring_leisure_and_other_service_occupations_females` | `bigint` | Count or numeric value for caring leisure and other service occupations females in the represented area. |
+| `sales_and_customer_service_occupations_females` | `bigint` | Count or numeric value for sales and customer service occupations females in the represented area. |
+| `process_plant_and_machine_operatives_females` | `bigint` | Count or numeric value for process plant and machine operatives females in the represented area. |
+| `elementary_occupations_females` | `bigint` | Count or numeric value for elementary occupations females in the represented area. |
+| `not_stated_females` | `bigint` | Count or numeric value for not stated females in the represented area. |
+| `total_females` | `bigint` | Count or numeric value for total females in the represented area. |
+| `managers_directors_and_senior_officials_total` | `bigint` | Count or numeric value for managers directors and senior officials total in the represented area. |
+| `professional_occupations_total` | `bigint` | Count or numeric value for professional occupations total in the represented area. |
+| `associate_professional_and_technical_occupations_total` | `bigint` | Count or numeric value for associate professional and technical occupations total in the represented area. |
+| `administrative_and_secretarial_occupations_total` | `bigint` | Count or numeric value for administrative and secretarial occupations total in the represented area. |
+| `skilled_trades_occupations_total` | `bigint` | Count or numeric value for skilled trades occupations total in the represented area. |
+| `caring_leisure_and_other_service_occupations_total` | `bigint` | Count or numeric value for caring leisure and other service occupations total in the represented area. |
+| `sales_and_customer_service_occupations_total` | `bigint` | Count or numeric value for sales and customer service occupations total in the represented area. |
+| `process_plant_and_machine_operatives_total` | `bigint` | Count or numeric value for process plant and machine operatives total in the represented area. |
+| `elementary_occupations_total` | `bigint` | Count or numeric value for elementary occupations total in the represented area. |
+| `not_stated_total` | `bigint` | Count or numeric value for not stated total in the represented area. |
+| `total` | `bigint` | Count or numeric value for total in the represented area. |
+| `area` | `double precision` | Numeric area value recorded for the feature. |
+| `geom` | `geometry` | Spatial geometry of the represented feature. |
