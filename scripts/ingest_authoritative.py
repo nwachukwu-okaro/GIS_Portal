@@ -53,6 +53,7 @@ automatically runs in dry-run mode instead of failing outright.
 import argparse
 import json
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -86,13 +87,20 @@ DEFAULT_UK_LICENCE = 'Open Government Licence'
 # insert_date) that this project's field mapping doesn't specify but that
 # the existing ingest_postgis.py.template treats as required. Filled in
 # with fixed, descriptive defaults so this script's INSERTs stay valid
-# regardless of the exact NOT NULL constraints on the live table; the xml
-# column stores the full canonical JSON record for provenance, mirroring
-# how ingest_postgis.py.template stuffs a JSON STAC item into the same column.
-# (metadata_json below is the new, properly-typed, structured counterpart -
-# xml is left as-is; nothing here removes or changes its existing role.)
-RECORD_TYPENAME = 'dataset'
-RECORD_SCHEMA = 'metadata_builder/authoritative'
+# regardless of the exact NOT NULL constraints on the live table.
+#
+# typename/schema previously used 'dataset' / 'metadata_builder/authoritative'
+# here - values not recognised anywhere in pycsw's own typename handling, and
+# different from the proven-working 'stac:item' / STAC schema URL that
+# ingest_postgis.py.template and ingest_minio.py.template already use for
+# every other record in this same table. Aligned to match: neither value is
+# read anywhere in this codebase for record-source logic (that's done by
+# identifier pattern - see catalogue/views.py's _identifier_to_source()), so
+# this is a safe, low-risk change, and a plausible contributor to QGIS
+# MetaSearch's "record serialization failed" error alongside the xml column
+# issue below.
+RECORD_TYPENAME = 'stac:item'
+RECORD_SCHEMA = 'https://stac-extensions.github.io/eo/v1.0.0/schema.json'
 
 
 def _is_db_unconfigured():
@@ -114,7 +122,7 @@ def _bbox_to_wkt(bbox):
     )
 
 
-def _build_anytext(data, organisation):
+def _build_anytext(gemini, organisation, schema, table, columns):
     """
     Rich searchable text blob — this is what the portal's ILIKE search
     (catalogue/views.py::_search_db_directly) matches against.
@@ -124,15 +132,14 @@ def _build_anytext(data, organisation):
     table-level fields, so a search for a column-level concept (e.g. a
     specific attribute name) can still find the table.
     """
-    columns = data.get('columns') or []
     parts = [
-        data.get('title', ''),
-        data.get('description', ''),
-        ' '.join(data.get('keywords', []) or []),
-        data.get('topic_category') or '',
+        gemini.get('title') or '',
+        gemini.get('abstract') or '',
+        ' '.join(gemini.get('keywords') or []),
+        gemini.get('topic_category') or '',
         organisation,
-        data.get('schema', ''),
-        data.get('table', ''),
+        schema,
+        table,
     ]
     parts.extend(c.get('name') or '' for c in columns)
     parts.extend(c.get('description') or '' for c in columns)
@@ -169,52 +176,46 @@ def _blank_to_none(value):
     return value
 
 
-def build_metadata_json(data):
+def build_metadata_json(gemini_source, columns):
     """
     Builds the structured JSONB payload for p_pycsw.records.metadata_json:
-    {gemini, columns} only - no technical/capabilities/discovery_hints/
-    provenance/quality/build sections; those live in the 'xml' column's full
-    dump already, or aren't needed by the portal/agent read path this column
-    serves. This is the agent's read path in place of the standalone
-    metadata_builder/output/metadata/*.json file.
+    {gemini, columns} only. metadata_builder/build.py's own output (as of
+    its "clean up output/metadata JSON" pass) already writes a 'gemini'
+    section shaped almost identically to this one - organisation/source_url
+    already flattened to plain strings, dataset_reference_date already split
+    into date + date_type, use_constraints already combined from licence
+    name/url. So this mostly re-selects the subset of fields this column's
+    own contract calls for, rather than re-deriving anything: notably
+    equivalent_scale, schema and table are present in build.py's gemini
+    section but deliberately excluded from THIS column's contract (see the
+    prior "cleanup metadata_json structure" task) - schema/table already
+    have their own dedicated schema_name/table_name columns.
     """
-    publisher = data.get('publisher') or {}
-    geometry = data.get('geometry') or {}
-    columns = data.get('columns') or []
-    dataset_reference_date = data.get('dataset_reference_date') or {}
-
-    licence_name = publisher.get('licence_name')
-    licence_url = publisher.get('licence_url')
-    if licence_name and licence_url:
-        use_constraints = f'{licence_name} — {licence_url}'
-    else:
-        use_constraints = licence_name or licence_url or None
-
     gemini = {
-        'title': data.get('title'),
-        'abstract': data.get('description'),
-        'alternative_title': data.get('alternative_title'),
-        'topic_category': data.get('topic_category'),
-        'keywords': data.get('keywords') or [],
-        'temporal_extent': data.get('temporal_extent'),
-        'dataset_reference_date': dataset_reference_date.get('date'),
-        'dataset_reference_date_type': dataset_reference_date.get('date_type'),
-        'lineage': data.get('lineage'),
-        'responsible_organisation': publisher.get('organisation'),
-        'resource_locator': publisher.get('source_url'),
-        'unique_identifier': data.get('identifier'),
-        'bounding_box': geometry.get('bbox_wgs84'),
-        'spatial_reference_system': geometry.get('crs'),
-        'limitations_on_public_access': data.get('limitations_on_public_access'),
-        'use_constraints': use_constraints,
-        'spatial_resolution': data.get('spatial_resolution'),
-        'conformity': data.get('conformity'),
-        'metadata_language': data.get('metadata_language'),
-        'dataset_language': data.get('dataset_language'),
-        'metadata_point_of_contact': data.get('metadata_point_of_contact'),
-        'frequency_of_update': data.get('frequency_of_update'),
-        'gemini_tier': data.get('gemini_tier'),
-        'missing_mandatory_fields': data.get('missing_mandatory_fields') or [],
+        'title': gemini_source.get('title'),
+        'abstract': gemini_source.get('abstract'),
+        'alternative_title': gemini_source.get('alternative_title'),
+        'topic_category': gemini_source.get('topic_category'),
+        'keywords': gemini_source.get('keywords') or [],
+        'temporal_extent': gemini_source.get('temporal_extent'),
+        'dataset_reference_date': gemini_source.get('dataset_reference_date'),
+        'dataset_reference_date_type': gemini_source.get('dataset_reference_date_type'),
+        'lineage': gemini_source.get('lineage'),
+        'responsible_organisation': gemini_source.get('responsible_organisation'),
+        'resource_locator': gemini_source.get('resource_locator'),
+        'unique_identifier': gemini_source.get('unique_identifier'),
+        'bounding_box': gemini_source.get('bounding_box'),
+        'spatial_reference_system': gemini_source.get('spatial_reference_system'),
+        'limitations_on_public_access': gemini_source.get('limitations_on_public_access'),
+        'use_constraints': gemini_source.get('use_constraints'),
+        'spatial_resolution': gemini_source.get('spatial_resolution'),
+        'conformity': gemini_source.get('conformity'),
+        'metadata_language': gemini_source.get('metadata_language'),
+        'dataset_language': gemini_source.get('dataset_language'),
+        'metadata_point_of_contact': gemini_source.get('metadata_point_of_contact'),
+        'frequency_of_update': gemini_source.get('frequency_of_update'),
+        'gemini_tier': gemini_source.get('gemini_tier'),
+        'missing_mandatory_fields': gemini_source.get('missing_mandatory_fields') or [],
     }
     gemini = _blank_to_none(gemini)
 
@@ -224,12 +225,79 @@ def build_metadata_json(data):
         if not description or description == PLACEHOLDER_COLUMN_DESCRIPTION:
             description = None
         column_list.append({
+            # build.py's cleaned output already uses 'type' - the
+            # data_type fallback only matters if this ever runs against an
+            # older-format file left over from before that cleanup.
             'name': col.get('name'),
-            'type': col.get('data_type'),
+            'type': col.get('type') or col.get('data_type'),
             'description': description,
         })
 
     return {'gemini': gemini, 'columns': column_list}
+
+
+CSW_NAMESPACES = {
+    'csw': 'http://www.opengis.net/cat/csw/2.0.2',
+    'dc':  'http://purl.org/dc/elements/1.1/',
+    'dct': 'http://purl.org/dc/terms/',
+    'ows': 'http://www.opengis.net/ows',
+}
+for _prefix, _uri in CSW_NAMESPACES.items():
+    ET.register_namespace(_prefix, _uri)
+
+
+def build_csw_xml(identifier, record_format, gemini):
+    """
+    Renders a minimal, valid OGC CSW 2.0.2 Dublin Core (csw:Record) XML
+    document for p_pycsw.records.xml.
+
+    Root cause of QGIS MetaSearch's "record serialization failed: list
+    index out of range": this column held json.dumps(data) - not XML at
+    all. pycsw's own metadata-parsing path (owslib's ISO MD_Metadata
+    parser, used e.g. when serving records to MetaSearch) tries to parse
+    this column's content as XML and, on unparseable JSON text, ends up
+    with an empty identification list - then unconditionally indexes
+    md.identification[0], raising exactly this IndexError. csw:Record
+    (Dublin Core) is pycsw's own simplest, most widely-supported schema -
+    safer here than attempting a full ISO19139 document by hand.
+
+    Built with ElementTree (not string formatting), so titles/abstracts
+    containing '&', '<', '>' etc. can never produce malformed XML.
+    """
+    root = ET.Element(f"{{{CSW_NAMESPACES['csw']}}}Record")
+
+    def add(prefix, tag, text):
+        if text is None or text == '':
+            return None
+        element = ET.SubElement(root, f'{{{CSW_NAMESPACES[prefix]}}}{tag}')
+        element.text = str(text)
+        return element
+
+    add('dc', 'identifier', identifier)
+    add('dc', 'title', gemini.get('title'))
+    add('dc', 'type', 'dataset')
+    add('dc', 'format', record_format)
+    for keyword in (gemini.get('keywords') or [])[:20]:
+        add('dc', 'subject', keyword)
+    add('dc', 'creator', gemini.get('responsible_organisation'))
+    add('dc', 'publisher', gemini.get('responsible_organisation'))
+    add('dct', 'abstract', gemini.get('abstract'))
+    references = add('dct', 'references', gemini.get('resource_locator'))
+    if references is not None:
+        references.set('scheme', 'WWW:LINK')
+
+    bbox = gemini.get('bounding_box') or {}
+    if all(key in bbox for key in ('xmin', 'ymin', 'xmax', 'ymax')):
+        bbox_element = ET.SubElement(root, f"{{{CSW_NAMESPACES['ows']}}}BoundingBox")
+        bbox_element.set('crs', 'urn:ogc:def:crs:EPSG::4326')
+        # y x order (lat lon), matching pycsw's own convention - see
+        # catalogue/views.py's _csw_record_to_feature().
+        lower = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}LowerCorner")
+        lower.text = f"{bbox['ymin']} {bbox['xmin']}"
+        upper = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}UpperCorner")
+        upper.text = f"{bbox['ymax']} {bbox['xmax']}"
+
+    return ET.tostring(root, encoding='unicode')
 
 
 def build_record(data):
@@ -237,45 +305,73 @@ def build_record(data):
     Map one canonical metadata_builder JSON record onto p_pycsw.records
     columns. Returns (record_dict, skip_reason) — record_dict is None when
     skip_reason is set.
+
+    Reads from data['gemini'] and data['columns'] - metadata_builder/
+    build.py's "clean up output/metadata JSON" pass made the source file
+    itself {gemini, columns}-shaped, so there is no separate top-level
+    title/publisher/geometry to read anymore.
+
+    Two p_pycsw.records columns lose precision as a direct result of that
+    source cleanup, since build.py's gemini section does not carry the raw
+    values they used to come from:
+      - accessconstraints previously held publisher.licence_name alone; now
+        holds gemini.use_constraints (the same licence name, but combined
+        with its URL), since the bare licence name is no longer available
+        separately - only merged into use_constraints.
+      - format/distanceuom previously included the PostGIS geometry type
+        (e.g. 'PostGIS/MULTIPOLYGON'); geometry type is no longer present
+        anywhere in the source file (build.py's Issue 1 cleanup explicitly
+        removed the geometry section down to just CRS and bbox), so these
+        fall back to a bare 'PostGIS' / empty geometry type. distancevalue
+        (row count) is similarly no longer available and is left blank -
+        catalogue/views.py's detail() overrides row_count/size with a live
+        COUNT(*)/pg_total_relation_size() query for real (non-mock) runs
+        regardless, so this mainly affects the mock-mode fallback display,
+        but the detail page's Geometry sidebar row has no such live
+        fallback and WILL go blank for authoritative records until
+        geometry type is either restored to build.py's output or sourced
+        some other way.
     """
-    title = (data.get('title') or '').strip()
+    gemini = data.get('gemini') or {}
+    columns = data.get('columns') or []
+
+    title = (gemini.get('title') or '').strip()
     if not title:
         return None, 'missing title'
 
-    schema = data.get('schema', '')
-    table = data.get('table', '')
-    identifier = data.get('identifier') or f'{schema}/{table}'
+    schema = gemini.get('schema') or ''
+    table = gemini.get('table') or ''
+    identifier = gemini.get('unique_identifier') or (f'{schema}/{table}' if schema and table else '')
+    if not identifier:
+        return None, 'missing identifier'
 
-    publisher = data.get('publisher') or {}
-    geometry = data.get('geometry') or {}
+    organisation = gemini.get('responsible_organisation') or ''
+    accessconstraints = gemini.get('use_constraints') or DEFAULT_UK_LICENCE
+    official_url = gemini.get('resource_locator') or ''
+    crs = gemini.get('spatial_reference_system') or ''
+    geometry_type = ''  # no longer present in build.py's output - see docstring
+    row_count = None    # no longer present in build.py's output - see docstring
 
-    organisation = publisher.get('organisation') or ''
-    licence_name = publisher.get('licence_name') or DEFAULT_UK_LICENCE
-    official_url = publisher.get('source_url') or ''
-    geometry_type = geometry.get('type') or ''
-    crs = geometry.get('crs') or ''
-    row_count = data.get('row_count')
-
-    metadata_json = build_metadata_json(data)
+    metadata_json = build_metadata_json(gemini, columns)
     gemini_section = metadata_json.get('gemini') or {}
     temporal_extent = gemini_section.get('temporal_extent') or {}
+    record_format = f'PostGIS/{geometry_type}' if geometry_type else 'PostGIS'
 
     record = {
         'identifier': identifier,
         'typename': RECORD_TYPENAME,
         'schema': RECORD_SCHEMA,
-        'xml': json.dumps(data, default=str),
+        'xml': build_csw_xml(identifier, record_format, gemini),
         'title': title,
-        'abstract': data.get('description', '') or '',
-        'keywords': ', '.join(data.get('keywords', []) or []),
+        'abstract': gemini.get('abstract') or '',
+        'keywords': ', '.join(gemini.get('keywords') or []),
         'publisher': organisation,
-        'creator': organisation,
         'organization': organisation,
-        'accessconstraints': licence_name,
+        'accessconstraints': accessconstraints,
         'mdsource': official_url,
         'type': 'dataset',
-        'format': f'PostGIS/{geometry_type}' if geometry_type else 'PostGIS',
-        'wkt_geometry': _bbox_to_wkt(geometry.get('bbox_wgs84')),
+        'format': record_format,
+        'wkt_geometry': _bbox_to_wkt(gemini.get('bounding_box')),
         'distancevalue': str(row_count) if row_count is not None else '',
         'distanceuom': geometry_type,
         'crs': crs,
@@ -293,7 +389,7 @@ def build_record(data):
         'time_end': temporal_extent.get('end'),
         'title_alternate': gemini_section.get('alternative_title'),
     }
-    record['anytext'] = _build_anytext(data, organisation)
+    record['anytext'] = _build_anytext(gemini, organisation, schema, table, columns)
     return record, None
 
 
@@ -301,7 +397,7 @@ UPSERT_SQL = """
     INSERT INTO p_pycsw.records (
         identifier, typename, schema, mdsource, insert_date, xml,
         anytext, title, abstract, keywords, type, format,
-        source, organization, creator, publisher,
+        source, organization, publisher,
         links, crs, accessconstraints, wkt_geometry,
         distancevalue, distanceuom,
         schema_name, table_name, metadata_json,
@@ -310,13 +406,15 @@ UPSERT_SQL = """
     VALUES (
         %(identifier)s, %(typename)s, %(schema)s, %(mdsource)s, NOW(), %(xml)s,
         %(anytext)s, %(title)s, %(abstract)s, %(keywords)s, %(type)s, %(format)s,
-        %(source)s, %(organization)s, %(creator)s, %(publisher)s,
+        %(source)s, %(organization)s, %(publisher)s,
         %(links)s, %(crs)s, %(accessconstraints)s, %(wkt_geometry)s,
         %(distancevalue)s, %(distanceuom)s,
         %(schema_name)s, %(table_name)s, %(metadata_json)s::jsonb,
         %(topicategory)s, %(lineage)s, %(time_begin)s, %(time_end)s, %(title_alternate)s
     )
     ON CONFLICT (identifier) DO UPDATE SET
+        typename          = EXCLUDED.typename,
+        schema            = EXCLUDED.schema,
         mdsource          = EXCLUDED.mdsource,
         xml               = EXCLUDED.xml,
         anytext           = EXCLUDED.anytext,
@@ -327,7 +425,6 @@ UPSERT_SQL = """
         format            = EXCLUDED.format,
         source            = EXCLUDED.source,
         organization      = EXCLUDED.organization,
-        creator           = EXCLUDED.creator,
         publisher         = EXCLUDED.publisher,
         links             = EXCLUDED.links,
         crs               = EXCLUDED.crs,
@@ -412,9 +509,10 @@ def ingest(dry_run):
             print(f'[{i}/{len(files)}] {path.name}: FAILED - could not parse JSON ({exc})')
             continue
 
-        schema = data.get('schema', '?')
-        table = data.get('table', '?')
-        seen_identifiers.append(data.get('identifier') or f'{schema}/{table}')
+        gemini_preview = data.get('gemini') or {}
+        schema = gemini_preview.get('schema', '?')
+        table = gemini_preview.get('table', '?')
+        seen_identifiers.append(gemini_preview.get('unique_identifier') or f'{schema}/{table}')
 
         record, skip_reason = build_record(data)
         if record is None:
@@ -434,7 +532,7 @@ def ingest(dry_run):
             print(f'    wkt_geometry : {record["wkt_geometry"] or "(no bbox available)"}')
             print(f'    mdsource     : {record["mdsource"] or "(no official URL)"}')
             print(f'    keywords     : {record["keywords"]}')
-            print(f'    gemini_tier  : {data.get("gemini_tier")}')
+            print(f'    gemini_tier  : {(data.get("gemini") or {}).get("gemini_tier")}')
             print()
             continue
 

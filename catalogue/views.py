@@ -245,7 +245,6 @@ def _fetch_record_from_db(identifier):
                         keywords,           -- slash-separated keyword string
                         abstract,           -- human-readable description
                         publisher,          -- contact email
-                        creator,            -- team / department
                         organization,       -- organisation name
                         accessconstraints,  -- internal / restricted / public
                         anytext,            -- full-text search blob
@@ -264,9 +263,9 @@ def _fetch_record_from_db(identifier):
                 if not row:
                     return {}
                 rich_metadata = {}
-                if row[15]:
+                if row[14]:
                     try:
-                        parsed_xml = json.loads(row[15]) if isinstance(row[15], str) else row[15]
+                        parsed_xml = json.loads(row[14]) if isinstance(row[14], str) else row[14]
                         if isinstance(parsed_xml, dict) and parsed_xml.get('identifier') == identifier:
                             rich_metadata = parsed_xml
                     except (TypeError, ValueError, json.JSONDecodeError):
@@ -276,7 +275,7 @@ def _fetch_record_from_db(identifier):
                 # metadata_json is JSONB - psycopg2 normally decodes it to a
                 # dict automatically, but this handles a raw string too in
                 # case the column is read via a driver/cast that doesn't.
-                metadata_json = row[16]
+                metadata_json = row[15]
                 if isinstance(metadata_json, str):
                     try:
                         metadata_json = json.loads(metadata_json)
@@ -292,15 +291,17 @@ def _fetch_record_from_db(identifier):
                     'keywords_raw':  row[3] or '',
                     'abstract':      row[4] or '',
                     'contact':       row[5] or '',
-                    'team':          row[6] or '',
-                    'organisation':  row[7] or '',
-                    'access':        row[8] or '',
-                    'anytext':       row[9] or '',
-                    'title':         row[10] or '',
-                    'type':          row[11] or '',
-                    'format':        row[12] or '',
-                    'date_modified': str(row[13]) if row[13] else '',
-                    'project':       row[14] or '',
+                    # 'creator' (team/department) was dropped from p_pycsw.records
+                    # on production - no longer sourced from the DB.
+                    'team':          '',
+                    'organisation':  row[6] or '',
+                    'access':        row[7] or '',
+                    'anytext':       row[8] or '',
+                    'title':         row[9] or '',
+                    'type':          row[10] or '',
+                    'format':        row[11] or '',
+                    'date_modified': str(row[12]) if row[12] else '',
+                    'project':       row[13] or '',
                     'rich_metadata': rich_metadata,
                     'metadata_json': metadata_json,
                 }
@@ -374,14 +375,16 @@ def _row_to_feature(row):
     rtype        = row[4] or 'dataset'
     fmt          = row[5] or ''
     contact      = row[6] or ''
-    team         = row[7] or ''
-    org          = row[8] or ''
-    access       = row[9] or 'internal'
-    size         = row[10] or ''
-    geom_type    = row[11] or ''
-    crs          = row[12] or ''
-    modified     = str(row[13]) if row[13] else ''
-    project      = row[14] or ''
+    # 'creator' (team/department) was dropped from p_pycsw.records on
+    # production - no longer sourced from the DB.
+    team         = ''
+    org          = row[7] or ''
+    access       = row[8] or 'internal'
+    size         = row[9] or ''
+    geom_type    = row[10] or ''
+    crs          = row[11] or ''
+    modified     = str(row[12]) if row[12] else ''
+    project      = row[13] or ''
 
     keywords               = _parse_keywords(keywords_raw)
     source, schema, table, href = _identifier_to_source(identifier)
@@ -466,7 +469,6 @@ def _search_db_directly(query, type_filter, source_filter, access_filter):
                         type,
                         format,
                         publisher,      -- contact email
-                        creator,        -- team
                         organization,
                         accessconstraints,
                         distancevalue,  -- size
