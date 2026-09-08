@@ -2,6 +2,7 @@ import json
 import boto3
 import psycopg2
 import zoneinfo
+import xml.etree.ElementTree as ET
 from datetime import datetime
 
 # ── MinIO connection ──────────────────────────────────────────
@@ -50,6 +51,16 @@ AOI_LOOKUP = {
 DEFAULT_BBOX = [-180, -90, 180, 90]
 DEFAULT_WKT  = 'POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))'
 LONDON_TZ    = zoneinfo.ZoneInfo("Europe/London")
+
+# ── CSW XML (p_pycsw.records.xml) ───────────────────────────────
+CSW_NAMESPACES = {
+    'csw': 'http://www.opengis.net/cat/csw/2.0.2',
+    'dc':  'http://purl.org/dc/elements/1.1/',
+    'dct': 'http://purl.org/dc/terms/',
+    'ows': 'http://www.opengis.net/ows',
+}
+for _prefix, _uri in CSW_NAMESPACES.items():
+    ET.register_namespace(_prefix, _uri)
 
 # ─────────────────────────────────────────────────────────────
 
@@ -216,6 +227,57 @@ def build_stac_item(key, bucket, last_modified, tags, info, bbox):
         ]
     }
 
+def build_csw_xml(identifier, title, record_type, mime_type, keywords,
+                   organisation, abstract, source_url, bbox):
+    """
+    Renders a minimal, valid OGC CSW 2.0.2 Dublin Core (csw:Record) XML
+    document for p_pycsw.records.xml, in place of the JSON-dumped STAC item
+    previously stored there.
+
+    pycsw's own ISO metadata parser (used e.g. by QGIS MetaSearch) tries to
+    parse this column's content as XML; unparseable JSON text yields an
+    empty identification list, and pycsw indexes it unconditionally with
+    [0], raising "record serialization failed: list index out of range".
+    See scripts/ingest_authoritative.py's build_csw_xml() for the original
+    fix and full explanation - this mirrors it using MinIO's own fields.
+
+    Built with ElementTree (not string formatting), so titles/abstracts
+    containing '&', '<', '>' etc. can never produce malformed XML.
+    """
+    root = ET.Element(f"{{{CSW_NAMESPACES['csw']}}}Record")
+
+    def add(prefix, tag, text):
+        if text is None or text == '':
+            return None
+        element = ET.SubElement(root, f'{{{CSW_NAMESPACES[prefix]}}}{tag}')
+        element.text = str(text)
+        return element
+
+    add('dc', 'identifier', identifier)
+    add('dc', 'title', title)
+    add('dc', 'type', record_type)
+    add('dc', 'format', mime_type)
+    for keyword in (keywords or [])[:20]:
+        add('dc', 'subject', keyword)
+    add('dc', 'publisher', organisation)
+    add('dct', 'abstract', abstract)
+    references = add('dct', 'references', source_url)
+    if references is not None:
+        references.set('scheme', 'WWW:LINK')
+
+    if bbox and len(bbox) == 4:
+        xmin, ymin, xmax, ymax = bbox
+        bbox_element = ET.SubElement(root, f"{{{CSW_NAMESPACES['ows']}}}BoundingBox")
+        bbox_element.set('crs', 'urn:ogc:def:crs:EPSG::4326')
+        # y x order (lat lon), matching pycsw's own convention - see
+        # catalogue/views.py's _csw_record_to_feature().
+        lower = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}LowerCorner")
+        lower.text = f"{ymin} {xmin}"
+        upper = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}UpperCorner")
+        upper.text = f"{ymax} {xmax}"
+
+    return ET.tostring(root, encoding='unicode')
+
 def ingest_bucket(s3, cur, bucket):
     """Ingest all tagged files from a single bucket."""
     print(f"\n  Scanning bucket: {bucket}")
@@ -261,6 +323,12 @@ def ingest_bucket(s3, cur, bucket):
             mime_type  = get_mime_type(key)
             anytext    = build_anytext(key, bucket, tags, size_str)
             identifier = get_identifier(bucket, key)
+            source_url = f"{MINIO_ENDPOINT}/{bucket}/{key}"
+            csw_xml    = build_csw_xml(
+                identifier, title, tags.get('type', 'dataset'), mime_type,
+                keywords_list, tags.get('organisation', 'Systra UK'),
+                tags.get('abstract', ''), source_url, bbox,
+            )
 
             print(f"\n    Processing: {key}")
             print(f"      Title    : {title}")
@@ -277,7 +345,7 @@ def ingest_bucket(s3, cur, bucket):
                     mdsource, insert_date, xml,
                     anytext, title, abstract,
                     keywords, type, format,
-                    source, organization, creator,
+                    source, organization,
                     publisher, date_modified,
                     links, accessconstraints,
                     wkt_geometry,
@@ -288,7 +356,7 @@ def ingest_bucket(s3, cur, bucket):
                     %s, NOW(), %s,
                     %s, %s, %s,
                     %s, %s, %s,
-                    %s, %s, %s,
+                    %s, %s,
                     %s, %s,
                     %s, %s,
                     %s,
@@ -303,7 +371,6 @@ def ingest_bucket(s3, cur, bucket):
                     type              = EXCLUDED.type,
                     format            = EXCLUDED.format,
                     organization      = EXCLUDED.organization,
-                    creator           = EXCLUDED.creator,
                     publisher         = EXCLUDED.publisher,
                     date_modified     = EXCLUDED.date_modified,
                     links             = EXCLUDED.links,
@@ -316,7 +383,7 @@ def ingest_bucket(s3, cur, bucket):
                 'stac:item',
                 'https://stac-extensions.github.io/eo/v1.0.0/schema.json',
                 'minio-ingest',
-                json.dumps(item),
+                csw_xml,
                 anytext,
                 title,
                 tags.get('abstract', ''),
@@ -325,7 +392,6 @@ def ingest_bucket(s3, cur, bucket):
                 mime_type,
                 tags.get('project', ''),
                 tags.get('organisation', 'Systra UK'),
-                tags.get('team', ''),
                 tags.get('contact', ''),
                 last_modified.astimezone(LONDON_TZ).isoformat(),
                 json.dumps(item['links']),
