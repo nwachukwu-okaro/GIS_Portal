@@ -21,8 +21,9 @@ from pathlib import Path
 import yaml
 
 import extract_schema
+from contextual_columns import enrich_record
 
-BUILDER_VERSION = 1
+BUILDER_VERSION = 3
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = SCRIPT_DIR.parent
 CONFIG_DIR = SCRIPT_DIR / 'config'
@@ -428,6 +429,7 @@ def build_record(table, sources, overrides, dictionary):
         record['quality']['metadata_status'] = override['metadata_status']
     if override.get('warnings') is not None:
         record['quality']['warnings'] = list(override['warnings'])
+    enrich_record(record)
     return record, fingerprint(table, profile, override, dictionary)
 
 
@@ -505,7 +507,8 @@ def gemini_compliance(record):
     # for point geometries (per spec) and, by the same "no meaningful
     # resolution" reasoning, for tables with no geometry at all.
     no_placeholder_columns = not any(
-        c.get('description') == PLACEHOLDER_COLUMN_DESCRIPTION for c in record.get('columns', [])
+        not c.get('description') or c.get('description') == PLACEHOLDER_COLUMN_DESCRIPTION
+        for c in record.get('columns', [])
     )
     frequency_ok = _present(record.get('frequency_of_update'))
     geometry_type = (record.get('geometry', {}).get('type') or '').upper()

@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import build
+from contextual_columns import enrich_record
 
 
 PLACEHOLDER = 'Source attribute; its precise meaning has not yet been documented.'
@@ -81,6 +82,10 @@ def apply_record(record, override, dictionary):
         if before != after:
             changes.append((column['name'], before, after))
 
+    # Reapply reviewed rules so old generic dictionary text cannot return.
+    for change in enrich_record(record):
+        changes.append((change['column'], change['before'], change['after']))
+
     record['column_count'] = len(record.get('columns', []))
     quality = record.setdefault('quality', {})
     if 'metadata_status' in override:
@@ -121,7 +126,7 @@ def refresh_schema(schema):
         index[record['identifier']] = build.index_entry(record, metadata_path, markdown_path)
         unresolved = [
             c['name'] for c in record.get('columns', [])
-            if c.get('description') == PLACEHOLDER
+            if not c.get('description') or c.get('description') == PLACEHOLDER
         ]
         results.append({
             'identifier': record['identifier'], 'changes': changes,
