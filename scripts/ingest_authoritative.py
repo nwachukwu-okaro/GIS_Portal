@@ -469,7 +469,7 @@ def build_record(data):
         'distanceuom': geometry_type,
         'crs': crs,
         'source': 'authoritative',
-        'links': official_url,
+        'links': f'Dataset,Publisher resource,WWW:LINK,{official_url}' if official_url else None,
         'schema_name': schema,
         'table_name': table,
         'metadata_json': json.dumps(metadata_json, default=str),

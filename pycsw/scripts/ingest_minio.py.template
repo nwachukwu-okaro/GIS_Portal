@@ -454,7 +454,10 @@ def ingest_bucket(s3, cur, bucket):
                 tags.get('organisation', 'Systra UK'),
                 tags.get('contact', ''),
                 last_modified.astimezone(LONDON_TZ).isoformat(),
-                json.dumps(item['links']),
+                '^'.join(
+                    'Dataset,Resource,WWW:LINK,' + link['href'].replace(',', '%2C').replace('^', '%5E')
+                    for link in item['links'] if link.get('href')
+                ) or None,
                 tags.get('access', 'internal'),
                 wkt,
                 size_str,

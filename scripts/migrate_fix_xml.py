@@ -43,8 +43,14 @@ inspecting existing database rows.
 Usage:
     python scripts/migrate_fix_xml.py --dry-run   # list affected records, no DB writes
     python scripts/migrate_fix_xml.py             # fix them for real
+
+After the XML pass, independently repairs legacy links using the same
+normalizer as migrate_fix_links.py (including records whose XML is already
+correct). --dry-run previews both passes. For links-only repair, prefer
+migrate_fix_links.py; it leaves all XML and typename values untouched.
 """
 import argparse
+from migrate_fix_links import repair_links
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -323,6 +329,8 @@ def run(dry_run):
                     conn.rollback()
                     failed += 1
                     print(f'  [{i}/{len(rows)}] {identifier}: FAILED - {exc}')
+        # Scan links independently: correctly typed XML can still have bad links.
+        repair_links(conn, dry_run=dry_run)
     finally:
         conn.close()
 

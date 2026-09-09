@@ -480,7 +480,10 @@ def ingest_schema(cur, cat_cur, schema):
                 meta.get('organisation', 'Systra UK'),
                 meta.get('contact', ''),
                 last_modified.isoformat() if last_modified else '',
-                json.dumps(item['links']),
+                '^'.join(
+                    'Dataset,Resource,WWW:LINK,' + link['href'].replace(',', '%2C').replace('^', '%5E')
+                    for link in item['links'] if link.get('href')
+                ) or None,
                 f"EPSG:{crs}",
                 meta.get('source', ''),
                 meta.get('access', 'internal'),
