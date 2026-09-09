@@ -2,7 +2,7 @@ import json
 import psycopg2
 import zoneinfo
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 
 # ── PostgreSQL connection ─────────────────────────────────────
 DB_PARAMS = {
@@ -27,15 +27,32 @@ CATALOGUE_URL = "http://YOUR_SERVER_HOSTNAME/csw"
 DB_HOST       = "YOUR_DB_HOST"
 DB_NAME       = "YOUR_DB_NAME"
 
-# ── CSW XML (p_pycsw.records.xml) ───────────────────────────────
-CSW_NAMESPACES = {
-    'csw': 'http://www.opengis.net/cat/csw/2.0.2',
-    'dc':  'http://purl.org/dc/elements/1.1/',
-    'dct': 'http://purl.org/dc/terms/',
-    'ows': 'http://www.opengis.net/ows',
+# ── ISO 19139 XML (p_pycsw.records.xml) ─────────────────────────
+# pycsw is configured with profiles=apiso (pycsw/config/pycsw.cfg.example).
+# Its apiso plugin only treats a record's xml column as ISO 19139 when the
+# record's typename column is exactly 'gmd:MD_Metadata' - see
+# scripts/ingest_authoritative.py's build_iso19139_xml() docstring for the
+# full explanation, verified against pycsw's own apiso.py source.
+RECORD_TYPENAME = 'gmd:MD_Metadata'
+RECORD_SCHEMA   = 'http://www.isotc211.org/2005/gmd'
+
+ISO_NAMESPACES = {
+    'gmd': 'http://www.isotc211.org/2005/gmd',
+    'gco': 'http://www.isotc211.org/2005/gco',
 }
-for _prefix, _uri in CSW_NAMESPACES.items():
+for _prefix, _uri in ISO_NAMESPACES.items():
     ET.register_namespace(_prefix, _uri)
+
+ISO_CONTACT_ORGANISATION = 'Systra GIS Team'
+ISO_CONTACT_EMAIL = 'gis_uk@systra.com'
+
+_ISO_CODELIST_BASE = (
+    'http://standards.iso.org/ittf/PubliclyAvailableStandards/'
+    'ISO_19139_Schemas/resources/codelist/gmxCodelists.xml'
+)
+ISO_CHARACTER_SET_CODELIST = f'{_ISO_CODELIST_BASE}#MD_CharacterSetCode'
+ISO_SCOPE_CODELIST = f'{_ISO_CODELIST_BASE}#MD_ScopeCode'
+ISO_ROLE_CODELIST = f'{_ISO_CODELIST_BASE}#CI_RoleCode'
 # ─────────────────────────────────────────────────────────────
 
 def get_all_schemas(cur):
@@ -191,57 +208,98 @@ def build_stac_item(table_name, schema, meta, bbox, crs,
         ]
     }
 
-def build_csw_xml(identifier, title, record_type, record_format, keywords,
-                   organisation, abstract, source_url, bbox):
-    """
-    Renders a minimal, valid OGC CSW 2.0.2 Dublin Core (csw:Record) XML
-    document for p_pycsw.records.xml, in place of the JSON-dumped STAC item
-    previously stored there.
+def _gmd(tag):
+    return f"{{{ISO_NAMESPACES['gmd']}}}{tag}"
 
-    pycsw's own ISO metadata parser (used e.g. by QGIS MetaSearch) tries to
-    parse this column's content as XML; unparseable JSON text yields an
-    empty identification list, and pycsw indexes it unconditionally with
-    [0], raising "record serialization failed: list index out of range".
-    See scripts/ingest_authoritative.py's build_csw_xml() for the original
-    fix and full explanation - this mirrors it using this table's own fields.
-    No dedicated "source URL" tag exists for a PostGIS project table (unlike
-    an authoritative dataset's real external source), so this uses the same
-    self-referencing href already built for the STAC item's own 'self' link.
+def _gco(tag):
+    return f"{{{ISO_NAMESPACES['gco']}}}{tag}"
+
+def _iso_char_string(parent, tag, text):
+    """<gmd:{tag}><gco:CharacterString>{text}</gco:CharacterString></gmd:{tag}>"""
+    if text is None or text == '':
+        return None
+    element = ET.SubElement(parent, _gmd(tag))
+    char_string = ET.SubElement(element, _gco('CharacterString'))
+    char_string.text = str(text)
+    return element
+
+def build_iso19139_xml(identifier, title, abstract, keywords, bbox, language='eng'):
+    """
+    Renders a minimal, valid ISO 19139 gmd:MD_Metadata XML document for
+    p_pycsw.records.xml. See scripts/ingest_authoritative.py's
+    build_iso19139_xml() for the full explanation of why this replaces the
+    previous json.dumps(item) content and why RECORD_TYPENAME matters just
+    as much as this XML's content - this mirrors it using this table's own
+    (simpler) fields. No dedicated topic_category or dataset reference date
+    concept exists in this script's structured-comment metadata, so those
+    optional ISO elements are omitted here rather than guessed.
 
     Built with ElementTree (not string formatting), so titles/abstracts
     containing '&', '<', '>' etc. can never produce malformed XML.
     """
-    root = ET.Element(f"{{{CSW_NAMESPACES['csw']}}}Record")
+    root = ET.Element(_gmd('MD_Metadata'))
 
-    def add(prefix, tag, text):
-        if text is None or text == '':
-            return None
-        element = ET.SubElement(root, f'{{{CSW_NAMESPACES[prefix]}}}{tag}')
-        element.text = str(text)
-        return element
+    _iso_char_string(root, 'fileIdentifier', identifier)
+    _iso_char_string(root, 'language', language)
 
-    add('dc', 'identifier', identifier)
-    add('dc', 'title', title)
-    add('dc', 'type', record_type)
-    add('dc', 'format', record_format)
-    for keyword in (keywords or [])[:20]:
-        add('dc', 'subject', keyword)
-    add('dc', 'publisher', organisation)
-    add('dct', 'abstract', abstract)
-    references = add('dct', 'references', source_url)
-    if references is not None:
-        references.set('scheme', 'WWW:LINK')
+    character_set = ET.SubElement(root, _gmd('characterSet'))
+    character_set_code = ET.SubElement(character_set, _gmd('MD_CharacterSetCode'))
+    character_set_code.set('codeList', ISO_CHARACTER_SET_CODELIST)
+    character_set_code.set('codeListValue', 'utf8')
+    character_set_code.text = 'utf8'
+
+    hierarchy_level = ET.SubElement(root, _gmd('hierarchyLevel'))
+    hierarchy_level_code = ET.SubElement(hierarchy_level, _gmd('MD_ScopeCode'))
+    hierarchy_level_code.set('codeList', ISO_SCOPE_CODELIST)
+    hierarchy_level_code.set('codeListValue', 'dataset')
+    hierarchy_level_code.text = 'dataset'
+
+    contact = ET.SubElement(root, _gmd('contact'))
+    responsible_party = ET.SubElement(contact, _gmd('CI_ResponsibleParty'))
+    _iso_char_string(responsible_party, 'organisationName', ISO_CONTACT_ORGANISATION)
+    contact_info = ET.SubElement(responsible_party, _gmd('contactInfo'))
+    ci_contact = ET.SubElement(contact_info, _gmd('CI_Contact'))
+    address_wrapper = ET.SubElement(ci_contact, _gmd('address'))
+    ci_address = ET.SubElement(address_wrapper, _gmd('CI_Address'))
+    _iso_char_string(ci_address, 'electronicMailAddress', ISO_CONTACT_EMAIL)
+    role = ET.SubElement(responsible_party, _gmd('role'))
+    role_code = ET.SubElement(role, _gmd('CI_RoleCode'))
+    role_code.set('codeList', ISO_ROLE_CODELIST)
+    role_code.set('codeListValue', 'pointOfContact')
+    role_code.text = 'pointOfContact'
+
+    date_stamp = ET.SubElement(root, _gmd('dateStamp'))
+    ET.SubElement(date_stamp, _gco('Date')).text = datetime.now(timezone.utc).date().isoformat()
+
+    identification_info = ET.SubElement(root, _gmd('identificationInfo'))
+    data_identification = ET.SubElement(identification_info, _gmd('MD_DataIdentification'))
+
+    citation = ET.SubElement(data_identification, _gmd('citation'))
+    ci_citation = ET.SubElement(citation, _gmd('CI_Citation'))
+    _iso_char_string(ci_citation, 'title', title)
+
+    _iso_char_string(data_identification, 'abstract', abstract)
+
+    if keywords:
+        descriptive_keywords = ET.SubElement(data_identification, _gmd('descriptiveKeywords'))
+        md_keywords = ET.SubElement(descriptive_keywords, _gmd('MD_Keywords'))
+        for keyword in keywords[:20]:
+            _iso_char_string(md_keywords, 'keyword', keyword)
+
+    _iso_char_string(data_identification, 'language', language)
 
     if bbox and len(bbox) == 4:
         xmin, ymin, xmax, ymax = bbox
-        bbox_element = ET.SubElement(root, f"{{{CSW_NAMESPACES['ows']}}}BoundingBox")
-        bbox_element.set('crs', 'urn:ogc:def:crs:EPSG::4326')
-        # y x order (lat lon), matching pycsw's own convention - see
-        # catalogue/views.py's _csw_record_to_feature().
-        lower = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}LowerCorner")
-        lower.text = f"{ymin} {xmin}"
-        upper = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}UpperCorner")
-        upper.text = f"{ymax} {xmax}"
+        extent = ET.SubElement(data_identification, _gmd('extent'))
+        ex_extent = ET.SubElement(extent, _gmd('EX_Extent'))
+        geographic_element = ET.SubElement(ex_extent, _gmd('geographicElement'))
+        geographic_bbox = ET.SubElement(geographic_element, _gmd('EX_GeographicBoundingBox'))
+        for tag, value in (
+            ('westBoundLongitude', xmin), ('eastBoundLongitude', xmax),
+            ('southBoundLatitude', ymin), ('northBoundLatitude', ymax),
+        ):
+            bound_element = ET.SubElement(geographic_bbox, _gmd(tag))
+            ET.SubElement(bound_element, _gco('Decimal')).text = str(value)
 
     return ET.tostring(root, encoding='unicode')
 
@@ -349,11 +407,8 @@ def ingest_schema(cur, cat_cur, schema):
                 table_name, schema, meta, bbox, crs,
                 row_count, geom_type, table_size, last_modified
             )
-            source_url   = f"postgresql://{DB_HOST}:5432/{DB_NAME}/{schema}/{table_name}"
-            csw_xml      = build_csw_xml(
-                identifier, title, meta.get('type', 'dataset'), f"PostGIS/{geom_type}",
-                keywords, meta.get('organisation', 'Systra UK'),
-                meta.get('abstract', ''), source_url, bbox,
+            iso_xml      = build_iso19139_xml(
+                identifier, title, meta.get('abstract', ''), keywords, bbox,
             )
 
             print(f"    Processing : {table_name}")
@@ -390,6 +445,8 @@ def ingest_schema(cur, cat_cur, schema):
                     %s, %s
                 )
                 ON CONFLICT (identifier) DO UPDATE SET
+                    typename          = EXCLUDED.typename,
+                    schema            = EXCLUDED.schema,
                     xml               = EXCLUDED.xml,
                     anytext           = EXCLUDED.anytext,
                     title             = EXCLUDED.title,
@@ -409,10 +466,10 @@ def ingest_schema(cur, cat_cur, schema):
                     distanceuom       = EXCLUDED.distanceuom
             """, (
                 identifier,
-                'stac:item',
-                'https://stac-extensions.github.io/eo/v1.0.0/schema.json',
+                RECORD_TYPENAME,
+                RECORD_SCHEMA,
                 'postgis-ingest',
-                csw_xml,
+                iso_xml,
                 anytext,
                 title,
                 meta.get('abstract', ''),

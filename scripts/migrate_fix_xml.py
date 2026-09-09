@@ -2,26 +2,38 @@
 """
 migrate_fix_xml.py
 
-One-time migration: fixes any p_pycsw.records row whose xml column holds
-JSON (from before ingest_authoritative.py / ingest_minio.py /
-ingest_postgis.py were updated to generate real CSW XML - see those
-scripts' build_csw_xml() functions) instead of a valid OGC CSW 2.0.2
-Dublin Core (csw:Record) document. This JSON-instead-of-XML content is
-what caused QGIS MetaSearch's "record serialization failed: list index out
-of range" error - pycsw's ISO metadata parser tries to parse this column as
-XML, gets an empty result back from unparseable JSON text, and then
-unconditionally indexes it with [0].
+One-time migration: fixes any p_pycsw.records row that isn't correctly set
+up for pycsw's apiso profile (pycsw/config/pycsw.cfg.example has
+profiles=apiso). Two things have to both be right:
 
-Detects affected rows with "xml LIKE '{%'" (a JSON object), then
-double-checks each one actually fails to parse as XML in Python before
-touching it - so a row that happens to start with '{' but is still valid
-XML for some other reason is never overwritten. Only rebuilds the xml
-column; every other column is left untouched. Safe to run more than once -
-once a row's xml is valid, later runs will no longer match it.
+  1. typename must be exactly 'gmd:MD_Metadata' - pycsw's apiso plugin
+     (pycsw/plugins/profiles/apiso/apiso.py) decides whether to treat a
+     record as ISO 19139 with "typename == 'gmd:MD_Metadata'". Its only
+     fallback checks whether the raw xml string startswith the literal text
+     '<gmd:MD_Metadata>' with NO attributes - impossible for valid
+     namespaced XML, which must declare xmlns: on its root element. So a
+     record can have perfect ISO XML and still be mis-served if typename is
+     wrong.
+  2. xml must actually be a valid ISO 19139 gmd:MD_Metadata document -
+     earlier versions of this project's ingestion scripts stored
+     json.dumps(item) (before the first fix) or a Dublin Core csw:Record
+     document (before this fix) in that column. Either one makes owslib's
+     ISO parser (used once typename routes a record to it) end up with an
+     empty gmd:identificationInfo/gmd:MD_DataIdentification list, which is
+     then indexed unconditionally with [0] - "record serialization failed:
+     list index out of range".
+
+Detects affected rows with "typename IS DISTINCT FROM 'gmd:MD_Metadata' OR
+xml LIKE '{%'" - the first half catches records already fixed to valid-but-
+wrong-schema XML by an earlier version of this migration, not just the
+original JSON-holding rows. Each candidate is regenerated regardless of
+which half matched, since typename and xml must always change together.
+Safe to run more than once - once a row is correctly typed and has valid
+ISO XML, later runs no longer match it.
 
 Reads only the columns still known to exist on p_pycsw.records (see the
 "Fix views.py for dropped columns" work): identifier, title, abstract,
-keywords, type, format, publisher, organization, wkt_geometry, mdsource.
+keywords, publisher, organization, wkt_geometry, topicategory, time_begin.
 
 Unlike this project's other migration scripts, --dry-run here still needs a
 live database connection (read-only, no writes) - there is no local file
@@ -35,6 +47,7 @@ Usage:
 import argparse
 import sys
 import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -60,14 +73,28 @@ DB_CONFIG = {
     'sslmode': os.environ.get('GIS_DB_SSLMODE', 'require'),
 }
 
-CSW_NAMESPACES = {
-    'csw': 'http://www.opengis.net/cat/csw/2.0.2',
-    'dc':  'http://purl.org/dc/elements/1.1/',
-    'dct': 'http://purl.org/dc/terms/',
-    'ows': 'http://www.opengis.net/ows',
+# See scripts/ingest_authoritative.py's build_iso19139_xml() for the
+# original fix and full explanation - this mirrors it for existing rows.
+RECORD_TYPENAME = 'gmd:MD_Metadata'
+RECORD_SCHEMA = 'http://www.isotc211.org/2005/gmd'
+
+ISO_NAMESPACES = {
+    'gmd': 'http://www.isotc211.org/2005/gmd',
+    'gco': 'http://www.isotc211.org/2005/gco',
 }
-for _prefix, _uri in CSW_NAMESPACES.items():
+for _prefix, _uri in ISO_NAMESPACES.items():
     ET.register_namespace(_prefix, _uri)
+
+ISO_CONTACT_ORGANISATION = 'Systra GIS Team'
+ISO_CONTACT_EMAIL = 'gis_uk@systra.com'
+
+_ISO_CODELIST_BASE = (
+    'http://standards.iso.org/ittf/PubliclyAvailableStandards/'
+    'ISO_19139_Schemas/resources/codelist/gmxCodelists.xml'
+)
+ISO_CHARACTER_SET_CODELIST = f'{_ISO_CODELIST_BASE}#MD_CharacterSetCode'
+ISO_SCOPE_CODELIST = f'{_ISO_CODELIST_BASE}#MD_ScopeCode'
+ISO_ROLE_CODELIST = f'{_ISO_CODELIST_BASE}#CI_RoleCode'
 
 
 def _is_db_unconfigured():
@@ -114,90 +141,168 @@ def parse_keywords(keywords_raw):
     return [keywords_raw.strip()] if keywords_raw.strip() else []
 
 
-def build_csw_xml(identifier, title, keywords, record_type, record_format,
-                   organisation, abstract, source_url, bbox):
+def _gmd(tag):
+    return f"{{{ISO_NAMESPACES['gmd']}}}{tag}"
+
+
+def _gco(tag):
+    return f"{{{ISO_NAMESPACES['gco']}}}{tag}"
+
+
+def _iso_char_string(parent, tag, text):
+    """<gmd:{tag}><gco:CharacterString>{text}</gco:CharacterString></gmd:{tag}>"""
+    if text is None or text == '':
+        return None
+    element = ET.SubElement(parent, _gmd(tag))
+    char_string = ET.SubElement(element, _gco('CharacterString'))
+    char_string.text = str(text)
+    return element
+
+
+def build_iso19139_xml(identifier, title, abstract, keywords, topic_category,
+                        dataset_reference_date, bbox, language='eng'):
     """
-    Renders a minimal, valid OGC CSW 2.0.2 Dublin Core (csw:Record) XML
-    document. See scripts/ingest_authoritative.py's build_csw_xml() for the
-    original fix and full explanation of the bug this addresses.
+    Renders a minimal, valid ISO 19139 gmd:MD_Metadata XML document. See
+    scripts/ingest_authoritative.py's build_iso19139_xml() for the original
+    fix and full explanation of the bug this addresses (verified against
+    both pycsw's apiso.py and OWSLib's iso.py source).
 
     Built with ElementTree (not string formatting), so titles/abstracts
     containing '&', '<', '>' etc. can never produce malformed XML.
     """
-    root = ET.Element(f"{{{CSW_NAMESPACES['csw']}}}Record")
+    root = ET.Element(_gmd('MD_Metadata'))
 
-    def add(prefix, tag, text):
-        if text is None or text == '':
-            return None
-        element = ET.SubElement(root, f'{{{CSW_NAMESPACES[prefix]}}}{tag}')
-        element.text = str(text)
-        return element
+    _iso_char_string(root, 'fileIdentifier', identifier)
+    _iso_char_string(root, 'language', language)
 
-    add('dc', 'identifier', identifier)
-    add('dc', 'title', title)
-    add('dc', 'type', record_type)
-    add('dc', 'format', record_format)
-    for keyword in (keywords or [])[:20]:
-        add('dc', 'subject', keyword)
-    add('dc', 'publisher', organisation)
-    add('dct', 'abstract', abstract)
-    references = add('dct', 'references', source_url)
-    if references is not None:
-        references.set('scheme', 'WWW:LINK')
+    character_set = ET.SubElement(root, _gmd('characterSet'))
+    character_set_code = ET.SubElement(character_set, _gmd('MD_CharacterSetCode'))
+    character_set_code.set('codeList', ISO_CHARACTER_SET_CODELIST)
+    character_set_code.set('codeListValue', 'utf8')
+    character_set_code.text = 'utf8'
+
+    hierarchy_level = ET.SubElement(root, _gmd('hierarchyLevel'))
+    hierarchy_level_code = ET.SubElement(hierarchy_level, _gmd('MD_ScopeCode'))
+    hierarchy_level_code.set('codeList', ISO_SCOPE_CODELIST)
+    hierarchy_level_code.set('codeListValue', 'dataset')
+    hierarchy_level_code.text = 'dataset'
+
+    contact = ET.SubElement(root, _gmd('contact'))
+    responsible_party = ET.SubElement(contact, _gmd('CI_ResponsibleParty'))
+    _iso_char_string(responsible_party, 'organisationName', ISO_CONTACT_ORGANISATION)
+    contact_info = ET.SubElement(responsible_party, _gmd('contactInfo'))
+    ci_contact = ET.SubElement(contact_info, _gmd('CI_Contact'))
+    address_wrapper = ET.SubElement(ci_contact, _gmd('address'))
+    ci_address = ET.SubElement(address_wrapper, _gmd('CI_Address'))
+    _iso_char_string(ci_address, 'electronicMailAddress', ISO_CONTACT_EMAIL)
+    role = ET.SubElement(responsible_party, _gmd('role'))
+    role_code = ET.SubElement(role, _gmd('CI_RoleCode'))
+    role_code.set('codeList', ISO_ROLE_CODELIST)
+    role_code.set('codeListValue', 'pointOfContact')
+    role_code.text = 'pointOfContact'
+
+    date_stamp = ET.SubElement(root, _gmd('dateStamp'))
+    date_stamp_value = ET.SubElement(date_stamp, _gco('Date'))
+    date_stamp_value.text = dataset_reference_date or datetime.now(timezone.utc).date().isoformat()
+
+    identification_info = ET.SubElement(root, _gmd('identificationInfo'))
+    data_identification = ET.SubElement(identification_info, _gmd('MD_DataIdentification'))
+
+    citation = ET.SubElement(data_identification, _gmd('citation'))
+    ci_citation = ET.SubElement(citation, _gmd('CI_Citation'))
+    _iso_char_string(ci_citation, 'title', title)
+    if dataset_reference_date:
+        citation_date = ET.SubElement(ci_citation, _gmd('date'))
+        ci_date = ET.SubElement(citation_date, _gmd('CI_Date'))
+        date_element = ET.SubElement(ci_date, _gmd('date'))
+        ET.SubElement(date_element, _gco('Date')).text = dataset_reference_date
+        date_type = ET.SubElement(ci_date, _gmd('dateType'))
+        # migrate_fix_xml.py only has time_begin (temporal_extent, a
+        # different GEMINI concept from dataset_reference_date) available
+        # among existing columns - not a real publication/revision/creation
+        # date type, so this is deliberately left generic.
+        date_type_code = ET.SubElement(date_type, _gmd('CI_DateTypeCode'))
+        date_type_code.set('codeListValue', 'publication')
+        date_type_code.text = 'publication'
+
+    _iso_char_string(data_identification, 'abstract', abstract)
+
+    if keywords:
+        descriptive_keywords = ET.SubElement(data_identification, _gmd('descriptiveKeywords'))
+        md_keywords = ET.SubElement(descriptive_keywords, _gmd('MD_Keywords'))
+        for keyword in keywords[:20]:
+            _iso_char_string(md_keywords, 'keyword', keyword)
+
+    _iso_char_string(data_identification, 'language', language)
+
+    if topic_category:
+        topic_category_el = ET.SubElement(data_identification, _gmd('topicCategory'))
+        ET.SubElement(topic_category_el, _gmd('MD_TopicCategoryCode')).text = topic_category
 
     if bbox and len(bbox) == 4:
         xmin, ymin, xmax, ymax = bbox
-        bbox_element = ET.SubElement(root, f"{{{CSW_NAMESPACES['ows']}}}BoundingBox")
-        bbox_element.set('crs', 'urn:ogc:def:crs:EPSG::4326')
-        # y x order (lat lon), matching pycsw's own convention - see
-        # catalogue/views.py's _csw_record_to_feature().
-        lower = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}LowerCorner")
-        lower.text = f"{ymin} {xmin}"
-        upper = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}UpperCorner")
-        upper.text = f"{ymax} {xmax}"
+        extent = ET.SubElement(data_identification, _gmd('extent'))
+        ex_extent = ET.SubElement(extent, _gmd('EX_Extent'))
+        geographic_element = ET.SubElement(ex_extent, _gmd('geographicElement'))
+        geographic_bbox = ET.SubElement(geographic_element, _gmd('EX_GeographicBoundingBox'))
+        for tag, value in (
+            ('westBoundLongitude', xmin), ('eastBoundLongitude', xmax),
+            ('southBoundLatitude', ymin), ('northBoundLatitude', ymax),
+        ):
+            bound_element = ET.SubElement(geographic_bbox, _gmd(tag))
+            ET.SubElement(bound_element, _gco('Decimal')).text = str(value)
 
     return ET.tostring(root, encoding='unicode')
 
 
 SELECT_CANDIDATES_SQL = """
-    SELECT identifier, title, abstract, keywords, type, format,
-           publisher, organization, wkt_geometry, mdsource, xml
+    SELECT identifier, title, abstract, keywords,
+           publisher, organization, wkt_geometry, topicategory, time_begin,
+           typename, xml
     FROM p_pycsw.records
-    WHERE xml LIKE '{%%'
+    WHERE typename IS DISTINCT FROM %(typename)s OR xml LIKE '{%%'
     ORDER BY identifier
 """
 
-UPDATE_SQL = "UPDATE p_pycsw.records SET xml = %s WHERE identifier = %s"
+UPDATE_SQL = """
+    UPDATE p_pycsw.records
+    SET typename = %(typename)s, schema = %(schema)s, xml = %(xml)s
+    WHERE identifier = %(identifier)s
+"""
 
 
 def run(dry_run):
     conn = psycopg2.connect(**DB_CONFIG)
-    fixed = already_valid = failed = 0
+    fixed = already_ok = failed = 0
     try:
         with conn.cursor() as cur:
-            cur.execute(SELECT_CANDIDATES_SQL)
+            cur.execute(SELECT_CANDIDATES_SQL, {'typename': RECORD_TYPENAME})
             rows = cur.fetchall()
-            print(f"Found {len(rows)} record(s) with 'xml LIKE \\'{{%'\" (JSON-shaped xml column).\n")
+            print(
+                f"Found {len(rows)} record(s) not yet typename = '{RECORD_TYPENAME}' "
+                f"or with JSON-shaped xml.\n"
+            )
 
             for i, (
-                identifier, title, abstract, keywords_raw, record_type,
-                record_format, publisher, organization, wkt_geometry,
-                mdsource, current_xml,
+                identifier, title, abstract, keywords_raw,
+                publisher, organization, wkt_geometry, topic_category, time_begin,
+                current_typename, current_xml,
             ) in enumerate(rows, 1):
                 # Double-check even though the SQL filter already matched -
-                # a row that happens to start with '{' but is somehow still
-                # valid XML (extremely unlikely) is left untouched.
-                if is_valid_xml(current_xml):
-                    already_valid += 1
-                    print(f'  [{i}/{len(rows)}] {identifier}: already valid XML - skipped')
+                # a row with the correct typename AND already-valid ISO XML
+                # (extremely unlikely to reach here at all) is left untouched.
+                if current_typename == RECORD_TYPENAME and is_valid_xml(current_xml):
+                    already_ok += 1
+                    print(f'  [{i}/{len(rows)}] {identifier}: already correct - skipped')
                     continue
 
                 organisation = organization or publisher or ''
                 keywords = parse_keywords(keywords_raw)
                 bbox = wkt_to_bbox(wkt_geometry)
-                new_xml = build_csw_xml(
-                    identifier, title, keywords, record_type, record_format,
-                    organisation, abstract, mdsource, bbox,
+                reference_date = time_begin.date().isoformat() if hasattr(time_begin, 'date') else None
+                new_xml = build_iso19139_xml(
+                    identifier, title, abstract, keywords, topic_category,
+                    reference_date, bbox,
                 )
 
                 if dry_run:
@@ -207,7 +312,10 @@ def run(dry_run):
                     continue
 
                 try:
-                    cur.execute(UPDATE_SQL, (new_xml, identifier))
+                    cur.execute(UPDATE_SQL, {
+                        'typename': RECORD_TYPENAME, 'schema': RECORD_SCHEMA,
+                        'xml': new_xml, 'identifier': identifier,
+                    })
                     conn.commit()
                     fixed += 1
                     print(f'  [{i}/{len(rows)}] {identifier}: OK - fixed')
@@ -221,11 +329,11 @@ def run(dry_run):
     print()
     if dry_run:
         print(
-            f'DRY-RUN complete: {len(rows) - already_valid} record(s) would be fixed, '
-            f'{already_valid} already valid. No database writes were made.'
+            f'DRY-RUN complete: {len(rows) - already_ok} record(s) would be fixed, '
+            f'{already_ok} already correct. No database writes were made.'
         )
     else:
-        print(f'Migration complete: {fixed} fixed, {already_valid} already valid, {failed} failed.')
+        print(f'Migration complete: {fixed} fixed, {already_ok} already correct, {failed} failed.')
     return 1 if failed else 0
 
 

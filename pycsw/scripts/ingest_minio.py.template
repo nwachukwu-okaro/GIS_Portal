@@ -2,7 +2,8 @@ import json
 import boto3
 import psycopg2
 import zoneinfo
-from datetime import datetime
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
 
 # ── MinIO connection ──────────────────────────────────────────
 MINIO_ENDPOINT  = "YOUR_MINIO_ENDPOINT"
@@ -50,6 +51,33 @@ AOI_LOOKUP = {
 DEFAULT_BBOX = [-180, -90, 180, 90]
 DEFAULT_WKT  = 'POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))'
 LONDON_TZ    = zoneinfo.ZoneInfo("Europe/London")
+
+# ── ISO 19139 XML (p_pycsw.records.xml) ─────────────────────────
+# pycsw is configured with profiles=apiso (pycsw/config/pycsw.cfg.example).
+# Its apiso plugin only treats a record's xml column as ISO 19139 when the
+# record's typename column is exactly 'gmd:MD_Metadata' - see
+# scripts/ingest_authoritative.py's build_iso19139_xml() docstring for the
+# full explanation, verified against pycsw's own apiso.py source.
+RECORD_TYPENAME = 'gmd:MD_Metadata'
+RECORD_SCHEMA   = 'http://www.isotc211.org/2005/gmd'
+
+ISO_NAMESPACES = {
+    'gmd': 'http://www.isotc211.org/2005/gmd',
+    'gco': 'http://www.isotc211.org/2005/gco',
+}
+for _prefix, _uri in ISO_NAMESPACES.items():
+    ET.register_namespace(_prefix, _uri)
+
+ISO_CONTACT_ORGANISATION = 'Systra GIS Team'
+ISO_CONTACT_EMAIL = 'gis_uk@systra.com'
+
+_ISO_CODELIST_BASE = (
+    'http://standards.iso.org/ittf/PubliclyAvailableStandards/'
+    'ISO_19139_Schemas/resources/codelist/gmxCodelists.xml'
+)
+ISO_CHARACTER_SET_CODELIST = f'{_ISO_CODELIST_BASE}#MD_CharacterSetCode'
+ISO_SCOPE_CODELIST = f'{_ISO_CODELIST_BASE}#MD_ScopeCode'
+ISO_ROLE_CODELIST = f'{_ISO_CODELIST_BASE}#CI_RoleCode'
 
 # ─────────────────────────────────────────────────────────────
 
@@ -216,6 +244,101 @@ def build_stac_item(key, bucket, last_modified, tags, info, bbox):
         ]
     }
 
+def _gmd(tag):
+    return f"{{{ISO_NAMESPACES['gmd']}}}{tag}"
+
+def _gco(tag):
+    return f"{{{ISO_NAMESPACES['gco']}}}{tag}"
+
+def _iso_char_string(parent, tag, text):
+    """<gmd:{tag}><gco:CharacterString>{text}</gco:CharacterString></gmd:{tag}>"""
+    if text is None or text == '':
+        return None
+    element = ET.SubElement(parent, _gmd(tag))
+    char_string = ET.SubElement(element, _gco('CharacterString'))
+    char_string.text = str(text)
+    return element
+
+def build_iso19139_xml(identifier, title, abstract, keywords, bbox, language='eng'):
+    """
+    Renders a minimal, valid ISO 19139 gmd:MD_Metadata XML document for
+    p_pycsw.records.xml. See scripts/ingest_authoritative.py's
+    build_iso19139_xml() for the full explanation of why this replaces the
+    previous json.dumps(item) content and why RECORD_TYPENAME matters just
+    as much as this XML's content - this mirrors it using MinIO's own
+    (simpler) fields. No dedicated topic_category or dataset reference date
+    concept exists in this script's MinIO object tags, so those optional
+    ISO elements are omitted here rather than guessed.
+
+    Built with ElementTree (not string formatting), so titles/abstracts
+    containing '&', '<', '>' etc. can never produce malformed XML.
+    """
+    root = ET.Element(_gmd('MD_Metadata'))
+
+    _iso_char_string(root, 'fileIdentifier', identifier)
+    _iso_char_string(root, 'language', language)
+
+    character_set = ET.SubElement(root, _gmd('characterSet'))
+    character_set_code = ET.SubElement(character_set, _gmd('MD_CharacterSetCode'))
+    character_set_code.set('codeList', ISO_CHARACTER_SET_CODELIST)
+    character_set_code.set('codeListValue', 'utf8')
+    character_set_code.text = 'utf8'
+
+    hierarchy_level = ET.SubElement(root, _gmd('hierarchyLevel'))
+    hierarchy_level_code = ET.SubElement(hierarchy_level, _gmd('MD_ScopeCode'))
+    hierarchy_level_code.set('codeList', ISO_SCOPE_CODELIST)
+    hierarchy_level_code.set('codeListValue', 'dataset')
+    hierarchy_level_code.text = 'dataset'
+
+    contact = ET.SubElement(root, _gmd('contact'))
+    responsible_party = ET.SubElement(contact, _gmd('CI_ResponsibleParty'))
+    _iso_char_string(responsible_party, 'organisationName', ISO_CONTACT_ORGANISATION)
+    contact_info = ET.SubElement(responsible_party, _gmd('contactInfo'))
+    ci_contact = ET.SubElement(contact_info, _gmd('CI_Contact'))
+    address_wrapper = ET.SubElement(ci_contact, _gmd('address'))
+    ci_address = ET.SubElement(address_wrapper, _gmd('CI_Address'))
+    _iso_char_string(ci_address, 'electronicMailAddress', ISO_CONTACT_EMAIL)
+    role = ET.SubElement(responsible_party, _gmd('role'))
+    role_code = ET.SubElement(role, _gmd('CI_RoleCode'))
+    role_code.set('codeList', ISO_ROLE_CODELIST)
+    role_code.set('codeListValue', 'pointOfContact')
+    role_code.text = 'pointOfContact'
+
+    date_stamp = ET.SubElement(root, _gmd('dateStamp'))
+    ET.SubElement(date_stamp, _gco('Date')).text = datetime.now(timezone.utc).date().isoformat()
+
+    identification_info = ET.SubElement(root, _gmd('identificationInfo'))
+    data_identification = ET.SubElement(identification_info, _gmd('MD_DataIdentification'))
+
+    citation = ET.SubElement(data_identification, _gmd('citation'))
+    ci_citation = ET.SubElement(citation, _gmd('CI_Citation'))
+    _iso_char_string(ci_citation, 'title', title)
+
+    _iso_char_string(data_identification, 'abstract', abstract)
+
+    if keywords:
+        descriptive_keywords = ET.SubElement(data_identification, _gmd('descriptiveKeywords'))
+        md_keywords = ET.SubElement(descriptive_keywords, _gmd('MD_Keywords'))
+        for keyword in keywords[:20]:
+            _iso_char_string(md_keywords, 'keyword', keyword)
+
+    _iso_char_string(data_identification, 'language', language)
+
+    if bbox and len(bbox) == 4:
+        xmin, ymin, xmax, ymax = bbox
+        extent = ET.SubElement(data_identification, _gmd('extent'))
+        ex_extent = ET.SubElement(extent, _gmd('EX_Extent'))
+        geographic_element = ET.SubElement(ex_extent, _gmd('geographicElement'))
+        geographic_bbox = ET.SubElement(geographic_element, _gmd('EX_GeographicBoundingBox'))
+        for tag, value in (
+            ('westBoundLongitude', xmin), ('eastBoundLongitude', xmax),
+            ('southBoundLatitude', ymin), ('northBoundLatitude', ymax),
+        ):
+            bound_element = ET.SubElement(geographic_bbox, _gmd(tag))
+            ET.SubElement(bound_element, _gco('Decimal')).text = str(value)
+
+    return ET.tostring(root, encoding='unicode')
+
 def ingest_bucket(s3, cur, bucket):
     """Ingest all tagged files from a single bucket."""
     print(f"\n  Scanning bucket: {bucket}")
@@ -261,6 +384,9 @@ def ingest_bucket(s3, cur, bucket):
             mime_type  = get_mime_type(key)
             anytext    = build_anytext(key, bucket, tags, size_str)
             identifier = get_identifier(bucket, key)
+            iso_xml    = build_iso19139_xml(
+                identifier, title, tags.get('abstract', ''), keywords_list, bbox,
+            )
 
             print(f"\n    Processing: {key}")
             print(f"      Title    : {title}")
@@ -277,7 +403,7 @@ def ingest_bucket(s3, cur, bucket):
                     mdsource, insert_date, xml,
                     anytext, title, abstract,
                     keywords, type, format,
-                    source, organization, creator,
+                    source, organization,
                     publisher, date_modified,
                     links, accessconstraints,
                     wkt_geometry,
@@ -288,13 +414,15 @@ def ingest_bucket(s3, cur, bucket):
                     %s, NOW(), %s,
                     %s, %s, %s,
                     %s, %s, %s,
-                    %s, %s, %s,
+                    %s, %s,
                     %s, %s,
                     %s, %s,
                     %s,
                     %s, %s
                 )
                 ON CONFLICT (identifier) DO UPDATE SET
+                    typename          = EXCLUDED.typename,
+                    schema            = EXCLUDED.schema,
                     xml               = EXCLUDED.xml,
                     anytext           = EXCLUDED.anytext,
                     title             = EXCLUDED.title,
@@ -303,7 +431,6 @@ def ingest_bucket(s3, cur, bucket):
                     type              = EXCLUDED.type,
                     format            = EXCLUDED.format,
                     organization      = EXCLUDED.organization,
-                    creator           = EXCLUDED.creator,
                     publisher         = EXCLUDED.publisher,
                     date_modified     = EXCLUDED.date_modified,
                     links             = EXCLUDED.links,
@@ -313,10 +440,10 @@ def ingest_bucket(s3, cur, bucket):
                     distanceuom       = EXCLUDED.distanceuom
             """, (
                 identifier,
-                'stac:item',
-                'https://stac-extensions.github.io/eo/v1.0.0/schema.json',
+                RECORD_TYPENAME,
+                RECORD_SCHEMA,
                 'minio-ingest',
-                json.dumps(item),
+                iso_xml,
                 anytext,
                 title,
                 tags.get('abstract', ''),
@@ -325,7 +452,6 @@ def ingest_bucket(s3, cur, bucket):
                 mime_type,
                 tags.get('project', ''),
                 tags.get('organisation', 'Systra UK'),
-                tags.get('team', ''),
                 tags.get('contact', ''),
                 last_modified.astimezone(LONDON_TZ).isoformat(),
                 json.dumps(item['links']),

@@ -54,6 +54,7 @@ import argparse
 import json
 import sys
 import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -89,18 +90,21 @@ DEFAULT_UK_LICENCE = 'Open Government Licence'
 # with fixed, descriptive defaults so this script's INSERTs stay valid
 # regardless of the exact NOT NULL constraints on the live table.
 #
-# typename/schema previously used 'dataset' / 'metadata_builder/authoritative'
-# here - values not recognised anywhere in pycsw's own typename handling, and
-# different from the proven-working 'stac:item' / STAC schema URL that
-# ingest_postgis.py.template and ingest_minio.py.template already use for
-# every other record in this same table. Aligned to match: neither value is
-# read anywhere in this codebase for record-source logic (that's done by
-# identifier pattern - see catalogue/views.py's _identifier_to_source()), so
-# this is a safe, low-risk change, and a plausible contributor to QGIS
-# MetaSearch's "record serialization failed" error alongside the xml column
-# issue below.
-RECORD_TYPENAME = 'stac:item'
-RECORD_SCHEMA = 'https://stac-extensions.github.io/eo/v1.0.0/schema.json'
+# typename/schema previously used 'stac:item' / the STAC schema URL, matching
+# the other (working, for non-ISO purposes) ingest scripts. pycsw is
+# configured with profiles=apiso (pycsw/config/pycsw.cfg.example), and its
+# apiso plugin decides whether to treat a record's xml column as ISO 19139
+# with THIS exact check (pycsw/plugins/profiles/apiso/apiso.py):
+#
+#   if (esn == 'full' and (typename == 'gmd:MD_Metadata' or is_iso_anyway)):
+#
+# is_iso_anyway only becomes True when the raw xml string startswith the
+# literal text '<gmd:MD_Metadata>' with NO attributes - impossible for any
+# validly-namespaced XML document, which must declare xmlns: attributes on
+# its root element. So typename == 'gmd:MD_Metadata' is the only path that
+# actually works, regardless of how correct the xml column's content is.
+RECORD_TYPENAME = 'gmd:MD_Metadata'
+RECORD_SCHEMA = 'http://www.isotc211.org/2005/gmd'
 
 
 def _is_db_unconfigured():
@@ -236,66 +240,155 @@ def build_metadata_json(gemini_source, columns):
     return {'gemini': gemini, 'columns': column_list}
 
 
-CSW_NAMESPACES = {
-    'csw': 'http://www.opengis.net/cat/csw/2.0.2',
-    'dc':  'http://purl.org/dc/elements/1.1/',
-    'dct': 'http://purl.org/dc/terms/',
-    'ows': 'http://www.opengis.net/ows',
+ISO_NAMESPACES = {
+    'gmd': 'http://www.isotc211.org/2005/gmd',
+    'gco': 'http://www.isotc211.org/2005/gco',
 }
-for _prefix, _uri in CSW_NAMESPACES.items():
+for _prefix, _uri in ISO_NAMESPACES.items():
     ET.register_namespace(_prefix, _uri)
 
+# gmd:contact is fixed (not per-record) - the catalogue's own point of
+# contact, matching pycsw.cfg.example's [metadata:main] contact_* values.
+ISO_CONTACT_ORGANISATION = 'Systra GIS Team'
+ISO_CONTACT_EMAIL = 'gis_uk@systra.com'
 
-def build_csw_xml(identifier, record_format, gemini):
+_ISO_CODELIST_BASE = (
+    'http://standards.iso.org/ittf/PubliclyAvailableStandards/'
+    'ISO_19139_Schemas/resources/codelist/gmxCodelists.xml'
+)
+ISO_CHARACTER_SET_CODELIST = f'{_ISO_CODELIST_BASE}#MD_CharacterSetCode'
+ISO_SCOPE_CODELIST = f'{_ISO_CODELIST_BASE}#MD_ScopeCode'
+ISO_ROLE_CODELIST = f'{_ISO_CODELIST_BASE}#CI_RoleCode'
+ISO_DATETYPE_CODELIST = f'{_ISO_CODELIST_BASE}#CI_DateTypeCode'
+
+
+def _gmd(tag):
+    return f"{{{ISO_NAMESPACES['gmd']}}}{tag}"
+
+
+def _gco(tag):
+    return f"{{{ISO_NAMESPACES['gco']}}}{tag}"
+
+
+def _iso_char_string(parent, tag, text):
+    """<gmd:{tag}><gco:CharacterString>{text}</gco:CharacterString></gmd:{tag}>"""
+    if text is None or text == '':
+        return None
+    element = ET.SubElement(parent, _gmd(tag))
+    char_string = ET.SubElement(element, _gco('CharacterString'))
+    char_string.text = str(text)
+    return element
+
+
+def build_iso19139_xml(identifier, gemini):
     """
-    Renders a minimal, valid OGC CSW 2.0.2 Dublin Core (csw:Record) XML
-    document for p_pycsw.records.xml.
+    Renders a minimal, valid ISO 19139 gmd:MD_Metadata XML document for
+    p_pycsw.records.xml.
 
-    Root cause of QGIS MetaSearch's "record serialization failed: list
-    index out of range": this column held json.dumps(data) - not XML at
-    all. pycsw's own metadata-parsing path (owslib's ISO MD_Metadata
-    parser, used e.g. when serving records to MetaSearch) tries to parse
-    this column's content as XML and, on unparseable JSON text, ends up
-    with an empty identification list - then unconditionally indexes
-    md.identification[0], raising exactly this IndexError. csw:Record
-    (Dublin Core) is pycsw's own simplest, most widely-supported schema -
-    safer here than attempting a full ISO19139 document by hand.
+    pycsw is configured with profiles=apiso (pycsw/config/pycsw.cfg.example).
+    Its apiso plugin decides whether to parse a record as ISO 19139 using
+    "typename == 'gmd:MD_Metadata'" (see RECORD_TYPENAME above) - once it
+    does, it uses owslib's MD_Metadata parser, which builds
+    self.identification by walking gmd:identificationInfo's children and
+    only appending an entry when that child's tag is exactly
+    MD_DataIdentification/MD_ServiceIdentification/SV_ServiceIdentification;
+    something downstream then indexes self.identification[0] unconditionally.
+    A Dublin Core csw:Record document (this project's first attempt at this
+    fix) has no such element at all, so self.identification stayed empty and
+    [0] raised exactly "record serialization failed: list index out of
+    range". This produces a real gmd:MD_DataIdentification instead, with
+    exactly the sub-elements owslib's parser looks for (verified against
+    OWSLib's iso.py source): citation title/date, abstract, descriptive
+    keywords, language, topic category, and geographic extent.
 
     Built with ElementTree (not string formatting), so titles/abstracts
     containing '&', '<', '>' etc. can never produce malformed XML.
     """
-    root = ET.Element(f"{{{CSW_NAMESPACES['csw']}}}Record")
+    root = ET.Element(_gmd('MD_Metadata'))
 
-    def add(prefix, tag, text):
-        if text is None or text == '':
-            return None
-        element = ET.SubElement(root, f'{{{CSW_NAMESPACES[prefix]}}}{tag}')
-        element.text = str(text)
-        return element
+    _iso_char_string(root, 'fileIdentifier', identifier)
+    language = gemini.get('dataset_language') or 'eng'
+    _iso_char_string(root, 'language', language)
 
-    add('dc', 'identifier', identifier)
-    add('dc', 'title', gemini.get('title'))
-    add('dc', 'type', 'dataset')
-    add('dc', 'format', record_format)
-    for keyword in (gemini.get('keywords') or [])[:20]:
-        add('dc', 'subject', keyword)
-    add('dc', 'creator', gemini.get('responsible_organisation'))
-    add('dc', 'publisher', gemini.get('responsible_organisation'))
-    add('dct', 'abstract', gemini.get('abstract'))
-    references = add('dct', 'references', gemini.get('resource_locator'))
-    if references is not None:
-        references.set('scheme', 'WWW:LINK')
+    character_set = ET.SubElement(root, _gmd('characterSet'))
+    character_set_code = ET.SubElement(character_set, _gmd('MD_CharacterSetCode'))
+    character_set_code.set('codeList', ISO_CHARACTER_SET_CODELIST)
+    character_set_code.set('codeListValue', 'utf8')
+    character_set_code.text = 'utf8'
+
+    hierarchy_level = ET.SubElement(root, _gmd('hierarchyLevel'))
+    hierarchy_level_code = ET.SubElement(hierarchy_level, _gmd('MD_ScopeCode'))
+    hierarchy_level_code.set('codeList', ISO_SCOPE_CODELIST)
+    hierarchy_level_code.set('codeListValue', 'dataset')
+    hierarchy_level_code.text = 'dataset'
+
+    contact = ET.SubElement(root, _gmd('contact'))
+    responsible_party = ET.SubElement(contact, _gmd('CI_ResponsibleParty'))
+    _iso_char_string(responsible_party, 'organisationName', ISO_CONTACT_ORGANISATION)
+    contact_info = ET.SubElement(responsible_party, _gmd('contactInfo'))
+    ci_contact = ET.SubElement(contact_info, _gmd('CI_Contact'))
+    address_wrapper = ET.SubElement(ci_contact, _gmd('address'))
+    ci_address = ET.SubElement(address_wrapper, _gmd('CI_Address'))
+    _iso_char_string(ci_address, 'electronicMailAddress', ISO_CONTACT_EMAIL)
+    role = ET.SubElement(responsible_party, _gmd('role'))
+    role_code = ET.SubElement(role, _gmd('CI_RoleCode'))
+    role_code.set('codeList', ISO_ROLE_CODELIST)
+    role_code.set('codeListValue', 'pointOfContact')
+    role_code.text = 'pointOfContact'
+
+    date_stamp = ET.SubElement(root, _gmd('dateStamp'))
+    date_stamp_value = ET.SubElement(date_stamp, _gco('Date'))
+    # Falls back to today (UTC) only when no dataset_reference_date exists -
+    # dateStamp is metadata-record-required, unlike the citation date below.
+    date_stamp_value.text = gemini.get('dataset_reference_date') or datetime.now(timezone.utc).date().isoformat()
+
+    identification_info = ET.SubElement(root, _gmd('identificationInfo'))
+    data_identification = ET.SubElement(identification_info, _gmd('MD_DataIdentification'))
+
+    citation = ET.SubElement(data_identification, _gmd('citation'))
+    ci_citation = ET.SubElement(citation, _gmd('CI_Citation'))
+    _iso_char_string(ci_citation, 'title', gemini.get('title'))
+    reference_date = gemini.get('dataset_reference_date')
+    if reference_date:
+        citation_date = ET.SubElement(ci_citation, _gmd('date'))
+        ci_date = ET.SubElement(citation_date, _gmd('CI_Date'))
+        date_element = ET.SubElement(ci_date, _gmd('date'))
+        ET.SubElement(date_element, _gco('Date')).text = reference_date
+        date_type = ET.SubElement(ci_date, _gmd('dateType'))
+        date_type_code = ET.SubElement(date_type, _gmd('CI_DateTypeCode'))
+        resolved_date_type = gemini.get('dataset_reference_date_type') or 'publication'
+        date_type_code.set('codeList', ISO_DATETYPE_CODELIST)
+        date_type_code.set('codeListValue', resolved_date_type)
+        date_type_code.text = resolved_date_type
+
+    _iso_char_string(data_identification, 'abstract', gemini.get('abstract'))
+
+    keywords = gemini.get('keywords') or []
+    if keywords:
+        descriptive_keywords = ET.SubElement(data_identification, _gmd('descriptiveKeywords'))
+        md_keywords = ET.SubElement(descriptive_keywords, _gmd('MD_Keywords'))
+        for keyword in keywords[:20]:
+            _iso_char_string(md_keywords, 'keyword', keyword)
+
+    _iso_char_string(data_identification, 'language', language)
+
+    topic_category = gemini.get('topic_category')
+    if topic_category:
+        topic_category_el = ET.SubElement(data_identification, _gmd('topicCategory'))
+        ET.SubElement(topic_category_el, _gmd('MD_TopicCategoryCode')).text = topic_category
 
     bbox = gemini.get('bounding_box') or {}
     if all(key in bbox for key in ('xmin', 'ymin', 'xmax', 'ymax')):
-        bbox_element = ET.SubElement(root, f"{{{CSW_NAMESPACES['ows']}}}BoundingBox")
-        bbox_element.set('crs', 'urn:ogc:def:crs:EPSG::4326')
-        # y x order (lat lon), matching pycsw's own convention - see
-        # catalogue/views.py's _csw_record_to_feature().
-        lower = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}LowerCorner")
-        lower.text = f"{bbox['ymin']} {bbox['xmin']}"
-        upper = ET.SubElement(bbox_element, f"{{{CSW_NAMESPACES['ows']}}}UpperCorner")
-        upper.text = f"{bbox['ymax']} {bbox['xmax']}"
+        extent = ET.SubElement(data_identification, _gmd('extent'))
+        ex_extent = ET.SubElement(extent, _gmd('EX_Extent'))
+        geographic_element = ET.SubElement(ex_extent, _gmd('geographicElement'))
+        geographic_bbox = ET.SubElement(geographic_element, _gmd('EX_GeographicBoundingBox'))
+        for tag, value in (
+            ('westBoundLongitude', bbox['xmin']), ('eastBoundLongitude', bbox['xmax']),
+            ('southBoundLatitude', bbox['ymin']), ('northBoundLatitude', bbox['ymax']),
+        ):
+            bound_element = ET.SubElement(geographic_bbox, _gmd(tag))
+            ET.SubElement(bound_element, _gco('Decimal')).text = str(value)
 
     return ET.tostring(root, encoding='unicode')
 
@@ -361,7 +454,7 @@ def build_record(data):
         'identifier': identifier,
         'typename': RECORD_TYPENAME,
         'schema': RECORD_SCHEMA,
-        'xml': build_csw_xml(identifier, record_format, gemini),
+        'xml': build_iso19139_xml(identifier, gemini),
         'title': title,
         'abstract': gemini.get('abstract') or '',
         'keywords': ', '.join(gemini.get('keywords') or []),
