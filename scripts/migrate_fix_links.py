@@ -2,12 +2,24 @@
 """Repair only pycsw 2.6.2 links. Run with --dry-run before applying.
 
 Reads all non-null links: a total comma count misses JSON and malformed
-individual entries in a multi-link value. Unknown formats abort the entire
-transaction rather than guessing or discarding links. No XML is changed.
+individual entries in a multi-link value. Only a_*/table and p_*/table
+identifiers without a file extension are repaired. Other identifiers are
+left untouched. Each failed record is rolled back and warned about without
+undoing successful records or stopping subsequent repairs. No XML is changed.
 """
 import argparse
 import json
+import logging
 import re
+
+LOGGER = logging.getLogger(__name__)
+
+
+def is_postgis_identifier(identifier):
+    """Conservative deployment-specific heuristic, not catalogue source metadata."""
+    return isinstance(identifier, str) and bool(
+        re.fullmatch(r'(?:a_|p_)[^/\s]+/[^/.\s]+', identifier)
+    )
 
 
 def _url(value):
@@ -57,35 +69,41 @@ def normalize_links(value):
 
 
 def repair_links(conn, dry_run=False):
-    """One atomic links-only transaction; conditional updates avoid lost edits."""
-    changed = unchanged = 0
+    """Commit each successful repair; a bad record cannot abort later repairs."""
+    changed = unchanged = skipped = failed = 0
     try:
         with conn.cursor() as cur:
             cur.execute('SELECT identifier, links FROM p_pycsw.records WHERE links IS NOT NULL ORDER BY identifier')
             rows = cur.fetchall()
             for identifier, old in rows:
+                if not is_postgis_identifier(identifier):
+                    skipped += 1
+                    LOGGER.warning('%s: skipped (MinIO or non-matching identifier); links unchanged', identifier)
+                    continue
                 try:
                     new = normalize_links(old)
-                except ValueError as exc:
-                    raise ValueError(f'{identifier}: {exc}') from exc
-                if new == old:
-                    unchanged += 1
-                    continue
-                print(f'{identifier}: {"would fix" if dry_run else "fixing"} links')
-                if not dry_run:
-                    cur.execute('UPDATE p_pycsw.records SET links = %s WHERE identifier = %s AND links IS NOT DISTINCT FROM %s',
-                                (new, identifier, old))
-                    if cur.rowcount != 1:
-                        raise RuntimeError(f'{identifier}: concurrently changed; retry migration')
-                changed += 1
-        if dry_run:
-            conn.rollback()
-        else:
-            conn.commit()
+                    if new == old:
+                        unchanged += 1
+                        continue
+                    if not dry_run:
+                        cur.execute('UPDATE p_pycsw.records SET links = %s WHERE identifier = %s AND links IS NOT DISTINCT FROM %s',
+                                    (new, identifier, old))
+                        if cur.rowcount != 1:
+                            raise RuntimeError('Concurrently changed; retry migration')
+                        conn.commit()
+                    changed += 1
+                    print(f'{identifier}: {"would fix" if dry_run else "fixed"} links')
+                except Exception as exc:
+                    conn.rollback()
+                    failed += 1
+                    LOGGER.warning('%s: skipped after error; links unchanged: %s', identifier, exc)
+        # Close any remaining read-only transaction (also used by dry-run).
+        conn.rollback()
     except Exception:
         conn.rollback()
         raise
-    print(f'Links: {changed} {"would change" if dry_run else "changed"}, {unchanged} unchanged.')
+    print(f'Links: {changed} {"would change" if dry_run else "changed"}, '
+          f'{unchanged} unchanged, {skipped} skipped, {failed} failed.')
     return changed
 
 

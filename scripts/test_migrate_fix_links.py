@@ -3,7 +3,7 @@ import json
 import unittest
 from unittest.mock import MagicMock
 
-from migrate_fix_links import normalize_links, repair_links
+from migrate_fix_links import is_postgis_identifier, normalize_links, repair_links
 
 
 class LinksTests(unittest.TestCase):
@@ -43,25 +43,54 @@ class LinksTests(unittest.TestCase):
         return conn, cur
 
     def test_dry_run_no_writes(self):
-        conn, cur = self.connection([('id', 'https://example.com')])
+        conn, cur = self.connection([('a_test/table', 'https://example.com')])
         self.assertEqual(repair_links(conn, True), 1)
         self.assertEqual(cur.execute.call_count, 1)
         conn.commit.assert_not_called()
 
     def test_only_links_updated(self):
-        conn, cur = self.connection([('id', 'https://example.com')])
+        conn, cur = self.connection([('p_test/table', 'https://example.com')])
         repair_links(conn)
         statement, params = cur.execute.call_args.args
         self.assertIn('SET links = %s', statement)
-        self.assertEqual(params[1:], ('id', 'https://example.com'))
+        self.assertEqual(params[1:], ('p_test/table', 'https://example.com'))
         conn.commit.assert_called_once()
 
-    def test_error_rolls_back(self):
-        conn, cur = self.connection([('first', 'https://example.com'), ('bad', 'nonsense')])
-        with self.assertRaises(ValueError):
-            repair_links(conn)
-        conn.rollback.assert_called_once()
+    def test_error_does_not_stop_later_records(self):
+        conn, cur = self.connection([('a_test/first', 'https://example.com'),
+                                    ('a_test/bad', 'nonsense'),
+                                    ('p_test/last', 'https://example.com')])
+        with self.assertLogs(level='WARNING') as logs:
+            self.assertEqual(repair_links(conn), 2)
+        self.assertIn('a_test/bad', logs.output[0])
+        self.assertEqual(conn.commit.call_count, 2)
+        self.assertTrue(conn.rollback.called)
+
+    def test_source_heuristic(self):
+        for identifier in ('a_test/table', 'p_test/table_123'):
+            self.assertTrue(is_postgis_identifier(identifier))
+        for identifier in ('sandbox-po/filename.png', 'bucket/object',
+                           'a_bucket/file.png', 'transport/roads',
+                           'p_schema/nested/table', None):
+            self.assertFalse(is_postgis_identifier(identifier))
+
+    def test_minio_never_normalized_or_updated(self):
+        conn, cur = self.connection([('sandbox-po/file.png', '[invalid json'),
+                                    ('bucket/object', '/internal/path')])
+        with self.assertLogs(level='WARNING') as logs:
+            self.assertEqual(repair_links(conn), 0)
+        self.assertEqual(len(logs.output), 2)
+        self.assertEqual(cur.execute.call_count, 1)
         conn.commit.assert_not_called()
+
+    def test_database_error_does_not_stop_later_records(self):
+        conn, cur = self.connection([('a_test/bad', 'https://example.com'),
+                                    ('p_test/good', 'https://example.com')])
+        cur.execute.side_effect = [None, RuntimeError('DB update failed'), None]
+        with self.assertLogs(level='WARNING'):
+            self.assertEqual(repair_links(conn), 1)
+        conn.commit.assert_called_once()
+        self.assertTrue(conn.rollback.called)
 
 
 if __name__ == '__main__':
