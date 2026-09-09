@@ -46,4 +46,5 @@ contact_role=pointOfContact
 [repository]
 database=postgresql://YOUR_DB_USER:YOUR_DB_PASSWORD@YOUR_DB_HOST:5432/YOUR_DB_NAME
 table=p_pycsw.records
+filter=source = 'authoritative'
 mappings=pycsw.config.mappings

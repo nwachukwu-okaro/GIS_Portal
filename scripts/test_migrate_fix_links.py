@@ -49,17 +49,17 @@ class LinksTests(unittest.TestCase):
         conn.commit.assert_not_called()
 
     def test_only_links_updated(self):
-        conn, cur = self.connection([('p_test/table', 'https://example.com')])
+        conn, cur = self.connection([('a_test/table', 'https://example.com')])
         repair_links(conn)
         statement, params = cur.execute.call_args.args
         self.assertIn('SET links = %s', statement)
-        self.assertEqual(params[1:], ('p_test/table', 'https://example.com'))
+        self.assertEqual(params[1:], ('a_test/table', 'https://example.com'))
         conn.commit.assert_called_once()
 
     def test_error_does_not_stop_later_records(self):
         conn, cur = self.connection([('a_test/first', 'https://example.com'),
                                     ('a_test/bad', 'nonsense'),
-                                    ('p_test/last', 'https://example.com')])
+                                    ('a_test/last', 'https://example.com')])
         with self.assertLogs(level='WARNING') as logs:
             self.assertEqual(repair_links(conn), 2)
         self.assertIn('a_test/bad', logs.output[0])
@@ -67,25 +67,26 @@ class LinksTests(unittest.TestCase):
         self.assertTrue(conn.rollback.called)
 
     def test_source_heuristic(self):
-        for identifier in ('a_test/table', 'p_test/table_123'):
+        for identifier in ('a_test/table', 'a_test/table_123'):
             self.assertTrue(is_postgis_identifier(identifier))
         for identifier in ('sandbox-po/filename.png', 'bucket/object',
                            'a_bucket/file.png', 'transport/roads',
-                           'p_schema/nested/table', None):
+                           'p_test/table', 'p_schema/nested/table', None):
             self.assertFalse(is_postgis_identifier(identifier))
 
     def test_minio_never_normalized_or_updated(self):
         conn, cur = self.connection([('sandbox-po/file.png', '[invalid json'),
-                                    ('bucket/object', '/internal/path')])
+                                    ('bucket/object', '/internal/path'),
+                                    ('p_project/table', 'https://example.com/data')])
         with self.assertLogs(level='WARNING') as logs:
             self.assertEqual(repair_links(conn), 0)
-        self.assertEqual(len(logs.output), 2)
+        self.assertEqual(len(logs.output), 3)
         self.assertEqual(cur.execute.call_count, 1)
         conn.commit.assert_not_called()
 
     def test_database_error_does_not_stop_later_records(self):
         conn, cur = self.connection([('a_test/bad', 'https://example.com'),
-                                    ('p_test/good', 'https://example.com')])
+                                    ('a_test/good', 'https://example.com')])
         cur.execute.side_effect = [None, RuntimeError('DB update failed'), None]
         with self.assertLogs(level='WARNING'):
             self.assertEqual(repair_links(conn), 1)

@@ -2,7 +2,7 @@
 """Repair only pycsw 2.6.2 links. Run with --dry-run before applying.
 
 Reads all non-null links: a total comma count misses JSON and malformed
-individual entries in a multi-link value. Only a_*/table and p_*/table
+individual entries in a multi-link value. Only a_*/table
 identifiers without a file extension are repaired. Other identifiers are
 left untouched. Each failed record is rolled back and warned about without
 undoing successful records or stopping subsequent repairs. No XML is changed.
@@ -18,7 +18,7 @@ LOGGER = logging.getLogger(__name__)
 def is_postgis_identifier(identifier):
     """Conservative deployment-specific heuristic, not catalogue source metadata."""
     return isinstance(identifier, str) and bool(
-        re.fullmatch(r'(?:a_|p_)[^/\s]+/[^/.\s]+', identifier)
+        re.fullmatch(r'a_[^/\s]+/[^/.\s]+', identifier)
     )
 
 
@@ -78,7 +78,7 @@ def repair_links(conn, dry_run=False):
             for identifier, old in rows:
                 if not is_postgis_identifier(identifier):
                     skipped += 1
-                    LOGGER.warning('%s: skipped (MinIO or non-matching identifier); links unchanged', identifier)
+                    LOGGER.warning('%s: skipped (not an a_ schema table); links unchanged', identifier)
                     continue
                 try:
                     new = normalize_links(old)
