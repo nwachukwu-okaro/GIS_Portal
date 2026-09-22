@@ -1243,7 +1243,7 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   transform: translateY(-3px);
 }
 
-.sa-icon {
+.sa-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1257,16 +1257,16 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   line-height: 1;
 }
 
-.sa-card-content { flex: 1; min-width: 0; }
+.sa-card-body { flex: 1; min-width: 0; }
 
-.sa-card-content h2 {
+.sa-card-name {
   margin: 0 0 6px;
   color: var(--systra-text);
   font-size: 16px;
   font-weight: 700;
 }
 
-.sa-card-content p {
+.sa-card-desc {
   display: -webkit-box;
   min-height: 40px;
   margin: 0;
@@ -1288,15 +1288,15 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   border-top: 1px solid #edf0f2;
 }
 
-.sa-tool-link {
+.sa-open-link {
   color: #C8102E;
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
 }
 
-.sa-tool-link:hover { color: var(--systra-red-dk); text-decoration: none; }
-.sa-tool-link.is-disabled { color: #b1b7bf; cursor: not-allowed; }
+.sa-open-link:hover { color: var(--systra-red-dk); text-decoration: none; }
+.sa-open-link.is-disabled { color: #b1b7bf; cursor: not-allowed; }
 .sa-arrow { margin-left: 4px; font-size: 17px; line-height: 0; }
 
 .sa-badge {

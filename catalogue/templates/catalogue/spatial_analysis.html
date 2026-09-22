@@ -30,9 +30,7 @@
     <p>Try a different search term or category.</p>
   </div>
 </section>
-{% endblock %}
 
-{% block extra_js %}
 <script>
   const OPERATIONS = [
     { id:"join",      name:"Join",      description:"Attribute or spatial join between two datasets, keyed on a shared field or location.", category:"Vector", icon:"join",      fmeAppUrl:"TODO_FME_URL", badge:"FME FLOW" },
@@ -57,9 +55,9 @@
   function operationLink(operation) {
     const label = 'Open tool <span class="sa-arrow" aria-hidden="true">→</span>';
     if (operation.fmeAppUrl === 'TODO_FME_URL') {
-      return `<span class="sa-tool-link is-disabled" aria-disabled="true" title="FME Flow URL to be configured">${label}</span>`;
+      return `<span class="sa-open-link is-disabled" aria-disabled="true" title="FME Flow URL to be configured">${label}</span>`;
     }
-    return `<a class="sa-tool-link" href="${escapeHtml(operation.fmeAppUrl)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    return `<a class="sa-open-link" href="${escapeHtml(operation.fmeAppUrl)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   }
 
   function renderOperations(operations) {
@@ -75,10 +73,10 @@
 
     grid.innerHTML = matches.map(operation => `
       <article class="sa-card">
-        <div class="sa-icon" aria-hidden="true">${OPERATION_ICONS[operation.icon] || '?'}</div>
-        <div class="sa-card-content">
-          <h2>${escapeHtml(operation.name)}</h2>
-          <p>${escapeHtml(operation.description)}</p>
+        <div class="sa-card-icon" aria-hidden="true">${OPERATION_ICONS[operation.icon] || '?'}</div>
+        <div class="sa-card-body">
+          <h2 class="sa-card-name">${escapeHtml(operation.name)}</h2>
+          <p class="sa-card-desc">${escapeHtml(operation.description)}</p>
         </div>
         <div class="sa-card-footer">
           ${operationLink(operation)}
