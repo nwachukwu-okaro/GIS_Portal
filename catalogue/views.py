@@ -1879,3 +1879,9 @@ def spatial_upload_success(request):
     if result is None:
         return redirect('catalogue:spatial_upload')
     return render(request, 'catalogue/upload_spatial_success.html', {'result': result})
+
+
+@login_required
+def spatial_analysis(request):
+    """Launch external FME Flow tools; analysis executes in FME, not Django."""
+    return render(request, 'catalogue/spatial_analysis.html')

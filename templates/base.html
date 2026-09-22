@@ -35,6 +35,9 @@
         </div>
       </div>
       {% endif %}
+      <a href="{% url 'catalogue:spatial_analysis' %}" class="systra-nav-link {% if request.resolver_match.url_name == 'spatial_analysis' %}active{% endif %}" {% if request.resolver_match.url_name == 'spatial_analysis' %}aria-current="page"{% endif %}>
+        Spatial Analysis <span class="spatial-new-badge">NEW</span>
+      </a>
       <a href="{% url 'accounts:profile' %}" class="systra-nav-link">{{ request.user.email }}</a>
       <form method="post" action="{% url 'accounts:logout' %}" class="systra-nav-logout-form">
         {% csrf_token %}

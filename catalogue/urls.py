@@ -6,6 +6,7 @@ app_name = 'catalogue'
 
 urlpatterns = [
     path('', views.search, name='search'),
+    path('spatial-analysis/', views.spatial_analysis, name='spatial_analysis'),
     path('item/<path:identifier>/geojson/', views.postgis_geojson, name='postgis_geojson'),
     path('item/<path:identifier>/download.csv', views.postgis_download_csv, name='postgis_download_csv'),
     path('item/<path:identifier>/download.gpkg', views.postgis_download_gpkg, name='postgis_download_gpkg'),
