@@ -3,33 +3,29 @@
 {% block title %}Spatial Analysis | Systra GIS Data Portal{% endblock %}
 
 {% block content %}
-<section class="spatial-analysis-page" aria-labelledby="spatial-analysis-title">
-  <div class="spatial-analysis-heading">
-    <div>
-      <h1 id="spatial-analysis-title">Spatial Analysis</h1>
+<section class="sa-page" aria-labelledby="sa-title">
+  <div class="sa-header">
+    <div class="sa-heading">
+      <h1 id="sa-title">Spatial Analysis</h1>
       <p>Run spatial operations against MinIO files and PostGIS datasets in the Systra catalogue</p>
     </div>
 
-    <div class="spatial-analysis-toolbar" role="search" aria-label="Filter spatial analysis tools">
-      <label class="visually-hidden" for="operationSearch">Search operations</label>
-      <div class="spatial-analysis-search-field">
-        <svg class="spatial-analysis-search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="11" cy="11" r="6.5"></circle>
-          <path d="m16 16 4.5 4.5"></path>
-        </svg>
-        <input id="operationSearch" type="search" placeholder="Search operations..." autocomplete="off" />
+    <div class="sa-toolbar" role="search" aria-label="Filter spatial analysis tools">
+      <label class="visually-hidden" for="sa-search">Search operations</label>
+      <div class="sa-search-wrap">
+        <span class="sa-search-icon" aria-hidden="true">⌕</span>
+        <input id="sa-search" type="search" placeholder="Search operations..." autocomplete="off">
       </div>
-      <label class="visually-hidden" for="operationCategory">Filter by category</label>
-      <select id="operationCategory" aria-label="Filter by category">
+      <label class="visually-hidden" for="sa-category">Filter by category</label>
+      <select id="sa-category" aria-label="Filter by category">
         <option value="">Any type</option>
       </select>
-      <button class="spatial-analysis-search-button" type="button" id="operationSearchButton">Search</button>
+      <button class="sa-search-button" type="button" id="sa-search-button">Search</button>
     </div>
   </div>
 
-  <div id="operationGrid" class="spatial-analysis-grid" aria-live="polite"></div>
-  <div id="operationEmpty" class="spatial-analysis-empty" hidden>
-    <div class="spatial-analysis-empty-plus" aria-hidden="true">+</div>
+  <div id="sa-grid" class="sa-grid" aria-live="polite"></div>
+  <div id="sa-empty" class="sa-empty" hidden>
     <h2>No matching operations</h2>
     <p>Try a different search term or category.</p>
   </div>
@@ -45,26 +41,11 @@
     { id:"intersect", name:"Intersect", description:"Compute the geometric intersection between two overlapping layers.",                     category:"Vector", icon:"intersect", fmeAppUrl:"TODO_FME_URL", badge:"FME FLOW" }
   ];
 
-  const operationGrid = document.getElementById('operationGrid');
-  const operationEmpty = document.getElementById('operationEmpty');
-  const operationSearch = document.getElementById('operationSearch');
-  const operationCategory = document.getElementById('operationCategory');
-  const operationSearchButton = document.getElementById('operationSearchButton');
-
-  const ICONS = {
-    join: `<svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
-      <circle cx="18" cy="22" r="7"></circle><circle cx="26" cy="22" r="7"></circle>
-    </svg>`,
-    buffer: `<svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
-      <circle cx="22" cy="22" r="8"></circle><circle cx="22" cy="22" r="13" stroke-dasharray="1 4"></circle>
-      <circle cx="22" cy="8" r="1.4" class="spatial-icon-dot"></circle><circle cx="22" cy="36" r="1.4" class="spatial-icon-dot"></circle>
-    </svg>`,
-    filter: `<svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
-      <path d="M12 13h20l-8 10v8l-4 2v-10z"></path>
-    </svg>`,
-    intersect: `<svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
-      <rect x="11" y="11" width="14" height="14" rx="2"></rect><rect x="19" y="19" width="14" height="14" rx="2"></rect>
-    </svg>`
+  const OPERATION_ICONS = {
+    join: '🔗',
+    buffer: '⭕',
+    filter: '🔽',
+    intersect: '⊕'
   };
 
   function escapeHtml(value) {
@@ -74,48 +55,63 @@
   }
 
   function operationLink(operation) {
-    const label = `Open tool <span class="spatial-arrow" aria-hidden="true">→</span>`;
+    const label = 'Open tool <span class="sa-arrow" aria-hidden="true">→</span>';
     if (operation.fmeAppUrl === 'TODO_FME_URL') {
-      return `<span class="spatial-tool-link is-disabled" aria-disabled="true" title="FME Flow URL to be configured">${label}</span>`;
+      return `<span class="sa-tool-link is-disabled" aria-disabled="true" title="FME Flow URL to be configured">${label}</span>`;
     }
-    return `<a class="spatial-tool-link" href="${escapeHtml(operation.fmeAppUrl)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    return `<a class="sa-tool-link" href="${escapeHtml(operation.fmeAppUrl)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   }
 
-  function renderOperations() {
-    const query = operationSearch.value.trim().toLowerCase();
-    const category = operationCategory.value;
-    const matches = OPERATIONS.filter(operation => {
+  function renderOperations(operations) {
+    const grid = document.getElementById('sa-grid');
+    const empty = document.getElementById('sa-empty');
+    const query = document.getElementById('sa-search').value.trim().toLowerCase();
+    const category = document.getElementById('sa-category').value;
+
+    const matches = operations.filter(operation => {
       const searchable = `${operation.name} ${operation.description} ${operation.category}`.toLowerCase();
       return (!query || searchable.includes(query)) && (!category || operation.category === category);
     });
 
-    operationGrid.innerHTML = matches.map(operation => `
-      <article class="spatial-operation-card">
-        <div class="spatial-operation-icon">${ICONS[operation.icon] || ''}</div>
-        <div class="spatial-operation-content">
+    grid.innerHTML = matches.map(operation => `
+      <article class="sa-card">
+        <div class="sa-icon" aria-hidden="true">${OPERATION_ICONS[operation.icon] || '?'}</div>
+        <div class="sa-card-content">
           <h2>${escapeHtml(operation.name)}</h2>
           <p>${escapeHtml(operation.description)}</p>
         </div>
-        <div class="spatial-operation-footer">
+        <div class="sa-card-footer">
           ${operationLink(operation)}
-          <span class="spatial-operation-badge">${escapeHtml(operation.badge)}</span>
+          <span class="sa-badge">${escapeHtml(operation.badge)}</span>
         </div>
       </article>
     `).join('');
 
-    operationEmpty.hidden = matches.length > 0;
+    empty.hidden = matches.length > 0;
   }
 
-  [...new Set(OPERATIONS.map(operation => operation.category))].sort().forEach(category => {
-    const option = document.createElement('option');
-    option.value = category;
-    option.textContent = category;
-    operationCategory.appendChild(option);
-  });
+  function initialiseSpatialAnalysis() {
+    const search = document.getElementById('sa-search');
+    const category = document.getElementById('sa-category');
+    const searchButton = document.getElementById('sa-search-button');
 
-  operationSearch.addEventListener('input', renderOperations);
-  operationCategory.addEventListener('change', renderOperations);
-  operationSearchButton.addEventListener('click', renderOperations);
-  renderOperations();
+    [...new Set(OPERATIONS.map(operation => operation.category))].sort().forEach(value => {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = value;
+      category.appendChild(option);
+    });
+
+    search.addEventListener('input', () => renderOperations(OPERATIONS));
+    category.addEventListener('change', () => renderOperations(OPERATIONS));
+    searchButton.addEventListener('click', () => renderOperations(OPERATIONS));
+    renderOperations(OPERATIONS);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialiseSpatialAnalysis);
+  } else {
+    initialiseSpatialAnalysis();
+  }
 </script>
 {% endblock %}

@@ -1125,3 +1125,212 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   .spatial-analysis-toolbar select { width: 82px; }
   .spatial-analysis-search-button { padding-inline: 11px; }
 }
+
+/* ── Spatial analysis launcher (safe, non-SVG layout) ─────────── */
+.sa-page {
+  max-width: 1168px;
+  margin: 0 auto;
+  padding: 44px 28px 64px;
+}
+
+.sa-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+.sa-heading h1 {
+  margin: 0 0 7px;
+  color: var(--systra-text);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.sa-heading p {
+  margin: 0;
+  color: var(--systra-muted);
+  font-size: 14px;
+}
+
+.sa-toolbar {
+  display: flex;
+  align-items: center;
+  width: min(390px, 100%);
+  min-height: 48px;
+  padding: 5px;
+  gap: 4px;
+  background: var(--systra-white);
+  border: 1px solid var(--systra-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.sa-search-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 7px;
+}
+
+.sa-search-icon {
+  flex: 0 0 auto;
+  margin-right: 8px;
+  color: #8a939e;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.sa-search-wrap input,
+.sa-toolbar select {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--systra-text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.sa-search-wrap input { width: 100%; }
+.sa-search-wrap input::placeholder { color: #7d858e; }
+
+.sa-toolbar select {
+  width: 92px;
+  padding: 8px 5px 8px 11px;
+  border-left: 1px solid var(--systra-border);
+  cursor: pointer;
+}
+
+.sa-search-button {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--systra-red);
+  color: var(--systra-white);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sa-search-button:hover { background: var(--systra-red-dk); }
+
+.sa-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sa-card {
+  display: flex;
+  min-height: 205px;
+  flex-direction: column;
+  padding: 22px 24px 18px 20px;
+  background: #fff;
+  border: 1px solid #dce0e5;
+  border-left: 4px solid #C8102E;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(20, 27, 35, 0.02);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.sa-card:hover {
+  box-shadow: 0 9px 24px rgba(20, 27, 35, 0.10);
+  transform: translateY(-3px);
+}
+
+.sa-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background: #fde8ec;
+  color: #C8102E;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.sa-card-content { flex: 1; min-width: 0; }
+
+.sa-card-content h2 {
+  margin: 0 0 6px;
+  color: var(--systra-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sa-card-content p {
+  display: -webkit-box;
+  min-height: 40px;
+  margin: 0;
+  overflow: hidden;
+  color: #667181;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.sa-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #edf0f2;
+}
+
+.sa-tool-link {
+  color: #C8102E;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sa-tool-link:hover { color: var(--systra-red-dk); text-decoration: none; }
+.sa-tool-link.is-disabled { color: #b1b7bf; cursor: not-allowed; }
+.sa-arrow { margin-left: 4px; font-size: 17px; line-height: 0; }
+
+.sa-badge {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #f1f3f5;
+  color: #99a1ab;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+.sa-empty {
+  padding: 52px 24px;
+  color: var(--systra-muted);
+  text-align: center;
+}
+
+.sa-empty h2 { margin: 0 0 6px; color: var(--systra-text); font-size: 17px; }
+.sa-empty p { margin: 0; font-size: 13px; }
+
+@media (max-width: 1100px) {
+  .sa-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .sa-page { padding: 30px 18px 48px; }
+  .sa-header { align-items: stretch; flex-direction: column; gap: 18px; }
+  .sa-toolbar { width: 100%; }
+  .sa-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 430px) {
+  .sa-toolbar select { width: 82px; }
+  .sa-search-button { padding-inline: 11px; }
+}
