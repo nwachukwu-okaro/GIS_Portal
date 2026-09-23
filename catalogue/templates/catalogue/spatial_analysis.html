@@ -29,12 +29,12 @@
 
       <div class="sa2-column-selector" id="sa2-column-selector" hidden>
         <label class="sa2-label">Select columns</label>
+        <select id="sa2-column-select" multiple size="6" class="sa2-select" aria-label="Select attribute columns"></select>
         <div class="sa2-column-controls">
           <button type="button" id="sa2-select-all-btn" class="sa2-btn-link">Select All</button>
           <span class="sa2-sep">|</span>
           <button type="button" id="sa2-deselect-all-btn" class="sa2-btn-link">Deselect All</button>
         </div>
-        <div id="sa2-column-checkboxes" class="sa2-column-checkboxes"></div>
       </div>
 
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
@@ -43,10 +43,6 @@
         <div class="sa2-summary-item">
           <span>Rows</span>
           <strong id="sa2-row-count">—</strong>
-        </div>
-        <div class="sa2-summary-columns">
-          <span>Columns</span>
-          <p id="sa2-column-list">—</p>
         </div>
       </div>
 
@@ -103,12 +99,11 @@
     const status = document.getElementById('sa2-status');
     const summary = document.getElementById('sa2-summary');
     const rowCount = document.getElementById('sa2-row-count');
-    const columnList = document.getElementById('sa2-column-list');
     const tableMeta = document.getElementById('sa2-table-meta');
     const attributeTable = document.getElementById('sa2-attribute-table');
     const mapMessage = document.getElementById('sa2-map-message');
     const columnSelector = document.getElementById('sa2-column-selector');
-    const columnCheckboxes = document.getElementById('sa2-column-checkboxes');
+    const columnSelect = document.getElementById('sa2-column-select');
     let currentColumns = [];
     let dataLayer = null;
 
@@ -145,31 +140,28 @@
     }
 
     function buildColumnSelector(columns) {
-      columnCheckboxes.innerHTML = '';
+      columnSelect.innerHTML = '';
       if (!columns.length) {
-        columnCheckboxes.textContent = 'No attribute columns available.';
+        const option = document.createElement('option');
+        option.textContent = 'No attribute columns available.';
+        option.disabled = true;
+        columnSelect.appendChild(option);
         columnSelector.hidden = false;
         return;
       }
       columns.forEach(column => {
         const name = typeof column === 'string' ? column : column.name;
-        const label = document.createElement('label');
-        label.className = 'sa2-col-checkbox-label';
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = name;
-        checkbox.checked = true;
-        checkbox.className = 'sa2-col-checkbox';
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(` ${name}`));
-        columnCheckboxes.appendChild(label);
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        option.selected = true;
+        columnSelect.appendChild(option);
       });
       columnSelector.hidden = false;
     }
 
     function getSelectedColumns() {
-      return Array.from(document.querySelectorAll('.sa2-col-checkbox:checked'))
-        .map(checkbox => checkbox.value);
+      return Array.from(columnSelect.selectedOptions).map(option => option.value);
     }
 
     function renderAttributeTable(features) {
@@ -247,10 +239,9 @@
       loadButton.disabled = true;
       summary.hidden = true;
       columnSelector.hidden = true;
-      columnCheckboxes.innerHTML = '';
+      columnSelect.innerHTML = '';
       currentColumns = [];
       rowCount.textContent = '—';
-      columnList.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
       if (!schema) return;
 
@@ -277,12 +268,12 @@
       const table = tableSelect.value;
       loadButton.disabled = !schemaSelect.value || !table;
       summary.hidden = !table;
+      columnSelector.hidden = true;
+      columnSelect.innerHTML = '';
       currentColumns = [];
       rowCount.textContent = '—';
-      columnList.textContent = 'Loading…';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
       if (!table) {
-        columnList.textContent = '—';
         return;
       }
       try {
@@ -292,13 +283,9 @@
         ]);
         currentColumns = columns;
         buildColumnSelector(currentColumns);
-        columnList.textContent = currentColumns.length
-          ? currentColumns.map(column => column.name).join(', ')
-          : 'No non-geometry columns';
         rowCount.textContent = Number(countPreview.total_count || 0).toLocaleString();
         setStatus(`${table} selected.`);
       } catch (error) {
-        columnList.textContent = 'Unavailable';
         setStatus(error.message, true);
       }
     }
@@ -331,7 +318,7 @@
           }).addTo(map);
 
           const bounds = dataLayer.getBounds();
-          if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
+          if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
         } else {
           mapMessage.textContent = 'This table has no geometry — attribute table shown below';
           mapMessage.hidden = false;
@@ -355,13 +342,13 @@
     schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
     document.getElementById('sa2-select-all-btn').addEventListener('click', () => {
-      document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
-        checkbox.checked = true;
+      Array.from(columnSelect.options).forEach(option => {
+        option.selected = true;
       });
     });
     document.getElementById('sa2-deselect-all-btn').addEventListener('click', () => {
-      document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
-        checkbox.checked = false;
+      Array.from(columnSelect.options).forEach(option => {
+        option.selected = false;
       });
     });
     loadButton.addEventListener('click', loadSelectedTable);

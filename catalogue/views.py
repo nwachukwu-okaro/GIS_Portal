@@ -2115,9 +2115,19 @@ def spatial_table_data_api(request):
                     for column in requested_columns.split(',')
                     if column.strip() in valid_columns and column.strip() != geometry_column
                 ]
+            geometry_expression = sql.SQL(
+                """
+                ST_AsGeoJSON(
+                    CASE
+                        WHEN ST_SRID({geom}::geometry) IN (0, 4326)
+                            THEN {geom}::geometry
+                        ELSE ST_Transform({geom}::geometry, 4326)
+                    END
+                )
+                """
+            ).format(geom=sql.Identifier(geometry_column)) if geometry_column else sql.SQL('NULL')
             select_parts = [
-                sql.SQL('ST_AsGeoJSON({})').format(sql.Identifier(geometry_column))
-                if geometry_column else sql.SQL('NULL'),
+                geometry_expression,
                 sql.SQL('COUNT(*) OVER ()'),
             ]
             select_parts.extend(sql.Identifier(column) for column in property_columns)

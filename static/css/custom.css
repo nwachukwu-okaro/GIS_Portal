@@ -1417,6 +1417,12 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   gap: 7px;
   margin: 0 0 9px;
 }
+.sa2-column-selector > .sa2-select {
+  height: 140px;
+  min-height: 140px;
+  margin-bottom: 9px;
+  padding: 5px 7px;
+}
 .sa2-btn-link {
   padding: 0;
   border: 0;
@@ -1427,23 +1433,6 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   text-decoration: underline;
 }
 .sa2-sep { color: #aeb6bd; font-size: 11px; }
-.sa2-column-checkboxes {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-height: 190px;
-  overflow-y: auto;
-}
-.sa2-col-checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  color: #4f5b68;
-  font-size: 11px;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-  cursor: pointer;
-}
 
 .sa2-status {
   min-height: 21px;
