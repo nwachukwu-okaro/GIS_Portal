@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `ancient_woodland_england`
 - **Geometry:** MULTIPOLYGON
@@ -45,13 +45,13 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `name` | `varchar(150)` | Official or publisher-assigned name of the represented feature. |
-| `theme` | `varchar(19)` | Publisher-supplied theme for the represented feature or record. |
-| `themname` | `varchar(37)` | Publisher-supplied themname for the represented feature or record. |
-| `status` | `varchar(8)` | Publisher-supplied status for the represented feature or record. |
-| `x_coord` | `integer` | Count or numeric value for x coord in the represented area. |
-| `y_coord` | `integer` | Count or numeric value for y coord in the represented area. |
-| `themid` | `varchar(255)` | Publisher-assigned themid for the record. |
-| `area` | `real` | Numeric area value recorded for the feature. |
-| `perimeter` | `real` | Count or numeric value for perimeter in the represented area. |
+| `theme` | `varchar(19)` |  |
+| `themname` | `varchar(37)` |  |
+| `status` | `varchar(8)` |  |
+| `x_coord` | `integer` |  |
+| `y_coord` | `integer` |  |
+| `themid` | `varchar(255)` |  |
+| `area` | `real` |  |
+| `perimeter` | `real` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

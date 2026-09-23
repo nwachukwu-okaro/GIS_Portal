@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `trees_to_be_preserved`
 - **Geometry:** MULTIPOLYGON
@@ -38,11 +38,11 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `ttbp_pk` | `integer` | Count or numeric value for ttbp pk in the represented area. |
-| `reference` | `varchar(5)` | Publisher-supplied reference for the represented feature or record. |
-| `location_se` | `varchar(254)` | Publisher-supplied location se for the represented feature or record. |
-| `settlement` | `varchar(100)` | Count or numeric value for settlement in the represented area. |
+| `ttbp_pk` | `integer` | Primary-key identifier for records in trees_to_be_preserved. |
+| `reference` | `varchar(5)` |  |
+| `location_se` | `varchar(254)` |  |
+| `settlement` | `varchar(100)` |  |
 | `plan_name` | `varchar(120)` | Name associated with the represented feature. |
-| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. |
-| `object_inf` | `varchar(20)` | Publisher-supplied object inf for the represented feature or record. |
+| `map_label` | `varchar(100)` |  |
+| `object_inf` | `varchar(20)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

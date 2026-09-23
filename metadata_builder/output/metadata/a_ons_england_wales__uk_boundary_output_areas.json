@@ -1,470 +1,122 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_ons_england_wales/uk_boundary_output_areas",
-  "schema": "a_ons_england_wales",
-  "table": "uk_boundary_output_areas",
-  "title": "UK Boundary Output Areas",
-  "description": "UK Boundary Output Areas is an authoritative dataset published by Office for National Statistics. It represents uk boundary output areas features using geometry geometry.",
-  "feature_concept": "uk_boundary_output_areas",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Office for National Statistics",
-    "product": null,
-    "source_url": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence v3.0",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Source: Office for National Statistics licensed under the Open Government Licence v.3.0",
-    "verification_status": "needs_review",
-    "licence_scope": "Digital boundaries may also require OS attribution; postcode and UPRN products have additional rights."
-  },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "England and Wales",
-  "geometry": {
-    "column": "shape",
-    "type": "GEOMETRY",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -6.418601200411691,
-      "ymin": 49.864673592663614,
-      "xmax": 1.763680106707907,
-      "ymax": 55.811091357154886
-    },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 188880,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "uk_boundary_output_areas_pkey",
-      "definition": "CREATE UNIQUE INDEX uk_boundary_output_areas_pkey ON a_ons_england_wales.uk_boundary_output_areas USING btree (fid)"
-    },
-    {
-      "name": "uk_boundary_output_areas_shape_1779360789974",
-      "definition": "CREATE INDEX uk_boundary_output_areas_shape_1779360789974 ON a_ons_england_wales.uk_boundary_output_areas USING gist (shape)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "oa21cd",
-      "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "E00000001",
-          "E00000003",
-          "E00000005",
-          "E00000007",
-          "E00000010"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
-    },
-    {
-      "name": "lsoa21cd",
-      "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "E01020458",
-          "E01028844",
-          "E01022590",
-          "E01015165",
-          "E01020656"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.1689357,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
-    },
-    {
-      "name": "lsoa21nm",
-      "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Waverley 012E",
-          "Tunbridge Wells 001C",
-          "Derbyshire Dales 006F",
-          "East Suffolk 017E",
-          "Stoke-on-Trent 016H"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.1689357,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
-    },
-    {
-      "name": "lsoa21nmw",
-      "data_type": "text",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          " ",
-          "Abertawe 001A",
-          "Abertawe 001B",
-          "Abertawe 001C",
-          "Abertawe 001D"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 264.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
-    },
-    {
-      "name": "bng_e",
-      "data_type": "integer",
-      "description": "Count or numeric value for bng e in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.6150861,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "bng_n",
-      "data_type": "integer",
-      "description": "Count or numeric value for bng n in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.64659315,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "lat",
-      "data_type": "real",
-      "description": "Numeric lat value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.6289046,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "long",
-      "data_type": "real",
-      "description": "Numeric long value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.7149955,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "globalid",
-      "data_type": "text",
-      "description": "Publisher-assigned globalid for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "{00002A8F-4D7F-4C29-B793-9992B9A4003D}",
-          "{00006B33-384E-4153-BD21-D9C22809CE4C}",
-          "{000392D8-85D6-41D8-8CE9-89B12D8C87DB}",
-          "{0003C061-7855-485E-86E7-D325EF16598B}",
-          "{0003D5F9-ED30-4BF6-8654-833B409A16C2}"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "fid",
-      "data_type": "bigint",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "shape",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "geometry_rule",
-      "confidence": "generated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "oa21cd",
-      "lsoa21cd",
-      "lsoa21nm",
-      "lsoa21nmw",
-      "bng_e",
-      "bng_n",
+  "gemini": {
+    "title": "UK Boundary Output Areas",
+    "abstract": "UK Boundary Output Areas is an authoritative dataset published by Office for National Statistics. It represents uk boundary output areas features using geometry geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "uk",
+      "boundary",
+      "output",
+      "areas",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "bng",
       "lat",
       "long",
       "globalid",
-      "fid"
+      "fid",
+      "shape"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/uk_boundary_output_areas",
+    "schema": "a_ons_england_wales",
+    "table": "uk_boundary_output_areas",
+    "bounding_box": {
+      "xmin": -6.418601200411691,
+      "ymin": 49.864673592663614,
+      "xmax": 1.763680106707907,
+      "ymax": 55.8110913571549
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "keywords": [
-    "uk",
-    "boundary",
-    "output",
-    "areas",
-    "ons",
-    "england",
-    "wales",
-    "office",
-    "national",
-    "statistics",
-    "census",
-    "boundaries",
-    "fid",
-    "shape"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": []
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.511851+00:00",
-    "curated_at": "2026-08-30T20:17:14.415858+00:00"
-  },
-  "column_count": 11
+  "columns": [
+    {
+      "name": "oa21cd",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "lsoa21cd",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "lsoa21nm",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "lsoa21nmw",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "bng_e",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "bng_n",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lat",
+      "type": "real",
+      "description": null
+    },
+    {
+      "name": "long",
+      "type": "real",
+      "description": null
+    },
+    {
+      "name": "globalid",
+      "type": "text",
+      "description": "UUID-formatted identifier associated with the record; persistence across releases is not confirmed."
+    },
+    {
+      "name": "fid",
+      "type": "bigint",
+      "description": "Feature identifier assigned by the source or import process."
+    },
+    {
+      "name": "shape",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
 }

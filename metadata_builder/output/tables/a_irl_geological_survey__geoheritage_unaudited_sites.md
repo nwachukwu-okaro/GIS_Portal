@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_geological_survey`
 - **Table:** `geoheritage_unaudited_sites`
 - **Geometry:** POLYGON
@@ -40,15 +40,15 @@ Published by Geological Survey Ireland as open geological data. Loaded into Syst
 |---|---|---|
 | `gus_id` | `integer` | Identifier assigned by the source dataset. |
 | `site_name` | `varchar(100)` | Name associated with the represented feature. |
-| `theme` | `varchar(10)` | Publisher-supplied theme for the represented feature or record. |
-| `county` | `varchar(50)` | Publisher-supplied county for the represented feature or record. |
-| `features` | `varchar(255)` | Publisher-supplied features for the represented feature or record. |
-| `townland` | `varchar(255)` | Publisher-supplied townland for the represented feature or record. |
-| `description` | `varchar(255)` | Publisher-supplied description for the represented feature or record. |
-| `references` | `varchar(255)` | Publisher-supplied references for the represented feature or record. |
-| `designat` | `varchar(50)` | Publisher-supplied designat for the represented feature or record. |
-| `x_ig` | `integer` | Count or numeric value for x ig in the represented area. |
-| `y_ig` | `integer` | Count or numeric value for y ig in the represented area. |
-| `x_itm` | `double precision` | Count or numeric value for x itm in the represented area. |
-| `y_itm` | `double precision` | Count or numeric value for y itm in the represented area. |
+| `theme` | `varchar(10)` |  |
+| `county` | `varchar(50)` |  |
+| `features` | `varchar(255)` |  |
+| `townland` | `varchar(255)` |  |
+| `description` | `varchar(255)` |  |
+| `references` | `varchar(255)` |  |
+| `designat` | `varchar(50)` |  |
+| `x_ig` | `integer` |  |
+| `y_ig` | `integer` |  |
+| `x_itm` | `double precision` |  |
+| `y_itm` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

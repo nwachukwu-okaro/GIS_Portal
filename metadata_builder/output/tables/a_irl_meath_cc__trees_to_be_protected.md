@@ -38,10 +38,10 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `tp_pk` | `integer` | Count or numeric value for tp pk in the represented area. |
-| `settlement` | `double precision` | Count or numeric value for settlement in the represented area. |
+| `tp_pk` | `integer` | Primary-key identifier for records in trees_to_be_protected. |
+| `settlement` | `double precision` |  |
 | `settlement2` | `varchar(60)` |  |
-| `objective` | `varchar(250)` | Publisher-supplied objective for the represented feature or record. |
+| `objective` | `varchar(250)` |  |
 | `plan_name` | `varchar(120)` | Name associated with the represented feature. |
-| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. |
+| `map_label` | `varchar(100)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

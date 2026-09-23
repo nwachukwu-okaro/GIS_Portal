@@ -1,507 +1,132 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_addressbase_premium/application_xref",
-  "schema": "a_os_addressbase_premium",
-  "table": "application_xref",
-  "title": "Application Xref",
-  "description": "Application Xref is part of AddressBase Premium, published by Ordnance Survey. It represents application xref features using geometry geometry.",
-  "feature_concept": "application_xref",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "AddressBase Premium",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/addressbase-premium",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
+  "gemini": {
+    "title": "Application Xref",
+    "abstract": "Application Xref is part of AddressBase Premium, published by Ordnance Survey. It represents application xref features using geometry geometry.",
+    "alternative_title": null,
+    "topic_category": "location",
+    "keywords": [
+      "application",
+      "xref",
+      "os",
+      "addressbase",
+      "premium",
+      "ordnance",
+      "survey",
+      "addresses",
+      "property",
+      "change",
+      "type",
+      "uprn",
+      "key",
+      "cross",
+      "reference",
+      "version",
+      "source",
+      "start",
+      "date",
+      "end",
+      "last",
+      "update",
+      "entry",
+      "id",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/addressbase-premium",
+    "unique_identifier": "a_os_addressbase_premium/application_xref",
+    "schema": "a_os_addressbase_premium",
+    "table": "application_xref",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "themes": [
-    "addresses",
-    "property"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "GEOMETRY",
-    "srid": 0,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 2480000,
-  "primary_key": [
-    "id"
-  ],
-  "indexes": [
-    {
-      "name": "application_xref_pkey",
-      "definition": "CREATE UNIQUE INDEX application_xref_pkey ON a_os_addressbase_premium.application_xref USING btree (id)"
-    }
-  ],
   "columns": [
     {
       "name": "change_type",
-      "data_type": "text",
-      "description": "Publisher-supplied change type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "I"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "uprn",
-      "data_type": "bigint",
-      "description": "Count or numeric value for uprn in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.16038176,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Unique Property Reference Number identifying the addressable location."
     },
     {
       "name": "xref_key",
-      "data_type": "text",
-      "description": "Publisher-supplied xref key for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "0114X000058116",
-          "0114X000058639",
-          "0114X000062038",
-          "0114X000062203",
-          "0114X000064861"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "cross_reference",
-      "data_type": "text",
-      "description": "Publisher-supplied cross reference for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "100000113",
-          "10000032",
-          "10000044",
-          "10000089000",
-          "100001036"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 92603.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Reference linking this address record to another source record; the target system is not confirmed."
     },
     {
       "name": "version",
-      "data_type": "bigint",
-      "description": "Count or numeric value for version in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.4217,
-        "estimated_distinct": 42.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": null
     },
     {
       "name": "source",
-      "data_type": "text",
-      "description": "Publisher-supplied source for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "7666MA",
-          "7666MI",
-          "7666MT",
-          "7666OP",
-          "7666OW"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 7.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "start_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2007-08-22",
-          "2007-10-04",
-          "2007-11-13",
-          "2007-12-05",
-          "2007-12-17"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 501.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "end_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2007-08-22",
-          "2007-10-04",
-          "2007-11-13",
-          "2007-12-05",
-          "2007-12-17"
-        ],
-        "null_fraction": 0.98323333,
-        "estimated_distinct": 337.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "last_update_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2016-02-07",
-          "2016-02-10",
-          "2016-03-20",
-          "2016-03-21",
-          "2016-05-05"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 252.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "entry_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2001-11-04",
-          "2001-11-05",
-          "2001-11-06",
-          "2001-11-07",
-          "2001-11-08"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1891.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "id",
-      "data_type": "bigint",
-      "description": "Count or numeric value for identifier in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Primary-key identifier for records in application_xref."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": false
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "change_type",
-      "uprn",
-      "xref_key",
-      "cross_reference",
-      "version",
-      "source",
-      "start_date",
-      "end_date",
-      "last_update_date",
-      "entry_date",
-      "id"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "application",
-    "xref",
-    "os",
-    "addressbase",
-    "premium",
-    "ordnance",
-    "survey",
-    "addresses",
-    "property",
-    "start",
-    "date",
-    "end",
-    "last",
-    "update",
-    "entry",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.576710+00:00",
-    "curated_at": "2026-08-30T20:17:33.289301+00:00"
-  },
-  "column_count": 12
+  ]
 }

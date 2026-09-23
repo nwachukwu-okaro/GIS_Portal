@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts055_utla`
 - **Geometry:** Non-spatial
@@ -40,16 +40,16 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents` | `bigint` | Count or numeric value for total all usual residents in the represented area. |
-| `armed_forces_base_address` | `bigint` | Count or numeric value for armed forces base address in the represented area. |
-| `another_address_when_working_away_from_home` | `bigint` | Count or numeric value for another address when working away from home in the represented area. |
-| `holiday_home` | `bigint` | Count or numeric value for holiday home in the represented area. |
-| `student_s_term_time_address` | `bigint` | Count or numeric value for student s term time address in the represented area. |
-| `student_s_home_address` | `bigint` | Count or numeric value for student s home address in the represented area. |
-| `another_parent_or_guardian_s_address` | `bigint` | Count or numeric value for another parent or guardian s address in the represented area. |
-| `partner_s_address` | `bigint` | Count or numeric value for partner s address in the represented area. |
-| `other` | `bigint` | Count or numeric value for other in the represented area. |
-| `second_address_type_not_specified` | `bigint` | Count or numeric value for second address type not specified in the represented area. |
+| `total_all_usual_residents` | `bigint` | Census total for all usual residents in the represented geographical area; measurement unit requires the table documentation. |
+| `armed_forces_base_address` | `bigint` |  |
+| `another_address_when_working_away_from_home` | `bigint` |  |
+| `holiday_home` | `bigint` |  |
+| `student_s_term_time_address` | `bigint` |  |
+| `student_s_home_address` | `bigint` |  |
+| `another_parent_or_guardian_s_address` | `bigint` |  |
+| `partner_s_address` | `bigint` |  |
+| `other` | `bigint` |  |
+| `second_address_type_not_specified` | `bigint` |  |

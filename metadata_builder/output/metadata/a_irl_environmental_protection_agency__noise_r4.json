@@ -1,571 +1,149 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_environmental_protection_agency/noise_r4",
-  "schema": "a_irl_environmental_protection_agency",
-  "table": "noise_r4",
-  "title": "Noise R4",
-  "description": "Noise R4 is an authoritative dataset published by Environmental Protection Agency Ireland. It represents noise r4 features using multipolygon geometry.",
-  "feature_concept": "noise_r4",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Environmental Protection Agency Ireland",
-    "product": null,
-    "source_url": "https://gis.epa.ie/GetData/Download",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "environment"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 29903,
-    "crs": "EPSG:29903",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Noise R4",
+    "abstract": "Noise R4 is an authoritative dataset published by Environmental Protection Agency Ireland. It represents noise r4 features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "noise",
+      "r4",
+      "irl",
+      "environmental",
+      "protection",
+      "agency",
+      "ireland",
+      "environment",
+      "nr4",
+      "pk",
+      "round",
+      "type",
+      "name",
+      "report",
+      "period",
+      "db",
+      "low",
+      "high",
+      "value",
+      "time",
+      "local",
+      "authority",
+      "eden",
+      "code",
+      "url",
+      "text",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Environmental Protection Agency Ireland as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environmental Protection Agency Ireland",
+    "resource_locator": "https://gis.epa.ie/GetData/Download",
+    "unique_identifier": "a_irl_environmental_protection_agency/noise_r4",
+    "schema": "a_irl_environmental_protection_agency",
+    "table": "noise_r4",
+    "bounding_box": {
       "xmin": -9.787779992099352,
       "ymin": 51.57956677372395,
-      "xmax": -5.939563768042113,
+      "xmax": -5.939563768042114,
       "ymax": 55.126074194775356
     },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 764,
-  "primary_key": [
-    "nr4_pk"
-  ],
-  "indexes": [
-    {
-      "name": "noise_r4_geom_1764081084250",
-      "definition": "CREATE INDEX noise_r4_geom_1764081084250 ON a_irl_environmental_protection_agency.noise_r4 USING gist (geom)"
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "noise_r4_pkey",
-      "definition": "CREATE UNIQUE INDEX noise_r4_pkey ON a_irl_environmental_protection_agency.noise_r4 USING btree (nr4_pk)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "nr4_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for nr4 pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in noise_r4."
     },
     {
       "name": "noise_round_type",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied noise round type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "airport",
-          "road",
-          "rail",
-          "industry"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(20)",
+      "description": null
     },
     {
       "name": "name",
-      "data_type": "varchar(50)",
-      "description": "Official or publisher-assigned name of the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Dublin Agglomeration",
-          "Limerick Agglomeration",
-          "National",
-          "Cork Agglomeration"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": "Official or publisher-assigned name of the represented feature."
     },
     {
       "name": "type",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Major Airport",
-          "Major Railway",
-          "Road",
-          "Airport",
-          "Major Road"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 7.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(20)",
+      "description": null
     },
     {
       "name": "report_period",
-      "data_type": "varchar(10)",
-      "description": "Publisher-supplied report period for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Rd4-2022"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(10)",
+      "description": null
     },
     {
       "name": "db_low",
-      "data_type": "double precision",
-      "description": "Count or numeric value for db low in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 8.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "db_high",
-      "data_type": "double precision",
-      "description": "Count or numeric value for db high in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 8.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "db_value",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied db value for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "40-44",
-          "50-54",
-          "60-64",
-          "70-99",
-          "70-74"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 9.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(20)",
+      "description": null
     },
     {
       "name": "time",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied time for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Lden",
-          "Lnight"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 2.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(20)",
+      "description": null
     },
     {
       "name": "local_authority_name",
-      "data_type": "varchar(50)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "MEATH COUNTY COUNCIL",
-          "DUN LAOGHAIRE/RATHDOWN CC",
-          "DUBLIN CITY COUNCIL",
-          "CAVAN COUNTY COUNCIL",
-          "CLARE COUNTY COUNCIL"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 31.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "eden_code",
-      "data_type": "varchar(10)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "0800",
-          "3600",
-          "2600",
-          "1300",
-          "1700"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 31.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(10)",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "url_text",
-      "data_type": "varchar(30)",
-      "description": "Publisher-supplied url text for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Noise Action Plan R4"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(30)",
+      "description": null
     },
     {
       "name": "url",
-      "data_type": "varchar(500)",
-      "description": "Publisher-supplied url for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 1.0,
-        "estimated_distinct": 0.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(500)",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "nr4_pk",
-      "noise_round_type",
-      "name",
-      "type",
-      "report_period",
-      "db_low",
-      "db_high",
-      "db_value",
-      "time",
-      "local_authority_name",
-      "eden_code",
-      "url_text",
-      "url"
-    ],
-    "searchable_columns": [
-      "name",
-      "local_authority_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "noise",
-    "r4",
-    "irl",
-    "environmental",
-    "protection",
-    "agency",
-    "ireland",
-    "environment",
-    "name",
-    "local",
-    "authority",
-    "eden",
-    "code",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.910126+00:00",
-    "curated_at": "2026-08-30T20:16:37.693080+00:00"
-  },
-  "column_count": 14
+  ]
 }

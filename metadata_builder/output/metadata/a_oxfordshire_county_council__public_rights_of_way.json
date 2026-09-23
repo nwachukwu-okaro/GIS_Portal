@@ -1,658 +1,164 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_oxfordshire_county_council/public_rights_of_way",
-  "schema": "a_oxfordshire_county_council",
-  "table": "public_rights_of_way",
-  "title": "Public Rights Of Way",
-  "description": "Public Rights Of Way is an authoritative dataset published by Oxfordshire County Council. It represents public rights of way features using multilinestring geometry.",
-  "feature_concept": "public_rights_of_way",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Oxfordshire County Council",
-    "product": null,
-    "source_url": "https://insight.oxfordshire.gov.uk/cms/open-data",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "Oxfordshire",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTILINESTRING",
-    "srid": 4326,
-    "crs": "EPSG:4326",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Public Rights Of Way",
+    "abstract": "Public Rights Of Way is an authoritative dataset published by Oxfordshire County Council. It represents public rights of way features using multilinestring geometry.",
+    "alternative_title": null,
+    "topic_category": "planningCadastre",
+    "keywords": [
+      "public",
+      "rights",
+      "way",
+      "oxfordshire",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "legal",
+      "typed",
+      "status",
+      "description",
+      "route",
+      "number",
+      "parish",
+      "code",
+      "name",
+      "type",
+      "length",
+      "easting",
+      "northing",
+      "end",
+      "start",
+      "oprow",
+      "pk",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Oxfordshire County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Oxfordshire County Council",
+    "resource_locator": "https://insight.oxfordshire.gov.uk/cms/open-data",
+    "unique_identifier": "a_oxfordshire_county_council/public_rights_of_way",
+    "schema": "a_oxfordshire_county_council",
+    "table": "public_rights_of_way",
+    "bounding_box": {
       "xmin": -1.719516932026931,
       "ymin": 51.473502408833575,
       "xmax": -0.87055451195441,
       "ymax": 52.15776350941085
     },
-    "units": null,
-    "is_geographic": true
-  },
-  "row_count": 10469,
-  "primary_key": [
-    "oprow_pk"
-  ],
-  "indexes": [
-    {
-      "name": "public_rights_of_way_geom_1782307983894",
-      "definition": "CREATE INDEX public_rights_of_way_geom_1782307983894 ON a_oxfordshire_county_council.public_rights_of_way USING gist (geom)"
+    "spatial_reference_system": "EPSG:4326",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "public_rights_of_way_pkey",
-      "definition": "CREATE UNIQUE INDEX public_rights_of_way_pkey ON a_oxfordshire_county_council.public_rights_of_way USING btree (oprow_pk)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "legal_typed",
-      "data_type": "varchar",
-      "description": "Publisher-supplied legal typed for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Recorded Public Right of Way"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "status_description",
-      "data_type": "varchar",
-      "description": "Publisher-supplied status description for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Restricted Byway",
-          "Public Bridleway",
-          "Public Footpath",
-          "Byway Open to all Traffic (BOAT)"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "route_number",
-      "data_type": "varchar",
-      "description": "Publisher-supplied route number for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "112",
-          "50",
-          "15a",
-          "90",
-          "16"
-        ],
-        "null_fraction": 0.00038208044,
-        "estimated_distinct": 183.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "parish_code",
-      "data_type": "varchar",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "123",
-          "332",
-          "354",
-          "383",
-          "247"
-        ],
-        "null_fraction": 0.04479893,
-        "estimated_distinct": 308.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "route_code",
-      "data_type": "varchar",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "350/11/10",
-          "387/3/10",
-          "192/5/60",
-          "216/7/10",
-          "122/5/50"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "parish_name",
-      "data_type": "varchar",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Worton",
-          "Stoke Row",
-          "Ardington",
-          "Taynton",
-          "Towersey"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 322.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "status",
-      "data_type": "varchar",
-      "description": "Publisher-supplied status for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "3",
-          "2",
-          "1",
-          "4"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "legal_type",
-      "data_type": "varchar",
-      "description": "Publisher-supplied legal type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1",
-          "4"
-        ],
-        "null_fraction": 0.00038208044,
-        "estimated_distinct": 2.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "length_m",
-      "data_type": "double precision",
-      "description": "Numeric length male value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9938867,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "easting",
-      "data_type": "double precision",
-      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system.",
-      "semantic_role": "x_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.90228295,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system."
     },
     {
       "name": "northing",
-      "data_type": "double precision",
-      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system.",
-      "semantic_role": "y_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.91689754,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system."
     },
     {
       "name": "easting_end",
-      "data_type": "double precision",
-      "description": "Numeric easting end value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.79740185,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "northing_end",
-      "data_type": "double precision",
-      "description": "Numeric northing end value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.8123985,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "easting_start",
-      "data_type": "double precision",
-      "description": "Numeric easting start value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.76530707,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "northing_start",
-      "data_type": "double precision",
-      "description": "Numeric northing start value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.7757188,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "oprow_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for oprow pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in public_rights_of_way."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": false
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "legal_typed",
-      "status_description",
-      "route_number",
-      "parish_code",
-      "route_code",
-      "parish_name",
-      "status",
-      "legal_type",
-      "length_m",
-      "easting",
-      "northing",
-      "easting_end",
-      "northing_end",
-      "easting_start",
-      "northing_start",
-      "oprow_pk"
-    ],
-    "searchable_columns": [
-      "parish_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "public",
-    "rights",
-    "way",
-    "oxfordshire",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "parish",
-    "code",
-    "route",
-    "name",
-    "easting",
-    "northing",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.715098+00:00",
-    "curated_at": "2026-08-30T20:19:39.643896+00:00"
-  },
-  "column_count": 17
+  ]
 }

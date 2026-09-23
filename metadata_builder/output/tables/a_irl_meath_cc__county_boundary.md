@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `county_boundary`
 - **Geometry:** POLYGON
@@ -38,6 +38,6 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `county` | `varchar(25)` | Publisher-supplied county for the represented feature or record. |
-| `cb_pk` | `integer` | Count or numeric value for cb pk in the represented area. |
+| `county` | `varchar(25)` |  |
+| `cb_pk` | `integer` | Primary-key identifier for records in county_boundary. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

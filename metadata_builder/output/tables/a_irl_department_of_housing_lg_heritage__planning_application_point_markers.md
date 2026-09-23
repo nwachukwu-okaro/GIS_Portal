@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_department_of_housing_lg_heritage`
 - **Table:** `planning_application_point_markers`
 - **Geometry:** POINT
@@ -39,41 +39,41 @@ Published by the Department of Housing, Local Government and Heritage as open da
 
 | Column | Type | Description |
 |---|---|---|
-| `papm_pk` | `integer` | Count or numeric value for papm pk in the represented area. |
-| `planning_authority` | `varchar(100)` | Publisher-supplied planning authority for the represented feature or record. |
-| `application_number` | `varchar(50)` | Publisher-supplied application number for the represented feature or record. |
-| `development_description` | `varchar(12500)` | Publisher-supplied development description for the represented feature or record. |
-| `development_address` | `varchar(7500)` | Publisher-supplied development address for the represented feature or record. |
-| `development_postcode` | `varchar(50)` | Publisher-assigned development postcode for the record. |
-| `itm_easting` | `double precision` | Numeric itm easting value recorded for the feature. |
-| `itm_northing` | `double precision` | Numeric itm northing value recorded for the feature. |
-| `application_status` | `varchar(4500)` | Publisher-supplied application status for the represented feature or record. |
-| `application_type` | `varchar(150)` | Publisher-supplied application type for the represented feature or record. |
-| `applicant_forename` | `varchar(2500)` | Publisher-supplied applicant forename for the represented feature or record. |
-| `applicant_surname` | `varchar(2500)` | Publisher-supplied applicant surname for the represented feature or record. |
-| `applicant_address` | `varchar(2500)` | Publisher-supplied applicant address for the represented feature or record. |
-| `decision` | `varchar(12500)` | Publisher-supplied decision for the represented feature or record. |
+| `papm_pk` | `integer` | Primary-key identifier for records in planning_application_point_markers. |
+| `planning_authority` | `varchar(100)` |  |
+| `application_number` | `varchar(50)` |  |
+| `development_description` | `varchar(12500)` |  |
+| `development_address` | `varchar(7500)` |  |
+| `development_postcode` | `varchar(50)` |  |
+| `itm_easting` | `double precision` |  |
+| `itm_northing` | `double precision` |  |
+| `application_status` | `varchar(4500)` |  |
+| `application_type` | `varchar(150)` |  |
+| `applicant_forename` | `varchar(2500)` |  |
+| `applicant_surname` | `varchar(2500)` |  |
+| `applicant_address` | `varchar(2500)` |  |
+| `decision` | `varchar(12500)` |  |
 | `land_use_code` | `varchar(100)` | Code assigned by the source dataset. |
-| `area_of_site` | `double precision` | Numeric area of site value recorded for the feature. |
-| `num_residential_units` | `integer` | Count or numeric value for num residential units in the represented area. |
-| `one_off_house` | `varchar(50)` | Publisher-supplied one off house for the represented feature or record. |
-| `floor_area` | `double precision` | Numeric floor area value recorded for the feature. |
+| `area_of_site` | `double precision` |  |
+| `num_residential_units` | `integer` |  |
+| `one_off_house` | `varchar(50)` |  |
+| `floor_area` | `double precision` |  |
 | `received_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `withdrawn_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `decision_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `decision_due_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `grant_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `expiry_date` | `timestamp` | Date associated with the represented feature or source record. |
-| `appeal_ref_number` | `varchar(80)` | Publisher-supplied appeal reference number for the represented feature or record. |
-| `appeal_status` | `varchar(3500)` | Publisher-supplied appeal status for the represented feature or record. |
-| `appeal_decision` | `varchar(3500)` | Publisher-supplied appeal decision for the represented feature or record. |
+| `appeal_ref_number` | `varchar(80)` |  |
+| `appeal_status` | `varchar(3500)` |  |
+| `appeal_decision` | `varchar(3500)` |  |
 | `appeal_decision_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `appeal_submitted_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `fi_request_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `fi_rec_date` | `timestamp` | Date associated with the represented feature or source record. |
-| `link_app_details` | `varchar(200)` | Publisher-supplied link app details for the represented feature or record. |
-| `one_off_kpi` | `varchar(50)` | Publisher-supplied one off kpi for the represented feature or record. |
+| `link_app_details` | `varchar(200)` |  |
+| `one_off_kpi` | `varchar(50)` |  |
 | `etl_date` | `timestamp` | Date associated with the represented feature or source record. |
 | `site_id` | `varchar(100)` | Identifier assigned by the source dataset. |
-| `orig_fid` | `integer` | Count or numeric value for orig fid in the represented area. |
+| `orig_fid` | `integer` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

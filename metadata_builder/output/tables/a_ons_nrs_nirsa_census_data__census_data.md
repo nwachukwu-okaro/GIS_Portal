@@ -37,7 +37,7 @@ Published jointly by the UK's national statistical authorities (ONS, NRS and NIS
 
 | Column | Type | Description |
 |---|---|---|
-| `oa` | `varchar(9)` | Publisher-supplied oa for the represented feature or record. |
+| `oa` | `varchar(9)` |  |
 | `uk001001` | `bigint` |  |
 | `uk001002` | `bigint` |  |
 | `uk001003` | `bigint` |  |
@@ -193,7 +193,7 @@ Published jointly by the UK's national statistical authorities (ONS, NRS and NIS
 | `uk059001` | `bigint` |  |
 | `uk059002` | `bigint` |  |
 | `uk059003` | `bigint` |  |
-| `uk059_uk059004` | `bigint` | Count or numeric value for uk059 uk059004 in the represented area. |
+| `uk059_uk059004` | `bigint` |  |
 | `uk059005` | `bigint` |  |
 | `uk059006` | `bigint` |  |
 | `uk059007` | `bigint` |  |

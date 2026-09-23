@@ -41,8 +41,8 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in boundary_oa_pwc_202112. |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `oa21cd` | `varchar(10)` |  |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `globalid` | `varchar(38)` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irishrail`
 - **Table:** `railway_track_ln`
 - **Geometry:** MULTILINESTRING
@@ -38,6 +38,6 @@ Published by Iarnrod Eireann / Irish Rail as open transport data. Loaded into Sy
 
 | Column | Type | Description |
 |---|---|---|
-| `railway_track_ln_pk` | `integer` | Count or numeric value for railway track ln pk in the represented area. |
-| `route` | `varchar(200)` | Publisher-supplied route for the represented feature or record. |
+| `railway_track_ln_pk` | `integer` |  |
+| `route` | `varchar(200)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

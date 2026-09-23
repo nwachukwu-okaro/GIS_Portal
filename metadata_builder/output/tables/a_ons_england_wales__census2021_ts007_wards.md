@@ -40,7 +40,7 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in census2021_ts007_wards. |
 | `age` | `varchar` |  |
 | `total: all usual residents` | `integer` |  |
 | `aged 4 years and under` | `integer` |  |

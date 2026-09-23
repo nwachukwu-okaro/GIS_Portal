@@ -30,7 +30,7 @@ Trse England Oa is an authoritative dataset published by Transport For The North
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` |  |
+| `id` | `integer` | Primary-key identifier for records in trse_england_oa. |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
 | `population` | `integer` |  |
 | `households` | `integer` |  |

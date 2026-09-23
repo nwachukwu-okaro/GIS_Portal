@@ -1,667 +1,162 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_tfgm/cycle_hubs_2022",
-  "schema": "a_tfgm",
-  "table": "cycle_hubs_2022",
-  "title": "Cycle Hubs 2022",
-  "description": "version: 20220903\nSource: https://www.data.gov.uk/dataset/e3236cd9-48c7-44c6-9c6e-efd76b67d8e5/gm-cycle-hubs\n\nAttribution: Contains Transport for Greater Manchester data. Contains OS data © Crown copyright and database right 2022.",
-  "feature_concept": "cycle_hubs_2022",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Transport for Greater Manchester",
-    "product": null,
-    "source_url": "https://developer.tfgm.com/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "public transport",
-    "transport"
-  ],
-  "geographic_coverage": "Greater Manchester",
-  "geometry": {
-    "column": "geom",
-    "type": "POINT",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -2.518667279194161,
-      "ymin": 53.3773259304254,
-      "xmax": -2.09371580463733,
-      "ymax": 53.616456568412964
-    },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 20,
-  "primary_key": [
-    "cycle_hubs_pk"
-  ],
-  "indexes": [
-    {
-      "name": "cycle_hubs_2022_pkey",
-      "definition": "CREATE UNIQUE INDEX cycle_hubs_2022_pkey ON a_tfgm.cycle_hubs_2022 USING btree (cycle_hubs_pk)"
-    },
-    {
-      "name": "cycle_hubs_geom_1764781908407",
-      "definition": "CREATE INDEX cycle_hubs_geom_1764781908407 ON a_tfgm.cycle_hubs_2022 USING gist (geom)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "id",
-      "data_type": "bigint",
-      "description": "Count or numeric value for identifier in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "hub_name",
-      "data_type": "varchar(30)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Eccles rail station",
-          "Rochdale Interchange",
-          "Ashton-under-Lyne rail station",
-          "Stockport town centre",
-          "Sale Metrolink stop"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "easting",
-      "data_type": "bigint",
-      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system.",
-      "semantic_role": "x_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "northing",
-      "data_type": "bigint",
-      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system.",
-      "semantic_role": "y_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "capacity",
-      "data_type": "bigint",
-      "description": "Count or numeric value for capacity in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "open_mon_f",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied open mon female for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "06:00-00:00",
-          "00:00-00:00",
-          "06:00-23:00",
-          "06:00-20:00"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "open_sat",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied open sat for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "06:00-00:00",
-          "00:00-00:00",
-          "08:00-17:00",
-          "06:00-0000",
-          "06:00-2300"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "open_sun",
-      "data_type": "varchar(20)",
-      "description": "Publisher-supplied open sun for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "06:00-00:00",
-          "00:00-00:00",
-          "08:00-17:00",
-          "06:00-22:00"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "lockers",
-      "data_type": "varchar(4)",
-      "description": "Publisher-supplied lockers for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N",
-          "Y"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "showers",
-      "data_type": "varchar(4)",
-      "description": "Publisher-supplied showers for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N",
-          "Y"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "membership",
-      "data_type": "varchar(10)",
-      "description": "Publisher-supplied membership for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "TFGM",
-          "NCP",
-          "REMOVED",
-          "NR"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "descriptio",
-      "data_type": "varchar(200)",
-      "description": "Publisher-supplied descriptio for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Cycle Hubs are the ideal place to leave your bike with confidence. Membership starts at £10 per month.",
-          "Northern Rail responsibility from 2020",
-          "Non-TfGM Cycle Hub. Membership £15 for lifetime. Apply in person.",
-          "Removed from Cycle maps Aug 2021"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "district",
-      "data_type": "varchar(10)",
-      "description": "Publisher-supplied district for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Tameside",
-          "Manchester",
-          "Bury",
-          "Oldham",
-          "Rochdale"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "hotlink",
-      "data_type": "varchar(200)",
-      "description": "Publisher-supplied hotlink for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "http://cycling.tfgm.com/Pages/join-a-hub.aspx",
-          "www.ncp.co.uk/parking-solutions/stockport-cycle-hub"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "open",
-      "data_type": "varchar(1)",
-      "description": "Publisher-supplied open for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N",
-          "Y"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "cycle_hubs_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for cycle hubs pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Cycle Hubs 2022",
+    "abstract": "version: 20220903\nSource: https://www.data.gov.uk/dataset/e3236cd9-48c7-44c6-9c6e-efd76b67d8e5/gm-cycle-hubs\n\nAttribution: Contains Transport for Greater Manchester data. Contains OS data © Crown copyright and database right 2022.",
+    "alternative_title": null,
+    "topic_category": "transportation",
+    "keywords": [
+      "cycle",
+      "hubs",
+      "2022",
+      "tfgm",
+      "transport",
+      "greater",
+      "manchester",
+      "public",
       "id",
-      "hub_name",
+      "hub",
+      "name",
       "easting",
       "northing",
       "capacity",
-      "open_mon_f",
-      "open_sat",
-      "open_sun",
+      "open",
+      "mon",
+      "sat",
+      "sun",
       "lockers",
       "showers",
       "membership",
       "descriptio",
       "district",
       "hotlink",
-      "open",
-      "cycle_hubs_pk"
+      "geom",
+      "pk"
     ],
-    "searchable_columns": [
-      "hub_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "cycle",
-    "hubs",
-    "2022",
-    "tfgm",
-    "transport",
-    "greater",
-    "manchester",
-    "public",
-    "hub",
-    "name",
-    "easting",
-    "northing",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Transport for Greater Manchester as open transport data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Transport for Greater Manchester",
+    "resource_locator": "https://developer.tfgm.com/",
+    "unique_identifier": "a_tfgm/cycle_hubs_2022",
+    "schema": "a_tfgm",
+    "table": "cycle_hubs_2022",
+    "bounding_box": {
+      "xmin": -2.518667279194161,
+      "ymin": 53.37732593042539,
+      "xmax": -2.09371580463733,
+      "ymax": 53.61645656841297
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.725489+00:00",
-    "curated_at": "2026-08-30T20:20:08.591405+00:00"
-  },
-  "local_dataset_version": "20220903 (3 September 2022)",
-  "column_count": 17
+  "columns": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "hub_name",
+      "type": "varchar(30)",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "easting",
+      "type": "bigint",
+      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system."
+    },
+    {
+      "name": "northing",
+      "type": "bigint",
+      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system."
+    },
+    {
+      "name": "capacity",
+      "type": "bigint",
+      "description": "Capacity recorded for the cycle hub; the capacity unit has not been confirmed."
+    },
+    {
+      "name": "open_mon_f",
+      "type": "varchar(20)",
+      "description": "Cycle-hub opening hours from Monday to Friday."
+    },
+    {
+      "name": "open_sat",
+      "type": "varchar(20)",
+      "description": "Cycle-hub opening hours on Saturday."
+    },
+    {
+      "name": "open_sun",
+      "type": "varchar(20)",
+      "description": "Cycle-hub opening hours on Sunday."
+    },
+    {
+      "name": "lockers",
+      "type": "varchar(4)",
+      "description": "Indicates whether lockers are available at the cycle hub (Y=yes; N=no)."
+    },
+    {
+      "name": "showers",
+      "type": "varchar(4)",
+      "description": "Indicates whether showers are available at the cycle hub (Y=yes; N=no)."
+    },
+    {
+      "name": "membership",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "descriptio",
+      "type": "varchar(200)",
+      "description": null
+    },
+    {
+      "name": "district",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "hotlink",
+      "type": "varchar(200)",
+      "description": null
+    },
+    {
+      "name": "open",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    },
+    {
+      "name": "cycle_hubs_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in cycle_hubs_2022."
+    }
+  ]
 }

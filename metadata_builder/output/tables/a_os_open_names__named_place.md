@@ -42,37 +42,37 @@ Published by Ordnance Survey as part of OS Open Names. Loaded into Systra PostGI
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `names_uri` | `varchar` | Publisher-supplied names uri for the represented feature or record. |
+| `id` | `varchar` |  |
+| `names_uri` | `varchar` |  |
 | `name1` | `varchar` |  |
-| `name1_lang` | `varchar` | Publisher-supplied name1 lang for the represented feature or record. |
+| `name1_lang` | `varchar` |  |
 | `name2` | `varchar` |  |
-| `name2_lang` | `varchar` | Publisher-supplied name2 lang for the represented feature or record. |
-| `type` | `varchar` | Publisher-supplied type for the represented feature or record. |
-| `local_type` | `varchar` | Publisher-supplied local type for the represented feature or record. |
-| `most_detail_view_res` | `integer` | Count or numeric value for most detail view res in the represented area. |
-| `least_detail_view_res` | `integer` | Count or numeric value for least detail view res in the represented area. |
-| `mbr_xmin` | `real` | Count or numeric value for mbr xmin in the represented area. |
-| `mbr_ymin` | `real` | Count or numeric value for mbr ymin in the represented area. |
-| `mbr_xmax` | `real` | Count or numeric value for mbr xmax in the represented area. |
-| `mbr_ymax` | `real` | Count or numeric value for mbr ymax in the represented area. |
-| `postcode_district` | `varchar` | Publisher-supplied postcode district for the represented feature or record. |
-| `postcode_district_uri` | `varchar` | Publisher-supplied postcode district uri for the represented feature or record. |
-| `populated_place` | `varchar` | Publisher-supplied populated place for the represented feature or record. |
-| `populated_place_uri` | `varchar` | Publisher-supplied populated place uri for the represented feature or record. |
-| `populated_place_type` | `varchar` | Publisher-supplied populated place type for the represented feature or record. |
-| `district_borough` | `varchar` | Publisher-supplied district borough for the represented feature or record. |
-| `district_borough_uri` | `varchar` | Publisher-supplied district borough uri for the represented feature or record. |
-| `district_borough_type` | `varchar` | Publisher-supplied district borough type for the represented feature or record. |
-| `county_unitary` | `varchar` | Publisher-supplied county unitary for the represented feature or record. |
-| `county_unitary_uri` | `varchar` | Publisher-supplied county unitary uri for the represented feature or record. |
-| `county_unitary_type` | `varchar` | Publisher-supplied county unitary type for the represented feature or record. |
-| `region` | `varchar` | Publisher-supplied region for the represented feature or record. |
-| `region_uri` | `varchar` | Publisher-supplied region uri for the represented feature or record. |
-| `country` | `varchar` | Publisher-supplied country for the represented feature or record. |
-| `country_uri` | `varchar` | Publisher-supplied country uri for the represented feature or record. |
-| `related_spatial_object` | `varchar` | Publisher-supplied related spatial object for the represented feature or record. |
-| `same_as_dbpedia` | `varchar` | Publisher-supplied same as dbpedia for the represented feature or record. |
-| `same_as_geonames` | `varchar` | Publisher-supplied same as geonames for the represented feature or record. |
+| `name2_lang` | `varchar` |  |
+| `type` | `varchar` |  |
+| `local_type` | `varchar` |  |
+| `most_detail_view_res` | `integer` |  |
+| `least_detail_view_res` | `integer` |  |
+| `mbr_xmin` | `real` |  |
+| `mbr_ymin` | `real` |  |
+| `mbr_xmax` | `real` |  |
+| `mbr_ymax` | `real` |  |
+| `postcode_district` | `varchar` |  |
+| `postcode_district_uri` | `varchar` |  |
+| `populated_place` | `varchar` |  |
+| `populated_place_uri` | `varchar` |  |
+| `populated_place_type` | `varchar` |  |
+| `district_borough` | `varchar` |  |
+| `district_borough_uri` | `varchar` |  |
+| `district_borough_type` | `varchar` |  |
+| `county_unitary` | `varchar` |  |
+| `county_unitary_uri` | `varchar` |  |
+| `county_unitary_type` | `varchar` |  |
+| `region` | `varchar` |  |
+| `region_uri` | `varchar` |  |
+| `country` | `varchar` |  |
+| `country_uri` | `varchar` |  |
+| `related_spatial_object` | `varchar` |  |
+| `same_as_dbpedia` | `varchar` |  |
+| `same_as_geonames` | `varchar` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

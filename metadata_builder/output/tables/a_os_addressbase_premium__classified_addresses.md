@@ -39,7 +39,7 @@ Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra 
 
 | Column | Type | Description |
 |---|---|---|
-| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. |
+| `uprn` | `bigint` | Unique Property Reference Number identifying the addressable location. |
 | `ctyua24nm` | `varchar(36)` |  |
 | `classification_code` | `text` | Code assigned by the source dataset. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

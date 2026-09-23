@@ -38,15 +38,15 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `code` | `varchar(9)` | Publisher-assigned code for the record. |
-| `hhcount` | `integer` | Count or numeric value for hhcount in the represented area. |
-| `popcount` | `integer` | Count or numeric value for popcount in the represented area. |
-| `council` | `varchar(9)` | Publisher-supplied council for the represented feature or record. |
+| `code` | `varchar(9)` |  |
+| `hhcount` | `integer` |  |
+| `popcount` | `integer` |  |
+| `council` | `varchar(9)` |  |
 | `sqkm` | `double precision` |  |
-| `hect` | `double precision` | Count or numeric value for hect in the represented area. |
-| `masterpc` | `varchar(9)` | Publisher-supplied masterpc for the represented feature or record. |
+| `hect` | `double precision` |  |
+| `masterpc` | `varchar(9)` |  |
 | `easting` | `varchar(6)` | Easting coordinate in metres in the dataset's projected coordinate reference system. |
 | `northing` | `varchar(7)` | Northing coordinate in metres in the dataset's projected coordinate reference system. |
-| `shape_leng` | `double precision` | Count or numeric value for shape leng in the represented area. |
-| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. |
+| `shape_leng` | `double precision` |  |
+| `shape_area` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

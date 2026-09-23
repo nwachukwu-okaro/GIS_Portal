@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_ireland_cso`
 - **Table:** `Glossary_of_the_census_tables_variables`
 - **Geometry:** Non-spatial
@@ -37,8 +37,8 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
-| `themes` | `varchar` | Publisher-supplied themes for the represented feature or record. |
-| `tables within themes` | `varchar` | Publisher-supplied tables within themes for the represented feature or record. |
-| `column names` | `varchar` | Publisher-supplied column names for the represented feature or record. |
-| `description of field` | `varchar` | Publisher-supplied description of field for the represented feature or record. |
+| `id` | `integer` | Primary-key identifier for records in Glossary_of_the_census_tables_variables. |
+| `themes` | `varchar` |  |
+| `tables within themes` | `varchar` |  |
+| `column names` | `varchar` |  |
+| `description of field` | `varchar` |  |

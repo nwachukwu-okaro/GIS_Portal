@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `health_and_care_data_2021_lgd`
 - **Geometry:** Non-spatial
@@ -37,22 +37,22 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `general_health_bad` | `text` | Publisher-supplied general health bad for the represented feature or record. |
-| `general_health_fair` | `text` | Publisher-supplied general health fair for the represented feature or record. |
-| `general_health_good` | `text` | Publisher-supplied general health good for the represented feature or record. |
-| `general_health_very_bad` | `text` | Publisher-supplied general health very bad for the represented feature or record. |
-| `general_health_very_good` | `text` | Publisher-supplied general health very good for the represented feature or record. |
-| `long_term_health_conditions_1_condition` | `text` | Publisher-supplied long term health conditions 1 condition for the represented feature or record. |
-| `long_term_health_conditions_2_conditions` | `text` | Publisher-supplied long term health conditions 2 conditions for the represented feature or record. |
-| `long_term_health_conditions_3_or_more_conditions` | `text` | Publisher-supplied long term health conditions 3 or more conditions for the represented feature or record. |
-| `long_term_health_conditions_no_conditions` | `text` | Publisher-supplied long term health conditions number conditions for the represented feature or record. |
-| `long_term_health_problem_or_disability_activities_not_limited` | `text` | Publisher-supplied long term health problem or disability activities not limited for the represented feature or record. |
-| `long_term_health_problem_or_disability_limited_a_little` | `text` | Publisher-supplied long term health problem or disability limited a little for the represented feature or record. |
-| `long_term_health_problem_or_disability_limited_a_lot` | `text` | Publisher-supplied long term health problem or disability limited a lot for the represented feature or record. |
-| `unpaid_care_1_19_hours` | `text` | Publisher-supplied unpaid care 1 19 hours for the represented feature or record. |
-| `unpaid_care_20_49_hours` | `text` | Publisher-supplied unpaid care 20 49 hours for the represented feature or record. |
-| `unpaid_care_50_hours` | `text` | Publisher-supplied unpaid care 50 hours for the represented feature or record. |
-| `unpaid_care_provides_no_unpaid_care` | `text` | Publisher-supplied unpaid care provides number unpaid care for the represented feature or record. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `general_health_bad` | `text` |  |
+| `general_health_fair` | `text` |  |
+| `general_health_good` | `text` |  |
+| `general_health_very_bad` | `text` |  |
+| `general_health_very_good` | `text` |  |
+| `long_term_health_conditions_1_condition` | `text` |  |
+| `long_term_health_conditions_2_conditions` | `text` |  |
+| `long_term_health_conditions_3_or_more_conditions` | `text` |  |
+| `long_term_health_conditions_no_conditions` | `text` |  |
+| `long_term_health_problem_or_disability_activities_not_limited` | `text` |  |
+| `long_term_health_problem_or_disability_limited_a_little` | `text` |  |
+| `long_term_health_problem_or_disability_limited_a_lot` | `text` |  |
+| `unpaid_care_1_19_hours` | `text` |  |
+| `unpaid_care_20_49_hours` | `text` |  |
+| `unpaid_care_50_hours` | `text` |  |
+| `unpaid_care_provides_no_unpaid_care` | `text` |  |

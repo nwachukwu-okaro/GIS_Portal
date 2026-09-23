@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `land_use_zoning_objective`
 - **Geometry:** MULTIPOLYGON
@@ -38,18 +38,18 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `luzo_pk` | `integer` | Count or numeric value for luzo pk in the represented area. |
-| `guid` | `double precision` | Count or numeric value for guid in the represented area. |
+| `luzo_pk` | `integer` | Primary-key identifier for records in land_use_zoning_objective. |
+| `guid` | `double precision` |  |
 | `site_code` | `varchar(100)` | Code assigned by the source dataset. |
 | `zoning_code` | `varchar(6)` | Code assigned by the source dataset. |
-| `zoning_description` | `varchar(100)` | Publisher-supplied zoning description for the represented feature or record. |
-| `zoning_objective` | `varchar(254)` | Publisher-supplied zoning objective for the represented feature or record. |
-| `area_acres` | `real` | Numeric area acres value recorded for the feature. |
-| `area_hectares` | `real` | Numeric area hectares value recorded for the feature. |
-| `residential` | `varchar(100)` | Publisher-supplied residential for the represented feature or record. |
-| `settlement` | `double precision` | Count or numeric value for settlement in the represented area. |
-| `settlement_01` | `varchar(100)` | Publisher-supplied settlement 01 for the represented feature or record. |
+| `zoning_description` | `varchar(100)` |  |
+| `zoning_objective` | `varchar(254)` |  |
+| `area_acres` | `real` |  |
+| `area_hectares` | `real` |  |
+| `residential` | `varchar(100)` |  |
+| `settlement` | `double precision` |  |
+| `settlement_01` | `varchar(100)` |  |
 | `plan_name` | `varchar(120)` | Name associated with the represented feature. |
-| `lifetime` | `varchar(25)` | Publisher-supplied lifetime for the represented feature or record. |
-| `more_info` | `varchar(250)` | Publisher-supplied more info for the represented feature or record. |
+| `lifetime` | `varchar(25)` |  |
+| `more_info` | `varchar(250)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

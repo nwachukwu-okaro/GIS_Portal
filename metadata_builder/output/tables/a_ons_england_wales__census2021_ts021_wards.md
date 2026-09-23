@@ -40,30 +40,30 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in census2021_ts021_wards. |
 | `ethnic group` | `varchar` |  |
-| `total_all_usual_residents` | `integer` | Count or numeric value for total all usual residents in the represented area. |
-| `asian_asian_british_or_asian_welsh` | `integer` | Count or numeric value for asian asian british or asian welsh in the represented area. |
-| `asian_asian_british_or_asian_welsh_bangladeshi` | `integer` | Count or numeric value for asian asian british or asian welsh bangladeshi in the represented area. |
-| `asian_asian_british_or_asian_welsh_chinese` | `integer` | Count or numeric value for asian asian british or asian welsh chinese in the represented area. |
-| `asian_asian_british_or_asian_welsh_indian` | `integer` | Count or numeric value for asian asian british or asian welsh indian in the represented area. |
-| `asian_asian_british_or_asian_welsh_pakistani` | `integer` | Count or numeric value for asian asian british or asian welsh pakistani in the represented area. |
-| `asian_asian_british_or_asian_welsh_other_asian` | `integer` | Count or numeric value for asian asian british or asian welsh other asian in the represented area. |
-| `black_black_british_black_welsh_caribbean_or_african` | `integer` | Count or numeric value for black black british black welsh caribbean or african in the represented area. |
-| `black_black_british_black_welsh_caribbean_or_african_african` | `integer` | Count or numeric value for black black british black welsh caribbean or african african in the represented area. |
-| `black_black_british_black_welsh_caribbean_or_african_caribbean` | `integer` | Count or numeric value for black black british black welsh caribbean or african caribbean in the represented area. |
-| `black_black_british_black_welsh_caribbean_or_african_other_blac` | `integer` | Count or numeric value for black black british black welsh caribbean or african other blac in the represented area. |
-| `mixed_or_multiple_ethnic_groups` | `integer` | Count or numeric value for mixed or multiple ethnic groups in the represented area. |
-| `mixed_or_multiple_ethnic_groups_white_and_asian` | `integer` | Count or numeric value for mixed or multiple ethnic groups white and asian in the represented area. |
-| `mixed_or_multiple_ethnic_groups_white_and_black_african` | `integer` | Count or numeric value for mixed or multiple ethnic groups white and black african in the represented area. |
-| `mixed_or_multiple_ethnic_groups_white_and_black_caribbean` | `integer` | Count or numeric value for mixed or multiple ethnic groups white and black caribbean in the represented area. |
-| `mixed_or_multiple_ethnic_groups_other_mixed_or_multiple_ethnic` | `integer` | Count or numeric value for mixed or multiple ethnic groups other mixed or multiple ethnic in the represented area. |
-| `white` | `integer` | Count or numeric value for white in the represented area. |
-| `white_english_welsh_scottish_northern_irish_or_british` | `integer` | Count or numeric value for white english welsh scottish northern irish or british in the represented area. |
-| `white_irish` | `integer` | Count or numeric value for white irish in the represented area. |
-| `white_gypsy_or_irish_traveller` | `integer` | Count or numeric value for white gypsy or irish traveller in the represented area. |
-| `white_roma` | `integer` | Count or numeric value for white roma in the represented area. |
-| `white_other_white` | `integer` | Count or numeric value for white other white in the represented area. |
-| `other_ethnic_group` | `integer` | Count or numeric value for other ethnic group in the represented area. |
-| `other_ethnic_group_arab` | `integer` | Count or numeric value for other ethnic group arab in the represented area. |
-| `other_ethnic_group_any_other_ethnic_group` | `integer` | Count or numeric value for other ethnic group any other ethnic group in the represented area. |
+| `total_all_usual_residents` | `integer` | Census total for all usual residents in the represented geographical area; measurement unit requires the table documentation. |
+| `asian_asian_british_or_asian_welsh` | `integer` |  |
+| `asian_asian_british_or_asian_welsh_bangladeshi` | `integer` |  |
+| `asian_asian_british_or_asian_welsh_chinese` | `integer` |  |
+| `asian_asian_british_or_asian_welsh_indian` | `integer` |  |
+| `asian_asian_british_or_asian_welsh_pakistani` | `integer` |  |
+| `asian_asian_british_or_asian_welsh_other_asian` | `integer` |  |
+| `black_black_british_black_welsh_caribbean_or_african` | `integer` |  |
+| `black_black_british_black_welsh_caribbean_or_african_african` | `integer` |  |
+| `black_black_british_black_welsh_caribbean_or_african_caribbean` | `integer` |  |
+| `black_black_british_black_welsh_caribbean_or_african_other_blac` | `integer` |  |
+| `mixed_or_multiple_ethnic_groups` | `integer` |  |
+| `mixed_or_multiple_ethnic_groups_white_and_asian` | `integer` |  |
+| `mixed_or_multiple_ethnic_groups_white_and_black_african` | `integer` |  |
+| `mixed_or_multiple_ethnic_groups_white_and_black_caribbean` | `integer` |  |
+| `mixed_or_multiple_ethnic_groups_other_mixed_or_multiple_ethnic` | `integer` |  |
+| `white` | `integer` |  |
+| `white_english_welsh_scottish_northern_irish_or_british` | `integer` |  |
+| `white_irish` | `integer` |  |
+| `white_gypsy_or_irish_traveller` | `integer` |  |
+| `white_roma` | `integer` |  |
+| `white_other_white` | `integer` |  |
+| `other_ethnic_group` | `integer` |  |
+| `other_ethnic_group_arab` | `integer` |  |
+| `other_ethnic_group_any_other_ethnic_group` | `integer` |  |

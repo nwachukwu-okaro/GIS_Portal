@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_overture_maps`
 - **Table:** `places`
 - **Geometry:** MULTIPOINT
@@ -39,17 +39,17 @@ Published by Overture Maps Foundation as part of Overture Maps. Loaded into Syst
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `categories.primary` | `varchar` | Publisher-supplied categories primary for the represented feature or record. |
-| `confidence` | `double precision` | Count or numeric value for confidence in the represented area. |
-| `brand.wikidata` | `varchar` | Publisher-supplied brand wikidata for the represented feature or record. |
-| `brand.names.primary` | `varchar` | Publisher-supplied brand names primary for the represented feature or record. |
-| `names.primary` | `varchar` | Publisher-supplied names primary for the represented feature or record. |
-| `basic_category` | `varchar` | Publisher-supplied basic category for the represented feature or record. |
-| `taxonomy.primary` | `varchar` | Publisher-supplied taxonomy primary for the represented feature or record. |
-| `version` | `integer` | Count or numeric value for version in the represented area. |
-| `filename` | `varchar` | Publisher-supplied filename for the represented feature or record. |
-| `theme` | `varchar` | Publisher-supplied theme for the represented feature or record. |
-| `type` | `varchar` | Publisher-supplied type for the represented feature or record. |
-| `addresses` | `json` | Publisher-supplied addresses for the represented feature or record. |
+| `id` | `varchar` | Primary-key identifier for records in places. |
+| `categories.primary` | `varchar` |  |
+| `confidence` | `double precision` |  |
+| `brand.wikidata` | `varchar` |  |
+| `brand.names.primary` | `varchar` |  |
+| `names.primary` | `varchar` |  |
+| `basic_category` | `varchar` |  |
+| `taxonomy.primary` | `varchar` |  |
+| `version` | `integer` |  |
+| `filename` | `varchar` |  |
+| `theme` | `varchar` |  |
+| `type` | `varchar` |  |
+| `addresses` | `json` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

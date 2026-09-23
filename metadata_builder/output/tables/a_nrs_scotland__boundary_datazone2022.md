@@ -38,14 +38,14 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in boundary_datazone2022. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
-| `dzcode` | `varchar(254)` | Publisher-assigned dzcode for the record. |
-| `dzname` | `varchar(254)` | Publisher-supplied dzname for the represented feature or record. |
+| `dzcode` | `varchar(254)` |  |
+| `dzname` | `varchar(254)` |  |
 | `totpop2022` | `double precision` |  |
 | `hhres2022` | `double precision` |  |
 | `hhcnt2022` | `double precision` |  |
-| `stdareaha` | `double precision` | Numeric stdareaha value recorded for the feature. |
+| `stdareaha` | `double precision` |  |
 | `stdareakm2` | `double precision` |  |
-| `st_area_sh` | `double precision` | Numeric st area sh value recorded for the feature. |
-| `st_length_` | `double precision` | Numeric st length value recorded for the feature. |
+| `st_area_sh` | `double precision` |  |
+| `st_length_` | `double precision` |  |

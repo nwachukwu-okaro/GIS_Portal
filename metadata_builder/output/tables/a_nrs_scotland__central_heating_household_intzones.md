@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `central_heating_household_intzones`
 - **Geometry:** Non-spatial
@@ -37,10 +37,10 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_occupied_households` | `double precision` | Count or numeric value for all occupied households in the represented area. |
-| `number_of_cars_or_vans_in_household_no_cars_or_vans` | `double precision` | Count or numeric value for number of cars or vans in household number cars or vans in the represented area. |
-| `number_of_cars_or_vans_in_household_one_car_or_van` | `double precision` | Count or numeric value for number of cars or vans in household one car or van in the represented area. |
-| `number_of_cars_or_vans_in_household_two_cars_or_vans` | `double precision` | Count or numeric value for number of cars or vans in household two cars or vans in the represented area. |
-| `number_of_cars_or_vans_in_household_three_cars_or_vans` | `double precision` | Count or numeric value for number of cars or vans in household three cars or vans in the represented area. |
-| `number_of_cars_or_vans_in_household_four_or_more_cars_or_van` | `double precision` | Count or numeric value for number of cars or vans in household four or more cars or van in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_occupied_households` | `double precision` | Recorded census measure for the category "all occupied households" in the represented area. Units and population base require the source table. |
+| `number_of_cars_or_vans_in_household_no_cars_or_vans` | `double precision` |  |
+| `number_of_cars_or_vans_in_household_one_car_or_van` | `double precision` |  |
+| `number_of_cars_or_vans_in_household_two_cars_or_vans` | `double precision` |  |
+| `number_of_cars_or_vans_in_household_three_cars_or_vans` | `double precision` |  |
+| `number_of_cars_or_vans_in_household_four_or_more_cars_or_van` | `double precision` |  |

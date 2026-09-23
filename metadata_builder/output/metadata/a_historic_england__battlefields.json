@@ -1,504 +1,131 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_historic_england/battlefields",
-  "schema": "a_historic_england",
-  "table": "battlefields",
-  "title": "Registered Battlefields",
-  "description": "Authoritative boundary polygons for the 47 historic battlefields registered in England. Each feature represents one registered battlefield and includes its National Heritage List for England identifier, official name, registration dates, mapped area, location reference and link to the official designation record. The register supports recognition, conservation and consideration of nationally important battlefield sites in planning decisions.",
-  "local_dataset_version": "20251124 (24 November 2025)",
-  "official_dataset_updated": "28 August 2026",
-  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=8",
-  "documentation_sources": [
-    {
-      "role": "documentation",
-      "title": "Historic England, Download Listing Data - GIS Shapefiles",
-      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
-    },
-    {
-      "role": "guidance",
-      "title": "Historic England, What Are Registered Battlefields?",
-      "url": "https://historicengland.org.uk/listing/what-is-designation/registered-battlefields/"
-    }
-  ],
-  "feature_concept": "registered_battlefield",
-  "synonyms": [
-    "battlefields",
-    "historic battlefields",
-    "heritage battlefield"
-  ],
-  "publisher": {
-    "organisation": "Historic England",
-    "product": "National Heritage List for England spatial data",
-    "source_url": "https://historicengland.org.uk/listing/the-list/map-data/",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "Verify against the individual Historic England download metadata."
-  },
-  "themes": [
-    "heritage",
-    "planning"
-  ],
-  "geographic_coverage": "England",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -4.67907440078809,
-      "ymin": 50.359658092089134,
-      "xmax": 0.709448075966138,
-      "ymax": 55.802926235877344
-    },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 47,
-  "column_count": 12,
-  "primary_key": [
-    "objectid"
-  ],
-  "indexes": [
-    {
-      "name": "battlefields_geom_1764019621483",
-      "definition": "CREATE INDEX battlefields_geom_1764019621483 ON a_historic_england.battlefields USING gist (geom)"
-    },
-    {
-      "name": "battlefields_pkey",
-      "definition": "CREATE UNIQUE INDEX battlefields_pkey ON a_historic_england.battlefields USING btree (objectid)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "listentry",
-      "data_type": "integer",
-      "description": "Unique seven-digit National Heritage List for England entry number, such as 1000000.",
-      "semantic_role": "heritage_asset_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": true,
-      "identifier_system": "NHLE",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "name",
-      "data_type": "text",
-      "description": "Official registered battlefield name, usually including the battle year, such as Edgehill 1642.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Battle of Hastings",
-          "Battle of Bosworth"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "regdate",
-      "data_type": "timestamp",
-      "description": "Date the battlefield was first entered on the Register.",
-      "semantic_role": "designation_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "amenddate",
-      "data_type": "timestamp",
-      "description": "Date the registration record was most recently amended; empty where no amendment is recorded.",
-      "semantic_role": "amendment_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "capturescale",
-      "data_type": "varchar(15)",
-      "description": "Map scale used to capture the battlefield boundary, such as 1:10000 or 1:25000.",
-      "semantic_role": "capture_scale",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "hyperlink",
-      "data_type": "varchar(255)",
-      "description": "URL of the battlefield's official Historic England List entry.",
-      "semantic_role": "source_record_url",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "area_ha",
-      "data_type": "real",
-      "description": "Area enclosed by the registered battlefield boundary, measured in hectares.",
-      "semantic_role": "area",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "hectares",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "ngr",
-      "data_type": "varchar(1000000)",
-      "description": "Ordnance Survey National Grid Reference used to locate the battlefield.",
-      "semantic_role": "geographic_reference",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": "OS_NGR",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "easting",
-      "data_type": "real",
-      "description": "British National Grid easting in metres for the battlefield's reference location.",
-      "semantic_role": "x_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "northing",
-      "data_type": "real",
-      "description": "British National Grid northing in metres for the battlefield's reference location.",
-      "semantic_role": "y_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "objectid",
-      "data_type": "bigint",
-      "description": "ArcGIS source-system row identifier; not a persistent heritage asset identifier.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Multipolygon boundary of the registered battlefield in British National Grid coordinates.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Registered Battlefields",
+    "abstract": "Authoritative boundary polygons for the 47 historic battlefields registered in England. Each feature represents one registered battlefield and includes its National Heritage List for England identifier, official name, registration dates, mapped area, location reference and link to the official designation record. The register supports recognition, conservation and consideration of nationally important battlefield sites in planning decisions.",
+    "alternative_title": null,
+    "topic_category": "society",
+    "keywords": [
+      "registered",
+      "battlefields",
+      "historic",
+      "england",
+      "heritage",
+      "planning",
+      "battlefield",
       "listentry",
       "name",
       "regdate",
       "amenddate",
       "capturescale",
       "hyperlink",
-      "area_ha",
+      "area",
+      "ha",
       "ngr",
       "easting",
       "northing",
-      "objectid"
+      "objectid",
+      "geom"
     ],
-    "searchable_columns": [
-      "name"
-    ],
-    "joinable_columns": [
-      "listentry"
-    ],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "registered",
-    "battlefields",
-    "historic",
-    "england",
-    "heritage",
-    "planning",
-    "battlefield",
-    "listentry",
-    "name",
-    "regdate",
-    "amenddate",
-    "capturescale",
-    "hyperlink",
-    "area",
-    "ha",
-    "ngr",
-    "easting",
-    "northing",
-    "objectid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "table_override",
-    "description_confidence": "curated"
-  },
-  "quality": {
-    "metadata_status": "source_verified",
-    "warnings": [
-      "This local table is version 20251124, while Historic England reports a newer official dataset update dated 28 August 2026.",
-      "Check the official Historic England dataset before analyses that require the latest registration boundaries or attributes.",
-      "objectid is a source-system identifier and may change when the dataset is republished."
+    "temporal_extent": {
+      "begin": "1995-06-06T00:00:00",
+      "end": "2018-01-31T11:01:31",
+      "note": "Detected from column: regdate",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": "2026-08-28",
+    "dataset_reference_date_type": "revision",
+    "lineage": "Published by Historic England as part of the National Heritage List for England (NHLE). Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Historic England",
+    "resource_locator": "https://historicengland.org.uk/listing/the-list/map-data/",
+    "unique_identifier": "a_historic_england/battlefields",
+    "schema": "a_historic_england",
+    "table": "battlefields",
+    "bounding_box": {
+      "xmin": -4.679074400788091,
+      "ymin": 50.359658092089134,
+      "xmax": 0.709448075966138,
+      "ymax": 55.802926235877344
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 2,
+    "missing_mandatory_fields": [
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-30T19:58:32.771610+00:00",
-    "curated_at": "2026-08-30T20:00:42.753178+00:00"
-  }
+  "columns": [
+    {
+      "name": "listentry",
+      "type": "integer",
+      "description": "Unique seven-digit National Heritage List for England entry number, such as 1000000."
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "description": "Official registered battlefield name, usually including the battle year, such as Edgehill 1642."
+    },
+    {
+      "name": "regdate",
+      "type": "timestamp",
+      "description": "Date the battlefield was first entered on the Register."
+    },
+    {
+      "name": "amenddate",
+      "type": "timestamp",
+      "description": "Date the registration record was most recently amended; empty where no amendment is recorded."
+    },
+    {
+      "name": "capturescale",
+      "type": "varchar(15)",
+      "description": "Map scale used to capture the battlefield boundary, such as 1:10000 or 1:25000."
+    },
+    {
+      "name": "hyperlink",
+      "type": "varchar(255)",
+      "description": "URL of the battlefield's official Historic England List entry."
+    },
+    {
+      "name": "area_ha",
+      "type": "real",
+      "description": "Area enclosed by the registered battlefield boundary, measured in hectares."
+    },
+    {
+      "name": "ngr",
+      "type": "varchar(1000000)",
+      "description": "Ordnance Survey National Grid Reference used to locate the battlefield."
+    },
+    {
+      "name": "easting",
+      "type": "real",
+      "description": "British National Grid easting in metres for the battlefield's reference location."
+    },
+    {
+      "name": "northing",
+      "type": "real",
+      "description": "British National Grid northing in metres for the battlefield's reference location."
+    },
+    {
+      "name": "objectid",
+      "type": "bigint",
+      "description": "ArcGIS source-system row identifier; not a persistent heritage asset identifier."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Multipolygon boundary of the registered battlefield in British National Grid coordinates."
+    }
+  ]
 }

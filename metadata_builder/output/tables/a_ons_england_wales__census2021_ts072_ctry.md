@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts072_ctry`
 - **Geometry:** Non-spatial
@@ -40,11 +40,11 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. |
-| `no_people_in_the_household_previously_served_in_uk_armed_forces` | `bigint` | Count or numeric value for number people in the household previously served in uk armed forces in the represented area. |
-| `col_1_person_in_the_household_previously_served_in_uk_armed_for` | `bigint` | Count or numeric value for col 1 person in the household previously served in uk armed for in the represented area. |
-| `col_2_people_in_the_household_previously_served_in_uk_armed_for` | `bigint` | Count or numeric value for col 2 people in the household previously served in uk armed for in the represented area. |
-| `col_3_or_more_people_in_the_household_previously_served_in_uk_a` | `bigint` | Count or numeric value for col 3 or more people in the household previously served in uk a in the represented area. |
+| `total_all_households` | `bigint` | Census total for all households in the represented geographical area; measurement unit requires the table documentation. |
+| `no_people_in_the_household_previously_served_in_uk_armed_forces` | `bigint` |  |
+| `col_1_person_in_the_household_previously_served_in_uk_armed_for` | `bigint` |  |
+| `col_2_people_in_the_household_previously_served_in_uk_armed_for` | `bigint` |  |
+| `col_3_or_more_people_in_the_household_previously_served_in_uk_a` | `bigint` |  |

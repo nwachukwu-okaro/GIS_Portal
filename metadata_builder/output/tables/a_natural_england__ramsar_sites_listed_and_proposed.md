@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `ramsar_sites_listed_and_proposed`
 - **Geometry:** MULTIPOLYGON
@@ -42,10 +42,10 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `name` | `text` | Official or publisher-assigned name of the represented feature. |
-| `code` | `text` | Count or numeric value for code in the represented area. |
-| `status` | `text` | Publisher-supplied status for the represented feature or record. |
-| `file` | `text` | Publisher-supplied file for the represented feature or record. |
+| `code` | `text` |  |
+| `status` | `text` |  |
+| `file` | `text` |  |
 | `gis_date` | `text` | Date associated with the represented feature or source record. |
-| `version` | `integer` | Publisher-supplied version for the represented feature or record. |
-| `rse_pk` | `integer` | Count or numeric value for rse pk in the represented area. |
+| `version` | `integer` |  |
+| `rse_pk` | `integer` | Primary-key identifier for records in ramsar_sites_listed_and_proposed. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

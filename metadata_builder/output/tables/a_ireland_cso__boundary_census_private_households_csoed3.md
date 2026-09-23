@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_private_households_csoed3`
 - **Geometry:** GEOMETRY
@@ -38,55 +38,55 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `geogid` | `text` | Publisher-assigned geogid for the record. |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
-| `one_person_households_no_of_households` | `bigint` | Count or numeric value for one person households number of households in the represented area. |
-| `married_couple_households_no_of_households` | `bigint` | Count or numeric value for married couple households number of households in the represented area. |
-| `cohabiting_couple_households_no_of_households` | `bigint` | Count or numeric value for cohabiting couple households number of households in the represented area. |
-| `married_couple_with_children_households_hhs` | `bigint` | Count or numeric value for married couple with children households hhs in the represented area. |
-| `cohabiting_couple_with_children_households_hhs` | `bigint` | Count or numeric value for cohabiting couple with children households hhs in the represented area. |
-| `lone_parent_father_with_children_households_hhs` | `bigint` | Numeric lone parent father with children households hhs value recorded for the feature. |
-| `lone_parent_mother_and_children_households_hhs` | `bigint` | Numeric lone parent mother and children households hhs value recorded for the feature. |
-| `couple_and_others_households_no_of_households` | `bigint` | Count or numeric value for couple and others households number of households in the represented area. |
-| `couple_with_children_and_others_households_hhs` | `bigint` | Count or numeric value for couple with children and others households hhs in the represented area. |
-| `lone_parent_father_with_children_others_hhs` | `bigint` | Numeric lone parent father with children others hhs value recorded for the feature. |
-| `lone_parent_mother_with_children_others_hhs` | `bigint` | Numeric lone parent mother with children others hhs value recorded for the feature. |
-| `two_or_more_family_units_households_hhs` | `bigint` | Count or numeric value for two or more family units households hhs in the represented area. |
-| `nonfamily_households_and_relations_households_hhs` | `bigint` | Numeric nonfamily households and relations households hhs value recorded for the feature. |
-| `two_or_more_nonrelated_persons_households_hhs` | `bigint` | Numeric two or more nonrelated persons households hhs value recorded for the feature. |
-| `total_households_no_of_households` | `bigint` | Count or numeric value for total households number of households in the represented area. |
-| `one_person_households_no_of_persons` | `bigint` | Count or numeric value for one person households number of persons in the represented area. |
-| `married_couple_households_no_of_persons` | `bigint` | Count or numeric value for married couple households number of persons in the represented area. |
-| `cohabiting_couple_households_no_of_persons` | `bigint` | Count or numeric value for cohabiting couple households number of persons in the represented area. |
-| `married_couple_with_children_households_persons` | `bigint` | Count or numeric value for married couple with children households persons in the represented area. |
-| `cohabiting_couple_with_children_households_persons` | `bigint` | Count or numeric value for cohabiting couple with children households persons in the represented area. |
-| `lone_parent_father_with_children_households_persons` | `bigint` | Numeric lone parent father with children households persons value recorded for the feature. |
-| `lone_parent_mother_and_children_households_persons` | `bigint` | Numeric lone parent mother and children households persons value recorded for the feature. |
-| `couple_and_others_households_no_of_persons` | `bigint` | Count or numeric value for couple and others households number of persons in the represented area. |
-| `couple_with_children_and_others_households_persons` | `bigint` | Count or numeric value for couple with children and others households persons in the represented area. |
-| `lone_parent_father_with_children_others_persons` | `bigint` | Numeric lone parent father with children others persons value recorded for the feature. |
-| `lone_parent_mother_with_children_others_persons` | `bigint` | Numeric lone parent mother with children others persons value recorded for the feature. |
-| `two_or_more_family_units_households_no_of_persons` | `bigint` | Count or numeric value for two or more family units households number of persons in the represented area. |
-| `nonfamily_households_and_relations_households_persons` | `bigint` | Numeric nonfamily households and relations households persons value recorded for the feature. |
-| `two_or_more_nonrelated_persons_households_persons` | `bigint` | Numeric two or more nonrelated persons households persons value recorded for the feature. |
-| `total_households_no_of_persons` | `bigint` | Count or numeric value for total households number of persons in the represented area. |
-| `t_1_person_households_no_of_households` | `bigint` | Count or numeric value for t 1 person households number of households in the represented area. |
-| `t_2_person_households_no_of_households` | `bigint` | Count or numeric value for t 2 person households number of households in the represented area. |
-| `t_3_person_households_no_of_households` | `bigint` | Count or numeric value for t 3 person households number of households in the represented area. |
-| `t_4_person_households_no_of_households` | `bigint` | Count or numeric value for t 4 person households number of households in the represented area. |
-| `t_5_person_households_no_of_households` | `bigint` | Count or numeric value for t 5 person households number of households in the represented area. |
-| `t_6_person_households_no_of_households` | `bigint` | Count or numeric value for t 6 person households number of households in the represented area. |
-| `t_7_person_households_no_of_households` | `bigint` | Count or numeric value for t 7 person households number of households in the represented area. |
-| `t_8_or_more_persons_households_no_of_households` | `bigint` | Count or numeric value for t 8 or more persons households number of households in the represented area. |
-| `total_households_no_of_households_1` | `bigint` | Count or numeric value for total households number of households 1 in the represented area. |
-| `t_1_person_households_no_of_persons` | `bigint` | Count or numeric value for t 1 person households number of persons in the represented area. |
-| `t_2_person_households_no_of_persons` | `bigint` | Count or numeric value for t 2 person households number of persons in the represented area. |
-| `t_3_person_households_no_of_persons` | `bigint` | Count or numeric value for t 3 person households number of persons in the represented area. |
-| `t_4_person_households_no_of_persons` | `bigint` | Count or numeric value for t 4 person households number of persons in the represented area. |
-| `t_5_person_households_no_of_persons` | `bigint` | Count or numeric value for t 5 person households number of persons in the represented area. |
-| `t_6_person_households_no_of_persons` | `bigint` | Count or numeric value for t 6 person households number of persons in the represented area. |
-| `t_7_person_households_no_of_persons` | `bigint` | Count or numeric value for t 7 person households number of persons in the represented area. |
-| `t_8_or_more_persons_households_no_of_persons` | `bigint` | Count or numeric value for t 8 or more persons households number of persons in the represented area. |
-| `total_households_no_of_persons_1` | `bigint` | Count or numeric value for total households number of persons 1 in the represented area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `geogid` | `text` | Code identifying the geographical area represented by the row. |
+| `geogdesc` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `one_person_households_no_of_households` | `bigint` | Recorded census measure for the category "one person households number of households" in the represented area. Units and population base require the source table. |
+| `married_couple_households_no_of_households` | `bigint` |  |
+| `cohabiting_couple_households_no_of_households` | `bigint` |  |
+| `married_couple_with_children_households_hhs` | `bigint` |  |
+| `cohabiting_couple_with_children_households_hhs` | `bigint` |  |
+| `lone_parent_father_with_children_households_hhs` | `bigint` |  |
+| `lone_parent_mother_and_children_households_hhs` | `bigint` |  |
+| `couple_and_others_households_no_of_households` | `bigint` |  |
+| `couple_with_children_and_others_households_hhs` | `bigint` |  |
+| `lone_parent_father_with_children_others_hhs` | `bigint` |  |
+| `lone_parent_mother_with_children_others_hhs` | `bigint` |  |
+| `two_or_more_family_units_households_hhs` | `bigint` |  |
+| `nonfamily_households_and_relations_households_hhs` | `bigint` |  |
+| `two_or_more_nonrelated_persons_households_hhs` | `bigint` |  |
+| `total_households_no_of_households` | `bigint` |  |
+| `one_person_households_no_of_persons` | `bigint` | Recorded census measure for the category "one person households number of persons" in the represented area. Units and population base require the source table. |
+| `married_couple_households_no_of_persons` | `bigint` |  |
+| `cohabiting_couple_households_no_of_persons` | `bigint` |  |
+| `married_couple_with_children_households_persons` | `bigint` |  |
+| `cohabiting_couple_with_children_households_persons` | `bigint` |  |
+| `lone_parent_father_with_children_households_persons` | `bigint` |  |
+| `lone_parent_mother_and_children_households_persons` | `bigint` |  |
+| `couple_and_others_households_no_of_persons` | `bigint` |  |
+| `couple_with_children_and_others_households_persons` | `bigint` |  |
+| `lone_parent_father_with_children_others_persons` | `bigint` |  |
+| `lone_parent_mother_with_children_others_persons` | `bigint` |  |
+| `two_or_more_family_units_households_no_of_persons` | `bigint` |  |
+| `nonfamily_households_and_relations_households_persons` | `bigint` |  |
+| `two_or_more_nonrelated_persons_households_persons` | `bigint` |  |
+| `total_households_no_of_persons` | `bigint` |  |
+| `t_1_person_households_no_of_households` | `bigint` |  |
+| `t_2_person_households_no_of_households` | `bigint` |  |
+| `t_3_person_households_no_of_households` | `bigint` |  |
+| `t_4_person_households_no_of_households` | `bigint` |  |
+| `t_5_person_households_no_of_households` | `bigint` |  |
+| `t_6_person_households_no_of_households` | `bigint` |  |
+| `t_7_person_households_no_of_households` | `bigint` |  |
+| `t_8_or_more_persons_households_no_of_households` | `bigint` |  |
+| `total_households_no_of_households_1` | `bigint` |  |
+| `t_1_person_households_no_of_persons` | `bigint` |  |
+| `t_2_person_households_no_of_persons` | `bigint` |  |
+| `t_3_person_households_no_of_persons` | `bigint` |  |
+| `t_4_person_households_no_of_persons` | `bigint` |  |
+| `t_5_person_households_no_of_persons` | `bigint` |  |
+| `t_6_person_households_no_of_persons` | `bigint` |  |
+| `t_7_person_households_no_of_persons` | `bigint` |  |
+| `t_8_or_more_persons_households_no_of_persons` | `bigint` |  |
+| `total_households_no_of_persons_1` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

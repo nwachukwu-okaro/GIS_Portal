@@ -1,299 +1,93 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_environment_agency/rofsw_model_origin",
-  "schema": "a_environment_agency",
-  "table": "rofsw_model_origin",
-  "title": "Risk of Flooding from Surface Water - Model Origin",
-  "description": "Areas identifying the model source and vintage used in the national Risk of Flooding from Surface Water mapping.",
-  "feature_concept": "surface_water_flood_model_origin",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Environment Agency",
-    "product": null,
-    "source_url": "https://environment.data.gov.uk/",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": "Schema default only; verify dataset-specific restrictions and third-party rights."
-  },
-  "themes": [
-    "environment",
-    "flooding",
-    "water"
-  ],
-  "geographic_coverage": "England",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Risk of Flooding from Surface Water - Model Origin",
+    "abstract": "Areas identifying the model source and vintage used in the national Risk of Flooding from Surface Water mapping.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "risk",
+      "flooding",
+      "surface",
+      "water",
+      "model",
+      "origin",
+      "environment",
+      "agency",
+      "rofsw",
+      "scale",
+      "year",
+      "flood",
+      "source",
+      "uuid",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Environment Agency as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environment Agency",
+    "resource_locator": "https://environment.data.gov.uk/",
+    "unique_identifier": "a_environment_agency/rofsw_model_origin",
+    "schema": "a_environment_agency",
+    "table": "rofsw_model_origin",
+    "bounding_box": {
       "xmin": -2.585310699617727,
       "ymin": 55.29270986702197,
-      "xmax": -2.001546134007756,
+      "xmax": -2.001546134007755,
       "ymax": 55.80627327487734
     },
-    "units": "metres",
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 1000,
-  "primary_key": [
-    "uuid"
-  ],
-  "indexes": [
-    {
-      "name": "rofsw_model_origin_pkey",
-      "definition": "CREATE UNIQUE INDEX rofsw_model_origin_pkey ON a_environment_agency.rofsw_model_origin USING btree (uuid)"
-    }
-  ],
   "columns": [
     {
       "name": "model",
-      "data_type": "varchar(254)",
-      "description": "Name or description of the flood model that produced the feature.",
-      "semantic_role": "flood_model_name",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "New national model 2023/24"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": "Name or description of the flood model that produced the feature."
     },
     {
       "name": "scale",
-      "data_type": "varchar(8)",
-      "description": "Geographic scale of the model, such as National.",
-      "semantic_role": "model_scale",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "National"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(8)",
+      "description": "Geographic scale of the model, such as National."
     },
     {
       "name": "model_year",
-      "data_type": "smallint",
-      "description": "Year associated with the flood-model version or run.",
-      "semantic_role": "model_year",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "smallint",
+      "description": "Year associated with the flood-model version or run."
     },
     {
       "name": "flood_source",
-      "data_type": "varchar(16)",
-      "description": "Source of flooding represented, such as river, sea or surface water.",
-      "semantic_role": "flood_source",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Surface Water"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(16)",
+      "description": "Source of flooding represented, such as river, sea or surface water."
     },
     {
       "name": "uuid",
-      "data_type": "char(36)",
-      "description": "Globally unique identifier for the model-origin record.",
-      "semantic_role": "record_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": "UUID",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "00092e3f-5d42-4ecf-a9b5-046b876a16d5",
-          "00288d3b-84e8-4f6f-928a-71abcccc3ae4",
-          "0043ef22-24eb-4814-9d20-950aaea66506",
-          "00a51f20-b164-4e4d-87ad-5964025cf12a",
-          "00aaa093-54aa-4a60-bba9-ff6daf59d9c0"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "char(36)",
+      "description": "Globally unique identifier for the model-origin record."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "model",
-      "scale",
-      "model_year",
-      "flood_source",
-      "uuid"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "rofsw",
-    "model",
-    "origin",
-    "environment",
-    "agency",
-    "flooding",
-    "water",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "table_override",
-    "description_confidence": "curated"
-  },
-  "quality": {
-    "metadata_status": "context_curated",
-    "warnings": [
-      "Schema default only; verify dataset-specific restrictions and third-party rights."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.690593+00:00",
-    "curated_at": "2026-08-30T20:14:25.865266+00:00"
-  },
-  "column_count": 6
+  ]
 }

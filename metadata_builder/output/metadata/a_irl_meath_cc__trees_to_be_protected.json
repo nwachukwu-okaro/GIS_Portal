@@ -1,339 +1,106 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_meath_cc/trees_to_be_protected",
-  "schema": "a_irl_meath_cc",
-  "table": "trees_to_be_protected",
-  "title": "Trees To Be Protected",
-  "description": "Trees To Be Protected is an authoritative dataset published by Meath County Council. It represents trees to be protected features using point geometry.",
-  "feature_concept": "trees_to_be_protected",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Meath County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/meath-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Meath",
-  "geometry": {
-    "column": "geom",
-    "type": "POINT",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Trees To Be Protected",
+    "abstract": "Trees To Be Protected is an authoritative dataset published by Meath County Council. It represents trees to be protected features using point geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "trees",
+      "be",
+      "protected",
+      "irl",
+      "meath",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "tp",
+      "pk",
+      "settlement",
+      "objective",
+      "plan",
+      "name",
+      "map",
+      "label",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Meath County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Meath County Council",
+    "resource_locator": "https://data.gov.ie/organization/meath-county-council",
+    "unique_identifier": "a_irl_meath_cc/trees_to_be_protected",
+    "schema": "a_irl_meath_cc",
+    "table": "trees_to_be_protected",
+    "bounding_box": {
       "xmin": -7.166353804157376,
-      "ymin": 53.41131557982601,
+      "ymin": 53.411315579826024,
       "xmax": -6.231529901732315,
-      "ymax": 53.85176339685292
+      "ymax": 53.851763396852924
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
   },
-  "row_count": 911,
-  "primary_key": [
-    "tp_pk"
-  ],
-  "indexes": [
-    {
-      "name": "trees_to_be_protected_geom_1763581267684",
-      "definition": "CREATE INDEX trees_to_be_protected_geom_1763581267684 ON a_irl_meath_cc.trees_to_be_protected USING gist (geom)"
-    },
-    {
-      "name": "trees_to_be_protected_pkey",
-      "definition": "CREATE UNIQUE INDEX trees_to_be_protected_pkey ON a_irl_meath_cc.trees_to_be_protected USING btree (tp_pk)"
-    }
-  ],
   "columns": [
     {
       "name": "tp_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for tp pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in trees_to_be_protected."
     },
     {
       "name": "settlement",
-      "data_type": "double precision",
-      "description": "Count or numeric value for settlement in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 30.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "settlement2",
-      "data_type": "varchar(60)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Bettystown/Laytown/Mornington East /Donacarney/ Mornington",
-          "Ballivor",
-          "Baile Ghib",
-          "Moynalty",
-          "Dunshaughlin"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 30.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "type": "varchar(60)",
+      "description": null
     },
     {
       "name": "objective",
-      "data_type": "varchar(250)",
-      "description": "Publisher-supplied objective for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "To promote the preservation of individual trees or groups of trees as identified on the Heritage Map and to manage these trees in line with arboricultural best practices."
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(250)",
+      "description": null
     },
     {
       "name": "plan_name",
-      "data_type": "varchar(120)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Meath County Development Plan 2021-2027"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(120)",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "map_label",
-      "data_type": "varchar(100)",
-      "description": "Publisher-supplied map label for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Trees to be Protected"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(100)",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "tp_pk",
-      "settlement",
-      "settlement2",
-      "objective",
-      "plan_name",
-      "map_label"
-    ],
-    "searchable_columns": [
-      "plan_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "trees",
-    "be",
-    "protected",
-    "irl",
-    "meath",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "plan",
-    "name",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.038728+00:00",
-    "curated_at": "2026-08-30T20:16:42.596141+00:00"
-  },
-  "column_count": 7
+  ]
 }

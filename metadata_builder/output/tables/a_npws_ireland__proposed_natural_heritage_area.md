@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_npws_ireland`
 - **Table:** `proposed_natural_heritage_area`
 - **Geometry:** MULTIPOLYGON
@@ -38,13 +38,13 @@ Published by the National Parks and Wildlife Service Ireland as open protected-a
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in proposed_natural_heritage_area. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
-| `sitecode` | `varchar(6)` | Publisher-assigned sitecode for the record. |
+| `sitecode` | `varchar(6)` |  |
 | `site_name` | `varchar(100)` | Name associated with the represented feature. |
-| `county` | `varchar(2)` | Publisher-supplied county for the represented feature or record. |
-| `version` | `double precision` | Count or numeric value for version in the represented area. |
-| `ha` | `double precision` | Count or numeric value for ha in the represented area. |
-| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. |
-| `sourcscale` | `varchar(50)` | Publisher-supplied sourcscale for the represented feature or record. |
-| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. |
+| `county` | `varchar(2)` |  |
+| `version` | `double precision` |  |
+| `ha` | `double precision` |  |
+| `source_crs` | `varchar(254)` |  |
+| `sourcscale` | `varchar(50)` |  |
+| `url` | `varchar(50)` |  |

@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_department_of_housing_lg_heritage`
 - **Table:** `an_bord_pleanala_strategic_housing_developments_2017_2022`
 - **Geometry:** MULTIPOLYGON
@@ -39,15 +39,15 @@ Published by the Department of Housing, Local Government and Heritage as open da
 
 | Column | Type | Description |
 |---|---|---|
-| `shd_pk` | `integer` | Count or numeric value for shd pk in the represented area. |
-| `abpcaseid` | `varchar(6)` | Publisher-assigned abpcaseid for the record. |
-| `devdesc` | `varchar(254)` | Publisher-supplied devdesc for the represented feature or record. |
-| `devaddress` | `varchar(254)` | Publisher-supplied devaddress for the represented feature or record. |
-| `lodgedon` | `timestamp` | Publisher-supplied lodgedon for the represented feature or record. |
-| `decision` | `varchar(39)` | Publisher-supplied decision for the represented feature or record. |
-| `decided_on` | `timestamp` | Publisher-supplied decided on for the represented feature or record. |
-| `linkabpweb` | `varchar(41)` | Publisher-supplied linkabpweb for the represented feature or record. |
-| `planingaty` | `varchar(37)` | Publisher-supplied planingaty for the represented feature or record. |
-| `category` | `varchar(21)` | Publisher-supplied category for the represented feature or record. |
-| `updated_on` | `timestamp` | Publisher-supplied updated on for the represented feature or record. |
+| `shd_pk` | `integer` | Primary-key identifier for records in an_bord_pleanala_strategic_housing_developments_2017_2022. |
+| `abpcaseid` | `varchar(6)` |  |
+| `devdesc` | `varchar(254)` |  |
+| `devaddress` | `varchar(254)` |  |
+| `lodgedon` | `timestamp` |  |
+| `decision` | `varchar(39)` |  |
+| `decided_on` | `timestamp` |  |
+| `linkabpweb` | `varchar(41)` |  |
+| `planingaty` | `varchar(37)` |  |
+| `category` | `varchar(21)` |  |
+| `updated_on` | `timestamp` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

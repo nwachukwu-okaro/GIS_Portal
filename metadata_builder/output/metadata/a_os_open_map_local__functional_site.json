@@ -1,351 +1,103 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_open_map_local/functional_site",
-  "schema": "a_os_open_map_local",
-  "table": "functional_site",
-  "title": "Functional Site",
-  "description": "Contains OS data © Crown copyright and database right 2026",
-  "feature_concept": "functional_site",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "OS Open Map Local",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-map-local",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Contains OS data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "OS OpenData product."
-  },
-  "themes": [
-    "mapping",
-    "topography"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -7.507544935328001,
+  "gemini": {
+    "title": "Functional Site",
+    "abstract": "Contains OS data © Crown copyright and database right 2026",
+    "alternative_title": null,
+    "topic_category": "imageryBaseMapsEarthCover",
+    "keywords": [
+      "functional",
+      "site",
+      "os",
+      "open",
+      "map",
+      "local",
+      "ordnance",
+      "survey",
+      "mapping",
+      "topography",
+      "id",
+      "classification",
+      "distinctive",
+      "name",
+      "feature",
+      "code",
+      "theme",
+      "fid",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of OS Open Map Local. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/os-open-map-local",
+    "unique_identifier": "a_os_open_map_local/functional_site",
+    "schema": "a_os_open_map_local",
+    "table": "functional_site",
+    "bounding_box": {
+      "xmin": -7.507544935327999,
       "ymin": 49.89235225893786,
-      "xmax": 1.761098462873705,
-      "ymax": 60.76026317083798
+      "xmax": 1.761098462873704,
+      "ymax": 60.760263170837966
     },
-    "units": "metres",
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 37845,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "functional_site_geom_1777307765239",
-      "definition": "CREATE INDEX functional_site_geom_1777307765239 ON a_os_open_map_local.functional_site USING gist (geom)"
-    },
-    {
-      "name": "functional_site_pkey",
-      "definition": "CREATE UNIQUE INDEX functional_site_pkey ON a_os_open_map_local.functional_site USING btree (fid)"
-    }
-  ],
   "columns": [
     {
       "name": "id",
-      "data_type": "varchar",
-      "description": "Publisher-assigned identifier for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "803F421D-960A-4329-82D2-4961C0A80F5E",
-          "2FAECE35-C2EF-419F-BDBC-5B9BB0C3335D",
-          "8EC155C3-4CA6-4FF2-BC69-AAD29D30AC32",
-          "CBEDA258-C12F-475A-B0F3-99D1D51194A9",
-          "D7256A8E-AEB8-4E4B-AC9A-D3FB566B0A1D"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "classification",
-      "data_type": "varchar",
-      "description": "Publisher-supplied classification for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Vehicular Ferry Terminal",
-          "Primary Education,Secondary Education,Special Needs Education",
-          "Road User Services",
-          "Non State Primary Education,Non State Secondary Education,Special Needs Education",
-          "Hospice"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 28.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "distinctive_name",
-      "data_type": "varchar",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "The Trinity Voluntary Aided Church of England Primary School",
-          "St Marks Church of England Primary School",
-          "Hallfield Primary School",
-          "The Crossley Heath School",
-          "Cornford House"
-        ],
-        "null_fraction": 0.030633334,
-        "estimated_distinct": -0.84108865,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "feature_code",
-      "data_type": "integer",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 5.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "site_theme",
-      "data_type": "varchar",
-      "description": "Publisher-supplied site theme for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Air Transport",
-          "Medical Care",
-          "Water Transport",
-          "Education",
-          "Road Transport"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 5.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "fid",
-      "data_type": "integer",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Feature identifier assigned by the source or import process."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "id",
-      "classification",
-      "distinctive_name",
-      "feature_code",
-      "site_theme",
-      "fid"
-    ],
-    "searchable_columns": [
-      "distinctive_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "functional",
-    "site",
-    "os",
-    "open",
-    "map",
-    "local",
-    "ordnance",
-    "survey",
-    "mapping",
-    "topography",
-    "distinctive",
-    "name",
-    "feature",
-    "code",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": []
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.641609+00:00",
-    "curated_at": "2026-08-30T20:18:33.825976+00:00"
-  },
-  "column_count": 7
+  ]
 }

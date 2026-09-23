@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts061_ltla`
 - **Geometry:** Non-spatial
@@ -40,18 +40,18 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents_aged_16_years_and_over_in_employment` | `bigint` | Count or numeric value for total all usual residents aged 16 years and over in employment in the represented area. |
-| `work_mainly_at_or_from_home` | `bigint` | Count or numeric value for work mainly at or from home in the represented area. |
-| `underground_metro_light_rail_tram` | `bigint` | Count or numeric value for underground metro light rail tram in the represented area. |
-| `train` | `bigint` | Count or numeric value for train in the represented area. |
-| `bus_minibus_or_coach` | `bigint` | Count or numeric value for bus minibus or coach in the represented area. |
-| `taxi` | `bigint` | Count or numeric value for taxi in the represented area. |
-| `motorcycle_scooter_or_moped` | `bigint` | Count or numeric value for motorcycle scooter or moped in the represented area. |
-| `driving_a_car_or_van` | `bigint` | Count or numeric value for driving a car or van in the represented area. |
-| `passenger_in_a_car_or_van` | `bigint` | Count or numeric value for passenger in a car or van in the represented area. |
-| `bicycle` | `bigint` | Count or numeric value for bicycle in the represented area. |
-| `on_foot` | `bigint` | Count or numeric value for on foot in the represented area. |
-| `other_method_of_travel_to_work` | `bigint` | Count or numeric value for other method of travel to work in the represented area. |
+| `total_all_usual_residents_aged_16_years_and_over_in_employment` | `bigint` | Recorded census measure for the category "total all usual residents aged 16 years and over in employment" in the represented area. Units and population base require the source table. |
+| `work_mainly_at_or_from_home` | `bigint` |  |
+| `underground_metro_light_rail_tram` | `bigint` |  |
+| `train` | `bigint` |  |
+| `bus_minibus_or_coach` | `bigint` |  |
+| `taxi` | `bigint` |  |
+| `motorcycle_scooter_or_moped` | `bigint` |  |
+| `driving_a_car_or_van` | `bigint` |  |
+| `passenger_in_a_car_or_van` | `bigint` |  |
+| `bicycle` | `bigint` |  |
+| `on_foot` | `bigint` |  |
+| `other_method_of_travel_to_work` | `bigint` |  |

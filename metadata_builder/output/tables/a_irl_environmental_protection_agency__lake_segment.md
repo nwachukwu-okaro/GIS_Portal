@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `lake_segment`
 - **Geometry:** MULTIPOLYGON
@@ -40,14 +40,14 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 |---|---|---|
 | `segment_code` | `varchar(24)` | Code assigned by the source dataset. |
 | `name` | `varchar(100)` | Official or publisher-assigned name of the represented feature. |
-| `area_in_km_square` | `double precision` | Numeric area in km square value recorded for the feature. |
-| `area_in_hectares` | `double precision` | Numeric area in hectares value recorded for the feature. |
-| `perimeter` | `double precision` | Count or numeric value for perimeter in the represented area. |
-| `hydrometric_area` | `varchar(3)` | Publisher-supplied hydrometric area for the represented feature or record. |
-| `order` | `double precision` | Count or numeric value for order in the represented area. |
-| `os__layer` | `varchar(16)` | Publisher-supplied os layer for the represented feature or record. |
-| `source` | `varchar(40)` | Publisher-supplied source for the represented feature or record. |
-| `lake_water_body` | `varchar(3)` | Publisher-supplied lake water body for the represented feature or record. |
+| `area_in_km_square` | `double precision` |  |
+| `area_in_hectares` | `double precision` |  |
+| `perimeter` | `double precision` |  |
+| `hydrometric_area` | `varchar(3)` |  |
+| `order` | `double precision` |  |
+| `os__layer` | `varchar(16)` |  |
+| `source` | `varchar(40)` |  |
+| `lake_water_body` | `varchar(3)` |  |
 | `eden_lake_code` | `varchar(50)` | Code assigned by the source dataset. |
-| `ls_pk` | `integer` | Count or numeric value for ls pk in the represented area. |
+| `ls_pk` | `integer` | Primary-key identifier for records in lake_segment. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `datazone_dictionary_datazone`
 - **Geometry:** Non-spatial
@@ -37,13 +37,13 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `country` | `text` | Publisher-supplied country for the represented feature or record. |
-| `geography_level` | `text` | Publisher-supplied geography level for the represented feature or record. |
-| `theme` | `text` | Publisher-supplied theme for the represented feature or record. |
+| `country` | `text` |  |
+| `geography_level` | `text` |  |
+| `theme` | `text` |  |
 | `source_table_code` | `text` | Code assigned by the source dataset. |
-| `table_description` | `text` | Publisher-supplied table description for the represented feature or record. |
-| `source_filename` | `text` | Publisher-supplied source filename for the represented feature or record. |
-| `merged_output_file` | `text` | Publisher-supplied merged output file for the represented feature or record. |
-| `source_available` | `text` | Publisher-supplied source available for the represented feature or record. |
-| `original_column_label` | `text` | Publisher-supplied original column label for the represented feature or record. |
+| `table_description` | `text` |  |
+| `source_filename` | `text` |  |
+| `merged_output_file` | `text` |  |
+| `source_available` | `text` |  |
+| `original_column_label` | `text` |  |
 | `cleaned_column_name` | `text` | Name associated with the represented feature. |

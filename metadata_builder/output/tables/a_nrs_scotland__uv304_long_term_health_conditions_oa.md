@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv304_long_term_health_conditions_oa`
 - **Geometry:** Non-spatial
@@ -38,11 +38,11 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
-| `deaf_or_partially_hearing_impaired` | `double precision` | Count or numeric value for deaf or partially hearing impaired in the represented area. |
-| `blind_or_partially_vision_impaired` | `double precision` | Count or numeric value for blind or partially vision impaired in the represented area. |
-| `full_partial_loss_of_voice_or_difficulty_speaking` | `double precision` | Count or numeric value for full partial loss of voice or difficulty speaking in the represented area. |
+| `all_people` | `double precision` | Recorded census measure for the category "all people" in the represented area. Units and population base require the source table. |
+| `deaf_or_partially_hearing_impaired` | `double precision` |  |
+| `blind_or_partially_vision_impaired` | `double precision` |  |
+| `full_partial_loss_of_voice_or_difficulty_speaking` | `double precision` |  |
 | `has_one_or_more_of_learning_disability_learning_difficulty_or_d` | `double precision` | Human-readable description associated with the corresponding coded attribute. |
-| `physical_disability` | `double precision` | Count or numeric value for physical disability in the represented area. |
-| `mental_health_condition` | `double precision` | Count or numeric value for mental health condition in the represented area. |
-| `long_term_illness_disease_or_condition` | `double precision` | Numeric long term illness disease or condition value recorded for the feature. |
+| `physical_disability` | `double precision` |  |
+| `mental_health_condition` | `double precision` |  |
+| `long_term_illness_disease_or_condition` | `double precision` |  |

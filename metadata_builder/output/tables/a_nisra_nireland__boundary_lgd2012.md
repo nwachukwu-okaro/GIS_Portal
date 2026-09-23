@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_lgd2012`
 - **Geometry:** MULTIPOLYGON
@@ -38,9 +38,9 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in boundary_lgd2012. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
-| `lgdname` | `varchar` | Publisher-supplied lgdname for the represented feature or record. |
-| `area` | `double precision` | Numeric area value recorded for the feature. |
-| `lgdcode` | `varchar` | Publisher-assigned lgdcode for the record. |
+| `lgdname` | `varchar` |  |
+| `area` | `double precision` |  |
+| `lgdcode` | `varchar` |  |
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |

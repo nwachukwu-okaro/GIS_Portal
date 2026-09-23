@@ -1,0 +1,170 @@
+{
+  "gemini": {
+    "title": "Floodmap Extents River Midrange 0100",
+    "abstract": "Floodmap Extents River Midrange 0100 is an authoritative dataset published by Government of Ireland. It represents floodmap extents river midrange 0100 features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "floodmap",
+      "extents",
+      "river",
+      "midrange",
+      "0100",
+      "irl",
+      "datagov",
+      "open",
+      "government",
+      "ireland",
+      "proj",
+      "name",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Government of Ireland as part of the national open data portal (data.gov.ie). Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Government of Ireland",
+    "resource_locator": "https://data.gov.ie/",
+    "unique_identifier": "a_irl_datagov_open_data/floodmap_extents_river_midrange_0100",
+    "schema": "a_irl_datagov_open_data",
+    "table": "floodmap_extents_river_midrange_0100",
+    "bounding_box": {
+      "xmin": -10.298085832696124,
+      "ymin": 51.524675857609864,
+      "xmax": -6.018715752679414,
+      "ymax": 55.30193823723363
+    },
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "uuid",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "b",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "sch",
+      "type": "varchar(20)",
+      "description": null
+    },
+    {
+      "name": "ttt",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "s",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "c",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "r",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "pppp",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "m",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "stg",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "rn",
+      "type": "varchar(10)",
+      "description": null
+    },
+    {
+      "name": "mc",
+      "type": "varchar(20)",
+      "description": null
+    },
+    {
+      "name": "comments",
+      "type": "varchar(300)",
+      "description": null
+    },
+    {
+      "name": "dm_uuid",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "proj_name",
+      "type": "varchar(200)",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "proj_type",
+      "type": "varchar(200)",
+      "description": null
+    },
+    {
+      "name": "uploaded",
+      "type": "date",
+      "description": null
+    },
+    {
+      "name": "version",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "fm0100_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in floodmap_extents_river_midrange_0100."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

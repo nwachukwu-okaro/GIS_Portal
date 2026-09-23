@@ -1,0 +1,630 @@
+{
+  "gemini": {
+    "title": "Census2021 Ts007 Wards",
+    "abstract": "Census2021 Ts007 Wards is an authoritative dataset published by Office for National Statistics. It contains records relating to census2021 ts007 wards.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "census2021",
+      "ts007",
+      "wards",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/census2021_ts007_wards",
+    "schema": "a_ons_england_wales",
+    "table": "census2021_ts007_wards",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in census2021_ts007_wards."
+    },
+    {
+      "name": "age",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "total: all usual residents",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 4 years and under",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged under 1 year",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 1 year",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 2 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 3 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 4 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 5 to 9 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 5 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 6 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 7 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 8 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 9 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 10 to 15 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 10 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 11 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 12 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 13 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 14 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 15 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 16 to 19 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 16 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 17 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 18 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 19 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 20 to 24 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 20 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 21 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 22 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 23 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 24 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 25 to 34 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 25 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 26 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 27 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 28 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 29 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 30 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 31 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 32 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 33 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 34 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 35 to 49 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 35 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 36 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 37 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 38 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 39 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 40 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 41 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 42 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 43 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 44 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 45 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 46 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 47 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 48 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 49 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 50 to 64 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 50 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 51 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 52 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 53 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 54 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 55 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 56 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 57 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 58 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 59 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 60 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 61 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 62 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 63 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 64 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 65 to 74 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 65 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 66 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 67 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 68 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 69 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 70 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 71 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 72 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 73 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 74 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 75 to 84 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 75 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 76 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 77 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 78 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 79 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 80 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 81 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 82 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 83 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 84 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 85 years and over",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 85 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 86 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 87 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 88 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 89 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 90 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 91 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 92 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 93 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 94 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 95 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 96 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 97 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 98 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 99 years",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "aged 100 years and over",
+      "type": "integer",
+      "description": null
+    }
+  ]
+}

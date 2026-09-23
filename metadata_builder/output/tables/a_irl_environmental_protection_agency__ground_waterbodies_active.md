@@ -64,7 +64,7 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 | `protected_a` | `varchar` |  |
 | `out_of_rbd` | `varchar` |  |
 | `local_autho` | `varchar` |  |
-| `category` | `varchar` | Publisher-supplied category for the represented feature or record. |
+| `category` | `varchar` |  |
 | `shape_star` | `double precision` |  |
 | `shape_stle` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

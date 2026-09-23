@@ -38,8 +38,8 @@ Published by Geological Survey Ireland as open geological data. Loaded into Syst
 
 | Column | Type | Description |
 |---|---|---|
-| `gwv_pk` | `integer` | Count or numeric value for gwv pk in the represented area. |
+| `gwv_pk` | `integer` | Primary-key identifier for records in groundwater_vunerability40k. |
 | `vul40kid` | `varchar(25)` |  |
-| `vul_category` | `varchar(10)` | Publisher-supplied vul category for the represented feature or record. |
-| `vul_description` | `varchar(40)` | Publisher-supplied vul description for the represented feature or record. |
+| `vul_category` | `varchar(10)` |  |
+| `vul_description` | `varchar(40)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_ireland_cso`
 - **Table:** `principal_status_bua`
 - **Geometry:** Non-spatial
@@ -37,36 +37,36 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `geogid` | `text` | Publisher-assigned geogid for the record. |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
-| `at_work_males` | `bigint` | Count or numeric value for at work males in the represented area. |
-| `looking_for_first_regular_job_males` | `bigint` | Count or numeric value for looking for first regular job males in the represented area. |
-| `short_term_unemployed_males` | `bigint` | Count or numeric value for short term unemployed males in the represented area. |
-| `long_term_unemployed_males` | `bigint` | Numeric long term unemployed males value recorded for the feature. |
-| `student_males` | `bigint` | Count or numeric value for student males in the represented area. |
-| `looking_after_homefamily_males` | `bigint` | Count or numeric value for looking after homefamily males in the represented area. |
-| `retired_males` | `bigint` | Count or numeric value for retired males in the represented area. |
-| `unable_to_work_due_to_permanent_sickness_or_disability_males` | `bigint` | Count or numeric value for unable to work due to permanent sickness or disability males in the represented area. |
-| `other_males` | `bigint` | Count or numeric value for other males in the represented area. |
-| `total_males` | `bigint` | Count or numeric value for total males in the represented area. |
-| `at_work_females` | `bigint` | Count or numeric value for at work females in the represented area. |
-| `looking_for_first_regular_job_females` | `bigint` | Count or numeric value for looking for first regular job females in the represented area. |
-| `short_term_unemployed_females` | `bigint` | Count or numeric value for short term unemployed females in the represented area. |
-| `long_term_unemployed_females` | `bigint` | Numeric long term unemployed females value recorded for the feature. |
-| `student_females` | `bigint` | Count or numeric value for student females in the represented area. |
-| `looking_after_homefamily_females` | `bigint` | Count or numeric value for looking after homefamily females in the represented area. |
-| `retired_females` | `bigint` | Count or numeric value for retired females in the represented area. |
-| `unable_to_work_due_to_permanent_sickness_or_disability_females` | `bigint` | Count or numeric value for unable to work due to permanent sickness or disability females in the represented area. |
-| `other_females` | `bigint` | Count or numeric value for other females in the represented area. |
-| `total_females` | `bigint` | Count or numeric value for total females in the represented area. |
-| `at_work_total` | `bigint` | Count or numeric value for at work total in the represented area. |
-| `looking_for_first_regular_job_total` | `bigint` | Count or numeric value for looking for first regular job total in the represented area. |
-| `short_term_unemployed_total` | `bigint` | Count or numeric value for short term unemployed total in the represented area. |
-| `long_term_unemployed_total` | `bigint` | Numeric long term unemployed total value recorded for the feature. |
-| `student_total` | `bigint` | Count or numeric value for student total in the represented area. |
-| `looking_after_homefamily_total` | `bigint` | Count or numeric value for looking after homefamily total in the represented area. |
-| `retired_total` | `bigint` | Count or numeric value for retired total in the represented area. |
-| `unable_to_work_due_to_permanent_sickness_or_disability_total` | `bigint` | Count or numeric value for unable to work due to permanent sickness or disability total in the represented area. |
-| `other_total` | `bigint` | Count or numeric value for other total in the represented area. |
-| `total` | `bigint` | Count or numeric value for total in the represented area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `geogid` | `text` | Code identifying the geographical area represented by the row. |
+| `geogdesc` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `at_work_males` | `bigint` |  |
+| `looking_for_first_regular_job_males` | `bigint` |  |
+| `short_term_unemployed_males` | `bigint` |  |
+| `long_term_unemployed_males` | `bigint` |  |
+| `student_males` | `bigint` |  |
+| `looking_after_homefamily_males` | `bigint` |  |
+| `retired_males` | `bigint` |  |
+| `unable_to_work_due_to_permanent_sickness_or_disability_males` | `bigint` |  |
+| `other_males` | `bigint` |  |
+| `total_males` | `bigint` | Census total for males in the represented geographical area; measurement unit requires the table documentation. |
+| `at_work_females` | `bigint` |  |
+| `looking_for_first_regular_job_females` | `bigint` |  |
+| `short_term_unemployed_females` | `bigint` |  |
+| `long_term_unemployed_females` | `bigint` |  |
+| `student_females` | `bigint` |  |
+| `looking_after_homefamily_females` | `bigint` |  |
+| `retired_females` | `bigint` |  |
+| `unable_to_work_due_to_permanent_sickness_or_disability_females` | `bigint` |  |
+| `other_females` | `bigint` |  |
+| `total_females` | `bigint` | Census total for females in the represented geographical area; measurement unit requires the table documentation. |
+| `at_work_total` | `bigint` |  |
+| `looking_for_first_regular_job_total` | `bigint` |  |
+| `short_term_unemployed_total` | `bigint` |  |
+| `long_term_unemployed_total` | `bigint` |  |
+| `student_total` | `bigint` |  |
+| `looking_after_homefamily_total` | `bigint` |  |
+| `retired_total` | `bigint` |  |
+| `unable_to_work_due_to_permanent_sickness_or_disability_total` | `bigint` |  |
+| `other_total` | `bigint` |  |
+| `total` | `bigint` |  |

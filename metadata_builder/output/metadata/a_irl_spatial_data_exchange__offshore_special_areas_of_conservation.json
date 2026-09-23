@@ -1,410 +1,112 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_spatial_data_exchange/offshore_special_areas_of_conservation",
-  "schema": "a_irl_spatial_data_exchange",
-  "table": "offshore_special_areas_of_conservation",
-  "title": "Offshore Special Areas Of Conservation",
-  "description": "Offshore Special Areas Of Conservation is an authoritative dataset published by Government of Ireland. It represents offshore special areas of conservation features using polygon geometry.",
-  "feature_concept": "offshore_special_areas_of_conservation",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Government of Ireland",
-    "product": null,
-    "source_url": "https://data.gov.ie/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "spatial data",
-    "open data"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "POLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
-      "xmin": -15.817579526928451,
-      "ymin": 46.488600371734066,
-      "xmax": -15.817498054578763,
-      "ymax": 46.48867157098068
+  "gemini": {
+    "title": "Offshore Special Areas Of Conservation",
+    "abstract": "Offshore Special Areas Of Conservation is an authoritative dataset published by Government of Ireland. It represents offshore special areas of conservation features using polygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "offshore",
+      "special",
+      "areas",
+      "conservation",
+      "irl",
+      "spatial",
+      "exchange",
+      "government",
+      "ireland",
+      "open",
+      "osac",
+      "pk",
+      "site",
+      "name",
+      "code",
+      "centroid",
+      "laea",
+      "area",
+      "url",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Government of Ireland as part of the national spatial data exchange. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Government of Ireland",
+    "resource_locator": "https://data.gov.ie/",
+    "unique_identifier": "a_irl_spatial_data_exchange/offshore_special_areas_of_conservation",
+    "schema": "a_irl_spatial_data_exchange",
+    "table": "offshore_special_areas_of_conservation",
+    "bounding_box": {
+      "xmin": -15.357777763999934,
+      "ymin": 48.18018777800006,
+      "xmax": -9.40894777799997,
+      "ymax": 56.38375876500004
     },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 8,
-  "primary_key": [
-    "osac_pk"
-  ],
-  "indexes": [
-    {
-      "name": "offshore_special_areas_of_conservation_geom_1764341172959",
-      "definition": "CREATE INDEX offshore_special_areas_of_conservation_geom_1764341172959 ON a_irl_spatial_data_exchange.offshore_special_areas_of_conservation USING gist (geom)"
+    "spatial_reference_system": "EPSG:4326",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "offshore_special_areas_of_conservation_pkey",
-      "definition": "CREATE UNIQUE INDEX offshore_special_areas_of_conservation_pkey ON a_irl_spatial_data_exchange.offshore_special_areas_of_conservation USING btree (osac_pk)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "osac_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for osac pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in offshore_special_areas_of_conservation."
     },
     {
       "name": "site_name",
-      "data_type": "varchar(50)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Hovland Mound Province SAC",
-          "Porcupine Bank Canyon SAC",
-          "South-east Rockall Bank SAC",
-          "North-west Porcupine Bank SAC",
-          "South-west Porcupine Bank SAC"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "site_code",
-      "data_type": "varchar(6)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "003001",
-          "002328",
-          "002330",
-          "002278",
-          "002329"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "n2k_code",
-      "data_type": "varchar(9)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "IE0002327",
-          "IE0002278",
-          "IE0002330",
-          "IE0003002",
-          "IE0002329"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(6)",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "centroid_x",
-      "data_type": "double precision",
-      "description": "Count or numeric value for centroid x in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "X coordinate of the feature centroid; units and reference system are not confirmed for this attribute."
     },
     {
       "name": "centroid_y",
-      "data_type": "double precision",
-      "description": "Count or numeric value for centroid y in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Y coordinate of the feature centroid; units and reference system are not confirmed for this attribute."
     },
     {
       "name": "laea_area",
-      "data_type": "double precision",
-      "description": "Numeric laea area value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "url",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied url for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://www.npws.ie/protected-sites/sac/003002",
-          "https://www.npws.ie/protected-sites/sac/002327",
-          "https://www.npws.ie/protected-sites/sac/002330",
-          "https://www.npws.ie/protected-sites/sac/002267",
-          "https://www.npws.ie/protected-sites/sac/002329"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": "Web address associated with the record."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "osac_pk",
-      "site_name",
-      "site_code",
-      "n2k_code",
-      "centroid_x",
-      "centroid_y",
-      "laea_area",
-      "url"
-    ],
-    "searchable_columns": [
-      "site_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "offshore",
-    "special",
-    "areas",
-    "conservation",
-    "irl",
-    "spatial",
-    "exchange",
-    "government",
-    "ireland",
-    "open",
-    "site",
-    "name",
-    "code",
-    "n2k",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.050488+00:00",
-    "curated_at": "2026-08-30T20:16:46.062603+00:00"
-  },
-  "column_count": 9
+  ]
 }

@@ -1,205 +1,79 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irishrail/railway_track_ln",
-  "schema": "a_irishrail",
-  "table": "railway_track_ln",
-  "title": "Railway Track Ln",
-  "description": "Railway Track Ln is an authoritative dataset published by Iarnrod Eireann / Irish Rail. It represents railway track ln features using multilinestring geometry.",
-  "feature_concept": "railway_track_ln",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Iarnrod Eireann / Irish Rail",
-    "product": null,
-    "source_url": "https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "rail",
-    "transport"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTILINESTRING",
-    "srid": 29903,
-    "crs": "EPSG:29903",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Railway Track Ln",
+    "abstract": "Railway Track Ln is an authoritative dataset published by Iarnrod Eireann / Irish Rail. It represents railway track ln features using multilinestring geometry.",
+    "alternative_title": null,
+    "topic_category": "transportation",
+    "keywords": [
+      "railway",
+      "track",
+      "ln",
+      "irishrail",
+      "iarnrod",
+      "eireann",
+      "irish",
+      "rail",
+      "transport",
+      "pk",
+      "route",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Iarnrod Eireann / Irish Rail as open transport data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Iarnrod Eireann / Irish Rail",
+    "resource_locator": "https://www.irishrail.ie/travel-information/iarnrod-eireann-open-data",
+    "unique_identifier": "a_irishrail/railway_track_ln",
+    "schema": "a_irishrail",
+    "table": "railway_track_ln",
+    "bounding_box": {
       "xmin": -9.699183727182705,
       "ymin": 51.846274360521754,
-      "xmax": -6.034981474061219,
+      "xmax": -6.03498147406122,
       "ymax": 54.27400185590676
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 10891,
-  "primary_key": [],
-  "indexes": [
-    {
-      "name": "railway_track_ln_geom_177763390359",
-      "definition": "CREATE INDEX railway_track_ln_geom_177763390359 ON a_irishrail.railway_track_ln USING gist (geom)"
-    }
-  ],
   "columns": [
     {
       "name": "railway_track_ln_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for railway track ln pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": null
     },
     {
       "name": "route",
-      "data_type": "varchar(200)",
-      "description": "Publisher-supplied route for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Dub2Cork",
-          "Gloun2Youg",
-          "Dub2Gal",
-          "Carl",
-          "Limer2Foyn"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 25.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(200)",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "railway_track_ln_pk",
-      "route"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "railway",
-    "track",
-    "ln",
-    "irishrail",
-    "iarnrod",
-    "eireann",
-    "irish",
-    "rail",
-    "transport",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.542091+00:00",
-    "curated_at": "2026-08-30T20:16:34.130393+00:00"
-  },
-  "column_count": 3
+  ]
 }

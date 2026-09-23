@@ -40,11 +40,11 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in census2021_ts011_wards. |
 | `2022 ward` | `varchar` |  |
-| `total_all_households` | `integer` | Count or numeric value for total all households in the represented area. |
-| `household_is_not_deprived_in_any_dimension` | `integer` | Count or numeric value for household is not deprived in any dimension in the represented area. |
-| `household_is_deprived_in_one_dimension` | `integer` | Count or numeric value for household is deprived in one dimension in the represented area. |
-| `household_is_deprived_in_two_dimensions` | `integer` | Count or numeric value for household is deprived in two dimensions in the represented area. |
-| `household_is_deprived_in_three_dimensions` | `integer` | Count or numeric value for household is deprived in three dimensions in the represented area. |
-| `household_is_deprived_in_four_dimensions` | `integer` | Count or numeric value for household is deprived in four dimensions in the represented area. |
+| `total_all_households` | `integer` | Census total for all households in the represented geographical area; measurement unit requires the table documentation. |
+| `household_is_not_deprived_in_any_dimension` | `integer` |  |
+| `household_is_deprived_in_one_dimension` | `integer` |  |
+| `household_is_deprived_in_two_dimensions` | `integer` |  |
+| `household_is_deprived_in_three_dimensions` | `integer` |  |
+| `household_is_deprived_in_four_dimensions` | `integer` |  |

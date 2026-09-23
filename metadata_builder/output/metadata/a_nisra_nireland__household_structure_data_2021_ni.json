@@ -1,520 +1,159 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nisra_nireland/household_structure_data_2021_ni",
-  "schema": "a_nisra_nireland",
-  "table": "household_structure_data_2021_ni",
-  "title": "Household Structure Data 2021 Ni",
-  "description": "Household Structure Data 2021 Ni is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to household structure data 2021 ni.",
-  "feature_concept": "household_structure_data_2021_ni",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Northern Ireland Statistics and Research Agency",
-    "product": null,
-    "source_url": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Northern Ireland",
-  "geometry": {
-    "column": null,
-    "type": null,
-    "srid": null,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 1,
-  "primary_key": [],
-  "indexes": [],
-  "columns": [
-    {
-      "name": "geocode",
-      "data_type": "text",
-      "description": "Publisher-assigned geocode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N92000002"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geography",
-      "data_type": "text",
-      "description": "Publisher-supplied geography for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Northern Ireland"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year",
-      "data_type": "bigint",
-      "description": "Count or numeric value for year in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "population",
-      "data_type": "text",
-      "description": "Publisher-supplied population for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "All households in the area"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "household_composition_one_person_household",
-      "data_type": "text",
-      "description": "Publisher-supplied household composition one person household for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "234,649"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "household_composition_other_household_types_note_3",
-      "data_type": "text",
-      "description": "Publisher-supplied household composition other household types note 3 for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "43,062"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "household_composition_single_family_all_pension_age_and_over_no",
-      "data_type": "text",
-      "description": "Publisher-supplied household composition single family all pension age and over number for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "60,801"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "household_composition_single_family_cohabiting_couple_family",
-      "data_type": "text",
-      "description": "Publisher-supplied household composition single family cohabiting couple family for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "55,779"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "household_composition_single_family_lone_parent_family",
-      "data_type": "text",
-      "description": "Publisher-supplied household composition single family lone parent family for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "111,083"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "household_composition_single_family_married_or_civil_partnershi",
-      "data_type": "text",
-      "description": "Publisher-supplied household composition single family married or civil partnershi for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "263,432"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "number_of_dependent_children_no_dependent_children_note_1",
-      "data_type": "text",
-      "description": "Count or numeric value for number of dependent children number dependent children note 1 in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "532,975"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "number_of_dependent_children_one",
-      "data_type": "text",
-      "description": "Count or numeric value for number of dependent children one in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "93,314"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "number_of_dependent_children_three_or_more",
-      "data_type": "text",
-      "description": "Count or numeric value for number of dependent children three or more in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "51,082"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "number_of_dependent_children_two",
-      "data_type": "text",
-      "description": "Count or numeric value for number of dependent children two in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "91,431"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "attribute_join": true,
-    "export": true
-  },
-  "operation_requirements": {},
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Household Structure Data 2021 Ni",
+    "abstract": "Household Structure Data 2021 Ni is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to household structure data 2021 ni.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "household",
+      "structure",
+      "2021",
+      "ni",
+      "nisra",
+      "nireland",
+      "northern",
+      "ireland",
+      "statistics",
+      "research",
+      "agency",
+      "census",
+      "boundaries",
       "geocode",
       "geography",
       "year",
       "population",
-      "household_composition_one_person_household",
-      "household_composition_other_household_types_note_3",
-      "household_composition_single_family_all_pension_age_and_over_no",
-      "household_composition_single_family_cohabiting_couple_family",
-      "household_composition_single_family_lone_parent_family",
-      "household_composition_single_family_married_or_civil_partnershi",
-      "number_of_dependent_children_no_dependent_children_note_1",
-      "number_of_dependent_children_one",
-      "number_of_dependent_children_three_or_more",
-      "number_of_dependent_children_two"
+      "composition",
+      "one",
+      "person",
+      "other",
+      "types",
+      "note",
+      "single",
+      "family",
+      "all",
+      "pension",
+      "age",
+      "over",
+      "no",
+      "cohabiting",
+      "couple",
+      "lone",
+      "parent",
+      "married",
+      "civil",
+      "partnershi",
+      "number",
+      "dependent",
+      "children",
+      "three",
+      "more",
+      "two"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "household",
-    "structure",
-    "2021",
-    "ni",
-    "nisra",
-    "nireland",
-    "northern",
-    "ireland",
-    "statistics",
-    "research",
-    "agency",
-    "census",
-    "boundaries"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Northern Ireland Statistics and Research Agency as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Northern Ireland Statistics and Research Agency",
+    "resource_locator": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
+    "unique_identifier": "a_nisra_nireland/household_structure_data_2021_ni",
+    "schema": "a_nisra_nireland",
+    "table": "household_structure_data_2021_ni",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.336599+00:00",
-    "curated_at": "2026-08-30T20:16:55.713670+00:00"
-  },
-  "column_count": 14
+  "columns": [
+    {
+      "name": "geocode",
+      "type": "text",
+      "description": "Code identifying the geographical area represented by the row."
+    },
+    {
+      "name": "geography",
+      "type": "text",
+      "description": "Name or descriptive label of the geographical area represented by the row."
+    },
+    {
+      "name": "year",
+      "type": "bigint",
+      "description": "Reference year recorded for the statistical observation."
+    },
+    {
+      "name": "population",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "household_composition_one_person_household",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "household_composition_other_household_types_note_3",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "household_composition_single_family_all_pension_age_and_over_no",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "household_composition_single_family_cohabiting_couple_family",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "household_composition_single_family_lone_parent_family",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "household_composition_single_family_married_or_civil_partnershi",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "number_of_dependent_children_no_dependent_children_note_1",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "number_of_dependent_children_one",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "number_of_dependent_children_three_or_more",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "number_of_dependent_children_two",
+      "type": "text",
+      "description": null
+    }
+  ]
 }

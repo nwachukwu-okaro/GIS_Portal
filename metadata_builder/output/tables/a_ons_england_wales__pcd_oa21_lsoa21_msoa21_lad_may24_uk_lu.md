@@ -40,18 +40,18 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in pcd_oa21_lsoa21_msoa21_lad_may24_uk_lu. |
 | `pcd7` | `varchar` |  |
 | `pcd8` | `varchar` |  |
 | `pcds` | `varchar` |  |
-| `dointr` | `integer` | Count or numeric value for dointr in the represented area. |
-| `doterm` | `integer` | Count or numeric value for doterm in the represented area. |
-| `usertype` | `boolean` | Publisher-supplied usertype for the represented feature or record. |
+| `dointr` | `integer` |  |
+| `doterm` | `integer` |  |
+| `usertype` | `boolean` |  |
 | `oa21cd` | `varchar` |  |
 | `lsoa21cd` | `varchar` |  |
 | `msoa21cd` | `varchar` |  |
-| `ladcd` | `varchar` | Publisher-supplied ladcd for the represented feature or record. |
+| `ladcd` | `varchar` |  |
 | `lsoa21nm` | `varchar` |  |
 | `msoa21nm` | `varchar` |  |
-| `ladnm` | `varchar` | Publisher-supplied ladnm for the represented feature or record. |
-| `ladnmw` | `varchar` | Publisher-supplied ladnmw for the represented feature or record. |
+| `ladnm` | `varchar` |  |
+| `ladnmw` | `varchar` |  |

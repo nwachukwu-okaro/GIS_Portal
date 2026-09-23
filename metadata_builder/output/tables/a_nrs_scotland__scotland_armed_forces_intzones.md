@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `scotland_armed_forces_intzones`
 - **Geometry:** Non-spatial
@@ -39,6 +39,6 @@ Published by National Records of Scotland as open statistics and boundary data. 
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
 | `geography_name` | `text` | Name associated with the represented feature. |
-| `all_households` | `bigint` | Count or numeric value for all households in the represented area. |
-| `hh_has_af_veteran` | `bigint` | Count or numeric value for households has af veteran in the represented area. |
-| `hh_no_af_veteran` | `bigint` | Count or numeric value for households number af veteran in the represented area. |
+| `all_households` | `bigint` | Recorded census measure for the category "all households" in the represented area. Units and population base require the source table. |
+| `hh_has_af_veteran` | `bigint` |  |
+| `hh_no_af_veteran` | `bigint` |  |

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `protected_view_and_prospect`
 - **Geometry:** POINT
@@ -38,6 +38,6 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `pvp_pk` | `integer` | Count or numeric value for pvp pk in the represented area. |
-| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. |
+| `pvp_pk` | `integer` | Primary-key identifier for records in protected_view_and_prospect. |
+| `map_label` | `varchar(100)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

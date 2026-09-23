@@ -1,422 +1,20 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_historic_england/certificate_of_immunity_points",
-  "schema": "a_historic_england",
-  "table": "certificate_of_immunity_points",
-  "title": "Certificates of Immunity from Listing",
-  "description": "Point locations of buildings with a Certificate of Immunity from Listing published on the National Heritage List for England. A certificate confirms that the Secretary of State does not intend to list the building and normally prevents a Building Preservation Notice for five years.",
-  "feature_concept": "certificate_of_immunity",
-  "synonyms": [
-    "certificate of immunity",
-    "COI",
-    "listing immunity"
-  ],
-  "publisher": {
-    "organisation": "Historic England",
-    "product": "National Heritage List for England spatial data",
-    "source_url": "https://historicengland.org.uk/listing/the-list/map-data/",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "Verify against the individual Historic England download metadata."
-  },
-  "themes": [
-    "heritage",
-    "planning"
-  ],
-  "geographic_coverage": "England",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOINT",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -4.169137261877861,
-      "ymin": 50.365849609781634,
-      "xmax": 1.319359229453422,
-      "ymax": 54.965134858154435
-    },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 209,
-  "primary_key": [
-    "objectid"
-  ],
-  "indexes": [
-    {
-      "name": "certificate_of_immunity_points_geom_1764019629617",
-      "definition": "CREATE INDEX certificate_of_immunity_points_geom_1764019629617 ON a_historic_england.certificate_of_immunity_points USING gist (geom)"
-    },
-    {
-      "name": "certificate_of_immunity_points_pkey",
-      "definition": "CREATE UNIQUE INDEX certificate_of_immunity_points_pkey ON a_historic_england.certificate_of_immunity_points USING btree (objectid)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "listentry",
-      "data_type": "integer",
-      "description": "Historic England List Entry number — unique identifier for a designated heritage asset.",
-      "semantic_role": "heritage_asset_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": true,
-      "identifier_system": "NHLE",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "name",
-      "data_type": "varchar(1000)",
-      "description": "Official or publisher-assigned name of the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Former Outpatients' Department and former Outpatintents' Annexe, Royal London Hospital",
-          "British Library Centre for Conservation",
-          "24 Hounsfield Road",
-          "The former Rex Cinema",
-          "Air Raid Shelters at Chichester High School"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "coistart",
-      "data_type": "timestamp",
-      "description": "Date on which the Certificate of Immunity took effect.",
-      "semantic_role": "certificate_start_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.46411484,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "coiexpire",
-      "data_type": "timestamp",
-      "description": "Date on which the Certificate of Immunity expires, normally five years after issue.",
-      "semantic_role": "certificate_expiry_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.46411484,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "capturescale",
-      "data_type": "varchar(15)",
-      "description": "Map scale at which the boundary was originally captured.",
-      "semantic_role": "capture_scale",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1:100000",
-          "",
-          "1:10000",
-          "1:1250",
-          "1:2500"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 5.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "hyperlink",
-      "data_type": "varchar(255)",
-      "description": "URL linking to the official Historic England record for this asset.",
-      "semantic_role": "source_record_url",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://historicengland.org.uk/listing/the-list/list-entry/1480571",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1481581",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1481374",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1475903",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1487989"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "ngr",
-      "data_type": "varchar(1000000)",
-      "description": "National Grid Reference — alphanumeric grid coordinate in British National Grid.",
-      "semantic_role": "geographic_reference",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": "OS_NGR",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "TQ3357782084",
-          "TG2311109364",
-          "TQ2892181159",
-          "TQ2642777871",
-          "TQ2889481264"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "easting",
-      "data_type": "real",
-      "description": "Easting coordinate in British National Grid (EPSG:27700).",
-      "semantic_role": "x_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9904306,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "northing",
-      "data_type": "real",
-      "description": "Northing coordinate in British National Grid (EPSG:27700).",
-      "semantic_role": "y_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9952153,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "objectid",
-      "data_type": "bigint",
-      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Certificates of Immunity from Listing",
+    "abstract": "Point locations of buildings with a Certificate of Immunity from Listing published on the National Heritage List for England. A certificate confirms that the Secretary of State does not intend to list the building and normally prevents a Building Preservation Notice for five years.",
+    "alternative_title": null,
+    "topic_category": "society",
+    "keywords": [
+      "certificates",
+      "immunity",
+      "listing",
+      "historic",
+      "england",
+      "certificate",
+      "points",
+      "heritage",
+      "planning",
+      "coi",
       "listentry",
       "name",
       "coistart",
@@ -426,66 +24,99 @@
       "ngr",
       "easting",
       "northing",
-      "objectid"
+      "objectid",
+      "geom"
     ],
-    "searchable_columns": [
-      "name"
-    ],
-    "joinable_columns": [
-      "listentry"
-    ],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "certificate",
-    "immunity",
-    "points",
-    "historic",
-    "england",
-    "heritage",
-    "planning",
-    "listentry",
-    "name",
-    "capturescale",
-    "hyperlink",
-    "ngr",
-    "easting",
-    "northing",
-    "objectid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "table_override",
-    "description_confidence": "curated"
-  },
-  "quality": {
-    "metadata_status": "source_verified",
-    "warnings": [
-      "Check the official dataset before relying on whether a certificate remains current.",
-      "objectid may change when the dataset is republished."
+    "temporal_extent": null,
+    "dataset_reference_date": "2026-08-28",
+    "dataset_reference_date_type": "revision",
+    "lineage": "Published by Historic England as part of the National Heritage List for England (NHLE). Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Historic England",
+    "resource_locator": "https://historicengland.org.uk/listing/the-list/map-data/",
+    "unique_identifier": "a_historic_england/certificate_of_immunity_points",
+    "schema": "a_historic_england",
+    "table": "certificate_of_immunity_points",
+    "bounding_box": {
+      "xmin": -4.16913726187786,
+      "ymin": 50.365849609781634,
+      "xmax": 1.319359229453422,
+      "ymax": 54.96513485815443
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.700534+00:00",
-    "curated_at": "2026-08-30T20:00:42.753178+00:00"
-  },
-  "local_dataset_version": "20251124 (24 November 2025)",
-  "official_dataset_updated": "28 August 2026",
-  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=2",
-  "documentation_sources": [
+  "columns": [
     {
-      "role": "documentation",
-      "title": "Historic England, Download Listing Data - GIS Shapefiles",
-      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
+      "name": "listentry",
+      "type": "integer",
+      "description": "Historic England List Entry number — unique identifier for a designated heritage asset."
     },
     {
-      "role": "guidance",
-      "title": "Historic England, Building Preservation Notices and Certificates of Immunity",
-      "url": "https://historicengland.org.uk/listing/protect-historic-places/building-preservation-notices-and-certificates-of-immunity/"
+      "name": "name",
+      "type": "varchar(1000)",
+      "description": "Official or publisher-assigned name of the represented feature."
+    },
+    {
+      "name": "coistart",
+      "type": "timestamp",
+      "description": "Date on which the Certificate of Immunity took effect."
+    },
+    {
+      "name": "coiexpire",
+      "type": "timestamp",
+      "description": "Date on which the Certificate of Immunity expires, normally five years after issue."
+    },
+    {
+      "name": "capturescale",
+      "type": "varchar(15)",
+      "description": "Map scale at which the boundary was originally captured."
+    },
+    {
+      "name": "hyperlink",
+      "type": "varchar(255)",
+      "description": "URL linking to the official Historic England record for this asset."
+    },
+    {
+      "name": "ngr",
+      "type": "varchar(1000000)",
+      "description": "National Grid Reference — alphanumeric grid coordinate in British National Grid."
+    },
+    {
+      "name": "easting",
+      "type": "real",
+      "description": "Easting coordinate in British National Grid (EPSG:27700)."
+    },
+    {
+      "name": "northing",
+      "type": "real",
+      "description": "Northing coordinate in British National Grid (EPSG:27700)."
+    },
+    {
+      "name": "objectid",
+      "type": "bigint",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "column_count": 11
+  ]
 }

@@ -38,7 +38,7 @@ Published by Iarnrod Eireann / Irish Rail as open transport data. Loaded into Sy
 
 | Column | Type | Description |
 |---|---|---|
-| `railway_track_pt_pk` | `integer` | Count or numeric value for railway track pt pk in the represented area. |
+| `railway_track_pt_pk` | `integer` |  |
 | `z` | `real` |  |
-| `text_string` | `varchar(8)` | Publisher-supplied text string for the represented feature or record. |
+| `text_string` | `varchar(8)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

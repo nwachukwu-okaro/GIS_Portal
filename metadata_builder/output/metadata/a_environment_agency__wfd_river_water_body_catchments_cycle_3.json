@@ -1,0 +1,136 @@
+{
+  "gemini": {
+    "title": "Wfd River Water Body Catchments Cycle 3",
+    "abstract": "Wfd River Water Body Catchments Cycle 3 is an authoritative dataset published by Environment Agency. It represents wfd river water body catchments cycle 3 features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "wfd",
+      "river",
+      "water",
+      "body",
+      "catchments",
+      "cycle",
+      "environment",
+      "agency",
+      "flooding",
+      "rbd",
+      "id",
+      "mncat",
+      "name",
+      "opcat",
+      "mancat",
+      "wb",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Environment Agency as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environment Agency",
+    "resource_locator": "https://environment.data.gov.uk/",
+    "unique_identifier": "a_environment_agency/wfd_river_water_body_catchments_cycle_3",
+    "schema": "a_environment_agency",
+    "table": "wfd_river_water_body_catchments_cycle_3",
+    "bounding_box": {
+      "xmin": -5.691935423787258,
+      "ymin": 49.99408749624855,
+      "xmax": 1.749814602582548,
+      "ymax": 55.749185797280276
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "wb_cat",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "rbd_id",
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "mncat_name",
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "rbd_name",
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "opcat_id",
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "hydromorph",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "mancat_id",
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "url",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "opcat_name",
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "wb_id",
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "version",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "wb_name",
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "rwbcc_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in wfd_river_water_body_catchments_cycle_3."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

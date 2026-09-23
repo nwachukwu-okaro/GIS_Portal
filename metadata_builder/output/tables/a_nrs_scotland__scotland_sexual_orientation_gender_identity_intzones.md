@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `scotland_sexual_orientation_gender_identity_intzones`
 - **Geometry:** Non-spatial
@@ -39,13 +39,13 @@ Published by National Records of Scotland as open statistics and boundary data. 
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
 | `geography_name` | `text` | Name associated with the represented feature. |
-| `all_people_16plus_sexual_orient` | `bigint` | Count or numeric value for all people 16plus sexual orient in the represented area. |
-| `heterosexual_straight` | `bigint` | Count or numeric value for heterosexual straight in the represented area. |
-| `gay_or_lesbian` | `bigint` | Count or numeric value for gay or lesbian in the represented area. |
-| `bisexual` | `bigint` | Count or numeric value for bisexual in the represented area. |
-| `other_sexual_orientation` | `bigint` | Count or numeric value for other sexual orientation in the represented area. |
-| `not_answered_sexual_orient` | `bigint` | Count or numeric value for not answered sexual orient in the represented area. |
-| `all_people_16plus_trans_status` | `bigint` | Count or numeric value for all people 16plus trans status in the represented area. |
-| `not_trans_no_history` | `bigint` | Count or numeric value for not trans number history in the represented area. |
-| `trans_or_has_trans_history` | `bigint` | Count or numeric value for trans or has trans history in the represented area. |
-| `not_answered_trans_status` | `bigint` | Count or numeric value for not answered trans status in the represented area. |
+| `all_people_16plus_sexual_orient` | `bigint` | Recorded census measure for the category "all people 16plus sexual orient" in the represented area. Units and population base require the source table. |
+| `heterosexual_straight` | `bigint` |  |
+| `gay_or_lesbian` | `bigint` |  |
+| `bisexual` | `bigint` |  |
+| `other_sexual_orientation` | `bigint` |  |
+| `not_answered_sexual_orient` | `bigint` |  |
+| `all_people_16plus_trans_status` | `bigint` | Recorded census measure for the category "all people 16plus trans status" in the represented area. Units and population base require the source table. |
+| `not_trans_no_history` | `bigint` |  |
+| `trans_or_has_trans_history` | `bigint` |  |
+| `not_answered_trans_status` | `bigint` |  |

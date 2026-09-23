@@ -40,7 +40,7 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in gross_disposable_household_income_per_head. |
 | `area code` | `varchar` |  |
 | `area name` | `varchar` |  |
 | `1997-01-01/p1y (£)` | `integer` |  |

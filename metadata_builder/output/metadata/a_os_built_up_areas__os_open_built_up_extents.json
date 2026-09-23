@@ -1,412 +1,114 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_built_up_areas/os_open_built_up_extents",
-  "schema": "a_os_built_up_areas",
-  "table": "os_open_built_up_extents",
-  "title": "OS Open Built Up Extents",
-  "description": "OS Open Built Up Extents is part of OS Open Built Up Areas, published by Ordnance Survey. It represents built up extents features using multipolygon geometry.",
-  "feature_concept": "built_up_extents",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "OS Open Built Up Areas",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-built-up-areas",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Contains OS data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "OS OpenData product."
-  },
-  "themes": [
-    "built environment",
-    "settlements"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "OS Open Built Up Extents",
+    "abstract": "OS Open Built Up Extents is part of OS Open Built Up Areas, published by Ordnance Survey. It represents built up extents features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "os",
+      "open",
+      "built",
+      "up",
+      "extents",
+      "areas",
+      "ordnance",
+      "survey",
+      "environment",
+      "settlements",
+      "relatedtogsscode",
+      "name1",
+      "text",
+      "language",
+      "name2",
+      "areahectares",
+      "geometry",
+      "area",
+      "fid",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of OS Open Built Up Areas. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/os-open-built-up-areas",
+    "unique_identifier": "a_os_built_up_areas/os_open_built_up_extents",
+    "schema": "a_os_built_up_areas",
+    "table": "os_open_built_up_extents",
+    "bounding_box": {
       "xmin": -7.50949957577433,
       "ymin": 49.91021396106142,
       "xmax": 1.7632269000199,
-      "ymax": 60.48048237754945
+      "ymax": 60.480482377549464
     },
-    "units": "metres",
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 8716,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "os_open_built_up_extents_geom_178484156272",
-      "definition": "CREATE INDEX os_open_built_up_extents_geom_178484156272 ON a_os_built_up_areas.os_open_built_up_extents USING gist (geom)"
-    },
-    {
-      "name": "os_open_built_up_extents_pkey",
-      "definition": "CREATE UNIQUE INDEX os_open_built_up_extents_pkey ON a_os_built_up_areas.os_open_built_up_extents USING btree (fid)"
-    }
-  ],
   "columns": [
     {
       "name": "relatedtogsscode",
-      "data_type": "varchar",
-      "description": "Publisher-assigned relatedtogsscode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "S45002050",
-          "E63020510",
-          "E63018204",
-          "E63021436",
-          "E63017624"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "name1_text",
-      "data_type": "varchar",
-      "description": "Primary place name or feature name.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Llanilar",
-          "Yeadon",
-          "Staveley (Westmorland and Furness)",
-          "Witherley",
-          "Coundon and Leeholme"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Primary place name or feature name."
     },
     {
       "name": "name1_language",
-      "data_type": "varchar",
-      "description": "Language of the primary name (for example ENG for English or CYM for Welsh).",
-      "semantic_role": "language_code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "cym",
-          "gla"
-        ],
-        "null_fraction": 0.9748738,
-        "estimated_distinct": 2.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Language of the primary name (for example ENG for English or CYM for Welsh)."
     },
     {
       "name": "name2_text",
-      "data_type": "varchar",
-      "description": "Secondary or alternative place name.",
-      "semantic_role": "alternative_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Aberbargoed",
-          "Abercrave",
-          "Aberdare",
-          "Aberdovey",
-          "Abergavenny"
-        ],
-        "null_fraction": 0.9733823,
-        "estimated_distinct": -0.026617706,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Secondary or alternative place name."
     },
     {
       "name": "name2_language",
-      "data_type": "varchar",
-      "description": "Language of the secondary name.",
-      "semantic_role": "language_code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "eng"
-        ],
-        "null_fraction": 0.9748738,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Language of the secondary name."
     },
     {
       "name": "areahectares",
-      "data_type": "double precision",
-      "description": "Area of the polygon feature in hectares.",
-      "semantic_role": "area",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "hectares",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.3875631,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Area of the polygon feature in hectares."
     },
     {
       "name": "geometry_area_m",
-      "data_type": "double precision",
-      "description": "Area of the polygon feature in square metres.",
-      "semantic_role": "area",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "square_metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.3875631,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Area of the polygon feature in square metres."
     },
     {
       "name": "fid",
-      "data_type": "bigint",
-      "description": "Feature identifier — unique integer ID assigned to each feature in the dataset.",
-      "semantic_role": "record_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Feature identifier — unique integer ID assigned to each feature in the dataset."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "relatedtogsscode",
-      "name1_text",
-      "name1_language",
-      "name2_text",
-      "name2_language",
-      "areahectares",
-      "geometry_area_m",
-      "fid"
-    ],
-    "searchable_columns": [
-      "name1_text",
-      "name2_text"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "os",
-    "open",
-    "built",
-    "up",
-    "extents",
-    "areas",
-    "ordnance",
-    "survey",
-    "environment",
-    "settlements",
-    "name1",
-    "text",
-    "language",
-    "name2",
-    "areahectares",
-    "geometry",
-    "area",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": []
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.627104+00:00",
-    "curated_at": "2026-08-30T20:17:52.241959+00:00"
-  },
-  "column_count": 9
+  ]
 }

@@ -1,485 +1,125 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_addressbase_premium/organisation",
-  "schema": "a_os_addressbase_premium",
-  "table": "organisation",
-  "title": "Organisation",
-  "description": "Organisation is part of AddressBase Premium, published by Ordnance Survey. It represents organisation features using geometry geometry.",
-  "feature_concept": "organisation",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "AddressBase Premium",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/addressbase-premium",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "addresses",
-    "property"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "GEOMETRY",
-    "srid": 0,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 1389164,
-  "primary_key": [
-    "id"
-  ],
-  "indexes": [
-    {
-      "name": "organization_geom_1782190520358",
-      "definition": "CREATE INDEX organization_geom_1782190520358 ON a_os_addressbase_premium.organisation USING gist (geom)"
+  "gemini": {
+    "title": "Organisation",
+    "abstract": "Organisation is part of AddressBase Premium, published by Ordnance Survey. It represents organisation features using geometry geometry.",
+    "alternative_title": null,
+    "topic_category": "location",
+    "keywords": [
+      "organisation",
+      "os",
+      "addressbase",
+      "premium",
+      "ordnance",
+      "survey",
+      "addresses",
+      "property",
+      "change",
+      "type",
+      "uprn",
+      "org",
+      "key",
+      "legal",
+      "name",
+      "start",
+      "date",
+      "end",
+      "last",
+      "update",
+      "entry",
+      "id",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/addressbase-premium",
+    "unique_identifier": "a_os_addressbase_premium/organisation",
+    "schema": "a_os_addressbase_premium",
+    "table": "organisation",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "organization_pkey",
-      "definition": "CREATE UNIQUE INDEX organization_pkey ON a_os_addressbase_premium.organisation USING btree (id)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "change_type",
-      "data_type": "text",
-      "description": "Publisher-supplied change type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "I"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "uprn",
-      "data_type": "bigint",
-      "description": "Count or numeric value for uprn in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.97684216,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Unique Property Reference Number identifying the addressable location."
     },
     {
       "name": "org_key",
-      "data_type": "text",
-      "description": "Publisher-supplied org key for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "0114O000005854",
-          "0114O000013295",
-          "0114O000014847",
-          "0114O000020618",
-          "0114O000030623"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "organisation",
-      "data_type": "text",
-      "description": "Publisher-supplied organisation for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "FAIR TEST MOT'S",
-          "TENNANTS UK LTD",
-          "GEOQUIP SERVICES",
-          "RAINBOW DRY CLEANING",
-          "VICTORIA ROAD GARAGE (HEBDEN BRIDGE) LTD"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.10651483,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Organisation name associated with the address."
     },
     {
       "name": "legal_name",
-      "data_type": "text",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "4400 PARKWAY WHITELEY FAREHAM PO15 7FJ",
-          "ACHA",
-          "AKC HOTELS LTD",
-          "ALBA/SB POOLS LTD",
-          "ALEXANDRA ASSET LTD"
-        ],
-        "null_fraction": 0.99986666,
-        "estimated_distinct": -0.00013333559,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "start_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1996-01-01",
-          "1999-04-01",
-          "2000-01-20",
-          "2000-01-25",
-          "2000-02-15"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 5017.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "end_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2006-05-01",
-          "2007-11-01",
-          "2007-11-02",
-          "2007-11-13",
-          "2007-11-15"
-        ],
-        "null_fraction": 0.88533336,
-        "estimated_distinct": 3336.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "last_update_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2016-02-07",
-          "2016-02-10",
-          "2016-03-20",
-          "2016-03-21",
-          "2016-05-05"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1561.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "entry_date",
-      "data_type": "text",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1899-12-30",
-          "1900-01-01",
-          "1905-06-07",
-          "1923-01-01",
-          "1947-01-01"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 6137.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "id",
-      "data_type": "bigint",
-      "description": "Count or numeric value for identifier in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Primary-key identifier for records in organisation."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": false
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "change_type",
-      "uprn",
-      "org_key",
-      "organisation",
-      "legal_name",
-      "start_date",
-      "end_date",
-      "last_update_date",
-      "entry_date",
-      "id"
-    ],
-    "searchable_columns": [
-      "legal_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "organisation",
-    "os",
-    "addressbase",
-    "premium",
-    "ordnance",
-    "survey",
-    "addresses",
-    "property",
-    "legal",
-    "name",
-    "start",
-    "date",
-    "end",
-    "last",
-    "update",
-    "entry",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.590430+00:00",
-    "curated_at": "2026-08-30T20:17:33.336410+00:00"
-  },
-  "column_count": 11
+  ]
 }

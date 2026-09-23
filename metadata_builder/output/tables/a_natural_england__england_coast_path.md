@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `england_coast_path`
 - **Geometry:** MULTILINESTRING
@@ -42,15 +42,15 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Publisher-assigned identifier for the record. |
+| `id` | `integer` | Primary-key identifier for records in england_coast_path. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `stretch` | `varchar(75)` | Publisher-supplied stretch for the represented feature or record. |
+| `stretch` | `varchar(75)` |  |
 | `section_id` | `varchar(15)` | Identifier assigned by the source dataset. |
-| `chapter` | `varchar(16)` | Publisher-supplied chapter for the represented feature or record. |
-| `status` | `varchar(65)` | Publisher-supplied status for the represented feature or record. |
-| `alt_route` | `varchar(3)` | Publisher-supplied alt route for the represented feature or record. |
-| `rollback_` | `varchar(40)` | Publisher-supplied rollback for the represented feature or record. |
+| `chapter` | `varchar(16)` |  |
+| `status` | `varchar(65)` |  |
+| `alt_route` | `varchar(3)` |  |
+| `rollback_` | `varchar(40)` |  |
 | `pub_date` | `timestamp` | Date associated with the represented feature or source record. |
-| `shape_leng` | `double precision` | Count or numeric value for shape leng in the represented area. |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `shape_leng` | `double precision` |  |
+| `globalid` | `varchar(38)` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |

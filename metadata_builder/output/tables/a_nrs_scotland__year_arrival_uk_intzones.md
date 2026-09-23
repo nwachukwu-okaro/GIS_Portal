@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `year_arrival_uk_intzones`
 - **Geometry:** Non-spatial
@@ -37,18 +37,18 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
-| `born_in_the_uk` | `double precision` | Count or numeric value for born in the uk in the represented area. |
-| `arrived_before_1941` | `double precision` | Count or numeric value for arrived before 1941 in the represented area. |
-| `arrived_1941_1950` | `double precision` | Count or numeric value for arrived 1941 1950 in the represented area. |
-| `arrived_1951_1960` | `double precision` | Count or numeric value for arrived 1951 1960 in the represented area. |
-| `arrived_1961_1970` | `double precision` | Count or numeric value for arrived 1961 1970 in the represented area. |
-| `arrived_1971_1980` | `double precision` | Count or numeric value for arrived 1971 1980 in the represented area. |
-| `arrived_1981_1990` | `double precision` | Count or numeric value for arrived 1981 1990 in the represented area. |
-| `arrived_1991_2000` | `double precision` | Count or numeric value for arrived 1991 2000 in the represented area. |
-| `arrived_2001_2010` | `double precision` | Count or numeric value for arrived 2001 2010 in the represented area. |
-| `arrived_2011_2013` | `double precision` | Count or numeric value for arrived 2011 2013 in the represented area. |
-| `arrived_2014_2016` | `double precision` | Count or numeric value for arrived 2014 2016 in the represented area. |
-| `arrived_2017_2019` | `double precision` | Count or numeric value for arrived 2017 2019 in the represented area. |
-| `arrived_2020_2022` | `double precision` | Count or numeric value for arrived 2020 2022 in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_people` | `double precision` | Recorded census measure for the category "all people" in the represented area. Units and population base require the source table. |
+| `born_in_the_uk` | `double precision` | Recorded census measure for the category "born in the UK" in the represented area. Units and population base require the source table. |
+| `arrived_before_1941` | `double precision` |  |
+| `arrived_1941_1950` | `double precision` |  |
+| `arrived_1951_1960` | `double precision` |  |
+| `arrived_1961_1970` | `double precision` |  |
+| `arrived_1971_1980` | `double precision` |  |
+| `arrived_1981_1990` | `double precision` |  |
+| `arrived_1991_2000` | `double precision` |  |
+| `arrived_2001_2010` | `double precision` |  |
+| `arrived_2011_2013` | `double precision` |  |
+| `arrived_2014_2016` | `double precision` |  |
+| `arrived_2017_2019` | `double precision` |  |
+| `arrived_2020_2022` | `double precision` |  |

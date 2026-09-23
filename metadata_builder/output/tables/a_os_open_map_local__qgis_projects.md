@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_open_map_local`
 - **Table:** `qgis_projects`
 - **Geometry:** Non-spatial
@@ -42,5 +42,5 @@ Published by Ordnance Survey as part of OS Open Map Local. Loaded into Systra Po
 | Column | Type | Description |
 |---|---|---|
 | `name` | `text` | Official or publisher-assigned name of the represented feature. |
-| `metadata` | `jsonb` | Publisher-supplied metadata for the represented feature or record. |
-| `content` | `bytea` | Publisher-supplied content for the represented feature or record. |
+| `metadata` | `jsonb` |  |
+| `content` | `bytea` |  |

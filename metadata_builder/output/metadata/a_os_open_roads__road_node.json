@@ -1,243 +1,80 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_open_roads/road_node",
-  "schema": "a_os_open_roads",
-  "table": "road_node",
-  "title": "Road Node",
-  "description": "Road Node is part of OS Open Roads, published by Ordnance Survey. It represents road node features using point geometry.",
-  "feature_concept": "road_node",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "OS Open Roads",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-roads",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Contains OS data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "OS OpenData product."
-  },
-  "themes": [
-    "roads",
-    "transport"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "POINT",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Road Node",
+    "abstract": "Road Node is part of OS Open Roads, published by Ordnance Survey. It represents road node features using point geometry.",
+    "alternative_title": null,
+    "topic_category": "transportation",
+    "keywords": [
+      "road",
+      "node",
+      "os",
+      "open",
+      "roads",
+      "ordnance",
+      "survey",
+      "transport",
+      "id",
+      "form",
+      "fid",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of OS Open Roads. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/os-open-roads",
+    "unique_identifier": "a_os_open_roads/road_node",
+    "schema": "a_os_open_roads",
+    "table": "road_node",
+    "bounding_box": {
       "xmin": -8.584536852872995,
       "ymin": 49.891062485934114,
       "xmax": 1.76216938505377,
       "ymax": 60.827676476530925
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 3346499,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "Table1_geometry_1781640193128",
-      "definition": "CREATE INDEX \"Table1_geometry_1781640193128\" ON a_os_open_roads.road_node USING gist (geom)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "Table1_pkey",
-      "definition": "CREATE UNIQUE INDEX \"Table1_pkey\" ON a_os_open_roads.road_node USING btree (fid)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
   "columns": [
     {
       "name": "id",
-      "data_type": "text",
-      "description": "Publisher-assigned identifier for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "0000050E-7F31-4B2B-8C5E-6BB8AD22F524",
-          "00000776-6099-45C5-B5C1-FFF2EA505A37",
-          "000009C9-4FCF-4640-A8FF-8612BDF3E002",
-          "00000A37-AC95-47B2-9CFC-322064A33BAC",
-          "00000ACD-FCF0-4898-AD5F-43759BDFCF6A"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "form_of_road_node",
-      "data_type": "text",
-      "description": "Publisher-supplied form of road node for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "junction",
-          "pseudo node",
-          "road end",
-          "roundabout"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": null
     },
     {
       "name": "fid",
-      "data_type": "bigint",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Feature identifier assigned by the source or import process."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "id",
-      "form_of_road_node",
-      "fid"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "road",
-    "node",
-    "os",
-    "open",
-    "roads",
-    "ordnance",
-    "survey",
-    "transport",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": []
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.677809+00:00",
-    "curated_at": "2026-08-30T20:19:02.660786+00:00"
-  },
-  "column_count": 4
+  ]
 }

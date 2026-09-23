@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_marital_civil_partnership_status_data_2021_sdz`
 - **Geometry:** MULTIPOLYGON
@@ -38,13 +38,13 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `marital_and_civil_partnership_status_divorced_or_formerly_in_a_` | `bigint` | Publisher-supplied marital and civil partnership status divorced or formerly in a for the represented feature or record. |
-| `marital_and_civil_partnership_status_married_or_in_a_civil_part` | `text` | Publisher-supplied marital and civil partnership status married or in a civil part for the represented feature or record. |
-| `marital_and_civil_partnership_status_separated` | `bigint` | Publisher-supplied marital and civil partnership status separated for the represented feature or record. |
-| `marital_and_civil_partnership_status_single` | `text` | Publisher-supplied marital and civil partnership status single for the represented feature or record. |
-| `marital_and_civil_partnership_status_widowed_or_surviving_partn` | `bigint` | Publisher-supplied marital and civil partnership status widowed or surviving partn for the represented feature or record. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `population` | `text` |  |
+| `marital_and_civil_partnership_status_divorced_or_formerly_in_a_` | `bigint` |  |
+| `marital_and_civil_partnership_status_married_or_in_a_civil_part` | `text` |  |
+| `marital_and_civil_partnership_status_separated` | `bigint` |  |
+| `marital_and_civil_partnership_status_single` | `text` |  |
+| `marital_and_civil_partnership_status_widowed_or_surviving_partn` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

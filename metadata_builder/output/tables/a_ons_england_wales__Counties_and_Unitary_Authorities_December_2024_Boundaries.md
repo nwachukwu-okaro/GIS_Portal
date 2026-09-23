@@ -41,14 +41,14 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in Counties_and_Unitary_Authorities_December_2024_Boundaries. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `ctyua24cd` | `varchar(9)` |  |
 | `ctyua24nm` | `varchar(36)` |  |
 | `ctyua24nmw` | `varchar(24)` |  |
-| `bng_e` | `integer` | Count or numeric value for bng e in the represented area. |
-| `bng_n` | `integer` | Count or numeric value for bng n in the represented area. |
-| `long` | `double precision` | Numeric long value recorded for the feature. |
-| `lat` | `double precision` | Numeric lat value recorded for the feature. |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `bng_e` | `integer` |  |
+| `bng_n` | `integer` |  |
+| `long` | `double precision` |  |
+| `lat` | `double precision` |  |
+| `globalid` | `varchar(38)` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |

@@ -1,431 +1,128 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nisra_nireland/migration_data_2021_dea",
-  "schema": "a_nisra_nireland",
-  "table": "migration_data_2021_dea",
-  "title": "Migration Data 2021 Dea",
-  "description": "Migration Data 2021 Dea is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to migration data 2021 dea.",
-  "feature_concept": "migration_data_2021_dea",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Northern Ireland Statistics and Research Agency",
-    "product": null,
-    "source_url": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Northern Ireland",
-  "geometry": {
-    "column": null,
-    "type": null,
-    "srid": null,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 80,
-  "primary_key": [],
-  "indexes": [],
-  "columns": [
-    {
-      "name": "geocode",
-      "data_type": "text",
-      "description": "Publisher-assigned geocode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N10000605",
-          "N10000703",
-          "N10001103",
-          "N10000706",
-          "N10000405"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geography",
-      "data_type": "text",
-      "description": "Publisher-supplied geography for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Larne Lough",
-          "Ormiston",
-          "Sperrin",
-          "Glengormley Urban",
-          "Three Mile Water"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year",
-      "data_type": "bigint",
-      "description": "Count or numeric value for year in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "address_one_year_ago_different_address_outside_northern_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied address one year ago different address outside northern ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "210",
-          "167",
-          "224",
-          "427",
-          "529"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9125,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "address_one_year_ago_different_address_within_northern_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied address one year ago different address within northern ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1,326",
-          "1,454",
-          "1,479",
-          "1,431",
-          "1,115"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9625,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "address_one_year_ago_lived_at_same_address",
-      "data_type": "text",
-      "description": "Publisher-supplied address one year ago lived at same address for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "23,961",
-          "21,442",
-          "16,701",
-          "17,360",
-          "14,072"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year_of_arrival_to_live_in_ni_arrived_2001_2010",
-      "data_type": "text",
-      "description": "Publisher-supplied year of arrival to live in ni arrived 2001 2010 for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "591",
-          "511",
-          "445",
-          "699",
-          "2,129"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9875,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year_of_arrival_to_live_in_ni_arrived_2011_2021",
-      "data_type": "text",
-      "description": "Publisher-supplied year of arrival to live in ni arrived 2011 2021 for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1,029",
-          "12,374",
-          "734",
-          "745",
-          "1,236"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9625,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year_of_arrival_to_live_in_ni_arrived_before_2001",
-      "data_type": "text",
-      "description": "Publisher-supplied year of arrival to live in ni arrived before 2001 for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "867",
-          "1,322",
-          "1,333",
-          "755",
-          "915"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.975,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year_of_arrival_to_live_in_ni_born_in_northern_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied year of arrival to live in ni born in northern ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "19,887",
-          "14,933",
-          "21,993",
-          "19,322",
-          "21,249"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "attribute_join": true,
-    "export": true
-  },
-  "operation_requirements": {},
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Migration Data 2021 Dea",
+    "abstract": "Migration Data 2021 Dea is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to migration data 2021 dea.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "migration",
+      "2021",
+      "dea",
+      "nisra",
+      "nireland",
+      "northern",
+      "ireland",
+      "statistics",
+      "research",
+      "agency",
+      "census",
+      "boundaries",
       "geocode",
       "geography",
       "year",
-      "address_one_year_ago_different_address_outside_northern_ireland",
-      "address_one_year_ago_different_address_within_northern_ireland",
-      "address_one_year_ago_lived_at_same_address",
-      "year_of_arrival_to_live_in_ni_arrived_2001_2010",
-      "year_of_arrival_to_live_in_ni_arrived_2011_2021",
-      "year_of_arrival_to_live_in_ni_arrived_before_2001",
-      "year_of_arrival_to_live_in_ni_born_in_northern_ireland"
+      "address",
+      "one",
+      "ago",
+      "different",
+      "outside",
+      "within",
+      "lived",
+      "same",
+      "arrival",
+      "live",
+      "ni",
+      "arrived",
+      "2001",
+      "2010",
+      "2011",
+      "before",
+      "born"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "migration",
-    "2021",
-    "dea",
-    "nisra",
-    "nireland",
-    "northern",
-    "ireland",
-    "statistics",
-    "research",
-    "agency",
-    "census",
-    "boundaries"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Northern Ireland Statistics and Research Agency as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Northern Ireland Statistics and Research Agency",
+    "resource_locator": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
+    "unique_identifier": "a_nisra_nireland/migration_data_2021_dea",
+    "schema": "a_nisra_nireland",
+    "table": "migration_data_2021_dea",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.390881+00:00",
-    "curated_at": "2026-08-30T20:16:55.875362+00:00"
-  },
-  "column_count": 10
+  "columns": [
+    {
+      "name": "geocode",
+      "type": "text",
+      "description": "Code identifying the geographical area represented by the row."
+    },
+    {
+      "name": "geography",
+      "type": "text",
+      "description": "Name or descriptive label of the geographical area represented by the row."
+    },
+    {
+      "name": "year",
+      "type": "bigint",
+      "description": "Reference year recorded for the statistical observation."
+    },
+    {
+      "name": "address_one_year_ago_different_address_outside_northern_ireland",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "address_one_year_ago_different_address_within_northern_ireland",
+      "type": "text",
+      "description": "Recorded census measure for the category \"address one year ago different address within northern ireland\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "address_one_year_ago_lived_at_same_address",
+      "type": "text",
+      "description": "Recorded census measure for the category \"address one year ago lived at same address\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "year_of_arrival_to_live_in_ni_arrived_2001_2010",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "year_of_arrival_to_live_in_ni_arrived_2011_2021",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "year_of_arrival_to_live_in_ni_arrived_before_2001",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "year_of_arrival_to_live_in_ni_born_in_northern_ireland",
+      "type": "text",
+      "description": null
+    }
+  ]
 }

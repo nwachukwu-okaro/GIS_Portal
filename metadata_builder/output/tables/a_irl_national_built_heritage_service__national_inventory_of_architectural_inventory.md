@@ -38,25 +38,25 @@ Published by the National Built Heritage Service as open heritage data. Loaded i
 
 | Column | Type | Description |
 |---|---|---|
-| `reg_no` | `bigint` | Count or numeric value for reg number in the represented area. |
+| `reg_no` | `bigint` |  |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `number` | `varchar` | Publisher-supplied number for the represented feature or record. |
+| `number` | `varchar` |  |
 | `street1` | `varchar` |  |
 | `street2` | `varchar` |  |
-| `town` | `varchar` | Publisher-supplied town for the represented feature or record. |
-| `townland` | `varchar` | Publisher-supplied townland for the represented feature or record. |
-| `county` | `varchar` | Publisher-supplied county for the represented feature or record. |
+| `town` | `varchar` |  |
+| `townland` | `varchar` |  |
+| `county` | `varchar` |  |
 | `county_id` | `varchar` | Identifier assigned by the source dataset. |
-| `planauth` | `varchar` | Publisher-supplied planauth for the represented feature or record. |
-| `composition` | `varchar` | Publisher-supplied composition for the represented feature or record. |
-| `appraisal` | `varchar` | Publisher-supplied appraisal for the represented feature or record. |
-| `datefrom` | `bigint` | Count or numeric value for datefrom in the represented area. |
-| `dateto` | `bigint` | Count or numeric value for dateto in the represented area. |
-| `rating` | `varchar` | Publisher-supplied rating for the represented feature or record. |
-| `original_type` | `varchar` | Publisher-supplied original type for the represented feature or record. |
-| `image_link` | `varchar` | Publisher-supplied image link for the represented feature or record. |
-| `website_link` | `varchar` | Publisher-supplied website link for the represented feature or record. |
+| `planauth` | `varchar` |  |
+| `composition` | `varchar` |  |
+| `appraisal` | `varchar` |  |
+| `datefrom` | `bigint` |  |
+| `dateto` | `bigint` |  |
+| `rating` | `varchar` |  |
+| `original_type` | `varchar` |  |
+| `image_link` | `varchar` |  |
+| `website_link` | `varchar` |  |
 | `survey_id` | `varchar` | Identifier assigned by the source dataset. |
-| `niah_area` | `varchar` | Publisher-supplied niah area for the represented feature or record. |
-| `niah_pk` | `integer` | Count or numeric value for niah pk in the represented area. |
+| `niah_area` | `varchar` |  |
+| `niah_pk` | `integer` | Primary-key identifier for records in national_inventory_of_architectural_inventory. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

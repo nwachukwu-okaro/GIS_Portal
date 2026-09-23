@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `sexual_orientation_data_2021_ni`
 - **Geometry:** Non-spatial
@@ -37,10 +37,10 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `sexual_orientation_gay_lesbian_bisexual_or_other_sexual_orienta` | `text` | Publisher-supplied sexual orientation gay lesbian bisexual or other sexual orienta for the represented feature or record. |
-| `sexual_orientation_prefer_not_to_say_or_not_stated` | `text` | Publisher-supplied sexual orientation prefer not to say or not stated for the represented feature or record. |
-| `sexual_orientation_straight_or_heterosexual` | `text` | Publisher-supplied sexual orientation straight or heterosexual for the represented feature or record. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `population` | `text` |  |
+| `sexual_orientation_gay_lesbian_bisexual_or_other_sexual_orienta` | `text` |  |
+| `sexual_orientation_prefer_not_to_say_or_not_stated` | `text` |  |
+| `sexual_orientation_straight_or_heterosexual` | `text` |  |

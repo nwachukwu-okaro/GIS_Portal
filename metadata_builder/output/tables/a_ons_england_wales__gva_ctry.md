@@ -40,7 +40,7 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in gva_ctry. |
 | `field_1` | `varchar` |  |
 | `field_2` | `varchar` |  |
 | `field_3` | `varchar` |  |

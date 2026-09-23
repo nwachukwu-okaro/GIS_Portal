@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `local_nature_reserves_england`
 - **Geometry:** MULTIPOLYGON
@@ -46,8 +46,8 @@ Published by Natural England as open environmental and conservation data. Loaded
 |---|---|---|
 | `ref_code` | `varchar(10)` | Code assigned by the source dataset. |
 | `name` | `varchar(120)` | Official or publisher-assigned name of the represented feature. |
-| `measure` | `double precision` | Count or numeric value for measure in the represented area. |
-| `label` | `varchar(140)` | Publisher-supplied label for the represented feature or record. |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `measure` | `double precision` |  |
+| `label` | `varchar(140)` |  |
+| `globalid` | `varchar(38)` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

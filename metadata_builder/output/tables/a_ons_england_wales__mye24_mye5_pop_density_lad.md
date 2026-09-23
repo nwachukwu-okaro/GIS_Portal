@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `mye24_mye5_pop_density_lad`
 - **Geometry:** Non-spatial
@@ -40,36 +40,36 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
-| `code` | `varchar` | Publisher-assigned code for the record. |
+| `id` | `integer` | Primary-key identifier for records in mye24_mye5_pop_density_lad. |
+| `code` | `varchar` |  |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `geography` | `varchar` | Publisher-supplied geography for the represented feature or record. |
-| `area_sq_km` | `varchar` | Publisher-supplied area sq km for the represented feature or record. |
-| `estimated_population_mid_2024` | `integer` | Numeric estimated population mid 2024 value recorded for the feature. |
-| `2024_people_per_sq_km` | `integer` | Count or numeric value for 2024 people per sq km in the represented area. |
-| `estimated_population_mid_2023` | `integer` | Numeric estimated population mid 2023 value recorded for the feature. |
-| `2023_people_per_sq_km` | `integer` | Count or numeric value for 2023 people per sq km in the represented area. |
-| `estimated_population_mid_2022` | `integer` | Numeric estimated population mid 2022 value recorded for the feature. |
-| `2022_people_per_sq_km` | `integer` | Count or numeric value for 2022 people per sq km in the represented area. |
-| `estimated_population_mid_2021` | `integer` | Numeric estimated population mid 2021 value recorded for the feature. |
-| `2021_people_per_sq_km` | `integer` | Count or numeric value for 2021 people per sq km in the represented area. |
-| `estimated_population_mid_2020` | `integer` | Numeric estimated population mid 2020 value recorded for the feature. |
-| `2020_people_per_sq_km` | `integer` | Count or numeric value for 2020 people per sq km in the represented area. |
-| `estimated_population_mid_2019` | `integer` | Numeric estimated population mid 2019 value recorded for the feature. |
-| `2019_people_per_sq_km` | `integer` | Count or numeric value for 2019 people per sq km in the represented area. |
-| `estimated_population_mid_2018` | `integer` | Numeric estimated population mid 2018 value recorded for the feature. |
-| `2018_people_per_sq_km` | `integer` | Count or numeric value for 2018 people per sq km in the represented area. |
-| `estimated_population_mid_2017` | `integer` | Numeric estimated population mid 2017 value recorded for the feature. |
-| `2017_people_per_sq_km` | `integer` | Count or numeric value for 2017 people per sq km in the represented area. |
-| `estimated_population_mid_2016` | `integer` | Numeric estimated population mid 2016 value recorded for the feature. |
-| `2016_people_per_sq_km` | `integer` | Count or numeric value for 2016 people per sq km in the represented area. |
-| `estimated_population_mid_2015` | `integer` | Numeric estimated population mid 2015 value recorded for the feature. |
-| `2015_people_per_sq_km` | `integer` | Count or numeric value for 2015 people per sq km in the represented area. |
-| `estimated_population_mid_2014` | `integer` | Numeric estimated population mid 2014 value recorded for the feature. |
-| `2014_people_per_sq_km` | `integer` | Count or numeric value for 2014 people per sq km in the represented area. |
-| `estimated_population_mid_2013` | `integer` | Numeric estimated population mid 2013 value recorded for the feature. |
-| `2013_people_per_sq_km` | `integer` | Count or numeric value for 2013 people per sq km in the represented area. |
-| `estimated_population_mid_2012` | `integer` | Numeric estimated population mid 2012 value recorded for the feature. |
-| `2012_people_per_sq_km` | `integer` | Count or numeric value for 2012 people per sq km in the represented area. |
-| `estimated_population_mid_2011` | `integer` | Numeric estimated population mid 2011 value recorded for the feature. |
-| `2011_people_per_sq_km` | `integer` | Count or numeric value for 2011 people per sq km in the represented area. |
+| `geography` | `varchar` | Name or descriptive label of the geographical area represented by the row. |
+| `area_sq_km` | `varchar` |  |
+| `estimated_population_mid_2024` | `integer` |  |
+| `2024_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2023` | `integer` |  |
+| `2023_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2022` | `integer` |  |
+| `2022_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2021` | `integer` |  |
+| `2021_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2020` | `integer` |  |
+| `2020_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2019` | `integer` |  |
+| `2019_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2018` | `integer` |  |
+| `2018_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2017` | `integer` |  |
+| `2017_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2016` | `integer` |  |
+| `2016_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2015` | `integer` |  |
+| `2015_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2014` | `integer` |  |
+| `2014_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2013` | `integer` |  |
+| `2013_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2012` | `integer` |  |
+| `2012_people_per_sq_km` | `integer` |  |
+| `estimated_population_mid_2011` | `integer` |  |
+| `2011_people_per_sq_km` | `integer` |  |

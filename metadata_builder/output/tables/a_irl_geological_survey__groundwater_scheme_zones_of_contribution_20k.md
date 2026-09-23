@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_geological_survey`
 - **Table:** `groundwater_scheme_zones_of_contribution_20k`
 - **Geometry:** MULTIPOLYGON
@@ -38,9 +38,9 @@ Published by Geological Survey Ireland as open geological data. Loaded into Syst
 
 | Column | Type | Description |
 |---|---|---|
-| `gwsz_pk` | `integer` | Count or numeric value for gwsz pk in the represented area. |
+| `gwsz_pk` | `integer` | Primary-key identifier for records in groundwater_scheme_zones_of_contribution_20k. |
 | `gws_zoc_id` | `varchar(25)` | Identifier assigned by the source dataset. |
 | `gws_name` | `varchar(50)` | Name associated with the represented feature. |
-| `year` | `integer` | Count or numeric value for year in the represented area. |
-| `consultant` | `varchar(50)` | Publisher-supplied consultant for the represented feature or record. |
+| `year` | `integer` |  |
+| `consultant` | `varchar(50)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

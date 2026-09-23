@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `sites_of_special_scientific_interest_england`
 - **Geometry:** MULTIPOLYGON
@@ -46,9 +46,9 @@ Published by Natural England as open environmental and conservation data. Loaded
 |---|---|---|
 | `ref_code` | `varchar` | Code assigned by the source dataset. |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `measure` | `real` | Count or numeric value for measure in the represented area. |
-| `label` | `varchar` | Publisher-supplied label for the represented feature or record. |
+| `measure` | `real` |  |
+| `label` | `varchar` |  |
 | `hyperlink` | `varchar` | URL of the corresponding record on the publisher's website. |
-| `contact_no` | `varchar` | Publisher-supplied contact number for the represented feature or record. |
+| `contact_no` | `varchar` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

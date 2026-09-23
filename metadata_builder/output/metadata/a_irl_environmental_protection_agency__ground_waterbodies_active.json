@@ -1,0 +1,219 @@
+{
+  "gemini": {
+    "title": "Ground Waterbodies Active",
+    "abstract": "Ground Waterbodies Active is an authoritative dataset published by Environmental Protection Agency Ireland. It represents ground waterbodies active features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "ground",
+      "waterbodies",
+      "active",
+      "irl",
+      "environmental",
+      "protection",
+      "agency",
+      "ireland",
+      "environment",
+      "object",
+      "id",
+      "name",
+      "eden",
+      "code",
+      "easting",
+      "northing",
+      "category",
+      "geom"
+    ],
+    "temporal_extent": {
+      "begin": "2015-08-14",
+      "end": "2019-12-18",
+      "note": "Detected from column: date_change",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Environmental Protection Agency Ireland as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environmental Protection Agency Ireland",
+    "resource_locator": "https://gis.epa.ie/GetData/Download",
+    "unique_identifier": "a_irl_environmental_protection_agency/ground_waterbodies_active",
+    "schema": "a_irl_environmental_protection_agency",
+    "table": "ground_waterbodies_active",
+    "bounding_box": {
+      "xmin": -10.618875656375288,
+      "ymin": 51.42016504737462,
+      "xmax": -5.994736776139932,
+      "ymax": 55.382938205726404
+    },
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "object_id",
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "eu_cd",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "varchar",
+      "description": "Official or publisher-assigned name of the represented feature."
+    },
+    {
+      "name": "ms_cd",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "region_cd",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "ins_when",
+      "type": "date",
+      "description": null
+    },
+    {
+      "name": "ins_by",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "horizon",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "descrip",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "full_type",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "date_change",
+      "type": "date",
+      "description": null
+    },
+    {
+      "name": "change",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "lat",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "lon",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "area_hectar",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "area_km2",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "eden_code",
+      "type": "varchar",
+      "description": "Code assigned by the source dataset."
+    },
+    {
+      "name": "transbound",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "easting",
+      "type": "double precision",
+      "description": "Easting coordinate in metres in the dataset's projected coordinate reference system."
+    },
+    {
+      "name": "northing",
+      "type": "double precision",
+      "description": "Northing coordinate in metres in the dataset's projected coordinate reference system."
+    },
+    {
+      "name": "horz_type",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "dist_cd",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "protected_a",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "out_of_rbd",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "local_autho",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "category",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "shape_star",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "shape_stle",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_network_rail`
 - **Table:** `nwr_gtcl_20251215`
 - **Geometry:** MULTILINESTRING
@@ -38,11 +38,11 @@ Published by Network Rail as open transport data. Loaded into Systra PostGIS dat
 
 | Column | Type | Description |
 |---|---|---|
-| `assetid` | `text` | Publisher-assigned assetid for the record. |
-| `elr` | `text` | Publisher-supplied elr for the represented feature or record. |
-| `trid` | `text` | Publisher-assigned trid for the record. |
-| `source` | `text` | Publisher-supplied source for the represented feature or record. |
-| `superceded` | `text` | Publisher-supplied superceded for the represented feature or record. |
-| `geometry_updated` | `text` | Publisher-supplied geometry updated for the represented feature or record. |
-| `id` | `bigint` | Count or numeric value for identifier in the represented area. |
+| `assetid` | `text` |  |
+| `elr` | `text` |  |
+| `trid` | `text` |  |
+| `source` | `text` |  |
+| `superceded` | `text` |  |
+| `geometry_updated` | `text` |  |
+| `id` | `bigint` | Primary-key identifier for records in nwr_gtcl_20251215. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

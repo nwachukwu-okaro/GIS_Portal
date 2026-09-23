@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv302_general_health_oa`
 - **Geometry:** Non-spatial
@@ -38,9 +38,9 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
-| `very_good` | `double precision` | Count or numeric value for very good in the represented area. |
-| `good` | `double precision` | Count or numeric value for good in the represented area. |
-| `fair` | `double precision` | Count or numeric value for fair in the represented area. |
-| `bad` | `double precision` | Count or numeric value for bad in the represented area. |
-| `very_bad` | `double precision` | Count or numeric value for very bad in the represented area. |
+| `all_people` | `double precision` | Recorded census measure for the category "all people" in the represented area. Units and population base require the source table. |
+| `very_good` | `double precision` |  |
+| `good` | `double precision` |  |
+| `fair` | `double precision` |  |
+| `bad` | `double precision` |  |
+| `very_bad` | `double precision` |  |

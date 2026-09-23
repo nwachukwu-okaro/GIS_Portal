@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts056_utla`
 - **Geometry:** Non-spatial
@@ -40,10 +40,10 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents` | `bigint` | Count or numeric value for total all usual residents in the represented area. |
-| `no_second_address` | `bigint` | Count or numeric value for number second address in the represented area. |
-| `second_address_is_in_the_uk` | `bigint` | Count or numeric value for second address is in the uk in the represented area. |
-| `second_address_is_outside_the_uk` | `bigint` | Count or numeric value for second address is outside the uk in the represented area. |
+| `total_all_usual_residents` | `bigint` | Census total for all usual residents in the represented geographical area; measurement unit requires the table documentation. |
+| `no_second_address` | `bigint` |  |
+| `second_address_is_in_the_uk` | `bigint` |  |
+| `second_address_is_outside_the_uk` | `bigint` |  |

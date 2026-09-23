@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_open_terrain_50`
 - **Table:** `land_water_boundary`
 - **Geometry:** MULTILINESTRING
@@ -42,8 +42,8 @@ Published by Ordnance Survey as part of OS Terrain 50. Loaded into Systra PostGI
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `property_value` | `double precision` | Count or numeric value for property value in the represented area. |
-| `water_level_category` | `varchar` | Publisher-supplied water level category for the represented feature or record. |
+| `id` | `varchar` |  |
+| `property_value` | `double precision` |  |
+| `water_level_category` | `varchar` |  |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

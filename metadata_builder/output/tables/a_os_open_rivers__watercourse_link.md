@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_open_rivers`
 - **Table:** `watercourse_link`
 - **Geometry:** LINESTRING
@@ -42,14 +42,14 @@ Published by Ordnance Survey as part of OS Open Rivers. Loaded into Systra PostG
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `flow_direction` | `varchar` | Publisher-supplied flow direction for the represented feature or record. |
-| `length` | `real` | Numeric length value recorded for the feature. |
-| `fictitious` | `varchar` | Publisher-supplied fictitious for the represented feature or record. |
-| `form` | `varchar` | Publisher-supplied form for the represented feature or record. |
+| `id` | `varchar` |  |
+| `flow_direction` | `varchar` |  |
+| `length` | `real` |  |
+| `fictitious` | `varchar` |  |
+| `form` | `varchar` |  |
 | `watercourse_name` | `varchar` | Name associated with the represented feature. |
-| `watercourse_name_alternative` | `varchar` | Publisher-supplied watercourse name alternative for the represented feature or record. |
-| `start_node` | `varchar` | Publisher-supplied start node for the represented feature or record. |
-| `end_node` | `varchar` | Publisher-supplied end node for the represented feature or record. |
+| `watercourse_name_alternative` | `varchar` |  |
+| `start_node` | `varchar` |  |
+| `end_node` | `varchar` |  |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

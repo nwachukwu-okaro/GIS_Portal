@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_mayo_cc`
 - **Table:** `scenic_views`
 - **Geometry:** MULTIPOINT
@@ -39,6 +39,6 @@ Published by Mayo County Council as open local government data. Loaded into Syst
 | Column | Type | Description |
 |---|---|---|
 | `fid` | `integer` | Feature identifier assigned by the source or import process. |
-| `scenic_view` | `varchar` | Publisher-supplied scenic view for the represented feature or record. |
-| `sv_pk` | `integer` | Count or numeric value for sv pk in the represented area. |
+| `scenic_view` | `varchar` |  |
+| `sv_pk` | `integer` | Primary-key identifier for records in scenic_views. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

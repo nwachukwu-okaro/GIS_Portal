@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_national_highways`
 - **Table:** `hre_structures`
 - **Geometry:** MULTIPOLYGON
@@ -39,6 +39,6 @@ Published by National Highways as open roads data. Loaded into Systra PostGIS da
 | Column | Type | Description |
 |---|---|---|
 | `fid` | `smallint` | Feature identifier assigned by the source or import process. |
-| `long_descr` | `varchar` | Publisher-supplied long descr for the represented feature or record. |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
+| `long_descr` | `varchar` |  |
+| `globalid` | `varchar` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

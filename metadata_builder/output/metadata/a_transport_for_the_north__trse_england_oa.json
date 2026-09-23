@@ -1,0 +1,265 @@
+{
+  "gemini": {
+    "title": "Trse England Oa",
+    "abstract": "Trse England Oa is an authoritative dataset published by Transport For The North. It contains records relating to trse england oa.",
+    "alternative_title": null,
+    "topic_category": null,
+    "keywords": [
+      "trse",
+      "england",
+      "oa",
+      "transport",
+      "north",
+      "name"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": null,
+    "responsible_organisation": "Transport For The North",
+    "resource_locator": null,
+    "unique_identifier": "a_transport_for_the_north/trse_england_oa",
+    "schema": "a_transport_for_the_north",
+    "table": "trse_england_oa",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "source_url",
+      "topic_category",
+      "temporal_extent",
+      "dataset_reference_date",
+      "lineage",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in trse_england_oa."
+    },
+    {
+      "name": "name",
+      "type": "varchar",
+      "description": "Official or publisher-assigned name of the represented feature."
+    },
+    {
+      "name": "population",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "households",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_trse_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_vul_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_disability_and_caring_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_childcare_young_people_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_low_income_poverty_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_acc_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_work_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_education_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_health_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_amenities_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lad_trse_10pct",
+      "type": "boolean",
+      "description": null
+    },
+    {
+      "name": "lad_trse_30pct",
+      "type": "boolean",
+      "description": null
+    },
+    {
+      "name": "ca_trse_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_vul_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_disability_and_caring_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_childcare_young_people_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_low_income_poverty_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_acc_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_work_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_education_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_health_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_amenities_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "ca_trse_10pct",
+      "type": "boolean",
+      "description": null
+    },
+    {
+      "name": "ca_trse_30pct",
+      "type": "boolean",
+      "description": null
+    },
+    {
+      "name": "eng_trse_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_vul_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_disability_and_caring_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_childcare_young_people_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_low_income_poverty_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_acc_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_work_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_education_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_health_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_amenities_access_rank",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "eng_trse_10pct",
+      "type": "boolean",
+      "description": null
+    },
+    {
+      "name": "eng_trse_30pct",
+      "type": "boolean",
+      "description": null
+    },
+    {
+      "name": "high_risk_pop",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "feature_type",
+      "type": "varchar",
+      "description": null
+    }
+  ]
+}

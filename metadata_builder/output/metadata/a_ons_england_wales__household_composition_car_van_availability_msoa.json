@@ -1,0 +1,249 @@
+{
+  "gemini": {
+    "title": "Household Composition Car Van Availability Msoa",
+    "abstract": "Household Composition Car Van Availability Msoa is an authoritative dataset published by Office for National Statistics. It contains records relating to household composition car van availability msoa.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "household",
+      "composition",
+      "car",
+      "van",
+      "availability",
+      "msoa",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "code",
+      "geography"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/household_composition_car_van_availability_msoa",
+    "schema": "a_ons_england_wales",
+    "table": "household_composition_car_van_availability_msoa",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "msoa_code",
+      "type": "varchar(9)",
+      "description": "Code assigned by the source dataset."
+    },
+    {
+      "name": "geography",
+      "type": "varchar(39)",
+      "description": "Name or descriptive label of the geographical area represented by the row."
+    },
+    {
+      "name": "does_not_apply_0_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "does_not_apply_1_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "does_not_apply_2_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "does_not_apply_3_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "does_not_apply_4_more_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "does_not_apply_does_not_apply",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "one_person_hh_0_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "one_person_hh_1_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "one_person_hh_2_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "one_person_hh_3_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "one_person_hh_4_more_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "one_person_hh_does_not_apply",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_66yrs_over_0_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_66yrs_over_1_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_66yrs_over_2_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_66yrs_over_3_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_66yrs_over_4_more_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_66yrs_over_does_not_apply",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_couple_family_0_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_couple_family_1_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_couple_family_2_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_couple_family_3_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_couple_family_4_more_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_couple_family_does_not_apply",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_lone_parent_0_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_lone_parent_1_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_lone_parent_2_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_lone_parent_3_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_lone_parent_4_more_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "single_fam_hh_all_lone_parent_does_not_apply",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "other_hh_types_0_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "other_hh_types_1_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "other_hh_types_2_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "other_hh_types_3_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "other_hh_types_4_more_car_van",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "other_hh_types_does_not_apply",
+      "type": "bigint",
+      "description": null
+    }
+  ]
+}

@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts039asp_utla`
 - **Geometry:** Non-spatial
@@ -40,10 +40,10 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `provides_no_unpaid_care` | `double precision` | Count or numeric value for provides number unpaid care in the represented area. |
-| `provides_19_or_less_hours_unpaid_care_a_week` | `double precision` | Count or numeric value for provides 19 or less hours unpaid care a week in the represented area. |
-| `provides_20_to_49_hours_unpaid_care_a_week` | `double precision` | Count or numeric value for provides 20 to 49 hours unpaid care a week in the represented area. |
-| `provides_50_or_more_hours_unpaid_carea_week` | `double precision` | Numeric provides 50 or more hours unpaid carea week value recorded for the feature. |
+| `provides_no_unpaid_care` | `double precision` |  |
+| `provides_19_or_less_hours_unpaid_care_a_week` | `double precision` |  |
+| `provides_20_to_49_hours_unpaid_care_a_week` | `double precision` |  |
+| `provides_50_or_more_hours_unpaid_carea_week` | `double precision` |  |

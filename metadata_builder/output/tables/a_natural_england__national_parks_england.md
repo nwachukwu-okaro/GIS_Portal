@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `national_parks_england`
 - **Geometry:** MULTIPOLYGON
@@ -45,11 +45,11 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `code` | `smallint` | Count or numeric value for code in the represented area. |
+| `code` | `smallint` |  |
 | `name` | `varchar(200)` | Official or publisher-assigned name of the represented feature. |
-| `measure` | `double precision` | Count or numeric value for measure in the represented area. |
+| `measure` | `double precision` |  |
 | `desig_date` | `timestamp` | Date associated with the represented feature or source record. |
-| `hotlink` | `varchar(200)` | Publisher-supplied hotlink for the represented feature or record. |
-| `status` | `varchar(32)` | Publisher-supplied status for the represented feature or record. |
+| `hotlink` | `varchar(200)` |  |
+| `status` | `varchar(32)` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

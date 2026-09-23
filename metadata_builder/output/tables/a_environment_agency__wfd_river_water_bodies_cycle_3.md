@@ -53,5 +53,5 @@ Published by Environment Agency as open environmental data. Loaded into Systra P
 | `wb_id` | `varchar` | Identifier assigned by the source dataset. |
 | `version` | `varchar` |  |
 | `wb_name` | `varchar` | Name associated with the represented feature. |
-| `rwbc_pk` | `integer` |  |
+| `rwbc_pk` | `integer` | Primary-key identifier for records in wfd_river_water_bodies_cycle_3. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

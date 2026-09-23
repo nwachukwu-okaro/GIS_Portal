@@ -44,9 +44,9 @@ Published by the Office for National Statistics as part of their digital boundar
 | `lad24cd` | `varchar(9)` |  |
 | `lad24nm` | `varchar(36)` |  |
 | `lad24nmw` | `varchar(24)` |  |
-| `bng_e` | `integer` | Count or numeric value for bng e in the represented area. |
-| `bng_n` | `integer` | Count or numeric value for bng n in the represented area. |
-| `long` | `real` | Numeric long value recorded for the feature. |
-| `lat` | `real` | Numeric lat value recorded for the feature. |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `bng_e` | `integer` |  |
+| `bng_n` | `integer` |  |
+| `long` | `real` |  |
+| `lat` | `real` |  |
+| `globalid` | `varchar(38)` |  |
 | `shape` | `geometry` | Spatial geometry of the represented feature. |

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_tfgm`
 - **Table:** `bus_routes`
 - **Geometry:** MULTILINESTRING
@@ -38,11 +38,11 @@ Published by Transport for Greater Manchester as open transport data. Loaded int
 
 | Column | Type | Description |
 |---|---|---|
-| `service_pk` | `integer` | Count or numeric value for service pk in the represented area. |
+| `service_pk` | `integer` | Primary-key identifier for records in bus_routes. |
 | `service_id` | `varchar` | Identifier assigned by the source dataset. |
-| `service_no` | `varchar` | Publisher-supplied service number for the represented feature or record. |
-| `suffix` | `varchar` | Publisher-supplied suffix for the represented feature or record. |
-| `direction` | `varchar` | Publisher-supplied direction for the represented feature or record. |
-| `day` | `varchar` | Publisher-supplied day for the represented feature or record. |
-| `variation` | `varchar` | Publisher-supplied variation for the represented feature or record. |
+| `service_no` | `varchar` | Displayed bus service number. |
+| `suffix` | `varchar` |  |
+| `direction` | `varchar` | Direction of the bus service, such as inbound or outbound. |
+| `day` | `varchar` | Day category on which the bus service operates. |
+| `variation` | `varchar` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

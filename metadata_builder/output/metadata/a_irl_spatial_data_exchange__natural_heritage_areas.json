@@ -1,441 +1,124 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_spatial_data_exchange/natural_heritage_areas",
-  "schema": "a_irl_spatial_data_exchange",
-  "table": "natural_heritage_areas",
-  "title": "Natural Heritage Areas",
-  "description": "Natural Heritage Areas is an authoritative dataset published by Government of Ireland. It represents natural heritage areas features using multipolygon geometry.",
-  "feature_concept": "natural_heritage_areas",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Government of Ireland",
-    "product": null,
-    "source_url": "https://data.gov.ie/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "spatial data",
-    "open data"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
-      "xmin": -10.108587434865438,
-      "ymin": 51.54275090362805,
-      "xmax": -6.066585700534621,
-      "ymax": 55.21889741456828
-    },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 171,
-  "primary_key": [
-    "nha_pk"
-  ],
-  "indexes": [
-    {
-      "name": "natural_heritage_areas_geom_1764341057422",
-      "definition": "CREATE INDEX natural_heritage_areas_geom_1764341057422 ON a_irl_spatial_data_exchange.natural_heritage_areas USING gist (geom)"
-    },
-    {
-      "name": "natural_heritage_areas_pkey",
-      "definition": "CREATE UNIQUE INDEX natural_heritage_areas_pkey ON a_irl_spatial_data_exchange.natural_heritage_areas USING btree (nha_pk)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "site_code",
-      "data_type": "varchar(6)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "001388",
-          "000105",
-          "002446",
-          "002105",
-          "000307"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.90643275,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "site_name",
-      "data_type": "varchar(100)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Bunnaruddee Bog NHA",
-          "Scohaboy Bog NHA",
-          "Boggeragh Mountains NHA",
-          "Illaunonearaun NHA",
-          "Conigar Bog NHA"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.90643275,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "county",
-      "data_type": "varchar(2)",
-      "description": "Publisher-supplied county for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "wm",
-          "ke",
-          "li",
-          "me",
-          "mo"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.12865497,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "version",
-      "data_type": "double precision",
-      "description": "Count or numeric value for version in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 6.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "ha",
-      "data_type": "double precision",
-      "description": "Count or numeric value for ha in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "source_crs",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied source crs for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Irish Grid"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "source_scale",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied source scale for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1:10560"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "url",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied url for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://www.npws.ie/protected-sites/nha/002379",
-          "https://www.npws.ie/protected-sites/nha/002430",
-          "https://www.npws.ie/protected-sites/nha/001159",
-          "https://www.npws.ie/protected-sites/nha/002455",
-          "https://www.npws.ie/protected-sites/nha/000591"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.90643275,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "nha_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for nha pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "site_code",
-      "site_name",
+  "gemini": {
+    "title": "Natural Heritage Areas",
+    "abstract": "Natural Heritage Areas is an authoritative dataset published by Government of Ireland. It represents natural heritage areas features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "natural",
+      "heritage",
+      "areas",
+      "irl",
+      "spatial",
+      "exchange",
+      "government",
+      "ireland",
+      "open",
+      "site",
+      "code",
+      "name",
       "county",
       "version",
       "ha",
-      "source_crs",
-      "source_scale",
+      "source",
+      "crs",
+      "scale",
       "url",
-      "nha_pk"
+      "nha",
+      "pk",
+      "geom"
     ],
-    "searchable_columns": [
-      "site_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "natural",
-    "heritage",
-    "areas",
-    "irl",
-    "spatial",
-    "exchange",
-    "government",
-    "ireland",
-    "open",
-    "site",
-    "code",
-    "name",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Government of Ireland as part of the national spatial data exchange. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Government of Ireland",
+    "resource_locator": "https://data.gov.ie/",
+    "unique_identifier": "a_irl_spatial_data_exchange/natural_heritage_areas",
+    "schema": "a_irl_spatial_data_exchange",
+    "table": "natural_heritage_areas",
+    "bounding_box": {
+      "xmin": -10.108587434865438,
+      "ymin": 51.54275090362805,
+      "xmax": -6.06658570053462,
+      "ymax": 55.21889741456829
+    },
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.048824+00:00",
-    "curated_at": "2026-08-30T20:16:46.056631+00:00"
-  },
-  "column_count": 10
+  "columns": [
+    {
+      "name": "site_code",
+      "type": "varchar(6)",
+      "description": "Code assigned by the source dataset."
+    },
+    {
+      "name": "site_name",
+      "type": "varchar(100)",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "county",
+      "type": "varchar(2)",
+      "description": null
+    },
+    {
+      "name": "version",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "ha",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "source_crs",
+      "type": "varchar(254)",
+      "description": null
+    },
+    {
+      "name": "source_scale",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "varchar(50)",
+      "description": "Web address associated with the record."
+    },
+    {
+      "name": "nha_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in natural_heritage_areas."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
 }

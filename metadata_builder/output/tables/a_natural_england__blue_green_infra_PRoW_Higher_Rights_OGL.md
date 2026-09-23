@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_PRoW_Higher_Rights_OGL`
 - **Geometry:** MULTILINESTRING
@@ -43,6 +43,6 @@ Published by Natural England as open environmental and conservation data. Loaded
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. |
-| `folderpath` | `varchar(254)` | Publisher-supplied folderpath for the represented feature or record. |
-| `type` | `varchar(254)` | Publisher-supplied type for the represented feature or record. |
+| `folderpath` | `varchar(254)` |  |
+| `type` | `varchar(254)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

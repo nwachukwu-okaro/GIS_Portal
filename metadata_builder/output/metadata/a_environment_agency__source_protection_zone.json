@@ -1,0 +1,89 @@
+{
+  "gemini": {
+    "title": "Source Protection Zone",
+    "abstract": "version: 20260306\nSource: https://environment.data.gov.uk/dataset/6fd0120f-d465-11e4-abee-f0def148f590 https://environment.data.gov.uk/spatialdata/source-protection-zones-merged/wfs\n\nAttribution: © Environment Agency copyright and/or database right 2016. All rights reserved.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "source",
+      "protection",
+      "zone",
+      "environment",
+      "agency",
+      "flooding",
+      "water",
+      "gml",
+      "id",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Environment Agency as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environment Agency",
+    "resource_locator": "https://environment.data.gov.uk/",
+    "unique_identifier": "a_environment_agency/source_protection_zone",
+    "schema": "a_environment_agency",
+    "table": "source_protection_zone",
+    "bounding_box": {
+      "xmin": -6.358951368892592,
+      "ymin": 49.88974446082582,
+      "xmax": 1.741691201656316,
+      "ymax": 55.770820540268524
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "gml_id",
+      "type": "varchar(35)",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "gml_original_coordinate_system",
+      "type": "varchar(45)",
+      "description": null
+    },
+    {
+      "name": "gml_parent_property",
+      "type": "varchar(13)",
+      "description": null
+    },
+    {
+      "name": "number",
+      "type": "varchar(2)",
+      "description": null
+    },
+    {
+      "name": "spz_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in source_protection_zone."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

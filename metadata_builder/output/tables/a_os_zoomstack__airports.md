@@ -43,5 +43,5 @@ Published by Ordnance Survey as part of OS Open Zoomstack. Loaded into Systra Po
 | Column | Type | Description |
 |---|---|---|
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in airports. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

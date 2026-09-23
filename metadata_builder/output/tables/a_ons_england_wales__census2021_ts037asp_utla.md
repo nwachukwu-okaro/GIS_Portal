@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts037asp_utla`
 - **Geometry:** Non-spatial
@@ -40,11 +40,11 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `very_good_health` | `double precision` | Count or numeric value for very good health in the represented area. |
-| `good_health` | `double precision` | Count or numeric value for good health in the represented area. |
-| `fair_health` | `double precision` | Count or numeric value for fair health in the represented area. |
-| `bad_health` | `double precision` | Count or numeric value for bad health in the represented area. |
-| `very_bad_health` | `double precision` | Count or numeric value for very bad health in the represented area. |
+| `very_good_health` | `double precision` |  |
+| `good_health` | `double precision` |  |
+| `fair_health` | `double precision` |  |
+| `bad_health` | `double precision` |  |
+| `very_bad_health` | `double precision` |  |

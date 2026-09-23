@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts074_ctry`
 - **Geometry:** Non-spatial
@@ -40,11 +40,11 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. |
-| `household_reference_person_previously_served_in_regular_uk_arme` | `bigint` | Count or numeric value for household reference person previously served in regular uk arme in the represented area. |
-| `household_reference_person_previously_served_in_reserve_uk_arme` | `bigint` | Count or numeric value for household reference person previously served in reserve uk arme in the represented area. |
-| `household_reference_person_previously_served_in_both_regular_an` | `bigint` | Count or numeric value for household reference person previously served in both regular an in the represented area. |
-| `household_reference_person_has_not_previously_served_in_regular` | `bigint` | Count or numeric value for household reference person has not previously served in regular in the represented area. |
+| `total_all_households` | `bigint` | Census total for all households in the represented geographical area; measurement unit requires the table documentation. |
+| `household_reference_person_previously_served_in_regular_uk_arme` | `bigint` |  |
+| `household_reference_person_previously_served_in_reserve_uk_arme` | `bigint` |  |
+| `household_reference_person_previously_served_in_both_regular_an` | `bigint` |  |
+| `household_reference_person_has_not_previously_served_in_regular` | `bigint` |  |

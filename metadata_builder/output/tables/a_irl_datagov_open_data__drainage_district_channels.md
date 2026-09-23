@@ -38,7 +38,7 @@ Published by the Government of Ireland as part of the national open data portal 
 
 | Column | Type | Description |
 |---|---|---|
-| `ddc_pk` | `integer` |  |
+| `ddc_pk` | `integer` | Primary-key identifier for records in drainage_district_channels. |
 | `feature` | `varchar(50)` |  |
 | `overall_id` | `bigint` | Identifier assigned by the source dataset. |
 | `ref` | `varchar(50)` |  |

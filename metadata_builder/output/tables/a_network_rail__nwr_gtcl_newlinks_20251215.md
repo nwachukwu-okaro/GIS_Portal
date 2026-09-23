@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_network_rail`
 - **Table:** `nwr_gtcl_newlinks_20251215`
 - **Geometry:** MULTILINESTRING
@@ -38,7 +38,7 @@ Published by Network Rail as open transport data. Loaded into Systra PostGIS dat
 
 | Column | Type | Description |
 |---|---|---|
-| `source` | `text` | Publisher-supplied source for the represented feature or record. |
-| `closest_elr` | `text` | Publisher-supplied closest elr for the represented feature or record. |
-| `id` | `bigint` | Count or numeric value for identifier in the represented area. |
+| `source` | `text` |  |
+| `closest_elr` | `text` |  |
+| `id` | `bigint` | Primary-key identifier for records in nwr_gtcl_newlinks_20251215. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

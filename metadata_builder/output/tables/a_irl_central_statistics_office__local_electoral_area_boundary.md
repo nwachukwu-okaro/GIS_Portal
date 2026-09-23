@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_central_statistics_office`
 - **Table:** `local_electoral_area_boundary`
 - **Geometry:** GEOMETRY
@@ -38,10 +38,10 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `lea_guid` | `text` | Publisher-assigned lea guid for the record. |
-| `lea_official` | `text` | Publisher-supplied lea official for the represented feature or record. |
-| `cso_lea` | `text` | Publisher-supplied cso lea for the represented feature or record. |
+| `lea_guid` | `text` |  |
+| `lea_official` | `text` |  |
+| `cso_lea` | `text` |  |
 | `lea_id` | `text` | Identifier assigned by the source dataset. |
-| `county` | `text` | Publisher-supplied county for the represented feature or record. |
+| `county` | `text` | County associated with the represented administrative area. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `shape` | `geometry` | Spatial geometry of the represented feature. |

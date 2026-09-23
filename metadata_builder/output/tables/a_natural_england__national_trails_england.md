@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `national_trails_england`
 - **Geometry:** MULTILINESTRING
@@ -42,16 +42,16 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Publisher-assigned identifier for the record. |
+| `id` | `integer` | Primary-key identifier for records in national_trails_england. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
-| `objectid_1` | `bigint` | Count or numeric value for objectid 1 in the represented area. |
+| `objectid_1` | `bigint` |  |
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `name` | `varchar(50)` | Official or publisher-assigned name of the represented feature. |
-| `opened` | `timestamp` | Publisher-supplied opened for the represented feature or record. |
-| `start` | `varchar(100)` | Publisher-supplied start for the represented feature or record. |
-| `end_` | `varchar(100)` | Publisher-supplied end for the represented feature or record. |
-| `length_km` | `integer` | Numeric length km value recorded for the feature. |
-| `length_mil` | `integer` | Numeric length mil value recorded for the feature. |
-| `updated` | `timestamp` | Publisher-supplied updated for the represented feature or record. |
-| `last_vr` | `integer` | Count or numeric value for last vr in the represented area. |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `opened` | `timestamp` |  |
+| `start` | `varchar(100)` |  |
+| `end_` | `varchar(100)` |  |
+| `length_km` | `integer` |  |
+| `length_mil` | `integer` |  |
+| `updated` | `timestamp` |  |
+| `last_vr` | `integer` |  |
+| `globalid` | `varchar(38)` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |

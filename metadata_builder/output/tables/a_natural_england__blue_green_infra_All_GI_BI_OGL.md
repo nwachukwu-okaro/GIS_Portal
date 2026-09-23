@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_All_GI_BI_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -43,17 +43,17 @@ Published by Natural England as open environmental and conservation data. Loaded
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `parent_id` | `varchar(254)` | Identifier assigned by the source dataset. |
-| `dataset` | `varchar(255)` | Publisher-supplied dataset for the represented feature or record. |
-| `accessible` | `varchar(255)` | Publisher-supplied accessible for the represented feature or record. |
-| `angst` | `varchar(255)` | Publisher-supplied angst for the represented feature or record. |
-| `naturalness` | `integer` | Count or numeric value for naturalness in the represented area. |
-| `typologytitle` | `varchar(255)` | Publisher-supplied typologytitle for the represented feature or record. |
-| `likely_cricket` | `varchar(255)` | Publisher-supplied likely cricket for the represented feature or record. |
-| `license` | `varchar(255)` | Publisher-supplied license for the represented feature or record. |
-| `typologycode` | `varchar(255)` | Publisher-assigned typologycode for the record. |
-| `perc_manmade` | `double precision` | Count or numeric value for perc manmade in the represented area. |
+| `dataset` | `varchar(255)` |  |
+| `accessible` | `varchar(255)` |  |
+| `angst` | `varchar(255)` |  |
+| `naturalness` | `integer` |  |
+| `typologytitle` | `varchar(255)` |  |
+| `likely_cricket` | `varchar(255)` |  |
+| `license` | `varchar(255)` |  |
+| `typologycode` | `varchar(255)` |  |
+| `perc_manmade` | `double precision` |  |
 | `join_id` | `integer` | Identifier assigned by the source dataset. |
-| `attribute` | `varchar(255)` | Publisher-supplied attribute for the represented feature or record. |
-| `shape_length` | `double precision` | Numeric shape length value recorded for the feature. |
-| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. |
+| `attribute` | `varchar(255)` |  |
+| `shape_length` | `double precision` |  |
+| `shape_area` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

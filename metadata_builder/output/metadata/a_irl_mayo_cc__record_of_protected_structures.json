@@ -1,218 +1,80 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_mayo_cc/record_of_protected_structures",
-  "schema": "a_irl_mayo_cc",
-  "table": "record_of_protected_structures",
-  "title": "Record Of Protected Structures",
-  "description": "Record Of Protected Structures is an authoritative dataset published by Mayo County Council. It represents record of protected structures features using point geometry.",
-  "feature_concept": "record_of_protected_structures",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Mayo County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/mayo-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Mayo",
-  "geometry": {
-    "column": "geom",
-    "type": "POINT",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Record Of Protected Structures",
+    "abstract": "Record Of Protected Structures is an authoritative dataset published by Mayo County Council. It represents record of protected structures features using point geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "record",
+      "protected",
+      "structures",
+      "irl",
+      "mayo",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "object",
+      "id",
+      "name",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Mayo County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Mayo County Council",
+    "resource_locator": "https://data.gov.ie/organization/mayo-county-council",
+    "unique_identifier": "a_irl_mayo_cc/record_of_protected_structures",
+    "schema": "a_irl_mayo_cc",
+    "table": "record_of_protected_structures",
+    "bounding_box": {
       "xmin": -10.08221604719469,
-      "ymin": 53.487134765998995,
+      "ymin": 53.487134765999,
       "xmax": -8.697148432636236,
       "ymax": 54.299548167699974
     },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 273,
-  "primary_key": [
-    "object_id"
-  ],
-  "indexes": [
-    {
-      "name": "record_of_protected_structures_geom_1784467747106",
-      "definition": "CREATE INDEX record_of_protected_structures_geom_1784467747106 ON a_irl_mayo_cc.record_of_protected_structures USING gist (geom)"
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "record_of_protected_structures_pkey",
-      "definition": "CREATE UNIQUE INDEX record_of_protected_structures_pkey ON a_irl_mayo_cc.record_of_protected_structures USING btree (object_id)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "frequency_of_update"
+    ]
+  },
   "columns": [
     {
       "name": "object_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "name",
-      "data_type": "varchar",
-      "description": "Official or publisher-assigned name of the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Ballycurrin House",
-          "Garracloon Lodge",
-          "Glenmore House",
-          "Bellakip Bridge",
-          "St. Patricks Catholic Church"
-        ],
-        "null_fraction": 0.010989011,
-        "estimated_distinct": -0.94139194,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Official or publisher-assigned name of the represented feature."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "object_id",
-      "name"
-    ],
-    "searchable_columns": [
-      "name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "record",
-    "protected",
-    "structures",
-    "irl",
-    "mayo",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "object",
-    "id",
-    "name",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.971613+00:00",
-    "curated_at": "2026-08-30T20:16:41.165301+00:00"
-  },
-  "column_count": 3
+  ]
 }

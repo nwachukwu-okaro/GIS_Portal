@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_addressbase_premium`
 - **Table:** `delivery_point`
 - **Geometry:** GEOMETRY
@@ -38,32 +38,32 @@ Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra 
 
 | Column | Type | Description |
 |---|---|---|
-| `change_type` | `text` | Publisher-supplied change type for the represented feature or record. |
-| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. |
-| `udprn` | `bigint` | Count or numeric value for udprn in the represented area. |
+| `change_type` | `text` |  |
+| `uprn` | `bigint` | Unique Property Reference Number identifying the addressable location. |
+| `udprn` | `bigint` |  |
 | `organisation_name` | `text` | Name associated with the represented feature. |
 | `department_name` | `text` | Name associated with the represented feature. |
 | `sub_building_name` | `text` | Name associated with the represented feature. |
 | `building_name` | `text` | Name associated with the represented feature. |
-| `building_number` | `bigint` | Count or numeric value for building number in the represented area. |
-| `dependent_thoroughfare` | `text` | Publisher-supplied dependent thoroughfare for the represented feature or record. |
-| `thoroughfare` | `text` | Publisher-supplied thoroughfare for the represented feature or record. |
-| `double_dependent_locality` | `text` | Publisher-supplied double dependent locality for the represented feature or record. |
-| `dependent_locality` | `text` | Publisher-supplied dependent locality for the represented feature or record. |
-| `post_town` | `text` | Publisher-supplied post town for the represented feature or record. |
-| `postcode` | `text` | Publisher-assigned postcode for the record. |
-| `postcode_type` | `text` | Publisher-supplied postcode type for the represented feature or record. |
-| `delivery_point_suffix` | `text` | Publisher-supplied delivery point suffix for the represented feature or record. |
-| `welsh_dependent_thoroughfare` | `text` | Publisher-supplied welsh dependent thoroughfare for the represented feature or record. |
-| `welsh_thoroughfare` | `text` | Publisher-supplied welsh thoroughfare for the represented feature or record. |
-| `welsh_double_dependent_locality` | `text` | Publisher-supplied welsh double dependent locality for the represented feature or record. |
-| `welsh_dependent_locality` | `text` | Publisher-supplied welsh dependent locality for the represented feature or record. |
-| `welsh_post_town` | `text` | Publisher-supplied welsh post town for the represented feature or record. |
-| `po_box_number` | `text` | Publisher-supplied po box number for the represented feature or record. |
+| `building_number` | `bigint` | Building number used in the address. |
+| `dependent_thoroughfare` | `text` | Dependent thoroughfare component of the address. |
+| `thoroughfare` | `text` |  |
+| `double_dependent_locality` | `text` |  |
+| `dependent_locality` | `text` |  |
+| `post_town` | `text` | Postal town component of the address. |
+| `postcode` | `text` |  |
+| `postcode_type` | `text` |  |
+| `delivery_point_suffix` | `text` |  |
+| `welsh_dependent_thoroughfare` | `text` |  |
+| `welsh_thoroughfare` | `text` |  |
+| `welsh_double_dependent_locality` | `text` |  |
+| `welsh_dependent_locality` | `text` |  |
+| `welsh_post_town` | `text` |  |
+| `po_box_number` | `text` |  |
 | `process_date` | `text` | Date associated with the represented feature or source record. |
 | `start_date` | `text` | Date associated with the represented feature or source record. |
 | `end_date` | `text` | Date associated with the represented feature or source record. |
 | `last_update_date` | `text` | Date associated with the represented feature or source record. |
 | `entry_date` | `text` | Date associated with the represented feature or source record. |
-| `id` | `bigint` | Count or numeric value for identifier in the represented area. |
+| `id` | `bigint` | Primary-key identifier for records in delivery_point. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

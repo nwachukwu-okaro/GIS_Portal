@@ -41,8 +41,8 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in boundary_msoa_bsc_v3_202112. |
 | `msoa21cd` | `varchar(9)` |  |
 | `msoa21nm` | `varchar(39)` |  |
-| `globalid` | `varchar(38)` | Publisher-assigned globalid for the record. |
+| `globalid` | `varchar(38)` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

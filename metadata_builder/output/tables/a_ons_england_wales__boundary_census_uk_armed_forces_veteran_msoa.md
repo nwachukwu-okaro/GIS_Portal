@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_census_uk_armed_forces_veteran_msoa`
 - **Geometry:** GEOMETRY
@@ -41,25 +41,25 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `uk_vet_total` | `bigint` | Count or numeric value for uk vet total in the represented area. |
-| `previously_served_in_uk_armed_forces` | `bigint` | Count or numeric value for previously served in uk armed forces in the represented area. |
-| `previously_served_in_uk_reserve_armed_forces` | `bigint` | Count or numeric value for previously served in uk reserve armed forces in the represented area. |
-| `prev_served_regular_and_reserve` | `bigint` | Count or numeric value for prev served regular and reserve in the represented area. |
-| `has_not_previously_served_in_any_uk_armed_forces` | `bigint` | Count or numeric value for has not previously served in any uk armed forces in the represented area. |
-| `num_in_hh_prev_served_total` | `bigint` | Count or numeric value for num in households prev served total in the represented area. |
-| `no_people_in_the_hh_prev_served_uk_armed_forces` | `bigint` | Count or numeric value for number people in the households prev served uk armed forces in the represented area. |
-| `person_in_the_hh_prev_served_uk_armed_forces` | `bigint` | Count or numeric value for person in the households prev served uk armed forces in the represented area. |
-| `people_in_the_hh_prev_served_uk_armed_forces` | `bigint` | Count or numeric value for people in the households prev served uk armed forces in the represented area. |
-| `plus_people_in_the_hh_prev_served_uk_armed_forces` | `bigint` | Count or numeric value for plus people in the households prev served uk armed forces in the represented area. |
-| `residence_type_total` | `bigint` | Count or numeric value for residence type total in the represented area. |
-| `lives_in_a_household` | `bigint` | Count or numeric value for lives in a household in the represented area. |
-| `lives_in_a_communal_establishment` | `bigint` | Count or numeric value for lives in a communal establishment in the represented area. |
-| `hrp_prev_served_total` | `bigint` | Count or numeric value for hrp prev served total in the represented area. |
-| `hrp_prev_served_uk_regular` | `bigint` | Count or numeric value for hrp prev served uk regular in the represented area. |
-| `hrp_prev_served_uk_reserve` | `bigint` | Count or numeric value for hrp prev served uk reserve in the represented area. |
-| `hrp_prev_served_regular_and_reserve` | `bigint` | Count or numeric value for hrp prev served regular and reserve in the represented area. |
-| `hrp_not_prev_served_uk_armed_forces` | `bigint` | Count or numeric value for hrp not prev served uk armed forces in the represented area. |
+| `uk_vet_total` | `bigint` |  |
+| `previously_served_in_uk_armed_forces` | `bigint` |  |
+| `previously_served_in_uk_reserve_armed_forces` | `bigint` |  |
+| `prev_served_regular_and_reserve` | `bigint` |  |
+| `has_not_previously_served_in_any_uk_armed_forces` | `bigint` |  |
+| `num_in_hh_prev_served_total` | `bigint` |  |
+| `no_people_in_the_hh_prev_served_uk_armed_forces` | `bigint` |  |
+| `person_in_the_hh_prev_served_uk_armed_forces` | `bigint` |  |
+| `people_in_the_hh_prev_served_uk_armed_forces` | `bigint` |  |
+| `plus_people_in_the_hh_prev_served_uk_armed_forces` | `bigint` |  |
+| `residence_type_total` | `bigint` |  |
+| `lives_in_a_household` | `bigint` | Recorded census measure for the category "lives in a household" in the represented area. Units and population base require the source table. |
+| `lives_in_a_communal_establishment` | `bigint` | Recorded census measure for the category "lives in a communal establishment" in the represented area. Units and population base require the source table. |
+| `hrp_prev_served_total` | `bigint` |  |
+| `hrp_prev_served_uk_regular` | `bigint` |  |
+| `hrp_prev_served_uk_reserve` | `bigint` |  |
+| `hrp_prev_served_regular_and_reserve` | `bigint` |  |
+| `hrp_not_prev_served_uk_armed_forces` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

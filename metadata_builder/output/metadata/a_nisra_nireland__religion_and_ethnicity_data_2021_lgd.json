@@ -1,638 +1,162 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nisra_nireland/religion_and_ethnicity_data_2021_lgd",
-  "schema": "a_nisra_nireland",
-  "table": "religion_and_ethnicity_data_2021_lgd",
-  "title": "Religion And Ethnicity Data 2021 Lgd",
-  "description": "Religion And Ethnicity Data 2021 Lgd is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to religion and ethnicity data 2021 lgd.",
-  "feature_concept": "religion_and_ethnicity_data_2021_lgd",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Northern Ireland Statistics and Research Agency",
-    "product": null,
-    "source_url": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Northern Ireland",
-  "geometry": {
-    "column": null,
-    "type": null,
-    "srid": null,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 11,
-  "primary_key": [],
-  "indexes": [],
-  "columns": [
-    {
-      "name": "geocode",
-      "data_type": "text",
-      "description": "Publisher-assigned geocode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N09000005",
-          "N09000008",
-          "N09000001",
-          "N09000009",
-          "N09000004"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geography",
-      "data_type": "text",
-      "description": "Publisher-supplied geography for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Antrim and Newtownabbey",
-          "Mid Ulster",
-          "Armagh City, Banbridge and Craigavon",
-          "Causeway Coast and Glens",
-          "Fermanagh and Omagh"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year",
-      "data_type": "bigint",
-      "description": "Count or numeric value for year in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "population",
-      "data_type": "text",
-      "description": "Publisher-supplied population for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Usual residents in the area"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "ethnic_group_other_ethnic_group",
-      "data_type": "text",
-      "description": "Publisher-supplied ethnic group other ethnic group for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "7,229",
-          "5,998",
-          "4,784",
-          "5,866",
-          "3,408"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "ethnic_group_white",
-      "data_type": "text",
-      "description": "Publisher-supplied ethnic group white for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "144,294",
-          "211,429",
-          "143,240",
-          "159,892",
-          "147,349"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_or_religion_brought_up_in_catholic",
-      "data_type": "text",
-      "description": "Publisher-supplied religion or religion brought up in catholic for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "95,868",
-          "75,097",
-          "109,131",
-          "22,262",
-          "168,271"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_or_religion_brought_up_in_other_religions",
-      "data_type": "text",
-      "description": "Publisher-supplied religion or religion brought up in other religions for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1,013",
-          "1,484",
-          "1,327",
-          "1,341",
-          "11,500"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_or_religion_brought_up_in_protestant_and_other_christi",
-      "data_type": "text",
-      "description": "Publisher-supplied religion or religion brought up in protestant and other christi for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "102,063",
-          "125,633",
-          "72,530",
-          "79,689",
-          "34,848"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_catholic",
-      "data_type": "text",
-      "description": "Publisher-supplied religion catholic for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "18,428",
-          "35,714",
-          "103,053",
-          "150,129",
-          "24,186"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_church_of_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied religion church of ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "22,312",
-          "12,474",
-          "18,184",
-          "21,196",
-          "24,347"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_methodist_church_in_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied religion methodist church in ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1,186",
-          "1,257",
-          "1,028",
-          "4,795",
-          "5,511"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_no_religion_not_stated",
-      "data_type": "text",
-      "description": "Publisher-supplied religion number religion not stated for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "33,204",
-          "37,762",
-          "22,053",
-          "82,329",
-          "11,795"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_other_christian_including_christian_related",
-      "data_type": "text",
-      "description": "Publisher-supplied religion other christian including christian related for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "9,105",
-          "3,294",
-          "19,735",
-          "15,494",
-          "12,004"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_other_religions",
-      "data_type": "text",
-      "description": "Publisher-supplied religion other religions for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "963",
-          "922",
-          "10,238",
-          "2,441",
-          "1,207"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "religion_presbyterian_church_in_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied religion presbyterian church in ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "34,615",
-          "32,911",
-          "15,358",
-          "46,713",
-          "14,845"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "attribute_join": true,
-    "export": true
-  },
-  "operation_requirements": {},
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Religion And Ethnicity Data 2021 Lgd",
+    "abstract": "Religion And Ethnicity Data 2021 Lgd is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to religion and ethnicity data 2021 lgd.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "religion",
+      "ethnicity",
+      "2021",
+      "lgd",
+      "nisra",
+      "nireland",
+      "northern",
+      "ireland",
+      "statistics",
+      "research",
+      "agency",
+      "census",
+      "boundaries",
       "geocode",
       "geography",
       "year",
       "population",
-      "ethnic_group_other_ethnic_group",
-      "ethnic_group_white",
-      "religion_or_religion_brought_up_in_catholic",
-      "religion_or_religion_brought_up_in_other_religions",
-      "religion_or_religion_brought_up_in_protestant_and_other_christi",
-      "religion_catholic",
-      "religion_church_of_ireland",
-      "religion_methodist_church_in_ireland",
-      "religion_no_religion_not_stated",
-      "religion_other_christian_including_christian_related",
-      "religion_other_religions",
-      "religion_presbyterian_church_in_ireland"
+      "ethnic",
+      "group",
+      "other",
+      "white",
+      "brought",
+      "up",
+      "catholic",
+      "religions",
+      "protestant",
+      "christi",
+      "church",
+      "methodist",
+      "no",
+      "not",
+      "stated",
+      "christian",
+      "including",
+      "related",
+      "presbyterian"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "religion",
-    "ethnicity",
-    "2021",
-    "lgd",
-    "nisra",
-    "nireland",
-    "northern",
-    "ireland",
-    "statistics",
-    "research",
-    "agency",
-    "census",
-    "boundaries"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Northern Ireland Statistics and Research Agency as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Northern Ireland Statistics and Research Agency",
+    "resource_locator": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
+    "unique_identifier": "a_nisra_nireland/religion_and_ethnicity_data_2021_lgd",
+    "schema": "a_nisra_nireland",
+    "table": "religion_and_ethnicity_data_2021_lgd",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.403177+00:00",
-    "curated_at": "2026-08-30T20:16:55.911989+00:00"
-  },
-  "column_count": 16
+  "columns": [
+    {
+      "name": "geocode",
+      "type": "text",
+      "description": "Code identifying the geographical area represented by the row."
+    },
+    {
+      "name": "geography",
+      "type": "text",
+      "description": "Name or descriptive label of the geographical area represented by the row."
+    },
+    {
+      "name": "year",
+      "type": "bigint",
+      "description": "Reference year recorded for the statistical observation."
+    },
+    {
+      "name": "population",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "ethnic_group_other_ethnic_group",
+      "type": "text",
+      "description": "Recorded census measure for the category \"ethnic group other ethnic group\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "ethnic_group_white",
+      "type": "text",
+      "description": "Recorded census measure for the category \"ethnic group white\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_or_religion_brought_up_in_catholic",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion or religion brought up in catholic\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_or_religion_brought_up_in_other_religions",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion or religion brought up in other religions\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_or_religion_brought_up_in_protestant_and_other_christi",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "religion_catholic",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion catholic\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_church_of_ireland",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion church of ireland\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_methodist_church_in_ireland",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion methodist church in ireland\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_no_religion_not_stated",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion no religion not stated\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_other_christian_including_christian_related",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion other christian including christian related\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_other_religions",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion other religions\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "religion_presbyterian_church_in_ireland",
+      "type": "text",
+      "description": "Recorded census measure for the category \"religion presbyterian church in ireland\" in the represented area. Units and population base require the source table."
+    }
+  ]
 }

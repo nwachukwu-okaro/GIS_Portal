@@ -1,0 +1,67 @@
+{
+  "gemini": {
+    "title": "Qgis Projects",
+    "abstract": "Qgis Projects is part of BGS geological data, published by British Geological Survey. It contains records relating to qgis projects.",
+    "alternative_title": null,
+    "topic_category": "geoscientificInformation",
+    "keywords": [
+      "qgis",
+      "projects",
+      "british",
+      "geological",
+      "survey",
+      "geology",
+      "earth",
+      "science",
+      "name"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by British Geological Survey as part of BGS geological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "British Geological Survey",
+    "resource_locator": "https://www.bgs.ac.uk/geological-data/",
+    "unique_identifier": "a_british_geological_survey/qgis_projects",
+    "schema": "a_british_geological_survey",
+    "table": "qgis_projects",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "name",
+      "type": "text",
+      "description": "Official or publisher-assigned name of the represented feature."
+    },
+    {
+      "name": "metadata",
+      "type": "jsonb",
+      "description": null
+    },
+    {
+      "name": "content",
+      "type": "bytea",
+      "description": null
+    }
+  ]
+}

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_spatial_data_exchange`
 - **Table:** `offshore_special_areas_of_conservation`
 - **Geometry:** POLYGON
@@ -38,11 +38,11 @@ Published by the Government of Ireland as part of the national spatial data exch
 
 | Column | Type | Description |
 |---|---|---|
-| `osac_pk` | `integer` | Count or numeric value for osac pk in the represented area. |
+| `osac_pk` | `integer` | Primary-key identifier for records in offshore_special_areas_of_conservation. |
 | `site_name` | `varchar(50)` | Name associated with the represented feature. |
 | `site_code` | `varchar(6)` | Code assigned by the source dataset. |
-| `centroid_x` | `double precision` | Count or numeric value for centroid x in the represented area. |
-| `centroid_y` | `double precision` | Count or numeric value for centroid y in the represented area. |
-| `laea_area` | `double precision` | Numeric laea area value recorded for the feature. |
-| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. |
+| `centroid_x` | `double precision` | X coordinate of the feature centroid; units and reference system are not confirmed for this attribute. |
+| `centroid_y` | `double precision` | Y coordinate of the feature centroid; units and reference system are not confirmed for this attribute. |
+| `laea_area` | `double precision` |  |
+| `url` | `varchar(50)` | Web address associated with the record. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

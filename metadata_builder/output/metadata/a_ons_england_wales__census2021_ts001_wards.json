@@ -1,0 +1,80 @@
+{
+  "gemini": {
+    "title": "Census2021 Ts001 Wards",
+    "abstract": "Census2021 Ts001 Wards is an authoritative dataset published by Office for National Statistics. It contains records relating to census2021 ts001 wards.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "census2021",
+      "ts001",
+      "wards",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/census2021_ts001_wards",
+    "schema": "a_ons_england_wales",
+    "table": "census2021_ts001_wards",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in census2021_ts001_wards."
+    },
+    {
+      "name": "2022 ward",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "total: all usual residents",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lives in a household",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "lives in a communal establishment",
+      "type": "integer",
+      "description": null
+    }
+  ]
+}

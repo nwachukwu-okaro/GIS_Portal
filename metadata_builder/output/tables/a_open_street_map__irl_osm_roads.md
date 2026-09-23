@@ -15,7 +15,7 @@
 - **Use constraints:** Open Data Commons Open Database License — https://www.openstreetmap.org/copyright
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_open_street_map`
 - **Table:** `irl_osm_roads`
 - **Geometry:** MULTILINESTRING
@@ -54,8 +54,8 @@ Published by OpenStreetMap contributors as part of OpenStreetMap. Loaded into Sy
 | `ref` | `text` | The official road reference number (e.g., M50, N11, R132). |
 | `oneway` | `text` | Traffic flow direction: "F" (Forward/With Digitizing), "T" (Towards/Against Digitizing), or "B" (Both). |
 | `maxspeed` | `integer` | The posted speed limit in km/h. |
-| `layer` | `integer` | Count or numeric value for layer in the represented area. |
-| `bridge` | `text` | Publisher-supplied bridge for the represented feature or record. |
-| `tunnel` | `text` | Publisher-supplied tunnel for the represented feature or record. |
-| `irlosmr_pk` | `integer` | Count or numeric value for irlosmr pk in the represented area. |
+| `layer` | `integer` |  |
+| `bridge` | `text` |  |
+| `tunnel` | `text` |  |
+| `irlosmr_pk` | `integer` | Primary-key identifier for records in irl_osm_roads. |
 | `geom` | `geometry` | Geometry column: EPSG:4326 (WGS 84) or EPSG:3857 (Web Mercator) depending on import settings. |

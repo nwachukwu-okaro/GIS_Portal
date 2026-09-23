@@ -1,0 +1,542 @@
+{
+  "gemini": {
+    "title": "2024 Male Population Country Region Localauthority District",
+    "abstract": "2024 Male Population Country Region Localauthority District is an authoritative dataset published by Office for National Statistics. It contains records relating to 2024 male population country region localauthority district.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "2024",
+      "male",
+      "population",
+      "country",
+      "region",
+      "localauthority",
+      "district",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id",
+      "code",
+      "name",
+      "geography"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/2024_male_population_country_region_localauthority_district",
+    "schema": "a_ons_england_wales",
+    "table": "2024_male_population_country_region_localauthority_district",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in 2024_male_population_country_region_localauthority_district."
+    },
+    {
+      "name": "code",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "varchar",
+      "description": "Official or publisher-assigned name of the represented feature."
+    },
+    {
+      "name": "geography",
+      "type": "varchar",
+      "description": "Name or descriptive label of the geographical area represented by the row."
+    },
+    {
+      "name": "all ages",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "0",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "1",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "3",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "4",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "5",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "6",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "7",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "8",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "9",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "10",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "11",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "12",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "13",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "14",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "15",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "16",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "17",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "18",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "19",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "20",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "21",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "22",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "23",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "24",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "25",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "26",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "27",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "28",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "29",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "30",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "31",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "32",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "33",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "34",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "35",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "36",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "37",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "38",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "39",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "40",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "41",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "42",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "43",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "44",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "45",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "46",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "47",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "48",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "49",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "50",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "51",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "52",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "53",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "54",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "55",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "56",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "57",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "58",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "59",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "60",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "61",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "62",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "63",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "64",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "65",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "66",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "67",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "68",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "69",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "70",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "71",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "72",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "73",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "74",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "75",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "76",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "77",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "78",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "79",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "80",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "81",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "82",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "83",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "84",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "85",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "86",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "87",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "88",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "89",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "90+",
+      "type": "integer",
+      "description": null
+    }
+  ]
+}

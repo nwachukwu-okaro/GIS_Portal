@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_ireland_cso`
 - **Table:** `motorcar_pc_internet_access_csoed3`
 - **Geometry:** Non-spatial
@@ -37,18 +37,18 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `geogid` | `text` | Publisher-assigned geogid for the record. |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
-| `no_motor_car` | `bigint` | Count or numeric value for number motor car in the represented area. |
-| `t_1_motor_car` | `bigint` | Count or numeric value for t 1 motor car in the represented area. |
-| `t_2_motor_cars` | `bigint` | Count or numeric value for t 2 motor cars in the represented area. |
-| `t_3_motor_cars` | `bigint` | Count or numeric value for t 3 motor cars in the represented area. |
-| `t_4_or_more_motor_cars` | `bigint` | Count or numeric value for t 4 or more motor cars in the represented area. |
-| `not_stated` | `bigint` | Count or numeric value for not stated in the represented area. |
-| `total` | `bigint` | Count or numeric value for total in the represented area. |
-| `broadband` | `bigint` | Count or numeric value for broadband in the represented area. |
-| `other_internet_connection` | `bigint` | Count or numeric value for other internet connection in the represented area. |
-| `no_internet_connection` | `bigint` | Count or numeric value for number internet connection in the represented area. |
-| `type_of_internet_connection_not_stated` | `bigint` | Count or numeric value for type of internet connection not stated in the represented area. |
-| `all_internet_connections` | `bigint` | Count or numeric value for all internet connections in the represented area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `geogid` | `text` | Code identifying the geographical area represented by the row. |
+| `geogdesc` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `no_motor_car` | `bigint` |  |
+| `t_1_motor_car` | `bigint` |  |
+| `t_2_motor_cars` | `bigint` |  |
+| `t_3_motor_cars` | `bigint` |  |
+| `t_4_or_more_motor_cars` | `bigint` |  |
+| `not_stated` | `bigint` |  |
+| `total` | `bigint` |  |
+| `broadband` | `bigint` |  |
+| `other_internet_connection` | `bigint` |  |
+| `no_internet_connection` | `bigint` |  |
+| `type_of_internet_connection_not_stated` | `bigint` |  |
+| `all_internet_connections` | `bigint` |  |

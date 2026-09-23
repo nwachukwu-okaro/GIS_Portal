@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts004_ctry`
 - **Geometry:** Non-spatial
@@ -40,21 +40,21 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total` | `bigint` | Count or numeric value for total in the represented area. |
-| `europe` | `bigint` | Count or numeric value for europe in the represented area. |
-| `europe_united_kingdom` | `bigint` | Count or numeric value for europe united kingdom in the represented area. |
-| `europe_eu_countries` | `bigint` | Count or numeric value for europe eu countries in the represented area. |
-| `europe_eu_countries_european_union_eu14` | `bigint` | Count or numeric value for europe eu countries european union eu14 in the represented area. |
-| `europe_eu_countries_european_union_eu8` | `bigint` | Count or numeric value for europe eu countries european union eu8 in the represented area. |
-| `europe_eu_countries_european_union_eu2` | `bigint` | Count or numeric value for europe eu countries european union eu2 in the represented area. |
-| `europe_eu_countries_all_other_eu_countries` | `bigint` | Count or numeric value for europe eu countries all other eu countries in the represented area. |
-| `europe_non_eu_countries` | `bigint` | Count or numeric value for europe non eu countries in the represented area. |
-| `europe_non_eu_countries_all_other_non_eu_countries` | `bigint` | Count or numeric value for europe non eu countries all other non eu countries in the represented area. |
-| `africa` | `bigint` | Count or numeric value for africa in the represented area. |
-| `middle_east_and_asia` | `bigint` | Count or numeric value for middle east and asia in the represented area. |
-| `the_americas_and_the_caribbean` | `bigint` | Count or numeric value for the americas and the caribbean in the represented area. |
-| `antarctica_and_oceania_including_australasia_and_other` | `bigint` | Count or numeric value for antarctica and oceania including australasia and other in the represented area. |
-| `british_overseas` | `bigint` | Count or numeric value for british overseas in the represented area. |
+| `total` | `bigint` |  |
+| `europe` | `bigint` |  |
+| `europe_united_kingdom` | `bigint` |  |
+| `europe_eu_countries` | `bigint` |  |
+| `europe_eu_countries_european_union_eu14` | `bigint` |  |
+| `europe_eu_countries_european_union_eu8` | `bigint` |  |
+| `europe_eu_countries_european_union_eu2` | `bigint` |  |
+| `europe_eu_countries_all_other_eu_countries` | `bigint` |  |
+| `europe_non_eu_countries` | `bigint` |  |
+| `europe_non_eu_countries_all_other_non_eu_countries` | `bigint` |  |
+| `africa` | `bigint` |  |
+| `middle_east_and_asia` | `bigint` |  |
+| `the_americas_and_the_caribbean` | `bigint` |  |
+| `antarctica_and_oceania_including_australasia_and_other` | `bigint` |  |
+| `british_overseas` | `bigint` |  |

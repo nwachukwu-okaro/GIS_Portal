@@ -38,12 +38,12 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in boundary_intermediatezone_2011. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
-| `interzone` | `varchar(10)` | Publisher-supplied interzone for the represented feature or record. |
+| `interzone` | `varchar(10)` |  |
 | `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. |
 | `totpop2011` | `bigint` |  |
 | `respop2011` | `bigint` |  |
 | `hhcnt2011` | `bigint` |  |
 | `stdareakm2` | `double precision` |  |
-| `stdareaha` | `double precision` | Numeric stdareaha value recorded for the feature. |
+| `stdareaha` | `double precision` |  |

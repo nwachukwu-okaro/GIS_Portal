@@ -38,11 +38,11 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `rrnm_pk` | `integer` | Count or numeric value for rrnm pk in the represented area. |
+| `rrnm_pk` | `integer` | Primary-key identifier for records in recorded_registered_and_national_monuments. |
 | `entity_id` | `varchar(7)` | Identifier assigned by the source dataset. |
 | `class_code` | `varchar(4)` | Code assigned by the source dataset. |
-| `class_description` | `varchar(60)` | Publisher-supplied class description for the represented feature or record. |
+| `class_description` | `varchar(60)` |  |
 | `smrs` | `varchar(100)` |  |
-| `townland` | `varchar(254)` | Publisher-supplied townland for the represented feature or record. |
-| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. |
+| `townland` | `varchar(254)` |  |
+| `map_label` | `varchar(100)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts065_ltla`
 - **Geometry:** Non-spatial
@@ -40,10 +40,10 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents_aged_16_years_and_over_not_in_employm` | `bigint` | Count or numeric value for total all usual residents aged 16 years and over not in employm in the represented area. |
-| `not_in_employment_worked_in_the_last_12_months` | `bigint` | Count or numeric value for not in employment worked in the last 12 months in the represented area. |
-| `not_in_employment_not_worked_in_the_last_12_months` | `bigint` | Count or numeric value for not in employment not worked in the last 12 months in the represented area. |
-| `not_in_employment_never_worked` | `bigint` | Count or numeric value for not in employment never worked in the represented area. |
+| `total_all_usual_residents_aged_16_years_and_over_not_in_employm` | `bigint` |  |
+| `not_in_employment_worked_in_the_last_12_months` | `bigint` |  |
+| `not_in_employment_not_worked_in_the_last_12_months` | `bigint` |  |
+| `not_in_employment_never_worked` | `bigint` |  |

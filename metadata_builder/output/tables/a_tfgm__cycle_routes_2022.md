@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_tfgm`
 - **Table:** `cycle_routes_2022`
 - **Geometry:** MULTILINESTRING
@@ -39,18 +39,18 @@ Published by Transport for Greater Manchester as open transport data. Loaded int
 
 | Column | Type | Description |
 |---|---|---|
-| `cr_pk` | `integer` | Count or numeric value for cr pk in the represented area. |
-| `routetype` | `bigint` | Count or numeric value for routetype in the represented area. |
-| `routestatu` | `bigint` | Count or numeric value for routestatu in the represented area. |
-| `routesurfa` | `bigint` | Count or numeric value for routesurfa in the represented area. |
-| `ncnroute` | `bigint` | Count or numeric value for ncnroute in the represented area. |
-| `ncnroutenu` | `bigint` | Count or numeric value for ncnroutenu in the represented area. |
-| `notes` | `varchar(100)` | Publisher-supplied notes for the represented feature or record. |
-| `date_updat` | `date` | Publisher-supplied date updat for the represented feature or record. |
-| `strategic_` | `bigint` | Count or numeric value for strategic in the represented area. |
-| `mand_advis` | `varchar(1)` | Publisher-supplied mand advis for the represented feature or record. |
-| `recovery_s` | `varchar(4)` | Publisher-supplied recovery s for the represented feature or record. |
-| `reduce_hgw` | `varchar(1)` | Publisher-supplied reduce hgw for the represented feature or record. |
-| `reduce_ftw` | `varchar(1)` | Publisher-supplied reduce ftw for the represented feature or record. |
-| `tranche` | `integer` | Count or numeric value for tranche in the represented area. |
+| `cr_pk` | `integer` | Primary-key identifier for records in cycle_routes_2022. |
+| `routetype` | `bigint` |  |
+| `routestatu` | `bigint` |  |
+| `routesurfa` | `bigint` |  |
+| `ncnroute` | `bigint` |  |
+| `ncnroutenu` | `bigint` |  |
+| `notes` | `varchar(100)` |  |
+| `date_updat` | `date` | Update date recorded for this record. |
+| `strategic_` | `bigint` |  |
+| `mand_advis` | `varchar(1)` |  |
+| `recovery_s` | `varchar(4)` |  |
+| `reduce_hgw` | `varchar(1)` |  |
+| `reduce_ftw` | `varchar(1)` |  |
+| `tranche` | `integer` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -1,866 +1,198 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nisra_nireland/country_of_birth_and_nationality_data_2021_dea",
-  "schema": "a_nisra_nireland",
-  "table": "country_of_birth_and_nationality_data_2021_dea",
-  "title": "Country Of Birth And Nationality Data 2021 Dea",
-  "description": "Country Of Birth And Nationality Data 2021 Dea is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to country of birth and nationality data 2021 dea.",
-  "feature_concept": "country_of_birth_and_nationality_data_2021_dea",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Northern Ireland Statistics and Research Agency",
-    "product": null,
-    "source_url": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Northern Ireland",
-  "geometry": {
-    "column": null,
-    "type": null,
-    "srid": null,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 80,
-  "primary_key": [],
-  "indexes": [],
-  "columns": [
-    {
-      "name": "geocode",
-      "data_type": "text",
-      "description": "Publisher-assigned geocode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "N10000605",
-          "N10000703",
-          "N10001103",
-          "N10000706",
-          "N10000405"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geography",
-      "data_type": "text",
-      "description": "Publisher-supplied geography for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Larne Lough",
-          "Ormiston",
-          "Sperrin",
-          "Glengormley Urban",
-          "Three Mile Water"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "year",
-      "data_type": "bigint",
-      "description": "Count or numeric value for year in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "population",
-      "data_type": "text",
-      "description": "Publisher-supplied population for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Usual residents in the area"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "country_of_birth_england",
-      "data_type": "text",
-      "description": "Count or numeric value for country of birth england in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "737",
-          "551",
-          "1,333",
-          "521",
-          "489"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.95,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "country_of_birth_northern_ireland",
-      "data_type": "text",
-      "description": "Publisher-supplied country of birth northern ireland for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "19,887",
-          "14,933",
-          "21,993",
-          "19,322",
-          "21,249"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "country_of_birth_other_countries",
-      "data_type": "text",
-      "description": "Publisher-supplied country of birth other countries for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "520",
-          "2,091",
-          "1,489",
-          "460",
-          "699"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.975,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "country_of_birth_republic_of_ireland",
-      "data_type": "text",
-      "description": "Count or numeric value for country of birth republic of ireland in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "734",
-          "1,346",
-          "167",
-          "354",
-          "877"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "country_of_birth_scotland",
-      "data_type": "bigint",
-      "description": "Count or numeric value for country of birth scotland in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.8375,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "country_of_birth_wales",
-      "data_type": "bigint",
-      "description": "Count or numeric value for country of birth wales in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.55,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_british_irish_only",
-      "data_type": "bigint",
-      "description": "Count or numeric value for national identity person based british irish only in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.85,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_british_northern_irish_only",
-      "data_type": "text",
-      "description": "Count or numeric value for national identity person based british northern irish only in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "552",
-          "2,311",
-          "2,683",
-          "4,642",
-          "2,813"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.975,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_british_only",
-      "data_type": "text",
-      "description": "Publisher-supplied national identity person based british only for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "7,713",
-          "3,512",
-          "3,247",
-          "14,470",
-          "3,674"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_british_irish_northern_irish_onl",
-      "data_type": "text",
-      "description": "Count or numeric value for national identity person based british irish northern irish onl in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "155",
-          "416",
-          "121",
-          "221",
-          "605"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.925,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_irish_northern_irish_only",
-      "data_type": "text",
-      "description": "Count or numeric value for national identity person based irish northern irish only in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "224",
-          "573",
-          "266",
-          "206",
-          "407"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.925,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_irish_only",
-      "data_type": "text",
-      "description": "Publisher-supplied national identity person based irish only for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2,564",
-          "2,195",
-          "5,776",
-          "14,643",
-          "2,318"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_northern_irish_only",
-      "data_type": "text",
-      "description": "Count or numeric value for national identity person based northern irish only in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "7,353",
-          "8,023",
-          "4,228",
-          "3,547",
-          "3,764"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9875,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "national_identity_person_based_other_national_identities",
-      "data_type": "text",
-      "description": "Publisher-supplied national identity person based other national identities for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1,925",
-          "497",
-          "551",
-          "850",
-          "1,534"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9875,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "passport_s_held_ireland_only",
-      "data_type": "text",
-      "description": "Publisher-supplied passport s held ireland only for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "8,079",
-          "1,039",
-          "2,041",
-          "6,195",
-          "6,921"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "passport_s_held_no_passport",
-      "data_type": "text",
-      "description": "Count or numeric value for passport s held number passport in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "5,552",
-          "2,581",
-          "3,099",
-          "4,265",
-          "3,668"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.975,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "passport_s_held_other_passport_s",
-      "data_type": "text",
-      "description": "Publisher-supplied passport s held other passport s for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1,454",
-          "660",
-          "7,014",
-          "755",
-          "464"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.975,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "passport_s_held_uk_ireland",
-      "data_type": "text",
-      "description": "Count or numeric value for passport s held uk ireland in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "845",
-          "1,325",
-          "573",
-          "850",
-          "1,372"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.975,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "passport_s_held_uk_only",
-      "data_type": "text",
-      "description": "Publisher-supplied passport s held uk only for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "10,062",
-          "12,902",
-          "6,936",
-          "7,579",
-          "10,681"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "attribute_join": true,
-    "export": true
-  },
-  "operation_requirements": {},
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Country Of Birth And Nationality Data 2021 Dea",
+    "abstract": "Country Of Birth And Nationality Data 2021 Dea is an authoritative dataset published by Northern Ireland Statistics and Research Agency. It contains records relating to country of birth and nationality data 2021 dea.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "country",
+      "birth",
+      "nationality",
+      "2021",
+      "dea",
+      "nisra",
+      "nireland",
+      "northern",
+      "ireland",
+      "statistics",
+      "research",
+      "agency",
+      "census",
+      "boundaries",
       "geocode",
       "geography",
       "year",
       "population",
-      "country_of_birth_england",
-      "country_of_birth_northern_ireland",
-      "country_of_birth_other_countries",
-      "country_of_birth_republic_of_ireland",
-      "country_of_birth_scotland",
-      "country_of_birth_wales",
-      "national_identity_person_based_british_irish_only",
-      "national_identity_person_based_british_northern_irish_only",
-      "national_identity_person_based_british_only",
-      "national_identity_person_based_british_irish_northern_irish_onl",
-      "national_identity_person_based_irish_northern_irish_only",
-      "national_identity_person_based_irish_only",
-      "national_identity_person_based_northern_irish_only",
-      "national_identity_person_based_other_national_identities",
-      "passport_s_held_ireland_only",
-      "passport_s_held_no_passport",
-      "passport_s_held_other_passport_s",
-      "passport_s_held_uk_ireland",
-      "passport_s_held_uk_only"
+      "england",
+      "other",
+      "countries",
+      "republic",
+      "scotland",
+      "wales",
+      "national",
+      "identity",
+      "person",
+      "based",
+      "british",
+      "irish",
+      "only",
+      "onl",
+      "identities",
+      "passport",
+      "held",
+      "no",
+      "uk"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "country",
-    "birth",
-    "nationality",
-    "2021",
-    "dea",
-    "nisra",
-    "nireland",
-    "northern",
-    "ireland",
-    "statistics",
-    "research",
-    "agency",
-    "census",
-    "boundaries"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Northern Ireland Statistics and Research Agency as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Northern Ireland Statistics and Research Agency",
+    "resource_locator": "https://www.nisra.gov.uk/statistics/geography/geographic-data",
+    "unique_identifier": "a_nisra_nireland/country_of_birth_and_nationality_data_2021_dea",
+    "schema": "a_nisra_nireland",
+    "table": "country_of_birth_and_nationality_data_2021_dea",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.291741+00:00",
-    "curated_at": "2026-08-30T20:16:55.594414+00:00"
-  },
-  "column_count": 23
+  "columns": [
+    {
+      "name": "geocode",
+      "type": "text",
+      "description": "Code identifying the geographical area represented by the row."
+    },
+    {
+      "name": "geography",
+      "type": "text",
+      "description": "Name or descriptive label of the geographical area represented by the row."
+    },
+    {
+      "name": "year",
+      "type": "bigint",
+      "description": "Reference year recorded for the statistical observation."
+    },
+    {
+      "name": "population",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "country_of_birth_england",
+      "type": "text",
+      "description": "Recorded census measure for the category \"country of birth england\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "country_of_birth_northern_ireland",
+      "type": "text",
+      "description": "Recorded census measure for the category \"country of birth northern ireland\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "country_of_birth_other_countries",
+      "type": "text",
+      "description": "Recorded census measure for the category \"country of birth other countries\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "country_of_birth_republic_of_ireland",
+      "type": "text",
+      "description": "Recorded census measure for the category \"country of birth republic of ireland\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "country_of_birth_scotland",
+      "type": "bigint",
+      "description": "Recorded census measure for the category \"country of birth scotland\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "country_of_birth_wales",
+      "type": "bigint",
+      "description": "Recorded census measure for the category \"country of birth wales\" in the represented area. Units and population base require the source table."
+    },
+    {
+      "name": "national_identity_person_based_british_irish_only",
+      "type": "bigint",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_british_northern_irish_only",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_british_only",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_british_irish_northern_irish_onl",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_irish_northern_irish_only",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_irish_only",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_northern_irish_only",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "national_identity_person_based_other_national_identities",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "passport_s_held_ireland_only",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "passport_s_held_no_passport",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "passport_s_held_other_passport_s",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "passport_s_held_uk_ireland",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "passport_s_held_uk_only",
+      "type": "text",
+      "description": null
+    }
+  ]
 }

@@ -1,610 +1,148 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_environment_agency/air_quality_management_area",
-  "schema": "a_environment_agency",
-  "table": "air_quality_management_area",
-  "title": "Air Quality Management Areas",
-  "description": "Boundaries of Air Quality Management Areas declared by UK local authorities where air-quality objectives are unlikely to be met.",
-  "feature_concept": "air_quality_management_area",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Environment Agency",
-    "product": null,
-    "source_url": "https://environment.data.gov.uk/",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": "Schema default only; verify dataset-specific restrictions and third-party rights."
-  },
-  "themes": [
-    "environment",
-    "flooding",
-    "water"
-  ],
-  "geographic_coverage": "England",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -5.319875477668004,
+  "gemini": {
+    "title": "Air Quality Management Areas",
+    "abstract": "Boundaries of Air Quality Management Areas declared by UK local authorities where air-quality objectives are unlikely to be met.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "air",
+      "quality",
+      "management",
+      "areas",
+      "environment",
+      "agency",
+      "area",
+      "flooding",
+      "water",
+      "end",
+      "date",
+      "entity",
+      "entry",
+      "name",
+      "organisation",
+      "prefix",
+      "reference",
+      "start",
+      "typology",
+      "documentation",
+      "url",
+      "notes",
+      "aqma",
+      "pk",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Environment Agency as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environment Agency",
+    "resource_locator": "https://environment.data.gov.uk/",
+    "unique_identifier": "a_environment_agency/air_quality_management_area",
+    "schema": "a_environment_agency",
+    "table": "air_quality_management_area",
+    "bounding_box": {
+      "xmin": -5.319875477668005,
       "ymin": 50.204441020540486,
       "xmax": 1.447693056039385,
       "ymax": 55.010160000671576
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 498,
-  "primary_key": [
-    "aqma_pk"
-  ],
-  "indexes": [
-    {
-      "name": "air_quality_management_area_geom_176385887181",
-      "definition": "CREATE INDEX air_quality_management_area_geom_176385887181 ON a_environment_agency.air_quality_management_area USING gist (geom)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "air_quality_management_area_pkey",
-      "definition": "CREATE UNIQUE INDEX air_quality_management_area_pkey ON a_environment_agency.air_quality_management_area USING btree (aqma_pk)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "dataset",
-      "data_type": "varchar",
-      "description": "Machine-readable name of the source dataset.",
-      "semantic_role": "dataset_name",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "air-quality-management-area"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Machine-readable name of the source dataset."
     },
     {
       "name": "end_date",
-      "data_type": "varchar",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          ""
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "entity",
-      "data_type": "varchar",
-      "description": "Unique identifier assigned to the published geographic entity.",
-      "semantic_role": "entity_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "35116",
-          "35304",
-          "35274",
-          "35104",
-          "35410"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Unique identifier assigned to the published geographic entity."
     },
     {
       "name": "entry_date",
-      "data_type": "varchar",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2025-11-12",
-          "2025-10-02",
-          "2025-08-28",
-          "2025-08-05",
-          "2025-02-26"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 10.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "name",
-      "data_type": "varchar",
-      "description": "Official or publisher-assigned name of the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "City of Lancaster AQMA",
-          "AQMA 23",
-          "Calne AQMA",
-          "Northampton AQMA No.2",
-          "AQMA No.5 (AQMA Redbridge to Millbrook Road)"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9417671,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Official or publisher-assigned name of the represented feature."
     },
     {
       "name": "organisation_entity",
-      "data_type": "varchar",
-      "description": "Identifier of the organisation responsible for the entity record.",
-      "semantic_role": "responsible_organisation_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "600002"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Identifier of the organisation responsible for the entity record."
     },
     {
       "name": "prefix",
-      "data_type": "varchar",
-      "description": "Dataset prefix used to construct or classify the entity identifier.",
-      "semantic_role": "dataset_prefix",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "air-quality-management-area"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Dataset prefix used to construct or classify the entity identifier."
     },
     {
       "name": "quality",
-      "data_type": "varchar",
-      "description": "Source quality classification recorded for the geographic entity.",
-      "semantic_role": "data_quality_class",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "some"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Source quality classification recorded for the geographic entity."
     },
     {
       "name": "reference",
-      "data_type": "varchar",
-      "description": "Publisher reference number for the Air Quality Management Area.",
-      "semantic_role": "aqma_reference",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "75",
-          "1562",
-          "551",
-          "247",
-          "383"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Publisher reference number for the Air Quality Management Area."
     },
     {
       "name": "start_date",
-      "data_type": "varchar",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          ""
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "typology",
-      "data_type": "varchar",
-      "description": "Entity type classification, such as geography.",
-      "semantic_role": "entity_type",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "geography"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Entity type classification, such as geography."
     },
     {
       "name": "documentation_url",
-      "data_type": "varchar",
-      "description": "URL of the official detailed record for the Air Quality Management Area.",
-      "semantic_role": "source_record_url",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://uk-air.defra.gov.uk/aqma/details?aqma_ref=155",
-          "https://uk-air.defra.gov.uk/aqma/details?aqma_ref=861",
-          "https://uk-air.defra.gov.uk/aqma/details?aqma_ref=46",
-          "https://uk-air.defra.gov.uk/aqma/details?aqma_ref=459",
-          "https://uk-air.defra.gov.uk/aqma/details?aqma_ref=575"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "URL of the official detailed record for the Air Quality Management Area."
     },
     {
       "name": "notes",
-      "data_type": "varchar",
-      "description": "Related local-authority geographic code recorded against the area.",
-      "semantic_role": "local_authority_code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "E07000075",
-          "E06000014",
-          "E09000018",
-          "E08000016",
-          "E07000229"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.41967872,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Related local-authority geographic code recorded against the area."
     },
     {
       "name": "aqma_pk",
-      "data_type": "integer",
-      "description": "Internal primary-key value for the imported Air Quality Management Area.",
-      "semantic_role": "record_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Internal primary-key value for the imported Air Quality Management Area."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "dataset",
-      "end_date",
-      "entity",
-      "entry_date",
-      "name",
-      "organisation_entity",
-      "prefix",
-      "quality",
-      "reference",
-      "start_date",
-      "typology",
-      "documentation_url",
-      "notes",
-      "aqma_pk"
-    ],
-    "searchable_columns": [
-      "name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "air",
-    "quality",
-    "management",
-    "area",
-    "environment",
-    "agency",
-    "flooding",
-    "water",
-    "end",
-    "date",
-    "entry",
-    "name",
-    "start",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "table_override",
-    "description_confidence": "curated"
-  },
-  "quality": {
-    "metadata_status": "context_curated",
-    "warnings": [
-      "Schema default only; verify dataset-specific restrictions and third-party rights."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.687945+00:00",
-    "curated_at": "2026-08-30T20:14:25.853154+00:00"
-  },
-  "column_count": 15
+  ]
 }

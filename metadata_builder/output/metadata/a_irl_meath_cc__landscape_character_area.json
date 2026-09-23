@@ -1,248 +1,87 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_meath_cc/landscape_character_area",
-  "schema": "a_irl_meath_cc",
-  "table": "landscape_character_area",
-  "title": "Landscape Character Area",
-  "description": "Landscape Character Area is an authoritative dataset published by Meath County Council. It represents landscape character area features using multipolygon geometry.",
-  "feature_concept": "landscape_character_area",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Meath County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/meath-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Meath",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Landscape Character Area",
+    "abstract": "Landscape Character Area is an authoritative dataset published by Meath County Council. It represents landscape character area features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "landscape",
+      "character",
+      "area",
+      "irl",
+      "meath",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "lca",
+      "pk",
+      "description",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Meath County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Meath County Council",
+    "resource_locator": "https://data.gov.ie/organization/meath-county-council",
+    "unique_identifier": "a_irl_meath_cc/landscape_character_area",
+    "schema": "a_irl_meath_cc",
+    "table": "landscape_character_area",
+    "bounding_box": {
       "xmin": -7.342768418995896,
       "ymin": 53.38170554067863,
-      "xmax": -6.211720913035896,
-      "ymax": 53.9175641972237
+      "xmax": -6.211720913035895,
+      "ymax": 53.917564197223705
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 20,
-  "primary_key": [
-    "lca_pk"
-  ],
-  "indexes": [
-    {
-      "name": "landscape_character_area_geom_1763582711791",
-      "definition": "CREATE INDEX landscape_character_area_geom_1763582711791 ON a_irl_meath_cc.landscape_character_area USING gist (geom)"
-    },
-    {
-      "name": "landscape_character_area_pkey",
-      "definition": "CREATE UNIQUE INDEX landscape_character_area_pkey ON a_irl_meath_cc.landscape_character_area USING btree (lca_pk)"
-    }
-  ],
   "columns": [
     {
       "name": "lca_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for lca pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in landscape_character_area."
     },
     {
       "name": "description",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied description for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Rathmolyon Lowlands",
-          "West Navan Lowlands",
-          "Loughcrew and Slieve na Calliagh Hills",
-          "Boyne Valley",
-          "The Ward Lowlands"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": null
     },
     {
       "name": "character",
-      "data_type": "varchar(100)",
-      "description": "Publisher-supplied character for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Low Value",
-          "Exceptional Value",
-          "High Value",
-          "Moderate Value",
-          "Very High Value"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(100)",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "lca_pk",
-      "description",
-      "character"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "landscape",
-    "character",
-    "area",
-    "irl",
-    "meath",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.985042+00:00",
-    "curated_at": "2026-08-30T20:16:42.535375+00:00"
-  },
-  "column_count": 4
+  ]
 }

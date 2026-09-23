@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_national_highways`
 - **Table:** `air_quality_annual_evaluation_report`
 - **Geometry:** MULTILINESTRING
@@ -39,18 +39,18 @@ Published by National Highways as open roads data. Loaded into Systra PostGIS da
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `smallint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `pcm_link_i` | `integer` | Count or numeric value for pcm link i in the represented area. |
+| `pcm_link_i` | `integer` |  |
 | `road_name` | `varchar` | Name associated with the represented feature. |
-| `road_descr` | `varchar` | Publisher-supplied road descr for the represented feature or record. |
-| `qf_within_` | `varchar` | Publisher-supplied qf within for the represented feature or record. |
-| `no2_conc` | `varchar` | Publisher-supplied no2 conc for the represented feature or record. |
-| `annual_eva` | `varchar` | Publisher-supplied annual eva for the represented feature or record. |
-| `annual_e_1` | `varchar` | Publisher-supplied annual e 1 for the represented feature or record. |
-| `local_no2_` | `varchar` | Publisher-supplied local no2 for the represented feature or record. |
-| `datasets_r` | `varchar` | Publisher-supplied datasets r for the represented feature or record. |
-| `aer_based_` | `varchar` | Publisher-supplied aer based for the represented feature or record. |
-| `commentary` | `varchar` | Publisher-supplied commentary for the represented feature or record. |
-| `view_techn` | `varchar` | Publisher-supplied view techn for the represented feature or record. |
-| `year` | `smallint` | Count or numeric value for year in the represented area. |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
+| `road_descr` | `varchar` |  |
+| `qf_within_` | `varchar` |  |
+| `no2_conc` | `varchar` |  |
+| `annual_eva` | `varchar` |  |
+| `annual_e_1` | `varchar` |  |
+| `local_no2_` | `varchar` |  |
+| `datasets_r` | `varchar` |  |
+| `aer_based_` | `varchar` |  |
+| `commentary` | `varchar` |  |
+| `view_techn` | `varchar` |  |
+| `year` | `smallint` |  |
+| `globalid` | `varchar` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

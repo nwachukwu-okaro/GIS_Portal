@@ -1,0 +1,101 @@
+{
+  "gemini": {
+    "title": "Sea Flood Zones",
+    "abstract": "Sea Flood Zones is an authoritative dataset published by Natural Resources Wales. It represents sea flood zones features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": null,
+    "keywords": [
+      "sea",
+      "flood",
+      "zones",
+      "natural",
+      "resources",
+      "wales",
+      "mm",
+      "id",
+      "pub",
+      "date",
+      "fid",
+      "geom"
+    ],
+    "temporal_extent": {
+      "begin": "2026-05-21",
+      "end": "2026-05-21",
+      "note": "Detected from column: pub_date",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": null,
+    "responsible_organisation": "Natural Resources Wales",
+    "resource_locator": null,
+    "unique_identifier": "a_natural_resources_wales/sea_flood_zones",
+    "schema": "a_natural_resources_wales",
+    "table": "sea_flood_zones",
+    "bounding_box": {
+      "xmin": -5.353492827725567,
+      "ymin": 51.37786204593093,
+      "xmax": -2.656512087418393,
+      "ymax": 53.430996907487135
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "source_url",
+      "topic_category",
+      "dataset_reference_date",
+      "lineage",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "mm_id",
+      "type": "text",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "pub_date",
+      "type": "date",
+      "description": "Date associated with the represented feature or source record."
+    },
+    {
+      "name": "risk",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "risk_cy",
+      "type": "text",
+      "description": null
+    },
+    {
+      "name": "fid",
+      "type": "bigint",
+      "description": "Feature identifier assigned by the source or import process."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv302b_general_health_by_age_oa`
 - **Geometry:** Non-spatial
@@ -38,45 +38,45 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_people_total` | `double precision` | Count or numeric value for all people total in the represented area. |
-| `all_people_16_to_24` | `double precision` | Count or numeric value for all people 16 to 24 in the represented area. |
-| `all_people_0_to_15` | `double precision` | Count or numeric value for all people 0 to 15 in the represented area. |
-| `all_people_25_to_34` | `double precision` | Count or numeric value for all people 25 to 34 in the represented area. |
-| `all_people_35_to_49` | `double precision` | Count or numeric value for all people 35 to 49 in the represented area. |
-| `all_people_50_to_64` | `double precision` | Count or numeric value for all people 50 to 64 in the represented area. |
-| `all_people_65_and_over` | `double precision` | Count or numeric value for all people 65 and over in the represented area. |
-| `very_good_total` | `double precision` | Count or numeric value for very good total in the represented area. |
-| `very_good_16_to_24` | `double precision` | Count or numeric value for very good 16 to 24 in the represented area. |
-| `very_good_0_to_15` | `double precision` | Count or numeric value for very good 0 to 15 in the represented area. |
-| `very_good_25_to_34` | `double precision` | Count or numeric value for very good 25 to 34 in the represented area. |
-| `very_good_35_to_49` | `double precision` | Count or numeric value for very good 35 to 49 in the represented area. |
-| `very_good_50_to_64` | `double precision` | Count or numeric value for very good 50 to 64 in the represented area. |
-| `very_good_65_and_over` | `double precision` | Count or numeric value for very good 65 and over in the represented area. |
-| `good_total` | `double precision` | Count or numeric value for good total in the represented area. |
-| `good_16_to_24` | `double precision` | Count or numeric value for good 16 to 24 in the represented area. |
-| `good_0_to_15` | `double precision` | Count or numeric value for good 0 to 15 in the represented area. |
-| `good_25_to_34` | `double precision` | Count or numeric value for good 25 to 34 in the represented area. |
-| `good_35_to_49` | `double precision` | Count or numeric value for good 35 to 49 in the represented area. |
-| `good_50_to_64` | `double precision` | Count or numeric value for good 50 to 64 in the represented area. |
-| `good_65_and_over` | `double precision` | Count or numeric value for good 65 and over in the represented area. |
-| `fair_total` | `double precision` | Count or numeric value for fair total in the represented area. |
-| `fair_16_to_24` | `double precision` | Count or numeric value for fair 16 to 24 in the represented area. |
-| `fair_0_to_15` | `double precision` | Count or numeric value for fair 0 to 15 in the represented area. |
-| `fair_25_to_34` | `double precision` | Count or numeric value for fair 25 to 34 in the represented area. |
-| `fair_35_to_49` | `double precision` | Count or numeric value for fair 35 to 49 in the represented area. |
-| `fair_50_to_64` | `double precision` | Count or numeric value for fair 50 to 64 in the represented area. |
-| `fair_65_and_over` | `double precision` | Count or numeric value for fair 65 and over in the represented area. |
-| `bad_total` | `double precision` | Count or numeric value for bad total in the represented area. |
-| `bad_16_to_24` | `double precision` | Count or numeric value for bad 16 to 24 in the represented area. |
-| `bad_0_to_15` | `double precision` | Count or numeric value for bad 0 to 15 in the represented area. |
-| `bad_25_to_34` | `double precision` | Count or numeric value for bad 25 to 34 in the represented area. |
-| `bad_35_to_49` | `double precision` | Count or numeric value for bad 35 to 49 in the represented area. |
-| `bad_50_to_64` | `double precision` | Count or numeric value for bad 50 to 64 in the represented area. |
-| `bad_65_and_over` | `double precision` | Count or numeric value for bad 65 and over in the represented area. |
-| `very_bad_total` | `double precision` | Count or numeric value for very bad total in the represented area. |
-| `very_bad_16_to_24` | `double precision` | Count or numeric value for very bad 16 to 24 in the represented area. |
-| `very_bad_0_to_15` | `double precision` | Count or numeric value for very bad 0 to 15 in the represented area. |
-| `very_bad_25_to_34` | `double precision` | Count or numeric value for very bad 25 to 34 in the represented area. |
-| `very_bad_35_to_49` | `double precision` | Count or numeric value for very bad 35 to 49 in the represented area. |
-| `very_bad_50_to_64` | `double precision` | Count or numeric value for very bad 50 to 64 in the represented area. |
-| `very_bad_65_and_over` | `double precision` | Count or numeric value for very bad 65 and over in the represented area. |
+| `all_people_total` | `double precision` | Recorded census measure for the category "all people total" in the represented area. Units and population base require the source table. |
+| `all_people_16_to_24` | `double precision` |  |
+| `all_people_0_to_15` | `double precision` |  |
+| `all_people_25_to_34` | `double precision` |  |
+| `all_people_35_to_49` | `double precision` |  |
+| `all_people_50_to_64` | `double precision` |  |
+| `all_people_65_and_over` | `double precision` | Recorded census measure for the category "all people 65 and over" in the represented area. Units and population base require the source table. |
+| `very_good_total` | `double precision` |  |
+| `very_good_16_to_24` | `double precision` |  |
+| `very_good_0_to_15` | `double precision` |  |
+| `very_good_25_to_34` | `double precision` |  |
+| `very_good_35_to_49` | `double precision` |  |
+| `very_good_50_to_64` | `double precision` |  |
+| `very_good_65_and_over` | `double precision` |  |
+| `good_total` | `double precision` |  |
+| `good_16_to_24` | `double precision` |  |
+| `good_0_to_15` | `double precision` |  |
+| `good_25_to_34` | `double precision` |  |
+| `good_35_to_49` | `double precision` |  |
+| `good_50_to_64` | `double precision` |  |
+| `good_65_and_over` | `double precision` |  |
+| `fair_total` | `double precision` |  |
+| `fair_16_to_24` | `double precision` |  |
+| `fair_0_to_15` | `double precision` |  |
+| `fair_25_to_34` | `double precision` |  |
+| `fair_35_to_49` | `double precision` |  |
+| `fair_50_to_64` | `double precision` |  |
+| `fair_65_and_over` | `double precision` |  |
+| `bad_total` | `double precision` |  |
+| `bad_16_to_24` | `double precision` |  |
+| `bad_0_to_15` | `double precision` |  |
+| `bad_25_to_34` | `double precision` |  |
+| `bad_35_to_49` | `double precision` |  |
+| `bad_50_to_64` | `double precision` |  |
+| `bad_65_and_over` | `double precision` |  |
+| `very_bad_total` | `double precision` |  |
+| `very_bad_16_to_24` | `double precision` |  |
+| `very_bad_0_to_15` | `double precision` |  |
+| `very_bad_25_to_34` | `double precision` |  |
+| `very_bad_35_to_49` | `double precision` |  |
+| `very_bad_50_to_64` | `double precision` |  |
+| `very_bad_65_and_over` | `double precision` |  |

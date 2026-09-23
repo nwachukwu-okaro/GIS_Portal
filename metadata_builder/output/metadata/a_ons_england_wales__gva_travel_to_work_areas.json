@@ -1,0 +1,201 @@
+{
+  "gemini": {
+    "title": "Gva Travel To Work Areas",
+    "abstract": "Gva Travel To Work Areas is an authoritative dataset published by Office for National Statistics. It contains records relating to gva travel to work areas.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "gva",
+      "travel",
+      "work",
+      "areas",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/gva_travel_to_work_areas",
+    "schema": "a_ons_england_wales",
+    "table": "gva_travel_to_work_areas",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in gva_travel_to_work_areas."
+    },
+    {
+      "name": "ttwa code",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "ttwa name",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "1998",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "1999",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2000",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2001",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2002",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2003",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2004",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2005",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2006",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2007",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2008",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2009",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2010",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2011",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2012",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2013",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2014",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2015",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2016",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2017",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2018",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2019",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2020",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2021",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2022",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "2023",
+      "type": "double precision",
+      "description": null
+    }
+  ]
+}

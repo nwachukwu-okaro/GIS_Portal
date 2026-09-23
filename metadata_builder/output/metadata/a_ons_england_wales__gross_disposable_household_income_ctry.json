@@ -1,0 +1,103 @@
+{
+  "gemini": {
+    "title": "Gross Disposable Household Income Ctry",
+    "abstract": "Gross Disposable Household Income Ctry is an authoritative dataset published by Office for National Statistics. It contains records relating to gross disposable household income ctry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "gross",
+      "disposable",
+      "household",
+      "income",
+      "ctry",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id",
+      "date"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/gross_disposable_household_income_ctry",
+    "schema": "a_ons_england_wales",
+    "table": "gross_disposable_household_income_ctry",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in gross_disposable_household_income_ctry."
+    },
+    {
+      "name": "date",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "united kingdom",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "great britain",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "england",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "wales",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "scotland",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "northern ireland",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "england and wales",
+      "type": "integer",
+      "description": null
+    }
+  ]
+}

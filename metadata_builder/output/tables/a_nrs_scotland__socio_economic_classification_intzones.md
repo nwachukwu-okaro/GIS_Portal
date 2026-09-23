@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `socio_economic_classification_intzones`
 - **Geometry:** Non-spatial
@@ -37,21 +37,21 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_people_aged_16_and_over` | `double precision` | Count or numeric value for all people aged 16 and over in the represented area. |
-| `l1_employers_in_large_establishments` | `double precision` | Count or numeric value for l1 employers in large establishments in the represented area. |
-| `l2_higher_managerial_and_administrative_occupations` | `double precision` | Count or numeric value for l2 higher managerial and administrative occupations in the represented area. |
-| `l3_higher_professional_occupations` | `double precision` | Count or numeric value for l3 higher professional occupations in the represented area. |
-| `l4_lower_professional_and_higher_technical_occupations` | `double precision` | Count or numeric value for l4 lower professional and higher technical occupations in the represented area. |
-| `l5_lower_managerial_and_administrative_occupations` | `double precision` | Count or numeric value for l5 lower managerial and administrative occupations in the represented area. |
-| `l6_higher_supervisory_occupations` | `double precision` | Count or numeric value for l6 higher supervisory occupations in the represented area. |
-| `l7_intermediate_occupations` | `double precision` | Count or numeric value for l7 intermediate occupations in the represented area. |
-| `l8_employers_in_small_establishments` | `double precision` | Count or numeric value for l8 employers in small establishments in the represented area. |
-| `l9_own_account_workers` | `double precision` | Count or numeric value for l9 own account workers in the represented area. |
-| `l10_lower_supervisory_occupations` | `double precision` | Count or numeric value for l10 lower supervisory occupations in the represented area. |
-| `l11_lower_technical_occupations` | `double precision` | Count or numeric value for l11 lower technical occupations in the represented area. |
-| `l12_semi_routine_occupations` | `double precision` | Count or numeric value for l12 semi routine occupations in the represented area. |
-| `l13_routine_occupations` | `double precision` | Count or numeric value for l13 routine occupations in the represented area. |
-| `l14_1_never_worked` | `double precision` | Count or numeric value for l14 1 never worked in the represented area. |
-| `l14_2_long_term_unemployed` | `double precision` | Numeric l14 2 long term unemployed value recorded for the feature. |
-| `l15_full_time_students` | `double precision` | Count or numeric value for l15 full time students in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_people_aged_16_and_over` | `double precision` | Recorded census measure for the category "all people aged 16 and over" in the represented area. Units and population base require the source table. |
+| `l1_employers_in_large_establishments` | `double precision` |  |
+| `l2_higher_managerial_and_administrative_occupations` | `double precision` |  |
+| `l3_higher_professional_occupations` | `double precision` |  |
+| `l4_lower_professional_and_higher_technical_occupations` | `double precision` |  |
+| `l5_lower_managerial_and_administrative_occupations` | `double precision` |  |
+| `l6_higher_supervisory_occupations` | `double precision` |  |
+| `l7_intermediate_occupations` | `double precision` |  |
+| `l8_employers_in_small_establishments` | `double precision` |  |
+| `l9_own_account_workers` | `double precision` |  |
+| `l10_lower_supervisory_occupations` | `double precision` |  |
+| `l11_lower_technical_occupations` | `double precision` |  |
+| `l12_semi_routine_occupations` | `double precision` |  |
+| `l13_routine_occupations` | `double precision` |  |
+| `l14_1_never_worked` | `double precision` |  |
+| `l14_2_long_term_unemployed` | `double precision` |  |
+| `l15_full_time_students` | `double precision` |  |

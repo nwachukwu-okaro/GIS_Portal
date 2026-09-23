@@ -1,506 +1,141 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_department_of_housing_lg_heritage/an_bord_pleanala_cases_2016_onwards",
-  "schema": "a_irl_department_of_housing_lg_heritage",
-  "table": "an_bord_pleanala_cases_2016_onwards",
-  "title": "An Bord Pleanala Cases 2016 Onwards",
-  "description": "An Bord Pleanala Cases 2016 Onwards is an authoritative dataset published by Department of Housing, Local Government and Heritage. It represents an bord pleanala cases 2016 onwards features using multipolygon geometry.",
-  "feature_concept": "an_bord_pleanala_cases_2016_onwards",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Department of Housing, Local Government and Heritage",
-    "product": null,
-    "source_url": "https://www.gov.ie/en/organisation/department-of-housing-local-government-and-heritage/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "housing",
-    "local government",
-    "heritage"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
-      "xmin": -10.462590466787702,
-      "ymin": 51.466603526565926,
-      "xmax": -6.004297676254542,
-      "ymax": 55.330960336688165
-    },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 20903,
-  "primary_key": [],
-  "indexes": [
-    {
-      "name": "an_bord_pleanala_cases_2016_onwards_geom_1764339113488",
-      "definition": "CREATE INDEX an_bord_pleanala_cases_2016_onwards_geom_1764339113488 ON a_irl_department_of_housing_lg_heritage.an_bord_pleanala_cases_2016_onwards USING gist (geom)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "pc_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for pc pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "abpcaseid",
-      "data_type": "varchar(6)",
-      "description": "Publisher-assigned abpcaseid for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "304621",
-          "312996",
-          "302948",
-          "314669",
-          "305863"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9985648,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "devdesc",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied devdesc for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Extensions to office building at 4th and 5th floor level and new 6th floor level resulting in a 7 storey building. Plant areas at 4th floor level, sedum roof at 6th floor level and all site works.",
-          "Development at this site (c. 0.136 ha) comprises the use of an existing warehouse unit as a 'cloud kitchen' comprising remote commissary kitchen pods and ancillary customer delivery service with associate site works",
-          "Demolition of dwelling, sheds and conctruction of new dwelling",
-          "Construction of a materials recovery facility along with a food container cleaning plant and all associated site works. The materials recovery facility will require an EPA Industrial Emissions Licence. An Environmental Impact Assessment Report (EIAR) has",
-          "The construction of a detached two storey dwelling with construction of a detached garage with store area for boats, construction of a car port, connection to existing foul and storm drainage system, a new site entrance with boundary walls and piers, bin"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.8958044,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "devaddress",
-      "data_type": "varchar(250)",
-      "description": "Publisher-supplied devaddress for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Grennan, Attanagh, Co.Laois.",
-          "Bermuda, Church Road, Tramore, Co. Waterford",
-          "65, Donnybrook Manor, Dublin 4",
-          "Combined landholding in the Cherrywood Strategic Development Zone.",
-          "Seabury Lawns, Mornington, Drogheda, Co. Meath."
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.93120605,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "lodgedon",
-      "data_type": "timestamp",
-      "description": "Publisher-supplied lodgedon for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.10744869,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "decision",
-      "data_type": "varchar(140)",
-      "description": "Publisher-supplied decision for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Case is due to be decided by 09/05/2023",
-          "Case is due to be decided by 20/03/2024",
-          "Case is due to be decided by 08/03/2023",
-          "Case is due to be decided by 16/11/2021",
-          "Case is due to be decided by 01/05/2024"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 774.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "decided_on",
-      "data_type": "timestamp",
-      "description": "Publisher-supplied decided on for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.10835765,
-        "estimated_distinct": 2061.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "linkabpweb",
-      "data_type": "varchar(41)",
-      "description": "Publisher-supplied linkabpweb for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://www.pleanala.ie/en-ie/case/302534",
-          "https://www.pleanala.ie/en-ie/case/302597",
-          "https://www.pleanala.ie/en-ie/case/315050",
-          "https://www.pleanala.ie/en-ie/case/311763",
-          "https://www.pleanala.ie/en-ie/case/313842"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9985648,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "planingaty",
-      "data_type": "varchar(39)",
-      "description": "Publisher-supplied planingaty for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Kildare County Council",
-          "Cork City Council",
-          "Monaghan Fire and Civil Protection",
-          "Westmeath County Council",
-          "Galway County Council"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 37.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "category",
-      "data_type": "varchar(28)",
-      "description": "Publisher-supplied category for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Appropriate Assessment",
-          "Approve w/o Condition",
-          "Protected structure",
-          "Quarry / Substitute Consent",
-          "Appeals - LRD"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 15.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "updated_on",
-      "data_type": "timestamp",
-      "description": "Publisher-supplied updated on for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "pc_pk",
+  "gemini": {
+    "title": "An Bord Pleanala Cases 2016 Onwards",
+    "abstract": "An Bord Pleanala Cases 2016 Onwards is an authoritative dataset published by Department of Housing, Local Government and Heritage. It represents an bord pleanala cases 2016 onwards features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "bord",
+      "pleanala",
+      "cases",
+      "2016",
+      "onwards",
+      "irl",
+      "department",
+      "housing",
+      "lg",
+      "heritage",
+      "local",
+      "government",
+      "pc",
+      "pk",
       "abpcaseid",
       "devdesc",
       "devaddress",
       "lodgedon",
       "decision",
-      "decided_on",
+      "decided",
       "linkabpweb",
       "planingaty",
       "category",
-      "updated_on"
+      "updated",
+      "geom"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "bord",
-    "pleanala",
-    "cases",
-    "2016",
-    "onwards",
-    "irl",
-    "department",
-    "housing",
-    "lg",
-    "heritage",
-    "local",
-    "government",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": {
+      "begin": "2024-05-22T00:00:00",
+      "end": "2024-05-22T00:00:00",
+      "note": "Detected from column: updated_on",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Department of Housing, Local Government and Heritage as open data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Department of Housing, Local Government and Heritage",
+    "resource_locator": "https://www.gov.ie/en/organisation/department-of-housing-local-government-and-heritage/",
+    "unique_identifier": "a_irl_department_of_housing_lg_heritage/an_bord_pleanala_cases_2016_onwards",
+    "schema": "a_irl_department_of_housing_lg_heritage",
+    "table": "an_bord_pleanala_cases_2016_onwards",
+    "bounding_box": {
+      "xmin": -10.462590466787702,
+      "ymin": 51.46660352656593,
+      "xmax": -6.004297676254542,
+      "ymax": 55.33096033668818
+    },
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.842682+00:00",
-    "curated_at": "2026-08-30T20:16:36.520927+00:00"
-  },
-  "column_count": 12
+  "columns": [
+    {
+      "name": "pc_pk",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "abpcaseid",
+      "type": "varchar(6)",
+      "description": null
+    },
+    {
+      "name": "devdesc",
+      "type": "varchar(254)",
+      "description": null
+    },
+    {
+      "name": "devaddress",
+      "type": "varchar(250)",
+      "description": null
+    },
+    {
+      "name": "lodgedon",
+      "type": "timestamp",
+      "description": null
+    },
+    {
+      "name": "decision",
+      "type": "varchar(140)",
+      "description": null
+    },
+    {
+      "name": "decided_on",
+      "type": "timestamp",
+      "description": null
+    },
+    {
+      "name": "linkabpweb",
+      "type": "varchar(41)",
+      "description": null
+    },
+    {
+      "name": "planingaty",
+      "type": "varchar(39)",
+      "description": null
+    },
+    {
+      "name": "category",
+      "type": "varchar(28)",
+      "description": null
+    },
+    {
+      "name": "updated_on",
+      "type": "timestamp",
+      "description": null
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
 }

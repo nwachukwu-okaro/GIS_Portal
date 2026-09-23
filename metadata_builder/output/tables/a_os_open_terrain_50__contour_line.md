@@ -16,7 +16,7 @@
 - **Spatial resolution:** 50 metres (OS Terrain 50 grid post spacing)
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_open_terrain_50`
 - **Table:** `contour_line`
 - **Geometry:** MULTILINESTRING
@@ -43,8 +43,8 @@ Published by Ordnance Survey as part of OS Terrain 50. Loaded into Systra PostGI
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `property_value` | `double precision` | Count or numeric value for property value in the represented area. |
-| `contour_line_type` | `varchar` | Publisher-supplied contour line type for the represented feature or record. |
+| `id` | `varchar` |  |
+| `property_value` | `double precision` |  |
+| `contour_line_type` | `varchar` |  |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

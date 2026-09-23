@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `urban_areas_boundary`
 - **Geometry:** GEOMETRY
@@ -38,11 +38,11 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `urban_area_guid` | `text` | Publisher-assigned urban area guid for the record. |
+| `urban_area_guid` | `text` |  |
 | `urban_area_code` | `text` | Code assigned by the source dataset. |
 | `urban_area_name` | `text` | Name associated with the represented feature. |
-| `county` | `text` | Publisher-supplied county for the represented feature or record. |
-| `centroid_x` | `double precision` | Count or numeric value for centroid x in the represented area. |
-| `centroid_y` | `double precision` | Count or numeric value for centroid y in the represented area. |
+| `county` | `text` | County associated with the represented administrative area. |
+| `centroid_x` | `double precision` | X coordinate of the feature centroid; units and reference system are not confirmed for this attribute. |
+| `centroid_y` | `double precision` | Y coordinate of the feature centroid; units and reference system are not confirmed for this attribute. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

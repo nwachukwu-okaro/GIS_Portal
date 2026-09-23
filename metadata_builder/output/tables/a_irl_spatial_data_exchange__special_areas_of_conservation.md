@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_spatial_data_exchange`
 - **Table:** `special_areas_of_conservation`
 - **Geometry:** MULTIPOLYGON
@@ -38,13 +38,13 @@ Published by the Government of Ireland as part of the national spatial data exch
 
 | Column | Type | Description |
 |---|---|---|
-| `sac_pk` | `integer` | Count or numeric value for sac pk in the represented area. |
+| `sac_pk` | `integer` | Primary-key identifier for records in special_areas_of_conservation. |
 | `site_code` | `varchar(6)` | Code assigned by the source dataset. |
 | `site_name` | `varchar(100)` | Name associated with the represented feature. |
-| `version` | `double precision` | Count or numeric value for version in the represented area. |
-| `county` | `varchar(50)` | Publisher-supplied county for the represented feature or record. |
-| `ha` | `double precision` | Count or numeric value for ha in the represented area. |
-| `source_crs` | `varchar(254)` | Publisher-supplied source crs for the represented feature or record. |
-| `source_sale` | `varchar(50)` | Publisher-supplied source sale for the represented feature or record. |
-| `url` | `varchar(50)` | Publisher-supplied url for the represented feature or record. |
+| `version` | `double precision` |  |
+| `county` | `varchar(50)` |  |
+| `ha` | `double precision` |  |
+| `source_crs` | `varchar(254)` |  |
+| `source_sale` | `varchar(50)` |  |
+| `url` | `varchar(50)` | Web address associated with the record. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

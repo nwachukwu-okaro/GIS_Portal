@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `main_language_intzone`
 - **Geometry:** Non-spatial
@@ -37,10 +37,10 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over in the represented area. |
-| `english` | `double precision` | Count or numeric value for english in the represented area. |
-| `scots` | `double precision` | Count or numeric value for scots in the represented area. |
-| `gaelic` | `double precision` | Count or numeric value for gaelic in the represented area. |
-| `sign_language` | `double precision` | Count or numeric value for sign language in the represented area. |
-| `other_language` | `double precision` | Count or numeric value for other language in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_people_aged_3_and_over` | `double precision` | Recorded census measure for the category "all people aged 3 and over" in the represented area. Units and population base require the source table. |
+| `english` | `double precision` |  |
+| `scots` | `double precision` |  |
+| `gaelic` | `double precision` |  |
+| `sign_language` | `double precision` |  |
+| `other_language` | `double precision` |  |

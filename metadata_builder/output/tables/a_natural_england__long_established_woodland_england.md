@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `long_established_woodland_england`
 - **Geometry:** MULTIPOLYGON
@@ -44,15 +44,15 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `theme` | `varchar` | Publisher-supplied theme for the represented feature or record. |
-| `themname` | `varchar` | Publisher-supplied themname for the represented feature or record. |
-| `status` | `varchar` | Publisher-supplied status for the represented feature or record. |
-| `themid` | `varchar` | Publisher-assigned themid for the record. |
-| `x_coord` | `integer` | Count or numeric value for x coord in the represented area. |
-| `y_coord` | `integer` | Count or numeric value for y coord in the represented area. |
-| `area` | `real` | Numeric area value recorded for the feature. |
-| `perimeter` | `real` | Count or numeric value for perimeter in the represented area. |
-| `county` | `varchar` | Publisher-supplied county for the represented feature or record. |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
+| `theme` | `varchar` |  |
+| `themname` | `varchar` |  |
+| `status` | `varchar` |  |
+| `themid` | `varchar` |  |
+| `x_coord` | `integer` |  |
+| `y_coord` | `integer` |  |
+| `area` | `real` |  |
+| `perimeter` | `real` |  |
+| `county` | `varchar` |  |
+| `globalid` | `varchar` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

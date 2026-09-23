@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts016_ulta`
 - **Geometry:** Non-spatial
@@ -40,12 +40,12 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents` | `bigint` | Count or numeric value for total all usual residents in the represented area. |
-| `born_in_the_uk` | `bigint` | Count or numeric value for born in the uk in the represented area. |
-| `col_10_years_or_more` | `bigint` | Count or numeric value for col 10 years or more in the represented area. |
-| `col_5_years_or_more_but_less_than_10_years` | `bigint` | Count or numeric value for col 5 years or more but less than 10 years in the represented area. |
-| `col_2_years_or_more_but_less_than_5_years` | `bigint` | Count or numeric value for col 2 years or more but less than 5 years in the represented area. |
-| `less_than_2_years` | `bigint` | Count or numeric value for less than 2 years in the represented area. |
+| `total_all_usual_residents` | `bigint` | Census total for all usual residents in the represented geographical area; measurement unit requires the table documentation. |
+| `born_in_the_uk` | `bigint` | Recorded census measure for the category "born in the UK" in the represented area. Units and population base require the source table. |
+| `col_10_years_or_more` | `bigint` |  |
+| `col_5_years_or_more_but_less_than_10_years` | `bigint` |  |
+| `col_2_years_or_more_but_less_than_5_years` | `bigint` |  |
+| `less_than_2_years` | `bigint` |  |

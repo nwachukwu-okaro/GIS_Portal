@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `noise_r4`
 - **Geometry:** MULTIPOLYGON
@@ -38,17 +38,17 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 
 | Column | Type | Description |
 |---|---|---|
-| `nr4_pk` | `integer` | Count or numeric value for nr4 pk in the represented area. |
-| `noise_round_type` | `varchar(20)` | Publisher-supplied noise round type for the represented feature or record. |
+| `nr4_pk` | `integer` | Primary-key identifier for records in noise_r4. |
+| `noise_round_type` | `varchar(20)` |  |
 | `name` | `varchar(50)` | Official or publisher-assigned name of the represented feature. |
-| `type` | `varchar(20)` | Publisher-supplied type for the represented feature or record. |
-| `report_period` | `varchar(10)` | Publisher-supplied report period for the represented feature or record. |
-| `db_low` | `double precision` | Count or numeric value for db low in the represented area. |
-| `db_high` | `double precision` | Count or numeric value for db high in the represented area. |
-| `db_value` | `varchar(20)` | Publisher-supplied db value for the represented feature or record. |
-| `time` | `varchar(20)` | Publisher-supplied time for the represented feature or record. |
+| `type` | `varchar(20)` |  |
+| `report_period` | `varchar(10)` |  |
+| `db_low` | `double precision` |  |
+| `db_high` | `double precision` |  |
+| `db_value` | `varchar(20)` |  |
+| `time` | `varchar(20)` |  |
 | `local_authority_name` | `varchar(50)` | Name associated with the represented feature. |
 | `eden_code` | `varchar(10)` | Code assigned by the source dataset. |
-| `url_text` | `varchar(30)` | Publisher-supplied url text for the represented feature or record. |
-| `url` | `varchar(500)` | Publisher-supplied url for the represented feature or record. |
+| `url_text` | `varchar(30)` |  |
+| `url` | `varchar(500)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

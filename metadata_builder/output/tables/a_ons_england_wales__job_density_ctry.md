@@ -40,8 +40,8 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
-| `date` | `integer` | Count or numeric value for date in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in job_density_ctry. |
+| `date` | `integer` |  |
 | `england` | `double precision` |  |
 | `england and wales` | `double precision` |  |
 | `great britain` | `double precision` |  |

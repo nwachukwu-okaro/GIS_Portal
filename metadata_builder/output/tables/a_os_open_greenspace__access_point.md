@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_open_greenspace`
 - **Table:** `access_point`
 - **Geometry:** POINT
@@ -42,8 +42,8 @@ Published by Ordnance Survey as part of OS Open Greenspace. Loaded into Systra P
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `access_type` | `varchar` | Publisher-supplied access type for the represented feature or record. |
-| `ref_to_greenspace_site` | `varchar` | Publisher-supplied reference to greenspace site for the represented feature or record. |
+| `id` | `varchar` |  |
+| `access_type` | `varchar` |  |
+| `ref_to_greenspace_site` | `varchar` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

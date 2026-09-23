@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_tfgm`
 - **Table:** `metrolink_lines`
 - **Geometry:** MULTILINESTRING
@@ -38,12 +38,12 @@ Published by Transport for Greater Manchester as open transport data. Loaded int
 
 | Column | Type | Description |
 |---|---|---|
-| `tramline_pk` | `integer` | Count or numeric value for tramline pk in the represented area. |
-| `description` | `varchar` | Publisher-supplied description for the represented feature or record. |
-| `type` | `varchar` | Publisher-supplied type for the represented feature or record. |
+| `tramline_pk` | `integer` | Primary-key identifier for records in metrolink_lines. |
+| `description` | `varchar` |  |
+| `type` | `varchar` |  |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `validfrom` | `timestamp` | Publisher-supplied validfrom for the represented feature or record. |
-| `validto` | `timestamp` | Publisher-supplied validto for the represented feature or record. |
-| `currentstatus` | `varchar` | Publisher-supplied currentstatus for the represented feature or record. |
-| `comments` | `varchar` | Publisher-supplied comments for the represented feature or record. |
+| `validfrom` | `timestamp` | Date or time from which the record is considered valid. |
+| `validto` | `timestamp` | Date or time until which the record is considered valid. |
+| `currentstatus` | `varchar` |  |
+| `comments` | `varchar` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
