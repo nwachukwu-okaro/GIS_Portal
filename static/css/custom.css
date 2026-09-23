@@ -1585,6 +1585,95 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
 .sa2-popup-table td { padding: 4px 7px; border-bottom: 1px solid #edf0f2; text-align: left; vertical-align: top; }
 .sa2-popup-table th { color: #4b5662; font-weight: 700; }
 
+/* ── Spatial explorer Phase 2 filters ───────────────────────────────────── */
+.sa2-filter-panel {
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid #dfe3e8;
+  border-radius: 7px;
+  background: #fafbfc;
+}
+.sa2-filter-panel[hidden] { display: none; }
+.sa2-filter-heading {
+  margin-bottom: 5px;
+  color: #20252b;
+  font-size: 13px;
+  font-weight: 750;
+}
+.sa2-filter-help {
+  margin: 0 0 10px;
+  color: #667181;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.sa2-filter-help code {
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: #eef0f2;
+  color: #4f5b68;
+}
+.sa2-filter-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sa2-filter-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+.sa2-filter-row .sa2-filter-column,
+.sa2-filter-row .sa2-filter-operator,
+.sa2-filter-row .sa2-filter-value {
+  grid-column: 2;
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 8px;
+  border: 1px solid #cfd5dc;
+  border-radius: 5px;
+  background: #fff;
+  color: #29313a;
+  font-size: 12px;
+}
+.sa2-filter-row .sa2-filter-join {
+  grid-column: 1;
+  grid-row: 1;
+  width: 58px;
+  min-height: 30px;
+  padding: 4px;
+  font-size: 11px;
+}
+.sa2-filter-row .sa2-filter-column { grid-row: 1; }
+.sa2-filter-row .sa2-filter-operator { grid-row: 2; }
+.sa2-filter-row .sa2-filter-value { grid-row: 3; }
+.sa2-filter-row .sa2-filter-remove {
+  grid-column: 2;
+  grid-row: 4;
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8a3345;
+  font-size: 11px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.sa2-filter-row .sa2-filter-remove:hover { color: #C8102E; }
+.sa2-filter-row .sa2-filter-column:focus,
+.sa2-filter-row .sa2-filter-operator:focus,
+.sa2-filter-row .sa2-filter-value:focus {
+  border-color: #C8102E;
+  outline: 3px solid rgba(200, 16, 46, 0.12);
+}
+.sa2-add-filter { margin-top: 10px; }
+.sa2-add-filter:disabled {
+  color: #8b949d;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
 @media (max-width: 900px) {
   .sa2-workspace { grid-template-columns: 1fr; }
   .sa2-sidebar { position: static; }

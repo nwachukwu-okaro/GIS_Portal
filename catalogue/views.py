@@ -1933,6 +1933,105 @@ def _spatial_json_value(value):
     return str(value)
 
 
+_SPATIAL_FILTER_OPERATORS = {
+    '=': sql.SQL('{} = %s'),
+    '!=': sql.SQL('{} != %s'),
+    '>': sql.SQL('{} > %s'),
+    '<': sql.SQL('{} < %s'),
+    '>=': sql.SQL('{} >= %s'),
+    '<=': sql.SQL('{} <= %s'),
+    'LIKE': sql.SQL('{} LIKE %s'),
+    'ILIKE': sql.SQL('{} ILIKE %s'),
+    'IS NULL': sql.SQL('{} IS NULL'),
+    'IS NOT NULL': sql.SQL('{} IS NOT NULL'),
+}
+_SPATIAL_FILTER_JOINS = {'AND': sql.SQL('AND'), 'OR': sql.SQL('OR')}
+_SPATIAL_FILTER_MAX = 10
+
+
+def _spatial_filter_value_list(value):
+    """Normalise an IN/NOT IN value into non-empty string values."""
+    if isinstance(value, list):
+        values = [str(item).strip() for item in value]
+    else:
+        values = [item.strip() for item in str(value).split(',')]
+    return [item for item in values if item]
+
+
+def _spatial_filter_sql(request, metadata):
+    """Build a safe, parameterised WHERE expression from the filters JSON."""
+    raw_filters = (request.GET.get('filters') or '').strip()
+    if not raw_filters:
+        return None, []
+
+    try:
+        filters = json.loads(raw_filters)
+    except json.JSONDecodeError as exc:
+        raise ValueError('filters must be valid JSON.') from exc
+
+    if not isinstance(filters, list):
+        raise ValueError('filters must be a JSON array.')
+    if len(filters) > _SPATIAL_FILTER_MAX:
+        raise ValueError(f'No more than {_SPATIAL_FILTER_MAX} filters may be used.')
+    if not filters:
+        return None, []
+
+    geometry_column = metadata['geometry_column']
+    valid_columns = {
+        column['name']: column
+        for column in metadata['columns']
+        if column['name'] != geometry_column
+    }
+    combined_clause = None
+    params = []
+
+    for index, item in enumerate(filters):
+        if not isinstance(item, dict):
+            raise ValueError(f'Filter {index + 1} must be an object.')
+
+        column_name = item.get('column')
+        operator = str(item.get('operator') or '').upper()
+        if column_name not in valid_columns:
+            raise ValueError(f'Filter {index + 1} uses an invalid attribute column.')
+        if operator not in _SPATIAL_FILTER_OPERATORS and operator not in {'IN', 'NOT IN'}:
+            raise ValueError(f'Filter {index + 1} uses an unsupported operator.')
+
+        identifier = sql.Identifier(column_name)
+        if operator in {'IS NULL', 'IS NOT NULL'}:
+            clause = _SPATIAL_FILTER_OPERATORS[operator].format(identifier)
+        elif operator in {'IN', 'NOT IN'}:
+            values = _spatial_filter_value_list(item.get('value'))
+            if not values:
+                raise ValueError(f'Filter {index + 1} needs at least one value.')
+            placeholders = sql.SQL(', ').join(sql.Placeholder() for _ in values)
+            clause = sql.SQL('{} {} ({})').format(
+                identifier,
+                sql.SQL(operator),
+                placeholders,
+            )
+            params.extend(values)
+        else:
+            value = item.get('value')
+            if value is None or not str(value).strip():
+                raise ValueError(f'Filter {index + 1} needs a value.')
+            clause = _SPATIAL_FILTER_OPERATORS[operator].format(identifier)
+            params.append(value)
+
+        if index:
+            join = str(item.get('join') or 'AND').upper()
+            if join not in _SPATIAL_FILTER_JOINS:
+                raise ValueError(f'Filter {index + 1} uses an invalid join.')
+            combined_clause = sql.SQL('({}) {} ({})').format(
+                combined_clause,
+                _SPATIAL_FILTER_JOINS[join],
+                clause,
+            )
+        else:
+            combined_clause = clause
+
+    return combined_clause, params
+
+
 def _spatial_table_metadata(cursor, schema, table_name):
     """Return validated table columns and its information-schema geometry."""
     cursor.execute(
@@ -2089,6 +2188,7 @@ def spatial_table_data_api(request):
         return JsonResponse({'error': 'limit must be a whole number.'}, status=400)
     limit = max(1, min(limit, 50))
 
+    filters_requested = False
     try:
         with connections['a_schema_reader'].cursor() as cursor:
             metadata = _spatial_table_metadata(cursor, schema, table_name)
@@ -2115,6 +2215,11 @@ def spatial_table_data_api(request):
                     for column in requested_columns.split(',')
                     if column.strip() in valid_columns and column.strip() != geometry_column
                 ]
+            try:
+                filter_expression, filter_params = _spatial_filter_sql(request, metadata)
+            except ValueError as exc:
+                return JsonResponse({'error': str(exc)}, status=400)
+            filters_requested = filter_expression is not None
             geometry_expression = sql.SQL(
                 """
                 ST_AsGeoJSON(
@@ -2132,15 +2237,21 @@ def spatial_table_data_api(request):
             ]
             select_parts.extend(sql.Identifier(column) for column in property_columns)
             query = sql.SQL(
-                'SELECT {} FROM {}.{} LIMIT %s'
+                'SELECT {} FROM {}.{}{} LIMIT %s'
             ).format(
                 sql.SQL(', ').join(select_parts),
                 sql.Identifier(schema),
                 sql.Identifier(table_name),
+                sql.SQL(' WHERE {}').format(filter_expression)
+                if filter_expression is not None else sql.SQL(''),
             )
-            cursor.execute(query, (limit,))
+            cursor.execute(query, (*filter_params, limit))
             rows = cursor.fetchall()
     except DatabaseError:
+        if filters_requested:
+            return JsonResponse({
+                'error': 'The filters could not be applied. Check the values match the selected column types.',
+            }, status=400)
         return JsonResponse({
             'error': 'The a_schema PostGIS reader could not be reached.',
         }, status=503)

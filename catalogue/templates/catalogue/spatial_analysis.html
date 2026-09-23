@@ -37,6 +37,13 @@
         <div id="sa2-column-checkboxes" class="sa2-column-checkboxes"></div>
       </div>
 
+      <section class="sa2-filter-panel" id="sa2-filter-panel" hidden aria-labelledby="sa2-filter-heading">
+        <div class="sa2-filter-heading" id="sa2-filter-heading">Filter rows</div>
+        <p class="sa2-filter-help">Add up to 10 attribute filters. Use <code>%</code> as a wildcard with LIKE or ILIKE.</p>
+        <div id="sa2-filter-rows" class="sa2-filter-rows"></div>
+        <button type="button" id="sa2-add-filter-btn" class="sa2-btn-link sa2-add-filter">+ Add filter</button>
+      </section>
+
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
 
       <div class="sa2-summary" id="sa2-summary" hidden>
@@ -104,8 +111,26 @@
     const mapMessage = document.getElementById('sa2-map-message');
     const columnSelector = document.getElementById('sa2-column-selector');
     const columnCheckboxes = document.getElementById('sa2-column-checkboxes');
+    const filterPanel = document.getElementById('sa2-filter-panel');
+    const filterRows = document.getElementById('sa2-filter-rows');
+    const addFilterButton = document.getElementById('sa2-add-filter-btn');
     let currentColumns = [];
     let dataLayer = null;
+
+    const FILTER_OPERATORS = [
+      ['=', 'equals'],
+      ['!=', 'does not equal'],
+      ['>', 'greater than'],
+      ['<', 'less than'],
+      ['>=', 'greater than or equal to'],
+      ['<=', 'less than or equal to'],
+      ['LIKE', 'LIKE'],
+      ['ILIKE', 'ILIKE'],
+      ['IN', 'is one of'],
+      ['NOT IN', 'is not one of'],
+      ['IS NULL', 'is empty'],
+      ['IS NOT NULL', 'is not empty']
+    ];
 
     const map = L.map('sa2-map').setView([51.5, -0.1], 6);
     L.tileLayer('/tiles/osm/{z}/{x}/{y}.png', {
@@ -165,6 +190,122 @@
     function getSelectedColumns() {
       return Array.from(document.querySelectorAll('.sa2-col-checkbox:checked'))
         .map(checkbox => checkbox.value);
+    }
+
+    function refreshFilterJoins() {
+      Array.from(filterRows.children).forEach((row, index) => {
+        const join = row.querySelector('.sa2-filter-join');
+        join.hidden = index === 0;
+      });
+    }
+
+    function updateFilterAddButton() {
+      const atLimit = filterRows.children.length >= 10;
+      addFilterButton.disabled = atLimit;
+      addFilterButton.textContent = atLimit ? 'Maximum of 10 filters' : '+ Add filter';
+    }
+
+    function addFilterRow() {
+      if (filterRows.children.length >= 10) return;
+
+      const row = document.createElement('div');
+      row.className = 'sa2-filter-row';
+
+      const join = document.createElement('select');
+      join.className = 'sa2-select sa2-filter-join';
+      [['AND', 'AND'], ['OR', 'OR']].forEach(([value, label]) => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = label;
+        join.appendChild(option);
+      });
+      row.appendChild(join);
+
+      const column = document.createElement('select');
+      column.className = 'sa2-select sa2-filter-column';
+      currentColumns.forEach(item => {
+        const name = typeof item === 'string' ? item : item.name;
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        column.appendChild(option);
+      });
+      row.appendChild(column);
+
+      const operator = document.createElement('select');
+      operator.className = 'sa2-select sa2-filter-operator';
+      FILTER_OPERATORS.forEach(([value, label]) => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = label;
+        operator.appendChild(option);
+      });
+      row.appendChild(operator);
+
+      const value = document.createElement('input');
+      value.type = 'text';
+      value.className = 'sa2-filter-value';
+      value.placeholder = 'Value';
+      row.appendChild(value);
+
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'sa2-filter-remove';
+      remove.textContent = 'Remove';
+      remove.addEventListener('click', () => {
+        row.remove();
+        refreshFilterJoins();
+        updateFilterAddButton();
+      });
+      row.appendChild(remove);
+
+      operator.addEventListener('change', () => {
+        const noValue = operator.value === 'IS NULL' || operator.value === 'IS NOT NULL';
+        value.disabled = noValue;
+        value.value = noValue ? '' : value.value;
+        value.placeholder = operator.value === 'IN' || operator.value === 'NOT IN'
+          ? 'Comma-separated values'
+          : operator.value === 'LIKE' || operator.value === 'ILIKE'
+            ? 'e.g. %London%'
+            : 'Value';
+      });
+
+      filterRows.appendChild(row);
+      refreshFilterJoins();
+      updateFilterAddButton();
+    }
+
+    function resetFilterPanel() {
+      filterRows.innerHTML = '';
+      filterPanel.hidden = true;
+      updateFilterAddButton();
+    }
+
+    function buildFilterPanel(columns) {
+      filterRows.innerHTML = '';
+      if (!columns.length) {
+        filterPanel.hidden = true;
+        updateFilterAddButton();
+        return;
+      }
+      filterPanel.hidden = false;
+      addFilterRow();
+    }
+
+    function getFilterPayload() {
+      return Array.from(filterRows.children).map((row, index) => {
+        const operator = row.querySelector('.sa2-filter-operator').value;
+        const value = row.querySelector('.sa2-filter-value').value.trim();
+        if (operator !== 'IS NULL' && operator !== 'IS NOT NULL' && !value) {
+          throw new Error(`Enter a value for filter ${index + 1}.`);
+        }
+        return {
+          column: row.querySelector('.sa2-filter-column').value,
+          operator,
+          value,
+          join: index ? row.querySelector('.sa2-filter-join').value : 'AND'
+        };
+      });
     }
 
     function renderAttributeTable(features) {
@@ -243,6 +384,7 @@
       summary.hidden = true;
       columnSelector.style.display = 'none';
       columnCheckboxes.innerHTML = '';
+      resetFilterPanel();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
@@ -273,6 +415,7 @@
       summary.hidden = !table;
       columnSelector.style.display = 'none';
       columnCheckboxes.innerHTML = '';
+      resetFilterPanel();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
@@ -286,6 +429,7 @@
         ]);
         currentColumns = columns;
         buildColumnSelector(currentColumns);
+        buildFilterPanel(currentColumns);
         rowCount.textContent = Number(countPreview.total_count || 0).toLocaleString();
         setStatus(`${table} selected.`);
       } catch (error) {
@@ -300,11 +444,13 @@
       setLoading(true);
       setStatus(`Loading ${table}…`);
       try {
+        const filters = getFilterPayload();
         const params = new URLSearchParams({
           schema,
           table,
           limit: '50',
-          columns: getSelectedColumns().join(',')
+          columns: getSelectedColumns().join(','),
+          filters: JSON.stringify(filters)
         });
         const data = await fetchJson(`${SA2_API.data}?${params.toString()}`);
         if (dataLayer) {
@@ -354,6 +500,7 @@
         checkbox.checked = false;
       });
     });
+    addFilterButton.addEventListener('click', addFilterRow);
     loadButton.addEventListener('click', loadSelectedTable);
     loadSchemas();
   });
