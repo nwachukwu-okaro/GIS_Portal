@@ -27,6 +27,16 @@
         <option value="">Select a schema first</option>
       </select>
 
+      <div class="sa2-column-selector" id="sa2-column-selector" hidden>
+        <label class="sa2-label">Select columns</label>
+        <div class="sa2-column-controls">
+          <button type="button" id="sa2-select-all-btn" class="sa2-btn-link">Select All</button>
+          <span class="sa2-sep">|</span>
+          <button type="button" id="sa2-deselect-all-btn" class="sa2-btn-link">Deselect All</button>
+        </div>
+        <div id="sa2-column-checkboxes" class="sa2-column-checkboxes"></div>
+      </div>
+
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
 
       <div class="sa2-summary" id="sa2-summary" hidden>
@@ -97,13 +107,15 @@
     const tableMeta = document.getElementById('sa2-table-meta');
     const attributeTable = document.getElementById('sa2-attribute-table');
     const mapMessage = document.getElementById('sa2-map-message');
+    const columnSelector = document.getElementById('sa2-column-selector');
+    const columnCheckboxes = document.getElementById('sa2-column-checkboxes');
     let currentColumns = [];
     let dataLayer = null;
 
     const map = L.map('sa2-map').setView([51.5, -0.1], 6);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('/tiles/osm/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     function escapeHtml(value) {
@@ -130,6 +142,34 @@
       if (value === null || value === undefined || value === '') return '—';
       if (typeof value === 'object') return JSON.stringify(value);
       return String(value);
+    }
+
+    function buildColumnSelector(columns) {
+      columnCheckboxes.innerHTML = '';
+      if (!columns.length) {
+        columnCheckboxes.textContent = 'No attribute columns available.';
+        columnSelector.hidden = false;
+        return;
+      }
+      columns.forEach(column => {
+        const name = typeof column === 'string' ? column : column.name;
+        const label = document.createElement('label');
+        label.className = 'sa2-col-checkbox-label';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = name;
+        checkbox.checked = true;
+        checkbox.className = 'sa2-col-checkbox';
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(` ${name}`));
+        columnCheckboxes.appendChild(label);
+      });
+      columnSelector.hidden = false;
+    }
+
+    function getSelectedColumns() {
+      return Array.from(document.querySelectorAll('.sa2-col-checkbox:checked'))
+        .map(checkbox => checkbox.value);
     }
 
     function renderAttributeTable(features) {
@@ -206,6 +246,8 @@
         : '<option value="">Select a schema first</option>';
       loadButton.disabled = true;
       summary.hidden = true;
+      columnSelector.hidden = true;
+      columnCheckboxes.innerHTML = '';
       currentColumns = [];
       rowCount.textContent = '—';
       columnList.textContent = '—';
@@ -249,6 +291,7 @@
           fetchJson(`${SA2_API.data}?schema=${encodeURIComponent(schemaSelect.value)}&table=${encodeURIComponent(table)}&limit=1`)
         ]);
         currentColumns = columns;
+        buildColumnSelector(currentColumns);
         columnList.textContent = currentColumns.length
           ? currentColumns.map(column => column.name).join(', ')
           : 'No non-geometry columns';
@@ -267,7 +310,13 @@
       setLoading(true);
       setStatus(`Loading ${table}…`);
       try {
-        const data = await fetchJson(`${SA2_API.data}?schema=${encodeURIComponent(schema)}&table=${encodeURIComponent(table)}&limit=50`);
+        const params = new URLSearchParams({
+          schema,
+          table,
+          limit: '50',
+          columns: getSelectedColumns().join(',')
+        });
+        const data = await fetchJson(`${SA2_API.data}?${params.toString()}`);
         if (dataLayer) {
           dataLayer.remove();
           dataLayer = null;
@@ -305,6 +354,16 @@
 
     schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
+    document.getElementById('sa2-select-all-btn').addEventListener('click', () => {
+      document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
+        checkbox.checked = true;
+      });
+    });
+    document.getElementById('sa2-deselect-all-btn').addEventListener('click', () => {
+      document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+    });
     loadButton.addEventListener('click', loadSelectedTable);
     loadSchemas();
   });

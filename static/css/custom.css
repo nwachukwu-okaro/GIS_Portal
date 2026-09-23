@@ -1403,6 +1403,48 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   outline: 3px solid rgba(200, 16, 46, 0.12);
 }
 
+.sa2-column-selector {
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid #dfe3e8;
+  border-radius: 7px;
+  background: #fafbfc;
+}
+.sa2-column-selector[hidden] { display: none; }
+.sa2-column-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 9px;
+}
+.sa2-btn-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #C8102E;
+  font-size: 11px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.sa2-sep { color: #aeb6bd; font-size: 11px; }
+.sa2-column-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 190px;
+  overflow-y: auto;
+}
+.sa2-col-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: #4f5b68;
+  font-size: 11px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
 .sa2-status {
   min-height: 21px;
   margin-top: 10px;

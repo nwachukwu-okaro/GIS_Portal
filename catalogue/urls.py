@@ -6,6 +6,7 @@ app_name = 'catalogue'
 
 urlpatterns = [
     path('', views.search, name='search'),
+    path('tiles/osm/<int:z>/<int:x>/<int:y>.png', views.osm_tile_proxy, name='osm_tile_proxy'),
     path('spatial-analysis/', views.spatial_analysis, name='spatial_analysis'),
     path('spatial-analysis/api/schemas/', views.spatial_schemas_api, name='spatial_schemas_api'),
     path('spatial-analysis/api/tables/', views.spatial_tables_api, name='spatial_tables_api'),

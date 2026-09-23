@@ -2098,11 +2098,23 @@ def spatial_table_data_api(request):
                 }, status=404)
 
             geometry_column = metadata['geometry_column']
-            property_columns = [
+            all_property_columns = [
                 column['name']
                 for column in metadata['columns']
                 if column['name'] != geometry_column
             ]
+            requested_columns = request.GET.get('columns')
+            if requested_columns is None:
+                property_columns = all_property_columns
+            else:
+                valid_columns = {
+                    column['name'] for column in metadata['columns']
+                }
+                property_columns = [
+                    column.strip()
+                    for column in requested_columns.split(',')
+                    if column.strip() in valid_columns and column.strip() != geometry_column
+                ]
             select_parts = [
                 sql.SQL('ST_AsGeoJSON({})').format(sql.Identifier(geometry_column))
                 if geometry_column else sql.SQL('NULL'),
@@ -2157,3 +2169,29 @@ def spatial_table_data_api(request):
 def spatial_analysis(request):
     """Render the Phase 1 schema/table explorer."""
     return render(request, 'catalogue/spatial_analysis.html')
+
+
+def osm_tile_proxy(request, z, x, y):
+    """Proxy OpenStreetMap tiles with an identifying User-Agent."""
+    if not (0 <= z <= 19 and x >= 0 and y >= 0):
+        raise Http404
+
+    try:
+        response = requests.get(
+            f'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            headers={
+                'User-Agent': 'SystraGISPortal/1.0 (internal; gis_uk@systra.com)',
+                'Referer': 'https://vlpukbirwrk01.systra.info/',
+            },
+            timeout=10,
+        )
+    except requests.RequestException as exc:
+        raise Http404 from exc
+
+    tile_response = HttpResponse(
+        response.content,
+        content_type=response.headers.get('Content-Type', 'image/png'),
+        status=response.status_code,
+    )
+    tile_response['Cache-Control'] = 'public, max-age=86400'
+    return tile_response
