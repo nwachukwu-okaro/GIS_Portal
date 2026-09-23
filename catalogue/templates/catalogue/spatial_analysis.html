@@ -27,14 +27,14 @@
         <option value="">Select a schema first</option>
       </select>
 
-      <div class="sa2-column-selector" id="sa2-column-selector" hidden>
+      <div class="sa2-column-selector" id="sa2-column-selector" style="display:none;">
         <label class="sa2-label">Select columns</label>
-        <select id="sa2-column-select" multiple size="6" class="sa2-select" aria-label="Select attribute columns"></select>
         <div class="sa2-column-controls">
           <button type="button" id="sa2-select-all-btn" class="sa2-btn-link">Select All</button>
           <span class="sa2-sep">|</span>
           <button type="button" id="sa2-deselect-all-btn" class="sa2-btn-link">Deselect All</button>
         </div>
+        <div id="sa2-column-checkboxes" class="sa2-column-checkboxes"></div>
       </div>
 
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
@@ -103,7 +103,7 @@
     const attributeTable = document.getElementById('sa2-attribute-table');
     const mapMessage = document.getElementById('sa2-map-message');
     const columnSelector = document.getElementById('sa2-column-selector');
-    const columnSelect = document.getElementById('sa2-column-select');
+    const columnCheckboxes = document.getElementById('sa2-column-checkboxes');
     let currentColumns = [];
     let dataLayer = null;
 
@@ -140,28 +140,31 @@
     }
 
     function buildColumnSelector(columns) {
-      columnSelect.innerHTML = '';
+      columnCheckboxes.innerHTML = '';
       if (!columns.length) {
-        const option = document.createElement('option');
-        option.textContent = 'No attribute columns available.';
-        option.disabled = true;
-        columnSelect.appendChild(option);
-        columnSelector.hidden = false;
+        columnCheckboxes.textContent = 'No attribute columns available.';
+        columnSelector.style.display = 'block';
         return;
       }
       columns.forEach(column => {
         const name = typeof column === 'string' ? column : column.name;
-        const option = document.createElement('option');
-        option.value = name;
-        option.textContent = name;
-        option.selected = true;
-        columnSelect.appendChild(option);
+        const label = document.createElement('label');
+        label.className = 'sa2-col-checkbox-label';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = name;
+        checkbox.checked = true;
+        checkbox.className = 'sa2-col-checkbox';
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(` ${name}`));
+        columnCheckboxes.appendChild(label);
       });
-      columnSelector.hidden = false;
+      columnSelector.style.display = 'block';
     }
 
     function getSelectedColumns() {
-      return Array.from(columnSelect.selectedOptions).map(option => option.value);
+      return Array.from(document.querySelectorAll('.sa2-col-checkbox:checked'))
+        .map(checkbox => checkbox.value);
     }
 
     function renderAttributeTable(features) {
@@ -238,8 +241,8 @@
         : '<option value="">Select a schema first</option>';
       loadButton.disabled = true;
       summary.hidden = true;
-      columnSelector.hidden = true;
-      columnSelect.innerHTML = '';
+      columnSelector.style.display = 'none';
+      columnCheckboxes.innerHTML = '';
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
@@ -268,8 +271,8 @@
       const table = tableSelect.value;
       loadButton.disabled = !schemaSelect.value || !table;
       summary.hidden = !table;
-      columnSelector.hidden = true;
-      columnSelect.innerHTML = '';
+      columnSelector.style.display = 'none';
+      columnCheckboxes.innerHTML = '';
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
@@ -342,13 +345,13 @@
     schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
     document.getElementById('sa2-select-all-btn').addEventListener('click', () => {
-      Array.from(columnSelect.options).forEach(option => {
-        option.selected = true;
+      document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
+        checkbox.checked = true;
       });
     });
     document.getElementById('sa2-deselect-all-btn').addEventListener('click', () => {
-      Array.from(columnSelect.options).forEach(option => {
-        option.selected = false;
+      document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
+        checkbox.checked = false;
       });
     });
     loadButton.addEventListener('click', loadSelectedTable);
