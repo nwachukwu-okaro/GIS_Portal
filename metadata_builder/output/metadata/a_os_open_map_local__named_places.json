@@ -1,378 +1,110 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_open_map_local/named_places",
-  "schema": "a_os_open_map_local",
-  "table": "named_places",
-  "title": "Named Places",
-  "description": "Contains OS data © Crown copyright and database right 2026",
-  "feature_concept": "named_places",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "OS Open Map Local",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-map-local",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Contains OS data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "OS OpenData product."
-  },
-  "themes": [
-    "mapping",
-    "topography"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOINT",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -8.643781655794516,
+  "gemini": {
+    "title": "Named Places",
+    "abstract": "Contains OS data © Crown copyright and database right 2026",
+    "alternative_title": null,
+    "topic_category": "imageryBaseMapsEarthCover",
+    "keywords": [
+      "named",
+      "places",
+      "os",
+      "open",
+      "map",
+      "local",
+      "ordnance",
+      "survey",
+      "mapping",
+      "topography",
+      "id",
+      "classification",
+      "distinctive",
+      "name",
+      "feature",
+      "code",
+      "font",
+      "height",
+      "text",
+      "orientation",
+      "fid",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of OS Open Map Local. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/os-open-map-local",
+    "unique_identifier": "a_os_open_map_local/named_places",
+    "schema": "a_os_open_map_local",
+    "table": "named_places",
+    "bounding_box": {
+      "xmin": -8.643781655794518,
       "ymin": 49.870843135890006,
       "xmax": 1.766548116263451,
       "ymax": 60.83650928271269
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 480723,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "named_places_geom_1777307758300",
-      "definition": "CREATE INDEX named_places_geom_1777307758300 ON a_os_open_map_local.named_places USING gist (geom)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "named_places_pkey",
-      "definition": "CREATE UNIQUE INDEX named_places_pkey ON a_os_open_map_local.named_places USING btree (fid)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
   "columns": [
     {
       "name": "id",
-      "data_type": "varchar",
-      "description": "Publisher-assigned identifier for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "000056AE-5D2D-4277-B3CF-02AF88DC6730",
-          "000094A1-84AD-492E-80C0-C27E5FEEEB15",
-          "0000A607-9458-45FB-9CF7-9CAF1955B474",
-          "0000AD06-1C9B-40E5-82AC-7DC813C7E21B",
-          "00010551-E55B-4CF2-BD0B-42539D837A85"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "classification",
-      "data_type": "varchar",
-      "description": "Publisher-supplied classification for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Hydrography",
-          "Landcover",
-          "Landform",
-          "Populated Place",
-          "Woodland Or Forest"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 5.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "distinctive_name",
-      "data_type": "varchar",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Farnack Wood",
-          "Porisken",
-          "Afon y Fron",
-          "Inkerman",
-          "West Shaird"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.23963073,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "feature_code",
-      "data_type": "integer",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 5.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "font_height",
-      "data_type": "varchar",
-      "description": "Publisher-supplied font height for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Large",
-          "Medium",
-          "Small"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 3.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "text_orientation",
-      "data_type": "integer",
-      "description": "Count or numeric value for text orientation in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 173.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": null
     },
     {
       "name": "fid",
-      "data_type": "integer",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Feature identifier assigned by the source or import process."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "id",
-      "classification",
-      "distinctive_name",
-      "feature_code",
-      "font_height",
-      "text_orientation",
-      "fid"
-    ],
-    "searchable_columns": [
-      "distinctive_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "named",
-    "places",
-    "os",
-    "open",
-    "map",
-    "local",
-    "ordnance",
-    "survey",
-    "mapping",
-    "topography",
-    "distinctive",
-    "name",
-    "feature",
-    "code",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "database_comment",
-    "description_confidence": "verified"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": []
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.647175+00:00",
-    "curated_at": "2026-08-30T20:18:33.865586+00:00"
-  },
-  "column_count": 8
+  ]
 }

@@ -1,315 +1,98 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_galway_cc/planning_part_8",
-  "schema": "a_irl_galway_cc",
-  "table": "planning_part_8",
-  "title": "Planning Part 8",
-  "description": "Planning Part 8 is an authoritative dataset published by Galway County Council. It represents planning part 8 features using multipolygon geometry.",
-  "feature_concept": "planning_part_8",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Galway County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/galway-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Galway",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Planning Part 8",
+    "abstract": "Planning Part 8 is an authoritative dataset published by Galway County Council. It represents planning part 8 features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "planning",
+      "part",
+      "irl",
+      "galway",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "id",
+      "plan",
+      "desc",
+      "global",
+      "object",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Galway County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Galway County Council",
+    "resource_locator": "https://data.gov.ie/organization/galway-county-council",
+    "unique_identifier": "a_irl_galway_cc/planning_part_8",
+    "schema": "a_irl_galway_cc",
+    "table": "planning_part_8",
+    "bounding_box": {
       "xmin": -10.219259224976664,
-      "ymin": 52.98078464742104,
+      "ymin": 52.980784647421046,
       "xmax": -8.063640293330813,
-      "ymax": 53.706011567541275
+      "ymax": 53.70601156754128
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 569,
-  "primary_key": [
-    "object_id"
-  ],
-  "indexes": [
-    {
-      "name": "planning_part_8_geom_1786355534960",
-      "definition": "CREATE INDEX planning_part_8_geom_1786355534960 ON a_irl_galway_cc.planning_part_8 USING gist (geom)"
-    },
-    {
-      "name": "planning_part_8_pkey",
-      "definition": "CREATE UNIQUE INDEX planning_part_8_pkey ON a_irl_galway_cc.planning_part_8 USING btree (object_id)"
-    }
-  ],
   "columns": [
     {
       "name": "id",
-      "data_type": "double precision",
-      "description": "Publisher-assigned identifier for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.12478032,
-        "estimated_distinct": -0.87170476,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "plan_id",
-      "data_type": "varchar",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "LA130",
-          "La220",
-          "la0109",
-          "LA2501",
-          "LA290"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.8927944,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "desc_",
-      "data_type": "varchar",
-      "description": "Publisher-supplied description for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "8no. unit housing development, comprising of 2no. single storey two-bed dwellings, 6no. two-storey two-bed dwellings and all ancillary site development works.",
-          "Re-alignment of the N17 at the townlands of Cloonmoyle, Castletown, Lenamore, Massmore and Lissavally (Vessy) for a distance of 2500m, incorporating new culvert and cattle underpass. Re-alignment of L 2221-0 for 750m at townland of Lissavelly (Vessy)",
-          "Demolition of existing dwelling and construction of a 2-bedroom dwelling, together with proprietary effluent treatment plant, percolation area and ancillary site works.",
-          "14 Dwellings",
-          "Car park"
-        ],
-        "null_fraction": 0.012302285,
-        "estimated_distinct": -0.25483304,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "global_id",
-      "data_type": "varchar",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "444bb335-fd58-4ebe-9f7c-5cfcf25147b7",
-          "7fe09631-fd69-4260-b820-6091c5a7138d",
-          "7cd01c8b-4a78-473f-a0a3-59b07a108629",
-          "64034739-72ec-4774-8d3a-d7f4efc257db",
-          "78a8e462-88fa-46db-95aa-94c37665a454"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "object_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "id",
-      "plan_id",
-      "desc_",
-      "global_id",
-      "object_id"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "planning",
-    "part",
-    "irl",
-    "galway",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "plan",
-    "id",
-    "global",
-    "object",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.921546+00:00",
-    "curated_at": "2026-08-30T20:16:38.805231+00:00"
-  },
-  "column_count": 6
+  ]
 }

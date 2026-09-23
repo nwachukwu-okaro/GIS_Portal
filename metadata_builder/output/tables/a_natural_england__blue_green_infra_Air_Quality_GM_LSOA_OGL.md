@@ -42,18 +42,18 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `code` | `varchar(9)` | Count or numeric value for code in the represented area. |
+| `code` | `varchar(9)` |  |
 | `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. |
-| `provision` | `double precision` | Count or numeric value for provision in the represented area. |
-| `need` | `double precision` | Count or numeric value for need in the represented area. |
-| `lackprov` | `double precision` | Count or numeric value for lackprov in the represented area. |
-| `zpriority` | `double precision` | Count or numeric value for zpriority in the represented area. |
+| `provision` | `double precision` |  |
+| `need` | `double precision` |  |
+| `lackprov` | `double precision` |  |
+| `zpriority` | `double precision` |  |
 | `sumpm25kg` | `double precision` |  |
-| `areakm` | `double precision` | Numeric areakm value recorded for the feature. |
+| `areakm` | `double precision` |  |
 | `pm25kgkm2` | `double precision` |  |
 | `pm25ugm3` | `double precision` |  |
-| `zscoreaqprov` | `double precision` | Count or numeric value for zscoreaqprov in the represented area. |
-| `zaqneed` | `double precision` | Count or numeric value for zaqneed in the represented area. |
-| `zsocneed` | `double precision` | Count or numeric value for zsocneed in the represented area. |
-| `zneedcomb` | `double precision` | Count or numeric value for zneedcomb in the represented area. |
+| `zscoreaqprov` | `double precision` |  |
+| `zaqneed` | `double precision` |  |
+| `zsocneed` | `double precision` |  |
+| `zneedcomb` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

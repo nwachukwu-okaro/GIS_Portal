@@ -1,418 +1,120 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_greater_manchester_ecology_unit/gm_sbi_polygon",
-  "schema": "a_greater_manchester_ecology_unit",
-  "table": "gm_sbi_polygon",
-  "title": "Gm Sbi Polygon",
-  "description": "Gm Sbi Polygon is an authoritative dataset published by Greater Manchester Ecology Unit. It represents gm sbi polygon features using multipolygon geometry.",
-  "feature_concept": "gm_sbi_polygon",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Greater Manchester Ecology Unit",
-    "product": null,
-    "source_url": "https://www.gmenvironment.org.uk/gmeu/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "ecology",
-    "environment"
-  ],
-  "geographic_coverage": null,
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -2.723910743534135,
+  "gemini": {
+    "title": "Gm Sbi Polygon",
+    "abstract": "Gm Sbi Polygon is an authoritative dataset published by Greater Manchester Ecology Unit. It represents gm sbi polygon features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "gm",
+      "sbi",
+      "polygon",
+      "greater",
+      "manchester",
+      "ecology",
+      "unit",
+      "environment",
+      "site",
+      "id",
+      "name",
+      "cent",
+      "gr",
+      "gra",
+      "district",
+      "features",
+      "date",
+      "est",
+      "fid",
+      "geom"
+    ],
+    "temporal_extent": {
+      "begin": "1976-07-01",
+      "end": "2022-07-20",
+      "note": "Detected from column: date_est",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Greater Manchester Ecology Unit as open ecological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Greater Manchester Ecology Unit",
+    "resource_locator": "https://www.gmenvironment.org.uk/gmeu/",
+    "unique_identifier": "a_greater_manchester_ecology_unit/gm_sbi_polygon",
+    "schema": "a_greater_manchester_ecology_unit",
+    "table": "gm_sbi_polygon",
+    "bounding_box": {
+      "xmin": -2.723910743534136,
       "ymin": 53.345912566960635,
       "xmax": -1.909621631301196,
-      "ymax": 53.683676287332446
+      "ymax": 53.68367628733245
     },
-    "units": "metres",
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "dataset_reference_date",
+      "use_constraints",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 539,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "gm_sbi_polygon_geom_1765456301477",
-      "definition": "CREATE INDEX gm_sbi_polygon_geom_1765456301477 ON a_greater_manchester_ecology_unit.gm_sbi_polygon USING gist (geom)"
-    },
-    {
-      "name": "gm_sbi_polygon_pkey",
-      "definition": "CREATE UNIQUE INDEX gm_sbi_polygon_pkey ON a_greater_manchester_ecology_unit.gm_sbi_polygon USING btree (fid)"
-    }
-  ],
   "columns": [
     {
       "name": "site_id",
-      "data_type": "text",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "E3",
-          "G21",
-          "E6",
-          "K52",
-          "G46"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "site_name",
-      "data_type": "text",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Ringley Woods (East)",
-          "Gathurst Between Canal & River",
-          "A627M by Tandle Hill",
-          "Philips Park & North Wood",
-          "Disused Reservoir at Tunshill Hill"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9944341,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "cent_gr",
-      "data_type": "text",
-      "description": "Ordnance Survey National Grid Reference for the centre of the site.",
-      "semantic_role": "geographic_reference",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "SD563064",
-          "SD770178",
-          "SJ868904",
-          "SD639087",
-          "SD612002"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Ordnance Survey National Grid Reference for the centre of the site."
     },
     {
       "name": "site_gra",
-      "data_type": "text",
-      "description": "Ecological site grade, such as A, B or C.",
-      "semantic_role": "ecological_site_grade",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "A",
-          "C",
-          "B"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 3.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Ecological site grade, such as A, B or C."
     },
     {
       "name": "district",
-      "data_type": "text",
-      "description": "Greater Manchester district containing the ecological site.",
-      "semantic_role": "district_name",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Bolton",
-          "Oldham",
-          "Tameside",
-          "Rochdale",
-          "Trafford"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 10.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Greater Manchester district containing the ecological site."
     },
     {
       "name": "features",
-      "data_type": "text",
-      "description": "Habitats, species or ecological features supporting the site's designation.",
-      "semantic_role": "ecological_features",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Running water (Fw4); Ponds & Small Lodges (Fw2); Grassland (Gr2); White Clawed Crayfish (GSG1)",
-          "Woodland (Wd1); Grassland (Gr2)",
-          "Ponds (Fw2); Amphibians (Am1); Reedbed (Fw1)",
-          "Plantation Woodland (Wd2); Birds (Br7)",
-          "Woodland (Wd1); Scrub (Wd3); Fen (Fw3); Ponds (Fw2)"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.4619666,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Habitats, species or ecological features supporting the site's designation."
     },
     {
       "name": "date_est",
-      "data_type": "date",
-      "description": "Date on which the ecological site record or designation was established.",
-      "semantic_role": "establishment_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.5695733,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "date",
+      "description": "Date on which the ecological site record or designation was established."
     },
     {
       "name": "fid",
-      "data_type": "bigint",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Feature identifier assigned by the source or import process."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "site_id",
-      "site_name",
-      "cent_gr",
-      "site_gra",
-      "district",
-      "features",
-      "date_est",
-      "fid"
-    ],
-    "searchable_columns": [
-      "site_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "gm",
-    "sbi",
-    "polygon",
-    "greater",
-    "manchester",
-    "ecology",
-    "unit",
-    "environment",
-    "site",
-    "id",
-    "name",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.694094+00:00",
-    "curated_at": "2026-08-30T20:15:13.020956+00:00"
-  },
-  "column_count": 9
+  ]
 }

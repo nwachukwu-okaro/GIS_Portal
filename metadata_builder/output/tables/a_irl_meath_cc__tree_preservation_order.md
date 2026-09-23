@@ -38,13 +38,13 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `tpo_pk` | `integer` | Count or numeric value for tpo pk in the represented area. |
-| `tpo_number` | `varchar(20)` | Publisher-supplied tpo number for the represented feature or record. |
-| `tpo_location` | `varchar(100)` | Publisher-supplied tpo location for the represented feature or record. |
-| `remarks` | `varchar(100)` | Publisher-supplied remarks for the represented feature or record. |
-| `settlement` | `bigint` | Count or numeric value for settlement in the represented area. |
+| `tpo_pk` | `integer` | Primary-key identifier for records in tree_preservation_order. |
+| `tpo_number` | `varchar(20)` |  |
+| `tpo_location` | `varchar(100)` |  |
+| `remarks` | `varchar(100)` |  |
+| `settlement` | `bigint` |  |
 | `settlement1` | `varchar(100)` |  |
 | `plan_name` | `varchar(120)` | Name associated with the represented feature. |
-| `map_label` | `varchar(100)` | Publisher-supplied map label for the represented feature or record. |
-| `object_inf` | `varchar(20)` | Publisher-supplied object inf for the represented feature or record. |
+| `map_label` | `varchar(100)` |  |
+| `object_inf` | `varchar(20)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

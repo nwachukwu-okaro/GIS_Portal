@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_industries_csolea`
 - **Geometry:** GEOMETRY
@@ -38,34 +38,34 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `geogid` | `text` | Publisher-assigned geogid for the record. |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
-| `agriculture_forestry_and_fishing_males` | `bigint` | Count or numeric value for agriculture forestry and fishing males in the represented area. |
-| `building_and_construction_males` | `bigint` | Count or numeric value for building and construction males in the represented area. |
-| `manufacturing_industries_males` | `bigint` | Count or numeric value for manufacturing industries males in the represented area. |
-| `commerce_and_trade_males` | `bigint` | Count or numeric value for commerce and trade males in the represented area. |
-| `transport_and_communications_males` | `bigint` | Count or numeric value for transport and communications males in the represented area. |
-| `public_administration_males` | `bigint` | Count or numeric value for public administration males in the represented area. |
-| `professional_services_males` | `bigint` | Count or numeric value for professional services males in the represented area. |
-| `other_males` | `bigint` | Count or numeric value for other males in the represented area. |
-| `total_males` | `bigint` | Count or numeric value for total males in the represented area. |
-| `agriculture_forestry_and_fishing_females` | `bigint` | Count or numeric value for agriculture forestry and fishing females in the represented area. |
-| `building_and_construction_females` | `bigint` | Count or numeric value for building and construction females in the represented area. |
-| `manufacturing_industries_females` | `bigint` | Count or numeric value for manufacturing industries females in the represented area. |
-| `commerce_and_trade_females` | `bigint` | Count or numeric value for commerce and trade females in the represented area. |
-| `transport_and_communications_females` | `bigint` | Count or numeric value for transport and communications females in the represented area. |
-| `public_administration_females` | `bigint` | Count or numeric value for public administration females in the represented area. |
-| `professional_services_females` | `bigint` | Count or numeric value for professional services females in the represented area. |
-| `other_females` | `bigint` | Count or numeric value for other females in the represented area. |
-| `total_females` | `bigint` | Count or numeric value for total females in the represented area. |
-| `agriculture_forestry_and_fishing_total` | `bigint` | Count or numeric value for agriculture forestry and fishing total in the represented area. |
-| `building_and_construction_total` | `bigint` | Count or numeric value for building and construction total in the represented area. |
-| `manufacturing_industries_total` | `bigint` | Count or numeric value for manufacturing industries total in the represented area. |
-| `commerce_and_trade_total` | `bigint` | Count or numeric value for commerce and trade total in the represented area. |
-| `transport_and_communications_total` | `bigint` | Count or numeric value for transport and communications total in the represented area. |
-| `public_administration_total` | `bigint` | Count or numeric value for public administration total in the represented area. |
-| `professional_services_total` | `bigint` | Count or numeric value for professional services total in the represented area. |
-| `other_total` | `bigint` | Count or numeric value for other total in the represented area. |
-| `total` | `bigint` | Count or numeric value for total in the represented area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `geogid` | `text` | Code identifying the geographical area represented by the row. |
+| `geogdesc` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `agriculture_forestry_and_fishing_males` | `bigint` |  |
+| `building_and_construction_males` | `bigint` |  |
+| `manufacturing_industries_males` | `bigint` |  |
+| `commerce_and_trade_males` | `bigint` |  |
+| `transport_and_communications_males` | `bigint` |  |
+| `public_administration_males` | `bigint` |  |
+| `professional_services_males` | `bigint` |  |
+| `other_males` | `bigint` |  |
+| `total_males` | `bigint` | Census total for males in the represented geographical area; measurement unit requires the table documentation. |
+| `agriculture_forestry_and_fishing_females` | `bigint` |  |
+| `building_and_construction_females` | `bigint` |  |
+| `manufacturing_industries_females` | `bigint` |  |
+| `commerce_and_trade_females` | `bigint` |  |
+| `transport_and_communications_females` | `bigint` |  |
+| `public_administration_females` | `bigint` |  |
+| `professional_services_females` | `bigint` |  |
+| `other_females` | `bigint` |  |
+| `total_females` | `bigint` | Census total for females in the represented geographical area; measurement unit requires the table documentation. |
+| `agriculture_forestry_and_fishing_total` | `bigint` |  |
+| `building_and_construction_total` | `bigint` |  |
+| `manufacturing_industries_total` | `bigint` |  |
+| `commerce_and_trade_total` | `bigint` |  |
+| `transport_and_communications_total` | `bigint` |  |
+| `public_administration_total` | `bigint` |  |
+| `professional_services_total` | `bigint` |  |
+| `other_total` | `bigint` |  |
+| `total` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

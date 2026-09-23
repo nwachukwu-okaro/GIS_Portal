@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `table_uv211_british_sign_language_skills_datazone`
 - **Geometry:** Non-spatial
@@ -38,6 +38,6 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_people_aged_3_and_over` | `double precision` | Count or numeric value for all people aged 3 and over in the represented area. |
-| `bsl_user` | `double precision` | Count or numeric value for bsl user in the represented area. |
-| `not_a_bsl_user` | `double precision` | Count or numeric value for not a bsl user in the represented area. |
+| `all_people_aged_3_and_over` | `double precision` | Recorded census measure for the category "all people aged 3 and over" in the represented area. Units and population base require the source table. |
+| `bsl_user` | `double precision` |  |
+| `not_a_bsl_user` | `double precision` |  |

@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_wp001_ctry`
 - **Geometry:** Non-spatial
@@ -40,7 +40,7 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
-| `countries code` | `varchar` | Publisher-assigned countries code for the record. |
-| `countries label` | `varchar` | Publisher-supplied countries label for the represented feature or record. |
-| `count` | `varchar` | Publisher-supplied count for the represented feature or record. |
+| `id` | `integer` | Primary-key identifier for records in census2021_wp001_ctry. |
+| `countries code` | `varchar` |  |
+| `countries label` | `varchar` |  |
+| `count` | `varchar` |  |

@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_zoomstack`
 - **Table:** `local_buildings`
 - **Geometry:** MULTIPOLYGON
@@ -42,6 +42,6 @@ Published by Ordnance Survey as part of OS Open Zoomstack. Loaded into Systra Po
 
 | Column | Type | Description |
 |---|---|---|
-| `uuid` | `varchar` | Publisher-assigned uuid for the record. |
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `uuid` | `varchar` |  |
+| `id` | `integer` | Primary-key identifier for records in local_buildings. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

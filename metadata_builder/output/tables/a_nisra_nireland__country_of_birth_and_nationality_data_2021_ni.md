@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `country_of_birth_and_nationality_data_2021_ni`
 - **Geometry:** Non-spatial
@@ -37,26 +37,26 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `country_of_birth_england` | `text` | Count or numeric value for country of birth england in the represented area. |
-| `country_of_birth_northern_ireland` | `text` | Publisher-supplied country of birth northern ireland for the represented feature or record. |
-| `country_of_birth_other_countries` | `text` | Publisher-supplied country of birth other countries for the represented feature or record. |
-| `country_of_birth_republic_of_ireland` | `text` | Count or numeric value for country of birth republic of ireland in the represented area. |
-| `country_of_birth_scotland` | `text` | Count or numeric value for country of birth scotland in the represented area. |
-| `country_of_birth_wales` | `text` | Count or numeric value for country of birth wales in the represented area. |
-| `national_identity_british_and_irish_only` | `text` | Publisher-supplied national identity british and irish only for the represented feature or record. |
-| `national_identity_british_and_northern_irish_only` | `text` | Publisher-supplied national identity british and northern irish only for the represented feature or record. |
-| `national_identity_british_only` | `text` | Publisher-supplied national identity british only for the represented feature or record. |
-| `national_identity_british_irish_and_northern_irish_only` | `text` | Publisher-supplied national identity british irish and northern irish only for the represented feature or record. |
-| `national_identity_irish_and_northern_irish_only` | `text` | Publisher-supplied national identity irish and northern irish only for the represented feature or record. |
-| `national_identity_irish_only` | `text` | Publisher-supplied national identity irish only for the represented feature or record. |
-| `national_identity_northern_irish_only` | `text` | Publisher-supplied national identity northern irish only for the represented feature or record. |
-| `national_identity_other_national_identities` | `text` | Publisher-supplied national identity other national identities for the represented feature or record. |
-| `passports_held_ireland_only` | `text` | Publisher-supplied passports held ireland only for the represented feature or record. |
-| `passports_held_no_passport` | `text` | Publisher-supplied passports held number passport for the represented feature or record. |
-| `passports_held_other_passports` | `text` | Publisher-supplied passports held other passports for the represented feature or record. |
-| `passports_held_united_kingdom_and_ireland_only` | `text` | Publisher-supplied passports held united kingdom and ireland only for the represented feature or record. |
-| `passports_held_united_kingdom_only` | `text` | Publisher-supplied passports held united kingdom only for the represented feature or record. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `population` | `text` |  |
+| `country_of_birth_england` | `text` | Recorded census measure for the category "country of birth england" in the represented area. Units and population base require the source table. |
+| `country_of_birth_northern_ireland` | `text` | Recorded census measure for the category "country of birth northern ireland" in the represented area. Units and population base require the source table. |
+| `country_of_birth_other_countries` | `text` | Recorded census measure for the category "country of birth other countries" in the represented area. Units and population base require the source table. |
+| `country_of_birth_republic_of_ireland` | `text` | Recorded census measure for the category "country of birth republic of ireland" in the represented area. Units and population base require the source table. |
+| `country_of_birth_scotland` | `text` | Recorded census measure for the category "country of birth scotland" in the represented area. Units and population base require the source table. |
+| `country_of_birth_wales` | `text` | Recorded census measure for the category "country of birth wales" in the represented area. Units and population base require the source table. |
+| `national_identity_british_and_irish_only` | `text` |  |
+| `national_identity_british_and_northern_irish_only` | `text` |  |
+| `national_identity_british_only` | `text` |  |
+| `national_identity_british_irish_and_northern_irish_only` | `text` |  |
+| `national_identity_irish_and_northern_irish_only` | `text` |  |
+| `national_identity_irish_only` | `text` |  |
+| `national_identity_northern_irish_only` | `text` |  |
+| `national_identity_other_national_identities` | `text` |  |
+| `passports_held_ireland_only` | `text` |  |
+| `passports_held_no_passport` | `text` |  |
+| `passports_held_other_passports` | `text` |  |
+| `passports_held_united_kingdom_and_ireland_only` | `text` |  |
+| `passports_held_united_kingdom_only` | `text` |  |

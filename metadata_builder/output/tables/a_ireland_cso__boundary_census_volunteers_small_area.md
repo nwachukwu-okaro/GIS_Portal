@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `boundary_census_volunteers_small_area`
 - **Geometry:** GEOMETRY
@@ -39,9 +39,9 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 | Column | Type | Description |
 |---|---|---|
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `geogid` | `text` | Publisher-assigned geogid for the record. |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
-| `ur_category` | `double precision` | Count or numeric value for ur category in the represented area. |
-| `ur_category_desc` | `text` | Publisher-supplied ur category description for the represented feature or record. |
-| `number_of_volunteers` | `bigint` | Count or numeric value for number of volunteers in the represented area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `geogid` | `text` | Code identifying the geographical area represented by the row. |
+| `geogdesc` | `text` |  |
+| `ur_category` | `double precision` |  |
+| `ur_category_desc` | `text` |  |
+| `number_of_volunteers` | `bigint` |  |

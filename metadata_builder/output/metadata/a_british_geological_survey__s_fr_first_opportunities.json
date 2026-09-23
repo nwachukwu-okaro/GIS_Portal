@@ -1,0 +1,68 @@
+{
+  "gemini": {
+    "title": "S Fr First Opportunities",
+    "abstract": "S Fr First Opportunities is part of BGS geological data, published by British Geological Survey. It represents s fr first opportunities features using point geometry.",
+    "alternative_title": null,
+    "topic_category": "geoscientificInformation",
+    "keywords": [
+      "fr",
+      "first",
+      "opportunities",
+      "british",
+      "geological",
+      "survey",
+      "geology",
+      "earth",
+      "science",
+      "geom",
+      "name"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by British Geological Survey as part of BGS geological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "British Geological Survey",
+    "resource_locator": "https://www.bgs.ac.uk/geological-data/",
+    "unique_identifier": "a_british_geological_survey/s_fr_first_opportunities",
+    "schema": "a_british_geological_survey",
+    "table": "s_fr_first_opportunities",
+    "bounding_box": null,
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in s_fr_first_opportunities."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "description": "Official or publisher-assigned name of the represented feature."
+    }
+  ]
+}

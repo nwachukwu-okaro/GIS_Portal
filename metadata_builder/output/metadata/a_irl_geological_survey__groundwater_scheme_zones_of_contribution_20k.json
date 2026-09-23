@@ -1,319 +1,103 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_geological_survey/groundwater_scheme_zones_of_contribution_20k",
-  "schema": "a_irl_geological_survey",
-  "table": "groundwater_scheme_zones_of_contribution_20k",
-  "title": "Groundwater Scheme Zones Of Contribution 20k",
-  "description": "Groundwater Scheme Zones Of Contribution 20k is an authoritative dataset published by Geological Survey Ireland. It represents groundwater scheme zones of contribution 20k features using multipolygon geometry.",
-  "feature_concept": "groundwater_scheme_zones_of_contribution_20k",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Geological Survey Ireland",
-    "product": null,
-    "source_url": "https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "geology",
-    "earth science"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Groundwater Scheme Zones Of Contribution 20k",
+    "abstract": "Groundwater Scheme Zones Of Contribution 20k is an authoritative dataset published by Geological Survey Ireland. It represents groundwater scheme zones of contribution 20k features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "geoscientificInformation",
+    "keywords": [
+      "groundwater",
+      "scheme",
+      "zones",
+      "contribution",
+      "20k",
+      "irl",
+      "geological",
+      "survey",
+      "ireland",
+      "geology",
+      "earth",
+      "science",
+      "gwsz",
+      "pk",
+      "gws",
+      "zoc",
+      "id",
+      "name",
+      "year",
+      "consultant",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Geological Survey Ireland as open geological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Geological Survey Ireland",
+    "resource_locator": "https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx",
+    "unique_identifier": "a_irl_geological_survey/groundwater_scheme_zones_of_contribution_20k",
+    "schema": "a_irl_geological_survey",
+    "table": "groundwater_scheme_zones_of_contribution_20k",
+    "bounding_box": {
       "xmin": -10.04601743382654,
-      "ymin": 51.626105451427726,
+      "ymin": 51.62610545142773,
       "xmax": -6.017837312886193,
       "ymax": 55.32725682983466
     },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 254,
-  "primary_key": [
-    "gwsz_pk"
-  ],
-  "indexes": [
-    {
-      "name": "groundwater_scheme_zones_of_contribution_20k_geom_1764341519318",
-      "definition": "CREATE INDEX groundwater_scheme_zones_of_contribution_20k_geom_1764341519318 ON a_irl_geological_survey.groundwater_scheme_zones_of_contribution_20k USING gist (geom)"
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "groundwater_scheme_zones_of_contribution_20k_pkey",
-      "definition": "CREATE UNIQUE INDEX groundwater_scheme_zones_of_contribution_20k_pkey ON a_irl_geological_survey.groundwater_scheme_zones_of_contribution_20k USING btree (gwsz_pk)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "gwsz_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for gwsz pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in groundwater_scheme_zones_of_contribution_20k."
     },
     {
       "name": "gws_zoc_id",
-      "data_type": "varchar(25)",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "IE_GSI_ZOC_160",
-          "IE_GSI_ZOC_216",
-          "IE_GSI_ZOC_177",
-          "IE_GSI_ZOC_128",
-          "IE_GSI_ZOC_124"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(25)",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "gws_name",
-      "data_type": "varchar(50)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Tierneevin",
-          "Patrickwell Knockmore",
-          "Castlewarren ZOC Region",
-          "Brockagh Lisduff",
-          "G196 CBC"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9094488,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "year",
-      "data_type": "integer",
-      "description": "Count or numeric value for year in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 7.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": null
     },
     {
       "name": "consultant",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied consultant for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "PCH",
-          "OCM",
-          "Geoserve",
-          "Robbie Meehan",
-          "Waterwise"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 19.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(50)",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "gwsz_pk",
-      "gws_zoc_id",
-      "gws_name",
-      "year",
-      "consultant"
-    ],
-    "searchable_columns": [
-      "gws_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "groundwater",
-    "scheme",
-    "zones",
-    "contribution",
-    "20k",
-    "irl",
-    "geological",
-    "survey",
-    "ireland",
-    "geology",
-    "earth",
-    "science",
-    "gws",
-    "zoc",
-    "id",
-    "name",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.952114+00:00",
-    "curated_at": "2026-08-30T20:16:39.984064+00:00"
-  },
-  "column_count": 6
+  ]
 }

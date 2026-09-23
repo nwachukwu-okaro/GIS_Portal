@@ -57,5 +57,5 @@ Published by the Government of Ireland as part of the national open data portal 
 | `proj_type` | `varchar(200)` |  |
 | `uploaded` | `date` |  |
 | `version` | `varchar(50)` |  |
-| `cm1000_pk` | `integer` |  |
+| `cm1000_pk` | `integer` | Primary-key identifier for records in floodmap_extents_coastal_midrange_1000. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

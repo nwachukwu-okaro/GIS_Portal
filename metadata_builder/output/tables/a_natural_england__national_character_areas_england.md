@@ -44,14 +44,14 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `jcacode` | `integer` | Count or numeric value for jcacode in the represented area. |
-| `jcaname` | `varchar(55)` | Publisher-supplied jcaname for the represented feature or record. |
+| `jcacode` | `integer` |  |
+| `jcaname` | `varchar(55)` |  |
 | `nca_name` | `varchar(55)` | Name associated with the represented feature. |
-| `naid` | `integer` | Count or numeric value for naid in the represented area. |
-| `naname` | `varchar(45)` | Publisher-supplied naname for the represented feature or record. |
-| `area_sqkm` | `real` | Numeric area sqkm value recorded for the feature. |
-| `hotlink` | `varchar(254)` | Publisher-supplied hotlink for the represented feature or record. |
-| `alt` | `varchar(80)` | Publisher-supplied alt for the represented feature or record. |
+| `naid` | `integer` |  |
+| `naname` | `varchar(45)` |  |
+| `area_sqkm` | `real` |  |
+| `hotlink` | `varchar(254)` |  |
+| `alt` | `varchar(80)` |  |
 | `blt` | `varchar(75)` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

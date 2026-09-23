@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts032_msoa`
 - **Geometry:** Non-spatial
@@ -40,16 +40,16 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents_aged_3_years_and_over` | `bigint` | Count or numeric value for total all usual residents aged 3 years and over in the represented area. |
-| `can_understand_spoken_welsh_only` | `bigint` | Count or numeric value for can understand spoken welsh only in the represented area. |
-| `can_speak_read_and_write_welsh` | `bigint` | Count or numeric value for can speak read and write welsh in the represented area. |
-| `can_speak_but_cannot_read_or_write_welsh` | `bigint` | Count or numeric value for can speak but cannot read or write welsh in the represented area. |
-| `can_speak_and_read_but_cannot_write_welsh` | `bigint` | Count or numeric value for can speak and read but cannot write welsh in the represented area. |
-| `can_read_but_cannot_speak_or_write_welsh` | `bigint` | Count or numeric value for can read but cannot speak or write welsh in the represented area. |
-| `can_write_but_cannot_speak_or_read_welsh` | `bigint` | Count or numeric value for can write but cannot speak or read welsh in the represented area. |
-| `can_read_and_write_but_cannot_speak_welsh` | `bigint` | Count or numeric value for can read and write but cannot speak welsh in the represented area. |
-| `can_speak_and_other_combinations_of_skills_in_welsh` | `bigint` | Count or numeric value for can speak and other combinations of skills in welsh in the represented area. |
-| `no_skills_in_welsh` | `bigint` | Count or numeric value for number skills in welsh in the represented area. |
+| `total_all_usual_residents_aged_3_years_and_over` | `bigint` | Recorded census measure for the category "total all usual residents aged 3 years and over" in the represented area. Units and population base require the source table. |
+| `can_understand_spoken_welsh_only` | `bigint` |  |
+| `can_speak_read_and_write_welsh` | `bigint` |  |
+| `can_speak_but_cannot_read_or_write_welsh` | `bigint` |  |
+| `can_speak_and_read_but_cannot_write_welsh` | `bigint` |  |
+| `can_read_but_cannot_speak_or_write_welsh` | `bigint` |  |
+| `can_write_but_cannot_speak_or_read_welsh` | `bigint` |  |
+| `can_read_and_write_but_cannot_speak_welsh` | `bigint` |  |
+| `can_speak_and_other_combinations_of_skills_in_welsh` | `bigint` |  |
+| `no_skills_in_welsh` | `bigint` |  |

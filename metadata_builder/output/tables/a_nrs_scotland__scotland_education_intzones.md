@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `scotland_education_intzones`
 - **Geometry:** Non-spatial
@@ -39,10 +39,10 @@ Published by National Records of Scotland as open statistics and boundary data. 
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
 | `geography_name` | `text` | Name associated with the represented feature. |
-| `all_people_16plus` | `bigint` | Count or numeric value for all people 16plus in the represented area. |
-| `no_quals` | `bigint` | Count or numeric value for number quals in the represented area. |
-| `lower_school_quals` | `bigint` | Count or numeric value for lower school quals in the represented area. |
-| `upper_school_quals` | `bigint` | Count or numeric value for upper school quals in the represented area. |
-| `apprenticeship` | `bigint` | Count or numeric value for apprenticeship in the represented area. |
-| `fe_and_sub_degree_he_incl_hnc_hnd` | `bigint` | Count or numeric value for fe and sub degree he incl hnc hnd in the represented area. |
-| `degree_level_or_above` | `bigint` | Count or numeric value for degree level or above in the represented area. |
+| `all_people_16plus` | `bigint` | Recorded census measure for the category "all people 16plus" in the represented area. Units and population base require the source table. |
+| `no_quals` | `bigint` |  |
+| `lower_school_quals` | `bigint` |  |
+| `upper_school_quals` | `bigint` |  |
+| `apprenticeship` | `bigint` |  |
+| `fe_and_sub_degree_he_incl_hnc_hnd` | `bigint` |  |
+| `degree_level_or_above` | `bigint` |  |

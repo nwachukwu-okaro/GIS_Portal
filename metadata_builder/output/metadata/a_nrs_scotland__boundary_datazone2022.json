@@ -1,450 +1,125 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nrs_scotland/boundary_datazone2022",
-  "schema": "a_nrs_scotland",
-  "table": "boundary_datazone2022",
-  "title": "Boundary Datazone2022",
-  "description": "Boundary Datazone2022 is an authoritative dataset published by National Records of Scotland. It represents boundary datazone2022 features using multipolygon geometry.",
-  "feature_concept": "boundary_datazone2022",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "National Records of Scotland",
-    "product": null,
-    "source_url": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Scotland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Boundary Datazone2022",
+    "abstract": "Boundary Datazone2022 is an authoritative dataset published by National Records of Scotland. It represents boundary datazone2022 features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "boundary",
+      "datazone2022",
+      "nrs",
+      "scotland",
+      "national",
+      "records",
+      "statistics",
+      "census",
+      "boundaries",
+      "id",
+      "geom",
+      "dzcode",
+      "dzname",
+      "stdareaha",
+      "st",
+      "area",
+      "sh",
+      "length"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "National Records of Scotland",
+    "resource_locator": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
+    "unique_identifier": "a_nrs_scotland/boundary_datazone2022",
+    "schema": "a_nrs_scotland",
+    "table": "boundary_datazone2022",
+    "bounding_box": {
       "xmin": -8.650007201985835,
       "ymin": 54.633240375318195,
       "xmax": -0.724609406757718,
       "ymax": 60.860766450550805
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 7392,
-  "primary_key": [
-    "id"
-  ],
-  "indexes": [
-    {
-      "name": "datazone_boundary2022_pkey",
-      "definition": "CREATE UNIQUE INDEX datazone_boundary2022_pkey ON a_nrs_scotland.boundary_datazone2022 USING btree (id)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "sidx_datazone_boundary2022_geom",
-      "definition": "CREATE INDEX sidx_datazone_boundary2022_geom ON a_nrs_scotland.boundary_datazone2022 USING gist (geom)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "id",
-      "data_type": "integer",
-      "description": "Count or numeric value for identifier in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in boundary_datazone2022."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     },
     {
       "name": "dzcode",
-      "data_type": "varchar(254)",
-      "description": "Publisher-assigned dzcode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "S01017580",
-          "S01020652",
-          "S01014347",
-          "S01018561",
-          "S01013793"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "dzname",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied dzname for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Dunnikier East",
-          "Broughty Ferry West - 03",
-          "Drylaw - 03",
-          "Craigmillar - 04",
-          "Helensburgh East - 01"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9936418,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "totpop2022",
-      "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.11093073,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "hhres2022",
-      "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.10010823,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "hhcnt2022",
-      "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 490.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "stdareaha",
-      "data_type": "double precision",
-      "description": "Numeric stdareaha value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.606737,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "stdareakm2",
-      "data_type": "double precision",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9926948,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "st_area_sh",
-      "data_type": "double precision",
-      "description": "Numeric st area sh value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "st_length_",
-      "data_type": "double precision",
-      "description": "Numeric st length value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "id",
-      "dzcode",
-      "dzname",
-      "totpop2022",
-      "hhres2022",
-      "hhcnt2022",
-      "stdareaha",
-      "stdareakm2",
-      "st_area_sh",
-      "st_length_"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "boundary",
-    "datazone2022",
-    "nrs",
-    "scotland",
-    "national",
-    "records",
-    "statistics",
-    "census",
-    "boundaries",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.683336+00:00",
-    "curated_at": "2026-08-30T20:17:02.188405+00:00"
-  },
-  "column_count": 11
+  ]
 }

@@ -40,5 +40,5 @@ Published by Mayo County Council as open local government data. Loaded into Syst
 |---|---|---|
 | `field1` | `varchar` |  |
 | `object_id` | `integer` | Identifier assigned by the source dataset. |
-| `rasui_pk` | `integer` | Count or numeric value for rasui pk in the represented area. |
+| `rasui_pk` | `integer` | Primary-key identifier for records in rural_areas_under_strong_urban_influence_mcdp_2022_2028. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

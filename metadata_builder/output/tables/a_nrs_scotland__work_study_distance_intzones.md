@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `work_study_distance_intzones`
 - **Geometry:** Non-spatial
@@ -37,15 +37,15 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `unnamed_2` | `bigint` | Count or numeric value for unnamed 2 in the represented area. |
-| `unnamed_3` | `bigint` | Count or numeric value for unnamed 3 in the represented area. |
-| `unnamed_4` | `bigint` | Count or numeric value for unnamed 4 in the represented area. |
-| `unnamed_5` | `bigint` | Count or numeric value for unnamed 5 in the represented area. |
-| `unnamed_6` | `bigint` | Count or numeric value for unnamed 6 in the represented area. |
-| `unnamed_7` | `bigint` | Count or numeric value for unnamed 7 in the represented area. |
-| `unnamed_8` | `bigint` | Count or numeric value for unnamed 8 in the represented area. |
-| `unnamed_9` | `bigint` | Count or numeric value for unnamed 9 in the represented area. |
-| `unnamed_10` | `bigint` | Count or numeric value for unnamed 10 in the represented area. |
-| `unnamed_11` | `bigint` | Count or numeric value for unnamed 11 in the represented area. |
-| `unnamed_12` | `bigint` | Count or numeric value for unnamed 12 in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `unnamed_2` | `bigint` |  |
+| `unnamed_3` | `bigint` |  |
+| `unnamed_4` | `bigint` |  |
+| `unnamed_5` | `bigint` |  |
+| `unnamed_6` | `bigint` |  |
+| `unnamed_7` | `bigint` |  |
+| `unnamed_8` | `bigint` |  |
+| `unnamed_9` | `bigint` |  |
+| `unnamed_10` | `bigint` |  |
+| `unnamed_11` | `bigint` |  |
+| `unnamed_12` | `bigint` |  |

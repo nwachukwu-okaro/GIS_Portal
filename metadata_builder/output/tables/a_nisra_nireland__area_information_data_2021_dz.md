@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `area_information_data_2021_dz`
 - **Geometry:** Non-spatial
@@ -37,16 +37,16 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `households` | `bigint` | Publisher-supplied households for the represented feature or record. |
-| `area_hectares_note_1` | `text` | Numeric area hectares note 1 value recorded for the feature. |
-| `population_density_number_of_usual_residents_per_hectare` | `double precision` | Numeric population density number of usual residents per hectare value recorded for the feature. |
-| `unnamed_7` | `double precision` | Count or numeric value for unnamed 7 in the represented area. |
-| `unnamed_8` | `double precision` | Count or numeric value for unnamed 8 in the represented area. |
-| `unnamed_9` | `double precision` | Count or numeric value for unnamed 9 in the represented area. |
-| `unnamed_10` | `double precision` | Count or numeric value for unnamed 10 in the represented area. |
-| `unnamed_11` | `double precision` | Count or numeric value for unnamed 11 in the represented area. |
-| `unnamed_12` | `double precision` | Count or numeric value for unnamed 12 in the represented area. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `population` | `text` |  |
+| `households` | `bigint` |  |
+| `area_hectares_note_1` | `text` |  |
+| `population_density_number_of_usual_residents_per_hectare` | `double precision` | Population density expressed as the number of usual residents per hectare. |
+| `unnamed_7` | `double precision` |  |
+| `unnamed_8` | `double precision` |  |
+| `unnamed_9` | `double precision` |  |
+| `unnamed_10` | `double precision` |  |
+| `unnamed_11` | `double precision` |  |
+| `unnamed_12` | `double precision` |  |

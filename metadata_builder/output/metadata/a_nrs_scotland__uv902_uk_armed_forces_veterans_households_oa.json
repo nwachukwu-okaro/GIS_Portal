@@ -1,213 +1,89 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nrs_scotland/uv902_uk_armed_forces_veterans_households_oa",
-  "schema": "a_nrs_scotland",
-  "table": "uv902_uk_armed_forces_veterans_households_oa",
-  "title": "Uv902 UK Armed Forces Veterans Households Oa",
-  "description": "Uv902 UK Armed Forces Veterans Households Oa is an authoritative dataset published by National Records of Scotland. It contains records relating to uv902 uk armed forces veterans households oa.",
-  "feature_concept": "uv902_uk_armed_forces_veterans_households_oa",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "National Records of Scotland",
-    "product": null,
-    "source_url": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
+  "gemini": {
+    "title": "Uv902 UK Armed Forces Veterans Households Oa",
+    "abstract": "Uv902 UK Armed Forces Veterans Households Oa is an authoritative dataset published by National Records of Scotland. It contains records relating to uv902 uk armed forces veterans households oa.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "uv902",
+      "uk",
+      "armed",
+      "forces",
+      "veterans",
+      "households",
+      "oa",
+      "nrs",
+      "scotland",
+      "national",
+      "records",
+      "statistics",
+      "census",
+      "boundaries",
+      "geography",
+      "code",
+      "total",
+      "household",
+      "contains",
+      "no",
+      "least",
+      "one",
+      "veteran"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "National Records of Scotland",
+    "resource_locator": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
+    "unique_identifier": "a_nrs_scotland/uv902_uk_armed_forces_veterans_households_oa",
+    "schema": "a_nrs_scotland",
+    "table": "uv902_uk_armed_forces_veterans_households_oa",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
   },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Scotland",
-  "geometry": {
-    "column": null,
-    "type": null,
-    "srid": null,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 46368,
-  "primary_key": [],
-  "indexes": [],
   "columns": [
     {
       "name": "geography_code",
-      "data_type": "text",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "S00165829",
-          "S00139253",
-          "S00168006",
-          "S00152509",
-          "S00159076"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "total",
-      "data_type": "double precision",
-      "description": "Count or numeric value for total in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.00013333333,
-        "estimated_distinct": 91.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "household_contains_no_uk_armed_forces_veterans",
-      "data_type": "double precision",
-      "description": "Count or numeric value for household contains number uk armed forces veterans in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.00013333333,
-        "estimated_distinct": 96.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Recorded census measure for the category \"household contains no UK armed forces veterans\" in the represented area. Units and population base require the source table."
     },
     {
       "name": "household_contains_at_least_one_uk_armed_forces_veteran",
-      "data_type": "double precision",
-      "description": "Count or numeric value for household contains at least one uk armed forces veteran in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.1304,
-        "estimated_distinct": 28.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Recorded census measure for the category \"household contains at least one UK armed forces veteran\" in the represented area. Units and population base require the source table."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "attribute_join": true,
-    "export": true
-  },
-  "operation_requirements": {},
-  "discovery_hints": {
-    "filterable_columns": [
-      "geography_code",
-      "total",
-      "household_contains_no_uk_armed_forces_veterans",
-      "household_contains_at_least_one_uk_armed_forces_veteran"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "uv902",
-    "uk",
-    "armed",
-    "forces",
-    "veterans",
-    "households",
-    "oa",
-    "nrs",
-    "scotland",
-    "national",
-    "records",
-    "statistics",
-    "census",
-    "boundaries",
-    "geography",
-    "code"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:57.391188+00:00",
-    "curated_at": "2026-08-30T20:17:03.604925+00:00"
-  },
-  "column_count": 4
+  ]
 }

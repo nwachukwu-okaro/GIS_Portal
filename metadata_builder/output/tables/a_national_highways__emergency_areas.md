@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_national_highways`
 - **Table:** `emergency_areas`
 - **Geometry:** MULTILINESTRING
@@ -38,6 +38,6 @@ Published by National Highways as open roads data. Loaded into Systra PostGIS da
 
 | Column | Type | Description |
 |---|---|---|
-| `objectid_1` | `integer` | Count or numeric value for objectid 1 in the represented area. |
-| `globalid_1` | `varchar` | Publisher-supplied globalid 1 for the represented feature or record. |
+| `objectid_1` | `integer` |  |
+| `globalid_1` | `varchar` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

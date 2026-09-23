@@ -38,27 +38,27 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 
 | Column | Type | Description |
 |---|---|---|
-| `aqih_pk` | `integer` | Count or numeric value for aqih pk in the represented area. |
+| `aqih_pk` | `integer` | Primary-key identifier for records in air_quality_sites. |
 | `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. |
-| `code` | `varchar(254)` | Publisher-assigned code for the record. |
-| `location` | `varchar(254)` | Publisher-supplied location for the represented feature or record. |
-| `status` | `varchar(254)` | Publisher-supplied status for the represented feature or record. |
-| `url` | `varchar(254)` | Publisher-supplied url for the represented feature or record. |
+| `code` | `varchar(254)` |  |
+| `location` | `varchar(254)` |  |
+| `status` | `varchar(254)` |  |
+| `url` | `varchar(254)` | Web address associated with the record. |
 | `easting` | `double precision` | Easting coordinate in metres in the dataset's projected coordinate reference system. |
 | `northing` | `double precision` | Northing coordinate in metres in the dataset's projected coordinate reference system. |
 | `address1` | `varchar(254)` |  |
 | `address2` | `varchar(254)` |  |
-| `region` | `varchar(20)` | Publisher-supplied region for the represented feature or record. |
-| `coverage` | `varchar(254)` | Publisher-supplied coverage for the represented feature or record. |
-| `operator` | `varchar(254)` | Publisher-supplied operator for the represented feature or record. |
+| `region` | `varchar(20)` |  |
+| `coverage` | `varchar(254)` |  |
+| `operator` | `varchar(254)` |  |
 | `eio_net_code` | `varchar(20)` | Code assigned by the source dataset. |
-| `para_1` | `varchar(254)` | Publisher-supplied para 1 for the represented feature or record. |
-| `para_2` | `varchar(254)` | Publisher-supplied para 2 for the represented feature or record. |
-| `para_3` | `varchar(254)` | Publisher-supplied para 3 for the represented feature or record. |
-| `para_4` | `varchar(254)` | Publisher-supplied para 4 for the represented feature or record. |
-| `para_5` | `varchar(254)` | Publisher-supplied para 5 for the represented feature or record. |
-| `para_6` | `varchar(254)` | Publisher-supplied para 6 for the represented feature or record. |
-| `para_7` | `varchar(254)` | Publisher-supplied para 7 for the represented feature or record. |
-| `para_8` | `varchar(254)` | Publisher-supplied para 8 for the represented feature or record. |
-| `operational` | `integer` | Count or numeric value for operational in the represented area. |
+| `para_1` | `varchar(254)` |  |
+| `para_2` | `varchar(254)` |  |
+| `para_3` | `varchar(254)` |  |
+| `para_4` | `varchar(254)` |  |
+| `para_5` | `varchar(254)` |  |
+| `para_6` | `varchar(254)` |  |
+| `para_7` | `varchar(254)` |  |
+| `para_8` | `varchar(254)` |  |
+| `operational` | `integer` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

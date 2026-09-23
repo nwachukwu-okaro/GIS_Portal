@@ -57,5 +57,5 @@ Published by the Government of Ireland as part of the national open data portal 
 | `proj_type` | `varchar(200)` |  |
 | `uploaded` | `date` |  |
 | `version` | `varchar(50)` |  |
-| `fm0100_pk` | `integer` |  |
+| `fm0100_pk` | `integer` | Primary-key identifier for records in floodmap_extents_river_midrange_0100. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

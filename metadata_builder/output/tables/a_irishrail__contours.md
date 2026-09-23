@@ -38,7 +38,7 @@ Published by Iarnrod Eireann / Irish Rail as open transport data. Loaded into Sy
 
 | Column | Type | Description |
 |---|---|---|
-| `contour_pk` | `integer` | Count or numeric value for contour pk in the represented area. |
-| `contour_type` | `varchar(5)` | Publisher-supplied contour type for the represented feature or record. |
+| `contour_pk` | `integer` |  |
+| `contour_type` | `varchar(5)` |  |
 | `z` | `real` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv604_hours_worked_oa`
 - **Geometry:** Non-spatial
@@ -38,8 +38,8 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_people_aged_16_and_over_in_employment_the_week_before_the_c` | `double precision` | Publisher-supplied all people aged 16 and over in employment the week before the c for the represented feature or record. |
-| `col_0_to_15_hours` | `double precision` | Count or numeric value for col 0 to 15 hours in the represented area. |
-| `col_16_to_30_hours` | `double precision` | Count or numeric value for col 16 to 30 hours in the represented area. |
-| `col_31_to_48_hours` | `double precision` | Count or numeric value for col 31 to 48 hours in the represented area. |
-| `col_49_or_more_hours` | `double precision` | Count or numeric value for col 49 or more hours in the represented area. |
+| `all_people_aged_16_and_over_in_employment_the_week_before_the_c` | `double precision` |  |
+| `col_0_to_15_hours` | `double precision` |  |
+| `col_16_to_30_hours` | `double precision` |  |
+| `col_31_to_48_hours` | `double precision` |  |
+| `col_49_or_more_hours` | `double precision` |  |

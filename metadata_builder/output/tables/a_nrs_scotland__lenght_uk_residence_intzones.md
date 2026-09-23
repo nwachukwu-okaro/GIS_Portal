@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `lenght_uk_residence_intzones`
 - **Geometry:** Non-spatial
@@ -37,10 +37,10 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
-| `born_in_the_uk` | `double precision` | Count or numeric value for born in the uk in the represented area. |
-| `less_than_2_years` | `double precision` | Count or numeric value for less than 2 years in the represented area. |
-| `col_2_years_or_more_and_less_than_5_years` | `double precision` | Count or numeric value for col 2 years or more and less than 5 years in the represented area. |
-| `col_5_years_or_more_and_less_than_10_years` | `double precision` | Count or numeric value for col 5 years or more and less than 10 years in the represented area. |
-| `col_10_years_or_more` | `double precision` | Count or numeric value for col 10 years or more in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_people` | `double precision` | Recorded census measure for the category "all people" in the represented area. Units and population base require the source table. |
+| `born_in_the_uk` | `double precision` | Recorded census measure for the category "born in the UK" in the represented area. Units and population base require the source table. |
+| `less_than_2_years` | `double precision` |  |
+| `col_2_years_or_more_and_less_than_5_years` | `double precision` |  |
+| `col_5_years_or_more_and_less_than_10_years` | `double precision` |  |
+| `col_10_years_or_more` | `double precision` |  |

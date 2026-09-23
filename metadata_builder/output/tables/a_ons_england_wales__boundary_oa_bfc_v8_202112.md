@@ -45,6 +45,6 @@ Published by the Office for National Statistics as part of their digital boundar
 | `lsoa21cd` | `varchar` |  |
 | `lsoa21nm` | `varchar` |  |
 | `lsoa21nmw` | `varchar` |  |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `globalid` | `varchar` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `id` | `integer` | Primary-key identifier for records in boundary_oa_bfc_v8_202112. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

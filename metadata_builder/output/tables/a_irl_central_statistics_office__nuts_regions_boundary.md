@@ -44,6 +44,6 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 | `nuts2name` | `text` |  |
 | `nuts3` | `text` |  |
 | `nuts3name` | `text` |  |
-| `guid` | `text` | Publisher-assigned guid for the record. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `shape` | `geometry` | Spatial geometry of the represented feature. |

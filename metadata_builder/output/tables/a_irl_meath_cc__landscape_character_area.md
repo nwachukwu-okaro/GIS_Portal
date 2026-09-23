@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `landscape_character_area`
 - **Geometry:** MULTIPOLYGON
@@ -38,7 +38,7 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `lca_pk` | `integer` | Count or numeric value for lca pk in the represented area. |
-| `description` | `varchar(50)` | Publisher-supplied description for the represented feature or record. |
-| `character` | `varchar(100)` | Publisher-supplied character for the represented feature or record. |
+| `lca_pk` | `integer` | Primary-key identifier for records in landscape_character_area. |
+| `description` | `varchar(50)` |  |
+| `character` | `varchar(100)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

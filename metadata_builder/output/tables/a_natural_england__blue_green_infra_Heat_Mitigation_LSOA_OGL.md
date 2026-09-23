@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_Heat_Mitigation_LSOA_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -42,13 +42,13 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `code` | `varchar(9)` | Count or numeric value for code in the represented area. |
+| `code` | `varchar(9)` |  |
 | `name` | `varchar(254)` | Official or publisher-assigned name of the represented feature. |
-| `label` | `varchar(36)` | Publisher-supplied label for the represented feature or record. |
-| `area` | `integer` | Numeric area value recorded for the feature. |
-| `mean` | `double precision` | Count or numeric value for mean in the represented area. |
-| `provision` | `double precision` | Count or numeric value for provision in the represented area. |
-| `need` | `double precision` | Count or numeric value for need in the represented area. |
-| `lackprov` | `double precision` | Count or numeric value for lackprov in the represented area. |
-| `zpriority` | `double precision` | Count or numeric value for zpriority in the represented area. |
+| `label` | `varchar(36)` |  |
+| `area` | `integer` |  |
+| `mean` | `double precision` |  |
+| `provision` | `double precision` |  |
+| `need` | `double precision` |  |
+| `lackprov` | `double precision` |  |
+| `zpriority` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

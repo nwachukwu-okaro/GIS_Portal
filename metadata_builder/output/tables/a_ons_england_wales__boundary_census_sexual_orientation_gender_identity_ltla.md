@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_census_sexual_orientation_gender_identity_ltla`
 - **Geometry:** MULTIPOLYGON
@@ -41,28 +41,28 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `gender_identity_total_t1` | `bigint` | Count or numeric value for gender identity total t1 in the represented area. |
-| `the_same_as_sex_registered_at_birth_t1` | `bigint` | Count or numeric value for the same as sex registered at birth t1 in the represented area. |
-| `gender_id_diff_from_birth_sex_unspecified_t1` | `bigint` | Count or numeric value for gender identifier diff from birth sex unspecified t1 in the represented area. |
-| `trans_woman_t1` | `bigint` | Count or numeric value for trans woman t1 in the represented area. |
-| `trans_man_t1` | `bigint` | Count or numeric value for trans man t1 in the represented area. |
-| `non_binary` | `bigint` | Count or numeric value for non binary in the represented area. |
-| `all_other_gender_identities_t1` | `bigint` | Count or numeric value for all other gender identities t1 in the represented area. |
-| `not_answered_t1` | `bigint` | Count or numeric value for not answered t1 in the represented area. |
-| `sexual_orientation_total` | `bigint` | Count or numeric value for sexual orientation total in the represented area. |
-| `straight_or_heterosexual` | `bigint` | Count or numeric value for straight or heterosexual in the represented area. |
-| `gay_or_lesbian` | `bigint` | Count or numeric value for gay or lesbian in the represented area. |
-| `bisexual` | `bigint` | Count or numeric value for bisexual in the represented area. |
-| `all_other_sexual_orientations` | `bigint` | Count or numeric value for all other sexual orientations in the represented area. |
-| `not_answered` | `bigint` | Count or numeric value for not answered in the represented area. |
-| `gender_identity_total_t2` | `bigint` | Count or numeric value for gender identity total t2 in the represented area. |
-| `the_same_as_sex_registered_at_birth_t2` | `bigint` | Count or numeric value for the same as sex registered at birth t2 in the represented area. |
-| `gender_id_diff_from_birth_sex_unspecified_t2` | `bigint` | Count or numeric value for gender identifier diff from birth sex unspecified t2 in the represented area. |
-| `trans_woman_t2` | `bigint` | Count or numeric value for trans woman t2 in the represented area. |
-| `trans_man_t2` | `bigint` | Count or numeric value for trans man t2 in the represented area. |
-| `all_other_gender_identities_t2` | `bigint` | Count or numeric value for all other gender identities t2 in the represented area. |
-| `not_answered_t2` | `bigint` | Count or numeric value for not answered t2 in the represented area. |
+| `gender_identity_total_t1` | `bigint` |  |
+| `the_same_as_sex_registered_at_birth_t1` | `bigint` |  |
+| `gender_id_diff_from_birth_sex_unspecified_t1` | `bigint` |  |
+| `trans_woman_t1` | `bigint` |  |
+| `trans_man_t1` | `bigint` |  |
+| `non_binary` | `bigint` |  |
+| `all_other_gender_identities_t1` | `bigint` |  |
+| `not_answered_t1` | `bigint` |  |
+| `sexual_orientation_total` | `bigint` |  |
+| `straight_or_heterosexual` | `bigint` |  |
+| `gay_or_lesbian` | `bigint` |  |
+| `bisexual` | `bigint` |  |
+| `all_other_sexual_orientations` | `bigint` |  |
+| `not_answered` | `bigint` |  |
+| `gender_identity_total_t2` | `bigint` |  |
+| `the_same_as_sex_registered_at_birth_t2` | `bigint` |  |
+| `gender_id_diff_from_birth_sex_unspecified_t2` | `bigint` |  |
+| `trans_woman_t2` | `bigint` |  |
+| `trans_man_t2` | `bigint` |  |
+| `all_other_gender_identities_t2` | `bigint` |  |
+| `not_answered_t2` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

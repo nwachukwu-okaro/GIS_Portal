@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `priority_habitats_inventory_england`
 - **Geometry:** MULTIPOLYGON
@@ -72,16 +72,16 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `mainhabs` | `varchar` | Publisher-supplied mainhabs for the represented feature or record. |
-| `habcodes` | `varchar` | Publisher-supplied habcodes for the represented feature or record. |
-| `featdesc` | `varchar` | Publisher-supplied featdesc for the represented feature or record. |
-| `featcodes` | `varchar` | Publisher-supplied featcodes for the represented feature or record. |
-| `otherclass` | `varchar` | Publisher-supplied otherclass for the represented feature or record. |
-| `addhabs` | `varchar` | Publisher-supplied addhabs for the represented feature or record. |
-| `primsource` | `varchar` | Publisher-supplied primsource for the represented feature or record. |
-| `areaha` | `real` | Numeric areaha value recorded for the feature. |
-| `version` | `varchar` | Publisher-supplied version for the represented feature or record. |
-| `uid` | `varchar` | Publisher-assigned uid for the record. |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
+| `mainhabs` | `varchar` |  |
+| `habcodes` | `varchar` |  |
+| `featdesc` | `varchar` |  |
+| `featcodes` | `varchar` |  |
+| `otherclass` | `varchar` |  |
+| `addhabs` | `varchar` |  |
+| `primsource` | `varchar` |  |
+| `areaha` | `real` |  |
+| `version` | `varchar` |  |
+| `uid` | `varchar` |  |
+| `globalid` | `varchar` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

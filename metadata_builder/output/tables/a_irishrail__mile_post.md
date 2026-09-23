@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irishrail`
 - **Table:** `mile_post`
 - **Geometry:** MULTIPOINT
@@ -38,8 +38,8 @@ Published by Iarnrod Eireann / Irish Rail as open transport data. Loaded into Sy
 
 | Column | Type | Description |
 |---|---|---|
-| `mile_post_pk` | `integer` | Count or numeric value for mile post pk in the represented area. |
-| `route` | `varchar` | Publisher-supplied route for the represented feature or record. |
-| `mile` | `integer` | Count or numeric value for mile in the represented area. |
-| `quarter` | `smallint` | Count or numeric value for quarter in the represented area. |
+| `mile_post_pk` | `integer` |  |
+| `route` | `varchar` |  |
+| `mile` | `integer` |  |
+| `quarter` | `smallint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

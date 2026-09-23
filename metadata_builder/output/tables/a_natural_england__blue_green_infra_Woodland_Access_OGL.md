@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_Woodland_Access_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -42,6 +42,6 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `accesslevel` | `varchar(255)` | Publisher-supplied accesslevel for the represented feature or record. |
+| `accesslevel` | `varchar(255)` |  |
 | `area_ha` | `double precision` | Area enclosed by the feature, measured in hectares. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

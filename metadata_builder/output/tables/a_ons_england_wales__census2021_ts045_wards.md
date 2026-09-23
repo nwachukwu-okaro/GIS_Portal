@@ -40,7 +40,7 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in census2021_ts045_wards. |
 | `2022 ward` | `varchar` |  |
 | `total_all households` | `integer` |  |
 | `no cars or vans in household` | `integer` |  |

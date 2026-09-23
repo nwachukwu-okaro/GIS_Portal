@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_census_sexual_orientation_gender_identity_msoa`
 - **Geometry:** GEOMETRY
@@ -41,20 +41,20 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `sexual_orientation_total` | `bigint` | Count or numeric value for sexual orientation total in the represented area. |
-| `straight_or_heterosexual` | `bigint` | Count or numeric value for straight or heterosexual in the represented area. |
-| `gay_or_lesbian` | `bigint` | Count or numeric value for gay or lesbian in the represented area. |
-| `bisexual` | `bigint` | Count or numeric value for bisexual in the represented area. |
-| `all_other_sexual_orientations` | `bigint` | Count or numeric value for all other sexual orientations in the represented area. |
-| `not_answered` | `bigint` | Count or numeric value for not answered in the represented area. |
-| `gender_identity_total` | `bigint` | Count or numeric value for gender identity total in the represented area. |
-| `the_same_as_sex_registered_at_birth` | `bigint` | Count or numeric value for the same as sex registered at birth in the represented area. |
-| `gender_id_diff_from_birth_sex_unspecified` | `bigint` | Count or numeric value for gender identifier diff from birth sex unspecified in the represented area. |
-| `trans_woman` | `bigint` | Count or numeric value for trans woman in the represented area. |
-| `trans_man` | `bigint` | Count or numeric value for trans man in the represented area. |
-| `all_other_gender_identities` | `bigint` | Count or numeric value for all other gender identities in the represented area. |
-| `not_answered_2` | `bigint` | Count or numeric value for not answered 2 in the represented area. |
+| `sexual_orientation_total` | `bigint` |  |
+| `straight_or_heterosexual` | `bigint` |  |
+| `gay_or_lesbian` | `bigint` |  |
+| `bisexual` | `bigint` |  |
+| `all_other_sexual_orientations` | `bigint` |  |
+| `not_answered` | `bigint` |  |
+| `gender_identity_total` | `bigint` |  |
+| `the_same_as_sex_registered_at_birth` | `bigint` |  |
+| `gender_id_diff_from_birth_sex_unspecified` | `bigint` |  |
+| `trans_woman` | `bigint` |  |
+| `trans_man` | `bigint` |  |
+| `all_other_gender_identities` | `bigint` |  |
+| `not_answered_2` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

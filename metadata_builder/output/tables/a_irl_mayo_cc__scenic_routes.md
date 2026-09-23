@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_mayo_cc`
 - **Table:** `scenic_routes`
 - **Geometry:** MULTILINESTRING
@@ -39,6 +39,6 @@ Published by Mayo County Council as open local government data. Loaded into Syst
 | Column | Type | Description |
 |---|---|---|
 | `fid` | `integer` | Feature identifier assigned by the source or import process. |
-| `id` | `double precision` | Count or numeric value for identifier in the represented area. |
-| `sr_pk` | `integer` | Count or numeric value for sr pk in the represented area. |
+| `id` | `double precision` |  |
+| `sr_pk` | `integer` | Primary-key identifier for records in scenic_routes. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

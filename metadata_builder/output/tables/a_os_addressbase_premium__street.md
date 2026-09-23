@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_addressbase_premium`
 - **Table:** `street`
 - **Geometry:** GEOMETRY
@@ -39,27 +39,27 @@ Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra 
 
 | Column | Type | Description |
 |---|---|---|
-| `change_type` | `text` | Publisher-supplied change type for the represented feature or record. |
-| `usrn` | `bigint` | Count or numeric value for usrn in the represented area. |
-| `record_type` | `bigint` | Count or numeric value for record type in the represented area. |
-| `swa_org_ref_naming` | `bigint` | Count or numeric value for swa org reference naming in the represented area. |
-| `state` | `bigint` | Count or numeric value for state in the represented area. |
+| `change_type` | `text` |  |
+| `usrn` | `bigint` | Unique Street Reference Number identifying the street. |
+| `record_type` | `bigint` |  |
+| `swa_org_ref_naming` | `bigint` |  |
+| `state` | `bigint` |  |
 | `state_date` | `text` | Date associated with the represented feature or source record. |
-| `street_surface` | `bigint` | Count or numeric value for street surface in the represented area. |
-| `street_classification` | `bigint` | Count or numeric value for street classification in the represented area. |
-| `version` | `bigint` | Count or numeric value for version in the represented area. |
+| `street_surface` | `bigint` |  |
+| `street_classification` | `bigint` |  |
+| `version` | `bigint` |  |
 | `street_start_date` | `text` | Date associated with the represented feature or source record. |
 | `street_end_date` | `text` | Date associated with the represented feature or source record. |
 | `last_update_date` | `text` | Date associated with the represented feature or source record. |
 | `record_entry_date` | `text` | Date associated with the represented feature or source record. |
-| `street_start_x` | `double precision` | Count or numeric value for street start x in the represented area. |
-| `street_start_y` | `double precision` | Count or numeric value for street start y in the represented area. |
-| `street_start_lat` | `double precision` | Numeric street start lat value recorded for the feature. |
-| `street_start_long` | `double precision` | Numeric street start long value recorded for the feature. |
-| `street_end_x` | `double precision` | Count or numeric value for street end x in the represented area. |
-| `street_end_y` | `double precision` | Count or numeric value for street end y in the represented area. |
-| `street_end_lat` | `double precision` | Numeric street end lat value recorded for the feature. |
-| `street_end_long` | `double precision` | Numeric street end long value recorded for the feature. |
-| `street_tolerance` | `bigint` | Count or numeric value for street tolerance in the represented area. |
+| `street_start_x` | `double precision` |  |
+| `street_start_y` | `double precision` |  |
+| `street_start_lat` | `double precision` |  |
+| `street_start_long` | `double precision` |  |
+| `street_end_x` | `double precision` |  |
+| `street_end_y` | `double precision` |  |
+| `street_end_lat` | `double precision` |  |
+| `street_end_long` | `double precision` |  |
+| `street_tolerance` | `bigint` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

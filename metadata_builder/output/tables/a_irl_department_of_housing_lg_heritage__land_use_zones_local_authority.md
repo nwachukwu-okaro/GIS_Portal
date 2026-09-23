@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_department_of_housing_lg_heritage`
 - **Table:** `land_use_zones_local_authority`
 - **Geometry:** MULTIPOLYGON
@@ -39,23 +39,23 @@ Published by the Department of Housing, Local Government and Heritage as open da
 
 | Column | Type | Description |
 |---|---|---|
-| `zone_gzt` | `varchar` | Publisher-supplied zone gzt for the represented feature or record. |
-| `zone_orig` | `varchar` | Publisher-supplied zone orig for the represented feature or record. |
-| `zone_desc` | `varchar` | Publisher-supplied zone description for the represented feature or record. |
-| `zone_link` | `varchar` | Publisher-supplied zone link for the represented feature or record. |
-| `plan_from` | `date` | Publisher-supplied plan from for the represented feature or record. |
-| `plan_to` | `date` | Publisher-supplied plan to for the represented feature or record. |
+| `zone_gzt` | `varchar` |  |
+| `zone_orig` | `varchar` |  |
+| `zone_desc` | `varchar` |  |
+| `zone_link` | `varchar` |  |
+| `plan_from` | `date` |  |
+| `plan_to` | `date` |  |
 | `plan_name` | `varchar` | Name associated with the represented feature. |
-| `colour` | `varchar` | Publisher-supplied colour for the represented feature or record. |
+| `colour` | `varchar` |  |
 | `la_code` | `varchar` | Code assigned by the source dataset. |
-| `gzt_desc` | `varchar` | Publisher-supplied gzt description for the represented feature or record. |
-| `gzt_link` | `varchar` | Publisher-supplied gzt link for the represented feature or record. |
+| `gzt_desc` | `varchar` |  |
+| `gzt_link` | `varchar` |  |
 | `upload_date` | `date` | Date associated with the represented feature or source record. |
-| `current_pl` | `integer` | Count or numeric value for current pl in the represented area. |
-| `plan_level` | `varchar` | Publisher-supplied plan level for the represented feature or record. |
-| `szo` | `varchar` | Publisher-supplied szo for the represented feature or record. |
+| `current_pl` | `integer` |  |
+| `plan_level` | `varchar` |  |
+| `szo` | `varchar` |  |
 | `plan_id` | `varchar` | Identifier assigned by the source dataset. |
 | `la_name` | `varchar` | Name associated with the represented feature. |
-| `zone_desc_` | `varchar` | Publisher-supplied zone description for the represented feature or record. |
-| `luz_pk` | `integer` | Count or numeric value for luz pk in the represented area. |
+| `zone_desc_` | `varchar` |  |
+| `luz_pk` | `integer` | Primary-key identifier for records in land_use_zones_local_authority. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

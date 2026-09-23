@@ -40,10 +40,10 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
-| `code` | `varchar` | Publisher-assigned code for the record. |
+| `id` | `integer` | Primary-key identifier for records in 2024_male_population_country_region_localauthority_district. |
+| `code` | `varchar` |  |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `geography` | `varchar` | Publisher-supplied geography for the represented feature or record. |
+| `geography` | `varchar` | Name or descriptive label of the geographical area represented by the row. |
 | `all ages` | `integer` |  |
 | `0` | `integer` |  |
 | `1` | `integer` |  |

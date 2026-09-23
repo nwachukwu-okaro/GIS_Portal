@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts050_msoa`
 - **Geometry:** Non-spatial
@@ -40,11 +40,11 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. |
-| `col_1_bedroom` | `bigint` | Count or numeric value for col 1 bedroom in the represented area. |
-| `col_2_bedrooms` | `bigint` | Count or numeric value for col 2 bedrooms in the represented area. |
-| `col_3_bedrooms` | `bigint` | Count or numeric value for col 3 bedrooms in the represented area. |
-| `col_4_or_more_bedrooms` | `bigint` | Count or numeric value for col 4 or more bedrooms in the represented area. |
+| `total_all_households` | `bigint` | Census total for all households in the represented geographical area; measurement unit requires the table documentation. |
+| `col_1_bedroom` | `bigint` |  |
+| `col_2_bedrooms` | `bigint` |  |
+| `col_3_bedrooms` | `bigint` |  |
+| `col_4_or_more_bedrooms` | `bigint` |  |

@@ -1,498 +1,150 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_environmental_protection_agency/licensed_historic_landfills",
-  "schema": "a_irl_environmental_protection_agency",
-  "table": "licensed_historic_landfills",
-  "title": "Licensed Historic Landfills",
-  "description": "Licensed Historic Landfills is an authoritative dataset published by Environmental Protection Agency Ireland. It represents licensed historic landfills features using multipolygon geometry.",
-  "feature_concept": "licensed_historic_landfills",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Environmental Protection Agency Ireland",
-    "product": null,
-    "source_url": "https://gis.epa.ie/GetData/Download",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "environment"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 29903,
-    "crs": "EPSG:29903",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Licensed Historic Landfills",
+    "abstract": "Licensed Historic Landfills is an authoritative dataset published by Environmental Protection Agency Ireland. It represents licensed historic landfills features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "licensed",
+      "historic",
+      "landfills",
+      "irl",
+      "environmental",
+      "protection",
+      "agency",
+      "ireland",
+      "environment",
+      "registration",
+      "code",
+      "certificate",
+      "authorisation",
+      "holder",
+      "name",
+      "location",
+      "facility",
+      "status",
+      "application",
+      "date",
+      "issue",
+      "estimated",
+      "landfilled",
+      "tonnage",
+      "tonnes",
+      "dates",
+      "operation",
+      "volume",
+      "metres",
+      "cubed",
+      "type",
+      "lhl",
+      "pk",
+      "geom"
+    ],
+    "temporal_extent": {
+      "begin": "2009-05-11T00:00:00",
+      "end": "2020-10-09T00:00:00",
+      "note": "Detected from column: application_date",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Environmental Protection Agency Ireland as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environmental Protection Agency Ireland",
+    "resource_locator": "https://gis.epa.ie/GetData/Download",
+    "unique_identifier": "a_irl_environmental_protection_agency/licensed_historic_landfills",
+    "schema": "a_irl_environmental_protection_agency",
+    "table": "licensed_historic_landfills",
+    "bounding_box": {
       "xmin": -9.484702504780518,
       "ymin": 51.737883284063784,
-      "xmax": -6.143092940104556,
-      "ymax": 54.28352665762127
+      "xmax": -6.143092940104557,
+      "ymax": 54.283526657621266
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 25,
-  "primary_key": [],
-  "indexes": [
-    {
-      "name": "licensed_historic_landfills_geom_1764858059953",
-      "definition": "CREATE INDEX licensed_historic_landfills_geom_1764858059953 ON a_irl_environmental_protection_agency.licensed_historic_landfills USING gist (geom)"
-    }
-  ],
   "columns": [
     {
       "name": "registration_code",
-      "data_type": "varchar(10)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "H0020-01",
-          "H0474-02",
-          "H0366-01",
-          "H0277-01",
-          "H0209-01"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(10)",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "certificate_of_authorisation_holder",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied certificate of authorisation holder for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Sligo County Council\r\n",
-          "Kildare County Council",
-          "Clare County Council",
-          "Louth County Council",
-          "Westmeath County Council"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "name_and_location_of_facility",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied name and location of facility for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Kealanine Landfill",
-          "Carlingford",
-          "Shermans",
-          "Fassaroe 3C",
-          "Kilrush"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "certificate_of_authorisation_status",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied certificate of authorisation status for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Licensed"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "application_date",
-      "data_type": "timestamp",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "timestamp",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "certificate_of_authorisation_issue_date",
-      "data_type": "timestamp",
-      "description": "Date associated with the represented feature or source record.",
-      "semantic_role": "date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "timestamp",
+      "description": "Date associated with the represented feature or source record."
     },
     {
       "name": "estimated_landfilled_tonnage_tonnes",
-      "data_type": "double precision",
-      "description": "Count or numeric value for estimated landfilled tonnage tonnes in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "estimated_dates_of_operation",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied estimated dates of operation for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1980 - 1985",
-          "1935 - 1986",
-          "01/08/1977 - 20/06/1980",
-          "1990 - 1996",
-          "1979 - 1991"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "estimated_landfilled_volume_metres_cubed",
-      "data_type": "double precision",
-      "description": "Count or numeric value for estimated landfilled volume metres cubed in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "facility_type",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied facility type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Historic (Closed) Landfill as defined in S.I. No. 524 of 2042",
-          "Historic (Closed) Landfill as defined in S.I. No. 524 of 2076",
-          "Historic (Closed) Landfill as defined in S.I. No. 524 of 2061",
-          "Historic (Closed) Landfill as defined in S.I. No. 524 of 2075",
-          "Historic (Closed) Landfill as defined in S.I. No. 524 of 2069"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "lhl_pk",
-      "data_type": "bigint",
-      "description": "Count or numeric value for lhl pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "registration_code",
-      "certificate_of_authorisation_holder",
-      "name_and_location_of_facility",
-      "certificate_of_authorisation_status",
-      "application_date",
-      "certificate_of_authorisation_issue_date",
-      "estimated_landfilled_tonnage_tonnes",
-      "estimated_dates_of_operation",
-      "estimated_landfilled_volume_metres_cubed",
-      "facility_type",
-      "lhl_pk"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "licensed",
-    "historic",
-    "landfills",
-    "irl",
-    "environmental",
-    "protection",
-    "agency",
-    "ireland",
-    "environment",
-    "registration",
-    "code",
-    "application",
-    "date",
-    "certificate",
-    "authorisation",
-    "issue",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.906752+00:00",
-    "curated_at": "2026-08-30T20:16:37.685167+00:00"
-  },
-  "column_count": 12
+  ]
 }

@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_boundaryline`
 - **Table:** `unitary_electoral_division`
 - **Geometry:** MULTIPOLYGON
@@ -44,18 +44,18 @@ Published by Ordnance Survey as part of Boundary-Line. Loaded into Systra PostGI
 |---|---|---|
 | `Name` | `varchar(100)` | Official or publisher-assigned name of the represented feature. |
 | `Area_Code` | `varchar(3)` | Code assigned by the source dataset. |
-| `Area_Description` | `varchar(50)` | Publisher-supplied area description for the represented feature or record. |
+| `Area_Description` | `varchar(50)` |  |
 | `File_Name` | `varchar(100)` | Name associated with the represented feature. |
-| `Feature_Serial_Number` | `integer` | Count or numeric value for feature serial number in the represented area. |
-| `Collection_Serial_Number` | `integer` | Count or numeric value for collection serial number in the represented area. |
+| `Feature_Serial_Number` | `integer` |  |
+| `Collection_Serial_Number` | `integer` |  |
 | `Global_Polygon_ID` | `integer` | Identifier assigned by the source dataset. |
 | `Admin_Unit_ID` | `integer` | Identifier assigned by the source dataset. |
 | `Census_Code` | `varchar(9)` | Code assigned by the source dataset. |
-| `Hectares` | `double precision` | Count or numeric value for hectares in the represented area. |
-| `Non_Inland_Area` | `double precision` | Numeric non inland area value recorded for the feature. |
+| `Hectares` | `double precision` |  |
+| `Non_Inland_Area` | `double precision` |  |
 | `Area_Type_Code` | `varchar(2)` | Code assigned by the source dataset. |
-| `Area_Type_Description` | `varchar(25)` | Publisher-supplied area type description for the represented feature or record. |
+| `Area_Type_Description` | `varchar(25)` |  |
 | `Non_Area_Type_Code` | `varchar(3)` | Code assigned by the source dataset. |
-| `Non_Area_Type_Description` | `varchar(36)` | Publisher-supplied non area type description for the represented feature or record. |
+| `Non_Area_Type_Description` | `varchar(36)` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `athenry_lap_zoning_2024_2030`
 - **Geometry:** MULTIPOLYGON
@@ -39,15 +39,15 @@ Published by Galway County Council as open local government data. Loaded into Sy
 | Column | Type | Description |
 |---|---|---|
 | `object_id` | `smallint` | Identifier assigned by the source dataset. |
-| `zoning_abb` | `varchar` | Publisher-supplied zoning abb for the represented feature or record. |
-| `zoning` | `varchar` | Publisher-supplied zoning for the represented feature or record. |
-| `status` | `varchar` | Publisher-supplied status for the represented feature or record. |
-| `town` | `varchar` | Publisher-supplied town for the represented feature or record. |
+| `zoning_abb` | `varchar` |  |
+| `zoning` | `varchar` |  |
+| `status` | `varchar` |  |
+| `town` | `varchar` |  |
 | `plan_name` | `varchar` | Name associated with the represented feature. |
-| `opportunit` | `varchar` | Publisher-supplied opportunit for the represented feature or record. |
-| `policy_obj` | `varchar` | Publisher-supplied policy obj for the represented feature or record. |
-| `policy_o_1` | `varchar` | Publisher-supplied policy o 1 for the represented feature or record. |
+| `opportunit` | `varchar` |  |
+| `policy_obj` | `varchar` |  |
+| `policy_o_1` | `varchar` |  |
 | `globabl_id` | `varchar` | Identifier assigned by the source dataset. |
-| `myplan_gzt` | `varchar` | Publisher-supplied myplan gzt for the represented feature or record. |
-| `luz_pk` | `integer` | Count or numeric value for luz pk in the represented area. |
+| `myplan_gzt` | `varchar` |  |
+| `luz_pk` | `integer` | Primary-key identifier for records in athenry_lap_zoning_2024_2030. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `corine_land_cover_2018`
 - **Geometry:** POLYGON
@@ -38,8 +38,8 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 
 | Column | Type | Description |
 |---|---|---|
-| `clc18_pk` | `integer` | Count or numeric value for clc18 pk in the represented area. |
-| `code_18` | `varchar(10)` | Publisher-supplied code 18 for the represented feature or record. |
-| `class_description` | `varchar(200)` | Publisher-supplied class description for the represented feature or record. |
+| `clc18_pk` | `integer` | Primary-key identifier for records in corine_land_cover_2018. |
+| `code_18` | `varchar(10)` |  |
+| `class_description` | `varchar(200)` |  |
 | `area_ha` | `double precision` | Area enclosed by the feature, measured in hectares. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

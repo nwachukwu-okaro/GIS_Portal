@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_boundaryline`
 - **Table:** `boundary_line_historic_counties`
 - **Geometry:** MULTIPOLYGON
@@ -43,6 +43,6 @@ Published by Ordnance Survey as part of Boundary-Line. Loaded into Systra PostGI
 | Column | Type | Description |
 |---|---|---|
 | `Name` | `varchar(100)` | Official or publisher-assigned name of the represented feature. |
-| `Area_Description` | `varchar(50)` | Publisher-supplied area description for the represented feature or record. |
+| `Area_Description` | `varchar(50)` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

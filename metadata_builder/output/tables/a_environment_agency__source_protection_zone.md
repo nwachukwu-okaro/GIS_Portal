@@ -48,5 +48,5 @@ Published by Environment Agency as open environmental data. Loaded into Systra P
 | `gml_original_coordinate_system` | `varchar(45)` |  |
 | `gml_parent_property` | `varchar(13)` |  |
 | `number` | `varchar(2)` |  |
-| `spz_pk` | `integer` |  |
+| `spz_pk` | `integer` | Primary-key identifier for records in source_protection_zone. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

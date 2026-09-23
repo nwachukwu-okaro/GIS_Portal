@@ -1,273 +1,93 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_galway_cc/scenic_routes",
-  "schema": "a_irl_galway_cc",
-  "table": "scenic_routes",
-  "title": "Scenic Routes",
-  "description": "Scenic Routes is an authoritative dataset published by Galway County Council. It represents scenic routes features using multilinestring geometry.",
-  "feature_concept": "scenic_routes",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Galway County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/galway-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Galway",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTILINESTRING",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Scenic Routes",
+    "abstract": "Scenic Routes is an authoritative dataset published by Galway County Council. It represents scenic routes features using multilinestring geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "scenic",
+      "routes",
+      "irl",
+      "galway",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "object",
+      "id",
+      "route",
+      "shape",
+      "length",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Galway County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Galway County Council",
+    "resource_locator": "https://data.gov.ie/organization/galway-county-council",
+    "unique_identifier": "a_irl_galway_cc/scenic_routes",
+    "schema": "a_irl_galway_cc",
+    "table": "scenic_routes",
+    "bounding_box": {
       "xmin": -10.174338813566662,
       "ymin": 53.055205530230914,
       "xmax": -8.222288359926711,
-      "ymax": 53.614337310792905
+      "ymax": 53.61433731079292
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 8,
-  "primary_key": [
-    "object_id"
-  ],
-  "indexes": [
-    {
-      "name": "scenic_routes_geom_1786106186254",
-      "definition": "CREATE INDEX scenic_routes_geom_1786106186254 ON a_irl_galway_cc.scenic_routes USING gist (geom)"
-    },
-    {
-      "name": "scenic_routes_pkey",
-      "definition": "CREATE UNIQUE INDEX scenic_routes_pkey ON a_irl_galway_cc.scenic_routes USING btree (object_id)"
-    }
-  ],
   "columns": [
     {
       "name": "object_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "route_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "route",
-      "data_type": "varchar",
-      "description": "Publisher-supplied route for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Maritime Scenic Route",
-          "Maum Valley Scenic Route",
-          "Lough Corrib Scenic Route - County Mayo",
-          "Recess Letterfrack Scenic Route",
-          "Galway Clifden Scenic Route"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "shape__length",
-      "data_type": "double precision",
-      "description": "Numeric shape length value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "object_id",
-      "route_id",
-      "route",
-      "shape__length"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "scenic",
-    "routes",
-    "irl",
-    "galway",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "object",
-    "id",
-    "route",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.943348+00:00",
-    "curated_at": "2026-08-30T20:16:38.830608+00:00"
-  },
-  "column_count": 5
+  ]
 }

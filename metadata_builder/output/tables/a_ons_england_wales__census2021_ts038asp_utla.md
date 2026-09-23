@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts038asp_utla`
 - **Geometry:** Non-spatial
@@ -40,9 +40,9 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `disabled_under_the_equality_act_day_to_day_activities_limited_a` | `double precision` | Count or numeric value for disabled under the equality act day to day activities limited a in the represented area. |
-| `disabled_under_the_equality_act_day_to_day_activities_limited_1` | `double precision` | Count or numeric value for disabled under the equality act day to day activities limited 1 in the represented area. |
-| `not_disabled_under_the_equality_act` | `double precision` | Count or numeric value for not disabled under the equality act in the represented area. |
+| `disabled_under_the_equality_act_day_to_day_activities_limited_a` | `double precision` |  |
+| `disabled_under_the_equality_act_day_to_day_activities_limited_1` | `double precision` |  |
+| `not_disabled_under_the_equality_act` | `double precision` |  |

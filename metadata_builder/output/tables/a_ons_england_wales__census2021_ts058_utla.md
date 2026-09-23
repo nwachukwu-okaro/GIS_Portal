@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts058_utla`
 - **Geometry:** Non-spatial
@@ -40,17 +40,17 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_usual_residents_aged_16_years_and_over_in_employment` | `bigint` | Count or numeric value for total all usual residents aged 16 years and over in employment in the represented area. |
-| `less_than_2km` | `bigint` | Count or numeric value for less than 2km in the represented area. |
-| `col_2km_to_less_than_5km` | `bigint` | Count or numeric value for col 2km to less than 5km in the represented area. |
-| `col_5km_to_less_than_10km` | `bigint` | Count or numeric value for col 5km to less than 10km in the represented area. |
-| `col_10km_to_less_than_20km` | `bigint` | Count or numeric value for col 10km to less than 20km in the represented area. |
-| `col_20km_to_less_than_30km` | `bigint` | Count or numeric value for col 20km to less than 30km in the represented area. |
-| `col_30km_to_less_than_40km` | `bigint` | Count or numeric value for col 30km to less than 40km in the represented area. |
-| `col_40km_to_less_than_60km` | `bigint` | Count or numeric value for col 40km to less than 60km in the represented area. |
-| `col_60km_and_over` | `bigint` | Count or numeric value for col 60km and over in the represented area. |
-| `works_mainly_from_home` | `bigint` | Count or numeric value for works mainly from home in the represented area. |
-| `works_mainly_at_an_offshore_installation_in_no_fixed_place_or_o` | `bigint` | Numeric works mainly at an offshore installation in number fixed place or o value recorded for the feature. |
+| `total_all_usual_residents_aged_16_years_and_over_in_employment` | `bigint` | Recorded census measure for the category "total all usual residents aged 16 years and over in employment" in the represented area. Units and population base require the source table. |
+| `less_than_2km` | `bigint` |  |
+| `col_2km_to_less_than_5km` | `bigint` |  |
+| `col_5km_to_less_than_10km` | `bigint` |  |
+| `col_10km_to_less_than_20km` | `bigint` |  |
+| `col_20km_to_less_than_30km` | `bigint` |  |
+| `col_30km_to_less_than_40km` | `bigint` |  |
+| `col_40km_to_less_than_60km` | `bigint` |  |
+| `col_60km_and_over` | `bigint` |  |
+| `works_mainly_from_home` | `bigint` |  |
+| `works_mainly_at_an_offshore_installation_in_no_fixed_place_or_o` | `bigint` |  |

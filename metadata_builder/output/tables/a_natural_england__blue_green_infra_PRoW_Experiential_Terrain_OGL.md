@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_PRoW_Experiential_Terrain_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -42,8 +42,8 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `type` | `varchar(50)` | Publisher-supplied type for the represented feature or record. |
-| `experiential_terrain_class` | `varchar(255)` | Publisher-supplied experiential terrain class for the represented feature or record. |
-| `phys_desc` | `varchar(50)` | Publisher-supplied phys description for the represented feature or record. |
-| `lform_desc` | `varchar(50)` | Publisher-supplied lform description for the represented feature or record. |
+| `type` | `varchar(50)` |  |
+| `experiential_terrain_class` | `varchar(255)` |  |
+| `phys_desc` | `varchar(50)` |  |
+| `lform_desc` | `varchar(50)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

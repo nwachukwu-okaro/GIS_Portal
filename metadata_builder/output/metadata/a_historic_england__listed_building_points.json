@@ -1,454 +1,20 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_historic_england/listed_building_points",
-  "schema": "a_historic_england",
-  "table": "listed_building_points",
-  "title": "Listed Building Points",
-  "description": "Point locations of nationally listed buildings in England from the National Heritage List for England, including each building's List Entry number, official name, grade and listing dates.",
-  "feature_concept": "listed_building",
-  "synonyms": [
-    "listed buildings",
-    "protected buildings",
-    "NHLE"
-  ],
-  "publisher": {
-    "organisation": "Historic England",
-    "product": "National Heritage List for England spatial data",
-    "source_url": "https://historicengland.org.uk/listing/the-list/map-data/",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Historic England [year]. Contains Ordnance Survey data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "Verify against the individual Historic England download metadata."
-  },
-  "themes": [
-    "heritage",
-    "planning"
-  ],
-  "geographic_coverage": "England",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOINT",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -6.445480949215121,
-      "ymin": 49.87287892762858,
-      "xmax": 1.757708715267907,
-      "ymax": 55.784187228462734
-    },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 379637,
-  "primary_key": [
-    "objectid"
-  ],
-  "indexes": [
-    {
-      "name": "listed_building_points_geom_1764019626536",
-      "definition": "CREATE INDEX listed_building_points_geom_1764019626536 ON a_historic_england.listed_building_points USING gist (geom)"
-    },
-    {
-      "name": "listed_building_points_pkey",
-      "definition": "CREATE UNIQUE INDEX listed_building_points_pkey ON a_historic_england.listed_building_points USING btree (objectid)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "listentry",
-      "data_type": "integer",
-      "description": "Historic England List Entry number — unique identifier for a designated heritage asset.",
-      "semantic_role": "heritage_asset_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": true,
-      "identifier_system": "NHLE",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "name",
-      "data_type": "varchar(1000)",
-      "description": "Official or publisher-assigned name of the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "16-18 South Parade and rear boundary wall",
-          "COTTAGE ADJACENT TO NEALS",
-          "36-40, THE STREET",
-          "GRANARY AT GREEN FARM",
-          "TREPENPOL"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.2725156,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "grade",
-      "data_type": "varchar(100)",
-      "description": "Statutory listing grade: I, II* or II, indicating the building's level of special interest.",
-      "semantic_role": "designation_grade",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "I",
-          "II",
-          "II*"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 3.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "listdate",
-      "data_type": "timestamp",
-      "description": "Date on which the building was first added to the statutory List.",
-      "semantic_role": "designation_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4975.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "table_override",
-      "confidence": "curated"
-    },
-    {
-      "name": "amenddate",
-      "data_type": "timestamp",
-      "description": "Date the designation was last amended or updated.",
-      "semantic_role": "amendment_date",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.8570333,
-        "estimated_distinct": 1843.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "capturescale",
-      "data_type": "varchar(15)",
-      "description": "Map scale at which the boundary was originally captured.",
-      "semantic_role": "capture_scale",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "",
-          "1:10000",
-          "1:1,250",
-          "1:1250",
-          "1:2500"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 6.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "hyperlink",
-      "data_type": "varchar(255)",
-      "description": "URL linking to the official Historic England record for this asset.",
-      "semantic_role": "source_record_url",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://historicengland.org.uk/listing/the-list/list-entry/1021466",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1021467",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1021468",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1021469",
-          "https://historicengland.org.uk/listing/the-list/list-entry/1021470"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "ngr",
-      "data_type": "varchar(1000000)",
-      "description": "National Grid Reference — alphanumeric grid coordinate in British National Grid.",
-      "semantic_role": "geographic_reference",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": "OS_NGR",
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "NT 70755 05236",
-          "NT 72107 04461",
-          "NT 73512 03690",
-          "NT 74713 03069",
-          "NT 74917 03009"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "easting",
-      "data_type": "real",
-      "description": "Easting coordinate in British National Grid (EPSG:27700).",
-      "semantic_role": "x_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.45298272,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "northing",
-      "data_type": "real",
-      "description": "Northing coordinate in British National Grid (EPSG:27700).",
-      "semantic_role": "y_coordinate",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "metres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.4975911,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "objectid",
-      "data_type": "bigint",
-      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
+  "gemini": {
+    "title": "Listed Building Points",
+    "abstract": "Point locations of nationally listed buildings in England from the National Heritage List for England, including each building's List Entry number, official name, grade and listing dates.",
+    "alternative_title": null,
+    "topic_category": "society",
+    "keywords": [
+      "listed",
+      "building",
+      "points",
+      "historic",
+      "england",
+      "heritage",
+      "planning",
+      "buildings",
+      "protected",
+      "nhle",
       "listentry",
       "name",
       "grade",
@@ -459,67 +25,108 @@
       "ngr",
       "easting",
       "northing",
-      "objectid"
+      "objectid",
+      "geom"
     ],
-    "searchable_columns": [
-      "name"
-    ],
-    "joinable_columns": [
-      "listentry"
-    ],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "listed",
-    "building",
-    "points",
-    "historic",
-    "england",
-    "heritage",
-    "planning",
-    "listentry",
-    "name",
-    "amenddate",
-    "capturescale",
-    "hyperlink",
-    "ngr",
-    "easting",
-    "northing",
-    "objectid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "table_override",
-    "description_confidence": "curated"
-  },
-  "quality": {
-    "metadata_status": "source_verified",
-    "warnings": [
-      "This local snapshot predates the latest official dataset update.",
-      "Point locations are discovery aids; consult the official List entry for designation details."
+    "temporal_extent": {
+      "begin": "1947-01-01T00:00:00",
+      "end": "2025-11-20T12:19:13",
+      "note": "Detected from column: listdate",
+      "source": "auto_detected_from_column"
+    },
+    "dataset_reference_date": "2026-08-28",
+    "dataset_reference_date_type": "revision",
+    "lineage": "Published by Historic England as part of the National Heritage List for England (NHLE). Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Historic England",
+    "resource_locator": "https://historicengland.org.uk/listing/the-list/map-data/",
+    "unique_identifier": "a_historic_england/listed_building_points",
+    "schema": "a_historic_england",
+    "table": "listed_building_points",
+    "bounding_box": {
+      "xmin": -6.445480949215121,
+      "ymin": 49.87287892762858,
+      "xmax": 1.757708715267907,
+      "ymax": 55.784187228462734
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 2,
+    "missing_mandatory_fields": [
+      "frequency_of_update"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.704043+00:00",
-    "curated_at": "2026-08-30T20:00:42.769730+00:00"
-  },
-  "local_dataset_version": "20251124 (24 November 2025)",
-  "official_dataset_updated": "28 August 2026",
-  "official_dataset_url": "https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/explore?layer=0",
-  "documentation_sources": [
+  "columns": [
     {
-      "role": "documentation",
-      "title": "Historic England, Download Listing Data - GIS Shapefiles",
-      "url": "https://historicengland.org.uk/listing/the-list/data-downloads/"
+      "name": "listentry",
+      "type": "integer",
+      "description": "Historic England List Entry number — unique identifier for a designated heritage asset."
     },
     {
-      "role": "guidance",
-      "title": "Historic England, Understanding List Entries",
-      "url": "https://historicengland.org.uk/listing/the-list/understanding-list-entries/"
+      "name": "name",
+      "type": "varchar(1000)",
+      "description": "Official or publisher-assigned name of the represented feature."
+    },
+    {
+      "name": "grade",
+      "type": "varchar(100)",
+      "description": "Statutory listing grade: I, II* or II, indicating the building's level of special interest."
+    },
+    {
+      "name": "listdate",
+      "type": "timestamp",
+      "description": "Date on which the building was first added to the statutory List."
+    },
+    {
+      "name": "amenddate",
+      "type": "timestamp",
+      "description": "Date the designation was last amended or updated."
+    },
+    {
+      "name": "capturescale",
+      "type": "varchar(15)",
+      "description": "Map scale at which the boundary was originally captured."
+    },
+    {
+      "name": "hyperlink",
+      "type": "varchar(255)",
+      "description": "URL linking to the official Historic England record for this asset."
+    },
+    {
+      "name": "ngr",
+      "type": "varchar(1000000)",
+      "description": "National Grid Reference — alphanumeric grid coordinate in British National Grid."
+    },
+    {
+      "name": "easting",
+      "type": "real",
+      "description": "Easting coordinate in British National Grid (EPSG:27700)."
+    },
+    {
+      "name": "northing",
+      "type": "real",
+      "description": "Northing coordinate in British National Grid (EPSG:27700)."
+    },
+    {
+      "name": "objectid",
+      "type": "bigint",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "column_count": 12
+  ]
 }

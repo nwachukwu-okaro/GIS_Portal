@@ -1,391 +1,114 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_ireland_cso/province_boundary",
-  "schema": "a_ireland_cso",
-  "table": "province_boundary",
-  "title": "Province Boundary",
-  "description": "Province Boundary is an authoritative dataset published by Central Statistics Office Ireland. It represents province boundary features using geometry geometry.",
-  "feature_concept": "province_boundary",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Central Statistics Office Ireland",
-    "product": null,
-    "source_url": "https://www.cso.ie/en/databases/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "statistics",
-    "census"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "shape",
-    "type": "GEOMETRY",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Province Boundary",
+    "abstract": "Province Boundary is an authoritative dataset published by Central Statistics Office Ireland. It represents province boundary features using geometry geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "province",
+      "boundary",
+      "ireland",
+      "cso",
+      "central",
+      "statistics",
+      "office",
+      "census",
+      "objectid",
+      "pv",
+      "id",
+      "guid",
+      "centroid",
+      "area",
+      "esri",
+      "oid",
+      "shape"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Central Statistics Office Ireland as open statistics and census data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Central Statistics Office Ireland",
+    "resource_locator": "https://www.cso.ie/en/databases/",
+    "unique_identifier": "a_ireland_cso/province_boundary",
+    "schema": "a_ireland_cso",
+    "table": "province_boundary",
+    "bounding_box": {
       "xmin": -10.68212460245182,
       "ymin": 51.42009083746593,
-      "xmax": -5.996277836635608,
+      "xmax": -5.996277836635609,
       "ymax": 55.4469356138371
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 4,
-  "primary_key": [
-    "esri_oid"
-  ],
-  "indexes": [
-    {
-      "name": "province_boundary_pkey",
-      "definition": "CREATE UNIQUE INDEX province_boundary_pkey ON a_ireland_cso.province_boundary USING btree (esri_oid)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "province_boundary_shape_1779366746332",
-      "definition": "CREATE INDEX province_boundary_shape_1779366746332 ON a_ireland_cso.province_boundary USING gist (shape)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "objectid",
-      "data_type": "integer",
-      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Source-system row identifier; useful internally but not guaranteed to remain stable between data releases."
     },
     {
       "name": "province",
-      "data_type": "text",
-      "description": "Publisher-supplied province for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Connacht",
-          "Ulster",
-          "Munster",
-          "Leinster"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Province associated with the represented administrative area."
     },
     {
       "name": "pv_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "guid",
-      "data_type": "text",
-      "description": "Publisher-assigned guid for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "d1070df4-924a-4f2d-b35b-d165b6a5a264",
-          "0b3f0251-a1d9-47cc-ab6d-295962b93cd0",
-          "32947409-6cfa-4731-bcd1-1cf12e8193f8",
-          "567d5f84-9a09-4d9b-b943-0b5be07a15da"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "UUID-formatted identifier associated with the record; persistence across releases is not confirmed."
     },
     {
       "name": "centroid_x",
-      "data_type": "double precision",
-      "description": "Count or numeric value for centroid x in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "X coordinate of the feature centroid; units and reference system are not confirmed for this attribute."
     },
     {
       "name": "centroid_y",
-      "data_type": "double precision",
-      "description": "Count or numeric value for centroid y in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Y coordinate of the feature centroid; units and reference system are not confirmed for this attribute."
     },
     {
       "name": "area",
-      "data_type": "double precision",
-      "description": "Numeric area value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "esri_oid",
-      "data_type": "bigint",
-      "description": "Count or numeric value for esri oid in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Primary-key identifier for records in province_boundary."
     },
     {
       "name": "shape",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "geometry_rule",
-      "confidence": "generated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "objectid",
-      "province",
-      "pv_id",
-      "guid",
-      "centroid_x",
-      "centroid_y",
-      "area",
-      "esri_oid"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "province",
-    "boundary",
-    "ireland",
-    "cso",
-    "central",
-    "statistics",
-    "office",
-    "census",
-    "objectid",
-    "pv",
-    "id",
-    "shape"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.362377+00:00",
-    "curated_at": "2026-08-30T20:16:33.042796+00:00"
-  },
-  "column_count": 9
+  ]
 }

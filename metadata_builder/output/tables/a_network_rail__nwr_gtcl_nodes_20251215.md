@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_network_rail`
 - **Table:** `nwr_gtcl_nodes_20251215`
 - **Geometry:** MULTIPOINT
@@ -38,10 +38,10 @@ Published by Network Rail as open transport data. Loaded into Systra PostGIS dat
 
 | Column | Type | Description |
 |---|---|---|
-| `assetid` | `text` | Publisher-assigned assetid for the record. |
-| `valancy` | `integer` | Count or numeric value for valancy in the represented area. |
-| `source` | `text` | Publisher-supplied source for the represented feature or record. |
-| `superceded` | `text` | Publisher-supplied superceded for the represented feature or record. |
-| `geometry_updated` | `text` | Publisher-supplied geometry updated for the represented feature or record. |
-| `id` | `bigint` | Count or numeric value for identifier in the represented area. |
+| `assetid` | `text` |  |
+| `valancy` | `integer` |  |
+| `source` | `text` |  |
+| `superceded` | `text` |  |
+| `geometry_updated` | `text` |  |
+| `id` | `bigint` | Primary-key identifier for records in nwr_gtcl_nodes_20251215. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

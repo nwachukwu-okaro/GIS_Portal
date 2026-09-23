@@ -1,0 +1,90 @@
+{
+  "gemini": {
+    "title": "Bedrock Aquifers 100k",
+    "abstract": "Bedrock Aquifers 100k is an authoritative dataset published by Geological Survey Ireland. It represents bedrock aquifers 100k features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "geoscientificInformation",
+    "keywords": [
+      "bedrock",
+      "aquifers",
+      "100k",
+      "irl",
+      "geological",
+      "survey",
+      "ireland",
+      "geology",
+      "earth",
+      "science",
+      "object",
+      "id",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Geological Survey Ireland as open geological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Geological Survey Ireland",
+    "resource_locator": "https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx",
+    "unique_identifier": "a_irl_geological_survey/bedrock_aquifers_100k",
+    "schema": "a_irl_geological_survey",
+    "table": "bedrock_aquifers_100k",
+    "bounding_box": {
+      "xmin": -10.663499828582761,
+      "ymin": 51.38941079259438,
+      "xmax": -5.994602595184031,
+      "ymax": 55.384016712801994
+    },
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "object_id",
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "aquifer_cat",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "aquifer_des",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "area_km2",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

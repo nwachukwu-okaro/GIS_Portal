@@ -1,0 +1,108 @@
+{
+  "gemini": {
+    "title": "Drainage District Channels",
+    "abstract": "Drainage District Channels is an authoritative dataset published by Government of Ireland. It represents drainage district channels features using multilinestring geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "drainage",
+      "district",
+      "channels",
+      "irl",
+      "datagov",
+      "open",
+      "government",
+      "ireland",
+      "overall",
+      "id",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Government of Ireland as part of the national open data portal (data.gov.ie). Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Government of Ireland",
+    "resource_locator": "https://data.gov.ie/",
+    "unique_identifier": "a_irl_datagov_open_data/drainage_district_channels",
+    "schema": "a_irl_datagov_open_data",
+    "table": "drainage_district_channels",
+    "bounding_box": {
+      "xmin": -10.091063231403849,
+      "ymin": 51.53550011609147,
+      "xmax": -6.200396951577096,
+      "ymax": 55.21981902885436
+    },
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "ddc_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in drainage_district_channels."
+    },
+    {
+      "name": "feature",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "overall_id",
+      "type": "bigint",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "ref",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "scheme",
+      "type": "varchar(150)",
+      "description": null
+    },
+    {
+      "name": "sch_type",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "varchar(255)",
+      "description": null
+    },
+    {
+      "name": "comments",
+      "type": "varchar(43)",
+      "description": null
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

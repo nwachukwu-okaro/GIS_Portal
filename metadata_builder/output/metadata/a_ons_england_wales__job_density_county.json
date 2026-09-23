@@ -1,0 +1,1160 @@
+{
+  "gemini": {
+    "title": "Job Density County",
+    "abstract": "Job Density County is an authoritative dataset published by Office for National Statistics. It contains records relating to job density county.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "job",
+      "density",
+      "county",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/job_density_county",
+    "schema": "a_ons_england_wales",
+    "table": "job_density_county",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in job_density_county."
+    },
+    {
+      "name": "local authority: county / unitary (as of april 2023)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "hartlepool",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "middlesbrough",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "redcar and cleveland",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "stockton-on-tees",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "darlington",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "county durham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "northumberland",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "newcastle upon tyne",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north tyneside",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "south tyneside",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "sunderland",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "gateshead",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "halton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "warrington",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "blackburn with darwen",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "blackpool",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "cheshire east",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "cheshire west and chester",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "cumberland",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "westmorland and furness",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bolton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bury",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "manchester",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "oldham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "rochdale",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "salford",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "stockport",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "tameside",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "trafford",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wigan",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "knowsley",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "liverpool",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "st. helens",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "sefton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wirral",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "lancashire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "kingston upon hull, city of",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "east riding of yorkshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north east lincolnshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north lincolnshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "york",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north yorkshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "barnsley",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "doncaster",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "rotherham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "sheffield",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bradford",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "calderdale",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "kirklees",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "leeds",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wakefield",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "derby",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "leicester",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "rutland",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "nottingham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north northamptonshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "west northamptonshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "derbyshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "leicestershire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "lincolnshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "nottinghamshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "herefordshire, county of",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "telford and wrekin",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "stoke-on-trent",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "shropshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "birmingham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "coventry",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "dudley",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "sandwell",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "solihull",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "walsall",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wolverhampton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "staffordshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "warwickshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "worcestershire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "peterborough",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "luton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "southend-on-sea",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "thurrock",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bedford",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "central bedfordshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "cambridgeshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "essex",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "hertfordshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "norfolk",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "suffolk",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "city of london",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "barking and dagenham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "barnet",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bexley",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "brent",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bromley",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "camden",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "croydon",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "ealing",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "enfield",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "greenwich",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "hackney",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "hammersmith and fulham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "haringey",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "harrow",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "havering",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "hillingdon",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "hounslow",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "islington",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "kensington and chelsea",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "kingston upon thames",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "lambeth",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "lewisham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "merton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "newham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "redbridge",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "richmond upon thames",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "southwark",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "sutton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "tower hamlets",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "waltham forest",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wandsworth",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "westminster",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "medway",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bracknell forest",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "west berkshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "reading",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "slough",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "windsor and maidenhead",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wokingham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "milton keynes",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "brighton and hove",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "portsmouth",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "southampton",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "isle of wight",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "buckinghamshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "east sussex",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "hampshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "kent",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "oxfordshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "surrey",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "west sussex",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bath and north east somerset",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bristol, city of",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north somerset",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "south gloucestershire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "plymouth",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "torbay",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "swindon",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "cornwall",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "isles of scilly",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wiltshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bournemouth, christchurch and poole",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "dorset",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "somerset",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "devon",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "gloucestershire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "isle of anglesey",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "gwynedd",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "conwy",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "denbighshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "flintshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "wrexham",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "ceredigion",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "pembrokeshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "carmarthenshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "swansea",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "neath port talbot",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "bridgend",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "vale of glamorgan",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "cardiff",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "rhondda cynon taf",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "caerphilly",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "blaenau gwent",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "torfaen",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "monmouthshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "newport",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "powys",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "merthyr tydfil",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "clackmannanshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "dumfries and galloway",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "east ayrshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "east lothian",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "east renfrewshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "na h-eileanan siar",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "falkirk",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "highland",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "inverclyde",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "midlothian",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "moray",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north ayrshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "orkney islands",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "scottish borders",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "shetland islands",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "south ayrshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "south lanarkshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "stirling",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "aberdeen city",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "aberdeenshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "argyll and bute",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "city of edinburgh",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "renfrewshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "west dunbartonshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "west lothian",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "angus",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "dundee city",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "east dunbartonshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "fife",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "perth and kinross",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "glasgow city",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "north lanarkshire",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "antrim and newtownabbey",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "armagh city, banbridge and craigavon",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "belfast",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "causeway coast and glens",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "derry city and strabane",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "fermanagh and omagh",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "lisburn and castlereagh",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "mid and east antrim",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "mid ulster",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "newry, mourne and down",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "ards and north down",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "column total",
+      "type": "double precision",
+      "description": null
+    }
+  ]
+}

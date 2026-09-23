@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `landscape_sensitivity_ratings_cdp_2022_2028`
 - **Geometry:** MULTIPOLYGON
@@ -40,10 +40,10 @@ Published by Galway County Council as open local government data. Loaded into Sy
 |---|---|---|
 | `object_id` | `smallint` | Identifier assigned by the source dataset. |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `unit` | `varchar` | Publisher-supplied unit for the represented feature or record. |
-| `sensitivit` | `varchar` | Publisher-supplied sensitivit for the represented feature or record. |
-| `value` | `smallint` | Count or numeric value for value in the represented area. |
+| `unit` | `varchar` |  |
+| `sensitivit` | `varchar` |  |
+| `value` | `smallint` |  |
 | `urban_name` | `varchar` | Name associated with the represented feature. |
-| `urban_source` | `varchar` | Publisher-supplied urban source for the represented feature or record. |
-| `lsr_pk` | `integer` | Count or numeric value for lsr pk in the represented area. |
+| `urban_source` | `varchar` |  |
+| `lsr_pk` | `integer` | Primary-key identifier for records in landscape_sensitivity_ratings_cdp_2022_2028. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

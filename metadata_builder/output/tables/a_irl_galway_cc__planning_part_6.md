@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `planning_part_6`
 - **Geometry:** MULTIPOINT
@@ -38,8 +38,8 @@ Published by Galway County Council as open local government data. Loaded into Sy
 
 | Column | Type | Description |
 |---|---|---|
-| `ref` | `varchar` | Publisher-assigned reference for the record. |
-| `description` | `varchar` | Publisher-supplied description for the represented feature or record. |
+| `ref` | `varchar` |  |
+| `description` | `varchar` |  |
 | `global_id` | `varchar` | Identifier assigned by the source dataset. |
 | `object_id` | `integer` | Identifier assigned by the source dataset. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_built_up_areas`
 - **Table:** `os_open_built_up_extents`
 - **Geometry:** MULTIPOLYGON
@@ -42,7 +42,7 @@ Published by Ordnance Survey as part of OS Open Built Up Areas. Loaded into Syst
 
 | Column | Type | Description |
 |---|---|---|
-| `relatedtogsscode` | `varchar` | Publisher-assigned relatedtogsscode for the record. |
+| `relatedtogsscode` | `varchar` |  |
 | `name1_text` | `varchar` | Primary place name or feature name. |
 | `name1_language` | `varchar` | Language of the primary name (for example ENG for English or CYM for Welsh). |
 | `name2_text` | `varchar` | Secondary or alternative place name. |

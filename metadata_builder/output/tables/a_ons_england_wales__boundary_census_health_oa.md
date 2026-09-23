@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ons_england_wales`
 - **Table:** `boundary_census_health_oa`
 - **Geometry:** GEOMETRY
@@ -41,29 +41,29 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `general_health_total` | `bigint` | Count or numeric value for general health total in the represented area. |
-| `very_good_health` | `bigint` | Count or numeric value for very good health in the represented area. |
-| `good_health` | `bigint` | Count or numeric value for good health in the represented area. |
-| `fair_health` | `bigint` | Count or numeric value for fair health in the represented area. |
-| `bad_health` | `bigint` | Count or numeric value for bad health in the represented area. |
-| `very_bad_health` | `bigint` | Count or numeric value for very bad health in the represented area. |
-| `disability_total` | `bigint` | Count or numeric value for disability total in the represented area. |
-| `disabled_under_the_equality_act` | `bigint` | Count or numeric value for disabled under the equality act in the represented area. |
-| `disabled_ea_daily_limited_a_lot` | `bigint` | Count or numeric value for disabled ea daily limited a lot in the represented area. |
-| `disabled_ea_daily_limited_a_little` | `bigint` | Count or numeric value for disabled ea daily limited a little in the represented area. |
-| `not_disabled_under_the_equality_act` | `bigint` | Count or numeric value for not disabled under the equality act in the represented area. |
-| `not_disabled_ea_lt_condition_not_limited` | `bigint` | Count or numeric value for not disabled ea lt condition not limited in the represented area. |
-| `not_disabled_ea_no_lt_conditions` | `bigint` | Count or numeric value for not disabled ea number lt conditions in the represented area. |
-| `unpaid_care_total` | `bigint` | Count or numeric value for unpaid care total in the represented area. |
-| `provides_no_unpaid_care` | `bigint` | Count or numeric value for provides number unpaid care in the represented area. |
-| `provides_19_hours_or_less_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 19 hours or less unpaid care a week in the represented area. |
-| `provides_9_hours_or_less_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 9 hours or less unpaid care a week in the represented area. |
-| `provides_10_to_19_hours_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 10 to 19 hours unpaid care a week in the represented area. |
-| `provides_20_to_49_hours_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 20 to 49 hours unpaid care a week in the represented area. |
-| `provides_20_to_34_hours_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 20 to 34 hours unpaid care a week in the represented area. |
-| `provides_35_to_49_hours_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 35 to 49 hours unpaid care a week in the represented area. |
-| `provides_50_or_more_hours_unpaid_care_a_week` | `bigint` | Count or numeric value for provides 50 or more hours unpaid care a week in the represented area. |
+| `general_health_total` | `bigint` |  |
+| `very_good_health` | `bigint` |  |
+| `good_health` | `bigint` |  |
+| `fair_health` | `bigint` |  |
+| `bad_health` | `bigint` |  |
+| `very_bad_health` | `bigint` |  |
+| `disability_total` | `bigint` |  |
+| `disabled_under_the_equality_act` | `bigint` |  |
+| `disabled_ea_daily_limited_a_lot` | `bigint` |  |
+| `disabled_ea_daily_limited_a_little` | `bigint` |  |
+| `not_disabled_under_the_equality_act` | `bigint` |  |
+| `not_disabled_ea_lt_condition_not_limited` | `bigint` |  |
+| `not_disabled_ea_no_lt_conditions` | `bigint` |  |
+| `unpaid_care_total` | `bigint` |  |
+| `provides_no_unpaid_care` | `bigint` |  |
+| `provides_19_hours_or_less_unpaid_care_a_week` | `bigint` |  |
+| `provides_9_hours_or_less_unpaid_care_a_week` | `bigint` |  |
+| `provides_10_to_19_hours_unpaid_care_a_week` | `bigint` |  |
+| `provides_20_to_49_hours_unpaid_care_a_week` | `bigint` |  |
+| `provides_20_to_34_hours_unpaid_care_a_week` | `bigint` |  |
+| `provides_35_to_49_hours_unpaid_care_a_week` | `bigint` |  |
+| `provides_50_or_more_hours_unpaid_care_a_week` | `bigint` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

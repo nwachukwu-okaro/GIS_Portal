@@ -45,10 +45,10 @@ Published by the Office for National Statistics as part of their digital boundar
 | `lsoa21cd` | `text` |  |
 | `lsoa21nm` | `text` |  |
 | `lsoa21nmw` | `text` |  |
-| `bng_e` | `integer` | Count or numeric value for bng e in the represented area. |
-| `bng_n` | `integer` | Count or numeric value for bng n in the represented area. |
-| `lat` | `real` | Numeric lat value recorded for the feature. |
-| `long` | `real` | Numeric long value recorded for the feature. |
-| `globalid` | `text` | Publisher-assigned globalid for the record. |
+| `bng_e` | `integer` |  |
+| `bng_n` | `integer` |  |
+| `lat` | `real` |  |
+| `long` | `real` |  |
+| `globalid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `shape` | `geometry` | Spatial geometry of the represented feature. |

@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `licensed_facilities_waste_26052025`
 - **Geometry:** MULTIPOINT
@@ -41,15 +41,15 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 |---|---|---|
 | `registration_code` | `varchar(50)` | Code assigned by the source dataset. |
 | `name` | `varchar(250)` | Official or publisher-assigned name of the represented feature. |
-| `date_from` | `date` | Publisher-supplied date from for the represented feature or record. |
-| `sub_category` | `varchar(100)` | Publisher-supplied sub category for the represented feature or record. |
-| `category` | `varchar(50)` | Publisher-supplied category for the represented feature or record. |
-| `licence_status_type` | `varchar(100)` | Publisher-supplied licence status type for the represented feature or record. |
-| `active_licence_number` | `varchar(50)` | Publisher-supplied active licence number for the represented feature or record. |
-| `major_class_of_activity` | `varchar(50)` | Publisher-supplied major class of activity for the represented feature or record. |
+| `date_from` | `date` |  |
+| `sub_category` | `varchar(100)` |  |
+| `category` | `varchar(50)` |  |
+| `licence_status_type` | `varchar(100)` |  |
+| `active_licence_number` | `varchar(50)` |  |
+| `major_class_of_activity` | `varchar(50)` |  |
 | `licence_type_name` | `varchar(100)` | Name associated with the represented feature. |
-| `address` | `varchar(250)` | Publisher-supplied address for the represented feature or record. |
+| `address` | `varchar(250)` |  |
 | `easting` | `double precision` | Easting coordinate in metres in the dataset's projected coordinate reference system. |
 | `northing` | `double precision` | Northing coordinate in metres in the dataset's projected coordinate reference system. |
-| `lfw_pk` | `integer` | Count or numeric value for lfw pk in the represented area. |
+| `lfw_pk` | `integer` | Primary-key identifier for records in licensed_facilities_waste_26052025. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

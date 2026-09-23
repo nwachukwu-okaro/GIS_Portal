@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_meath_cc`
 - **Table:** `public_rights_of_way`
 - **Geometry:** MULTIPOLYGON
@@ -38,8 +38,8 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `public_right_of_way` | `varchar(15)` | Publisher-supplied public right of way for the represented feature or record. |
-| `category` | `varchar(150)` | Publisher-supplied category for the represented feature or record. |
-| `location` | `varchar(250)` | Publisher-supplied location for the represented feature or record. |
-| `prow_pk` | `integer` | Count or numeric value for prow pk in the represented area. |
+| `public_right_of_way` | `varchar(15)` |  |
+| `category` | `varchar(150)` |  |
+| `location` | `varchar(250)` |  |
+| `prow_pk` | `integer` | Primary-key identifier for records in public_rights_of_way. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

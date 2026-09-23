@@ -41,24 +41,24 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Publisher-assigned identifier for the record. |
+| `id` | `integer` | Primary-key identifier for records in special_protection_areas_england. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `spa_name` | `varchar(120)` | Name associated with the represented feature. |
 | `spa_code` | `varchar(12)` | Code assigned by the source dataset. |
-| `spa_area` | `double precision` | Numeric spa area value recorded for the feature. |
-| `grid_ref` | `varchar(8)` | Publisher-assigned grid reference for the record. |
+| `spa_area` | `double precision` |  |
+| `grid_ref` | `varchar(8)` |  |
 | `easting` | `double precision` | Easting coordinate in metres in the dataset's projected coordinate reference system. |
 | `northing` | `double precision` | Northing coordinate in metres in the dataset's projected coordinate reference system. |
 | `latitude` | `varchar(12)` | Latitude coordinate, normally expressed in decimal degrees. |
 | `longitude` | `varchar(12)` | Longitude coordinate, normally expressed in decimal degrees. |
 | `name` | `varchar(80)` | Official or publisher-assigned name of the represented feature. |
-| `status` | `varchar(32)` | Publisher-supplied status for the represented feature or record. |
-| `file` | `varchar(20)` | Publisher-supplied file for the represented feature or record. |
-| `area` | `double precision` | Numeric area value recorded for the feature. |
+| `status` | `varchar(32)` |  |
+| `file` | `varchar(20)` |  |
+| `area` | `double precision` |  |
 | `easting0` | `double precision` |  |
 | `northing0` | `double precision` |  |
 | `gis_date` | `varchar(20)` | Date associated with the represented feature or source record. |
-| `version` | `integer` | Publisher-supplied version for the represented feature or record. |
-| `shape_length` | `double precision` | Numeric shape length value recorded for the feature. |
-| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. |
+| `version` | `integer` |  |
+| `shape_length` | `double precision` |  |
+| `shape_area` | `double precision` |  |

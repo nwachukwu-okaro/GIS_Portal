@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv408_number_of_bedrooms_oa`
 - **Geometry:** Non-spatial
@@ -38,9 +38,9 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_occupied_households` | `double precision` | Count or numeric value for all occupied households in the represented area. |
-| `one_bedroom` | `double precision` | Count or numeric value for one bedroom in the represented area. |
-| `two_bedrooms` | `double precision` | Count or numeric value for two bedrooms in the represented area. |
-| `three_bedrooms` | `double precision` | Count or numeric value for three bedrooms in the represented area. |
-| `four_bedrooms` | `double precision` | Count or numeric value for four bedrooms in the represented area. |
-| `five_or_more_bedrooms` | `double precision` | Count or numeric value for five or more bedrooms in the represented area. |
+| `all_occupied_households` | `double precision` | Recorded census measure for the category "all occupied households" in the represented area. Units and population base require the source table. |
+| `one_bedroom` | `double precision` |  |
+| `two_bedrooms` | `double precision` |  |
+| `three_bedrooms` | `double precision` |  |
+| `four_bedrooms` | `double precision` |  |
+| `five_or_more_bedrooms` | `double precision` |  |

@@ -1,9 +1,9 @@
+# ============================================================
+# Systra GIS Data Portal — Dockerfile
+# ============================================================
 FROM python:3.12-slim
 
-# Set working directory
-WORKDIR /pycsw
-
-# Install system dependencies
+# ── System dependencies ─────────────────────────────────────
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
@@ -13,34 +13,36 @@ RUN apt-get update && apt-get install -y \
     libxslt-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python packages
-RUN pip install --no-cache-dir \
-    pycsw \
-    gunicorn \
-    psycopg2-binary \
-    boto3 \
-    rasterio \
-    setuptools==69.5.1 \
-    sqlalchemy==1.4.52
+# ── Working directory ───────────────────────────────────────
+WORKDIR /app
 
-# Copy project files
-COPY config/pycsw.cfg /pycsw/config/pycsw.cfg
-COPY scripts/ /pycsw/scripts/
-COPY docker/wsgi.py /pycsw/wsgi.py
+# ── Python dependencies ─────────────────────────────────────
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Make ingestion script executable
-RUN chmod +x /pycsw/scripts/run_ingest.sh
+# ── Application code ────────────────────────────────────────
+COPY . /app/
 
-# Expose pycsw port
-EXPOSE 8000
+# ── Static files ────────────────────────────────────────────
+RUN DJANGO_SECRET_KEY=build-time-collectstatic-only \
+    DJANGO_DEBUG=False \
+    GIS_DB_USER=placeholder \
+    GIS_DB_PASSWORD=placeholder \
+    GIS_DB_HOST=placeholder \
+    GIS_DB_NAME=placeholder \
+    MINIO_ACCESS_KEY=placeholder \
+    MINIO_SECRET_KEY=placeholder \
+    PYCSW_STAC_URL=mock \
+    python manage.py collectstatic --noinput
 
-# Start pycsw with gunicorn using our wsgi entry point
+# ── Port ────────────────────────────────────────────────────
+EXPOSE 8001
+
+# ── Entrypoint ──────────────────────────────────────────────
 CMD ["gunicorn", \
-     "--bind", "0.0.0.0:8000", \
-     "--workers", "2", \
-     "--timeout", "60", \
+     "--bind", "0.0.0.0:8001", \
+     "--workers", "3", \
+     "--timeout", "120", \
      "--access-logfile", "-", \
      "--error-logfile", "-", \
-     "--chdir", "/pycsw", \
-     "wsgi:application"]
-     
+     "portal.wsgi:application"]

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_ireland_cso`
 - **Table:** `irish_language_province`
 - **Geometry:** Non-spatial
@@ -37,43 +37,43 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 
 | Column | Type | Description |
 |---|---|---|
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `geogid` | `text` | Publisher-assigned geogid for the record. |
-| `geogdesc` | `text` | Publisher-supplied geogdesc for the represented feature or record. |
-| `yes` | `bigint` | Count or numeric value for yes in the represented area. |
-| `no` | `bigint` | Count or numeric value for number in the represented area. |
-| `not_stated` | `bigint` | Count or numeric value for not stated in the represented area. |
-| `total` | `bigint` | Count or numeric value for total in the represented area. |
-| `daily_only_within_the_education_system_males` | `bigint` | Count or numeric value for daily only within the education system males in the represented area. |
-| `daily_within_and_daily_outside_the_education_system_males` | `bigint` | Count or numeric value for daily within and daily outside the education system males in the represented area. |
-| `daily_within_and_weekly_outside_the_education_system_males` | `bigint` | Count or numeric value for daily within and weekly outside the education system males in the represented area. |
-| `daily_within_and_less_often_outside_the_education_system_males` | `bigint` | Count or numeric value for daily within and less often outside the education system males in the represented area. |
-| `daily_within_and_never_outside_the_education_system_males` | `bigint` | Count or numeric value for daily within and never outside the education system males in the represented area. |
-| `daily_only_outside_the_education_system_males` | `bigint` | Count or numeric value for daily only outside the education system males in the represented area. |
-| `weekly_only_outside_the_education_system_males` | `bigint` | Count or numeric value for weekly only outside the education system males in the represented area. |
-| `less_often_only_outside_the_education_system_males` | `bigint` | Count or numeric value for less often only outside the education system males in the represented area. |
-| `never_speaks_irish_males` | `bigint` | Count or numeric value for never speaks irish males in the represented area. |
-| `not_stated_males` | `bigint` | Count or numeric value for not stated males in the represented area. |
-| `all_irish_speakers_males` | `bigint` | Count or numeric value for all irish speakers males in the represented area. |
-| `daily_only_within_the_education_system_females` | `bigint` | Count or numeric value for daily only within the education system females in the represented area. |
-| `daily_within_and_daily_outside_the_education_system_females` | `bigint` | Count or numeric value for daily within and daily outside the education system females in the represented area. |
-| `daily_within_and_weekly_outside_the_education_system_females` | `bigint` | Count or numeric value for daily within and weekly outside the education system females in the represented area. |
-| `daily_within_and_less_often_outside_the_education_system_female` | `bigint` | Count or numeric value for daily within and less often outside the education system female in the represented area. |
-| `daily_within_and_never_outside_the_education_system_females` | `bigint` | Count or numeric value for daily within and never outside the education system females in the represented area. |
-| `daily_only_outside_the_education_system_females` | `bigint` | Count or numeric value for daily only outside the education system females in the represented area. |
-| `weekly_only_outside_the_education_system_females` | `bigint` | Count or numeric value for weekly only outside the education system females in the represented area. |
-| `less_often_only_outside_the_education_system_females` | `bigint` | Count or numeric value for less often only outside the education system females in the represented area. |
-| `never_speaks_irish_females` | `bigint` | Count or numeric value for never speaks irish females in the represented area. |
-| `not_stated_females` | `bigint` | Count or numeric value for not stated females in the represented area. |
-| `all_irish_speakers_females` | `bigint` | Count or numeric value for all irish speakers females in the represented area. |
-| `daily_only_within_the_education_system_total` | `bigint` | Count or numeric value for daily only within the education system total in the represented area. |
-| `daily_within_and_daily_outside_the_education_system_total` | `bigint` | Count or numeric value for daily within and daily outside the education system total in the represented area. |
-| `daily_within_and_weekly_outside_the_education_system_total` | `bigint` | Count or numeric value for daily within and weekly outside the education system total in the represented area. |
-| `daily_within_and_less_often_outside_the_education_system_total` | `bigint` | Count or numeric value for daily within and less often outside the education system total in the represented area. |
-| `daily_within_and_never_outside_the_education_system_total` | `bigint` | Count or numeric value for daily within and never outside the education system total in the represented area. |
-| `daily_only_outside_the_education_system_total` | `bigint` | Count or numeric value for daily only outside the education system total in the represented area. |
-| `weekly_only_outside_the_education_system_total` | `bigint` | Count or numeric value for weekly only outside the education system total in the represented area. |
-| `less_often_only_outside_the_education_system_total` | `bigint` | Count or numeric value for less often only outside the education system total in the represented area. |
-| `never_speaks_irish_total` | `bigint` | Count or numeric value for never speaks irish total in the represented area. |
-| `not_stated_total` | `bigint` | Count or numeric value for not stated total in the represented area. |
-| `all_irish_speakers_total` | `bigint` | Count or numeric value for all irish speakers total in the represented area. |
+| `guid` | `text` |  |
+| `geogid` | `text` | Code identifying the geographical area represented by the row. |
+| `geogdesc` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `yes` | `bigint` |  |
+| `no` | `bigint` |  |
+| `not_stated` | `bigint` |  |
+| `total` | `bigint` |  |
+| `daily_only_within_the_education_system_males` | `bigint` |  |
+| `daily_within_and_daily_outside_the_education_system_males` | `bigint` |  |
+| `daily_within_and_weekly_outside_the_education_system_males` | `bigint` |  |
+| `daily_within_and_less_often_outside_the_education_system_males` | `bigint` |  |
+| `daily_within_and_never_outside_the_education_system_males` | `bigint` |  |
+| `daily_only_outside_the_education_system_males` | `bigint` |  |
+| `weekly_only_outside_the_education_system_males` | `bigint` |  |
+| `less_often_only_outside_the_education_system_males` | `bigint` |  |
+| `never_speaks_irish_males` | `bigint` |  |
+| `not_stated_males` | `bigint` |  |
+| `all_irish_speakers_males` | `bigint` |  |
+| `daily_only_within_the_education_system_females` | `bigint` |  |
+| `daily_within_and_daily_outside_the_education_system_females` | `bigint` |  |
+| `daily_within_and_weekly_outside_the_education_system_females` | `bigint` |  |
+| `daily_within_and_less_often_outside_the_education_system_female` | `bigint` |  |
+| `daily_within_and_never_outside_the_education_system_females` | `bigint` |  |
+| `daily_only_outside_the_education_system_females` | `bigint` |  |
+| `weekly_only_outside_the_education_system_females` | `bigint` |  |
+| `less_often_only_outside_the_education_system_females` | `bigint` |  |
+| `never_speaks_irish_females` | `bigint` |  |
+| `not_stated_females` | `bigint` |  |
+| `all_irish_speakers_females` | `bigint` |  |
+| `daily_only_within_the_education_system_total` | `bigint` |  |
+| `daily_within_and_daily_outside_the_education_system_total` | `bigint` |  |
+| `daily_within_and_weekly_outside_the_education_system_total` | `bigint` |  |
+| `daily_within_and_less_often_outside_the_education_system_total` | `bigint` |  |
+| `daily_within_and_never_outside_the_education_system_total` | `bigint` |  |
+| `daily_only_outside_the_education_system_total` | `bigint` |  |
+| `weekly_only_outside_the_education_system_total` | `bigint` |  |
+| `less_often_only_outside_the_education_system_total` | `bigint` |  |
+| `never_speaks_irish_total` | `bigint` |  |
+| `not_stated_total` | `bigint` |  |
+| `all_irish_speakers_total` | `bigint` |  |

@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_Accessible_Waterside_OGL`
 - **Geometry:** MULTILINESTRING
@@ -42,9 +42,9 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `left_fid` | `integer` | Count or numeric value for left fid in the represented area. |
-| `right_fid` | `integer` | Count or numeric value for right fid in the represented area. |
-| `id` | `varchar(38)` | Publisher-assigned identifier for the record. |
-| `featcode` | `integer` | Count or numeric value for featcode in the represented area. |
-| `shape_length` | `double precision` | Numeric shape length value recorded for the feature. |
+| `left_fid` | `integer` |  |
+| `right_fid` | `integer` |  |
+| `id` | `varchar(38)` |  |
+| `featcode` | `integer` |  |
+| `shape_length` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

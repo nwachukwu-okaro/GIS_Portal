@@ -1,205 +1,75 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_zoomstack/urban_areas",
-  "schema": "a_os_zoomstack",
-  "table": "urban_areas",
-  "title": "Urban Areas",
-  "description": "Urban Areas is part of OS Open Zoomstack, published by Ordnance Survey. It represents urban areas features using multipolygon geometry.",
-  "feature_concept": "urban_areas",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "OS Open Zoomstack",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/os-open-zoomstack",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": "Contains OS data © Crown copyright and database right [year]",
-    "verification_status": "needs_review",
-    "licence_scope": "OS OpenData product."
-  },
-  "themes": [
-    "mapping",
-    "basemap"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Urban Areas",
+    "abstract": "Urban Areas is part of OS Open Zoomstack, published by Ordnance Survey. It represents urban areas features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "transportation",
+    "keywords": [
+      "urban",
+      "areas",
+      "os",
+      "zoomstack",
+      "ordnance",
+      "survey",
+      "mapping",
+      "basemap",
+      "type",
+      "id",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of OS Open Zoomstack. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/os-open-zoomstack",
+    "unique_identifier": "a_os_zoomstack/urban_areas",
+    "schema": "a_os_zoomstack",
+    "table": "urban_areas",
+    "bounding_box": {
       "xmin": -7.50667717039684,
-      "ymin": 49.91138963534027,
+      "ymin": 49.911389635340264,
       "xmax": 1.763914673577936,
       "ymax": 60.40010820843889
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 5592,
-  "primary_key": [
-    "id"
-  ],
-  "indexes": [
-    {
-      "name": "urban_areas_geom_1763383263947",
-      "definition": "CREATE INDEX urban_areas_geom_1763383263947 ON a_os_zoomstack.urban_areas USING gist (geom)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "urban_areas_pkey",
-      "definition": "CREATE UNIQUE INDEX urban_areas_pkey ON a_os_zoomstack.urban_areas USING btree (id)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "type",
-      "data_type": "varchar",
-      "description": "Publisher-supplied type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Regional",
-          "National"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 2.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "id",
-      "data_type": "integer",
-      "description": "Count or numeric value for identifier in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in urban_areas."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "type",
-      "id"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "urban",
-    "areas",
-    "os",
-    "zoomstack",
-    "ordnance",
-    "survey",
-    "mapping",
-    "basemap",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": []
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.708745+00:00",
-    "curated_at": "2026-08-30T20:19:22.213679+00:00"
-  },
-  "column_count": 3
+  ]
 }

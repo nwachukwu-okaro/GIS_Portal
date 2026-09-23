@@ -1,748 +1,182 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_galway_cc/record_of_protected_structures",
-  "schema": "a_irl_galway_cc",
-  "table": "record_of_protected_structures",
-  "title": "Record Of Protected Structures",
-  "description": "Record Of Protected Structures is an authoritative dataset published by Galway County Council. It represents record of protected structures features using point geometry.",
-  "feature_concept": "record_of_protected_structures",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Galway County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/galway-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Galway",
-  "geometry": {
-    "column": "geom",
-    "type": "POINT",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Record Of Protected Structures",
+    "abstract": "Record Of Protected Structures is an authoritative dataset published by Galway County Council. It represents record of protected structures features using point geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "record",
+      "protected",
+      "structures",
+      "irl",
+      "galway",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "administrative",
+      "authority",
+      "id",
+      "adiministrative",
+      "registration",
+      "no",
+      "building",
+      "name",
+      "address",
+      "eircode",
+      "type",
+      "description",
+      "appraisal",
+      "current",
+      "use",
+      "niah",
+      "number",
+      "rmp",
+      "date",
+      "registered",
+      "latitude",
+      "longitude",
+      "global",
+      "object",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Galway County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Galway County Council",
+    "resource_locator": "https://data.gov.ie/organization/galway-county-council",
+    "unique_identifier": "a_irl_galway_cc/record_of_protected_structures",
+    "schema": "a_irl_galway_cc",
+    "table": "record_of_protected_structures",
+    "bounding_box": {
       "xmin": -10.233899999382364,
-      "ymin": 52.984949999955795,
-      "xmax": 8.225050728354187,
-      "ymax": 53.70542700022155
+      "ymin": 52.98494999995581,
+      "xmax": 8.225050728354194,
+      "ymax": 53.705427000221555
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
   },
-  "row_count": 1514,
-  "primary_key": [
-    "object_id"
-  ],
-  "indexes": [
-    {
-      "name": "record_of_protected_structures_geom_178446810725",
-      "definition": "CREATE INDEX record_of_protected_structures_geom_178446810725 ON a_irl_galway_cc.record_of_protected_structures USING gist (geom)"
-    },
-    {
-      "name": "record_of_protected_structures_pkey",
-      "definition": "CREATE UNIQUE INDEX record_of_protected_structures_pkey ON a_irl_galway_cc.record_of_protected_structures USING btree (object_id)"
-    }
-  ],
   "columns": [
     {
       "name": "administrative_authority_id",
-      "data_type": "varchar",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2ae19629-14a5-13a3-e055-000000"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "adiministrative_authority",
-      "data_type": "varchar",
-      "description": "Publisher-supplied adiministrative authority for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Galway County Counci"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "registration_no",
-      "data_type": "varchar",
-      "description": "Publisher-supplied registration number for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "537",
-          "551",
-          "3189",
-          "247",
-          "3226"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "building_name",
-      "data_type": "varchar",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Wood House",
-          "St. Brendan's Hospital",
-          "St Columba's Nursing Home",
-          "Scoil Iosef",
-          "Dalystown Ice House"
-        ],
-        "null_fraction": 0.24240422,
-        "estimated_distinct": -0.661823,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "address",
-      "data_type": "varchar",
-      "description": "Publisher-supplied address for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Roundstone Galway",
-          "DERRYMULLAN Ballinasloe GALWAY",
-          "Barrack Streeet Loughrea Galway",
-          "FAHY Ballinasloe GALWAY",
-          "Renvyle Co. Galway"
-        ],
-        "null_fraction": 0.001981506,
-        "estimated_distinct": -0.61624837,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "county",
-      "data_type": "varchar",
-      "description": "Publisher-supplied county for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "County Galway"
-        ],
-        "null_fraction": 0.001981506,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "eircode",
-      "data_type": "varchar",
-      "description": "Publisher-assigned eircode for the record.",
-      "semantic_role": "source_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 1.0,
-        "estimated_distinct": 0.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "building_type",
-      "data_type": "varchar",
-      "description": "Publisher-supplied building type for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Road (section of)",
-          "Convent/nunnery",
-          "Wind mill",
-          "Stables",
-          "Mental hospital/asyl"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 109.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "description",
-      "data_type": "varchar",
-      "description": "Publisher-supplied description for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Detached single-bay single-storey vernacular outbuilding, built c.1800 with Pitched roped thatch roof",
-          "Detached 3 bay 3 storey house, above open basement and with a high pitched hipped roof, built c 1775.Original fabric of 1590 structure is incorporated. The rendered facade has cut stone dressings - quoins, pedimented doorcase, venetian window and eaves entablature with urns. Interior partly reconstructed in 1935 but contains  vaulted basement and 17th cent chimneypiece. Large stable yard at side. Set in reduced demesne overlooking lake.",
-          "7 bay, 3 storey convent building,  c.1885 with c. 1950 extension.",
-          "Detached three-bay, single-cell church, with chancel, buttresses and tower  with spire,c1875.  Built of random squared limestone with cut stone dressings. Interior contains stained glass by Heaton, Butler and bayne.Set back from road within small graveyard that contains cut stone memorial , c. 1880.",
-          "Declaration 26/5/2016  10 round arches of probable 17th century date , seventh arch  over original channel of river, and twelfth segmental arch is dated 1848. North elevation of western arches flanked by cutwaters with pedestrian refuges above. Bridge widened to south side, possibly during drainage works of 1848"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.98414797,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "appraisal",
-      "data_type": "varchar",
-      "description": "Publisher-supplied appraisal for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "The traditional thatched house forms an important element of the vernacular heritage of County Galway and is an increasingly rare sight in the landscape. This example is sited well back from the road in a field and still retains its form, associated outbuildings and characteristics such as the thatched roof, low chimneystack and small openings.",
-          "DECLARATION 6/8/2013  National importance because of the mediaeval church ruin, the archaeological potential of the site the architectural quality of the early 19th cent. building and the significant contribution that the building makes to the townscape.",
-          "This small rural house is a fairly typical example of the local vernacular building tradition, and retains a thatched roof. The painted quoins have also become a traditional feature, adding decorative interest.",
-          "Regional Rating - Well designed substantial memorial. Historically interesting as it recalls the Catholic family who owned the Barna estate and also recalls the former church which was on this site.",
-          "Regional value because of its design and execution and being a good example of a purpose built convent by a landlord- patron. It is an important element of the village landscape."
-        ],
-        "null_fraction": 0.08784676,
-        "estimated_distinct": -0.8956407,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "current_use",
-      "data_type": "varchar",
-      "description": "Publisher-supplied current use for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "church",
-          "multiple dwellingss",
-          "dewelling",
-          "museum",
-          "apartments"
-        ],
-        "null_fraction": 0.92007923,
-        "estimated_distinct": 61.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "niah_number",
-      "data_type": "varchar",
-      "description": "Publisher-supplied niah number for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "30334006",
-          "30411806",
-          "30404603",
-          "30404205",
-          "30339007"
-        ],
-        "null_fraction": 0.01981506,
-        "estimated_distinct": -0.8282695,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "rmp_number",
-      "data_type": "varchar",
-      "description": "Publisher-supplied rmp number for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "114056",
-          "29180001",
-          "84083002",
-          "35028",
-          "87093"
-        ],
-        "null_fraction": 0.54953766,
-        "estimated_distinct": -0.109643325,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "date_registered",
-      "data_type": "bigint",
-      "description": "Count or numeric value for date registered in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.35270807,
-        "estimated_distinct": 43.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": null
     },
     {
       "name": "latitude",
-      "data_type": "double precision",
-      "description": "Latitude coordinate, normally expressed in decimal degrees.",
-      "semantic_role": "latitude",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9583884,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Latitude coordinate, normally expressed in decimal degrees."
     },
     {
       "name": "longitude",
-      "data_type": "double precision",
-      "description": "Longitude coordinate, normally expressed in decimal degrees.",
-      "semantic_role": "longitude",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9722589,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Longitude coordinate, normally expressed in decimal degrees."
     },
     {
       "name": "global_id",
-      "data_type": "varchar",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "08303670-403e-495e-82e9-cd14d0379ee0",
-          "5939a413-ca47-4697-ac65-31da53ccad08",
-          "21d58836-dce6-4cb0-9547-b49accc05d36",
-          "68c7d600-e2fd-4bd4-a6a4-8fa93acc7cc4",
-          "1da5015f-11f7-4dca-a554-5d97117aff0f"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "object_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "administrative_authority_id",
-      "adiministrative_authority",
-      "registration_no",
-      "building_name",
-      "address",
-      "county",
-      "eircode",
-      "building_type",
-      "description",
-      "appraisal",
-      "current_use",
-      "niah_number",
-      "rmp_number",
-      "date_registered",
-      "latitude",
-      "longitude",
-      "global_id",
-      "object_id"
-    ],
-    "searchable_columns": [
-      "building_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "record",
-    "protected",
-    "structures",
-    "irl",
-    "galway",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "administrative",
-    "authority",
-    "id",
-    "building",
-    "name",
-    "latitude",
-    "longitude",
-    "global",
-    "object",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.938305+00:00",
-    "curated_at": "2026-08-30T20:16:38.828015+00:00"
-  },
-  "column_count": 19
+  ]
 }

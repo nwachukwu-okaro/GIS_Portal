@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `areas_of_outstanding_natural_beauty_england`
 - **Geometry:** MULTIPOLYGON
@@ -44,13 +44,13 @@ Published by Natural England as open environmental and conservation data. Loaded
 
 | Column | Type | Description |
 |---|---|---|
-| `code` | `integer` | Count or numeric value for code in the represented area. |
+| `code` | `integer` |  |
 | `name` | `varchar(200)` | Official or publisher-assigned name of the represented feature. |
-| `measure` | `real` | Count or numeric value for measure in the represented area. |
+| `measure` | `real` |  |
 | `desig_date` | `varchar(14)` | Date associated with the represented feature or source record. |
-| `hotlink` | `varchar(200)` | Publisher-supplied hotlink for the represented feature or record. |
-| `stat_area` | `varchar(32)` | Publisher-supplied stat area for the represented feature or record. |
-| `shape_length` | `real` | Numeric shape length value recorded for the feature. |
-| `shape_area` | `real` | Numeric shape area value recorded for the feature. |
+| `hotlink` | `varchar(200)` |  |
+| `stat_area` | `varchar(32)` |  |
+| `shape_length` | `real` |  |
+| `shape_area` | `real` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

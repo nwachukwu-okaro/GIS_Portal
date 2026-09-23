@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `protected_views_cdp_2022_2028`
 - **Geometry:** MULTIPOINT
@@ -38,13 +38,13 @@ Published by Galway County Council as open local government data. Loaded into Sy
 
 | Column | Type | Description |
 |---|---|---|
-| `description_of_view` | `varchar` | Publisher-supplied description of view for the represented feature or record. |
-| `location_of_view` | `varchar` | Publisher-supplied location of view for the represented feature or record. |
+| `description_of_view` | `varchar` |  |
+| `location_of_view` | `varchar` |  |
 | `object_id` | `integer` | Identifier assigned by the source dataset. |
-| `photos_report` | `varchar` | Publisher-supplied photos report for the represented feature or record. |
-| `significance` | `varchar` | Publisher-supplied significance for the represented feature or record. |
-| `view_angle` | `integer` | Count or numeric value for view angle in the represented area. |
-| `view_rotation` | `integer` | Count or numeric value for view rotation in the represented area. |
+| `photos_report` | `varchar` |  |
+| `significance` | `varchar` |  |
+| `view_angle` | `integer` |  |
+| `view_rotation` | `integer` |  |
 | `vp_name` | `varchar` | Name associated with the represented feature. |
-| `vp_ref` | `integer` | Count or numeric value for vp reference in the represented area. |
+| `vp_ref` | `integer` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `table_uv202_national_identity_datazone`
 - **Geometry:** Non-spatial
@@ -38,12 +38,12 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
-| `any_other_combination_of_uk_identities_uk_only` | `double precision` | Count or numeric value for any other combination of uk identities uk only in the represented area. |
-| `british_identity_only` | `double precision` | Count or numeric value for british identity only in the represented area. |
-| `english_identity_only` | `double precision` | Count or numeric value for english identity only in the represented area. |
-| `other_identity_and_at_least_one_uk_identity` | `double precision` | Count or numeric value for other identity and at least one uk identity in the represented area. |
-| `other_identity_only_1` | `double precision` | Count or numeric value for other identity only 1 in the represented area. |
-| `scottish_and_any_other_identities` | `double precision` | Count or numeric value for scottish and any other identities in the represented area. |
-| `scottish_and_british_identities_only` | `double precision` | Count or numeric value for scottish and british identities only in the represented area. |
-| `scottish_identity_only` | `double precision` | Count or numeric value for scottish identity only in the represented area. |
+| `all_people` | `double precision` | Recorded census measure for the category "all people" in the represented area. Units and population base require the source table. |
+| `any_other_combination_of_uk_identities_uk_only` | `double precision` |  |
+| `british_identity_only` | `double precision` |  |
+| `english_identity_only` | `double precision` |  |
+| `other_identity_and_at_least_one_uk_identity` | `double precision` |  |
+| `other_identity_only_1` | `double precision` |  |
+| `scottish_and_any_other_identities` | `double precision` |  |
+| `scottish_and_british_identities_only` | `double precision` |  |
+| `scottish_identity_only` | `double precision` |  |

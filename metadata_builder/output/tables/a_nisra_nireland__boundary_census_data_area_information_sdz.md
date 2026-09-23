@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_data_area_information_sdz`
 - **Geometry:** MULTIPOLYGON
@@ -38,18 +38,18 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `sdz2021_cd` | `varchar(10)` | Publisher-supplied sdz2021 cd for the represented feature or record. |
-| `sdz2021_nm` | `varchar(32)` | Publisher-supplied sdz2021 nm for the represented feature or record. |
-| `dea2014_cd` | `varchar(254)` | Publisher-supplied dea2014 cd for the represented feature or record. |
-| `dea2014_nm` | `varchar(26)` | Publisher-supplied dea2014 nm for the represented feature or record. |
-| `lgd2014_cd` | `varchar(9)` | Publisher-supplied lgd2014 cd for the represented feature or record. |
-| `lgd2014_nm` | `varchar(36)` | Publisher-supplied lgd2014 nm for the represented feature or record. |
-| `shape_length` | `double precision` | Numeric shape length value recorded for the feature. |
-| `shape_area` | `double precision` | Numeric shape area value recorded for the feature. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `households` | `text` | Publisher-supplied households for the represented feature or record. |
-| `area_hectares_note_1` | `double precision` | Numeric area hectares note 1 value recorded for the feature. |
-| `population_density_number_of_usual_residents_per_hectare` | `double precision` | Numeric population density number of usual residents per hectare value recorded for the feature. |
+| `sdz2021_cd` | `varchar(10)` |  |
+| `sdz2021_nm` | `varchar(32)` |  |
+| `dea2014_cd` | `varchar(254)` |  |
+| `dea2014_nm` | `varchar(26)` |  |
+| `lgd2014_cd` | `varchar(9)` |  |
+| `lgd2014_nm` | `varchar(36)` |  |
+| `shape_length` | `double precision` |  |
+| `shape_area` | `double precision` |  |
+| `population` | `text` |  |
+| `households` | `text` |  |
+| `area_hectares_note_1` | `double precision` |  |
+| `population_density_number_of_usual_residents_per_hectare` | `double precision` | Population density expressed as the number of usual residents per hectare. |

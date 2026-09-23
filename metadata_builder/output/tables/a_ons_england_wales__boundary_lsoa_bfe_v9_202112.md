@@ -43,9 +43,9 @@ Published by the Office for National Statistics as part of their digital boundar
 |---|---|---|
 | `lsoa21cd` | `varchar` |  |
 | `lsoa21nm` | `varchar` |  |
-| `globalid` | `varchar` | Publisher-assigned globalid for the record. |
-| `residents_total` | `integer` | Count or numeric value for residents total in the represented area. |
-| `residents_household` | `integer` | Count or numeric value for residents household in the represented area. |
-| `residents_communal_establishment` | `integer` | Count or numeric value for residents communal establishment in the represented area. |
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `globalid` | `varchar` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `residents_total` | `integer` |  |
+| `residents_household` | `integer` |  |
+| `residents_communal_establishment` | `integer` |  |
+| `id` | `integer` | Primary-key identifier for records in boundary_lsoa_bfe_v9_202112. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

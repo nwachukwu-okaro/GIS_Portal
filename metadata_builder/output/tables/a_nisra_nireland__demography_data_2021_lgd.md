@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `demography_data_2021_lgd`
 - **Geometry:** Non-spatial
@@ -37,17 +37,17 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `broad_age_bands_years_0_14_years` | `text` | Publisher-supplied broad age bands years 0 14 years for the represented feature or record. |
-| `broad_age_bands_years_15_39_years` | `text` | Publisher-supplied broad age bands years 15 39 years for the represented feature or record. |
-| `broad_age_bands_years_40_64_years` | `text` | Publisher-supplied broad age bands years 40 64 years for the represented feature or record. |
-| `broad_age_bands_years_65_years` | `text` | Publisher-supplied broad age bands years 65 years for the represented feature or record. |
-| `household_size_five_or_more_people` | `text` | Publisher-supplied household size five or more people for the represented feature or record. |
-| `household_size_four_people` | `text` | Publisher-supplied household size four people for the represented feature or record. |
-| `household_size_one_person` | `text` | Publisher-supplied household size one person for the represented feature or record. |
-| `household_size_three_people` | `text` | Publisher-supplied household size three people for the represented feature or record. |
-| `household_size_two_people` | `text` | Publisher-supplied household size two people for the represented feature or record. |
-| `sex_females` | `text` | Publisher-supplied sex females for the represented feature or record. |
-| `sex_males` | `text` | Publisher-supplied sex males for the represented feature or record. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `broad_age_bands_years_0_14_years` | `text` |  |
+| `broad_age_bands_years_15_39_years` | `text` |  |
+| `broad_age_bands_years_40_64_years` | `text` |  |
+| `broad_age_bands_years_65_years` | `text` |  |
+| `household_size_five_or_more_people` | `text` |  |
+| `household_size_four_people` | `text` |  |
+| `household_size_one_person` | `text` |  |
+| `household_size_three_people` | `text` |  |
+| `household_size_two_people` | `text` |  |
+| `sex_females` | `text` |  |
+| `sex_males` | `text` |  |

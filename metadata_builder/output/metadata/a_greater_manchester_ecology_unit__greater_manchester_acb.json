@@ -1,235 +1,82 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_greater_manchester_ecology_unit/greater_manchester_acb",
-  "schema": "a_greater_manchester_ecology_unit",
-  "table": "greater_manchester_acb",
-  "title": "Greater Manchester Acb",
-  "description": "Greater Manchester Acb is an authoritative dataset published by Greater Manchester Ecology Unit. It represents greater manchester acb features using multipolygon geometry.",
-  "feature_concept": "greater_manchester_acb",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Greater Manchester Ecology Unit",
-    "product": null,
-    "source_url": "https://www.gmenvironment.org.uk/gmeu/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "ecology",
-    "environment"
-  ],
-  "geographic_coverage": null,
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Greater Manchester Acb",
+    "abstract": "Greater Manchester Acb is an authoritative dataset published by Greater Manchester Ecology Unit. It represents greater manchester acb features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "greater",
+      "manchester",
+      "acb",
+      "ecology",
+      "unit",
+      "environment",
+      "lnrs",
+      "id",
+      "gmacb",
+      "pk",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Greater Manchester Ecology Unit as open ecological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Greater Manchester Ecology Unit",
+    "resource_locator": "https://www.gmenvironment.org.uk/gmeu/",
+    "unique_identifier": "a_greater_manchester_ecology_unit/greater_manchester_acb",
+    "schema": "a_greater_manchester_ecology_unit",
+    "table": "greater_manchester_acb",
+    "bounding_box": {
       "xmin": -2.727030966467074,
       "ymin": 53.32718243254561,
       "xmax": -1.909622304553128,
-      "ymax": 53.685720379213926
+      "ymax": 53.68572037921392
     },
-    "units": "metres",
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 12796,
-  "primary_key": [
-    "gmacb_pk"
-  ],
-  "indexes": [
-    {
-      "name": "greater_manchester_acb_geom_1765799168233",
-      "definition": "CREATE INDEX greater_manchester_acb_geom_1765799168233 ON a_greater_manchester_ecology_unit.greater_manchester_acb USING gist (geom)"
-    },
-    {
-      "name": "greater_manchester_acb_pkey",
-      "definition": "CREATE UNIQUE INDEX greater_manchester_acb_pkey ON a_greater_manchester_ecology_unit.greater_manchester_acb USING btree (gmacb_pk)"
-    }
-  ],
   "columns": [
     {
       "name": "lnrs_id",
-      "data_type": "varchar(254)",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "11"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "acb_id",
-      "data_type": "integer",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
     },
     {
       "name": "gmacb_pk",
-      "data_type": "integer",
-      "description": "Internal primary-key value for the Greater Manchester biodiversity area record.",
-      "semantic_role": "record_identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Internal primary-key value for the Greater Manchester biodiversity area record."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "lnrs_id",
-      "acb_id",
-      "gmacb_pk"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "greater",
-    "manchester",
-    "acb",
-    "ecology",
-    "unit",
-    "environment",
-    "lnrs",
-    "id",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.695735+00:00",
-    "curated_at": "2026-08-30T20:15:13.030834+00:00"
-  },
-  "column_count": 4
+  ]
 }

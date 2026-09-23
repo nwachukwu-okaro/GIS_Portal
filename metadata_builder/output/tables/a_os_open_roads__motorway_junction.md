@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_open_roads`
 - **Table:** `motorway_junction`
 - **Geometry:** POINT
@@ -42,7 +42,7 @@ Published by Ordnance Survey as part of OS Open Roads. Loaded into Systra PostGI
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `junction_number` | `varchar` | Publisher-supplied junction number for the represented feature or record. |
+| `id` | `varchar` |  |
+| `junction_number` | `varchar` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

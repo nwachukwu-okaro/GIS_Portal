@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `uv902_uk_armed_forces_veterans_households_oa`
 - **Geometry:** Non-spatial
@@ -38,6 +38,6 @@ Published by National Records of Scotland as open statistics and boundary data. 
 | Column | Type | Description |
 |---|---|---|
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total` | `double precision` | Count or numeric value for total in the represented area. |
-| `household_contains_no_uk_armed_forces_veterans` | `double precision` | Count or numeric value for household contains number uk armed forces veterans in the represented area. |
-| `household_contains_at_least_one_uk_armed_forces_veteran` | `double precision` | Count or numeric value for household contains at least one uk armed forces veteran in the represented area. |
+| `total` | `double precision` |  |
+| `household_contains_no_uk_armed_forces_veterans` | `double precision` | Recorded census measure for the category "household contains no UK armed forces veterans" in the represented area. Units and population base require the source table. |
+| `household_contains_at_least_one_uk_armed_forces_veteran` | `double precision` | Recorded census measure for the category "household contains at least one UK armed forces veteran" in the represented area. Units and population base require the source table. |

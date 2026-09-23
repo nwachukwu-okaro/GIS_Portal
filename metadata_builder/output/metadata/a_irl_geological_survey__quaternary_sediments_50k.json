@@ -1,0 +1,98 @@
+{
+  "gemini": {
+    "title": "Quaternary Sediments 50k",
+    "abstract": "Quaternary Sediments 50k is an authoritative dataset published by Geological Survey Ireland. It represents quaternary sediments 50k features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "geoscientificInformation",
+    "keywords": [
+      "quaternary",
+      "sediments",
+      "50k",
+      "irl",
+      "geological",
+      "survey",
+      "ireland",
+      "geology",
+      "earth",
+      "science",
+      "object",
+      "id",
+      "qsed",
+      "code",
+      "global",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Geological Survey Ireland as open geological data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Geological Survey Ireland",
+    "resource_locator": "https://www.gsi.ie/en-ie/data-and-maps/Pages/default.aspx",
+    "unique_identifier": "a_irl_geological_survey/quaternary_sediments_50k",
+    "schema": "a_irl_geological_survey",
+    "table": "quaternary_sediments_50k",
+    "bounding_box": {
+      "xmin": -10.4626702546271,
+      "ymin": 51.4800043969539,
+      "xmax": -6.095197178117301,
+      "ymax": 55.05058774467296
+    },
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "object_id",
+      "type": "integer",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "qsed_type",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "qsed_code",
+      "type": "varchar",
+      "description": "Code assigned by the source dataset."
+    },
+    {
+      "name": "legend_desc",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "global_id",
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

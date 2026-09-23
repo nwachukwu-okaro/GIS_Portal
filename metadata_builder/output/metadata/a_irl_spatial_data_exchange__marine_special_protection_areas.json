@@ -1,430 +1,125 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_spatial_data_exchange/marine_special_protection_areas",
-  "schema": "a_irl_spatial_data_exchange",
-  "table": "marine_special_protection_areas",
-  "title": "Marine Special Protection Areas",
-  "description": "Marine Special Protection Areas is an authoritative dataset published by Government of Ireland. It represents marine special protection areas features using multipolygon geometry.",
-  "feature_concept": "marine_special_protection_areas",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Government of Ireland",
-    "product": null,
-    "source_url": "https://data.gov.ie/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "spatial data",
-    "open data"
-  ],
-  "geographic_coverage": "Ireland",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
-      "xmin": -7.032499999833879,
-      "ymin": 51.918333334246995,
-      "xmax": -5.507499999959769,
-      "ymax": 53.86100313013582
-    },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 2,
-  "primary_key": [
-    "mspa_pk"
-  ],
-  "indexes": [
-    {
-      "name": "marine_special_protection_areas_geom_176434122720",
-      "definition": "CREATE INDEX marine_special_protection_areas_geom_176434122720 ON a_irl_spatial_data_exchange.marine_special_protection_areas USING gist (geom)"
-    },
-    {
-      "name": "marine_special_protection_areas_pkey",
-      "definition": "CREATE UNIQUE INDEX marine_special_protection_areas_pkey ON a_irl_spatial_data_exchange.marine_special_protection_areas USING btree (mspa_pk)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "mspa_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for mspa pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "site_code",
-      "data_type": "varchar(6)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "004236",
-          "004237"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "site_name",
-      "data_type": "varchar(100)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "North-west Irish Sea SPA",
-          "Seas off Wexford SPA"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "version",
-      "data_type": "double precision",
-      "description": "Count or numeric value for version in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "county",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied county for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "du, lh, me",
-          "wa, wx"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "ha",
-      "data_type": "double precision",
-      "description": "Count or numeric value for ha in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "source_crs",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied source crs for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "ITM"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "source_sale",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied source sale for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1:5000"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "url",
-      "data_type": "varchar(50)",
-      "description": "Publisher-supplied url for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://www.npws.ie/protected-sites/spa/004236",
-          "https://www.npws.ie/protected-sites/spa/004237"
-        ],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": null,
-        "estimated_distinct": null,
-        "statistics_source": null
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "mspa_pk",
-      "site_code",
-      "site_name",
+  "gemini": {
+    "title": "Marine Special Protection Areas",
+    "abstract": "Marine Special Protection Areas is an authoritative dataset published by Government of Ireland. It represents marine special protection areas features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "marine",
+      "special",
+      "protection",
+      "areas",
+      "irl",
+      "spatial",
+      "exchange",
+      "government",
+      "ireland",
+      "open",
+      "mspa",
+      "pk",
+      "site",
+      "code",
+      "name",
       "version",
       "county",
       "ha",
-      "source_crs",
-      "source_sale",
-      "url"
+      "source",
+      "crs",
+      "sale",
+      "url",
+      "geom"
     ],
-    "searchable_columns": [
-      "site_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "marine",
-    "special",
-    "protection",
-    "areas",
-    "irl",
-    "spatial",
-    "exchange",
-    "government",
-    "ireland",
-    "open",
-    "site",
-    "code",
-    "name",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Government of Ireland as part of the national spatial data exchange. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Government of Ireland",
+    "resource_locator": "https://data.gov.ie/",
+    "unique_identifier": "a_irl_spatial_data_exchange/marine_special_protection_areas",
+    "schema": "a_irl_spatial_data_exchange",
+    "table": "marine_special_protection_areas",
+    "bounding_box": {
+      "xmin": -10.31750000062982,
+      "ymin": 51.91833333424701,
+      "xmax": -5.507499999959768,
+      "ymax": 53.86100313013583
+    },
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:56.047023+00:00",
-    "curated_at": "2026-08-30T20:16:46.050279+00:00"
-  },
-  "column_count": 10
+  "columns": [
+    {
+      "name": "mspa_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in marine_special_protection_areas."
+    },
+    {
+      "name": "site_code",
+      "type": "varchar(6)",
+      "description": "Code assigned by the source dataset."
+    },
+    {
+      "name": "site_name",
+      "type": "varchar(100)",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "version",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "county",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "ha",
+      "type": "double precision",
+      "description": null
+    },
+    {
+      "name": "source_crs",
+      "type": "varchar(254)",
+      "description": null
+    },
+    {
+      "name": "source_sale",
+      "type": "varchar(50)",
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "varchar(50)",
+      "description": "Web address associated with the record."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
 }

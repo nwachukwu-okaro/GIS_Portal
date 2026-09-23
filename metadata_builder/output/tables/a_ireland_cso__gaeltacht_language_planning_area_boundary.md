@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `gaeltacht_language_planning_area_boundary`
 - **Geometry:** MULTIPOLYGON
@@ -40,9 +40,9 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 |---|---|---|
 | `gpa_id` | `text` | Identifier assigned by the source dataset. |
 | `gpa_name` | `text` | Name associated with the represented feature. |
-| `gpa_name_e` | `text` | Publisher-supplied gpa name e for the represented feature or record. |
-| `contae` | `text` | Publisher-supplied contae for the represented feature or record. |
-| `county` | `text` | Publisher-supplied county for the represented feature or record. |
-| `guid` | `text` | Publisher-assigned guid for the record. |
+| `gpa_name_e` | `text` |  |
+| `contae` | `text` |  |
+| `county` | `text` | County associated with the represented administrative area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
 | `objectid` | `bigint` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
 | `shape` | `geometry` | Spatial geometry of the represented feature. |

@@ -1,0 +1,166 @@
+{
+  "gemini": {
+    "title": "Gross Median Weekly Pay",
+    "abstract": "Gross Median Weekly Pay is an authoritative dataset published by Office for National Statistics. It contains records relating to gross median weekly pay.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "gross",
+      "median",
+      "weekly",
+      "pay",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/gross_median_weekly_pay",
+    "schema": "a_ons_england_wales",
+    "table": "gross_median_weekly_pay",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in gross_median_weekly_pay."
+    },
+    {
+      "name": "area code",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "area name",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "measure",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2008-04-16 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2009-04-22 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2010-04-21 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2011-04-13 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2012-04-18 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2013-04-17 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2014-04-09 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2015-04-22 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2016-04-13 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2017-04-26 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2018-04-18 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2019-04-10 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2020-04-22 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2021-04-21 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2022-04-27 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2023-04-19 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2024-04-17 (£)",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "2025-04-30 (£)",
+      "type": "varchar",
+      "description": null
+    }
+  ]
+}

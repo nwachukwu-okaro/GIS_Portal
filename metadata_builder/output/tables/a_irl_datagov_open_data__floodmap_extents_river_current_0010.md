@@ -38,7 +38,7 @@ Published by the Government of Ireland as part of the national open data portal 
 
 | Column | Type | Description |
 |---|---|---|
-| `fc0010_pk` | `integer` |  |
+| `fc0010_pk` | `integer` | Primary-key identifier for records in floodmap_extents_river_current_0010. |
 | `uuid` | `varchar(50)` |  |
 | `b` | `varchar(10)` |  |
 | `sch` | `varchar(20)` |  |

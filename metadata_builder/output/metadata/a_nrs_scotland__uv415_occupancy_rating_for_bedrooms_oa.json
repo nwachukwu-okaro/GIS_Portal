@@ -1,269 +1,95 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_nrs_scotland/uv415_occupancy_rating_for_bedrooms_oa",
-  "schema": "a_nrs_scotland",
-  "table": "uv415_occupancy_rating_for_bedrooms_oa",
-  "title": "Uv415 Occupancy Rating For Bedrooms Oa",
-  "description": "Uv415 Occupancy Rating For Bedrooms Oa is an authoritative dataset published by National Records of Scotland. It contains records relating to uv415 occupancy rating for bedrooms oa.",
-  "feature_concept": "uv415_occupancy_rating_for_bedrooms_oa",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "National Records of Scotland",
-    "product": null,
-    "source_url": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
+  "gemini": {
+    "title": "Uv415 Occupancy Rating For Bedrooms Oa",
+    "abstract": "Uv415 Occupancy Rating For Bedrooms Oa is an authoritative dataset published by National Records of Scotland. It contains records relating to uv415 occupancy rating for bedrooms oa.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "uv415",
+      "occupancy",
+      "rating",
+      "bedrooms",
+      "oa",
+      "nrs",
+      "scotland",
+      "national",
+      "records",
+      "statistics",
+      "census",
+      "boundaries",
+      "geography",
+      "code",
+      "all",
+      "occupied",
+      "households",
+      "more",
+      "less"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by National Records of Scotland as open statistics and boundary data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "National Records of Scotland",
+    "resource_locator": "https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products",
+    "unique_identifier": "a_nrs_scotland/uv415_occupancy_rating_for_bedrooms_oa",
+    "schema": "a_nrs_scotland",
+    "table": "uv415_occupancy_rating_for_bedrooms_oa",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
   },
-  "themes": [
-    "statistics",
-    "census",
-    "boundaries"
-  ],
-  "geographic_coverage": "Scotland",
-  "geometry": {
-    "column": null,
-    "type": null,
-    "srid": null,
-    "crs": null,
-    "bbox_wgs84": null,
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 46368,
-  "primary_key": [],
-  "indexes": [],
   "columns": [
     {
       "name": "geography_code",
-      "data_type": "text",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "S00165829",
-          "S00139253",
-          "S00168006",
-          "S00152509",
-          "S00159076"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "all_occupied_households",
-      "data_type": "double precision",
-      "description": "Count or numeric value for all occupied households in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 90.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Recorded census measure for the category \"all occupied households\" in the represented area. Units and population base require the source table."
     },
     {
       "name": "occupancy_rating_of_bedrooms_2_or_more",
-      "data_type": "double precision",
-      "description": "Count or numeric value for occupancy rating of bedrooms 2 or more in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.032733332,
-        "estimated_distinct": 75.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "occupancy_rating_of_bedrooms_1",
-      "data_type": "double precision",
-      "description": "Count or numeric value for occupancy rating of bedrooms 1 in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.00036666667,
-        "estimated_distinct": 68.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "occupancy_rating_of_bedrooms_0",
-      "data_type": "double precision",
-      "description": "Count or numeric value for occupancy rating of bedrooms 0 in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.016766667,
-        "estimated_distinct": 84.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "occupancy_rating_of_bedrooms_1_or_less",
-      "data_type": "double precision",
-      "description": "Count or numeric value for occupancy rating of bedrooms 1 or less in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.46576667,
-        "estimated_distinct": 20.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "attribute_join": true,
-    "export": true
-  },
-  "operation_requirements": {},
-  "discovery_hints": {
-    "filterable_columns": [
-      "geography_code",
-      "all_occupied_households",
-      "occupancy_rating_of_bedrooms_2_or_more",
-      "occupancy_rating_of_bedrooms_1",
-      "occupancy_rating_of_bedrooms_0",
-      "occupancy_rating_of_bedrooms_1_or_less"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "uv415",
-    "occupancy",
-    "rating",
-    "bedrooms",
-    "oa",
-    "nrs",
-    "scotland",
-    "national",
-    "records",
-    "statistics",
-    "census",
-    "boundaries",
-    "geography",
-    "code"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:57.338513+00:00",
-    "curated_at": "2026-08-30T20:17:03.411359+00:00"
-  },
-  "column_count": 6
+  ]
 }

@@ -39,5 +39,5 @@ Surface Water Small Watercourses is an authoritative dataset published by Natura
 | `risk_cy` | `text` |  |
 | `shape_stlength__` | `double precision` |  |
 | `shape_starea__` | `double precision` |  |
-| `id` | `bigint` |  |
+| `id` | `bigint` | Primary-key identifier for records in surface_water_small_watercourses. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -1,265 +1,87 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_environment_agency/statutory_main_river",
-  "schema": "a_environment_agency",
-  "table": "statutory_main_river",
-  "title": "Statutory Main Rivers",
-  "description": "Line network of watercourses legally designated as Main River in England, where the Environment Agency has permissive powers for flood-risk management.",
-  "feature_concept": "statutory_main_river",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Environment Agency",
-    "product": null,
-    "source_url": "https://environment.data.gov.uk/",
-    "documentation_url": null,
-    "licence_name": "Open Government Licence",
-    "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": "Schema default only; verify dataset-specific restrictions and third-party rights."
-  },
-  "themes": [
-    "environment",
-    "flooding",
-    "water"
-  ],
-  "geographic_coverage": "England",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTICURVE",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Statutory Main Rivers",
+    "abstract": "Line network of watercourses legally designated as Main River in England, where the Environment Agency has permissive powers for flood-risk management.",
+    "alternative_title": null,
+    "topic_category": "environment",
+    "keywords": [
+      "statutory",
+      "main",
+      "rivers",
+      "environment",
+      "agency",
+      "river",
+      "flooding",
+      "water",
+      "fid",
+      "geom",
+      "status",
+      "length",
+      "km",
+      "shape"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Environment Agency as open environmental data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Environment Agency",
+    "resource_locator": "https://environment.data.gov.uk/",
+    "unique_identifier": "a_environment_agency/statutory_main_river",
+    "schema": "a_environment_agency",
+    "table": "statutory_main_river",
+    "bounding_box": {
       "xmin": -5.703382539490782,
       "ymin": 49.98693202486049,
-      "xmax": 1.756275905804513,
+      "xmax": 1.756275905804514,
       "ymax": 55.70777010605108
     },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 183911,
-  "primary_key": [
-    "fid"
-  ],
-  "indexes": [
-    {
-      "name": "sidx_statutory_main_river_geom",
-      "definition": "CREATE INDEX sidx_statutory_main_river_geom ON a_environment_agency.statutory_main_river USING gist (geom)"
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "statutory_main_river_pkey",
-      "definition": "CREATE UNIQUE INDEX statutory_main_river_pkey ON a_environment_agency.statutory_main_river USING btree (fid)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
   "columns": [
     {
       "name": "fid",
-      "data_type": "bigint",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Feature identifier assigned by the source or import process."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     },
     {
       "name": "status",
-      "data_type": "text",
-      "description": "Legal or operational classification of the watercourse, such as Main River.",
-      "semantic_role": "river_status",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Main River"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Legal or operational classification of the watercourse, such as Main River."
     },
     {
       "name": "length_km",
-      "data_type": "double precision",
-      "description": "Calculated length of the watercourse feature in kilometres.",
-      "semantic_role": "length",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": "kilometres",
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.9903268,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Calculated length of the watercourse feature in kilometres."
     },
     {
       "name": "shape_length",
-      "data_type": "double precision",
-      "description": "Source GIS length measurement for the line geometry in dataset units.",
-      "semantic_role": "geometry_length",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 1.0,
-        "estimated_distinct": 0.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": "Source GIS length measurement for the line geometry in dataset units."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "fid",
-      "status",
-      "length_km",
-      "shape_length"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "statutory",
-    "main",
-    "river",
-    "environment",
-    "agency",
-    "flooding",
-    "water",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "table_override",
-    "description_confidence": "curated"
-  },
-  "quality": {
-    "metadata_status": "context_curated",
-    "warnings": [
-      "Schema default only; verify dataset-specific restrictions and third-party rights."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:54.691728+00:00",
-    "curated_at": "2026-08-30T20:14:25.868026+00:00"
-  },
-  "column_count": 5
+  ]
 }

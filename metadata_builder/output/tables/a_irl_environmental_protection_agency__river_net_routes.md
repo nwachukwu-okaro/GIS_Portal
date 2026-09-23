@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `river_net_routes`
 - **Geometry:** LINESTRING
@@ -41,12 +41,12 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 | `segment_code` | `varchar(20)` | Code assigned by the source dataset. |
 | `epa_name` | `varchar(100)` | Name associated with the represented feature. |
 | `epa_code` | `varchar(5)` | Code assigned by the source dataset. |
-| `stream_order` | `integer` | Count or numeric value for stream order in the represented area. |
-| `continua` | `varchar(1)` | Publisher-supplied continua for the represented feature or record. |
+| `stream_order` | `integer` |  |
+| `continua` | `varchar(1)` |  |
 | `river_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
 | `lake_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
 | `transitional_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
-| `segment_length` | `double precision` | Numeric segment length value recorded for the feature. |
+| `segment_length` | `double precision` |  |
 | `coastal_water_body_code` | `varchar(100)` | Code assigned by the source dataset. |
-| `rnr_pk` | `integer` | Count or numeric value for rnr pk in the represented area. |
+| `rnr_pk` | `integer` | Primary-key identifier for records in river_net_routes. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

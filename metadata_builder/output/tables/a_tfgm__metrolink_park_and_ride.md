@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_tfgm`
 - **Table:** `metrolink_park_and_ride`
 - **Geometry:** POINT
@@ -38,11 +38,11 @@ Published by Transport for Greater Manchester as open transport data. Loaded int
 
 | Column | Type | Description |
 |---|---|---|
-| `park_and_ride_pk` | `integer` | Count or numeric value for park and ride pk in the represented area. |
+| `park_and_ride_pk` | `integer` | Primary-key identifier for records in metrolink_park_and_ride. |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `stationcod` | `varchar` | Publisher-supplied stationcod for the represented feature or record. |
-| `mode` | `varchar` | Publisher-supplied mode for the represented feature or record. |
-| `spaces` | `integer` | Count or numeric value for spaces in the represented area. |
-| `url` | `varchar` | Publisher-supplied url for the represented feature or record. |
-| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. |
+| `stationcod` | `varchar` |  |
+| `mode` | `varchar` |  |
+| `spaces` | `integer` |  |
+| `url` | `varchar` | Web address associated with the record. |
+| `uprn` | `bigint` | Unique Property Reference Number identifying the addressable location. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

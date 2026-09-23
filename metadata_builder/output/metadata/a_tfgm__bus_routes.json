@@ -1,394 +1,108 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_tfgm/bus_routes",
-  "schema": "a_tfgm",
-  "table": "bus_routes",
-  "title": "Bus Routes",
-  "description": "Bus Routes is an authoritative dataset published by Transport for Greater Manchester. It represents bus routes features using multilinestring geometry.",
-  "feature_concept": "bus_routes",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Transport for Greater Manchester",
-    "product": null,
-    "source_url": "https://developer.tfgm.com/",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "public transport",
-    "transport"
-  ],
-  "geographic_coverage": "Greater Manchester",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTILINESTRING",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
-      "xmin": -3.011827563423341,
-      "ymin": 53.25505387787102,
-      "xmax": -1.782200685567698,
-      "ymax": 53.834495502259415
-    },
-    "units": "metres",
-    "is_geographic": false
-  },
-  "row_count": 2852,
-  "primary_key": [
-    "service_pk"
-  ],
-  "indexes": [
-    {
-      "name": "bus_routes_day_1764773606751",
-      "definition": "CREATE INDEX bus_routes_day_1764773606751 ON a_tfgm.bus_routes USING btree (day)"
-    },
-    {
-      "name": "bus_routes_geom_1764773606790",
-      "definition": "CREATE INDEX bus_routes_geom_1764773606790 ON a_tfgm.bus_routes USING gist (geom)"
-    },
-    {
-      "name": "bus_routes_pkey",
-      "definition": "CREATE UNIQUE INDEX bus_routes_pkey ON a_tfgm.bus_routes USING btree (service_pk)"
-    },
-    {
-      "name": "bus_routes_service_id_1764773606667",
-      "definition": "CREATE INDEX bus_routes_service_id_1764773606667 ON a_tfgm.bus_routes USING btree (service_id)"
-    },
-    {
-      "name": "bus_routes_service_no_1764773606711",
-      "definition": "CREATE INDEX bus_routes_service_no_1764773606711 ON a_tfgm.bus_routes USING btree (service_no)"
-    }
-  ],
-  "columns": [
-    {
-      "name": "service_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for service pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "service_id",
-      "data_type": "varchar",
-      "description": "Identifier assigned by the source dataset.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "100_C_I_1_",
-          "100_C_I_1_A",
-          "100_C_I_3_",
-          "100_C_I_3_A",
-          "100_C_I_4_"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
-    },
-    {
-      "name": "service_no",
-      "data_type": "varchar",
-      "description": "Publisher-supplied service number for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "1",
-          "10",
-          "100",
-          "101",
-          "102"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.20336606,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "suffix",
-      "data_type": "varchar",
-      "description": "Publisher-supplied suffix for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "B",
-          "S",
-          "",
-          "E",
-          "I"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 12.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "direction",
-      "data_type": "varchar",
-      "description": "Publisher-supplied direction for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Outbound",
-          "Inbound"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 2.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "day",
-      "data_type": "varchar",
-      "description": "Publisher-supplied day for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Bank Holidays",
-          "Saturdays",
-          "Sundays",
-          "Weekdays"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 4.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "variation",
-      "data_type": "varchar",
-      "description": "Publisher-supplied variation for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "B",
-          "",
-          "E",
-          "D",
-          "A"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 9.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
-    },
-    {
-      "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
-    }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "service_pk",
-      "service_id",
-      "service_no",
+  "gemini": {
+    "title": "Bus Routes",
+    "abstract": "Bus Routes is an authoritative dataset published by Transport for Greater Manchester. It represents bus routes features using multilinestring geometry.",
+    "alternative_title": null,
+    "topic_category": "transportation",
+    "keywords": [
+      "bus",
+      "routes",
+      "tfgm",
+      "transport",
+      "greater",
+      "manchester",
+      "public",
+      "service",
+      "pk",
+      "id",
+      "no",
       "suffix",
       "direction",
       "day",
-      "variation"
+      "variation",
+      "geom"
     ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "bus",
-    "routes",
-    "tfgm",
-    "transport",
-    "greater",
-    "manchester",
-    "public",
-    "service",
-    "id",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Transport for Greater Manchester as open transport data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Transport for Greater Manchester",
+    "resource_locator": "https://developer.tfgm.com/",
+    "unique_identifier": "a_tfgm/bus_routes",
+    "schema": "a_tfgm",
+    "table": "bus_routes",
+    "bounding_box": {
+      "xmin": -3.011827563423341,
+      "ymin": 53.25505387787101,
+      "xmax": -1.782200685567698,
+      "ymax": 53.83449550225941
+    },
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
     ]
   },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.723954+00:00",
-    "curated_at": "2026-08-30T20:20:08.582303+00:00"
-  },
-  "column_count": 8
+  "columns": [
+    {
+      "name": "service_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in bus_routes."
+    },
+    {
+      "name": "service_id",
+      "type": "varchar",
+      "description": "Identifier assigned by the source dataset."
+    },
+    {
+      "name": "service_no",
+      "type": "varchar",
+      "description": "Displayed bus service number."
+    },
+    {
+      "name": "suffix",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "direction",
+      "type": "varchar",
+      "description": "Direction of the bus service, such as inbound or outbound."
+    },
+    {
+      "name": "day",
+      "type": "varchar",
+      "description": "Day category on which the bus service operates."
+    },
+    {
+      "name": "variation",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
 }

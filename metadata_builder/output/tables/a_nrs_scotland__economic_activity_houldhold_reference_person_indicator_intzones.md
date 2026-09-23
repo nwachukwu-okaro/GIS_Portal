@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `economic_activity_houldhold_reference_person_indicator_intzones`
 - **Geometry:** Non-spatial
@@ -37,33 +37,33 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `unnamed_2` | `bigint` | Count or numeric value for unnamed 2 in the represented area. |
-| `unnamed_3` | `bigint` | Count or numeric value for unnamed 3 in the represented area. |
-| `unnamed_4` | `bigint` | Count or numeric value for unnamed 4 in the represented area. |
-| `unnamed_5` | `bigint` | Count or numeric value for unnamed 5 in the represented area. |
-| `unnamed_6` | `bigint` | Count or numeric value for unnamed 6 in the represented area. |
-| `unnamed_7` | `bigint` | Count or numeric value for unnamed 7 in the represented area. |
-| `unnamed_8` | `bigint` | Count or numeric value for unnamed 8 in the represented area. |
-| `unnamed_9` | `bigint` | Count or numeric value for unnamed 9 in the represented area. |
-| `unnamed_10` | `bigint` | Count or numeric value for unnamed 10 in the represented area. |
-| `unnamed_11` | `bigint` | Count or numeric value for unnamed 11 in the represented area. |
-| `unnamed_12` | `bigint` | Count or numeric value for unnamed 12 in the represented area. |
-| `unnamed_13` | `bigint` | Count or numeric value for unnamed 13 in the represented area. |
-| `unnamed_14` | `bigint` | Count or numeric value for unnamed 14 in the represented area. |
-| `unnamed_15` | `bigint` | Count or numeric value for unnamed 15 in the represented area. |
-| `unnamed_16` | `bigint` | Count or numeric value for unnamed 16 in the represented area. |
-| `unnamed_17` | `bigint` | Count or numeric value for unnamed 17 in the represented area. |
-| `unnamed_18` | `bigint` | Count or numeric value for unnamed 18 in the represented area. |
-| `unnamed_19` | `bigint` | Count or numeric value for unnamed 19 in the represented area. |
-| `unnamed_20` | `bigint` | Count or numeric value for unnamed 20 in the represented area. |
-| `unnamed_21` | `bigint` | Count or numeric value for unnamed 21 in the represented area. |
-| `unnamed_22` | `bigint` | Count or numeric value for unnamed 22 in the represented area. |
-| `unnamed_23` | `bigint` | Count or numeric value for unnamed 23 in the represented area. |
-| `unnamed_24` | `bigint` | Count or numeric value for unnamed 24 in the represented area. |
-| `unnamed_25` | `bigint` | Count or numeric value for unnamed 25 in the represented area. |
-| `unnamed_26` | `bigint` | Count or numeric value for unnamed 26 in the represented area. |
-| `unnamed_27` | `bigint` | Count or numeric value for unnamed 27 in the represented area. |
-| `unnamed_28` | `bigint` | Count or numeric value for unnamed 28 in the represented area. |
-| `unnamed_29` | `bigint` | Count or numeric value for unnamed 29 in the represented area. |
-| `unnamed_30` | `bigint` | Count or numeric value for unnamed 30 in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `unnamed_2` | `bigint` |  |
+| `unnamed_3` | `bigint` |  |
+| `unnamed_4` | `bigint` |  |
+| `unnamed_5` | `bigint` |  |
+| `unnamed_6` | `bigint` |  |
+| `unnamed_7` | `bigint` |  |
+| `unnamed_8` | `bigint` |  |
+| `unnamed_9` | `bigint` |  |
+| `unnamed_10` | `bigint` |  |
+| `unnamed_11` | `bigint` |  |
+| `unnamed_12` | `bigint` |  |
+| `unnamed_13` | `bigint` |  |
+| `unnamed_14` | `bigint` |  |
+| `unnamed_15` | `bigint` |  |
+| `unnamed_16` | `bigint` |  |
+| `unnamed_17` | `bigint` |  |
+| `unnamed_18` | `bigint` |  |
+| `unnamed_19` | `bigint` |  |
+| `unnamed_20` | `bigint` |  |
+| `unnamed_21` | `bigint` |  |
+| `unnamed_22` | `bigint` |  |
+| `unnamed_23` | `bigint` |  |
+| `unnamed_24` | `bigint` |  |
+| `unnamed_25` | `bigint` |  |
+| `unnamed_26` | `bigint` |  |
+| `unnamed_27` | `bigint` |  |
+| `unnamed_28` | `bigint` |  |
+| `unnamed_29` | `bigint` |  |
+| `unnamed_30` | `bigint` |  |

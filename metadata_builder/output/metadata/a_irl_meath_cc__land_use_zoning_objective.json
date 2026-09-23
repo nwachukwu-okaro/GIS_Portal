@@ -1,601 +1,157 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_meath_cc/land_use_zoning_objective",
-  "schema": "a_irl_meath_cc",
-  "table": "land_use_zoning_objective",
-  "title": "Land Use Zoning Objective",
-  "description": "Land Use Zoning Objective is an authoritative dataset published by Meath County Council. It represents land use zoning objective features using multipolygon geometry.",
-  "feature_concept": "land_use_zoning_objective",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Meath County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/meath-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Meath",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOLYGON",
-    "srid": 2157,
-    "crs": "EPSG:2157",
-    "bbox_wgs84": {
-      "xmin": -7.343667921923909,
-      "ymin": 53.38191945909598,
+  "gemini": {
+    "title": "Land Use Zoning Objective",
+    "abstract": "Land Use Zoning Objective is an authoritative dataset published by Meath County Council. It represents land use zoning objective features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "land",
+      "use",
+      "zoning",
+      "objective",
+      "irl",
+      "meath",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "luzo",
+      "pk",
+      "guid",
+      "site",
+      "code",
+      "description",
+      "area",
+      "acres",
+      "hectares",
+      "residential",
+      "settlement",
+      "01",
+      "plan",
+      "name",
+      "lifetime",
+      "more",
+      "info",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Meath County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Meath County Council",
+    "resource_locator": "https://data.gov.ie/organization/meath-county-council",
+    "unique_identifier": "a_irl_meath_cc/land_use_zoning_objective",
+    "schema": "a_irl_meath_cc",
+    "table": "land_use_zoning_objective",
+    "bounding_box": {
+      "xmin": -7.343667921923907,
+      "ymin": 53.38191945909599,
       "xmax": -6.212613074537398,
-      "ymax": 53.91766837255257
+      "ymax": 53.91766837255258
     },
-    "units": null,
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:2157",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 2201,
-  "primary_key": [
-    "luzo_pk"
-  ],
-  "indexes": [
-    {
-      "name": "land_use_zoning_objective_geom_1765536410506",
-      "definition": "CREATE INDEX land_use_zoning_objective_geom_1765536410506 ON a_irl_meath_cc.land_use_zoning_objective USING gist (geom)"
-    },
-    {
-      "name": "land_use_zoning_objective_pkey",
-      "definition": "CREATE UNIQUE INDEX land_use_zoning_objective_pkey ON a_irl_meath_cc.land_use_zoning_objective USING btree (luzo_pk)"
-    }
-  ],
   "columns": [
     {
       "name": "luzo_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for luzo pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in land_use_zoning_objective."
     },
     {
       "name": "guid",
-      "data_type": "double precision",
-      "description": "Count or numeric value for guid in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "site_code",
-      "data_type": "varchar(100)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "RA - Rural Area",
-          "A2 - New Residential",
-          "WL - White Lands",
-          "F1 - Open Space",
-          "B1 - Commercial Town or Village Centre"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 20.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(100)",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "zoning_code",
-      "data_type": "varchar(6)",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "R1",
-          "E1/E2",
-          "B1",
-          "E1",
-          "F1"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 20.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(6)",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "zoning_description",
-      "data_type": "varchar(100)",
-      "description": "Publisher-supplied zoning description for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Community Infrastructure",
-          "Open Space",
-          "New Residential",
-          "General Enterprise and Employment/ Warehousing and Distribution",
-          "Transport and Utilities"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 20.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(100)",
+      "description": null
     },
     {
       "name": "zoning_objective",
-      "data_type": "varchar(254)",
-      "description": "Publisher-supplied zoning objective for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "To provide for the creation of enterprise and facilitate opportunities for employment through industrial, manufacturing, distribution, warehousing and other general employment/enterprise uses in a good quality physical environment.",
-          "To protect, provide for and/or improve town and village centre facilities and uses.",
-          "To provide for essential transport and public utilities and infrastructure including rail stations, park and ride facilities, water and waste water infrastructure, electricity, gas, and telecommunications infrastructure",
-          "To provide for the development of a retail warehouse park.",
-          "To provide for necessary community, social, and educational facilities."
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 18.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(254)",
+      "description": null
     },
     {
       "name": "area_acres",
-      "data_type": "real",
-      "description": "Numeric area acres value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.5170377,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "real",
+      "description": null
     },
     {
       "name": "area_hectares",
-      "data_type": "real",
-      "description": "Numeric area hectares value recorded for the feature.",
-      "semantic_role": "measure",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -0.34938663,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "real",
+      "description": null
     },
     {
       "name": "residential",
-      "data_type": "varchar(100)",
-      "description": "Publisher-supplied residential for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Residential Phasing",
-          "Not Applicable"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 2.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(100)",
+      "description": null
     },
     {
       "name": "settlement",
-      "data_type": "double precision",
-      "description": "Count or numeric value for settlement in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": 39.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "double precision",
+      "description": null
     },
     {
       "name": "settlement_01",
-      "data_type": "varchar(100)",
-      "description": "Publisher-supplied settlement 01 for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Clonard",
-          "Bettystown/Laytown/Mornington East /Donacarney/ Mornington",
-          "Ballivor",
-          "Carnaross",
-          "Baile Ghib"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 39.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(100)",
+      "description": null
     },
     {
       "name": "plan_name",
-      "data_type": "varchar(120)",
-      "description": "Name associated with the represented feature.",
-      "semantic_role": "feature_name",
-      "filterable": true,
-      "searchable": true,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Meath County Development Plan 2021-2027"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "varchar(120)",
+      "description": "Name associated with the represented feature."
     },
     {
       "name": "lifetime",
-      "data_type": "varchar(25)",
-      "description": "Publisher-supplied lifetime for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "2021-2027"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(25)",
+      "description": null
     },
     {
       "name": "more_info",
-      "data_type": "varchar(250)",
-      "description": "Publisher-supplied more info for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "https://consult.meath.ie/en/consultation/meath-adopted-county-development-plan"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar(250)",
+      "description": null
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "luzo_pk",
-      "guid",
-      "site_code",
-      "zoning_code",
-      "zoning_description",
-      "zoning_objective",
-      "area_acres",
-      "area_hectares",
-      "residential",
-      "settlement",
-      "settlement_01",
-      "plan_name",
-      "lifetime",
-      "more_info"
-    ],
-    "searchable_columns": [
-      "plan_name"
-    ],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "land",
-    "use",
-    "zoning",
-    "objective",
-    "irl",
-    "meath",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "site",
-    "code",
-    "plan",
-    "name",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.981991+00:00",
-    "curated_at": "2026-08-30T20:16:42.535375+00:00"
-  },
-  "column_count": 15
+  ]
 }

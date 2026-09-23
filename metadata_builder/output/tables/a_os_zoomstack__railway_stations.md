@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_zoomstack`
 - **Table:** `railway_stations`
 - **Geometry:** MULTIPOINT
@@ -42,7 +42,7 @@ Published by Ordnance Survey as part of OS Open Zoomstack. Loaded into Systra Po
 
 | Column | Type | Description |
 |---|---|---|
-| `type` | `varchar` | Publisher-supplied type for the represented feature or record. |
+| `type` | `varchar` |  |
 | `name` | `varchar` | Official or publisher-assigned name of the represented feature. |
-| `id` | `integer` | Count or numeric value for identifier in the represented area. |
+| `id` | `integer` | Primary-key identifier for records in railway_stations. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

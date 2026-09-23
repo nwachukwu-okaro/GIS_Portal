@@ -42,7 +42,7 @@ Published by the Office for National Statistics as part of their digital boundar
 | Column | Type | Description |
 |---|---|---|
 | `msoa_code` | `varchar(9)` | Code assigned by the source dataset. |
-| `geography` | `varchar(39)` | Publisher-supplied geography for the represented feature or record. |
+| `geography` | `varchar(39)` | Name or descriptive label of the geographical area represented by the row. |
 | `does_not_apply_0_car_van` | `bigint` |  |
 | `does_not_apply_1_car_van` | `bigint` |  |
 | `does_not_apply_2_car_van` | `bigint` |  |

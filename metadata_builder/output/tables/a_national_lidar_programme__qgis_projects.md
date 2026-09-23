@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_national_lidar_programme`
 - **Table:** `qgis_projects`
 - **Geometry:** Non-spatial
@@ -39,5 +39,5 @@ Published by Environment Agency as part of the National LIDAR Programme. Loaded 
 | Column | Type | Description |
 |---|---|---|
 | `name` | `text` | Official or publisher-assigned name of the represented feature. |
-| `metadata` | `jsonb` | Publisher-supplied metadata for the represented feature or record. |
-| `content` | `bytea` | Publisher-supplied content for the represented feature or record. |
+| `metadata` | `jsonb` |  |
+| `content` | `bytea` |  |

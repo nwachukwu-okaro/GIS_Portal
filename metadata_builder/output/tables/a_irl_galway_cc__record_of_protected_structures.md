@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `record_of_protected_structures`
 - **Geometry:** POINT
@@ -39,19 +39,19 @@ Published by Galway County Council as open local government data. Loaded into Sy
 | Column | Type | Description |
 |---|---|---|
 | `administrative_authority_id` | `varchar` | Identifier assigned by the source dataset. |
-| `adiministrative_authority` | `varchar` | Publisher-supplied adiministrative authority for the represented feature or record. |
-| `registration_no` | `varchar` | Publisher-supplied registration number for the represented feature or record. |
+| `adiministrative_authority` | `varchar` |  |
+| `registration_no` | `varchar` |  |
 | `building_name` | `varchar` | Name associated with the represented feature. |
-| `address` | `varchar` | Publisher-supplied address for the represented feature or record. |
-| `county` | `varchar` | Publisher-supplied county for the represented feature or record. |
-| `eircode` | `varchar` | Publisher-assigned eircode for the record. |
-| `building_type` | `varchar` | Publisher-supplied building type for the represented feature or record. |
-| `description` | `varchar` | Publisher-supplied description for the represented feature or record. |
-| `appraisal` | `varchar` | Publisher-supplied appraisal for the represented feature or record. |
-| `current_use` | `varchar` | Publisher-supplied current use for the represented feature or record. |
-| `niah_number` | `varchar` | Publisher-supplied niah number for the represented feature or record. |
-| `rmp_number` | `varchar` | Publisher-supplied rmp number for the represented feature or record. |
-| `date_registered` | `bigint` | Count or numeric value for date registered in the represented area. |
+| `address` | `varchar` |  |
+| `county` | `varchar` |  |
+| `eircode` | `varchar` |  |
+| `building_type` | `varchar` |  |
+| `description` | `varchar` |  |
+| `appraisal` | `varchar` |  |
+| `current_use` | `varchar` |  |
+| `niah_number` | `varchar` |  |
+| `rmp_number` | `varchar` |  |
+| `date_registered` | `bigint` |  |
 | `latitude` | `double precision` | Latitude coordinate, normally expressed in decimal degrees. |
 | `longitude` | `double precision` | Longitude coordinate, normally expressed in decimal degrees. |
 | `global_id` | `varchar` | Identifier assigned by the source dataset. |

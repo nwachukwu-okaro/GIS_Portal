@@ -38,16 +38,16 @@ Published by Meath County Council as open local government data. Loaded into Sys
 
 | Column | Type | Description |
 |---|---|---|
-| `rps_pk` | `integer` | Count or numeric value for rps pk in the represented area. |
+| `rps_pk` | `integer` | Primary-key identifier for records in record_of_protected_structures. |
 | `la_rps_id` | `double precision` | Identifier assigned by the source dataset. |
-| `niah_reg_n` | `double precision` | Count or numeric value for niah reg n in the represented area. |
-| `municipal_` | `varchar(36)` | Publisher-supplied municipal for the represented feature or record. |
-| `townland` | `varchar(58)` | Publisher-supplied townland for the represented feature or record. |
-| `town` | `varchar(34)` | Publisher-supplied town for the represented feature or record. |
-| `street_tow` | `varchar(90)` | Publisher-supplied street tow for the represented feature or record. |
-| `cdp_settle` | `varchar(116)` | Publisher-supplied cdp settle for the represented feature or record. |
-| `structure_` | `varchar(100)` | Publisher-supplied structure for the represented feature or record. |
+| `niah_reg_n` | `double precision` |  |
+| `municipal_` | `varchar(36)` |  |
+| `townland` | `varchar(58)` |  |
+| `town` | `varchar(34)` |  |
+| `street_tow` | `varchar(90)` |  |
+| `cdp_settle` | `varchar(116)` |  |
+| `structure_` | `varchar(100)` |  |
 | `structur00` | `varchar(18)` |  |
-| `building_t` | `varchar(100)` | Publisher-supplied building t for the represented feature or record. |
-| `description` | `varchar(254)` | Publisher-supplied description for the represented feature or record. |
+| `building_t` | `varchar(100)` |  |
+| `description` | `varchar(254)` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

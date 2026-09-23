@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_os_open_map_local`
 - **Table:** `roundabout`
 - **Geometry:** MULTIPOINT
@@ -42,8 +42,8 @@ Published by Ordnance Survey as part of OS Open Map Local. Loaded into Systra Po
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `varchar` | Publisher-assigned identifier for the record. |
-| `classification` | `varchar` | Publisher-supplied classification for the represented feature or record. |
+| `id` | `varchar` |  |
+| `classification` | `varchar` |  |
 | `feature_code` | `integer` | Code assigned by the source dataset. |
 | `fid` | `integer` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

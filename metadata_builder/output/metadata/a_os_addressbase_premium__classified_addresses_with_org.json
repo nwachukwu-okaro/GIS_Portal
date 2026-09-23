@@ -1,277 +1,91 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_os_addressbase_premium/classified_addresses_with_org",
-  "schema": "a_os_addressbase_premium",
-  "table": "classified_addresses_with_org",
-  "title": "Classified Addresses With Org",
-  "description": "Classified Addresses With Org is part of AddressBase Premium, published by Ordnance Survey. It represents classified addresses with org features using geometry geometry.",
-  "feature_concept": "classified_addresses_with_org",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Ordnance Survey",
-    "product": "AddressBase Premium",
-    "source_url": "https://www.ordnancesurvey.co.uk/products/addressbase-premium",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "addresses",
-    "property"
-  ],
-  "geographic_coverage": "Great Britain",
-  "geometry": {
-    "column": "geom",
-    "type": "GEOMETRY",
-    "srid": 27700,
-    "crs": "EPSG:27700",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Classified Addresses With Org",
+    "abstract": "Classified Addresses With Org is part of AddressBase Premium, published by Ordnance Survey. It represents classified addresses with org features using geometry geometry.",
+    "alternative_title": null,
+    "topic_category": "location",
+    "keywords": [
+      "classified",
+      "addresses",
+      "org",
+      "os",
+      "addressbase",
+      "premium",
+      "ordnance",
+      "survey",
+      "property",
+      "uprn",
+      "classification",
+      "code",
+      "organisation",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Ordnance Survey",
+    "resource_locator": "https://www.ordnancesurvey.co.uk/products/addressbase-premium",
+    "unique_identifier": "a_os_addressbase_premium/classified_addresses_with_org",
+    "schema": "a_os_addressbase_premium",
+    "table": "classified_addresses_with_org",
+    "bounding_box": {
       "xmin": -8.596587530007346,
       "ymin": 49.87287892762858,
       "xmax": 1.76274753527875,
-      "ymax": 60.85528268503757
+      "ymax": 60.85528268503759
     },
-    "units": "metres",
-    "is_geographic": false
+    "spatial_reference_system": "EPSG:27700",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
   },
-  "row_count": 41546546,
-  "primary_key": [],
-  "indexes": [
-    {
-      "name": "classified_addresses_with_org_geom_sidx",
-      "definition": "CREATE INDEX classified_addresses_with_org_geom_sidx ON a_os_addressbase_premium.classified_addresses_with_org USING gist (geom)"
-    }
-  ],
   "columns": [
     {
       "name": "uprn",
-      "data_type": "bigint",
-      "description": "Count or numeric value for uprn in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "bigint",
+      "description": "Unique Property Reference Number identifying the addressable location."
     },
     {
       "name": "ctyua24nm",
-      "data_type": "varchar(36)",
-      "description": "Source attribute; its precise meaning has not yet been documented.",
-      "semantic_role": null,
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "Aberdeen City",
-          "Aberdeenshire",
-          "Angus",
-          "Argyll and Bute",
-          "Barking and Dagenham"
-        ],
-        "null_fraction": 0.00013333333,
-        "estimated_distinct": 207.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "safe_fallback",
-      "confidence": "generated"
+      "type": "varchar(36)",
+      "description": null
     },
     {
       "name": "classification_code",
-      "data_type": "text",
-      "description": "Code assigned by the source dataset.",
-      "semantic_role": "code",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "C",
-          "CA",
-          "CA01",
-          "CA02",
-          "CA02FF"
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 210.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary_pattern",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Code assigned by the source dataset."
     },
     {
       "name": "organisation",
-      "data_type": "text",
-      "description": "Publisher-supplied organisation for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          "-",
-          ".",
-          "@",
-          "£1 BAGUETTES & PIES DIVIDY LIMITED",
-          "£1 BAGUETTES & PIES LTD"
-        ],
-        "null_fraction": 0.9669667,
-        "estimated_distinct": 42740.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "text",
+      "description": "Organisation name associated with the address."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "uprn",
-      "ctyua24nm",
-      "classification_code",
-      "organisation"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "classified",
-    "addresses",
-    "org",
-    "os",
-    "addressbase",
-    "premium",
-    "ordnance",
-    "survey",
-    "property",
-    "classification",
-    "code",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:59.583733+00:00",
-    "curated_at": "2026-08-30T20:17:33.305028+00:00"
-  },
-  "column_count": 5
+  ]
 }

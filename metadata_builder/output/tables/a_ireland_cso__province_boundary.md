@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_ireland_cso`
 - **Table:** `province_boundary`
 - **Geometry:** GEOMETRY
@@ -39,11 +39,11 @@ Published by Central Statistics Office Ireland as open statistics and census dat
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `province` | `text` | Publisher-supplied province for the represented feature or record. |
+| `province` | `text` | Province associated with the represented administrative area. |
 | `pv_id` | `integer` | Identifier assigned by the source dataset. |
-| `guid` | `text` | Publisher-assigned guid for the record. |
-| `centroid_x` | `double precision` | Count or numeric value for centroid x in the represented area. |
-| `centroid_y` | `double precision` | Count or numeric value for centroid y in the represented area. |
-| `area` | `double precision` | Numeric area value recorded for the feature. |
-| `esri_oid` | `bigint` | Count or numeric value for esri oid in the represented area. |
+| `guid` | `text` | UUID-formatted identifier associated with the record; persistence across releases is not confirmed. |
+| `centroid_x` | `double precision` | X coordinate of the feature centroid; units and reference system are not confirmed for this attribute. |
+| `centroid_y` | `double precision` | Y coordinate of the feature centroid; units and reference system are not confirmed for this attribute. |
+| `area` | `double precision` |  |
+| `esri_oid` | `bigint` | Primary-key identifier for records in province_boundary. |
 | `shape` | `geometry` | Spatial geometry of the represented feature. |

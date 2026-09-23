@@ -39,19 +39,19 @@ Published by Geological Survey Ireland as open geological data. Loaded into Syst
 | Column | Type | Description |
 |---|---|---|
 | `gas_id` | `integer` | Identifier assigned by the source dataset. |
-| `sitecode` | `varchar(7)` | Publisher-assigned sitecode for the record. |
-| `sitename` | `varchar(75)` | Publisher-supplied sitename for the represented feature or record. |
+| `sitecode` | `varchar(7)` |  |
+| `sitename` | `varchar(75)` |  |
 | `igh1` | `varchar(5)` |  |
 | `igh2` | `varchar(5)` |  |
 | `igh3` | `varchar(5)` |  |
 | `igh4` | `varchar(5)` |  |
-| `county` | `varchar(25)` | Publisher-supplied county for the represented feature or record. |
-| `description` | `varchar(200)` | Publisher-supplied description for the represented feature or record. |
-| `geological` | `varchar(254)` | Publisher-supplied geological for the represented feature or record. |
-| `designat` | `varchar(50)` | Publisher-supplied designat for the represented feature or record. |
-| `report` | `varchar(200)` | Publisher-supplied report for the represented feature or record. |
-| `x_ig` | `integer` | Count or numeric value for x ig in the represented area. |
-| `y_ig` | `integer` | Count or numeric value for y ig in the represented area. |
-| `x_itm` | `double precision` | Count or numeric value for x itm in the represented area. |
-| `y_itm` | `double precision` | Count or numeric value for y itm in the represented area. |
+| `county` | `varchar(25)` |  |
+| `description` | `varchar(200)` |  |
+| `geological` | `varchar(254)` |  |
+| `designat` | `varchar(50)` |  |
+| `report` | `varchar(200)` |  |
+| `x_ig` | `integer` |  |
+| `y_ig` | `integer` |  |
+| `x_itm` | `double precision` |  |
+| `y_itm` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

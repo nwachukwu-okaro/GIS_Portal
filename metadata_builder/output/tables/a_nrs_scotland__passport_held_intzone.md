@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `passport_held_intzone`
 - **Geometry:** Non-spatial
@@ -37,15 +37,15 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_people` | `double precision` | Count or numeric value for all people in the represented area. |
-| `europe_total` | `double precision` | Count or numeric value for europe total in the represented area. |
-| `europe_united_kingdom` | `double precision` | Count or numeric value for europe united kingdom in the represented area. |
-| `europe_ireland` | `double precision` | Count or numeric value for europe ireland in the represented area. |
-| `europe_eu_member_countries` | `double precision` | Count or numeric value for europe eu member countries in the represented area. |
-| `europe_rest_of_europe` | `double precision` | Count or numeric value for europe rest of europe in the represented area. |
-| `africa` | `double precision` | Count or numeric value for africa in the represented area. |
-| `middle_east_and_asia` | `double precision` | Count or numeric value for middle east and asia in the represented area. |
-| `antarctica_and_oceania` | `double precision` | Count or numeric value for antarctica and oceania in the represented area. |
-| `no_passport` | `double precision` | Count or numeric value for number passport in the represented area. |
-| `the_americas_and_the_caribbean` | `double precision` | Count or numeric value for the americas and the caribbean in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_people` | `double precision` | Recorded census measure for the category "all people" in the represented area. Units and population base require the source table. |
+| `europe_total` | `double precision` |  |
+| `europe_united_kingdom` | `double precision` |  |
+| `europe_ireland` | `double precision` |  |
+| `europe_eu_member_countries` | `double precision` |  |
+| `europe_rest_of_europe` | `double precision` |  |
+| `africa` | `double precision` |  |
+| `middle_east_and_asia` | `double precision` |  |
+| `antarctica_and_oceania` | `double precision` |  |
+| `no_passport` | `double precision` |  |
+| `the_americas_and_the_caribbean` | `double precision` |  |

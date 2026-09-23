@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_verisk_sample`
 - **Table:** `uk_land_2024`
 - **Geometry:** MULTIPOLYGON
@@ -39,9 +39,9 @@ Published by Verisk as commercial sample data. Confirm licence and permitted use
 | Column | Type | Description |
 |---|---|---|
 | `landuse_code` | `double precision` | Code assigned by the source dataset. |
-| `landuse_text` | `text` | Publisher-supplied landuse text for the represented feature or record. |
-| `high_level_landuse` | `text` | Publisher-supplied high level landuse for the represented feature or record. |
-| `luid` | `text` | Publisher-assigned luid for the record. |
-| `date_created` | `date` | Publisher-supplied date created for the represented feature or record. |
+| `landuse_text` | `text` |  |
+| `high_level_landuse` | `text` |  |
+| `luid` | `text` |  |
+| `date_created` | `date` | Creation date or time recorded for this record. |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

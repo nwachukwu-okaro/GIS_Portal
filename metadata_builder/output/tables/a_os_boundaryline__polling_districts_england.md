@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_boundaryline`
 - **Table:** `polling_districts_england`
 - **Geometry:** MULTIPOLYGON
@@ -43,9 +43,9 @@ Published by Ordnance Survey as part of Boundary-Line. Loaded into Systra PostGI
 | Column | Type | Description |
 |---|---|---|
 | `PD_ID` | `varchar(10)` | Identifier assigned by the source dataset. |
-| `County` | `varchar(100)` | Publisher-supplied county for the represented feature or record. |
-| `Distric_Bo` | `varchar(100)` | Publisher-supplied distric bo for the represented feature or record. |
-| `Ward` | `varchar(100)` | Publisher-supplied ward for the represented feature or record. |
-| `Parish` | `varchar(100)` | Publisher-supplied parish for the represented feature or record. |
+| `County` | `varchar(100)` |  |
+| `Distric_Bo` | `varchar(100)` |  |
+| `Ward` | `varchar(100)` |  |
+| `Parish` | `varchar(100)` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

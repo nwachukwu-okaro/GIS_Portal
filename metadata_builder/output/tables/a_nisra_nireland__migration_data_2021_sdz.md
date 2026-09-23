@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `migration_data_2021_sdz`
 - **Geometry:** Non-spatial
@@ -37,13 +37,13 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `address_one_year_ago_different_address_outside_northern_ireland` | `bigint` | Publisher-supplied address one year ago different address outside northern ireland for the represented feature or record. |
-| `address_one_year_ago_different_address_within_northern_ireland` | `text` | Publisher-supplied address one year ago different address within northern ireland for the represented feature or record. |
-| `address_one_year_ago_lived_at_same_address` | `text` | Publisher-supplied address one year ago lived at same address for the represented feature or record. |
-| `year_of_arrival_to_live_in_ni_arrived_2001_2010` | `bigint` | Publisher-supplied year of arrival to live in ni arrived 2001 2010 for the represented feature or record. |
-| `year_of_arrival_to_live_in_ni_arrived_2011_2021` | `text` | Publisher-supplied year of arrival to live in ni arrived 2011 2021 for the represented feature or record. |
-| `year_of_arrival_to_live_in_ni_arrived_before_2001` | `bigint` | Publisher-supplied year of arrival to live in ni arrived before 2001 for the represented feature or record. |
-| `year_of_arrival_to_live_in_ni_born_in_northern_ireland` | `text` | Publisher-supplied year of arrival to live in ni born in northern ireland for the represented feature or record. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `address_one_year_ago_different_address_outside_northern_ireland` | `bigint` |  |
+| `address_one_year_ago_different_address_within_northern_ireland` | `text` | Recorded census measure for the category "address one year ago different address within northern ireland" in the represented area. Units and population base require the source table. |
+| `address_one_year_ago_lived_at_same_address` | `text` | Recorded census measure for the category "address one year ago lived at same address" in the represented area. Units and population base require the source table. |
+| `year_of_arrival_to_live_in_ni_arrived_2001_2010` | `bigint` |  |
+| `year_of_arrival_to_live_in_ni_arrived_2011_2021` | `text` |  |
+| `year_of_arrival_to_live_in_ni_arrived_before_2001` | `bigint` |  |
+| `year_of_arrival_to_live_in_ni_born_in_northern_ireland` | `text` |  |

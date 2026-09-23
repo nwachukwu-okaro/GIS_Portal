@@ -1,0 +1,170 @@
+{
+  "gemini": {
+    "title": "Floodmap Extents Coastal Midrange 0200",
+    "abstract": "Floodmap Extents Coastal Midrange 0200 is an authoritative dataset published by Government of Ireland. It represents floodmap extents coastal midrange 0200 features using multipolygon geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "floodmap",
+      "extents",
+      "coastal",
+      "midrange",
+      "0200",
+      "irl",
+      "datagov",
+      "open",
+      "government",
+      "ireland",
+      "proj",
+      "name",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Government of Ireland as part of the national open data portal (data.gov.ie). Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Government of Ireland",
+    "resource_locator": "https://data.gov.ie/",
+    "unique_identifier": "a_irl_datagov_open_data/floodmap_extents_coastal_midrange_0200",
+    "schema": "a_irl_datagov_open_data",
+    "table": "floodmap_extents_coastal_midrange_0200",
+    "bounding_box": {
+      "xmin": -10.37677872156912,
+      "ymin": 51.60070341379149,
+      "xmax": -6.021116827226219,
+      "ymax": 55.33167579433567
+    },
+    "spatial_reference_system": "EPSG:29903",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update",
+      "spatial_resolution_or_equivalent_scale"
+    ]
+  },
+  "columns": [
+    {
+      "name": "uuid",
+      "type": "varchar(36)",
+      "description": null
+    },
+    {
+      "name": "b",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "sch",
+      "type": "varchar(6)",
+      "description": null
+    },
+    {
+      "name": "ttt",
+      "type": "varchar(3)",
+      "description": null
+    },
+    {
+      "name": "s",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "c",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "r",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "pppp",
+      "type": "varchar(4)",
+      "description": null
+    },
+    {
+      "name": "m",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "stg",
+      "type": "varchar(2)",
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "varchar(1)",
+      "description": null
+    },
+    {
+      "name": "rn",
+      "type": "varchar(2)",
+      "description": null
+    },
+    {
+      "name": "mc",
+      "type": "varchar(6)",
+      "description": null
+    },
+    {
+      "name": "comments",
+      "type": "varchar(255)",
+      "description": null
+    },
+    {
+      "name": "dm_uuid",
+      "type": "varchar(36)",
+      "description": null
+    },
+    {
+      "name": "proj_name",
+      "type": "varchar(120)",
+      "description": "Name associated with the represented feature."
+    },
+    {
+      "name": "proj_type",
+      "type": "varchar(120)",
+      "description": null
+    },
+    {
+      "name": "uploaded",
+      "type": "date",
+      "description": null
+    },
+    {
+      "name": "version",
+      "type": "varchar(20)",
+      "description": null
+    },
+    {
+      "name": "cm0200_pk",
+      "type": "integer",
+      "description": "Primary-key identifier for records in floodmap_extents_coastal_midrange_0200."
+    },
+    {
+      "name": "geom",
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
+    }
+  ]
+}

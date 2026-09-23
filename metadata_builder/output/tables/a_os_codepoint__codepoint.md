@@ -15,7 +15,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_codepoint`
 - **Table:** `codepoint`
 - **Geometry:** GEOMETRY
@@ -42,8 +42,8 @@ Published by Ordnance Survey as part of Code-Point Open. Loaded into Systra Post
 
 | Column | Type | Description |
 |---|---|---|
-| `postcode` | `text` | Publisher-assigned postcode for the record. |
-| `positional_quality_indicator` | `integer` | Count or numeric value for positional quality indicator in the represented area. |
+| `postcode` | `text` |  |
+| `positional_quality_indicator` | `integer` |  |
 | `country_code` | `text` | Code assigned by the source dataset. |
 | `nhs_regional_ha_code` | `text` | Code assigned by the source dataset. |
 | `nhs_ha_code` | `text` | Code assigned by the source dataset. |

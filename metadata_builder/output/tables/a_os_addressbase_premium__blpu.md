@@ -39,25 +39,25 @@ Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra 
 
 | Column | Type | Description |
 |---|---|---|
-| `change_type` | `text` | Publisher-supplied change type for the represented feature or record. |
-| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. |
-| `logical_status` | `bigint` | Count or numeric value for logical status in the represented area. |
-| `blpu_state` | `bigint` | Count or numeric value for blpu state in the represented area. |
+| `change_type` | `text` |  |
+| `uprn` | `bigint` | Unique Property Reference Number identifying the addressable location. |
+| `logical_status` | `bigint` | Code indicating the lifecycle status of the address record. |
+| `blpu_state` | `bigint` |  |
 | `blpu_state_date` | `text` | Date associated with the represented feature or source record. |
-| `parent_uprn` | `bigint` | Count or numeric value for parent uprn in the represented area. |
-| `x_coordinate` | `double precision` | Count or numeric value for x coordinate in the represented area. |
-| `y_coordinate` | `double precision` | Count or numeric value for y coordinate in the represented area. |
+| `parent_uprn` | `bigint` | Unique Property Reference Number of the parent addressable location. |
+| `x_coordinate` | `double precision` | X coordinate recorded for the address; coordinate units require the product documentation. |
+| `y_coordinate` | `double precision` | Y coordinate recorded for the address; coordinate units require the product documentation. |
 | `latitude` | `double precision` | Latitude coordinate, normally expressed in decimal degrees. |
 | `longitude` | `double precision` | Longitude coordinate, normally expressed in decimal degrees. |
 | `rpc` | `bigint` |  |
 | `local_custodian_code` | `bigint` | Code assigned by the source dataset. |
-| `country` | `text` | Publisher-supplied country for the represented feature or record. |
+| `country` | `text` |  |
 | `start_date` | `text` | Date associated with the represented feature or source record. |
 | `end_date` | `text` | Date associated with the represented feature or source record. |
 | `last_update_date` | `text` | Date associated with the represented feature or source record. |
 | `entry_date` | `text` | Date associated with the represented feature or source record. |
-| `addressbase_postal` | `text` | Publisher-supplied addressbase postal for the represented feature or record. |
-| `postcode_locator` | `text` | Publisher-supplied postcode locator for the represented feature or record. |
-| `multi_occ_count` | `bigint` | Count or numeric value for multi occ count in the represented area. |
+| `addressbase_postal` | `text` |  |
+| `postcode_locator` | `text` | Postcode recorded as a location reference for the address. |
+| `multi_occ_count` | `bigint` |  |
 | `fid` | `bigint` | Feature identifier assigned by the source or import process. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `income_data_net_income_after_housing_cost`
 - **Geometry:** Non-spatial
@@ -46,7 +46,7 @@ Published by the Office for National Statistics as part of their digital boundar
 | `local_authority_name` | `text` | Name associated with the represented feature. |
 | `region_code` | `text` | Code assigned by the source dataset. |
 | `region_name` | `text` | Name associated with the represented feature. |
-| `disposable_net_annual_income_after_housing_costs` | `text` | Publisher-supplied disposable net annual income after housing costs for the represented feature or record. |
-| `upper_confidence_limit` | `text` | Publisher-supplied upper confidence limit for the represented feature or record. |
-| `lower_confidence_limit` | `text` | Publisher-supplied lower confidence limit for the represented feature or record. |
-| `confidence_interval` | `text` | Publisher-supplied confidence interval for the represented feature or record. |
+| `disposable_net_annual_income_after_housing_costs` | `text` |  |
+| `upper_confidence_limit` | `text` |  |
+| `lower_confidence_limit` | `text` |  |
+| `confidence_interval` | `text` |  |

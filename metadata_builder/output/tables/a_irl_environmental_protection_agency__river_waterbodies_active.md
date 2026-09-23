@@ -69,8 +69,8 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 | `modified` | `varchar` |  |
 | `artificial` | `varchar` |  |
 | `system` | `varchar` |  |
-| `category` | `varchar` | Publisher-supplied category for the represented feature or record. |
-| `type` | `varchar` | Publisher-supplied type for the represented feature or record. |
+| `category` | `varchar` |  |
+| `type` | `varchar` |  |
 | `alt_cat` | `varchar` |  |
 | `size_cat` | `varchar` |  |
 | `dist_cd` | `varchar` |  |
@@ -82,5 +82,5 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 | `stn_definin` | `varchar` |  |
 | `donor_water` | `varchar` |  |
 | `defining_ch` | `varchar` |  |
-| `rwba_pk` | `integer` |  |
+| `rwba_pk` | `integer` | Primary-key identifier for records in river_waterbodies_active. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

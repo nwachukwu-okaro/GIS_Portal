@@ -45,10 +45,10 @@ Published by Geological Survey Ireland as open geological data. Loaded into Syst
 | `karst_name` | `varchar` | Name associated with the represented feature. |
 | `within_kf` | `varchar` |  |
 | `xyaccuracy` | `varchar` |  |
-| `datasource` | `varchar` | Publisher-supplied datasource for the represented feature or record. |
-| `comments` | `varchar` | Publisher-supplied comments for the represented feature or record. |
+| `datasource` | `varchar` |  |
+| `comments` | `varchar` |  |
 | `details` | `varchar` |  |
-| `county` | `varchar` | Publisher-supplied county for the represented feature or record. |
-| `x_itm` | `double precision` | Count or numeric value for x itm in the represented area. |
-| `y_itm` | `double precision` | Count or numeric value for y itm in the represented area. |
+| `county` | `varchar` |  |
+| `x_itm` | `double precision` |  |
+| `y_itm` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

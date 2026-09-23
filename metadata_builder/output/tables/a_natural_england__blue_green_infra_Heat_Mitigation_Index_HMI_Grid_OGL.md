@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_natural_england`
 - **Table:** `blue_green_infra_Heat_Mitigation_Index_HMI_Grid_OGL`
 - **Geometry:** MULTIPOLYGON
@@ -42,9 +42,9 @@ Published by Natural England as open environmental and conservation data. Loaded
 | Column | Type | Description |
 |---|---|---|
 | `objectid` | `integer` | Source-system row identifier; useful internally but not guaranteed to remain stable between data releases. |
-| `urban` | `smallint` | Count or numeric value for urban in the represented area. |
-| `orig_area` | `double precision` | Numeric orig area value recorded for the feature. |
-| `mandmadearea` | `double precision` | Numeric mandmadearea value recorded for the feature. |
-| `percmanmade` | `double precision` | Count or numeric value for percmanmade in the represented area. |
-| `heatmiti` | `double precision` | Count or numeric value for heatmiti in the represented area. |
+| `urban` | `smallint` |  |
+| `orig_area` | `double precision` |  |
+| `mandmadearea` | `double precision` |  |
+| `percmanmade` | `double precision` |  |
+| `heatmiti` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nisra_nireland`
 - **Table:** `household_structure_data_2021_ni`
 - **Geometry:** Non-spatial
@@ -37,17 +37,17 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `bigint` | Count or numeric value for year in the represented area. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `household_composition_one_person_household` | `text` | Publisher-supplied household composition one person household for the represented feature or record. |
-| `household_composition_other_household_types_note_3` | `text` | Publisher-supplied household composition other household types note 3 for the represented feature or record. |
-| `household_composition_single_family_all_pension_age_and_over_no` | `text` | Publisher-supplied household composition single family all pension age and over number for the represented feature or record. |
-| `household_composition_single_family_cohabiting_couple_family` | `text` | Publisher-supplied household composition single family cohabiting couple family for the represented feature or record. |
-| `household_composition_single_family_lone_parent_family` | `text` | Publisher-supplied household composition single family lone parent family for the represented feature or record. |
-| `household_composition_single_family_married_or_civil_partnershi` | `text` | Publisher-supplied household composition single family married or civil partnershi for the represented feature or record. |
-| `number_of_dependent_children_no_dependent_children_note_1` | `text` | Count or numeric value for number of dependent children number dependent children note 1 in the represented area. |
-| `number_of_dependent_children_one` | `text` | Count or numeric value for number of dependent children one in the represented area. |
-| `number_of_dependent_children_three_or_more` | `text` | Count or numeric value for number of dependent children three or more in the represented area. |
-| `number_of_dependent_children_two` | `text` | Count or numeric value for number of dependent children two in the represented area. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `bigint` | Reference year recorded for the statistical observation. |
+| `population` | `text` |  |
+| `household_composition_one_person_household` | `text` |  |
+| `household_composition_other_household_types_note_3` | `text` |  |
+| `household_composition_single_family_all_pension_age_and_over_no` | `text` |  |
+| `household_composition_single_family_cohabiting_couple_family` | `text` |  |
+| `household_composition_single_family_lone_parent_family` | `text` |  |
+| `household_composition_single_family_married_or_civil_partnershi` | `text` |  |
+| `number_of_dependent_children_no_dependent_children_note_1` | `text` |  |
+| `number_of_dependent_children_one` | `text` |  |
+| `number_of_dependent_children_three_or_more` | `text` |  |
+| `number_of_dependent_children_two` | `text` |  |

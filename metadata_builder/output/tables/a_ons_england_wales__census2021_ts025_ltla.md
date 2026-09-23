@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts025_ltla`
 - **Geometry:** Non-spatial
@@ -40,11 +40,11 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. |
-| `all_adults_in_household_have_english_in_england_or_english_or_w` | `bigint` | Count or numeric value for all adults in household have english in england or english or w in the represented area. |
-| `at_least_one_but_not_all_adults_in_household_have_english_in_en` | `bigint` | Count or numeric value for at least one but not all adults in household have english in en in the represented area. |
-| `no_adults_in_household_but_at_least_one_person_aged_3_to_15_yea` | `bigint` | Count or numeric value for number adults in household but at least one person aged 3 to 15 yea in the represented area. |
-| `no_people_in_household_have_english_in_england_or_english_or_we` | `bigint` | Count or numeric value for number people in household have english in england or english or we in the represented area. |
+| `total_all_households` | `bigint` | Census total for all households in the represented geographical area; measurement unit requires the table documentation. |
+| `all_adults_in_household_have_english_in_england_or_english_or_w` | `bigint` |  |
+| `at_least_one_but_not_all_adults_in_household_have_english_in_en` | `bigint` |  |
+| `no_adults_in_household_but_at_least_one_person_aged_3_to_15_yea` | `bigint` |  |
+| `no_people_in_household_have_english_in_england_or_english_or_we` | `bigint` |  |

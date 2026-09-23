@@ -1,0 +1,208 @@
+{
+  "gemini": {
+    "title": "Gross Disposable Household Income Per Head",
+    "abstract": "Gross Disposable Household Income Per Head is an authoritative dataset published by Office for National Statistics. It contains records relating to gross disposable household income per head.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "gross",
+      "disposable",
+      "household",
+      "income",
+      "per",
+      "head",
+      "ons",
+      "england",
+      "wales",
+      "office",
+      "national",
+      "statistics",
+      "census",
+      "boundaries",
+      "id"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by the Office for National Statistics as part of their digital boundary products. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Office for National Statistics",
+    "resource_locator": "https://www.ons.gov.uk/methodology/geography/geographicalproducts/digitalboundaries",
+    "unique_identifier": "a_ons_england_wales/gross_disposable_household_income_per_head",
+    "schema": "a_ons_england_wales",
+    "table": "gross_disposable_household_income_per_head",
+    "bounding_box": null,
+    "spatial_reference_system": null,
+    "limitations_on_public_access": null,
+    "use_constraints": "Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
+    },
+    "frequency_of_update": null,
+    "gemini_tier": 1,
+    "missing_mandatory_fields": [
+      "temporal_extent",
+      "dataset_reference_date",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "description": "Primary-key identifier for records in gross_disposable_household_income_per_head."
+    },
+    {
+      "name": "area code",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "area name",
+      "type": "varchar",
+      "description": null
+    },
+    {
+      "name": "1997-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "1998-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "1999-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2000-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2001-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2002-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2003-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2004-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2005-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2006-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2007-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2008-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2009-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2010-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2011-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2012-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2013-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2014-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2015-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2016-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2017-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2018-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2019-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2020-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2021-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2022-01-01/p1y (£)",
+      "type": "integer",
+      "description": null
+    },
+    {
+      "name": "2023-01-01/p1y (£)",
+      "type": "varchar",
+      "description": null
+    }
+  ]
+}

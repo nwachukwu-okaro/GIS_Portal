@@ -39,5 +39,5 @@ Published by the National Built Heritage Service as open heritage data. Loaded i
 | Column | Type | Description |
 |---|---|---|
 | `zone_id` | `varchar` | Identifier assigned by the source dataset. |
-| `smrz_pk` | `integer` | Count or numeric value for smrz pk in the represented area. |
+| `smrz_pk` | `integer` | Primary-key identifier for records in smr_zone. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

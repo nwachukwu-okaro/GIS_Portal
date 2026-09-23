@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_department_of_housing_lg_heritage`
 - **Table:** `an_bord_pleanala_cases_2016_onwards`
 - **Geometry:** MULTIPOLYGON
@@ -39,15 +39,15 @@ Published by the Department of Housing, Local Government and Heritage as open da
 
 | Column | Type | Description |
 |---|---|---|
-| `pc_pk` | `integer` | Count or numeric value for pc pk in the represented area. |
-| `abpcaseid` | `varchar(6)` | Publisher-assigned abpcaseid for the record. |
-| `devdesc` | `varchar(254)` | Publisher-supplied devdesc for the represented feature or record. |
-| `devaddress` | `varchar(250)` | Publisher-supplied devaddress for the represented feature or record. |
-| `lodgedon` | `timestamp` | Publisher-supplied lodgedon for the represented feature or record. |
-| `decision` | `varchar(140)` | Publisher-supplied decision for the represented feature or record. |
-| `decided_on` | `timestamp` | Publisher-supplied decided on for the represented feature or record. |
-| `linkabpweb` | `varchar(41)` | Publisher-supplied linkabpweb for the represented feature or record. |
-| `planingaty` | `varchar(39)` | Publisher-supplied planingaty for the represented feature or record. |
-| `category` | `varchar(28)` | Publisher-supplied category for the represented feature or record. |
-| `updated_on` | `timestamp` | Publisher-supplied updated on for the represented feature or record. |
+| `pc_pk` | `integer` |  |
+| `abpcaseid` | `varchar(6)` |  |
+| `devdesc` | `varchar(254)` |  |
+| `devaddress` | `varchar(250)` |  |
+| `lodgedon` | `timestamp` |  |
+| `decision` | `varchar(140)` |  |
+| `decided_on` | `timestamp` |  |
+| `linkabpweb` | `varchar(41)` |  |
+| `planingaty` | `varchar(39)` |  |
+| `category` | `varchar(28)` |  |
+| `updated_on` | `timestamp` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

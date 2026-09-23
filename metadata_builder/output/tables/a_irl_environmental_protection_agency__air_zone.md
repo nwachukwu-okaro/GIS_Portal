@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_environmental_protection_agency`
 - **Table:** `air_zone`
 - **Geometry:** MULTIPOLYGON
@@ -38,9 +38,9 @@ Published by the Environmental Protection Agency Ireland as open environmental d
 
 | Column | Type | Description |
 |---|---|---|
-| `az_pk` | `integer` | Count or numeric value for az pk in the represented area. |
-| `air_zone` | `varchar(35)` | Publisher-supplied air zone for the represented feature or record. |
+| `az_pk` | `integer` | Primary-key identifier for records in air_zone. |
+| `air_zone` | `varchar(35)` |  |
 | `name` | `varchar(30)` | Official or publisher-assigned name of the represented feature. |
-| `location` | `varchar(50)` | Publisher-supplied location for the represented feature or record. |
+| `location` | `varchar(50)` |  |
 | `global_id` | `varchar(38)` | Identifier assigned by the source dataset. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

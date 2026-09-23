@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_galway_cc`
 - **Table:** `tuam_local_area_plan_strategic_flood_risk_assessment_2023_2029`
 - **Geometry:** MULTIPOLYGON
@@ -39,8 +39,8 @@ Published by Galway County Council as open local government data. Loaded into Sy
 | Column | Type | Description |
 |---|---|---|
 | `object_id` | `integer` | Identifier assigned by the source dataset. |
-| `flood_zone` | `varchar` | Publisher-supplied flood zone for the represented feature or record. |
-| `description` | `varchar` | Publisher-supplied description for the represented feature or record. |
-| `town` | `varchar` | Publisher-supplied town for the represented feature or record. |
+| `flood_zone` | `varchar` |  |
+| `description` | `varchar` |  |
+| `town` | `varchar` |  |
 | `plan_name` | `varchar` | Name associated with the represented feature. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

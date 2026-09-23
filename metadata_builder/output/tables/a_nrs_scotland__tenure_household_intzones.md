@@ -10,7 +10,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update
 - **Schema:** `a_nrs_scotland`
 - **Table:** `tenure_household_intzones`
 - **Geometry:** Non-spatial
@@ -37,9 +37,9 @@ Published by National Records of Scotland as open statistics and boundary data. 
 
 | Column | Type | Description |
 |---|---|---|
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `all_occupied_households` | `double precision` | Count or numeric value for all occupied households in the represented area. |
-| `occupancy_rating_of_bedrooms_2_or_more` | `double precision` | Count or numeric value for occupancy rating of bedrooms 2 or more in the represented area. |
-| `occupancy_rating_of_bedrooms_1` | `double precision` | Count or numeric value for occupancy rating of bedrooms 1 in the represented area. |
-| `occupancy_rating_of_bedrooms_0` | `double precision` | Count or numeric value for occupancy rating of bedrooms 0 in the represented area. |
-| `occupancy_rating_of_bedrooms_1_or_less` | `double precision` | Count or numeric value for occupancy rating of bedrooms 1 or less in the represented area. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `all_occupied_households` | `double precision` | Recorded census measure for the category "all occupied households" in the represented area. Units and population base require the source table. |
+| `occupancy_rating_of_bedrooms_2_or_more` | `double precision` |  |
+| `occupancy_rating_of_bedrooms_1` | `double precision` |  |
+| `occupancy_rating_of_bedrooms_0` | `double precision` |  |
+| `occupancy_rating_of_bedrooms_1_or_less` | `double precision` |  |

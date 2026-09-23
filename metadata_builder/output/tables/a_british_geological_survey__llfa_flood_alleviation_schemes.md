@@ -14,7 +14,7 @@
 - **Use constraints:** Open Government Licence — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
 - **Schema:** `a_british_geological_survey`
 - **Table:** `llfa_flood_alleviation_schemes`
 - **Geometry:** POINT
@@ -41,6 +41,6 @@ Published by British Geological Survey as part of BGS geological data. Loaded in
 
 | Column | Type | Description |
 |---|---|---|
-| `id` | `integer` |  |
+| `id` | `integer` | Primary-key identifier for records in llfa_flood_alleviation_schemes. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |
 | `new_field_name` | `text` | Name associated with the represented feature. |

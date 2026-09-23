@@ -1,238 +1,86 @@
 {
-  "metadata_version": 1,
-  "identifier": "a_irl_mayo_cc/scenic_views",
-  "schema": "a_irl_mayo_cc",
-  "table": "scenic_views",
-  "title": "Scenic Views",
-  "description": "Scenic Views is an authoritative dataset published by Mayo County Council. It represents scenic views features using multipoint geometry.",
-  "feature_concept": "scenic_views",
-  "synonyms": [],
-  "publisher": {
-    "organisation": "Mayo County Council",
-    "product": null,
-    "source_url": "https://data.gov.ie/organization/mayo-county-council",
-    "documentation_url": null,
-    "licence_name": null,
-    "licence_url": null,
-    "attribution": null,
-    "verification_status": "needs_review",
-    "licence_scope": null
-  },
-  "themes": [
-    "local government",
-    "open data"
-  ],
-  "geographic_coverage": "County Mayo",
-  "geometry": {
-    "column": "geom",
-    "type": "MULTIPOINT",
-    "srid": 3857,
-    "crs": "EPSG:3857",
-    "bbox_wgs84": {
+  "gemini": {
+    "title": "Scenic Views",
+    "abstract": "Scenic Views is an authoritative dataset published by Mayo County Council. It represents scenic views features using multipoint geometry.",
+    "alternative_title": null,
+    "topic_category": "boundaries",
+    "keywords": [
+      "scenic",
+      "views",
+      "irl",
+      "mayo",
+      "cc",
+      "county",
+      "council",
+      "local",
+      "government",
+      "open",
+      "fid",
+      "view",
+      "sv",
+      "pk",
+      "geom"
+    ],
+    "temporal_extent": null,
+    "dataset_reference_date": null,
+    "dataset_reference_date_type": null,
+    "lineage": "Published by Mayo County Council as open local government data. Loaded into Systra PostGIS database without transformation.",
+    "responsible_organisation": "Mayo County Council",
+    "resource_locator": "https://data.gov.ie/organization/mayo-county-council",
+    "unique_identifier": "a_irl_mayo_cc/scenic_views",
+    "schema": "a_irl_mayo_cc",
+    "table": "scenic_views",
+    "bounding_box": {
       "xmin": -10.184021100198432,
       "ymin": 53.564058098709495,
       "xmax": -8.868610686758515,
       "ymax": 54.31311579577304
     },
-    "units": null,
-    "is_geographic": false
-  },
-  "row_count": 178,
-  "primary_key": [
-    "sv_pk"
-  ],
-  "indexes": [
-    {
-      "name": "scenic_views_geom_1786288426330",
-      "definition": "CREATE INDEX scenic_views_geom_1786288426330 ON a_irl_mayo_cc.scenic_views USING gist (geom)"
+    "spatial_reference_system": "EPSG:3857",
+    "limitations_on_public_access": null,
+    "use_constraints": null,
+    "spatial_resolution": null,
+    "equivalent_scale": null,
+    "conformity": "Not evaluated — internal use",
+    "metadata_language": "eng",
+    "dataset_language": "eng",
+    "metadata_point_of_contact": {
+      "organisation": "Systra UK and Ireland",
+      "email": "gis_uk@systra.com",
+      "role": "pointOfContact"
     },
-    {
-      "name": "scenic_views_pkey",
-      "definition": "CREATE UNIQUE INDEX scenic_views_pkey ON a_irl_mayo_cc.scenic_views USING btree (sv_pk)"
-    }
-  ],
+    "frequency_of_update": null,
+    "gemini_tier": null,
+    "missing_mandatory_fields": [
+      "access_constraints",
+      "licence_name",
+      "temporal_extent",
+      "dataset_reference_date",
+      "use_constraints",
+      "column_descriptions",
+      "frequency_of_update"
+    ]
+  },
   "columns": [
     {
       "name": "fid",
-      "data_type": "integer",
-      "description": "Feature identifier assigned by the source or import process.",
-      "semantic_role": "identifier",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Feature identifier assigned by the source or import process."
     },
     {
       "name": "scenic_view",
-      "data_type": "varchar",
-      "description": "Publisher-supplied scenic view for the represented feature or record.",
-      "semantic_role": "source_attribute",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [
-          " "
-        ],
-        "null_fraction": 0.0,
-        "estimated_distinct": 1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "varchar",
+      "description": null
     },
     {
       "name": "sv_pk",
-      "data_type": "integer",
-      "description": "Count or numeric value for sv pk in the represented area.",
-      "semantic_role": "statistical_value",
-      "filterable": true,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "schema_column_dictionary",
-      "confidence": "curated"
+      "type": "integer",
+      "description": "Primary-key identifier for records in scenic_views."
     },
     {
       "name": "geom",
-      "data_type": "geometry",
-      "description": "Spatial geometry of the represented feature.",
-      "semantic_role": "geometry",
-      "filterable": false,
-      "searchable": false,
-      "joinable": false,
-      "identifier_system": null,
-      "entity_type": null,
-      "geography_type": null,
-      "geography_version": null,
-      "unit": null,
-      "related_column": null,
-      "measure_concept": null,
-      "population": null,
-      "statistic_type": null,
-      "reference_period": null,
-      "aggregation_method": null,
-      "value_profile": {
-        "examples": [],
-        "null_fraction": 0.0,
-        "estimated_distinct": -1.0,
-        "statistics_source": "pg_stats"
-      },
-      "provenance": "column_dictionary",
-      "confidence": "curated"
+      "type": "geometry",
+      "description": "Spatial geometry of the represented feature."
     }
-  ],
-  "capabilities": {
-    "filter": true,
-    "select": true,
-    "reproject": true,
-    "validate_geometry": true,
-    "buffer": true,
-    "clip": true,
-    "intersect": true,
-    "spatial_join": true,
-    "export": true
-  },
-  "operation_requirements": {
-    "buffer": {
-      "requires_projected_crs": true,
-      "current_crs_suitable": true
-    },
-    "intersect": {
-      "requires_matching_crs": true
-    },
-    "clip": {
-      "requires_matching_crs": true
-    },
-    "spatial_join": {
-      "requires_matching_crs": true
-    }
-  },
-  "discovery_hints": {
-    "filterable_columns": [
-      "fid",
-      "scenic_view",
-      "sv_pk"
-    ],
-    "searchable_columns": [],
-    "joinable_columns": [],
-    "relationship_policy": "Candidate relationships must be validated against live values and presented to the user for confirmation before execution."
-  },
-  "keywords": [
-    "scenic",
-    "views",
-    "irl",
-    "mayo",
-    "cc",
-    "county",
-    "council",
-    "local",
-    "government",
-    "open",
-    "fid",
-    "geom"
-  ],
-  "provenance": {
-    "technical_metadata": "PostGIS",
-    "publisher_metadata": "metadata_builder/config/sources.yml",
-    "description": "deterministic_template",
-    "description_confidence": "generated"
-  },
-  "quality": {
-    "metadata_status": "source_mapped",
-    "warnings": [
-      "Licence has not yet been verified."
-    ]
-  },
-  "build": {
-    "builder_version": 1,
-    "generated_at": "2026-08-12T13:29:55.975952+00:00",
-    "curated_at": "2026-08-30T20:16:41.174508+00:00"
-  },
-  "column_count": 4
+  ]
 }

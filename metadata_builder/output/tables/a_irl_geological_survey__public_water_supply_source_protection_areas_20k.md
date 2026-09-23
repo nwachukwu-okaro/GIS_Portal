@@ -12,7 +12,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_irl_geological_survey`
 - **Table:** `public_water_supply_source_protection_areas_20k`
 - **Geometry:** MULTIPOLYGON
@@ -39,19 +39,19 @@ Published by Geological Survey Ireland as open geological data. Loaded into Syst
 
 | Column | Type | Description |
 |---|---|---|
-| `pwsspa_pk` | `integer` | Count or numeric value for pwsspa pk in the represented area. |
+| `pwsspa_pk` | `integer` | Primary-key identifier for records in public_water_supply_source_protection_areas_20k. |
 | `spa_id` | `varchar(25)` | Identifier assigned by the source dataset. |
 | `spa_code` | `varchar(10)` | Code assigned by the source dataset. |
 | `spa_name` | `varchar(150)` | Name associated with the represented feature. |
-| `datasource` | `varchar(10)` | Publisher-supplied datasource for the represented feature or record. |
+| `datasource` | `varchar(10)` |  |
 | `dw_code` | `varchar(15)` | Code assigned by the source dataset. |
-| `eu_report` | `varchar(20)` | Publisher-supplied eu report for the represented feature or record. |
-| `county` | `varchar(20)` | Publisher-supplied county for the represented feature or record. |
-| `report_url` | `varchar(254)` | Publisher-supplied report url for the represented feature or record. |
-| `rep_creator` | `varchar(50)` | Publisher-supplied rep creator for the represented feature or record. |
-| `active` | `varchar(20)` | Publisher-supplied active for the represented feature or record. |
-| `gsi_review` | `varchar(10)` | Publisher-supplied gsi review for the represented feature or record. |
-| `publish` | `varchar(10)` | Publisher-supplied publish for the represented feature or record. |
-| `reportdate` | `date` | Date or year recorded for reportdate. |
-| `updatedate` | `date` | Date or year recorded for updatedate. |
+| `eu_report` | `varchar(20)` |  |
+| `county` | `varchar(20)` |  |
+| `report_url` | `varchar(254)` |  |
+| `rep_creator` | `varchar(50)` |  |
+| `active` | `varchar(20)` |  |
+| `gsi_review` | `varchar(10)` |  |
+| `publish` | `varchar(10)` |  |
+| `reportdate` | `date` |  |
+| `updatedate` | `date` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

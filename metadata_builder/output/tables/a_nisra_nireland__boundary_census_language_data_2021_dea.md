@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_nisra_nireland`
 - **Table:** `boundary_census_language_data_2021_dea`
 - **Geometry:** MULTIPOLYGON
@@ -38,14 +38,14 @@ Published by the Northern Ireland Statistics and Research Agency as open statist
 
 | Column | Type | Description |
 |---|---|---|
-| `geocode` | `text` | Publisher-assigned geocode for the record. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
-| `year` | `double precision` | Count or numeric value for year in the represented area. |
-| `population` | `text` | Publisher-supplied population for the represented feature or record. |
-| `knowledge_of_irish_no_ability_in_irish` | `double precision` | Count or numeric value for knowledge of irish number ability in irish in the represented area. |
-| `knowledge_of_irish_some_ability_in_irish` | `double precision` | Count or numeric value for knowledge of irish some ability in irish in the represented area. |
-| `knowledge_of_ulster_scots_no_ability_in_ulster_scots` | `double precision` | Count or numeric value for knowledge of ulster scots number ability in ulster scots in the represented area. |
-| `knowledge_of_ulster_scots_some_ability_in_ulster_scots` | `double precision` | Count or numeric value for knowledge of ulster scots some ability in ulster scots in the represented area. |
-| `main_language_english` | `double precision` | Count or numeric value for main language english in the represented area. |
-| `main_language_other_languages` | `double precision` | Count or numeric value for main language other languages in the represented area. |
+| `geocode` | `text` | Code identifying the geographical area represented by the row. |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
+| `year` | `double precision` | Reference year recorded for the statistical observation. |
+| `population` | `text` |  |
+| `knowledge_of_irish_no_ability_in_irish` | `double precision` |  |
+| `knowledge_of_irish_some_ability_in_irish` | `double precision` |  |
+| `knowledge_of_ulster_scots_no_ability_in_ulster_scots` | `double precision` |  |
+| `knowledge_of_ulster_scots_some_ability_in_ulster_scots` | `double precision` |  |
+| `main_language_english` | `double precision` |  |
+| `main_language_other_languages` | `double precision` |  |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

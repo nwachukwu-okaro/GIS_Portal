@@ -11,7 +11,7 @@
 - **Dataset language:** eng
 - **Metadata language:** eng
 - **Conformity:** Not evaluated — internal use
-- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, frequency_of_update, spatial_resolution_or_equivalent_scale
+- **Missing for full compliance:** access_constraints, licence_name, temporal_extent, dataset_reference_date, use_constraints, column_descriptions, frequency_of_update, spatial_resolution_or_equivalent_scale
 - **Schema:** `a_os_addressbase_premium`
 - **Table:** `classification`
 - **Geometry:** GEOMETRY
@@ -38,15 +38,15 @@ Published by Ordnance Survey as part of AddressBase Premium. Loaded into Systra 
 
 | Column | Type | Description |
 |---|---|---|
-| `change_type` | `text` | Publisher-supplied change type for the represented feature or record. |
-| `uprn` | `bigint` | Count or numeric value for uprn in the represented area. |
-| `class_key` | `text` | Publisher-supplied class key for the represented feature or record. |
+| `change_type` | `text` |  |
+| `uprn` | `bigint` | Unique Property Reference Number identifying the addressable location. |
+| `class_key` | `text` |  |
 | `classification_code` | `text` | Code assigned by the source dataset. |
-| `class_scheme` | `text` | Publisher-supplied class scheme for the represented feature or record. |
-| `scheme_version` | `double precision` | Count or numeric value for scheme version in the represented area. |
+| `class_scheme` | `text` |  |
+| `scheme_version` | `double precision` |  |
 | `start_date` | `text` | Date associated with the represented feature or source record. |
 | `end_date` | `text` | Date associated with the represented feature or source record. |
 | `last_update_date` | `text` | Date associated with the represented feature or source record. |
 | `entry_date` | `text` | Date associated with the represented feature or source record. |
-| `id` | `bigint` | Count or numeric value for identifier in the represented area. |
+| `id` | `bigint` | Primary-key identifier for records in classification. |
 | `geom` | `geometry` | Spatial geometry of the represented feature. |

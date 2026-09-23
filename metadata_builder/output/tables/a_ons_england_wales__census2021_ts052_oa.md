@@ -13,7 +13,7 @@
 - **Use constraints:** Open Government Licence v3.0 — https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 - **Conformity:** Not evaluated — internal use
 - **UK GEMINI2 compliance tier:** 1
-- **Missing for full compliance:** temporal_extent, dataset_reference_date, frequency_of_update
+- **Missing for full compliance:** temporal_extent, dataset_reference_date, column_descriptions, frequency_of_update
 - **Schema:** `a_ons_england_wales`
 - **Table:** `census2021_ts052_oa`
 - **Geometry:** Non-spatial
@@ -40,12 +40,12 @@ Published by the Office for National Statistics as part of their digital boundar
 
 | Column | Type | Description |
 |---|---|---|
-| `date` | `bigint` | Count or numeric value for date in the represented area. |
-| `geography` | `text` | Publisher-supplied geography for the represented feature or record. |
+| `date` | `bigint` |  |
+| `geography` | `text` | Name or descriptive label of the geographical area represented by the row. |
 | `geography_code` | `text` | Code assigned by the source dataset. |
-| `total_all_households` | `bigint` | Count or numeric value for total all households in the represented area. |
-| `occupancy_rating_of_bedrooms_2_or_more` | `bigint` | Count or numeric value for occupancy rating of bedrooms 2 or more in the represented area. |
-| `occupancy_rating_of_bedrooms_1` | `bigint` | Count or numeric value for occupancy rating of bedrooms 1 in the represented area. |
-| `occupancy_rating_of_bedrooms_0` | `bigint` | Count or numeric value for occupancy rating of bedrooms 0 in the represented area. |
-| `occupancy_rating_of_bedrooms_1_1` | `bigint` | Count or numeric value for occupancy rating of bedrooms 1 1 in the represented area. |
-| `occupancy_rating_of_bedrooms_2_or_less` | `bigint` | Count or numeric value for occupancy rating of bedrooms 2 or less in the represented area. |
+| `total_all_households` | `bigint` | Census total for all households in the represented geographical area; measurement unit requires the table documentation. |
+| `occupancy_rating_of_bedrooms_2_or_more` | `bigint` |  |
+| `occupancy_rating_of_bedrooms_1` | `bigint` |  |
+| `occupancy_rating_of_bedrooms_0` | `bigint` |  |
+| `occupancy_rating_of_bedrooms_1_1` | `bigint` |  |
+| `occupancy_rating_of_bedrooms_2_or_less` | `bigint` |  |
