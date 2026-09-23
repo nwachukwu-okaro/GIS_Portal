@@ -1,46 +1,49 @@
+# ============================================================
+# Systra GIS Data Portal — Django portal image
+# ============================================================
 FROM python:3.12-slim
 
-# Set working directory
-WORKDIR /pycsw
+WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    libpq-dev \
-    libgdal-dev \
+# Runtime and build libraries required by Django, PostGIS, Fiona and GeoPandas.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
     gdal-bin \
-    libxml2-dev \
-    libxslt-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libpq-dev \
+    libproj-dev \
+    proj-bin \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python packages
-RUN pip install --no-cache-dir \
-    pycsw \
-    gunicorn \
-    psycopg2-binary \
-    boto3 \
-    rasterio \
-    setuptools==69.5.1 \
-    sqlalchemy==1.4.52
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy project files
-COPY config/pycsw.cfg /pycsw/config/pycsw.cfg
-COPY scripts/ /pycsw/scripts/
-COPY docker/wsgi.py /pycsw/wsgi.py
+# Copy only the application files needed by the portal. In particular, do not
+# copy .env or generated metadata into the image build context.
+COPY manage.py /app/manage.py
+COPY portal /app/portal
+COPY accounts /app/accounts
+COPY catalogue /app/catalogue
+COPY templates /app/templates
+COPY static /app/static
+COPY docker/entrypoint.sh /app/entrypoint.sh
 
-# Make ingestion script executable
-RUN chmod +x /pycsw/scripts/run_ingest.sh
+RUN chmod +x /app/entrypoint.sh
 
-# Expose pycsw port
-EXPOSE 8000
+# Seed the image's static directory for first-time volume creation. The
+# entrypoint repeats this after the named volume is mounted at runtime.
+RUN DJANGO_SECRET_KEY=build-time-collectstatic-only \
+    DJANGO_DEBUG=False \
+    GIS_DB_USER=placeholder \
+    GIS_DB_PASSWORD=placeholder \
+    GIS_DB_HOST=placeholder \
+    GIS_DB_NAME=placeholder \
+    MINIO_ACCESS_KEY=placeholder \
+    MINIO_SECRET_KEY=placeholder \
+    PYCSW_STAC_URL=mock \
+    python manage.py collectstatic --noinput
 
-# Start pycsw with gunicorn using our wsgi entry point
-CMD ["gunicorn", \
-     "--bind", "0.0.0.0:8000", \
-     "--workers", "2", \
-     "--timeout", "60", \
-     "--access-logfile", "-", \
-     "--error-logfile", "-", \
-     "--chdir", "/pycsw", \
-     "wsgi:application"]
-     
+EXPOSE 8001
+
+ENTRYPOINT ["/app/entrypoint.sh"]
