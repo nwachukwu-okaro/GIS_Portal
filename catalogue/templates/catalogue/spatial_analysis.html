@@ -48,7 +48,9 @@
 
     <main class="sa2-main">
       <div class="sa2-map-card">
-        <div id="sa2-map" class="sa2-map" role="application" aria-label="Spatial data map"></div>
+        <div id="sa2-map" class="sa2-map" role="application" aria-label="Spatial data map">
+          <div id="sa2-map-message" class="sa2-map-message" role="status" hidden></div>
+        </div>
       </div>
 
       <section class="sa2-table-card" aria-labelledby="sa2-table-heading">
@@ -94,13 +96,14 @@
     const columnList = document.getElementById('sa2-column-list');
     const tableMeta = document.getElementById('sa2-table-meta');
     const attributeTable = document.getElementById('sa2-attribute-table');
+    const mapMessage = document.getElementById('sa2-map-message');
     let currentColumns = [];
     let dataLayer = null;
 
     const map = L.map('sa2-map').setView([51.5, -0.1], 6);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
     function escapeHtml(value) {
@@ -130,9 +133,9 @@
     }
 
     function renderAttributeTable(features) {
-      const columns = currentColumns.length
-        ? currentColumns.map(column => column.name)
-        : [...new Set(features.flatMap(feature => Object.keys(feature.properties || {})))];
+      const columns = features.length
+        ? Object.keys(features[0].properties || {})
+        : [];
       const thead = attributeTable.querySelector('thead');
       const tbody = attributeTable.querySelector('tbody');
       thead.innerHTML = columns.length
@@ -143,7 +146,7 @@
         tbody.innerHTML = `<tr><td class="sa2-table-empty" colspan="${Math.max(columns.length, 1)}">No rows returned.</td></tr>`;
         return;
       }
-      tbody.innerHTML = features.slice(0, 100).map(feature => {
+      tbody.innerHTML = features.slice(0, 50).map(feature => {
         const properties = feature.properties || {};
         return `<tr>${columns.map(column => `<td>${escapeHtml(formatCell(properties[column]))}</td>`).join('')}</tr>`;
       }).join('');
@@ -219,8 +222,8 @@
           tableSelect.appendChild(option);
         });
         setStatus(tables.length
-          ? `${tables.length} geometry table${tables.length === 1 ? '' : 's'} in ${schema}.`
-          : `No geometry tables are available in ${schema}.`);
+          ? `${tables.length} table${tables.length === 1 ? '' : 's'} in ${schema}.`
+          : `No tables are available in ${schema}.`);
       } catch (error) {
         tableSelect.innerHTML = '<option value="">Tables unavailable</option>';
         tableSelect.disabled = true;
@@ -264,22 +267,35 @@
       setLoading(true);
       setStatus(`Loading ${table}…`);
       try {
-        const data = await fetchJson(`${SA2_API.data}?schema=${encodeURIComponent(schema)}&table=${encodeURIComponent(table)}&limit=500`);
-        if (dataLayer) dataLayer.remove();
-        dataLayer = L.geoJSON(data, {
-          style: layerStyle,
-          pointToLayer: pointStyle,
-          onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
-        }).addTo(map);
+        const data = await fetchJson(`${SA2_API.data}?schema=${encodeURIComponent(schema)}&table=${encodeURIComponent(table)}&limit=50`);
+        if (dataLayer) {
+          dataLayer.remove();
+          dataLayer = null;
+        }
+        mapMessage.hidden = true;
 
-        const bounds = dataLayer.getBounds();
-        if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
+        if (data.has_geometry) {
+          dataLayer = L.geoJSON(data, {
+            style: layerStyle,
+            pointToLayer: pointStyle,
+            onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
+          }).addTo(map);
+
+          const bounds = dataLayer.getBounds();
+          if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
+        } else {
+          mapMessage.textContent = 'This table has no geometry — attribute table shown below';
+          mapMessage.hidden = false;
+        }
+
         renderAttributeTable(data.features || []);
-        const loaded = Math.min((data.features || []).length, 100);
+        const loaded = Math.min((data.features || []).length, 50);
         const total = data.total_count ?? (data.features || []).length;
         rowCount.textContent = Number(total).toLocaleString();
-        tableMeta.textContent = `Showing ${loaded.toLocaleString()} of ${Number(total).toLocaleString()} rows`;
-        setStatus(`${table} loaded on the map.`);
+        tableMeta.textContent = `Showing first ${loaded.toLocaleString()} rows of ${Number(total).toLocaleString()} total`;
+        setStatus(data.has_geometry
+          ? `${table} loaded on the map.`
+          : `${table} loaded; it has no geometry.`);
       } catch (error) {
         setStatus(error.message, true);
       } finally {

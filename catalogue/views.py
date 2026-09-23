@@ -1969,18 +1969,17 @@ def _spatial_table_metadata(cursor, schema, table_name):
         (schema, table_name),
     )
     geometry_row = cursor.fetchone()
-    if not geometry_row:
-        return None
-
-    geometry_column, geometry_type = geometry_row
-    column_names = {column['name'] for column in columns}
-    if geometry_column not in column_names:
-        return None
+    geometry_column = geometry_type = None
+    if geometry_row:
+        geometry_column, geometry_type = geometry_row
+        column_names = {column['name'] for column in columns}
+        if geometry_column not in column_names:
+            geometry_column = geometry_type = None
 
     return {
         'columns': columns,
         'geometry_column': geometry_column,
-        'geometry_type': geometry_type or 'Geometry',
+        'geometry_type': geometry_type,
     }
 
 
@@ -2011,7 +2010,7 @@ def spatial_schemas_api(request):
 
 @login_required
 def spatial_tables_api(request):
-    """Return geometry-bearing tables visible through one validated a_* schema."""
+    """Return all base tables visible through one validated a_* schema."""
     schema = _spatial_schema_parameter(request)
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
@@ -2021,9 +2020,9 @@ def spatial_tables_api(request):
             cursor.execute(
                 """
                 SELECT DISTINCT table_name
-                FROM information_schema.columns
+                FROM information_schema.tables
                 WHERE table_schema = %s
-                  AND udt_name IN ('geometry', 'geography')
+                  AND table_type = 'BASE TABLE'
                 ORDER BY table_name
                 """,
                 (schema,),
@@ -2058,7 +2057,7 @@ def spatial_table_columns_api(request):
 
     if metadata is None:
         return JsonResponse({
-            'error': 'That table does not exist in the selected a_* schema or has no registered geometry.',
+            'error': 'That table does not exist in the selected a_* schema.',
         }, status=404)
 
     geometry_column = metadata['geometry_column']
@@ -2075,7 +2074,7 @@ def spatial_table_columns_api(request):
 
 @login_required
 def spatial_table_data_api(request):
-    """Return up to 500 rows from a validated a_* schema table as GeoJSON."""
+    """Return up to 50 rows from a validated a_* schema table as GeoJSON."""
     schema = _spatial_schema_parameter(request)
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
@@ -2085,17 +2084,17 @@ def spatial_table_data_api(request):
         return error_response
 
     try:
-        limit = int(request.GET.get('limit', '500'))
+        limit = int(request.GET.get('limit', '50'))
     except (TypeError, ValueError):
         return JsonResponse({'error': 'limit must be a whole number.'}, status=400)
-    limit = max(1, min(limit, 500))
+    limit = max(1, min(limit, 50))
 
     try:
         with connections['a_schema_reader'].cursor() as cursor:
             metadata = _spatial_table_metadata(cursor, schema, table_name)
             if metadata is None:
                 return JsonResponse({
-                    'error': 'That table does not exist in the selected a_* schema or has no registered geometry.',
+                    'error': 'That table does not exist in the selected a_* schema.',
                 }, status=404)
 
             geometry_column = metadata['geometry_column']
@@ -2105,7 +2104,8 @@ def spatial_table_data_api(request):
                 if column['name'] != geometry_column
             ]
             select_parts = [
-                sql.SQL('ST_AsGeoJSON({})').format(sql.Identifier(geometry_column)),
+                sql.SQL('ST_AsGeoJSON({})').format(sql.Identifier(geometry_column))
+                if geometry_column else sql.SQL('NULL'),
                 sql.SQL('COUNT(*) OVER ()'),
             ]
             select_parts.extend(sql.Identifier(column) for column in property_columns)
@@ -2148,6 +2148,7 @@ def spatial_table_data_api(request):
         'features': features,
         'table': table_name,
         'geometry_type': metadata['geometry_type'],
+        'has_geometry': metadata['geometry_column'] is not None,
         'total_count': total_count,
     })
 

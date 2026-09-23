@@ -1474,8 +1474,23 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   box-shadow: 0 2px 8px rgba(20, 27, 35, 0.04);
 }
 .sa2-map-card { min-height: 500px; }
-.sa2-map { width: 100%; height: 500px; background: #edf1f3; }
+.sa2-map { position: relative; width: 100%; height: 500px; background: #edf1f3; }
 .sa2-map-card .leaflet-container { font: inherit; }
+.sa2-map-message {
+  position: absolute;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #4f5b68;
+  font-size: 15px;
+  font-weight: 650;
+  text-align: center;
+}
+.sa2-map-message[hidden] { display: none; }
 
 .sa2-table-card { margin-top: 20px; }
 .sa2-table-header {
