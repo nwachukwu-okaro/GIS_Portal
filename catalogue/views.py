@@ -44,6 +44,8 @@ import csv
 import json
 import re
 import tempfile
+from datetime import date, datetime, time
+from decimal import Decimal
 from pathlib import Path
 from urllib.parse import quote_plus
 
@@ -53,6 +55,8 @@ import psycopg2
 import requests
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
+from django.core.exceptions import PermissionDenied
+from django.db import DatabaseError, connections
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse, StreamingHttpResponse
 from django.shortcuts import redirect, render
 from django.utils.text import get_valid_filename
@@ -1881,7 +1885,249 @@ def spatial_upload_success(request):
     return render(request, 'catalogue/upload_spatial_success.html', {'result': result})
 
 
+SPATIAL_EXPLORER_SCHEMA = 'a_schema'
+_SPATIAL_TABLE_RE = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
+
+
+def _validate_spatial_schema(schema):
+    """Enforce the read boundary for every spatial explorer query."""
+    if schema != SPATIAL_EXPLORER_SCHEMA:
+        raise PermissionDenied('The spatial explorer only permits the a_schema schema.')
+
+
+def _spatial_api_unavailable():
+    return JsonResponse({
+        'error': 'The PostGIS spatial explorer is not configured in this environment.',
+    }, status=503)
+
+
+def _spatial_table_parameter(request):
+    table_name = (request.GET.get('table') or '').strip()
+    if not table_name or not _SPATIAL_TABLE_RE.fullmatch(table_name):
+        return None, JsonResponse({
+            'error': 'A valid table name is required.',
+        }, status=400)
+    return table_name, None
+
+
+def _spatial_json_value(value):
+    """Convert common PostgreSQL values into JSON-safe API values."""
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    if isinstance(value, (datetime, date, time)):
+        return value.isoformat()
+    if isinstance(value, Decimal):
+        return float(value)
+    if isinstance(value, bytes):
+        return value.hex()
+    if isinstance(value, (list, tuple)):
+        return [_spatial_json_value(item) for item in value]
+    if isinstance(value, dict):
+        return {str(key): _spatial_json_value(item) for key, item in value.items()}
+    return str(value)
+
+
+def _spatial_table_metadata(cursor, table_name):
+    """Return validated table columns and its registered PostGIS geometry."""
+    cursor.execute(
+        """
+        SELECT c.column_name, c.data_type, c.udt_name, c.ordinal_position
+        FROM information_schema.columns AS c
+        JOIN information_schema.tables AS t
+          ON t.table_schema = c.table_schema
+         AND t.table_name = c.table_name
+        WHERE c.table_schema = %s
+          AND c.table_name = %s
+          AND t.table_type IN ('BASE TABLE', 'VIEW')
+        ORDER BY c.ordinal_position
+        """,
+        (SPATIAL_EXPLORER_SCHEMA, table_name),
+    )
+    columns = [
+        {
+            'name': row[0],
+            'data_type': row[1],
+            'udt_name': row[2],
+            'ordinal_position': row[3],
+        }
+        for row in cursor.fetchall()
+    ]
+    if not columns:
+        return None
+
+    cursor.execute(
+        """
+        SELECT f_geometry_column, type
+        FROM public.geometry_columns
+        WHERE f_table_schema = %s
+          AND f_table_name = %s
+        ORDER BY f_geometry_column
+        """,
+        (SPATIAL_EXPLORER_SCHEMA, table_name),
+    )
+    geometry_rows = cursor.fetchall()
+    if not geometry_rows:
+        return None
+
+    geometry_column, geometry_type = geometry_rows[0]
+    column_names = {column['name'] for column in columns}
+    if geometry_column not in column_names:
+        return None
+
+    return {
+        'columns': columns,
+        'geometry_column': geometry_column,
+        'geometry_type': geometry_type or 'Geometry',
+    }
+
+
+@login_required
+def spatial_tables_api(request):
+    """Return geometry-bearing tables visible through the a_schema reader."""
+    _validate_spatial_schema(SPATIAL_EXPLORER_SCHEMA)
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    try:
+        with connections['a_schema_reader'].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT DISTINCT c.table_name
+                FROM information_schema.columns AS c
+                JOIN public.geometry_columns AS gc
+                  ON gc.f_table_schema = c.table_schema
+                 AND gc.f_table_name = c.table_name
+                 AND gc.f_geometry_column = c.column_name
+                WHERE c.table_schema = %s
+                ORDER BY c.table_name
+                """,
+                (SPATIAL_EXPLORER_SCHEMA,),
+            )
+            tables = [row[0] for row in cursor.fetchall()]
+    except DatabaseError:
+        return JsonResponse({
+            'error': 'The a_schema PostGIS reader could not be reached.',
+        }, status=503)
+
+    return JsonResponse(tables, safe=False)
+
+
+@login_required
+def spatial_table_columns_api(request):
+    """Return non-geometry columns for one validated a_schema table."""
+    _validate_spatial_schema(SPATIAL_EXPLORER_SCHEMA)
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    table_name, error_response = _spatial_table_parameter(request)
+    if error_response:
+        return error_response
+
+    try:
+        with connections['a_schema_reader'].cursor() as cursor:
+            metadata = _spatial_table_metadata(cursor, table_name)
+    except DatabaseError:
+        return JsonResponse({
+            'error': 'The a_schema PostGIS reader could not be reached.',
+        }, status=503)
+
+    if metadata is None:
+        return JsonResponse({
+            'error': 'That table does not exist in a_schema or has no registered geometry.',
+        }, status=404)
+
+    geometry_column = metadata['geometry_column']
+    result = []
+    for column in metadata['columns']:
+        if column['name'] == geometry_column:
+            continue
+        data_type = column['data_type']
+        if data_type == 'USER-DEFINED':
+            data_type = column['udt_name']
+        result.append({'name': column['name'], 'type': data_type})
+    return JsonResponse(result, safe=False)
+
+
+@login_required
+def spatial_table_data_api(request):
+    """Return up to 500 rows from a validated a_schema table as GeoJSON."""
+    _validate_spatial_schema(SPATIAL_EXPLORER_SCHEMA)
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    table_name, error_response = _spatial_table_parameter(request)
+    if error_response:
+        return error_response
+
+    try:
+        limit = int(request.GET.get('limit', '500'))
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'limit must be a whole number.'}, status=400)
+    limit = max(1, min(limit, 500))
+
+    try:
+        with connections['a_schema_reader'].cursor() as cursor:
+            metadata = _spatial_table_metadata(cursor, table_name)
+            if metadata is None:
+                return JsonResponse({
+                    'error': 'That table does not exist in a_schema or has no registered geometry.',
+                }, status=404)
+
+            geometry_column = metadata['geometry_column']
+            property_columns = [
+                column['name']
+                for column in metadata['columns']
+                if column['name'] != geometry_column
+            ]
+            select_parts = [
+                sql.SQL('ST_AsGeoJSON({})').format(sql.Identifier(geometry_column)),
+                sql.SQL('COUNT(*) OVER ()'),
+            ]
+            select_parts.extend(sql.Identifier(column) for column in property_columns)
+            query = sql.SQL(
+                'SELECT {} FROM {}.{} LIMIT %s'
+            ).format(
+                sql.SQL(', ').join(select_parts),
+                sql.Identifier(SPATIAL_EXPLORER_SCHEMA),
+                sql.Identifier(table_name),
+            )
+            cursor.execute(query, (limit,))
+            rows = cursor.fetchall()
+    except DatabaseError:
+        return JsonResponse({
+            'error': 'The a_schema PostGIS reader could not be reached.',
+        }, status=503)
+
+    features = []
+    total_count = 0
+    for row in rows:
+        geometry = None
+        if row[0]:
+            try:
+                geometry = json.loads(row[0])
+            except (TypeError, json.JSONDecodeError):
+                geometry = None
+        total_count = row[1] or total_count
+        properties = {
+            name: _spatial_json_value(value)
+            for name, value in zip(property_columns, row[2:])
+        }
+        features.append({
+            'type': 'Feature',
+            'geometry': geometry,
+            'properties': properties,
+        })
+
+    return JsonResponse({
+        'type': 'FeatureCollection',
+        'features': features,
+        'table': table_name,
+        'geometry_type': metadata['geometry_type'],
+        'total_count': total_count,
+    })
+
+
 @login_required
 def spatial_analysis(request):
-    """Launch external FME Flow tools; analysis executes in FME, not Django."""
+    """Render the Phase 1 schema/table explorer."""
     return render(request, 'catalogue/spatial_analysis.html')

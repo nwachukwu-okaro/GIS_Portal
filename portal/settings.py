@@ -2,6 +2,7 @@
 Django settings for portal project.
 """
 
+import copy
 import os
 from pathlib import Path
 from dotenv import load_dotenv
@@ -87,6 +88,11 @@ if _gis_db_user and _gis_db_user not in ('', 'YOUR_DB_USER'):
             },
         }
     }
+    # Spatial explorer connection. For production, replace USER/PASSWORD
+    # below with a dedicated PostgreSQL role granted SELECT only on a_schema.
+    DATABASES['a_schema_reader'] = copy.deepcopy(DATABASES['default'])
+    DATABASES['a_schema_reader'].setdefault('OPTIONS', {})
+    DATABASES['a_schema_reader']['OPTIONS']['options'] = '-c search_path=a_schema,public'
 else:
     DATABASES = {
         'default': {
@@ -94,6 +100,9 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    # Keeps the alias available for offline development; spatial API views
+    # return a clear 503 while PostGIS credentials are not configured.
+    DATABASES['a_schema_reader'] = copy.deepcopy(DATABASES['default'])
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},

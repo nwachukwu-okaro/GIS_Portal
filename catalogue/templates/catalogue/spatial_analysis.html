@@ -2,114 +2,253 @@
 
 {% block title %}Spatial Analysis | Systra GIS Data Portal{% endblock %}
 
-{% block content %}
-<section class="sa-page" aria-labelledby="sa-title">
-  <div class="sa-header">
-    <div class="sa-heading">
-      <h1 id="sa-title">Spatial Analysis</h1>
-      <p>Run spatial operations against MinIO files and PostGIS datasets in the Systra catalogue</p>
-    </div>
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIINfQ3qv4xkZ4xH5K5l8mM3G0fH0t0a0k=" crossorigin="">
+{% endblock %}
 
-    <div class="sa-toolbar" role="search" aria-label="Filter spatial analysis tools">
-      <label class="visually-hidden" for="sa-search">Search operations</label>
-      <div class="sa-search-wrap">
-        <span class="sa-search-icon" aria-hidden="true">⌕</span>
-        <input id="sa-search" type="search" placeholder="Search operations..." autocomplete="off">
-      </div>
-      <label class="visually-hidden" for="sa-category">Filter by category</label>
-      <select id="sa-category" aria-label="Filter by category">
-        <option value="">Any type</option>
-      </select>
-      <button class="sa-search-button" type="button" id="sa-search-button">Search</button>
-    </div>
+{% block content %}
+<section class="sa2-page" aria-labelledby="sa2-title">
+  <div class="sa2-heading">
+    <h1 id="sa2-title">Spatial Analysis</h1>
+    <p>Explore tables in the authoritative catalogue schema and preview their geometry and attributes.</p>
   </div>
 
-  <div id="sa-grid" class="sa-grid" aria-live="polite"></div>
-  <div id="sa-empty" class="sa-empty" hidden>
-    <h2>No matching operations</h2>
-    <p>Try a different search term or category.</p>
+  <div class="sa2-workspace">
+    <aside class="sa2-sidebar" aria-labelledby="sa2-select-heading">
+      <div class="sa2-step-label" id="sa2-select-heading">1) Select Data</div>
+      <label class="sa2-label" for="sa2-table-select">Select table</label>
+      <select class="sa2-select" id="sa2-table-select">
+        <option value="">Loading tables...</option>
+      </select>
+
+      <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
+
+      <div class="sa2-summary" id="sa2-summary" hidden>
+        <div class="sa2-summary-item">
+          <span>Rows</span>
+          <strong id="sa2-row-count">—</strong>
+        </div>
+        <div class="sa2-summary-columns">
+          <span>Columns</span>
+          <p id="sa2-column-list">—</p>
+        </div>
+      </div>
+
+      <button class="sa2-load-button" id="sa2-load-button" type="button" disabled>
+        <span class="sa2-spinner" id="sa2-spinner" aria-hidden="true" hidden></span>
+        <span id="sa2-load-label">Load on Map</span>
+      </button>
+    </aside>
+
+    <main class="sa2-main">
+      <div class="sa2-map-card">
+        <div id="sa2-map" class="sa2-map" role="application" aria-label="Spatial data map"></div>
+      </div>
+
+      <section class="sa2-table-card" aria-labelledby="sa2-table-heading">
+        <div class="sa2-table-header">
+          <h2 id="sa2-table-heading">Attribute table</h2>
+          <span id="sa2-table-meta">Select a table to begin</span>
+        </div>
+        <div class="sa2-table-scroll">
+          <table class="sa2-table" id="sa2-attribute-table">
+            <thead></thead>
+            <tbody>
+              <tr><td class="sa2-table-empty">No table loaded.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
   </div>
 </section>
+{% endblock %}
 
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-  const OPERATIONS = [
-    { id:"join",      name:"Join",      description:"Attribute or spatial join between two datasets, keyed on a shared field or location.", category:"Vector", icon:"join",      fmeAppUrl:"TODO_FME_URL", badge:"FME FLOW" },
-    { id:"buffer",    name:"Buffer",    description:"Generate a buffer polygon around point, line or polygon features by a set distance.",  category:"Vector", icon:"buffer",    fmeAppUrl:"TODO_FME_URL", badge:"FME FLOW" },
-    { id:"filter",    name:"Filter",    description:"Filter features by attribute value, spatial extent, or a custom expression.",            category:"Vector", icon:"filter",    fmeAppUrl:"TODO_FME_URL", badge:"FME FLOW" },
-    { id:"intersect", name:"Intersect", description:"Compute the geometric intersection between two overlapping layers.",                     category:"Vector", icon:"intersect", fmeAppUrl:"TODO_FME_URL", badge:"FME FLOW" }
-  ];
-
-  const OPERATION_ICONS = {
-    join: '🔗',
-    buffer: '⭕',
-    filter: '🔽',
-    intersect: '⊕'
+  const SA2_API = {
+    tables: "{% url 'catalogue:spatial_tables_api' %}",
+    data: "{% url 'catalogue:spatial_table_data_api' %}",
+    columns: "{% url 'catalogue:spatial_table_columns_api' %}"
   };
+  const SA2_RED = '#C8102E';
 
-  function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, character => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
-    }[character]));
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const tableSelect = document.getElementById('sa2-table-select');
+    const loadButton = document.getElementById('sa2-load-button');
+    const loadLabel = document.getElementById('sa2-load-label');
+    const spinner = document.getElementById('sa2-spinner');
+    const status = document.getElementById('sa2-status');
+    const summary = document.getElementById('sa2-summary');
+    const rowCount = document.getElementById('sa2-row-count');
+    const columnList = document.getElementById('sa2-column-list');
+    const tableMeta = document.getElementById('sa2-table-meta');
+    const attributeTable = document.getElementById('sa2-attribute-table');
+    let currentColumns = [];
+    let dataLayer = null;
 
-  function operationLink(operation) {
-    const label = 'Open tool <span class="sa-arrow" aria-hidden="true">→</span>';
-    if (operation.fmeAppUrl === 'TODO_FME_URL') {
-      return `<span class="sa-open-link is-disabled" aria-disabled="true" title="FME Flow URL to be configured">${label}</span>`;
+    const map = L.map('sa2-map').setView([51.5, -0.1], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      }[character]));
     }
-    return `<a class="sa-open-link" href="${escapeHtml(operation.fmeAppUrl)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-  }
 
-  function renderOperations(operations) {
-    const grid = document.getElementById('sa-grid');
-    const empty = document.getElementById('sa-empty');
-    const query = document.getElementById('sa-search').value.trim().toLowerCase();
-    const category = document.getElementById('sa-category').value;
+    function setStatus(message, isError = false) {
+      status.textContent = message;
+      status.classList.toggle('is-error', isError);
+    }
 
-    const matches = operations.filter(operation => {
-      const searchable = `${operation.name} ${operation.description} ${operation.category}`.toLowerCase();
-      return (!query || searchable.includes(query)) && (!category || operation.category === category);
-    });
+    async function fetchJson(url) {
+      const response = await fetch(url, {headers: {'Accept': 'application/json'}});
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || `Request failed (${response.status})`);
+      }
+      return payload;
+    }
 
-    grid.innerHTML = matches.map(operation => `
-      <article class="sa-card">
-        <div class="sa-card-icon" aria-hidden="true">${OPERATION_ICONS[operation.icon] || '?'}</div>
-        <div class="sa-card-body">
-          <h2 class="sa-card-name">${escapeHtml(operation.name)}</h2>
-          <p class="sa-card-desc">${escapeHtml(operation.description)}</p>
-        </div>
-        <div class="sa-card-footer">
-          ${operationLink(operation)}
-          <span class="sa-badge">${escapeHtml(operation.badge)}</span>
-        </div>
-      </article>
-    `).join('');
+    function formatCell(value) {
+      if (value === null || value === undefined || value === '') return '—';
+      if (typeof value === 'object') return JSON.stringify(value);
+      return String(value);
+    }
 
-    empty.hidden = matches.length > 0;
-  }
+    function renderAttributeTable(features) {
+      const columns = currentColumns.length
+        ? currentColumns.map(column => column.name)
+        : [...new Set(features.flatMap(feature => Object.keys(feature.properties || {})))];
+      const thead = attributeTable.querySelector('thead');
+      const tbody = attributeTable.querySelector('tbody');
+      thead.innerHTML = columns.length
+        ? `<tr>${columns.map(column => `<th scope="col">${escapeHtml(column)}</th>`).join('')}</tr>`
+        : '';
 
-  function initialiseSpatialAnalysis() {
-    const search = document.getElementById('sa-search');
-    const category = document.getElementById('sa-category');
-    const searchButton = document.getElementById('sa-search-button');
+      if (!features.length) {
+        tbody.innerHTML = `<tr><td class="sa2-table-empty" colspan="${Math.max(columns.length, 1)}">No rows returned.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = features.slice(0, 100).map(feature => {
+        const properties = feature.properties || {};
+        return `<tr>${columns.map(column => `<td>${escapeHtml(formatCell(properties[column]))}</td>`).join('')}</tr>`;
+      }).join('');
+    }
 
-    [...new Set(OPERATIONS.map(operation => operation.category))].sort().forEach(value => {
-      const option = document.createElement('option');
-      option.value = value;
-      option.textContent = value;
-      category.appendChild(option);
-    });
+    function popupForFeature(feature) {
+      const properties = feature.properties || {};
+      const rows = Object.entries(properties).map(([key, value]) =>
+        `<tr><th>${escapeHtml(key)}</th><td>${escapeHtml(formatCell(value))}</td></tr>`
+      ).join('');
+      return `<table class="sa2-popup-table">${rows || '<tr><td>No attributes</td></tr>'}</table>`;
+    }
 
-    search.addEventListener('input', () => renderOperations(OPERATIONS));
-    category.addEventListener('change', () => renderOperations(OPERATIONS));
-    searchButton.addEventListener('click', () => renderOperations(OPERATIONS));
-    renderOperations(OPERATIONS);
-  }
+    function layerStyle() {
+      return {color: SA2_RED, weight: 2, opacity: 0.9, fillColor: SA2_RED, fillOpacity: 0.18};
+    }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialiseSpatialAnalysis);
-  } else {
-    initialiseSpatialAnalysis();
-  }
+    function pointStyle(feature, latlng) {
+      return L.circleMarker(latlng, {
+        radius: 6,
+        color: SA2_RED,
+        weight: 2,
+        fillColor: SA2_RED,
+        fillOpacity: 0.75
+      });
+    }
+
+    function setLoading(isLoading) {
+      loadButton.disabled = isLoading || !tableSelect.value;
+      spinner.hidden = !isLoading;
+      loadLabel.textContent = isLoading ? 'Loading…' : 'Load on Map';
+    }
+
+    async function loadTables() {
+      try {
+        const tables = await fetchJson(SA2_API.tables);
+        tableSelect.innerHTML = '<option value="">Select a table</option>';
+        tables.forEach(table => {
+          const option = document.createElement('option');
+          option.value = table;
+          option.textContent = table;
+          tableSelect.appendChild(option);
+        });
+        if (!tables.length) setStatus('No geometry tables are available in a_schema.');
+        else setStatus(`${tables.length} table${tables.length === 1 ? '' : 's'} available.`);
+      } catch (error) {
+        tableSelect.innerHTML = '<option value="">Tables unavailable</option>';
+        setStatus(error.message, true);
+      }
+    }
+
+    async function selectTable() {
+      const table = tableSelect.value;
+      loadButton.disabled = !table;
+      summary.hidden = !table;
+      currentColumns = [];
+      rowCount.textContent = '—';
+      columnList.textContent = 'Loading…';
+      tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
+      if (!table) {
+        columnList.textContent = '—';
+        return;
+      }
+      try {
+        const [columns, countPreview] = await Promise.all([
+          fetchJson(`${SA2_API.columns}?table=${encodeURIComponent(table)}`),
+          fetchJson(`${SA2_API.data}?table=${encodeURIComponent(table)}&limit=1`)
+        ]);
+        currentColumns = columns;
+        columnList.textContent = currentColumns.length
+          ? currentColumns.map(column => column.name).join(', ')
+          : 'No non-geometry columns';
+        rowCount.textContent = Number(countPreview.total_count || 0).toLocaleString();
+        setStatus(`${table} selected.`);
+      } catch (error) {
+        columnList.textContent = 'Unavailable';
+        setStatus(error.message, true);
+      }
+    }
+
+    async function loadSelectedTable() {
+      const table = tableSelect.value;
+      if (!table) return;
+      setLoading(true);
+      setStatus(`Loading ${table}…`);
+      try {
+        const data = await fetchJson(`${SA2_API.data}?table=${encodeURIComponent(table)}&limit=500`);
+        if (dataLayer) dataLayer.remove();
+        dataLayer = L.geoJSON(data, {
+          style: layerStyle,
+          pointToLayer: pointStyle,
+          onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
+        }).addTo(map);
+
+        const bounds = dataLayer.getBounds();
+        if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
+        renderAttributeTable(data.features || []);
+        const loaded = Math.min((data.features || []).length, 100);
+        const total = data.total_count ?? (data.features || []).length;
+        rowCount.textContent = Number(total).toLocaleString();
+        tableMeta.textContent = `Showing ${loaded.toLocaleString()} of ${Number(total).toLocaleString()} rows`;
+        setStatus(`${table} loaded on the map.`);
+      } catch (error) {
+        setStatus(error.message, true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    tableSelect.addEventListener('change', selectTable);
+    loadButton.addEventListener('click', loadSelectedTable);
+    loadTables();
+  });
 </script>
 {% endblock %}
