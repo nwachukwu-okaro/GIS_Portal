@@ -7,6 +7,7 @@ app_name = 'catalogue'
 urlpatterns = [
     path('', views.search, name='search'),
     path('spatial-analysis/', views.spatial_analysis, name='spatial_analysis'),
+    path('spatial-analysis/api/schemas/', views.spatial_schemas_api, name='spatial_schemas_api'),
     path('spatial-analysis/api/tables/', views.spatial_tables_api, name='spatial_tables_api'),
     path('spatial-analysis/api/table-data/', views.spatial_table_data_api, name='spatial_table_data_api'),
     path('spatial-analysis/api/table-columns/', views.spatial_table_columns_api, name='spatial_table_columns_api'),

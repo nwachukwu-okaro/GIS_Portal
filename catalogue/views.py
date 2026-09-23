@@ -1885,14 +1885,20 @@ def spatial_upload_success(request):
     return render(request, 'catalogue/upload_spatial_success.html', {'result': result})
 
 
-SPATIAL_EXPLORER_SCHEMA = 'a_schema'
 _SPATIAL_TABLE_RE = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
+_SPATIAL_SCHEMA_RE = re.compile(r'^a_.+$', re.IGNORECASE)
 
 
 def _validate_spatial_schema(schema):
-    """Enforce the read boundary for every spatial explorer query."""
-    if schema != SPATIAL_EXPLORER_SCHEMA:
-        raise PermissionDenied('The spatial explorer only permits the a_schema schema.')
+    """Enforce the authoritative a_* schema boundary for explorer queries."""
+    if not isinstance(schema, str) or not _SPATIAL_SCHEMA_RE.fullmatch(schema.strip()):
+        raise PermissionDenied('The spatial explorer only permits a_* schemas.')
+
+
+def _spatial_schema_parameter(request):
+    schema = (request.GET.get('schema') or '').strip()
+    _validate_spatial_schema(schema)
+    return schema
 
 
 def _spatial_api_unavailable():
@@ -1927,21 +1933,17 @@ def _spatial_json_value(value):
     return str(value)
 
 
-def _spatial_table_metadata(cursor, table_name):
-    """Return validated table columns and its registered PostGIS geometry."""
+def _spatial_table_metadata(cursor, schema, table_name):
+    """Return validated table columns and its information-schema geometry."""
     cursor.execute(
         """
-        SELECT c.column_name, c.data_type, c.udt_name, c.ordinal_position
-        FROM information_schema.columns AS c
-        JOIN information_schema.tables AS t
-          ON t.table_schema = c.table_schema
-         AND t.table_name = c.table_name
-        WHERE c.table_schema = %s
-          AND c.table_name = %s
-          AND t.table_type IN ('BASE TABLE', 'VIEW')
-        ORDER BY c.ordinal_position
+        SELECT column_name, data_type, udt_name, ordinal_position
+        FROM information_schema.columns
+        WHERE table_schema = %s
+          AND table_name = %s
+        ORDER BY ordinal_position
         """,
-        (SPATIAL_EXPLORER_SCHEMA, table_name),
+        (schema, table_name),
     )
     columns = [
         {
@@ -1957,19 +1959,20 @@ def _spatial_table_metadata(cursor, table_name):
 
     cursor.execute(
         """
-        SELECT f_geometry_column, type
-        FROM public.geometry_columns
-        WHERE f_table_schema = %s
-          AND f_table_name = %s
-        ORDER BY f_geometry_column
+        SELECT column_name, udt_name
+        FROM information_schema.columns
+        WHERE table_schema = %s
+          AND table_name = %s
+          AND udt_name IN ('geometry', 'geography')
+        LIMIT 1
         """,
-        (SPATIAL_EXPLORER_SCHEMA, table_name),
+        (schema, table_name),
     )
-    geometry_rows = cursor.fetchall()
-    if not geometry_rows:
+    geometry_row = cursor.fetchone()
+    if not geometry_row:
         return None
 
-    geometry_column, geometry_type = geometry_rows[0]
+    geometry_column, geometry_type = geometry_row
     column_names = {column['name'] for column in columns}
     if geometry_column not in column_names:
         return None
@@ -1982,9 +1985,8 @@ def _spatial_table_metadata(cursor, table_name):
 
 
 @login_required
-def spatial_tables_api(request):
-    """Return geometry-bearing tables visible through the a_schema reader."""
-    _validate_spatial_schema(SPATIAL_EXPLORER_SCHEMA)
+def spatial_schemas_api(request):
+    """Return schemas containing columns that match the authoritative a_* pattern."""
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
 
@@ -1992,21 +1994,44 @@ def spatial_tables_api(request):
         with connections['a_schema_reader'].cursor() as cursor:
             cursor.execute(
                 """
-                SELECT DISTINCT c.table_name
-                FROM information_schema.columns AS c
-                JOIN public.geometry_columns AS gc
-                  ON gc.f_table_schema = c.table_schema
-                 AND gc.f_table_name = c.table_name
-                 AND gc.f_geometry_column = c.column_name
-                WHERE c.table_schema = %s
-                ORDER BY c.table_name
+                SELECT DISTINCT table_schema
+                FROM information_schema.columns
+                WHERE table_schema ILIKE 'a_%'
+                ORDER BY table_schema
+                """
+            )
+            schemas = [row[0] for row in cursor.fetchall()]
+    except DatabaseError:
+        return JsonResponse({
+            'error': 'The a_schema PostGIS reader could not be reached.',
+        }, status=503)
+
+    return JsonResponse(schemas, safe=False)
+
+
+@login_required
+def spatial_tables_api(request):
+    """Return geometry-bearing tables visible through one validated a_* schema."""
+    schema = _spatial_schema_parameter(request)
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    try:
+        with connections['a_schema_reader'].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT DISTINCT table_name
+                FROM information_schema.columns
+                WHERE table_schema = %s
+                  AND udt_name IN ('geometry', 'geography')
+                ORDER BY table_name
                 """,
-                (SPATIAL_EXPLORER_SCHEMA,),
+                (schema,),
             )
             tables = [row[0] for row in cursor.fetchall()]
     except DatabaseError:
         return JsonResponse({
-            'error': 'The a_schema PostGIS reader could not be reached.',
+            'error': 'The a_* schema PostGIS reader could not be reached.',
         }, status=503)
 
     return JsonResponse(tables, safe=False)
@@ -2014,8 +2039,8 @@ def spatial_tables_api(request):
 
 @login_required
 def spatial_table_columns_api(request):
-    """Return non-geometry columns for one validated a_schema table."""
-    _validate_spatial_schema(SPATIAL_EXPLORER_SCHEMA)
+    """Return non-geometry columns for one validated a_* schema table."""
+    schema = _spatial_schema_parameter(request)
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
 
@@ -2025,7 +2050,7 @@ def spatial_table_columns_api(request):
 
     try:
         with connections['a_schema_reader'].cursor() as cursor:
-            metadata = _spatial_table_metadata(cursor, table_name)
+            metadata = _spatial_table_metadata(cursor, schema, table_name)
     except DatabaseError:
         return JsonResponse({
             'error': 'The a_schema PostGIS reader could not be reached.',
@@ -2033,7 +2058,7 @@ def spatial_table_columns_api(request):
 
     if metadata is None:
         return JsonResponse({
-            'error': 'That table does not exist in a_schema or has no registered geometry.',
+            'error': 'That table does not exist in the selected a_* schema or has no registered geometry.',
         }, status=404)
 
     geometry_column = metadata['geometry_column']
@@ -2050,8 +2075,8 @@ def spatial_table_columns_api(request):
 
 @login_required
 def spatial_table_data_api(request):
-    """Return up to 500 rows from a validated a_schema table as GeoJSON."""
-    _validate_spatial_schema(SPATIAL_EXPLORER_SCHEMA)
+    """Return up to 500 rows from a validated a_* schema table as GeoJSON."""
+    schema = _spatial_schema_parameter(request)
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
 
@@ -2067,10 +2092,10 @@ def spatial_table_data_api(request):
 
     try:
         with connections['a_schema_reader'].cursor() as cursor:
-            metadata = _spatial_table_metadata(cursor, table_name)
+            metadata = _spatial_table_metadata(cursor, schema, table_name)
             if metadata is None:
                 return JsonResponse({
-                    'error': 'That table does not exist in a_schema or has no registered geometry.',
+                    'error': 'That table does not exist in the selected a_* schema or has no registered geometry.',
                 }, status=404)
 
             geometry_column = metadata['geometry_column']
@@ -2088,7 +2113,7 @@ def spatial_table_data_api(request):
                 'SELECT {} FROM {}.{} LIMIT %s'
             ).format(
                 sql.SQL(', ').join(select_parts),
-                sql.Identifier(SPATIAL_EXPLORER_SCHEMA),
+                sql.Identifier(schema),
                 sql.Identifier(table_name),
             )
             cursor.execute(query, (limit,))

@@ -17,9 +17,14 @@
   <div class="sa2-workspace">
     <aside class="sa2-sidebar" aria-labelledby="sa2-select-heading">
       <div class="sa2-step-label" id="sa2-select-heading">1) Select Data</div>
+      <label class="sa2-label" for="sa2-schema-select">Select schema</label>
+      <select class="sa2-select" id="sa2-schema-select">
+        <option value="">Loading schemas...</option>
+      </select>
+
       <label class="sa2-label" for="sa2-table-select">Select table</label>
-      <select class="sa2-select" id="sa2-table-select">
-        <option value="">Loading tables...</option>
+      <select class="sa2-select" id="sa2-table-select" disabled>
+        <option value="">Select a schema first</option>
       </select>
 
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
@@ -70,6 +75,7 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
   const SA2_API = {
+    schemas: "{% url 'catalogue:spatial_schemas_api' %}",
     tables: "{% url 'catalogue:spatial_tables_api' %}",
     data: "{% url 'catalogue:spatial_table_data_api' %}",
     columns: "{% url 'catalogue:spatial_table_columns_api' %}"
@@ -77,6 +83,7 @@
   const SA2_RED = '#C8102E';
 
   document.addEventListener('DOMContentLoaded', () => {
+    const schemaSelect = document.getElementById('sa2-schema-select');
     const tableSelect = document.getElementById('sa2-table-select');
     const loadButton = document.getElementById('sa2-load-button');
     const loadLabel = document.getElementById('sa2-load-label');
@@ -91,9 +98,9 @@
     let dataLayer = null;
 
     const map = L.map('sa2-map').setView([51.5, -0.1], 6);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
     }).addTo(map);
 
     function escapeHtml(value) {
@@ -165,14 +172,45 @@
     }
 
     function setLoading(isLoading) {
-      loadButton.disabled = isLoading || !tableSelect.value;
+      loadButton.disabled = isLoading || !schemaSelect.value || !tableSelect.value;
       spinner.hidden = !isLoading;
       loadLabel.textContent = isLoading ? 'Loading…' : 'Load on Map';
     }
 
-    async function loadTables() {
+    async function loadSchemas() {
       try {
-        const tables = await fetchJson(SA2_API.tables);
+        const schemas = await fetchJson(SA2_API.schemas);
+        schemaSelect.innerHTML = '<option value="">Select a schema</option>';
+        schemas.forEach(schema => {
+          const option = document.createElement('option');
+          option.value = schema;
+          option.textContent = schema;
+          schemaSelect.appendChild(option);
+        });
+        if (!schemas.length) setStatus('No authoritative a_* schemas are available.');
+        else setStatus(`${schemas.length} schema${schemas.length === 1 ? '' : 's'} available.`);
+      } catch (error) {
+        schemaSelect.innerHTML = '<option value="">Schemas unavailable</option>';
+        setStatus(error.message, true);
+      }
+    }
+
+    async function selectSchema() {
+      const schema = schemaSelect.value;
+      tableSelect.disabled = !schema;
+      tableSelect.innerHTML = schema
+        ? '<option value="">Loading tables...</option>'
+        : '<option value="">Select a schema first</option>';
+      loadButton.disabled = true;
+      summary.hidden = true;
+      currentColumns = [];
+      rowCount.textContent = '—';
+      columnList.textContent = '—';
+      tableMeta.textContent = 'Select a table to begin';
+      if (!schema) return;
+
+      try {
+        const tables = await fetchJson(`${SA2_API.tables}?schema=${encodeURIComponent(schema)}`);
         tableSelect.innerHTML = '<option value="">Select a table</option>';
         tables.forEach(table => {
           const option = document.createElement('option');
@@ -180,17 +218,19 @@
           option.textContent = table;
           tableSelect.appendChild(option);
         });
-        if (!tables.length) setStatus('No geometry tables are available in a_schema.');
-        else setStatus(`${tables.length} table${tables.length === 1 ? '' : 's'} available.`);
+        setStatus(tables.length
+          ? `${tables.length} geometry table${tables.length === 1 ? '' : 's'} in ${schema}.`
+          : `No geometry tables are available in ${schema}.`);
       } catch (error) {
         tableSelect.innerHTML = '<option value="">Tables unavailable</option>';
+        tableSelect.disabled = true;
         setStatus(error.message, true);
       }
     }
 
     async function selectTable() {
       const table = tableSelect.value;
-      loadButton.disabled = !table;
+      loadButton.disabled = !schemaSelect.value || !table;
       summary.hidden = !table;
       currentColumns = [];
       rowCount.textContent = '—';
@@ -202,8 +242,8 @@
       }
       try {
         const [columns, countPreview] = await Promise.all([
-          fetchJson(`${SA2_API.columns}?table=${encodeURIComponent(table)}`),
-          fetchJson(`${SA2_API.data}?table=${encodeURIComponent(table)}&limit=1`)
+          fetchJson(`${SA2_API.columns}?schema=${encodeURIComponent(schemaSelect.value)}&table=${encodeURIComponent(table)}`),
+          fetchJson(`${SA2_API.data}?schema=${encodeURIComponent(schemaSelect.value)}&table=${encodeURIComponent(table)}&limit=1`)
         ]);
         currentColumns = columns;
         columnList.textContent = currentColumns.length
@@ -218,12 +258,13 @@
     }
 
     async function loadSelectedTable() {
+      const schema = schemaSelect.value;
       const table = tableSelect.value;
-      if (!table) return;
+      if (!schema || !table) return;
       setLoading(true);
       setStatus(`Loading ${table}…`);
       try {
-        const data = await fetchJson(`${SA2_API.data}?table=${encodeURIComponent(table)}&limit=500`);
+        const data = await fetchJson(`${SA2_API.data}?schema=${encodeURIComponent(schema)}&table=${encodeURIComponent(table)}&limit=500`);
         if (dataLayer) dataLayer.remove();
         dataLayer = L.geoJSON(data, {
           style: layerStyle,
@@ -246,9 +287,10 @@
       }
     }
 
+    schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
     loadButton.addEventListener('click', loadSelectedTable);
-    loadTables();
+    loadSchemas();
   });
 </script>
 {% endblock %}
