@@ -1725,6 +1725,30 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   font-weight: 750;
 }
 .sa3-optional { color: #7a8490; font-size: 11px; font-weight: 500; }
+.sa3-intro {
+  margin: -5px 0 13px;
+  color: #667181;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.sa3-operation-card {
+  margin-top: 9px;
+  border: 1px solid #dfe3e8;
+  border-radius: 6px;
+  background: #fff;
+}
+.sa3-operation-card summary {
+  padding: 10px 11px;
+  color: #20252b;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.sa3-operation-card[open] summary {
+  border-bottom: 1px solid #edf0f2;
+  color: #C8102E;
+}
+.sa3-operation-body { padding: 12px; }
 .sa3-row { margin-bottom: 13px; }
 .sa3-control {
   display: block;
@@ -1761,6 +1785,12 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   background: #C8102E;
   color: #fff;
 }
+.sa3-tab-disabled,
+.sa3-tab-disabled:hover {
+  background: #f1f3f4;
+  color: #8b949d;
+  cursor: not-allowed;
+}
 .sa3-source-panel { padding: 4px 0 8px; }
 .sa3-hint {
   margin: 5px 0 7px;
@@ -1783,6 +1813,40 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
 }
 .sa3-run-button:hover:not(:disabled) { background: #256628; }
 .sa3-run-button:disabled { background: #aeb6b0; cursor: wait; }
+.sa3-preview-button,
+.sa3-save-button {
+  min-height: 36px;
+  margin-top: 7px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 5px;
+  background: #2f7d32;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.sa3-preview-button:hover:not(:disabled),
+.sa3-save-button:hover:not(:disabled) { background: #256628; }
+.sa3-preview-button:disabled,
+.sa3-save-button:disabled { background: #aeb6b0; cursor: wait; }
+.sa3-save-box {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #edf0f2;
+}
+.sa3-filter-save {
+  padding: 15px 20px;
+  border-top: 1px solid #e8ebee;
+  background: #fafbfc;
+}
+.sa3-save-heading { color: #20252b; font-size: 13px; font-weight: 750; }
+.sa3-save-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sa3-save-inline .sa3-control { flex: 1; }
 .sa3-download-link { color: #C8102E; font-size: 12px; }
 
 @media (max-width: 900px) {
@@ -1795,6 +1859,7 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
 @media (max-width: 560px) {
   .sa2-page { padding: 28px 16px 48px; }
   .sa2-table-header { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .sa3-save-inline { align-items: stretch; flex-direction: column; }
   .sa2-map-card { min-height: 360px; }
   .sa2-map { height: 360px; }
 }

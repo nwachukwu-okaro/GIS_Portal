@@ -5,7 +5,6 @@
 {% block extra_css %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIINfQ3qv4xkZ4xH5K5l8mM3G0fH0t0a0k=" crossorigin="">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
 {% endblock %}
 
 {% block content %}
@@ -47,56 +46,57 @@
       </section>
 
       <section id="sa3-panel" class="sa3-panel sa3-hidden" aria-labelledby="sa3-heading">
-        <div class="sa3-heading" id="sa3-heading">3) Spatial Operation <span class="sa3-optional">(optional)</span></div>
+        <div class="sa3-heading" id="sa3-heading">3) Spatial Operations</div>
+        <p class="sa3-intro">Preview an operation first. Saving the result is always a separate action.</p>
 
-        <div class="sa3-row">
-          <label class="sa2-label" for="sa3-operation">Operation</label>
-          <select id="sa3-operation" class="sa3-control">
-            <option value="">— none —</option>
-            <option value="buffer">Buffer</option>
-            <option value="intersect">Intersect</option>
-          </select>
-        </div>
-
-        <div id="sa3-buffer-opts" class="sa3-row sa3-hidden">
-          <label class="sa2-label" for="sa3-buffer-distance">Buffer distance (metres)</label>
-          <input type="number" id="sa3-buffer-distance" class="sa3-control"
-                 min="1" max="100000" step="any" placeholder="e.g. 500">
-        </div>
-
-        <div id="sa3-boundary-opts" class="sa3-section sa3-hidden">
-          <label class="sa2-label">Boundary source</label>
-          <div class="sa3-boundary-tabs" role="tablist" aria-label="Boundary source">
-            <button type="button" class="sa3-tab active" data-source="draw">Draw on map</button>
-            <button type="button" class="sa3-tab" data-source="saved">Saved result</button>
-            <button type="button" class="sa3-tab" data-source="upload">Upload GeoJSON</button>
+        <details class="sa3-operation-card" open>
+          <summary>Buffer</summary>
+          <div class="sa3-operation-body">
+            <label class="sa2-label" for="sa3-buffer-distance">Buffer distance (metres)</label>
+            <input type="number" id="sa3-buffer-distance" class="sa3-control"
+                   min="1" max="100000" step="any" placeholder="e.g. 500">
+            <button type="button" id="sa3-buffer-preview-btn" class="sa3-preview-button">Preview buffer on map</button>
+            <div id="sa3-buffer-status" class="sa2-status" role="status" aria-live="polite"></div>
+            <div id="sa3-buffer-save" class="sa3-save-box sa3-hidden">
+              <label class="sa2-label" for="sa3-buffer-output-name">Save buffer as</label>
+              <input type="text" id="sa3-buffer-output-name" class="sa3-control" placeholder="e.g. buildings_buffer">
+              <button type="button" id="sa3-buffer-save-btn" class="sa3-save-button">Save buffer to p_gisportal</button>
+            </div>
           </div>
+        </details>
 
-          <div id="sa3-source-draw" class="sa3-source-panel">
-            <p class="sa3-hint">Use the polygon or rectangle tool on the map to draw a boundary.</p>
-            <button type="button" id="sa3-clear-drawing-btn" class="sa2-btn-link">Clear drawing</button>
+        <details class="sa3-operation-card">
+          <summary>Intersect</summary>
+          <div class="sa3-operation-body">
+            <label class="sa2-label">Boundary source</label>
+            <div class="sa3-boundary-tabs" role="tablist" aria-label="Boundary source">
+              <button type="button" class="sa3-tab sa3-tab-disabled" disabled title="Map drawing coming soon">Draw on map</button>
+              <button type="button" class="sa3-tab active" data-source="saved">Saved result</button>
+              <button type="button" class="sa3-tab" data-source="upload">Upload GeoJSON</button>
+            </div>
+
+            <div id="sa3-source-draw" class="sa3-source-panel sa3-hidden">
+              <p class="sa3-hint">Map drawing coming soon.</p>
+            </div>
+            <div id="sa3-source-saved" class="sa3-source-panel">
+              <select id="sa3-saved-table" class="sa3-control">
+                <option value="">Select a saved result</option>
+              </select>
+            </div>
+            <div id="sa3-source-upload" class="sa3-source-panel sa3-hidden">
+              <input type="file" id="sa3-upload-file" accept=".geojson,application/geo+json" class="sa3-file-input">
+              <p class="sa3-hint">GeoJSON Polygon or MultiPolygon, maximum 10MB.</p>
+            </div>
+
+            <button type="button" id="sa3-intersect-preview-btn" class="sa3-preview-button">Preview intersect on map</button>
+            <div id="sa3-intersect-status" class="sa2-status" role="status" aria-live="polite"></div>
+            <div id="sa3-intersect-save" class="sa3-save-box sa3-hidden">
+              <label class="sa2-label" for="sa3-intersect-output-name">Save intersect as</label>
+              <input type="text" id="sa3-intersect-output-name" class="sa3-control" placeholder="e.g. sites_intersect">
+              <button type="button" id="sa3-intersect-save-btn" class="sa3-save-button">Save intersect to p_gisportal</button>
+            </div>
           </div>
-
-          <div id="sa3-source-saved" class="sa3-source-panel sa3-hidden">
-            <select id="sa3-saved-table" class="sa3-control">
-              <option value="">Select a saved result</option>
-            </select>
-          </div>
-
-          <div id="sa3-source-upload" class="sa3-source-panel sa3-hidden">
-            <input type="file" id="sa3-upload-file" accept=".geojson,application/geo+json" class="sa3-file-input">
-            <p class="sa3-hint">GeoJSON Polygon or MultiPolygon, maximum 10MB.</p>
-          </div>
-        </div>
-
-        <div class="sa3-row">
-          <label class="sa2-label" for="sa3-output-name">Save result as</label>
-          <input type="text" id="sa3-output-name" class="sa3-control" placeholder="e.g. buildings_buffer">
-          <span class="sa3-hint">Saved in p_gisportal.</span>
-        </div>
-
-        <button type="button" id="sa3-run-btn" class="sa3-run-button">Run operation</button>
-        <div id="sa3-status" class="sa2-status" role="status" aria-live="polite"></div>
+        </details>
       </section>
 
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
@@ -134,6 +134,15 @@
             </tbody>
           </table>
         </div>
+        <div id="sa3-filter-save" class="sa3-filter-save sa3-hidden">
+          <div class="sa3-save-heading">Save filtered result</div>
+          <p class="sa3-hint">The currently loaded rows will be saved as a new table in p_gisportal.</p>
+          <div class="sa3-save-inline">
+            <input type="text" id="sa3-filter-output-name" class="sa3-control" placeholder="e.g. filtered_sites">
+            <button type="button" id="sa3-filter-save-btn" class="sa3-save-button">Save filtered result</button>
+          </div>
+          <div id="sa3-filter-save-status" class="sa2-status" role="status" aria-live="polite"></div>
+        </div>
       </section>
     </main>
   </div>
@@ -143,7 +152,6 @@
 {% block extra_js %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 <script>
   const SA2_API = {
     schemas: "{% url 'catalogue:spatial_schemas_api' %}",
@@ -151,6 +159,7 @@
     data: "{% url 'catalogue:spatial_table_data_api' %}",
     columns: "{% url 'catalogue:spatial_table_columns_api' %}",
     runOperation: "{% url 'catalogue:spatial_run_operation_api' %}",
+    saveFilter: "{% url 'catalogue:spatial_save_filter_api' %}",
     savedResults: "{% url 'catalogue:spatial_saved_results_api' %}",
     downloadResult: "{% url 'catalogue:spatial_download_result_api' %}"
   };
@@ -174,14 +183,22 @@
     const filterRows = document.getElementById('sa2-filter-rows');
     const addFilterButton = document.getElementById('sa2-add-filter-btn');
     const phase3Panel = document.getElementById('sa3-panel');
-    const phase3Operation = document.getElementById('sa3-operation');
-    const phase3BufferOptions = document.getElementById('sa3-buffer-opts');
-    const phase3BoundaryOptions = document.getElementById('sa3-boundary-opts');
-    const phase3Status = document.getElementById('sa3-status');
-    const phase3RunButton = document.getElementById('sa3-run-btn');
+    const filterSavePanel = document.getElementById('sa3-filter-save');
+    const filterSaveStatus = document.getElementById('sa3-filter-save-status');
+    const bufferDistance = document.getElementById('sa3-buffer-distance');
+    const bufferPreviewButton = document.getElementById('sa3-buffer-preview-btn');
+    const bufferSavePanel = document.getElementById('sa3-buffer-save');
+    const bufferStatus = document.getElementById('sa3-buffer-status');
+    const intersectPreviewButton = document.getElementById('sa3-intersect-preview-btn');
+    const intersectSavePanel = document.getElementById('sa3-intersect-save');
+    const intersectStatus = document.getElementById('sa3-intersect-status');
+    let lastBufferPreview = false;
+    let lastIntersectPreview = false;
+    let bufferPreviewState = null;
+    let intersectPreviewState = null;
     let currentColumns = [];
     let dataLayer = null;
-    let activeBoundarySource = 'draw';
+    let activeBoundarySource = 'upload';
 
     const FILTER_OPERATORS = [
       ['=', 'equals'],
@@ -203,26 +220,6 @@
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-
-    const drawnItems = new L.FeatureGroup();
-    map.addLayer(drawnItems);
-    if (L.Control && L.Control.Draw) {
-      map.addControl(new L.Control.Draw({
-        draw: {
-          polygon: {shapeOptions: {color: SA2_RED, fillOpacity: 0.15}},
-          rectangle: {shapeOptions: {color: SA2_RED, fillOpacity: 0.15}},
-          circle: false,
-          circlemarker: false,
-          marker: false,
-          polyline: false
-        },
-        edit: {featureGroup: drawnItems}
-      }));
-      map.on(L.Draw.Event.CREATED, event => {
-        drawnItems.clearLayers();
-        drawnItems.addLayer(event.layer);
-      });
-    }
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -408,23 +405,35 @@
 
     function resetPhase3() {
       phase3Panel.classList.add('sa3-hidden');
-      phase3Operation.value = '';
-      phase3BufferOptions.classList.add('sa3-hidden');
-      phase3BoundaryOptions.classList.add('sa3-hidden');
-      document.getElementById('sa3-buffer-distance').value = '';
-      document.getElementById('sa3-output-name').value = '';
+      bufferDistance.value = '';
+      document.getElementById('sa3-buffer-output-name').value = '';
+      document.getElementById('sa3-intersect-output-name').value = '';
       document.getElementById('sa3-upload-file').value = '';
       document.getElementById('sa3-saved-table').innerHTML = '<option value="">Select a saved result</option>';
-      phase3Status.textContent = '';
-      phase3Status.classList.remove('is-error');
-      activeBoundarySource = 'draw';
+      bufferSavePanel.classList.add('sa3-hidden');
+      intersectSavePanel.classList.add('sa3-hidden');
+      bufferStatus.textContent = '';
+      intersectStatus.textContent = '';
+      bufferStatus.classList.remove('is-error');
+      intersectStatus.classList.remove('is-error');
+      lastBufferPreview = false;
+      lastIntersectPreview = false;
+      bufferPreviewState = null;
+      intersectPreviewState = null;
+      activeBoundarySource = 'upload';
       document.querySelectorAll('.sa3-tab').forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.source === 'draw');
+        tab.classList.toggle('active', tab.dataset.source === 'upload');
       });
       document.querySelectorAll('.sa3-source-panel').forEach(panel => {
-        panel.classList.toggle('sa3-hidden', panel.id !== 'sa3-source-draw');
+        panel.classList.toggle('sa3-hidden', panel.id !== 'sa3-source-upload');
       });
-      drawnItems.clearLayers();
+    }
+
+    function resetFilterSave() {
+      filterSavePanel.classList.add('sa3-hidden');
+      document.getElementById('sa3-filter-output-name').value = '';
+      filterSaveStatus.textContent = '';
+      filterSaveStatus.classList.remove('is-error');
     }
 
     async function loadSavedResults() {
@@ -449,16 +458,9 @@
         });
       } catch (error) {
         select.innerHTML = '<option value="">Saved results unavailable</option>';
-        phase3Status.textContent = error.message;
-        phase3Status.classList.add('is-error');
+        intersectStatus.textContent = error.message;
+        intersectStatus.classList.add('is-error');
       }
-    }
-
-    function phase3OperationChanged() {
-      const operation = phase3Operation.value;
-      phase3BufferOptions.classList.toggle('sa3-hidden', operation !== 'buffer');
-      phase3BoundaryOptions.classList.toggle('sa3-hidden', operation !== 'intersect');
-      if (operation === 'intersect' && activeBoundarySource === 'saved') loadSavedResults();
     }
 
     function phase3BoundaryChanged(source) {
@@ -584,6 +586,7 @@
       columnCheckboxes.innerHTML = '';
       resetFilterPanel();
       resetPhase3();
+      resetFilterSave();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
@@ -616,6 +619,7 @@
       columnCheckboxes.innerHTML = '';
       resetFilterPanel();
       resetPhase3();
+      resetFilterSave();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
@@ -675,6 +679,7 @@
         }
 
         renderAttributeTable(data.features || []);
+        filterSavePanel.classList.remove('sa3-hidden');
         const loaded = Math.min((data.features || []).length, 50);
         const total = data.total_count ?? (data.features || []).length;
         rowCount.textContent = Number(total).toLocaleString();
@@ -689,104 +694,180 @@
       }
     }
 
-    async function runSpatialOperation() {
-      const schema = schemaSelect.value;
-      const table = tableSelect.value;
-      const operation = phase3Operation.value;
-      const outputName = document.getElementById('sa3-output-name').value.trim();
-      if (!operation) {
-        phase3Status.textContent = 'Select an operation.';
-        phase3Status.classList.add('is-error');
-        return;
+    function captureOperationState(operation) {
+      const filters = filtersHaveInput() ? getFilterPayload() : [];
+      if (operation === 'buffer') {
+        return {distance: bufferDistance.value, filters};
       }
-      if (!outputName) {
-        phase3Status.textContent = 'Enter a name for the result.';
-        phase3Status.classList.add('is-error');
-        return;
-      }
+      return {
+        boundarySource: activeBoundarySource,
+        savedTable: document.getElementById('sa3-saved-table').value,
+        file: document.getElementById('sa3-upload-file').files[0] || null,
+        filters
+      };
+    }
 
-      let filters = [];
-      try {
-        if (filtersHaveInput()) filters = getFilterPayload();
-      } catch (error) {
-        phase3Status.textContent = error.message;
-        phase3Status.classList.add('is-error');
-        return;
-      }
-
+    function buildOperationForm(operation, save, outputName = '', state = null) {
       const formData = new FormData();
-      formData.append('schema', schema);
-      formData.append('table', table);
+      formData.append('schema', schemaSelect.value);
+      formData.append('table', tableSelect.value);
       formData.append('operation', operation);
-      formData.append('output_name', outputName);
-      formData.append('filters', JSON.stringify(filters));
+      formData.append('save', save ? 'true' : 'false');
+      formData.append(
+        'filters',
+        JSON.stringify(state?.filters ?? (filtersHaveInput() ? getFilterPayload() : []))
+      );
+      if (save) formData.append('output_name', outputName);
 
       if (operation === 'buffer') {
-        const distance = document.getElementById('sa3-buffer-distance').value;
+        const distance = state?.distance ?? bufferDistance.value;
         if (!distance || Number(distance) <= 0 || Number(distance) > 100000) {
-          phase3Status.textContent = 'Enter a buffer distance between 1 and 100000 metres.';
-          phase3Status.classList.add('is-error');
-          return;
+          throw new Error('Enter a buffer distance between 1 and 100000 metres.');
         }
         formData.append('buffer_distance', distance);
       }
 
       if (operation === 'intersect') {
-        formData.append('boundary_source', activeBoundarySource);
-        if (activeBoundarySource === 'draw') {
-          if (!drawnItems.getLayers().length) {
-            phase3Status.textContent = 'Draw a boundary on the map first.';
-            phase3Status.classList.add('is-error');
-            return;
-          }
-          formData.append('boundary_geojson', JSON.stringify(drawnItems.toGeoJSON()));
-        } else if (activeBoundarySource === 'saved') {
-          const savedTable = document.getElementById('sa3-saved-table').value;
-          if (!savedTable) {
-            phase3Status.textContent = 'Select a saved result boundary.';
-            phase3Status.classList.add('is-error');
-            return;
-          }
+        const boundarySource = state?.boundarySource ?? activeBoundarySource;
+        if (boundarySource === 'draw') {
+          throw new Error('Map drawing is coming soon. Choose upload or saved result.');
+        }
+        formData.append('boundary_source', boundarySource);
+        if (boundarySource === 'saved') {
+          const savedTable = state?.savedTable ?? document.getElementById('sa3-saved-table').value;
+          if (!savedTable) throw new Error('Select a saved result boundary.');
           formData.append('boundary_table', savedTable);
         } else {
-          const file = document.getElementById('sa3-upload-file').files[0];
-          if (!file) {
-            phase3Status.textContent = 'Choose a GeoJSON boundary file.';
-            phase3Status.classList.add('is-error');
-            return;
-          }
+          const file = state?.file ?? document.getElementById('sa3-upload-file').files[0];
+          if (!file) throw new Error('Choose a GeoJSON boundary file.');
           formData.append('boundary_file', file);
         }
       }
+      return formData;
+    }
 
-      phase3RunButton.disabled = true;
-      phase3Status.textContent = 'Running operation…';
-      phase3Status.classList.remove('is-error');
+    async function postOperation(formData) {
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+      const response = await fetch(SA2_API.runOperation, {
+        method: 'POST',
+        headers: {'Accept': 'application/json', 'X-CSRFToken': csrfToken},
+        body: formData
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
+      return data;
+    }
+
+    function renderOperationPreview(data, label) {
+      if (dataLayer) dataLayer.remove();
+      mapMessage.hidden = true;
+      dataLayer = L.geoJSON(data, {
+        style: layerStyle,
+        pointToLayer: pointStyle,
+        onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
+      }).addTo(map);
+      const bounds = dataLayer.getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
+      renderAttributeTable(data.features || []);
+      tableMeta.textContent = `${label} preview — ${Number(data.total_count || 0).toLocaleString()} rows`;
+      filterSavePanel.classList.add('sa3-hidden');
+    }
+
+    async function previewOperation(operation, button, statusEl, savePanel, label) {
+      button.disabled = true;
+      statusEl.textContent = 'Running preview…';
+      statusEl.classList.remove('is-error');
       try {
+        const previewState = captureOperationState(operation);
+        const data = await postOperation(buildOperationForm(operation, false, '', previewState));
+        renderOperationPreview(data, label);
+        savePanel.classList.remove('sa3-hidden');
+        if (operation === 'buffer') {
+          lastBufferPreview = true;
+          bufferPreviewState = previewState;
+        }
+        if (operation === 'intersect') {
+          lastIntersectPreview = true;
+          intersectPreviewState = previewState;
+        }
+        statusEl.textContent = data.message;
+      } catch (error) {
+        statusEl.textContent = error.message;
+        statusEl.classList.add('is-error');
+        if (operation === 'buffer') {
+          lastBufferPreview = false;
+          bufferPreviewState = null;
+        }
+        if (operation === 'intersect') {
+          lastIntersectPreview = false;
+          intersectPreviewState = null;
+        }
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    function addDownloadLink(container, data) {
+      if (!data.output_table || !data.has_geometry) return;
+      const link = document.createElement('a');
+      link.href = `${SA2_API.downloadResult}?table=${encodeURIComponent(data.output_table)}`;
+      link.textContent = 'Download result as GeoJSON';
+      link.className = 'sa3-download-link';
+      container.appendChild(document.createElement('br'));
+      container.appendChild(link);
+    }
+
+    async function saveOperation(operation, outputInput, statusEl, label, previewState) {
+      const outputName = outputInput.value.trim();
+      if (!outputName) {
+        statusEl.textContent = `Enter a name for the ${label.toLowerCase()} result.`;
+        statusEl.classList.add('is-error');
+        return;
+      }
+      statusEl.textContent = 'Saving result…';
+      statusEl.classList.remove('is-error');
+      try {
+        const data = await postOperation(buildOperationForm(operation, true, outputName, previewState));
+        statusEl.textContent = `${data.message} (${Number(data.row_count).toLocaleString()} rows)`;
+        addDownloadLink(statusEl, data);
+      } catch (error) {
+        statusEl.textContent = error.message;
+        statusEl.classList.add('is-error');
+      }
+    }
+
+    async function saveFilteredResult() {
+      const outputName = document.getElementById('sa3-filter-output-name').value.trim();
+      if (!outputName) {
+        filterSaveStatus.textContent = 'Enter a name for the filtered result.';
+        filterSaveStatus.classList.add('is-error');
+        return;
+      }
+      const button = document.getElementById('sa3-filter-save-btn');
+      button.disabled = true;
+      filterSaveStatus.textContent = 'Saving filtered result…';
+      filterSaveStatus.classList.remove('is-error');
+      try {
+        const formData = new FormData();
+        formData.append('schema', schemaSelect.value);
+        formData.append('table', tableSelect.value);
+        formData.append('filters', JSON.stringify(filtersHaveInput() ? getFilterPayload() : []));
+        formData.append('output_name', outputName);
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
-        const response = await fetch(SA2_API.runOperation, {
+        const response = await fetch(SA2_API.saveFilter, {
           method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'X-CSRFToken': csrfToken
-          },
+          headers: {'Accept': 'application/json', 'X-CSRFToken': csrfToken},
           body: formData
         });
         const data = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
-
-        phase3Status.textContent = `${data.message} (${Number(data.row_count).toLocaleString()} rows)`;
-        const downloadLink = document.createElement('a');
-        downloadLink.href = `${SA2_API.downloadResult}?table=${encodeURIComponent(data.output_table)}`;
-        downloadLink.textContent = 'Download result as GeoJSON';
-        downloadLink.className = 'sa3-download-link';
-        phase3Status.appendChild(document.createElement('br'));
-        phase3Status.appendChild(downloadLink);
+        filterSaveStatus.textContent = `${data.message} (${Number(data.row_count).toLocaleString()} rows)`;
+        addDownloadLink(filterSaveStatus, data);
       } catch (error) {
-        phase3Status.textContent = error.message;
-        phase3Status.classList.add('is-error');
+        filterSaveStatus.textContent = error.message;
+        filterSaveStatus.classList.add('is-error');
       } finally {
-        phase3RunButton.disabled = false;
+        button.disabled = false;
       }
     }
 
@@ -803,14 +884,26 @@
       });
     });
     addFilterButton.addEventListener('click', addFilterRow);
-    phase3Operation.addEventListener('change', phase3OperationChanged);
     document.querySelectorAll('.sa3-tab').forEach(tab => {
-      tab.addEventListener('click', () => phase3BoundaryChanged(tab.dataset.source));
+      if (!tab.disabled) tab.addEventListener('click', () => phase3BoundaryChanged(tab.dataset.source));
     });
-    document.getElementById('sa3-clear-drawing-btn').addEventListener('click', () => {
-      drawnItems.clearLayers();
+    bufferPreviewButton.addEventListener('click', () => previewOperation(
+      'buffer', bufferPreviewButton, bufferStatus, bufferSavePanel, 'Buffer'
+    ));
+    document.getElementById('sa3-buffer-save-btn').addEventListener('click', () => {
+      if (lastBufferPreview) saveOperation(
+        'buffer', document.getElementById('sa3-buffer-output-name'), bufferStatus, 'buffer', bufferPreviewState
+      );
     });
-    phase3RunButton.addEventListener('click', runSpatialOperation);
+    intersectPreviewButton.addEventListener('click', () => previewOperation(
+      'intersect', intersectPreviewButton, intersectStatus, intersectSavePanel, 'Intersect'
+    ));
+    document.getElementById('sa3-intersect-save-btn').addEventListener('click', () => {
+      if (lastIntersectPreview) saveOperation(
+        'intersect', document.getElementById('sa3-intersect-output-name'), intersectStatus, 'intersect', intersectPreviewState
+      );
+    });
+    document.getElementById('sa3-filter-save-btn').addEventListener('click', saveFilteredResult);
     loadButton.addEventListener('click', loadSelectedTable);
     loadSchemas();
   });
