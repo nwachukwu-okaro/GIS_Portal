@@ -1674,6 +1674,82 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   text-decoration: none;
 }
 
+/* ── Spatial explorer Phase 3 operations ────────────────────────────────── */
+.sa3-hidden { display: none !important; }
+.sa3-panel {
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid #dfe3e8;
+  border-radius: 7px;
+  background: #fafbfc;
+}
+.sa3-heading {
+  margin-bottom: 13px;
+  color: #20252b;
+  font-size: 13px;
+  font-weight: 750;
+}
+.sa3-optional { color: #7a8490; font-size: 11px; font-weight: 500; }
+.sa3-row { margin-bottom: 13px; }
+.sa3-control {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid #cfd5dc;
+  border-radius: 5px;
+  background: #fff;
+  color: #29313a;
+  font-size: 13px;
+}
+.sa3-control:focus {
+  border-color: #C8102E;
+  outline: 3px solid rgba(200, 16, 46, 0.12);
+}
+.sa3-boundary-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+.sa3-tab {
+  padding: 6px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #fff;
+  color: #4f5b68;
+  font-size: 11px;
+  cursor: pointer;
+}
+.sa3-tab.active {
+  border-color: #C8102E;
+  background: #C8102E;
+  color: #fff;
+}
+.sa3-source-panel { padding: 4px 0 8px; }
+.sa3-hint {
+  margin: 5px 0 7px;
+  color: #667181;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.sa3-file-input { width: 100%; font-size: 11px; }
+.sa3-run-button {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #2f7d32;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.sa3-run-button:hover:not(:disabled) { background: #256628; }
+.sa3-run-button:disabled { background: #aeb6b0; cursor: wait; }
+.sa3-download-link { color: #C8102E; font-size: 12px; }
+
 @media (max-width: 900px) {
   .sa2-workspace { grid-template-columns: 1fr; }
   .sa2-sidebar { position: static; }

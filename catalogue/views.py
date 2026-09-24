@@ -56,11 +56,13 @@ import requests
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import PermissionDenied
-from django.db import DatabaseError, connections
+from django.db import DatabaseError, connections, transaction
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse, StreamingHttpResponse
 from django.shortcuts import redirect, render
+from django.utils import timezone
 from django.utils.text import get_valid_filename
 from django.views.decorators.clickjacking import xframe_options_sameorigin
+from django.views.decorators.http import require_GET, require_POST
 from psycopg2 import sql
 from shapely import wkt as shapely_wkt
 from shapely.geometry import Point
@@ -1958,9 +1960,11 @@ def _spatial_filter_value_list(value):
     return [item for item in values if item]
 
 
-def _spatial_filter_sql(request, metadata):
+def _spatial_filter_sql(request, metadata, raw_filters=None):
     """Build a safe, parameterised WHERE expression from the filters JSON."""
-    raw_filters = (request.GET.get('filters') or '').strip()
+    if raw_filters is None:
+        raw_filters = request.GET.get('filters')
+    raw_filters = (raw_filters or '').strip()
     if not raw_filters:
         return None, []
 
@@ -2080,6 +2084,128 @@ def _spatial_table_metadata(cursor, schema, table_name):
         'geometry_column': geometry_column,
         'geometry_type': geometry_type,
     }
+
+
+_SPATIAL_OPERATIONS = frozenset({'buffer', 'intersect'})
+_SPATIAL_BOUNDARY_SOURCES = frozenset({'draw', 'saved', 'upload'})
+_SPATIAL_OUTPUT_BASE_MAX = 39  # Leaves room for the 23-character timestamp suffix.
+
+
+def _sanitise_spatial_output_table_name(raw_name):
+    """Return a safe, unique PostgreSQL identifier no longer than 63 chars."""
+    name = (raw_name or '').lower().strip()
+    name = re.sub(r'[\s\-]+', '_', name)
+    name = re.sub(r'[^a-z0-9_]', '', name)
+    if not name:
+        name = 'result'
+    if name[0].isdigit():
+        name = f'result_{name}'
+    name = name[:_SPATIAL_OUTPUT_BASE_MAX].rstrip('_') or 'result'
+    timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S_%f')
+    return f'{name}_{timestamp}'
+
+
+def _validate_pgisportal_table(table_name):
+    """Return True only for an existing, safely named p_gisportal table."""
+    if not isinstance(table_name, str) or not _SPATIAL_TABLE_RE.fullmatch(table_name):
+        return False
+    try:
+        with connections['default'].cursor() as cursor:
+            return _pgisportal_table_exists(cursor, table_name)
+    except DatabaseError:
+        return False
+
+
+def _pgisportal_table_exists(cursor, table_name):
+    """Check an already-open connection for an exact p_gisportal table."""
+    cursor.execute(
+        """
+        SELECT 1
+        FROM information_schema.tables
+        WHERE table_schema = 'p_gisportal'
+          AND table_name = %s
+          AND table_type = 'BASE TABLE'
+        """,
+        (table_name,),
+    )
+    return cursor.fetchone() is not None
+
+
+def _spatial_geometry_column(cursor, schema, table_name):
+    """Return the geometry column name for a table, or None."""
+    cursor.execute(
+        """
+        SELECT column_name, udt_name
+        FROM information_schema.columns
+        WHERE table_schema = %s
+          AND table_name = %s
+          AND udt_name IN ('geometry', 'geography')
+        LIMIT 1
+        """,
+        (schema, table_name),
+    )
+    row = cursor.fetchone()
+    return row[0] if row else None
+
+
+def _normalise_boundary_geojson(raw_json):
+    """Validate and reduce a polygon boundary to GeoJSON geometry JSON."""
+    try:
+        payload = json.loads(raw_json)
+    except (TypeError, json.JSONDecodeError) as exc:
+        raise ValueError('Boundary must be valid GeoJSON.') from exc
+
+    if not isinstance(payload, dict):
+        raise ValueError('Boundary GeoJSON must be an object.')
+
+    payload_type = payload.get('type')
+    if payload_type == 'FeatureCollection':
+        features = payload.get('features') or []
+        geometries = [
+            feature.get('geometry')
+            for feature in features
+            if isinstance(feature, dict)
+        ]
+        if not geometries or any(not isinstance(geometry, dict) for geometry in geometries):
+            raise ValueError('Boundary FeatureCollection contains no valid geometries.')
+        payload = {'type': 'GeometryCollection', 'geometries': geometries}
+    elif payload_type == 'Feature':
+        payload = payload.get('geometry')
+        if not isinstance(payload, dict):
+            raise ValueError('Boundary Feature has no valid geometry.')
+
+    allowed_types = {'Polygon', 'MultiPolygon', 'GeometryCollection'}
+
+    def is_polygon_geometry(geometry):
+        if not isinstance(geometry, dict):
+            return False
+        geometry_type = geometry.get('type')
+        if geometry_type in {'Polygon', 'MultiPolygon'}:
+            return True
+        if geometry_type == 'GeometryCollection':
+            geometries = geometry.get('geometries') or []
+            return bool(geometries) and all(is_polygon_geometry(item) for item in geometries)
+        return False
+
+    if payload.get('type') not in allowed_types or not is_polygon_geometry(payload):
+        raise ValueError('Boundary must be a Polygon, MultiPolygon, or polygon GeometryCollection.')
+    if payload.get('type') == 'GeometryCollection' and not payload.get('geometries'):
+        raise ValueError('Boundary GeometryCollection is empty.')
+    return json.dumps(payload)
+
+
+def _spatial_result_comment(operation, schema, table, filters, username, **extra):
+    """Build the structured JSON comment stored on a generated result table."""
+    comment = {
+        'operation': operation,
+        'source_schema': schema,
+        'source_table': table,
+        'filters': filters,
+        'user': username,
+        'created_at': timezone.now().isoformat(),
+    }
+    comment.update(extra)
+    return json.dumps(comment, sort_keys=True)
 
 
 @login_required
@@ -2284,6 +2410,383 @@ def spatial_table_data_api(request):
         'has_geometry': metadata['geometry_column'] is not None,
         'total_count': total_count,
     })
+
+
+@login_required
+@require_POST
+def spatial_run_operation_api(request):
+    """Run a validated buffer or intersect operation into p_gisportal."""
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    schema = (request.POST.get('schema') or '').strip()
+    table = (request.POST.get('table') or '').strip()
+    operation = (request.POST.get('operation') or '').strip().lower()
+    output_name = (request.POST.get('output_name') or '').strip()
+
+    _validate_spatial_schema(schema)
+    if not table or not _SPATIAL_TABLE_RE.fullmatch(table):
+        return JsonResponse({'error': 'A valid source table name is required.'}, status=400)
+    if operation not in _SPATIAL_OPERATIONS:
+        return JsonResponse({'error': 'Operation must be buffer or intersect.'}, status=400)
+    if not output_name:
+        return JsonResponse({'error': 'A result name is required.'}, status=400)
+
+    try:
+        with connections['a_schema_reader'].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT 1
+                FROM information_schema.tables
+                WHERE table_schema = %s
+                  AND table_name = %s
+                  AND table_type = 'BASE TABLE'
+                """,
+                (schema, table),
+            )
+            if cursor.fetchone() is None:
+                return JsonResponse({'error': 'Source table was not found.'}, status=404)
+            metadata = _spatial_table_metadata(cursor, schema, table)
+    except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError):
+        return JsonResponse({
+            'error': 'The authoritative PostGIS reader could not be reached.',
+        }, status=503)
+
+    geometry_column = metadata['geometry_column'] if metadata else None
+    if not geometry_column:
+        return JsonResponse({'error': 'The source table has no geometry column.'}, status=400)
+
+    raw_filters = (request.POST.get('filters') or '').strip()
+    try:
+        filter_expression, filter_params = _spatial_filter_sql(
+            request,
+            metadata,
+            raw_filters=raw_filters,
+        )
+        filter_values = json.loads(raw_filters) if raw_filters else []
+    except (ValueError, json.JSONDecodeError) as exc:
+        return JsonResponse({'error': str(exc)}, status=400)
+
+    output_table = _sanitise_spatial_output_table_name(output_name)
+    try:
+        with connections['default'].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT 1
+                FROM information_schema.tables
+                WHERE table_schema = 'p_gisportal'
+                  AND table_name = %s
+                """,
+                (output_table,),
+            )
+            if cursor.fetchone() is not None:
+                return JsonResponse({
+                    'error': 'A result with that generated name already exists. Please try again.'
+                }, status=409)
+    except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError):
+        return JsonResponse({
+            'error': 'The writable PostGIS database could not be reached.',
+        }, status=503)
+
+    source_columns = [
+        column['name']
+        for column in metadata['columns']
+        if column['name'] != geometry_column
+    ]
+    output_geometry_column = (
+        'analysis_geometry' if 'geometry' in source_columns else 'geometry'
+    )
+    source_select = [sql.Identifier('src', column) for column in source_columns]
+    source_geom = sql.Identifier('src', geometry_column)
+    source_4326 = sql.SQL(
+        """
+        CASE
+            WHEN ST_SRID({geom}::geometry) = 0
+                THEN ST_SetSRID({geom}::geometry, 4326)
+            WHEN ST_SRID({geom}::geometry) = 4326
+                THEN {geom}::geometry
+            ELSE ST_Transform({geom}::geometry, 4326)
+        END
+        """
+    ).format(geom=source_geom)
+
+    boundary_source = (request.POST.get('boundary_source') or '').strip().lower()
+    boundary_sql = None
+    boundary_params = []
+    buffer_distance = None
+
+    if operation == 'buffer':
+        try:
+            buffer_distance = float(request.POST.get('buffer_distance', ''))
+        except (TypeError, ValueError):
+            return JsonResponse({
+                'error': 'Buffer distance must be a number between 1 and 100000 metres.'
+            }, status=400)
+        if not 0 < buffer_distance <= 100000:
+            return JsonResponse({
+                'error': 'Buffer distance must be a number between 1 and 100000 metres.'
+            }, status=400)
+        result_geometry = sql.SQL(
+            """
+            ST_Transform(
+                ST_Buffer(ST_Transform(({source}), 27700), %s),
+                4326
+            ) AS {result_geom}
+            """
+        ).format(
+            source=source_4326,
+            result_geom=sql.Identifier(output_geometry_column),
+        )
+        operation_params = [buffer_distance]
+        where_sql = (
+            sql.SQL(' WHERE {}').format(filter_expression)
+            if filter_expression is not None else sql.SQL('')
+        )
+    else:
+        if boundary_source not in _SPATIAL_BOUNDARY_SOURCES:
+            return JsonResponse({
+                'error': 'Choose draw, saved result, or upload for the intersect boundary.'
+            }, status=400)
+
+        if boundary_source in {'draw', 'upload'}:
+            if boundary_source == 'draw':
+                raw_boundary = (request.POST.get('boundary_geojson') or '').strip()
+                if not raw_boundary:
+                    return JsonResponse({'error': 'Draw a boundary on the map first.'}, status=400)
+            else:
+                uploaded = request.FILES.get('boundary_file')
+                if not uploaded:
+                    return JsonResponse({'error': 'Choose a GeoJSON boundary file.'}, status=400)
+                if uploaded.size > 10 * 1024 * 1024:
+                    return JsonResponse({'error': 'Boundary files must be 10MB or smaller.'}, status=400)
+                try:
+                    raw_boundary = uploaded.read().decode('utf-8')
+                except UnicodeDecodeError:
+                    return JsonResponse({'error': 'The boundary file must be UTF-8 GeoJSON.'}, status=400)
+            try:
+                boundary_geojson = _normalise_boundary_geojson(raw_boundary)
+            except ValueError as exc:
+                return JsonResponse({'error': str(exc)}, status=400)
+            boundary_sql = sql.SQL(
+                "ST_SetSRID(ST_GeomFromGeoJSON(%s), 4326)"
+            )
+            boundary_params = [boundary_geojson]
+        else:
+            boundary_table = (request.POST.get('boundary_table') or '').strip()
+            if not _SPATIAL_TABLE_RE.fullmatch(boundary_table):
+                return JsonResponse({'error': 'Invalid saved result table name.'}, status=400)
+            try:
+                with connections['default'].cursor() as cursor:
+                    if not _pgisportal_table_exists(cursor, boundary_table):
+                        return JsonResponse({'error': 'Saved result table was not found.'}, status=404)
+                    boundary_geometry_column = _spatial_geometry_column(
+                        cursor, 'p_gisportal', boundary_table
+                    )
+            except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError):
+                return JsonResponse({
+                    'error': 'The writable PostGIS database could not be reached.'
+                }, status=503)
+            if not boundary_geometry_column:
+                return JsonResponse({'error': 'Saved result has no geometry column.'}, status=400)
+            boundary_sql = sql.SQL(
+                """
+                (
+                    SELECT ST_Transform(
+                        ST_Union({boundary_geom}::geometry), 4326
+                    )
+                    FROM {boundary_schema}.{boundary_table}
+                )
+                """
+            ).format(
+                boundary_geom=sql.Identifier(boundary_geometry_column),
+                boundary_schema=sql.Identifier('p_gisportal'),
+                boundary_table=sql.Identifier(boundary_table),
+            )
+
+        result_geometry = sql.SQL(
+            "ST_Intersection(({source}), ({boundary})) AS {result_geom}"
+        ).format(
+            source=source_4326,
+            boundary=boundary_sql,
+            result_geom=sql.Identifier(output_geometry_column),
+        )
+        intersects = sql.SQL('ST_Intersects(({source}), ({boundary}))').format(
+            source=source_4326,
+            boundary=boundary_sql,
+        )
+        if filter_expression is not None:
+            where_sql = sql.SQL(' WHERE ({filters}) AND {intersects}').format(
+                filters=filter_expression,
+                intersects=intersects,
+            )
+        else:
+            where_sql = sql.SQL(' WHERE {}').format(intersects)
+        operation_params = boundary_params + filter_params + boundary_params
+
+    select_parts = source_select + [result_geometry]
+    create_query = sql.SQL(
+        "CREATE TABLE {out_schema}.{out_table} AS "
+        "SELECT {select_parts} FROM {src_schema}.{src_table} AS src{where_sql}"
+    ).format(
+        out_schema=sql.Identifier('p_gisportal'),
+        out_table=sql.Identifier(output_table),
+        select_parts=sql.SQL(', ').join(select_parts),
+        src_schema=sql.Identifier(schema),
+        src_table=sql.Identifier(table),
+        where_sql=where_sql,
+    )
+
+    extra_comment = {}
+    if buffer_distance is not None:
+        extra_comment['buffer_distance_metres'] = buffer_distance
+    if operation == 'intersect':
+        extra_comment['boundary_source'] = boundary_source
+    comment = _spatial_result_comment(
+        operation,
+        schema,
+        table,
+        filter_values,
+        request.user.get_username(),
+        **extra_comment,
+    )
+
+    try:
+        with transaction.atomic(using='default'):
+            with connections['default'].cursor() as cursor:
+                create_params = operation_params + filter_params if operation == 'buffer' else operation_params
+                cursor.execute(create_query, create_params)
+                cursor.execute(
+                    sql.SQL('COMMENT ON TABLE {}.{} IS %s').format(
+                        sql.Identifier('p_gisportal'),
+                        sql.Identifier(output_table),
+                    ),
+                    (comment,),
+                )
+                cursor.execute(
+                    sql.SQL('SELECT COUNT(*) FROM {}.{}').format(
+                        sql.Identifier('p_gisportal'),
+                        sql.Identifier(output_table),
+                    )
+                )
+                row_count = cursor.fetchone()[0]
+    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+        return JsonResponse({
+            'error': 'The writable PostGIS database could not be reached.'
+        }, status=503)
+    except DatabaseError:
+        return JsonResponse({
+            'error': 'The spatial operation could not be completed. Check the source data and filter values.'
+        }, status=400)
+    except Exception:
+        import logging
+        logging.getLogger(__name__).exception('Unexpected spatial operation failure')
+        return JsonResponse({'error': 'An unexpected spatial operation error occurred.'}, status=500)
+
+    return JsonResponse({
+        'success': True,
+        'output_schema': 'p_gisportal',
+        'output_table': output_table,
+        'geometry_column': output_geometry_column,
+        'row_count': row_count,
+        'message': f'Result saved as p_gisportal.{output_table}',
+    })
+
+
+@login_required
+@require_GET
+def spatial_saved_results_api(request):
+    """Return geometry-bearing saved tables from p_gisportal."""
+    if _is_gis_db_mock():
+        return JsonResponse({'tables': []})
+    try:
+        with connections['default'].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT DISTINCT t.table_name
+                FROM information_schema.tables t
+                WHERE t.table_schema = 'p_gisportal'
+                  AND t.table_type = 'BASE TABLE'
+                  AND EXISTS (
+                      SELECT 1
+                      FROM information_schema.columns c
+                      WHERE c.table_schema = 'p_gisportal'
+                        AND c.table_name = t.table_name
+                        AND c.udt_name IN ('geometry', 'geography')
+                  )
+                ORDER BY t.table_name
+                """
+            )
+            tables = [row[0] for row in cursor.fetchall()]
+    except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError):
+        return JsonResponse({
+            'error': 'The writable PostGIS database could not be reached.'
+        }, status=503)
+    return JsonResponse({'tables': tables})
+
+
+@login_required
+@require_GET
+def spatial_download_result_api(request):
+    """Download a p_gisportal result as a GeoJSON FeatureCollection."""
+    if _is_gis_db_mock():
+        return JsonResponse({
+            'error': 'Saved spatial results are unavailable in offline mode.'
+        }, status=503)
+
+    table = (request.GET.get('table') or '').strip()
+    if not _SPATIAL_TABLE_RE.fullmatch(table):
+        return JsonResponse({'error': 'Invalid result table name.'}, status=400)
+
+    try:
+        with connections['default'].cursor() as cursor:
+            if not _pgisportal_table_exists(cursor, table):
+                return JsonResponse({'error': 'Result table was not found.'}, status=404)
+            geometry_column = _spatial_geometry_column(cursor, 'p_gisportal', table)
+            if not geometry_column:
+                return JsonResponse({'error': 'Result table has no geometry column.'}, status=400)
+
+            geometry_expression = sql.SQL(
+                """
+                CASE
+                    WHEN ST_SRID(t.{geom}::geometry) IN (0, 4326)
+                        THEN t.{geom}::geometry
+                    ELSE ST_Transform(t.{geom}::geometry, 4326)
+                END
+                """
+            ).format(geom=sql.Identifier(geometry_column))
+            cursor.execute(
+                sql.SQL(
+                    """
+                    SELECT json_build_object(
+                        'type', 'FeatureCollection',
+                        'features', COALESCE(
+                            json_agg(
+                                json_build_object(
+                                    'type', 'Feature',
+                                    'geometry', ST_AsGeoJSON({geometry})::json,
+                                    'properties', to_jsonb(t) - {geometry_name}
+                                )
+                            ),
+                            '[]'::json
+                        )
+                    )
+                    FROM p_gisportal.{table} AS t
+                    """
+                ).format(
+                    geometry=geometry_expression,
+                    geometry_name=sql.Literal(geometry_column),
+                    table=sql.Identifier(table),
+                )
+            )
+            result = cursor.fetchone()[0]
+    except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError):
+        return JsonResponse({
+            'error': 'The writable PostGIS database could not be reached.'
+        }, status=503)
+
+    response = HttpResponse(json.dumps(result), content_type='application/geo+json')
+    response['Content-Disposition'] = f'attachment; filename="{table}.geojson"'
+    return response
 
 
 @login_required
