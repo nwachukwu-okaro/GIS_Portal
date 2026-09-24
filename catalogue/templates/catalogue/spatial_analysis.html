@@ -472,24 +472,58 @@
       if (source === 'saved') loadSavedResults();
     }
 
+    function zoomToFeature(feature) {
+      if (!feature || !feature.geometry) return;
+
+      const zoomLayer = L.geoJSON(feature).addTo(map);
+      const bounds = zoomLayer.getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds, {padding: [40, 40]});
+      map.removeLayer(zoomLayer);
+
+      const highlightLayer = L.geoJSON(feature, {
+        style: {
+          color: '#C8102E',
+          weight: 3,
+          opacity: 1,
+          fillColor: '#FFD34E',
+          fillOpacity: 0.65
+        },
+        pointToLayer: (item, latlng) => L.circleMarker(latlng, {
+          radius: 9,
+          color: '#C8102E',
+          weight: 3,
+          fillColor: '#FFD34E',
+          fillOpacity: 0.9
+        })
+      }).addTo(map);
+      window.setTimeout(() => map.removeLayer(highlightLayer), 1500);
+    }
+
     function renderAttributeTable(features) {
       const columns = features.length
         ? Object.keys(features[0].properties || {})
         : [];
       const thead = attributeTable.querySelector('thead');
       const tbody = attributeTable.querySelector('tbody');
-      thead.innerHTML = columns.length
-        ? `<tr>${columns.map(column => `<th scope="col">${escapeHtml(column)}</th>`).join('')}</tr>`
-        : '';
+      const zoomHeader = '<th scope="col" class="sa2-zoom-column" aria-label="Zoom to feature">🔍</th>';
+      thead.innerHTML = `<tr>${zoomHeader}${columns.map(column => `<th scope="col">${escapeHtml(column)}</th>`).join('')}</tr>`;
 
       if (!features.length) {
-        tbody.innerHTML = `<tr><td class="sa2-table-empty" colspan="${Math.max(columns.length, 1)}">No rows returned.</td></tr>`;
+        tbody.innerHTML = `<tr><td class="sa2-table-empty" colspan="${columns.length + 1}">No rows returned.</td></tr>`;
         return;
       }
-      tbody.innerHTML = features.slice(0, 50).map(feature => {
+      tbody.innerHTML = features.slice(0, 50).map((feature, index) => {
         const properties = feature.properties || {};
-        return `<tr>${columns.map(column => `<td>${escapeHtml(formatCell(properties[column]))}</td>`).join('')}</tr>`;
+        const zoomButton = feature.geometry
+          ? `<button type="button" class="sa2-zoom-button" data-feature-index="${index}" aria-label="Zoom to feature ${index + 1}" title="Zoom to feature">🔍</button>`
+          : '<button type="button" class="sa2-zoom-button" disabled aria-label="Feature has no geometry">🔍</button>';
+        return `<tr><td class="sa2-zoom-column">${zoomButton}</td>${columns.map(column => `<td>${escapeHtml(formatCell(properties[column]))}</td>`).join('')}</tr>`;
       }).join('');
+      tbody.onclick = event => {
+        const button = event.target.closest('.sa2-zoom-button');
+        if (!button || button.disabled) return;
+        zoomToFeature(features[Number(button.dataset.featureIndex)]);
+      };
     }
 
     function popupForFeature(feature) {

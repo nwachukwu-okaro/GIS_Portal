@@ -1580,6 +1580,41 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
 }
 .sa2-table td { overflow: hidden; text-overflow: ellipsis; }
 .sa2-table-empty { padding: 28px 14px !important; color: #7a8490; text-align: center !important; }
+.sa2-table th.sa2-zoom-column,
+.sa2-table td.sa2-zoom-column {
+  width: 38px;
+  min-width: 38px;
+  max-width: 38px;
+  padding: 6px 4px;
+  text-align: center;
+}
+.sa2-zoom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #d7dce1;
+  border-radius: 4px;
+  background: #fff;
+  color: #C8102E;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+.sa2-zoom-button:hover:not(:disabled),
+.sa2-zoom-button:focus-visible {
+  border-color: #C8102E;
+  background: #fff4f6;
+  outline: 2px solid rgba(200, 16, 46, 0.16);
+}
+.sa2-zoom-button:disabled {
+  border-color: #e4e7ea;
+  color: #aeb6bd;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
 .sa2-popup-table { border-collapse: collapse; font-size: 12px; }
 .sa2-popup-table th,
 .sa2-popup-table td { padding: 4px 7px; border-bottom: 1px solid #edf0f2; text-align: left; vertical-align: top; }
