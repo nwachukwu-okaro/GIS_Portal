@@ -147,6 +147,27 @@
     </main>
   </div>
 </section>
+<div id="sa-log-panel" class="sa2-operation-log">
+  <button type="button" id="sa-log-toggle" class="sa2-btn-link">
+    ▶ Show my recent operations
+  </button>
+  <div id="sa-log-content" class="sa2-hidden">
+    <div class="sa2-table-scroll">
+      <table id="sa-log-table" class="sa2-table sa2-operation-log-table">
+        <thead>
+          <tr>
+            <th>Time</th><th>Operation</th><th>Table</th>
+            <th>Status</th><th>Duration</th><th>Detail</th>
+          </tr>
+        </thead>
+        <tbody id="sa-log-tbody"></tbody>
+      </table>
+    </div>
+    <button type="button" id="sa-log-refresh" class="sa2-btn-link sa2-operation-log-refresh">
+      ↻ Refresh
+    </button>
+  </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -160,6 +181,7 @@
     columns: "{% url 'catalogue:spatial_table_columns_api' %}",
     runOperation: "{% url 'catalogue:spatial_run_operation_api' %}",
     saveFilter: "{% url 'catalogue:spatial_save_filter_api' %}",
+    operationLog: "{% url 'catalogue:spatial_operation_log_api' %}",
     savedResults: "{% url 'catalogue:spatial_saved_results_api' %}",
     downloadResult: "{% url 'catalogue:spatial_download_result_api' %}"
   };
@@ -239,6 +261,39 @@
         throw new Error(payload.error || `Request failed (${response.status})`);
       }
       return payload;
+    }
+
+    async function loadOperationLog() {
+      const tbody = document.getElementById('sa-log-tbody');
+      try {
+        const data = await fetchJson(SA2_API.operationLog);
+        tbody.innerHTML = '';
+        if (!data.log.length) {
+          tbody.innerHTML = '<tr><td colspan="6">No operations yet.</td></tr>';
+          return;
+        }
+        data.log.forEach(row => {
+          const time = row.created_at
+            ? row.created_at.replace('T', ' ').slice(0, 19)
+            : '';
+          const detail = row.status === 'error'
+            ? `<span class="sa2-operation-log-error">${escapeHtml(row.error_msg || '')}</span>`
+            : escapeHtml(row.output_table || '');
+          const status = row.status === 'success' ? '✓ success' : `✗ ${row.status || 'error'}`;
+          tbody.insertAdjacentHTML('beforeend', `
+            <tr>
+              <td>${escapeHtml(time)}</td>
+              <td>${escapeHtml(row.operation || '')}</td>
+              <td>${escapeHtml(row.schema_name || '')}.${escapeHtml(row.table_name || '')}</td>
+              <td>${escapeHtml(status)}</td>
+              <td>${row.duration_ms != null ? `${escapeHtml(row.duration_ms)}ms` : ''}</td>
+              <td>${detail}</td>
+            </tr>
+          `);
+        });
+      } catch (error) {
+        tbody.innerHTML = `<tr><td colspan="6">${escapeHtml(error.message)}</td></tr>`;
+      }
     }
 
     function formatCell(value) {
@@ -904,6 +959,13 @@
       );
     });
     document.getElementById('sa3-filter-save-btn').addEventListener('click', saveFilteredResult);
+    document.getElementById('sa-log-toggle').addEventListener('click', function() {
+      const content = document.getElementById('sa-log-content');
+      const hidden = content.classList.toggle('sa2-hidden');
+      this.textContent = `${hidden ? '▶' : '▼'} Show my recent operations`;
+      if (!hidden) loadOperationLog();
+    });
+    document.getElementById('sa-log-refresh').addEventListener('click', loadOperationLog);
     loadButton.addEventListener('click', loadSelectedTable);
     loadSchemas();
   });

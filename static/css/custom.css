@@ -1710,6 +1710,20 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
 }
 
 /* ── Spatial explorer Phase 3 operations ────────────────────────────────── */
+.sa2-hidden { display: none !important; }
+.sa2-operation-log {
+  max-width: 1180px;
+  margin: 18px auto 40px;
+  padding: 0 24px;
+}
+.sa2-operation-log-table {
+  margin-top: 10px;
+  min-width: 760px;
+  border: 1px solid #dfe3e8;
+  background: #fff;
+}
+.sa2-operation-log-refresh { margin-top: 6px; }
+.sa2-operation-log-error { color: #C8102E; }
 .sa3-hidden { display: none !important; }
 .sa3-panel {
   margin-top: 18px;

@@ -44,6 +44,7 @@ import csv
 import json
 import re
 import tempfile
+import time as time_module
 from datetime import date, datetime, time
 from decimal import Decimal
 from pathlib import Path
@@ -2208,6 +2209,66 @@ def _spatial_result_comment(operation, schema, table, filters, username, **extra
     return json.dumps(comment, sort_keys=True)
 
 
+def _ensure_log_table():
+    """Create the per-user spatial-operation log table when needed."""
+    with connections['default'].cursor() as cursor:
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS p_gisportal.spatial_operation_log (
+                id           SERIAL PRIMARY KEY,
+                username     TEXT NOT NULL,
+                operation    TEXT NOT NULL,
+                schema_name  TEXT,
+                table_name   TEXT,
+                parameters   JSONB,
+                status       TEXT NOT NULL,
+                error_msg    TEXT,
+                output_table TEXT,
+                duration_ms  INTEGER,
+                created_at   TIMESTAMPTZ DEFAULT NOW()
+            )
+            """
+        )
+
+
+def _log_operation(
+    username,
+    operation,
+    schema_name,
+    table_name,
+    parameters,
+    status,
+    error_msg=None,
+    output_table=None,
+    duration_ms=None,
+):
+    """Best-effort operation logging; logging must never break the request."""
+    try:
+        _ensure_log_table()
+        with connections['default'].cursor() as cursor:
+            cursor.execute(
+                """
+                INSERT INTO p_gisportal.spatial_operation_log
+                    (username, operation, schema_name, table_name,
+                     parameters, status, error_msg, output_table, duration_ms)
+                VALUES (%s, %s, %s, %s, %s::jsonb, %s, %s, %s, %s)
+                """,
+                [
+                    username,
+                    operation,
+                    schema_name,
+                    table_name,
+                    json.dumps(parameters or {}, default=str),
+                    status,
+                    error_msg,
+                    output_table,
+                    duration_ms,
+                ],
+            )
+    except Exception:
+        pass
+
+
 @login_required
 def spatial_schemas_api(request):
     """Return schemas containing columns that match the authoritative a_* pattern."""
@@ -2415,10 +2476,12 @@ def spatial_table_data_api(request):
 @login_required
 @require_POST
 def spatial_run_operation_api(request):
-    """Run a validated buffer or intersect operation into p_gisportal."""
+    """Preview or save a validated buffer or intersect operation."""
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
 
+    operation_started = time_module.monotonic()
+    username = request.user.get_username()
     schema = (request.POST.get('schema') or '').strip()
     table = (request.POST.get('table') or '').strip()
     operation = (request.POST.get('operation') or '').strip().lower()
@@ -2634,17 +2697,21 @@ def spatial_run_operation_api(request):
         operation_params = boundary_params + filter_params + boundary_params
 
     select_parts = source_select + [result_geometry]
-    create_query = sql.SQL(
-        "CREATE TABLE {out_schema}.{out_table} AS "
-        "SELECT {select_parts} FROM {src_schema}.{src_table} AS src{where_sql}"
-    ).format(
-        out_schema=sql.Identifier('p_gisportal'),
-        out_table=sql.Identifier(output_table),
-        select_parts=sql.SQL(', ').join(select_parts),
-        src_schema=sql.Identifier(schema),
-        src_table=sql.Identifier(table),
-        where_sql=where_sql,
-    )
+    # Preview requests have no output table. Do not build the save query for
+    # them: psycopg2 rejects sql.Identifier(None) before the preview can run.
+    create_query = None
+    if save_requested:
+        create_query = sql.SQL(
+            "CREATE TABLE {out_schema}.{out_table} AS "
+            "SELECT {select_parts} FROM {src_schema}.{src_table} AS src{where_sql}"
+        ).format(
+            out_schema=sql.Identifier('p_gisportal'),
+            out_table=sql.Identifier(output_table),
+            select_parts=sql.SQL(', ').join(select_parts),
+            src_schema=sql.Identifier(schema),
+            src_table=sql.Identifier(table),
+            where_sql=where_sql,
+        )
 
     create_params = operation_params + filter_params if operation == 'buffer' else operation_params
     if not save_requested:
@@ -2662,13 +2729,25 @@ def spatial_run_operation_api(request):
             with connections['default'].cursor() as cursor:
                 cursor.execute(preview_query, create_params + [500])
                 preview_rows = cursor.fetchall()
-        except (psycopg2.OperationalError, psycopg2.InterfaceError):
+        except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+            _log_operation(
+                username, operation, schema, table,
+                {'filters': len(filter_values), 'buffer_distance_metres': buffer_distance},
+                'error', error_msg=str(exc),
+                duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+            )
             return JsonResponse({
-                'error': 'The writable PostGIS database could not be reached.'
+                'error': str(exc) or 'The writable PostGIS database could not be reached.'
             }, status=503)
-        except DatabaseError:
+        except DatabaseError as exc:
+            _log_operation(
+                username, operation, schema, table,
+                {'filters': len(filter_values), 'buffer_distance_metres': buffer_distance},
+                'error', error_msg=str(exc),
+                duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+            )
             return JsonResponse({
-                'error': 'The spatial preview could not be completed. Check the source data and filters.'
+                'error': str(exc) or 'The spatial preview could not be completed.'
             }, status=400)
 
         preview_features = []
@@ -2685,6 +2764,11 @@ def spatial_run_operation_api(request):
                     for name, value in zip(source_columns, preview_row[:-1])
                 },
             })
+        _log_operation(
+            username, operation, schema, table,
+            {'filters': len(filter_values), 'buffer_distance_metres': buffer_distance},
+            'success', duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
         return JsonResponse({
             'preview': True,
             'type': 'FeatureCollection',
@@ -2727,19 +2811,50 @@ def spatial_run_operation_api(request):
                     )
                 )
                 row_count = cursor.fetchone()[0]
-    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+    except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+        _log_operation(
+            username, operation, schema, table,
+            {'filters': len(filter_values), 'buffer_distance_metres': buffer_distance},
+            'error', error_msg=str(exc),
+            output_table=output_table,
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
         return JsonResponse({
-            'error': 'The writable PostGIS database could not be reached.'
+            'error': str(exc) or 'The writable PostGIS database could not be reached.'
         }, status=503)
-    except DatabaseError:
+    except DatabaseError as exc:
+        _log_operation(
+            username, operation, schema, table,
+            {'filters': len(filter_values), 'buffer_distance_metres': buffer_distance},
+            'error', error_msg=str(exc),
+            output_table=output_table,
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
         return JsonResponse({
-            'error': 'The spatial operation could not be completed. Check the source data and filter values.'
+            'error': str(exc) or 'The spatial operation could not be completed.'
         }, status=400)
-    except Exception:
+    except Exception as exc:
         import logging
         logging.getLogger(__name__).exception('Unexpected spatial operation failure')
-        return JsonResponse({'error': 'An unexpected spatial operation error occurred.'}, status=500)
+        _log_operation(
+            username, operation, schema, table,
+            {'filters': len(filter_values), 'buffer_distance_metres': buffer_distance},
+            'error', error_msg=str(exc),
+            output_table=output_table,
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=500)
 
+    _log_operation(
+        username, operation, schema, table,
+        {
+            'filters': len(filter_values),
+            'buffer_distance_metres': buffer_distance,
+            'boundary_source': boundary_source if operation == 'intersect' else None,
+        },
+        'success', output_table=output_table,
+        duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+    )
     return JsonResponse({
         'success': True,
         'output_schema': 'p_gisportal',
@@ -2757,6 +2872,9 @@ def spatial_save_filter_api(request):
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
 
+    operation_started = time_module.monotonic()
+    username = request.user.get_username()
+    operation = 'filter'
     schema = (request.POST.get('schema') or '').strip()
     table = (request.POST.get('table') or '').strip()
     output_name = (request.POST.get('output_name') or '').strip()
@@ -2850,19 +2968,40 @@ def spatial_save_filter_api(request):
                     )
                 )
                 row_count = cursor.fetchone()[0]
-    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+    except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+        _log_operation(
+            username, operation, schema, table, {}, 'error', error_msg=str(exc),
+            output_table=output_table,
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
         return JsonResponse({
-            'error': 'The writable PostGIS database could not be reached.'
+            'error': str(exc) or 'The writable PostGIS database could not be reached.'
         }, status=503)
-    except DatabaseError:
+    except DatabaseError as exc:
+        _log_operation(
+            username, operation, schema, table, {}, 'error', error_msg=str(exc),
+            output_table=output_table,
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
         return JsonResponse({
-            'error': 'The filtered result could not be saved. Check the source data and filter values.'
+            'error': str(exc) or 'The filtered result could not be saved.'
         }, status=400)
-    except Exception:
+    except Exception as exc:
         import logging
         logging.getLogger(__name__).exception('Unexpected filtered-result save failure')
-        return JsonResponse({'error': 'An unexpected save error occurred.'}, status=500)
+        _log_operation(
+            username, operation, schema, table, {}, 'error', error_msg=str(exc),
+            output_table=output_table,
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=500)
 
+    _log_operation(
+        username, operation, schema, table,
+        {'filters': len(filter_values)}, 'success',
+        output_table=output_table,
+        duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+    )
     return JsonResponse({
         'success': True,
         'output_schema': 'p_gisportal',
@@ -2871,6 +3010,43 @@ def spatial_save_filter_api(request):
         'row_count': row_count,
         'message': f'Filtered result saved as p_gisportal.{output_table}',
     })
+
+
+@login_required
+@require_GET
+def spatial_operation_log_api(request):
+    """Return the signed-in user's latest spatial-operation attempts."""
+    if _is_gis_db_mock():
+        return JsonResponse({'log': []})
+
+    try:
+        _ensure_log_table()
+        with connections['default'].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT operation, schema_name, table_name, parameters,
+                       status, error_msg, output_table, duration_ms, created_at
+                FROM p_gisportal.spatial_operation_log
+                WHERE username = %s
+                ORDER BY created_at DESC
+                LIMIT 20
+                """,
+                [request.user.get_username()],
+            )
+            columns = [description[0] for description in cursor.description]
+            rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
+    except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError):
+        return JsonResponse({'error': 'The operation log is currently unavailable.'}, status=503)
+
+    for row in rows:
+        if row.get('created_at'):
+            row['created_at'] = row['created_at'].isoformat()
+        if row.get('parameters') and not isinstance(row['parameters'], dict):
+            try:
+                row['parameters'] = json.loads(row['parameters'])
+            except (TypeError, json.JSONDecodeError):
+                row['parameters'] = {}
+    return JsonResponse({'log': rows})
 
 
 @login_required
