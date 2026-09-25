@@ -99,6 +99,71 @@
         </details>
       </section>
 
+      <details id="sa4-section" class="sa4-operation-card sa4-hidden" open>
+        <summary>4) Join Tables</summary>
+        <div class="sa4-operation-body">
+          <p class="sa4-hint">Combine two tables on a shared column. The left table's geometry is preserved in the result.</p>
+
+          <div class="sa4-row">
+            <label class="sa2-label" for="sa4-right-schema">Right table schema</label>
+            <select id="sa4-right-schema" class="sa2-select">
+              <option value="">Loading…</option>
+            </select>
+          </div>
+
+          <div class="sa4-row">
+            <label class="sa2-label" for="sa4-right-table">Right table</label>
+            <select id="sa4-right-table" class="sa2-select" disabled>
+              <option value="">Select schema first</option>
+            </select>
+          </div>
+
+          <div class="sa4-row">
+            <label class="sa2-label" for="sa4-left-key">Left join key</label>
+            <select id="sa4-left-key" class="sa2-select" disabled>
+              <option value="">Load table first</option>
+            </select>
+          </div>
+
+          <div class="sa4-row">
+            <label class="sa2-label" for="sa4-right-key">Right join key</label>
+            <select id="sa4-right-key" class="sa2-select" disabled>
+              <option value="">Select right table first</option>
+            </select>
+          </div>
+
+          <div class="sa4-row">
+            <label class="sa2-label" for="sa4-join-type">Join type</label>
+            <select id="sa4-join-type" class="sa2-select">
+              <option value="INNER">Inner join — matching rows only</option>
+              <option value="LEFT">Left join — keep all left rows</option>
+            </select>
+          </div>
+
+          <div class="sa4-row sa4-col-section">
+            <label class="sa2-label">Columns to bring from right table</label>
+            <div id="sa4-right-col-checkboxes" class="sa2-column-checkboxes">
+              <span class="sa4-hint">Select a right table to see columns.</span>
+            </div>
+          </div>
+
+          <button type="button" id="sa4-preview-btn" class="sa3-preview-button" disabled>
+            Preview join on map
+          </button>
+          <div id="sa4-preview-status" class="sa2-status" role="status" aria-live="polite"></div>
+
+          <div id="sa4-save-section" class="sa2-hidden sa4-save-section">
+            <label class="sa2-label" for="sa4-output-name">Save result as</label>
+            <div class="sa4-save-row">
+              <input type="text" id="sa4-output-name" class="sa3-control" placeholder="e.g. buildings_with_lpa">
+              <span class="sa4-hint">in p_gisportal</span>
+            </div>
+            <button type="button" id="sa4-save-btn" class="sa3-save-button">Save join to p_gisportal</button>
+            <div id="sa4-save-status" class="sa2-status" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </details>
+
       <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
 
       <div class="sa2-summary" id="sa2-summary" hidden>
@@ -181,6 +246,8 @@
     columns: "{% url 'catalogue:spatial_table_columns_api' %}",
     runOperation: "{% url 'catalogue:spatial_run_operation_api' %}",
     saveFilter: "{% url 'catalogue:spatial_save_filter_api' %}",
+    joinPreview: "{% url 'catalogue:spatial_join_preview_api' %}",
+    joinSave: "{% url 'catalogue:spatial_join_save_api' %}",
     operationLog: "{% url 'catalogue:spatial_operation_log_api' %}",
     savedResults: "{% url 'catalogue:spatial_saved_results_api' %}",
     downloadResult: "{% url 'catalogue:spatial_download_result_api' %}"
@@ -214,12 +281,27 @@
     const intersectPreviewButton = document.getElementById('sa3-intersect-preview-btn');
     const intersectSavePanel = document.getElementById('sa3-intersect-save');
     const intersectStatus = document.getElementById('sa3-intersect-status');
+    const phase4Section = document.getElementById('sa4-section');
+    const joinRightSchema = document.getElementById('sa4-right-schema');
+    const joinRightTable = document.getElementById('sa4-right-table');
+    const joinLeftKey = document.getElementById('sa4-left-key');
+    const joinRightKey = document.getElementById('sa4-right-key');
+    const joinType = document.getElementById('sa4-join-type');
+    const joinRightColumns = document.getElementById('sa4-right-col-checkboxes');
+    const joinPreviewButton = document.getElementById('sa4-preview-btn');
+    const joinPreviewStatus = document.getElementById('sa4-preview-status');
+    const joinSaveSection = document.getElementById('sa4-save-section');
+    const joinSaveButton = document.getElementById('sa4-save-btn');
+    const joinSaveStatus = document.getElementById('sa4-save-status');
+    const joinOutputName = document.getElementById('sa4-output-name');
     let lastBufferPreview = false;
     let lastIntersectPreview = false;
     let bufferPreviewState = null;
     let intersectPreviewState = null;
     let currentColumns = [];
     let dataLayer = null;
+    let joinLayer = null;
+    let joinPreviewState = null;
     let activeBoundarySource = 'upload';
 
     const FILTER_OPERATORS = [
@@ -491,6 +573,158 @@
       filterSaveStatus.classList.remove('is-error');
     }
 
+    function clearJoinLayer() {
+      if (joinLayer) {
+        joinLayer.remove();
+        joinLayer = null;
+      }
+    }
+
+    function resetJoinControls() {
+      joinRightTable.innerHTML = '<option value="">Select schema first</option>';
+      joinRightTable.disabled = true;
+      joinLeftKey.innerHTML = '<option value="">Load table first</option>';
+      joinLeftKey.disabled = true;
+      joinRightKey.innerHTML = '<option value="">Select right table first</option>';
+      joinRightKey.disabled = true;
+      joinRightColumns.innerHTML = '<span class="sa4-hint">Select a right table to see columns.</span>';
+      joinPreviewButton.disabled = true;
+    }
+
+    function resetPhase4() {
+      phase4Section.classList.add('sa4-hidden');
+      joinSaveSection.classList.add('sa2-hidden');
+      joinPreviewStatus.textContent = '';
+      joinSaveStatus.textContent = '';
+      joinPreviewStatus.classList.remove('is-error');
+      joinSaveStatus.classList.remove('is-error');
+      joinOutputName.value = '';
+      joinPreviewState = null;
+      clearJoinLayer();
+      resetJoinControls();
+    }
+
+    function showPhase4Section() {
+      phase4Section.classList.remove('sa4-hidden');
+    }
+
+    function buildJoinLeftKeys(columns) {
+      joinLeftKey.innerHTML = '<option value="">Select a left key</option>';
+      columns.forEach(column => {
+        const name = typeof column === 'string' ? column : column.name;
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        joinLeftKey.appendChild(option);
+      });
+      joinLeftKey.disabled = !columns.length;
+      updateJoinButton();
+    }
+
+    function buildJoinRightColumns(columns) {
+      joinRightKey.innerHTML = '<option value="">Select a right key</option>';
+      joinRightColumns.innerHTML = '';
+      columns.forEach(column => {
+        const name = typeof column === 'string' ? column : column.name;
+        const keyOption = document.createElement('option');
+        keyOption.value = name;
+        keyOption.textContent = name;
+        joinRightKey.appendChild(keyOption);
+
+        const label = document.createElement('label');
+        label.className = 'sa2-col-checkbox-label';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = name;
+        checkbox.checked = true;
+        checkbox.className = 'sa4-right-column';
+        checkbox.addEventListener('change', updateJoinButton);
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(` ${name}`));
+        joinRightColumns.appendChild(label);
+      });
+      joinRightKey.disabled = !columns.length;
+      if (!columns.length) {
+        joinRightColumns.innerHTML = '<span class="sa4-hint">No non-geometry columns available.</span>';
+      }
+      updateJoinButton();
+    }
+
+    function getSelectedJoinColumns() {
+      return Array.from(document.querySelectorAll('.sa4-right-column:checked'))
+        .map(checkbox => checkbox.value);
+    }
+
+    function updateJoinButton() {
+      joinPreviewButton.disabled = !schemaSelect.value
+        || !tableSelect.value
+        || !joinRightSchema.value
+        || !joinRightTable.value
+        || !joinLeftKey.value
+        || !joinRightKey.value
+        || !getSelectedJoinColumns().length;
+    }
+
+    async function selectJoinRightSchema() {
+      const schema = joinRightSchema.value;
+      joinRightTable.disabled = !schema;
+      joinRightTable.innerHTML = schema
+        ? '<option value="">Loading tables…</option>'
+        : '<option value="">Select schema first</option>';
+      joinRightKey.innerHTML = '<option value="">Select right table first</option>';
+      joinRightKey.disabled = true;
+      joinRightColumns.innerHTML = '<span class="sa4-hint">Select a right table to see columns.</span>';
+      joinSaveSection.classList.add('sa2-hidden');
+      joinPreviewState = null;
+      updateJoinButton();
+      if (!schema) return;
+
+      try {
+        const tablePayload = schema === 'p_gisportal'
+          ? await fetchJson(SA2_API.savedResults)
+          : await fetchJson(`${SA2_API.tables}?schema=${encodeURIComponent(schema)}`);
+        const tables = schema === 'p_gisportal' ? (tablePayload.tables || []) : tablePayload;
+        joinRightTable.innerHTML = '<option value="">Select a table</option>';
+        tables.forEach(table => {
+          const option = document.createElement('option');
+          option.value = table;
+          option.textContent = table;
+          joinRightTable.appendChild(option);
+        });
+      } catch (error) {
+        joinRightTable.innerHTML = '<option value="">Tables unavailable</option>';
+        joinRightTable.disabled = true;
+        joinPreviewStatus.textContent = error.message;
+        joinPreviewStatus.classList.add('is-error');
+      }
+      updateJoinButton();
+    }
+
+    async function selectJoinRightTable() {
+      const schema = joinRightSchema.value;
+      const table = joinRightTable.value;
+      joinSaveSection.classList.add('sa2-hidden');
+      joinPreviewState = null;
+      if (!schema || !table) {
+        buildJoinRightColumns([]);
+        return;
+      }
+      joinRightKey.innerHTML = '<option value="">Loading columns…</option>';
+      joinRightKey.disabled = true;
+      try {
+        const columns = await fetchJson(
+          `${SA2_API.columns}?schema=${encodeURIComponent(schema)}&table=${encodeURIComponent(table)}`
+        );
+        buildJoinRightColumns(columns);
+      } catch (error) {
+        joinRightKey.innerHTML = '<option value="">Columns unavailable</option>';
+        joinRightColumns.innerHTML = `<span class="sa4-hint">${escapeHtml(error.message)}</span>`;
+        joinPreviewStatus.textContent = error.message;
+        joinPreviewStatus.classList.add('is-error');
+      }
+      updateJoinButton();
+    }
+
     async function loadSavedResults() {
       const select = document.getElementById('sa3-saved-table');
       select.innerHTML = '<option value="">Loading saved results…</option>';
@@ -611,20 +845,36 @@
       loadLabel.textContent = isLoading ? 'Loading…' : 'Load on Map';
     }
 
+    function populateSourceSchemas(select, schemas) {
+      select.innerHTML = '<option value="">Select a schema</option>';
+      const authoritative = document.createElement('optgroup');
+      authoritative.label = 'Authoritative data (a_*)';
+      schemas.forEach(schema => {
+        const option = document.createElement('option');
+        option.value = schema;
+        option.textContent = schema;
+        authoritative.appendChild(option);
+      });
+      select.appendChild(authoritative);
+      const saved = document.createElement('optgroup');
+      saved.label = 'My saved results (p_gisportal)';
+      const savedOption = document.createElement('option');
+      savedOption.value = 'p_gisportal';
+      savedOption.textContent = 'p_gisportal';
+      saved.appendChild(savedOption);
+      select.appendChild(saved);
+    }
+
     async function loadSchemas() {
       try {
         const schemas = await fetchJson(SA2_API.schemas);
-        schemaSelect.innerHTML = '<option value="">Select a schema</option>';
-        schemas.forEach(schema => {
-          const option = document.createElement('option');
-          option.value = schema;
-          option.textContent = schema;
-          schemaSelect.appendChild(option);
-        });
+        populateSourceSchemas(schemaSelect, schemas);
+        populateSourceSchemas(joinRightSchema, schemas);
         if (!schemas.length) setStatus('No authoritative a_* schemas are available.');
         else setStatus(`${schemas.length} schema${schemas.length === 1 ? '' : 's'} available.`);
       } catch (error) {
         schemaSelect.innerHTML = '<option value="">Schemas unavailable</option>';
+        joinRightSchema.innerHTML = '<option value="">Schemas unavailable</option>';
         setStatus(error.message, true);
       }
     }
@@ -642,13 +892,17 @@
       resetFilterPanel();
       resetPhase3();
       resetFilterSave();
+      resetPhase4();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
       if (!schema) return;
 
       try {
-        const tables = await fetchJson(`${SA2_API.tables}?schema=${encodeURIComponent(schema)}`);
+        const tablePayload = schema === 'p_gisportal'
+          ? await fetchJson(SA2_API.savedResults)
+          : await fetchJson(`${SA2_API.tables}?schema=${encodeURIComponent(schema)}`);
+        const tables = schema === 'p_gisportal' ? (tablePayload.tables || []) : tablePayload;
         tableSelect.innerHTML = '<option value="">Select a table</option>';
         tables.forEach(table => {
           const option = document.createElement('option');
@@ -675,6 +929,7 @@
       resetFilterPanel();
       resetPhase3();
       resetFilterSave();
+      resetPhase4();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
@@ -689,7 +944,11 @@
         currentColumns = columns;
         buildColumnSelector(currentColumns);
         buildFilterPanel(currentColumns);
-        if (countPreview.has_geometry) showPhase3Panel();
+        if (countPreview.has_geometry) {
+          showPhase3Panel();
+          showPhase4Section();
+          buildJoinLeftKeys(currentColumns);
+        }
         rowCount.textContent = Number(countPreview.total_count || 0).toLocaleString();
         setStatus(`${table} selected.`);
       } catch (error) {
@@ -701,6 +960,9 @@
       const schema = schemaSelect.value;
       const table = tableSelect.value;
       if (!schema || !table) return;
+      clearJoinLayer();
+      joinPreviewState = null;
+      joinSaveSection.classList.add('sa2-hidden');
       setLoading(true);
       setStatus(`Loading ${table}…`);
       try {
@@ -811,6 +1073,124 @@
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
       return data;
+    }
+
+    function captureJoinState() {
+      return {
+        leftSchema: schemaSelect.value,
+        leftTable: tableSelect.value,
+        rightSchema: joinRightSchema.value,
+        rightTable: joinRightTable.value,
+        leftKey: joinLeftKey.value,
+        rightKey: joinRightKey.value,
+        joinType: joinType.value,
+        rightColumns: getSelectedJoinColumns(),
+        leftFilters: filtersHaveInput() ? getFilterPayload() : []
+      };
+    }
+
+    function buildJoinForm(state, save = false, outputName = '') {
+      const formData = new FormData();
+      formData.append('left_schema', state.leftSchema);
+      formData.append('left_table', state.leftTable);
+      formData.append('right_schema', state.rightSchema);
+      formData.append('right_table', state.rightTable);
+      formData.append('left_key', state.leftKey);
+      formData.append('right_key', state.rightKey);
+      formData.append('join_type', state.joinType);
+      formData.append('right_columns', JSON.stringify(state.rightColumns));
+      formData.append('left_filters', JSON.stringify(state.leftFilters));
+      if (save) formData.append('output_name', outputName);
+      return formData;
+    }
+
+    async function postJoin(url, formData) {
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {'Accept': 'application/json', 'X-CSRFToken': csrfToken},
+        body: formData
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
+      return data;
+    }
+
+    function joinLayerStyle() {
+      return {color: '#0074D9', weight: 2, opacity: 0.9, fillColor: '#0074D9', fillOpacity: 0.22};
+    }
+
+    function joinPointStyle(feature, latlng) {
+      return L.circleMarker(latlng, {
+        radius: 6,
+        color: '#0074D9',
+        weight: 2,
+        fillColor: '#0074D9',
+        fillOpacity: 0.72
+      });
+    }
+
+    function renderJoinPreview(data) {
+      clearJoinLayer();
+      joinLayer = L.geoJSON(data, {
+        style: joinLayerStyle,
+        pointToLayer: joinPointStyle,
+        onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
+      }).addTo(map);
+      const bounds = joinLayer.getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
+      renderAttributeTable(data.features || []);
+      rowCount.textContent = Number(data.total_count || 0).toLocaleString();
+      tableMeta.textContent = `Join preview — ${Number(data.total_count || 0).toLocaleString()} rows`;
+      filterSavePanel.classList.add('sa3-hidden');
+    }
+
+    async function previewJoin() {
+      joinPreviewButton.disabled = true;
+      joinPreviewStatus.textContent = 'Running join preview…';
+      joinPreviewStatus.classList.remove('is-error');
+      try {
+        const state = captureJoinState();
+        const data = await postJoin(SA2_API.joinPreview, buildJoinForm(state));
+        renderJoinPreview(data);
+        joinPreviewState = state;
+        joinSaveSection.classList.remove('sa2-hidden');
+        joinPreviewStatus.textContent = data.message;
+      } catch (error) {
+        joinPreviewStatus.textContent = error.message;
+        joinPreviewStatus.classList.add('is-error');
+        joinPreviewState = null;
+        joinSaveSection.classList.add('sa2-hidden');
+      } finally {
+        updateJoinButton();
+      }
+    }
+
+    async function saveJoin() {
+      const outputName = joinOutputName.value.trim();
+      if (!joinPreviewState) {
+        joinSaveStatus.textContent = 'Preview the join before saving it.';
+        joinSaveStatus.classList.add('is-error');
+        return;
+      }
+      if (!outputName) {
+        joinSaveStatus.textContent = 'Enter a name for the join result.';
+        joinSaveStatus.classList.add('is-error');
+        return;
+      }
+      joinSaveButton.disabled = true;
+      joinSaveStatus.textContent = 'Saving join result…';
+      joinSaveStatus.classList.remove('is-error');
+      try {
+        const data = await postJoin(SA2_API.joinSave, buildJoinForm(joinPreviewState, true, outputName));
+        joinSaveStatus.textContent = `${data.message} (${Number(data.row_count).toLocaleString()} rows)`;
+        addDownloadLink(joinSaveStatus, data);
+      } catch (error) {
+        joinSaveStatus.textContent = error.message;
+        joinSaveStatus.classList.add('is-error');
+      } finally {
+        joinSaveButton.disabled = false;
+      }
     }
 
     function renderOperationPreview(data, label) {
@@ -928,6 +1308,11 @@
 
     schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
+    joinRightSchema.addEventListener('change', selectJoinRightSchema);
+    joinRightTable.addEventListener('change', selectJoinRightTable);
+    joinLeftKey.addEventListener('change', updateJoinButton);
+    joinRightKey.addEventListener('change', updateJoinButton);
+    joinType.addEventListener('change', updateJoinButton);
     document.getElementById('sa2-select-all-btn').addEventListener('click', () => {
       document.querySelectorAll('.sa2-col-checkbox').forEach(checkbox => {
         checkbox.checked = true;
@@ -959,6 +1344,8 @@
       );
     });
     document.getElementById('sa3-filter-save-btn').addEventListener('click', saveFilteredResult);
+    joinPreviewButton.addEventListener('click', previewJoin);
+    joinSaveButton.addEventListener('click', saveJoin);
     document.getElementById('sa-log-toggle').addEventListener('click', function() {
       const content = document.getElementById('sa-log-content');
       const hidden = content.classList.toggle('sa2-hidden');

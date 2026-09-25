@@ -1890,12 +1890,27 @@ def spatial_upload_success(request):
 
 _SPATIAL_TABLE_RE = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
 _SPATIAL_SCHEMA_RE = re.compile(r'^a_.+$', re.IGNORECASE)
+_ALLOWED_SOURCE_SCHEMAS = frozenset({'p_gisportal'})
+
+
+def _validate_source_schema(schema):
+    """Allow authoritative a_* schemas and generated p_gisportal results."""
+    if not isinstance(schema, str):
+        raise PermissionDenied('Invalid spatial source schema.')
+    schema = schema.strip()
+    if not _SPATIAL_SCHEMA_RE.fullmatch(schema) and schema not in _ALLOWED_SOURCE_SCHEMAS:
+        raise PermissionDenied('The spatial explorer only permits a_* or p_gisportal sources.')
+    return schema
+
+
+def _db_alias_for_schema(schema):
+    """Return the database alias appropriate for a readable source schema."""
+    return 'default' if schema == 'p_gisportal' else 'a_schema_reader'
 
 
 def _validate_spatial_schema(schema):
-    """Enforce the authoritative a_* schema boundary for explorer queries."""
-    if not isinstance(schema, str) or not _SPATIAL_SCHEMA_RE.fullmatch(schema.strip()):
-        raise PermissionDenied('The spatial explorer only permits a_* schemas.')
+    """Backward-compatible source validation for spatial explorer endpoints."""
+    return _validate_source_schema(schema)
 
 
 def _spatial_schema_parameter(request):
@@ -1961,7 +1976,7 @@ def _spatial_filter_value_list(value):
     return [item for item in values if item]
 
 
-def _spatial_filter_sql(request, metadata, raw_filters=None):
+def _spatial_filter_sql(request, metadata, raw_filters=None, identifier_prefix=None):
     """Build a safe, parameterised WHERE expression from the filters JSON."""
     if raw_filters is None:
         raw_filters = request.GET.get('filters')
@@ -2001,7 +2016,10 @@ def _spatial_filter_sql(request, metadata, raw_filters=None):
         if operator not in _SPATIAL_FILTER_OPERATORS and operator not in {'IN', 'NOT IN'}:
             raise ValueError(f'Filter {index + 1} uses an unsupported operator.')
 
-        identifier = sql.Identifier(column_name)
+        identifier = (
+            sql.Identifier(identifier_prefix, column_name)
+            if identifier_prefix else sql.Identifier(column_name)
+        )
         if operator in {'IS NULL', 'IS NOT NULL'}:
             clause = _SPATIAL_FILTER_OPERATORS[operator].format(identifier)
         elif operator in {'IN', 'NOT IN'}:
@@ -2269,6 +2287,199 @@ def _log_operation(
         pass
 
 
+_JOIN_TYPES = {
+    'INNER': sql.SQL('INNER JOIN'),
+    'LEFT': sql.SQL('LEFT JOIN'),
+}
+
+
+def _load_source_table_metadata(schema, table_name):
+    """Load metadata for an allowed source table using its correct alias."""
+    alias = _db_alias_for_schema(schema)
+    with connections[alias].cursor() as cursor:
+        cursor.execute(
+            """
+            SELECT 1
+            FROM information_schema.tables
+            WHERE table_schema = %s
+              AND table_name = %s
+              AND table_type = 'BASE TABLE'
+            """,
+            (schema, table_name),
+        )
+        if cursor.fetchone() is None:
+            return None
+        return _spatial_table_metadata(cursor, schema, table_name)
+
+
+def _parse_join_columns(raw_columns):
+    try:
+        columns = json.loads(raw_columns or '')
+    except json.JSONDecodeError as exc:
+        raise ValueError('right_columns must be a valid JSON array.') from exc
+    if not isinstance(columns, list) or not columns:
+        raise ValueError('Select at least one column from the right table.')
+    if len(columns) > 20:
+        raise ValueError('Select no more than 20 right-table columns.')
+    if any(not isinstance(column, str) or not column for column in columns):
+        raise ValueError('right_columns must contain valid column names.')
+    if len(set(columns)) != len(columns):
+        raise ValueError('right_columns must not contain duplicates.')
+    return columns
+
+
+def _join_request_details(request):
+    """Validate the join request and return metadata plus safe selections."""
+    left_schema = (request.POST.get('left_schema') or '').strip()
+    right_schema = (request.POST.get('right_schema') or '').strip()
+    left_table = (request.POST.get('left_table') or '').strip()
+    right_table = (request.POST.get('right_table') or '').strip()
+    left_key = (request.POST.get('left_key') or '').strip()
+    right_key = (request.POST.get('right_key') or '').strip()
+    join_type = (request.POST.get('join_type') or '').strip().upper()
+
+    _validate_source_schema(left_schema)
+    _validate_source_schema(right_schema)
+    if not _SPATIAL_TABLE_RE.fullmatch(left_table):
+        raise ValueError('A valid left table name is required.')
+    if not _SPATIAL_TABLE_RE.fullmatch(right_table):
+        raise ValueError('A valid right table name is required.')
+    if join_type not in _JOIN_TYPES:
+        raise ValueError('Join type must be INNER or LEFT.')
+    if not _SPATIAL_TABLE_RE.fullmatch(left_key):
+        raise ValueError('A valid left join key is required.')
+    if not _SPATIAL_TABLE_RE.fullmatch(right_key):
+        raise ValueError('A valid right join key is required.')
+
+    right_columns = _parse_join_columns(request.POST.get('right_columns'))
+    left_metadata = _load_source_table_metadata(left_schema, left_table)
+    if left_metadata is None:
+        raise LookupError('The left source table was not found.')
+    right_metadata = _load_source_table_metadata(right_schema, right_table)
+    if right_metadata is None:
+        raise LookupError('The right source table was not found.')
+    if not left_metadata['geometry_column']:
+        raise ValueError('The left table must have a geometry column.')
+
+    left_geometry = left_metadata['geometry_column']
+    right_geometry = right_metadata['geometry_column']
+    left_columns = [
+        column['name'] for column in left_metadata['columns']
+        if column['name'] != left_geometry
+    ]
+    right_columns_available = [
+        column['name'] for column in right_metadata['columns']
+        if column['name'] != right_geometry
+    ]
+    if left_key not in left_columns:
+        raise ValueError('The left join key must be a non-geometry column in the left table.')
+    if right_key not in right_columns_available:
+        raise ValueError('The right join key must be a non-geometry column in the right table.')
+    if any(column not in right_columns_available for column in right_columns):
+        raise ValueError('One or more selected right-table columns are invalid.')
+
+    raw_filters = (request.POST.get('left_filters') or '').strip()
+    filter_expression, filter_params = _spatial_filter_sql(
+        request,
+        left_metadata,
+        raw_filters=raw_filters,
+        identifier_prefix='l',
+    )
+    filter_values = json.loads(raw_filters) if raw_filters else []
+
+    used_names = set(left_columns)
+    output_geometry_column = 'geometry' if 'geometry' not in used_names else 'analysis_geometry'
+    used_names.add(output_geometry_column)
+    right_output_columns = []
+    for column in right_columns:
+        output_name = column
+        if output_name in used_names:
+            output_name = f'r_{output_name}'
+            while output_name in used_names:
+                output_name = f'r_{output_name}'
+        used_names.add(output_name)
+        right_output_columns.append((column, output_name))
+
+    return {
+        'left_schema': left_schema,
+        'right_schema': right_schema,
+        'left_table': left_table,
+        'right_table': right_table,
+        'left_key': left_key,
+        'right_key': right_key,
+        'join_type': join_type,
+        'left_metadata': left_metadata,
+        'right_metadata': right_metadata,
+        'left_columns': left_columns,
+        'right_output_columns': right_output_columns,
+        'filter_expression': filter_expression,
+        'filter_params': filter_params,
+        'filter_values': filter_values,
+        'output_geometry_column': output_geometry_column,
+    }
+
+
+def _join_sql_parts(details, include_audit=False):
+    """Build safe SELECT fragments and parameters for a join."""
+    left_geom = sql.Identifier('l', details['left_metadata']['geometry_column'])
+    source_4326 = sql.SQL(
+        """
+        CASE
+            WHEN ST_SRID({geom}::geometry) = 0
+                THEN ST_SetSRID({geom}::geometry, 4326)
+            WHEN ST_SRID({geom}::geometry) = 4326
+                THEN {geom}::geometry
+            ELSE ST_Transform({geom}::geometry, 4326)
+        END
+        """
+    ).format(geom=left_geom)
+    left_select = [sql.Identifier('l', column) for column in details['left_columns']]
+    right_select = []
+    for source_name, output_name in details['right_output_columns']:
+        source_identifier = sql.Identifier('r', source_name)
+        right_select.append(
+            sql.SQL('{} AS {}').format(source_identifier, sql.Identifier(output_name))
+            if source_name != output_name else source_identifier
+        )
+    join_clause = _JOIN_TYPES[details['join_type']]
+    join_condition = sql.SQL('{} = {}').format(
+        sql.Identifier('l', details['left_key']),
+        sql.Identifier('r', details['right_key']),
+    )
+    from_sql = sql.SQL(
+        'FROM {left_schema}.{left_table} AS l {join_type} '
+        '{right_schema}.{right_table} AS r ON {join_condition}'
+    ).format(
+        left_schema=sql.Identifier(details['left_schema']),
+        left_table=sql.Identifier(details['left_table']),
+        join_type=join_clause,
+        right_schema=sql.Identifier(details['right_schema']),
+        right_table=sql.Identifier(details['right_table']),
+        join_condition=join_condition,
+    )
+    where_sql = (
+        sql.SQL(' WHERE {}').format(details['filter_expression'])
+        if details['filter_expression'] is not None else sql.SQL('')
+    )
+    audit_select = []
+    audit_params = []
+    if include_audit:
+        audit_select = [
+            sql.SQL('%s AS {}').format(sql.Identifier('_created_by')),
+            sql.SQL('NOW() AS {}').format(sql.Identifier('_created_at')),
+        ]
+        audit_params = ['']
+    return {
+        'source_4326': source_4326,
+        'left_select': left_select,
+        'right_select': right_select,
+        'from_sql': from_sql,
+        'where_sql': where_sql,
+        'audit_select': audit_select,
+        'audit_params': audit_params,
+    }
+
+
 @login_required
 def spatial_schemas_api(request):
     """Return schemas containing columns that match the authoritative a_* pattern."""
@@ -2302,7 +2513,7 @@ def spatial_tables_api(request):
         return _spatial_api_unavailable()
 
     try:
-        with connections['a_schema_reader'].cursor() as cursor:
+        with connections[_db_alias_for_schema(schema)].cursor() as cursor:
             cursor.execute(
                 """
                 SELECT DISTINCT table_name
@@ -2334,7 +2545,7 @@ def spatial_table_columns_api(request):
         return error_response
 
     try:
-        with connections['a_schema_reader'].cursor() as cursor:
+        with connections[_db_alias_for_schema(schema)].cursor() as cursor:
             metadata = _spatial_table_metadata(cursor, schema, table_name)
     except DatabaseError:
         return JsonResponse({
@@ -2377,7 +2588,7 @@ def spatial_table_data_api(request):
 
     filters_requested = False
     try:
-        with connections['a_schema_reader'].cursor() as cursor:
+        with connections[_db_alias_for_schema(schema)].cursor() as cursor:
             metadata = _spatial_table_metadata(cursor, schema, table_name)
             if metadata is None:
                 return JsonResponse({
@@ -2499,7 +2710,7 @@ def spatial_run_operation_api(request):
         return JsonResponse({'error': 'A result name is required.'}, status=400)
 
     try:
-        with connections['a_schema_reader'].cursor() as cursor:
+        with connections[_db_alias_for_schema(schema)].cursor() as cursor:
             cursor.execute(
                 """
                 SELECT 1
@@ -2886,7 +3097,7 @@ def spatial_save_filter_api(request):
         return JsonResponse({'error': 'A result name is required.'}, status=400)
 
     try:
-        with connections['a_schema_reader'].cursor() as cursor:
+        with connections[_db_alias_for_schema(schema)].cursor() as cursor:
             cursor.execute(
                 """
                 SELECT 1
@@ -3009,6 +3220,262 @@ def spatial_save_filter_api(request):
         'has_geometry': metadata['geometry_column'] is not None,
         'row_count': row_count,
         'message': f'Filtered result saved as p_gisportal.{output_table}',
+    })
+
+
+def _join_log_parameters(details):
+    if not details:
+        return {}
+    return {
+        'right_schema': details['right_schema'],
+        'right_table': details['right_table'],
+        'left_key': details['left_key'],
+        'right_key': details['right_key'],
+        'join_type': details['join_type'],
+        'right_columns': [source for source, _ in details['right_output_columns']],
+        'filters': len(details['filter_values']),
+    }
+
+
+@login_required
+@require_POST
+def spatial_join_preview_api(request):
+    """Preview a validated join without creating a database table."""
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    operation_started = time_module.monotonic()
+    username = request.user.get_username()
+    left_schema = (request.POST.get('left_schema') or '').strip()
+    left_table = (request.POST.get('left_table') or '').strip()
+    details = None
+    try:
+        details = _join_request_details(request)
+        parts = _join_sql_parts(details)
+        join_alias = (
+            'default'
+            if 'p_gisportal' in {details['left_schema'], details['right_schema']}
+            else 'a_schema_reader'
+        )
+        select_parts = (
+            parts['left_select']
+            + parts['right_select']
+            + [sql.SQL('ST_AsGeoJSON({})').format(parts['source_4326'])]
+        )
+        query = sql.SQL(
+            'SELECT {select_parts} {from_sql}{where_sql} LIMIT %s'
+        ).format(
+            select_parts=sql.SQL(', ').join(select_parts),
+            from_sql=parts['from_sql'],
+            where_sql=parts['where_sql'],
+        )
+        with connections[join_alias].cursor() as cursor:
+            cursor.execute(query, details['filter_params'] + [50])
+            rows = cursor.fetchall()
+    except PermissionDenied:
+        raise
+    except LookupError as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table, {}, 'error',
+            error_msg=str(exc),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=404)
+    except (ValueError, json.JSONDecodeError) as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table, {}, 'error',
+            error_msg=str(exc),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=400)
+    except DatabaseError as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table,
+            _join_log_parameters(details), 'error', error_msg=str(exc),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=400)
+    except Exception as exc:
+        import logging
+        logging.getLogger(__name__).exception('Unexpected join preview failure')
+        _log_operation(
+            username, 'join', left_schema, left_table,
+            _join_log_parameters(details), 'error', error_msg=str(exc),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=500)
+
+    property_columns = details['left_columns'] + [
+        output_name for _, output_name in details['right_output_columns']
+    ]
+    features = []
+    for row in rows:
+        try:
+            geometry = json.loads(row[-1]) if row[-1] else None
+        except (TypeError, json.JSONDecodeError):
+            geometry = None
+        features.append({
+            'type': 'Feature',
+            'geometry': geometry,
+            'properties': {
+                name: _spatial_json_value(value)
+                for name, value in zip(property_columns, row[:-1])
+            },
+        })
+
+    _log_operation(
+        username, 'join', details['left_schema'], details['left_table'],
+        _join_log_parameters(details), 'success',
+        duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+    )
+    return JsonResponse({
+        'preview': True,
+        'type': 'FeatureCollection',
+        'features': features,
+        'has_geometry': True,
+        'geometry_column': details['output_geometry_column'],
+        'total_count': len(features),
+        'message': 'Join preview loaded on the map.',
+    })
+
+
+@login_required
+@require_POST
+def spatial_join_save_api(request):
+    """Save a validated join result into p_gisportal."""
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    operation_started = time_module.monotonic()
+    username = request.user.get_username()
+    left_schema = (request.POST.get('left_schema') or '').strip()
+    left_table = (request.POST.get('left_table') or '').strip()
+    output_name = (request.POST.get('output_name') or '').strip()
+    details = None
+    if not output_name:
+        return JsonResponse({'error': 'A result name is required.'}, status=400)
+
+    try:
+        details = _join_request_details(request)
+        output_table = _sanitise_spatial_output_table_name(output_name)
+        with connections['default'].cursor() as cursor:
+            if _pgisportal_table_exists(cursor, output_table):
+                return JsonResponse({
+                    'error': 'A result with that generated name already exists. Please try again.'
+                }, status=409)
+
+        parts = _join_sql_parts(details)
+        select_parts = (
+            parts['left_select']
+            + parts['right_select']
+            + [sql.SQL('{} AS {}').format(
+                parts['source_4326'],
+                sql.Identifier(details['output_geometry_column']),
+            )]
+            + [
+                sql.SQL('%s AS {}').format(sql.Identifier('_created_by')),
+                sql.SQL('NOW() AS {}').format(sql.Identifier('_created_at')),
+            ]
+        )
+        create_query = sql.SQL(
+            'CREATE TABLE {out_schema}.{out_table} AS '
+            'SELECT {select_parts} {from_sql}{where_sql}'
+        ).format(
+            out_schema=sql.Identifier('p_gisportal'),
+            out_table=sql.Identifier(output_table),
+            select_parts=sql.SQL(', ').join(select_parts),
+            from_sql=parts['from_sql'],
+            where_sql=parts['where_sql'],
+        )
+        comment = _spatial_result_comment(
+            'join',
+            details['left_schema'],
+            details['left_table'],
+            details['filter_values'],
+            username,
+            right_schema=details['right_schema'],
+            right_table=details['right_table'],
+            left_key=details['left_key'],
+            right_key=details['right_key'],
+            join_type=details['join_type'],
+            right_columns=[source for source, _ in details['right_output_columns']],
+        )
+        with transaction.atomic(using='default'):
+            with connections['default'].cursor() as cursor:
+                cursor.execute(
+                    create_query,
+                    [username] + details['filter_params'],
+                )
+                cursor.execute(
+                    sql.SQL('COMMENT ON TABLE {}.{} IS %s').format(
+                        sql.Identifier('p_gisportal'),
+                        sql.Identifier(output_table),
+                    ),
+                    (comment,),
+                )
+                cursor.execute(
+                    sql.SQL('SELECT COUNT(*) FROM {}.{}').format(
+                        sql.Identifier('p_gisportal'),
+                        sql.Identifier(output_table),
+                    )
+                )
+                row_count = cursor.fetchone()[0]
+    except PermissionDenied:
+        raise
+    except LookupError as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table, {}, 'error',
+            error_msg=str(exc),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=404)
+    except (ValueError, json.JSONDecodeError) as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table, {}, 'error',
+            error_msg=str(exc),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=400)
+    except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table,
+            _join_log_parameters(details), 'error', error_msg=str(exc),
+            output_table=locals().get('output_table'),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=503)
+    except DatabaseError as exc:
+        _log_operation(
+            username, 'join', left_schema, left_table,
+            _join_log_parameters(details), 'error', error_msg=str(exc),
+            output_table=locals().get('output_table'),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=400)
+    except Exception as exc:
+        import logging
+        logging.getLogger(__name__).exception('Unexpected join save failure')
+        _log_operation(
+            username, 'join', left_schema, left_table,
+            _join_log_parameters(details), 'error', error_msg=str(exc),
+            output_table=locals().get('output_table'),
+            duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+        )
+        return JsonResponse({'error': str(exc)}, status=500)
+
+    _log_operation(
+        username, 'join', details['left_schema'], details['left_table'],
+        _join_log_parameters(details), 'success', output_table=output_table,
+        duration_ms=int((time_module.monotonic() - operation_started) * 1000),
+    )
+    return JsonResponse({
+        'success': True,
+        'output_schema': 'p_gisportal',
+        'output_table': output_table,
+        'has_geometry': True,
+        'geometry_column': details['output_geometry_column'],
+        'row_count': row_count,
+        'message': f'Join result saved as p_gisportal.{output_table}',
     })
 
 

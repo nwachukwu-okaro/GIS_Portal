@@ -1877,3 +1877,58 @@ a:hover { color: var(--systra-red-dk); text-decoration: underline; }
   .sa2-map-card { min-height: 360px; }
   .sa2-map { height: 360px; }
 }
+
+/* ── Phase 4: Join ─────────────────────────────────────────────────────── */
+.sa4-hidden { display: none !important; }
+.sa4-operation-card {
+  margin-top: 18px;
+  border: 1px solid #dfe3e8;
+  border-radius: 7px;
+  background: #fafbfc;
+}
+.sa4-operation-card > summary {
+  padding: 13px;
+  color: #20252b;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.sa4-operation-card[open] > summary {
+  border-bottom: 1px solid #e8ebee;
+  color: #C8102E;
+}
+.sa4-operation-body { padding: 13px; }
+.sa4-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sa4-row .sa2-label { flex: 0 0 118px; margin: 0; }
+.sa4-row .sa2-select { flex: 1 1 170px; min-width: 0; }
+.sa4-hint {
+  color: #667181;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.sa4-col-section { align-items: flex-start; }
+.sa4-col-section > .sa2-label { padding-top: 4px; }
+.sa4-col-section .sa2-column-checkboxes { flex: 1 1 170px; min-width: 0; }
+.sa4-save-section {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e8ebee;
+}
+.sa4-save-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.sa4-save-row .sa3-control { flex: 1 1 180px; min-width: 0; }
+@media (max-width: 560px) {
+  .sa4-row { align-items: stretch; flex-direction: column; }
+  .sa4-row .sa2-label { flex-basis: auto; }
+  .sa4-save-row { align-items: stretch; flex-direction: column; }
+}
