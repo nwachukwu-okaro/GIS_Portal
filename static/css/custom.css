@@ -2191,6 +2191,7 @@ body:has(.gp-app) .systra-footer { display: none; }
 .gp-map { position: relative; flex: 1; min-height: 0; overflow: hidden; background: #e9eef0; }
 .gp-map > #sa2-map { width: 100%; height: 100%; }
 .gp-map .leaflet-container { width: 100%; height: 100%; font: inherit; }
+.leaflet-control-zoom { z-index: 800 !important; }
 .gp-resize { height: 5px; flex-shrink: 0; background: #E4E4E7; cursor: ns-resize; }
 .gp-resize:hover { background: #F59E0B; }
 .gp-attr { display: flex; height: 195px; min-height: 110px; flex-shrink: 0; flex-direction: column; overflow: hidden; background: #fff; }
@@ -2198,6 +2199,8 @@ body:has(.gp-app) .systra-footer { display: none; }
 .gp-attr-title { margin: 0; color: #71717A; font-size: 10px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; }
 .gp-attr-count { overflow: hidden; color: #9F1239; font-size: 10px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
 .gp-attr-spacer { flex: 1; }
+.gp-full-layer-btn { display: none; margin-left: 2px; padding: 2px 8px; border: 0; border-radius: 3px; background: #C8102E; color: #fff; cursor: pointer; font-size: 11px; }
+.gp-full-layer-btn:hover { background: #A50D26; }
 .gp-attr-btn { padding: 3px 9px; border: 1px solid #E4E4E7; border-radius: 4px; background: #F4F4F5; color: #71717A; cursor: pointer; font-size: 10px; }
 .gp-attr-table-wrap { flex: 1; overflow: auto; }
 .gp-attr .sa2-table { min-width: max-content; margin: 0; border: 0; font-size: 10px; }

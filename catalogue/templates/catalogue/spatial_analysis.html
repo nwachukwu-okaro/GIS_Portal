@@ -156,7 +156,7 @@
     </div>
     <div id="resize-handle" class="gp-resize" role="separator" aria-label="Resize attribute table" tabindex="0"></div>
     <section id="attr-panel" class="gp-attr" aria-labelledby="sa2-table-heading">
-      <div class="gp-attr-bar"><h2 id="sa2-table-heading" class="gp-attr-title">Attribute table</h2><span id="sa2-table-meta" class="gp-attr-count">Select a table to begin</span><span class="gp-attr-spacer"></span><button type="button" id="gp-home-table" class="gp-attr-btn">⌃ Top</button></div>
+      <div class="gp-attr-bar"><h2 id="sa2-table-heading" class="gp-attr-title">Attribute table</h2><button type="button" id="btn-zoom-layer" class="gp-full-layer-btn" aria-label="Zoom to full layer">⤢ Full layer</button><span id="sa2-table-meta" class="gp-attr-count">Select a table to begin</span><span class="gp-attr-spacer"></span><button type="button" id="gp-home-table" class="gp-attr-btn">⌃ Top</button></div>
       <div class="gp-attr-table-wrap"><table class="sa2-table" id="sa2-attribute-table"><thead></thead><tbody><tr><td class="sa2-table-empty">No table loaded.</td></tr></tbody></table></div>
     </section>
   </main>
@@ -195,6 +195,7 @@
     const rowCount = document.getElementById('sa2-row-count');
     const tableMeta = document.getElementById('sa2-table-meta');
     const attributeTable = document.getElementById('sa2-attribute-table');
+    const fullLayerButton = document.getElementById('btn-zoom-layer');
     const mapMessage = document.getElementById('sa2-map-message');
     const columnSelector = document.getElementById('sa2-column-selector');
     const columnCheckboxes = document.getElementById('sa2-column-checkboxes');
@@ -243,6 +244,7 @@
     let joinPreviewState = null;
     let statisticsState = null;
     let activeBoundarySource = 'upload';
+    let _rowZoomed = false;
 
     const FILTER_OPERATORS = [
       ['=', 'equals'],
@@ -312,7 +314,8 @@
         tab.title = 'Drawing tools are unavailable';
       });
     }
-    window.setTimeout(() => map.invalidateSize({pan: false}), 100);
+    window.setTimeout(() => { map.invalidateSize({pan: false}); }, 200);
+    window.setTimeout(() => { map.invalidateSize({pan: false}); }, 600);
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -568,6 +571,7 @@
 
     function clearJoinLayer() {
       if (joinLayer) {
+        if (window._currentLayer === joinLayer) setCurrentLayer(null);
         joinLayer.remove();
         joinLayer = null;
       }
@@ -900,6 +904,37 @@
       new L.Draw.Polygon(map).enable();
     }
 
+    function setCurrentLayer(layer) {
+      window._currentLayer = layer || null;
+      fullLayerButton.style.display = layer ? 'inline-block' : 'none';
+      _rowZoomed = false;
+    }
+
+    function zoomToLayer() {
+      const layer = window._currentLayer || dataLayer || joinLayer;
+      if (!layer) return;
+      try {
+        const bounds = layer.getBounds();
+        if (bounds.isValid()) map.fitBounds(bounds, {padding: [30, 30]});
+      } catch (error) {
+        console.warn('fitBounds failed', error);
+      }
+      _rowZoomed = false;
+    }
+
+    function zoomRow(lat, lng, feature = null) {
+      if (_rowZoomed) {
+        zoomToLayer();
+        return;
+      }
+      if (feature?.geometry) {
+        zoomToFeature(feature);
+      } else {
+        map.setView([lat, lng], 16);
+      }
+      _rowZoomed = true;
+    }
+
     function zoomToFeature(feature) {
       if (!feature || !feature.geometry) return;
 
@@ -950,7 +985,13 @@
       tbody.onclick = event => {
         const button = event.target.closest('.sa2-zoom-button');
         if (!button || button.disabled) return;
-        zoomToFeature(features[Number(button.dataset.featureIndex)]);
+        const feature = features[Number(button.dataset.featureIndex)];
+        if (!feature?.geometry) return;
+        const featureLayer = L.geoJSON(feature);
+        const bounds = featureLayer.getBounds();
+        if (!bounds.isValid()) return;
+        const center = bounds.getCenter();
+        zoomRow(center.lat, center.lng, feature);
       };
     }
 
@@ -962,17 +1003,18 @@
       return `<table class="sa2-popup-table">${rows || '<tr><td>No attributes</td></tr>'}</table>`;
     }
 
-    function layerStyle() {
-      return {color: SA2_RED, weight: 2, opacity: 0.9, fillColor: SA2_RED, fillOpacity: 0.18};
-    }
+    const SYSTRA_STYLE = {
+      color: '#C8102E',
+      fillColor: '#C8102E',
+      fillOpacity: 0.25,
+      weight: 2,
+      opacity: 1
+    };
 
     function pointStyle(feature, latlng) {
       return L.circleMarker(latlng, {
         radius: 6,
-        color: SA2_RED,
-        weight: 2,
-        fillColor: SA2_RED,
-        fillOpacity: 0.75
+        ...SYSTRA_STYLE
       });
     }
 
@@ -992,7 +1034,8 @@
         tab.classList.toggle('gp-active', active);
         tab.setAttribute('aria-selected', active ? 'true' : 'false');
       });
-      window.setTimeout(() => map.invalidateSize({pan: false}), 50);
+      map.invalidateSize({pan: false});
+      window.setTimeout(() => { map.invalidateSize({pan: false}); }, 150);
     }
 
     function markTabDone(panelId, done = true) {
@@ -1073,6 +1116,7 @@
 
     async function selectSchema() {
       const schema = schemaSelect.value;
+      setCurrentLayer(null);
       tableSelect.disabled = !schema;
       tableSelect.innerHTML = schema
         ? '<option value="">Loading tables...</option>'
@@ -1117,6 +1161,7 @@
 
     async function selectTable() {
       const table = tableSelect.value;
+      setCurrentLayer(null);
       loadButton.disabled = !schemaSelect.value || !table;
       filterPreviewButton.disabled = !schemaSelect.value || !table;
       summary.hidden = !table;
@@ -1178,14 +1223,16 @@
           dataLayer.remove();
           dataLayer = null;
         }
+        setCurrentLayer(null);
         mapMessage.hidden = true;
 
         if (data.has_geometry) {
           dataLayer = L.geoJSON(data, {
-            style: layerStyle,
+            style: SYSTRA_STYLE,
             pointToLayer: pointStyle,
             onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
           }).addTo(map);
+          setCurrentLayer(dataLayer);
 
           const bounds = dataLayer.getBounds();
           if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
@@ -1340,6 +1387,7 @@
         pointToLayer: joinPointStyle,
         onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
       }).addTo(map);
+      setCurrentLayer(joinLayer);
       const bounds = joinLayer.getBounds();
       if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
       renderAttributeTable(data.features || []);
@@ -1399,12 +1447,14 @@
 
     function renderOperationPreview(data, label) {
       if (dataLayer) dataLayer.remove();
+      setCurrentLayer(null);
       mapMessage.hidden = true;
       dataLayer = L.geoJSON(data, {
-        style: layerStyle,
+        style: SYSTRA_STYLE,
         pointToLayer: pointStyle,
         onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
       }).addTo(map);
+      setCurrentLayer(dataLayer);
       const bounds = dataLayer.getBounds();
       if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
       renderAttributeTable(data.features || []);
@@ -1515,6 +1565,7 @@
       tab.addEventListener('click', () => showTab(tab.dataset.tab));
     });
     enableAttributeResize();
+    fullLayerButton.addEventListener('click', zoomToLayer);
     filterPreviewButton.addEventListener('click', loadSelectedTable);
     schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
