@@ -213,6 +213,7 @@
       <section id="sa5-section" class="sa5-panel sa5-hidden" aria-labelledby="sa5-heading">
         <div class="sa5-heading" id="sa5-heading">5) Statistics &amp; dataset summary</div>
         <p class="sa5-intro">Calculate read-only summaries for the selected table and current filters. Results are calculated in PostGIS.</p>
+        <p class="sa2-filter-hint">Statistics run on the columns selected above. Select all columns to analyse the full table.</p>
         <div class="sa5-actions">
           <button type="button" id="sa5-load-btn" class="sa5-button">Calculate statistics</button>
           <span id="sa5-status" class="sa2-status" role="status" aria-live="polite"></span>
@@ -452,7 +453,7 @@
     }
 
     function getSelectedColumns() {
-      return Array.from(document.querySelectorAll('.sa2-col-checkbox:checked'))
+      return Array.from(document.querySelectorAll('#sa2-column-checkboxes input[type="checkbox"]:checked'))
         .map(checkbox => checkbox.value);
     }
 
@@ -684,12 +685,14 @@
       const bbox = geometry.bbox_4326;
       const summaryItems = [
         ['Rows in selection', formatStatistic(data.total_count)],
-        ['Geometry features', geometry.has_geometry ? formatStatistic(geometry.feature_count) : 'No geometry'],
-        ['Geometry type', geometry.type || '—'],
-        ['CRS / SRID', geometry.srid || '—'],
-        ['Bounding box (WGS84)', bbox ? bbox.map(formatStatistic).join(', ') : '—'],
-        ['Total area (m²)', formatStatistic(geometry.total_area_m2)],
-        ['Total length (m)', formatStatistic(geometry.total_length_m)]
+        ['Geometry features', geometry.has_geometry
+          ? formatStatistic(geometry.feature_count)
+          : geometry.available ? 'Not selected' : 'No geometry'],
+        ['Geometry type', geometry.has_geometry ? geometry.type || '—' : geometry.available ? 'Not selected' : '—'],
+        ['CRS / SRID', geometry.has_geometry ? geometry.srid || '—' : geometry.available ? 'Not selected' : '—'],
+        ['Bounding box (WGS84)', geometry.has_geometry && bbox ? bbox.map(formatStatistic).join(', ') : geometry.available ? 'Not selected' : '—'],
+        ['Total area (m²)', geometry.has_geometry ? formatStatistic(geometry.total_area_m2) : geometry.available ? 'Not selected' : '—'],
+        ['Total length (m)', geometry.has_geometry ? formatStatistic(geometry.total_length_m) : geometry.available ? 'Not selected' : '—']
       ];
       statisticsSummary.innerHTML = summaryItems.map(([label, value]) => `
         <div class="sa5-summary-item">
@@ -761,6 +764,10 @@
           table: tableSelect.value,
           filters: JSON.stringify(filters)
         });
+        const selectedColumns = getSelectedColumns();
+        if (selectedColumns.length > 0) {
+          params.set('columns', selectedColumns.join(','));
+        }
         if (category) params.set('category', category);
         const data = await fetchJson(`${SA2_API.statistics}?${params.toString()}`);
         statisticsState = data;

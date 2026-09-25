@@ -2695,12 +2695,15 @@ _SPATIAL_CATEGORY_TYPES = frozenset({
 })
 
 
-def _spatial_statistics_profile_query(metadata, schema, table_name, filter_expression):
+def _spatial_statistics_profile_query(
+    metadata, schema, table_name, filter_expression, selected_columns=None
+):
     """Build one aggregate query for null, distinct, and numeric profiles."""
     geometry_column = metadata['geometry_column']
     columns = [
         column for column in metadata['columns']
         if column['name'] != geometry_column
+        and (selected_columns is None or column['name'] in selected_columns)
     ]
     select_parts = [sql.SQL('COUNT(*) AS {}').format(sql.Identifier('__total_count'))]
     aliases = []
@@ -2818,6 +2821,7 @@ def spatial_statistics_api(request):
         return error_response
 
     category_name = (request.GET.get('category') or '').strip()
+    raw_columns = request.GET.get('columns')
     alias = _db_alias_for_schema(schema)
     try:
         with connections[alias].cursor() as cursor:
@@ -2837,13 +2841,31 @@ def spatial_statistics_api(request):
             metadata = _spatial_table_metadata(cursor, schema, table_name)
             if metadata is None:
                 return JsonResponse({'error': 'That table was not found.'}, status=404)
+
+            selected_columns = None
+            if raw_columns is not None:
+                requested_columns = [
+                    column.strip()
+                    for column in raw_columns.split(',')
+                    if column.strip()
+                ]
+                if requested_columns:
+                    valid_columns = {
+                        column['name'] for column in metadata['columns']
+                    }
+                    for column in requested_columns:
+                        if column not in valid_columns:
+                            return JsonResponse({
+                                'error': f"Column '{column}' does not exist in {schema}.{table_name}",
+                            }, status=400)
+                    selected_columns = list(dict.fromkeys(requested_columns))
             try:
                 filter_expression, filter_params = _spatial_filter_sql(request, metadata)
             except ValueError as exc:
                 return JsonResponse({'error': str(exc)}, status=400)
 
             profile_query, profile_columns, aliases, numeric_columns = _spatial_statistics_profile_query(
-                metadata, schema, table_name, filter_expression
+                metadata, schema, table_name, filter_expression, selected_columns
             )
             cursor.execute(profile_query, filter_params)
             profile_row = cursor.fetchone()
@@ -2911,9 +2933,15 @@ def spatial_statistics_api(request):
                     ],
                 }
 
+            geometry_available = bool(metadata['geometry_column'])
+            geometry_selected = geometry_available and (
+                selected_columns is None or metadata['geometry_column'] in selected_columns
+            )
             geometry_summary = {
-                'has_geometry': bool(metadata['geometry_column']),
-                'column': metadata['geometry_column'],
+                'available': geometry_available,
+                'selected': geometry_selected,
+                'has_geometry': geometry_selected,
+                'column': metadata['geometry_column'] if geometry_selected else None,
                 'type': None,
                 'srid': None,
                 'feature_count': 0,
@@ -2923,7 +2951,7 @@ def spatial_statistics_api(request):
             }
             geometry_query = _spatial_statistics_geometry_query(
                 metadata, schema, table_name, filter_expression
-            )
+            ) if geometry_selected else None
             if geometry_query is not None:
                 cursor.execute(geometry_query, filter_params)
                 geometry_row = cursor.fetchone() or [None] * 6
