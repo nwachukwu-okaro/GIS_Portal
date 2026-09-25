@@ -5,30 +5,36 @@
 {% block extra_css %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIINfQ3qv4xkZ4xH5K5l8mM3G0fH0t0a0k=" crossorigin="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
 {% endblock %}
 
 {% block content %}
 <meta name="csrf-token" content="{{ csrf_token }}">
-<section class="sa2-page" aria-labelledby="sa2-title">
-  <div class="sa2-heading">
-    <h1 id="sa2-title">Spatial Analysis</h1>
-    <p>Explore tables in the authoritative catalogue schema and preview their geometry and attributes.</p>
-  </div>
+<section class="gp-app" id="gp-app" aria-label="Spatial analysis workspace">
+  <aside class="gp-sidebar">
+    <div class="gp-tabs" role="tablist" aria-label="Spatial analysis steps">
+      <button type="button" class="gp-tab gp-active" data-tab="p-source" role="tab" aria-selected="true"><span class="gp-tab-icon">🗄</span><span>Source</span></button>
+      <button type="button" class="gp-tab" data-tab="p-filter" role="tab" aria-selected="false"><span class="gp-tab-icon">🔍</span><span>Filter</span></button>
+      <button type="button" class="gp-tab" data-tab="p-buffer" role="tab" aria-selected="false"><span class="gp-tab-icon">⭕</span><span>Buffer</span></button>
+      <button type="button" class="gp-tab" data-tab="p-intersect" role="tab" aria-selected="false"><span class="gp-tab-icon">✂️</span><span>Intersect</span></button>
+      <button type="button" class="gp-tab" data-tab="p-join" role="tab" aria-selected="false"><span class="gp-tab-icon">🔗</span><span>Join</span></button>
+      <button type="button" class="gp-tab" data-tab="p-stats" role="tab" aria-selected="false"><span class="gp-tab-icon">📊</span><span>Stats</span></button>
+    </div>
 
-  <div class="sa2-workspace">
-    <aside class="sa2-sidebar" aria-labelledby="sa2-select-heading">
-      <div class="sa2-step-label" id="sa2-select-heading">1) Select Data</div>
+    <section id="p-source" class="gp-panel gp-visible" role="tabpanel">
+      <div class="gp-panel-title">1) Select Data</div>
+      <p class="gp-panel-hint">Choose a schema and table. Only a_* and p_gisportal schemas are available.</p>
       <label class="sa2-label" for="sa2-schema-select">Select schema</label>
-      <select class="sa2-select" id="sa2-schema-select">
+      <select class="gp-select sa2-select" id="sa2-schema-select">
         <option value="">Loading schemas...</option>
       </select>
 
       <label class="sa2-label" for="sa2-table-select">Select table</label>
-      <select class="sa2-select" id="sa2-table-select" disabled>
+      <select class="gp-select sa2-select" id="sa2-table-select" disabled>
         <option value="">Select a schema first</option>
       </select>
 
-      <div class="sa2-column-selector" id="sa2-column-selector" style="display:none;">
+      <div class="sa2-column-selector gp-column-selector" id="sa2-column-selector" style="display:none;">
         <label class="sa2-label">Select columns</label>
         <div class="sa2-column-controls">
           <button type="button" id="sa2-select-all-btn" class="sa2-btn-link">Select All</button>
@@ -38,240 +44,129 @@
         <div id="sa2-column-checkboxes" class="sa2-column-checkboxes"></div>
       </div>
 
+      <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
+      <div class="sa2-summary" id="sa2-summary" hidden>
+        <div class="sa2-summary-item"><span>Rows</span><strong id="sa2-row-count">—</strong></div>
+      </div>
+      <button class="sa2-load-button gp-btn gp-btn-red" id="sa2-load-button" type="button" disabled>
+        <span class="sa2-spinner" id="sa2-spinner" aria-hidden="true" hidden></span>
+        <span id="sa2-load-label">Load data on map</span>
+      </button>
+    </section>
+
+    <section id="p-filter" class="gp-panel" role="tabpanel" aria-labelledby="p-filter-tab">
+      <div class="gp-panel-title">2) Attribute Filter</div>
+      <p class="gp-panel-hint">Active filters apply to all operations. Use % as wildcard with LIKE / ILIKE.</p>
       <section class="sa2-filter-panel" id="sa2-filter-panel" hidden aria-labelledby="sa2-filter-heading">
         <div class="sa2-filter-heading" id="sa2-filter-heading">Filter rows</div>
-        <p class="sa2-filter-help">Add up to 10 attribute filters. Use <code>%</code> as a wildcard with LIKE or ILIKE.</p>
         <div id="sa2-filter-rows" class="sa2-filter-rows"></div>
-        <button type="button" id="sa2-add-filter-btn" class="sa2-btn-link sa2-add-filter">+ Add filter</button>
+        <button type="button" id="sa2-add-filter-btn" class="sa2-btn-link sa2-add-filter">+ Add condition</button>
       </section>
+      <button type="button" id="gp-filter-preview" class="gp-btn gp-btn-red" disabled>Preview filtered data</button>
+      <div id="sa3-filter-save" class="sa3-filter-save sa3-hidden">
+        <div class="sa3-save-heading">Save filtered result</div>
+        <p class="sa3-hint">The currently loaded rows will be saved as a new table in p_gisportal.</p>
+        <div class="sa3-save-inline">
+          <input type="text" id="sa3-filter-output-name" class="sa3-control" placeholder="e.g. filtered_sites">
+          <button type="button" id="sa3-filter-save-btn" class="sa3-save-button">Save filtered result</button>
+        </div>
+        <div id="sa3-filter-save-status" class="sa2-status" role="status" aria-live="polite"></div>
+      </div>
+    </section>
 
-      <section id="sa3-panel" class="sa3-panel sa3-hidden" aria-labelledby="sa3-heading">
-        <div class="sa3-heading" id="sa3-heading">3) Spatial Operations</div>
-        <p class="sa3-intro">Preview an operation first. Saving the result is always a separate action.</p>
+    <section id="p-buffer" class="gp-panel" role="tabpanel">
+      <div class="gp-panel-title">3) Buffer</div>
+      <p class="gp-panel-hint">Creates a buffer around loaded features. Active filters are applied first.</p>
+      <label class="sa2-label" for="sa3-buffer-distance">Buffer distance (metres)</label>
+      <input type="number" id="sa3-buffer-distance" class="sa3-control gp-input" min="1" max="100000" step="any" placeholder="e.g. 500">
+      <button type="button" id="sa3-buffer-preview-btn" class="sa3-preview-button gp-btn gp-btn-red" disabled>Preview buffer on map</button>
+      <div id="sa3-buffer-status" class="sa2-status" role="status" aria-live="polite"></div>
+      <div id="sa3-buffer-save" class="sa3-save-box sa3-hidden">
+        <label class="sa2-label" for="sa3-buffer-output-name">Save buffer as</label>
+        <input type="text" id="sa3-buffer-output-name" class="sa3-control gp-input" placeholder="e.g. buildings_buffer">
+        <button type="button" id="sa3-buffer-save-btn" class="sa3-save-button gp-btn gp-btn-green">Save buffer to p_gisportal</button>
+      </div>
+    </section>
 
-        <details class="sa3-operation-card" open>
-          <summary>Buffer</summary>
-          <div class="sa3-operation-body">
-            <label class="sa2-label" for="sa3-buffer-distance">Buffer distance (metres)</label>
-            <input type="number" id="sa3-buffer-distance" class="sa3-control"
-                   min="1" max="100000" step="any" placeholder="e.g. 500">
-            <button type="button" id="sa3-buffer-preview-btn" class="sa3-preview-button">Preview buffer on map</button>
-            <div id="sa3-buffer-status" class="sa2-status" role="status" aria-live="polite"></div>
-            <div id="sa3-buffer-save" class="sa3-save-box sa3-hidden">
-              <label class="sa2-label" for="sa3-buffer-output-name">Save buffer as</label>
-              <input type="text" id="sa3-buffer-output-name" class="sa3-control" placeholder="e.g. buildings_buffer">
-              <button type="button" id="sa3-buffer-save-btn" class="sa3-save-button">Save buffer to p_gisportal</button>
-            </div>
-          </div>
-        </details>
+    <section id="p-intersect" class="gp-panel" role="tabpanel">
+      <div class="gp-panel-title">4) Intersect</div>
+      <p class="gp-panel-hint">Intersect the loaded data with a polygon boundary. Active filters are applied first.</p>
+      <label class="sa2-label">Boundary source</label>
+      <div class="sa3-boundary-tabs gp-btabs" role="tablist" aria-label="Boundary source">
+        <button type="button" class="sa3-tab gp-btab" data-source="draw">Draw</button>
+        <button type="button" class="sa3-tab gp-btab active" data-source="saved">Saved</button>
+        <button type="button" class="sa3-tab gp-btab" data-source="upload">Upload</button>
+      </div>
+      <div id="sa3-source-draw" class="sa3-source-panel sa3-hidden">
+        <div class="gp-draw-info">✏ Drawing mode active — click on the map to place vertices. Double-click to close.</div>
+      </div>
+      <div id="sa3-source-saved" class="sa3-source-panel">
+        <select id="sa3-saved-table" class="sa3-control gp-select"><option value="">Select a saved result</option></select>
+      </div>
+      <div id="sa3-source-upload" class="sa3-source-panel sa3-hidden">
+        <input type="file" id="sa3-upload-file" accept=".geojson,application/geo+json" class="sa3-file-input">
+        <p class="sa3-hint">GeoJSON Polygon or MultiPolygon, maximum 10MB.</p>
+      </div>
+      <button type="button" id="sa3-intersect-preview-btn" class="sa3-preview-button gp-btn gp-btn-red" disabled>Preview intersect on map</button>
+      <div id="sa3-intersect-status" class="sa2-status" role="status" aria-live="polite"></div>
+      <div id="sa3-intersect-save" class="sa3-save-box sa3-hidden">
+        <label class="sa2-label" for="sa3-intersect-output-name">Save intersect as</label>
+        <input type="text" id="sa3-intersect-output-name" class="sa3-control gp-input" placeholder="e.g. sites_intersect">
+        <button type="button" id="sa3-intersect-save-btn" class="sa3-save-button gp-btn gp-btn-green">Save intersect to p_gisportal</button>
+      </div>
+    </section>
 
-        <details class="sa3-operation-card">
-          <summary>Intersect</summary>
-          <div class="sa3-operation-body">
-            <label class="sa2-label">Boundary source</label>
-            <div class="sa3-boundary-tabs" role="tablist" aria-label="Boundary source">
-              <button type="button" class="sa3-tab sa3-tab-disabled" disabled title="Map drawing coming soon">Draw on map</button>
-              <button type="button" class="sa3-tab active" data-source="saved">Saved result</button>
-              <button type="button" class="sa3-tab" data-source="upload">Upload GeoJSON</button>
-            </div>
-
-            <div id="sa3-source-draw" class="sa3-source-panel sa3-hidden">
-              <p class="sa3-hint">Map drawing coming soon.</p>
-            </div>
-            <div id="sa3-source-saved" class="sa3-source-panel">
-              <select id="sa3-saved-table" class="sa3-control">
-                <option value="">Select a saved result</option>
-              </select>
-            </div>
-            <div id="sa3-source-upload" class="sa3-source-panel sa3-hidden">
-              <input type="file" id="sa3-upload-file" accept=".geojson,application/geo+json" class="sa3-file-input">
-              <p class="sa3-hint">GeoJSON Polygon or MultiPolygon, maximum 10MB.</p>
-            </div>
-
-            <button type="button" id="sa3-intersect-preview-btn" class="sa3-preview-button">Preview intersect on map</button>
-            <div id="sa3-intersect-status" class="sa2-status" role="status" aria-live="polite"></div>
-            <div id="sa3-intersect-save" class="sa3-save-box sa3-hidden">
-              <label class="sa2-label" for="sa3-intersect-output-name">Save intersect as</label>
-              <input type="text" id="sa3-intersect-output-name" class="sa3-control" placeholder="e.g. sites_intersect">
-              <button type="button" id="sa3-intersect-save-btn" class="sa3-save-button">Save intersect to p_gisportal</button>
-            </div>
-          </div>
-        </details>
-      </section>
-
+    <section id="p-join" class="gp-panel" role="tabpanel">
       <details id="sa4-section" class="sa4-operation-card sa4-hidden" open>
-        <summary>4) Join Tables</summary>
+        <summary>5) Join Tables</summary>
         <div class="sa4-operation-body">
-          <p class="sa4-hint">Combine two tables on a shared column. The left table's geometry is preserved in the result.</p>
-
-          <div class="sa4-row">
-            <label class="sa2-label" for="sa4-right-schema">Right table schema</label>
-            <select id="sa4-right-schema" class="sa2-select">
-              <option value="">Loading…</option>
-            </select>
-          </div>
-
-          <div class="sa4-row">
-            <label class="sa2-label" for="sa4-right-table">Right table</label>
-            <select id="sa4-right-table" class="sa2-select" disabled>
-              <option value="">Select schema first</option>
-            </select>
-          </div>
-
-          <div class="sa4-row">
-            <label class="sa2-label" for="sa4-left-key">Left join key</label>
-            <select id="sa4-left-key" class="sa2-select" disabled>
-              <option value="">Load table first</option>
-            </select>
-          </div>
-
-          <div class="sa4-row">
-            <label class="sa2-label" for="sa4-right-key">Right join key</label>
-            <select id="sa4-right-key" class="sa2-select" disabled>
-              <option value="">Select right table first</option>
-            </select>
-          </div>
-
-          <div class="sa4-row">
-            <label class="sa2-label" for="sa4-join-type">Join type</label>
-            <select id="sa4-join-type" class="sa2-select">
-              <option value="INNER">Inner join — matching rows only</option>
-              <option value="LEFT">Left join — keep all left rows</option>
-            </select>
-          </div>
-
-          <div class="sa4-row sa4-col-section">
-            <label class="sa2-label">Columns to bring from right table</label>
-            <div id="sa4-right-col-checkboxes" class="sa2-column-checkboxes">
-              <span class="sa4-hint">Select a right table to see columns.</span>
-            </div>
-          </div>
-
-          <button type="button" id="sa4-preview-btn" class="sa3-preview-button" disabled>
-            Preview join on map
-          </button>
+          <p class="sa4-hint">Combine tables on a shared key. The left table's geometry is preserved.</p>
+          <div class="sa4-row"><label class="sa2-label" for="sa4-right-schema">Right table schema</label><select id="sa4-right-schema" class="sa2-select gp-select"><option value="">Loading…</option></select></div>
+          <div class="sa4-row"><label class="sa2-label" for="sa4-right-table">Right table</label><select id="sa4-right-table" class="sa2-select gp-select" disabled><option value="">Select schema first</option></select></div>
+          <div class="sa4-row"><label class="sa2-label" for="sa4-left-key">Left join key</label><select id="sa4-left-key" class="sa2-select gp-select" disabled><option value="">Load table first</option></select></div>
+          <div class="sa4-row"><label class="sa2-label" for="sa4-right-key">Right join key</label><select id="sa4-right-key" class="sa2-select gp-select" disabled><option value="">Select right table first</option></select></div>
+          <div class="sa4-row"><label class="sa2-label" for="sa4-join-type">Join type</label><select id="sa4-join-type" class="sa2-select gp-select"><option value="INNER">Inner join — matching rows only</option><option value="LEFT">Left join — keep all left rows</option></select></div>
+          <div class="sa4-row sa4-col-section"><label class="sa2-label">Columns to bring from right table</label><div id="sa4-right-col-checkboxes" class="sa2-column-checkboxes"><span class="sa4-hint">Select a right table to see columns.</span></div></div>
+          <button type="button" id="sa4-preview-btn" class="sa3-preview-button gp-btn gp-btn-red" disabled>Preview join on map</button>
           <div id="sa4-preview-status" class="sa2-status" role="status" aria-live="polite"></div>
-
-          <div id="sa4-save-section" class="sa2-hidden sa4-save-section">
-            <label class="sa2-label" for="sa4-output-name">Save result as</label>
-            <div class="sa4-save-row">
-              <input type="text" id="sa4-output-name" class="sa3-control" placeholder="e.g. buildings_with_lpa">
-              <span class="sa4-hint">in p_gisportal</span>
-            </div>
-            <button type="button" id="sa4-save-btn" class="sa3-save-button">Save join to p_gisportal</button>
-            <div id="sa4-save-status" class="sa2-status" role="status" aria-live="polite"></div>
-          </div>
+          <div id="sa4-save-section" class="sa2-hidden sa4-save-section"><label class="sa2-label" for="sa4-output-name">Save result as</label><div class="sa4-save-row"><input type="text" id="sa4-output-name" class="sa3-control gp-input" placeholder="e.g. buildings_with_lpa"><span class="sa4-hint">in p_gisportal</span></div><button type="button" id="sa4-save-btn" class="sa3-save-button gp-btn gp-btn-green">Save join to p_gisportal</button><div id="sa4-save-status" class="sa2-status" role="status" aria-live="polite"></div></div>
         </div>
       </details>
+    </section>
 
-      <div class="sa2-status" id="sa2-status" role="status" aria-live="polite"></div>
-
-      <div class="sa2-summary" id="sa2-summary" hidden>
-        <div class="sa2-summary-item">
-          <span>Rows</span>
-          <strong id="sa2-row-count">—</strong>
-        </div>
-      </div>
-
-      <button class="sa2-load-button" id="sa2-load-button" type="button" disabled>
-        <span class="sa2-spinner" id="sa2-spinner" aria-hidden="true" hidden></span>
-        <span id="sa2-load-label">Load on Map</span>
-      </button>
-    </aside>
-
-    <main class="sa2-main">
-      <div class="sa2-map-card">
-        <div id="sa2-map" class="sa2-map" role="application" aria-label="Spatial data map">
-          <div id="sa2-map-message" class="sa2-map-message" role="status" hidden></div>
-        </div>
-      </div>
-
-      <section class="sa2-table-card" aria-labelledby="sa2-table-heading">
-        <div class="sa2-table-header">
-          <h2 id="sa2-table-heading">Attribute table</h2>
-          <span id="sa2-table-meta">Select a table to begin</span>
-        </div>
-        <div class="sa2-table-scroll">
-          <table class="sa2-table" id="sa2-attribute-table">
-            <thead></thead>
-            <tbody>
-              <tr><td class="sa2-table-empty">No table loaded.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div id="sa3-filter-save" class="sa3-filter-save sa3-hidden">
-          <div class="sa3-save-heading">Save filtered result</div>
-          <p class="sa3-hint">The currently loaded rows will be saved as a new table in p_gisportal.</p>
-          <div class="sa3-save-inline">
-            <input type="text" id="sa3-filter-output-name" class="sa3-control" placeholder="e.g. filtered_sites">
-            <button type="button" id="sa3-filter-save-btn" class="sa3-save-button">Save filtered result</button>
-          </div>
-          <div id="sa3-filter-save-status" class="sa2-status" role="status" aria-live="polite"></div>
-        </div>
-      </section>
-
+    <section id="p-stats" class="gp-panel" role="tabpanel">
+      <div class="gp-panel-title">6) Statistics</div>
+      <p class="gp-panel-hint">Runs on selected columns. Active filters are applied.</p>
       <section id="sa5-section" class="sa5-panel sa5-hidden" aria-labelledby="sa5-heading">
-        <div class="sa5-heading" id="sa5-heading">5) Statistics &amp; dataset summary</div>
-        <p class="sa5-intro">Calculate read-only summaries for the selected table and current filters. Results are calculated in PostGIS.</p>
+        <div class="sa5-heading" id="sa5-heading">Statistics &amp; dataset summary</div>
+        <p class="sa5-intro">Calculate read-only summaries in PostGIS.</p>
         <p class="sa2-filter-hint">Statistics run on the columns selected above. Select all columns to analyse the full table.</p>
-        <div class="sa5-actions">
-          <button type="button" id="sa5-load-btn" class="sa5-button">Calculate statistics</button>
-          <span id="sa5-status" class="sa2-status" role="status" aria-live="polite"></span>
-        </div>
-
+        <div class="sa5-actions"><button type="button" id="sa5-load-btn" class="sa5-button">Calculate statistics</button><span id="sa5-status" class="sa2-status" role="status" aria-live="polite"></span></div>
         <div id="sa5-summary" class="sa5-summary-grid"></div>
-
-        <section class="sa5-subsection" aria-labelledby="sa5-columns-heading">
-          <h3 id="sa5-columns-heading">Column statistics</h3>
-          <div class="sa2-table-scroll">
-            <table id="sa5-columns-table" class="sa2-table sa5-columns-table">
-              <thead></thead>
-              <tbody><tr><td class="sa2-table-empty">Calculate statistics to begin.</td></tr></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="sa5-category-section" class="sa5-subsection sa5-hidden" aria-labelledby="sa5-category-heading">
-          <h3 id="sa5-category-heading">Most frequent values</h3>
-          <div class="sa5-category-controls">
-            <label class="sa2-label" for="sa5-category-select">Column</label>
-            <select id="sa5-category-select" class="sa2-select">
-              <option value="">Select a categorical column</option>
-            </select>
-            <button type="button" id="sa5-category-btn" class="sa5-secondary-button" disabled>Load frequencies</button>
-          </div>
-          <div id="sa5-category-output" class="sa5-category-output"></div>
-        </section>
+        <section class="sa5-subsection" aria-labelledby="sa5-columns-heading"><h3 id="sa5-columns-heading">Column statistics</h3><div class="sa2-table-scroll"><table id="sa5-columns-table" class="sa2-table sa5-columns-table"><thead></thead><tbody><tr><td class="sa2-table-empty">Calculate statistics to begin.</td></tr></tbody></table></div></section>
+        <section id="sa5-category-section" class="sa5-subsection sa5-hidden" aria-labelledby="sa5-category-heading"><h3 id="sa5-category-heading">Most frequent values</h3><div class="sa5-category-controls"><label class="sa2-label" for="sa5-category-select">Column</label><select id="sa5-category-select" class="sa2-select gp-select"><option value="">Select a categorical column</option></select><button type="button" id="sa5-category-btn" class="sa5-secondary-button" disabled>Load frequencies</button></div><div id="sa5-category-output" class="sa5-category-output"></div></section>
       </section>
-    </main>
-  </div>
-</section>
-<div id="sa-log-panel" class="sa2-operation-log">
-  <button type="button" id="sa-log-toggle" class="sa2-btn-link">
-    ▶ Show my recent operations
-  </button>
-  <div id="sa-log-content" class="sa2-hidden">
-    <div class="sa2-table-scroll">
-      <table id="sa-log-table" class="sa2-table sa2-operation-log-table">
-        <thead>
-          <tr>
-            <th>Time</th><th>Operation</th><th>Table</th>
-            <th>Status</th><th>Duration</th><th>Detail</th>
-          </tr>
-        </thead>
-        <tbody id="sa-log-tbody"></tbody>
-      </table>
+      <div id="sa-log-panel" class="sa2-operation-log gp-log-panel"><button type="button" id="sa-log-toggle" class="sa2-btn-link">▶ Show my recent operations</button><div id="sa-log-content" class="sa2-hidden"><div class="sa2-table-scroll"><table id="sa-log-table" class="sa2-table sa2-operation-log-table"><thead><tr><th>Time</th><th>Operation</th><th>Table</th><th>Status</th><th>Duration</th><th>Detail</th></tr></thead><tbody id="sa-log-tbody"></tbody></table></div><button type="button" id="sa-log-refresh" class="sa2-btn-link sa2-operation-log-refresh">↻ Refresh</button></div></div>
+    </section>
+  </aside>
+
+  <main class="gp-main">
+    <div class="gp-map" id="gp-map-panel">
+      <div id="sa2-map" role="application" aria-label="Spatial data map"><div id="sa2-map-message" class="sa2-map-message" role="status" hidden></div></div>
     </div>
-    <button type="button" id="sa-log-refresh" class="sa2-btn-link sa2-operation-log-refresh">
-      ↻ Refresh
-    </button>
-  </div>
-</div>
+    <div id="resize-handle" class="gp-resize" role="separator" aria-label="Resize attribute table" tabindex="0"></div>
+    <section id="attr-panel" class="gp-attr" aria-labelledby="sa2-table-heading">
+      <div class="gp-attr-bar"><h2 id="sa2-table-heading" class="gp-attr-title">Attribute table</h2><span id="sa2-table-meta" class="gp-attr-count">Select a table to begin</span><span class="gp-attr-spacer"></span><button type="button" id="gp-home-table" class="gp-attr-btn">⌃ Top</button></div>
+      <div class="gp-attr-table-wrap"><table class="sa2-table" id="sa2-attribute-table"><thead></thead><tbody><tr><td class="sa2-table-empty">No table loaded.</td></tr></tbody></table></div>
+    </section>
+  </main>
+</section>
 {% endblock %}
 
 {% block extra_js %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 <script>
   const SA2_API = {
     schemas: "{% url 'catalogue:spatial_schemas_api' %}",
@@ -306,7 +201,7 @@
     const filterPanel = document.getElementById('sa2-filter-panel');
     const filterRows = document.getElementById('sa2-filter-rows');
     const addFilterButton = document.getElementById('sa2-add-filter-btn');
-    const phase3Panel = document.getElementById('sa3-panel');
+    const filterPreviewButton = document.getElementById('gp-filter-preview');
     const filterSavePanel = document.getElementById('sa3-filter-save');
     const filterSaveStatus = document.getElementById('sa3-filter-save-status');
     const bufferDistance = document.getElementById('sa3-buffer-distance');
@@ -364,11 +259,60 @@
       ['IS NOT NULL', 'is not empty']
     ];
 
-    const map = L.map('sa2-map').setView([51.5, -0.1], 6);
+    const map = L.map('sa2-map', {
+      zoomControl: false,
+      preferCanvas: true
+    }).setView([54.5, -4.0], 6);
+    L.control.zoom({position: 'topright'}).addTo(map);
     L.tileLayer('/tiles/osm/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+    const HomeControl = L.Control.extend({
+      options: {position: 'topright'},
+      onAdd: function() {
+        const button = L.DomUtil.create('button', 'map-home-btn');
+        button.type = 'button';
+        button.innerHTML = '🇬🇧';
+        button.title = 'Reset to UK & Ireland';
+        L.DomEvent.disableClickPropagation(button);
+        L.DomEvent.on(button, 'click', () => map.setView([54.5, -4.0], 6));
+        return button;
+      }
+    });
+    new HomeControl().addTo(map);
+
+    const drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+    if (L.Control?.Draw && L.Draw?.Event) {
+      const drawControl = new L.Control.Draw({
+        draw: {
+          polygon: true,
+          polyline: false,
+          rectangle: true,
+          circle: false,
+          marker: false,
+          circlemarker: false
+        },
+        edit: {featureGroup: drawnItems}
+      });
+      map.addControl(drawControl);
+      map.on(L.Draw.Event.CREATED, event => {
+        drawnItems.clearLayers();
+        drawnItems.addLayer(event.layer);
+        window._drawnBoundary = drawnItems.toGeoJSON();
+      });
+      map.on(L.Draw.Event.DELETED, () => {
+        window._drawnBoundary = null;
+      });
+    } else {
+      document.querySelectorAll('.gp-btab[data-source="draw"]').forEach(tab => {
+        tab.disabled = true;
+        tab.title = 'Drawing tools are unavailable';
+      });
+    }
+    window.setTimeout(() => map.invalidateSize(), 0);
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -582,11 +526,13 @@
     }
 
     function showPhase3Panel() {
-      phase3Panel.classList.remove('sa3-hidden');
+      bufferPreviewButton.disabled = false;
+      intersectPreviewButton.disabled = false;
     }
 
     function resetPhase3() {
-      phase3Panel.classList.add('sa3-hidden');
+      bufferPreviewButton.disabled = true;
+      intersectPreviewButton.disabled = true;
       bufferDistance.value = '';
       document.getElementById('sa3-buffer-output-name').value = '';
       document.getElementById('sa3-intersect-output-name').value = '';
@@ -609,6 +555,8 @@
       document.querySelectorAll('.sa3-source-panel').forEach(panel => {
         panel.classList.toggle('sa3-hidden', panel.id !== 'sa3-source-upload');
       });
+      drawnItems.clearLayers();
+      window._drawnBoundary = null;
     }
 
     function resetFilterSave() {
@@ -775,6 +723,7 @@
         statisticsStatus.textContent = data.filtered
           ? `Statistics calculated for the filtered rows in ${data.table}.`
           : `Statistics calculated for ${data.table}.`;
+        markTabDone('p-stats');
       } catch (error) {
         statisticsStatus.textContent = error.message;
         statisticsStatus.classList.add('is-error');
@@ -937,6 +886,18 @@
         panel.classList.toggle('sa3-hidden', panel.id !== `sa3-source-${source}`);
       });
       if (source === 'saved') loadSavedResults();
+      if (source === 'draw') startDrawMode();
+    }
+
+    function startDrawMode() {
+      if (!L.Draw?.Polygon) {
+        intersectStatus.textContent = 'Drawing tools are unavailable. Choose Upload or Saved.';
+        intersectStatus.classList.add('is-error');
+        return;
+      }
+      drawnItems.clearLayers();
+      window._drawnBoundary = null;
+      new L.Draw.Polygon(map).enable();
     }
 
     function zoomToFeature(feature) {
@@ -1017,8 +978,57 @@
 
     function setLoading(isLoading) {
       loadButton.disabled = isLoading || !schemaSelect.value || !tableSelect.value;
+      filterPreviewButton.disabled = isLoading || !schemaSelect.value || !tableSelect.value;
       spinner.hidden = !isLoading;
       loadLabel.textContent = isLoading ? 'Loading…' : 'Load on Map';
+    }
+
+    function showTab(panelId) {
+      document.querySelectorAll('.gp-panel').forEach(panel => {
+        panel.classList.toggle('gp-visible', panel.id === panelId);
+      });
+      document.querySelectorAll('.gp-tab').forEach(tab => {
+        const active = tab.dataset.tab === panelId;
+        tab.classList.toggle('gp-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      window.setTimeout(() => map.invalidateSize(), 0);
+    }
+
+    function markTabDone(panelId, done = true) {
+      const tab = document.querySelector(`.gp-tab[data-tab="${panelId}"]`);
+      if (tab) tab.classList.toggle('gp-done', done);
+    }
+
+    function clearTabProgress() {
+      document.querySelectorAll('.gp-tab').forEach(tab => tab.classList.remove('gp-done'));
+    }
+
+    function enableAttributeResize() {
+      const handle = document.getElementById('resize-handle');
+      const attrPanel = document.getElementById('attr-panel');
+      let dragging = false;
+      handle.addEventListener('pointerdown', event => {
+        dragging = true;
+        handle.setPointerCapture?.(event.pointerId);
+        document.body.classList.add('gp-resizing');
+      });
+      handle.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        const rect = attrPanel.parentElement.getBoundingClientRect();
+        const newHeight = rect.bottom - event.clientY;
+        if (newHeight > 80 && newHeight < 500) attrPanel.style.height = `${newHeight}px`;
+      });
+      const stop = () => {
+        dragging = false;
+        document.body.classList.remove('gp-resizing');
+        window.setTimeout(() => map.invalidateSize(), 0);
+      };
+      handle.addEventListener('pointerup', stop);
+      handle.addEventListener('pointercancel', stop);
+      document.getElementById('gp-home-table').addEventListener('click', () => {
+        document.querySelector('.gp-attr-table-wrap').scrollTop = 0;
+      });
     }
 
     function populateSourceSchemas(select, schemas) {
@@ -1062,6 +1072,7 @@
         ? '<option value="">Loading tables...</option>'
         : '<option value="">Select a schema first</option>';
       loadButton.disabled = true;
+      filterPreviewButton.disabled = true;
       summary.hidden = true;
       columnSelector.style.display = 'none';
       columnCheckboxes.innerHTML = '';
@@ -1070,6 +1081,7 @@
       resetFilterSave();
       resetPhase4();
       resetPhase5();
+      clearTabProgress();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
@@ -1100,6 +1112,7 @@
     async function selectTable() {
       const table = tableSelect.value;
       loadButton.disabled = !schemaSelect.value || !table;
+      filterPreviewButton.disabled = !schemaSelect.value || !table;
       summary.hidden = !table;
       columnSelector.style.display = 'none';
       columnCheckboxes.innerHTML = '';
@@ -1108,6 +1121,7 @@
       resetFilterSave();
       resetPhase4();
       resetPhase5();
+      clearTabProgress();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
@@ -1183,6 +1197,8 @@
         setStatus(data.has_geometry
           ? `${table} loaded on the map.`
           : `${table} loaded; it has no geometry.`);
+        markTabDone('p-source');
+        if (filtersHaveInput()) markTabDone('p-filter');
       } catch (error) {
         setStatus(error.message, true);
       } finally {
@@ -1199,6 +1215,7 @@
         boundarySource: activeBoundarySource,
         savedTable: document.getElementById('sa3-saved-table').value,
         file: document.getElementById('sa3-upload-file').files[0] || null,
+        drawnBoundary: window._drawnBoundary || null,
         filters
       };
     }
@@ -1225,11 +1242,12 @@
 
       if (operation === 'intersect') {
         const boundarySource = state?.boundarySource ?? activeBoundarySource;
-        if (boundarySource === 'draw') {
-          throw new Error('Map drawing is coming soon. Choose upload or saved result.');
-        }
         formData.append('boundary_source', boundarySource);
-        if (boundarySource === 'saved') {
+        if (boundarySource === 'draw') {
+          const boundary = state?.drawnBoundary ?? window._drawnBoundary;
+          if (!boundary) throw new Error('Draw a boundary on the map first.');
+          formData.append('boundary_geojson', JSON.stringify(boundary));
+        } else if (boundarySource === 'saved') {
           const savedTable = state?.savedTable ?? document.getElementById('sa3-saved-table').value;
           if (!savedTable) throw new Error('Select a saved result boundary.');
           formData.append('boundary_table', savedTable);
@@ -1333,6 +1351,7 @@
         const data = await postJoin(SA2_API.joinPreview, buildJoinForm(state));
         renderJoinPreview(data);
         joinPreviewState = state;
+        markTabDone('p-join');
         joinSaveSection.classList.remove('sa2-hidden');
         joinPreviewStatus.textContent = data.message;
       } catch (error) {
@@ -1385,6 +1404,7 @@
       renderAttributeTable(data.features || []);
       tableMeta.textContent = `${label} preview — ${Number(data.total_count || 0).toLocaleString()} rows`;
       filterSavePanel.classList.add('sa3-hidden');
+      markTabDone(`p-${label.toLowerCase()}`);
     }
 
     async function previewOperation(operation, button, statusEl, savePanel, label) {
@@ -1485,6 +1505,11 @@
       }
     }
 
+    document.querySelectorAll('.gp-tab').forEach(tab => {
+      tab.addEventListener('click', () => showTab(tab.dataset.tab));
+    });
+    enableAttributeResize();
+    filterPreviewButton.addEventListener('click', loadSelectedTable);
     schemaSelect.addEventListener('change', selectSchema);
     tableSelect.addEventListener('change', selectTable);
     joinRightSchema.addEventListener('change', selectJoinRightSchema);
