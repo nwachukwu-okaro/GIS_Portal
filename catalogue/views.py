@@ -2684,6 +2684,280 @@ def spatial_table_data_api(request):
     })
 
 
+_SPATIAL_NUMERIC_TYPES = frozenset({
+    'smallint', 'integer', 'bigint', 'decimal', 'numeric', 'real',
+    'double precision', 'smallserial', 'serial', 'bigserial',
+})
+_SPATIAL_CATEGORY_TYPES = frozenset({
+    'character varying', 'character', 'text', 'USER-DEFINED', 'boolean',
+    'date', 'timestamp without time zone', 'timestamp with time zone',
+    'time without time zone', 'time with time zone', 'uuid',
+})
+
+
+def _spatial_statistics_profile_query(metadata, schema, table_name, filter_expression):
+    """Build one aggregate query for null, distinct, and numeric profiles."""
+    geometry_column = metadata['geometry_column']
+    columns = [
+        column for column in metadata['columns']
+        if column['name'] != geometry_column
+    ]
+    select_parts = [sql.SQL('COUNT(*) AS {}').format(sql.Identifier('__total_count'))]
+    aliases = []
+    numeric_columns = []
+
+    for index, column in enumerate(columns):
+        identifier = sql.Identifier(column['name'])
+        non_null_alias = f'__c{index}_non_null'
+        null_alias = f'__c{index}_null'
+        distinct_alias = f'__c{index}_distinct'
+        select_parts.extend([
+            sql.SQL('COUNT({}) AS {}').format(identifier, sql.Identifier(non_null_alias)),
+            sql.SQL('(COUNT(*) - COUNT({})) AS {}').format(
+                identifier, sql.Identifier(null_alias)
+            ),
+            sql.SQL('COUNT(DISTINCT {}) AS {}').format(
+                identifier, sql.Identifier(distinct_alias)
+            ) if column['data_type'] in (_SPATIAL_NUMERIC_TYPES | _SPATIAL_CATEGORY_TYPES)
+            else sql.SQL('NULL::bigint AS {}').format(sql.Identifier(distinct_alias)),
+        ])
+        aliases.append((non_null_alias, null_alias, distinct_alias))
+        if column['data_type'] in _SPATIAL_NUMERIC_TYPES or column['udt_name'] in _SPATIAL_NUMERIC_TYPES:
+            numeric_aliases = {
+                'min': f'__n{index}_min',
+                'max': f'__n{index}_max',
+                'mean': f'__n{index}_mean',
+                'median': f'__n{index}_median',
+                'stddev': f'__n{index}_stddev',
+                'q1': f'__n{index}_q1',
+                'q3': f'__n{index}_q3',
+            }
+            select_parts.extend([
+                sql.SQL('MIN({}) AS {}').format(identifier, sql.Identifier(numeric_aliases['min'])),
+                sql.SQL('MAX({}) AS {}').format(identifier, sql.Identifier(numeric_aliases['max'])),
+                sql.SQL('AVG({}) AS {}').format(identifier, sql.Identifier(numeric_aliases['mean'])),
+                sql.SQL("percentile_cont(0.5) WITHIN GROUP (ORDER BY {}) AS {}").format(
+                    identifier, sql.Identifier(numeric_aliases['median'])
+                ),
+                sql.SQL('STDDEV_SAMP({}) AS {}').format(
+                    identifier, sql.Identifier(numeric_aliases['stddev'])
+                ),
+                sql.SQL("percentile_cont(0.25) WITHIN GROUP (ORDER BY {}) AS {}").format(
+                    identifier, sql.Identifier(numeric_aliases['q1'])
+                ),
+                sql.SQL("percentile_cont(0.75) WITHIN GROUP (ORDER BY {}) AS {}").format(
+                    identifier, sql.Identifier(numeric_aliases['q3'])
+                ),
+            ])
+            numeric_columns.append((column, numeric_aliases))
+
+    query = sql.SQL('SELECT {} FROM {}.{}{}').format(
+        sql.SQL(', ').join(select_parts),
+        sql.Identifier(schema),
+        sql.Identifier(table_name),
+        sql.SQL(' WHERE {}').format(filter_expression)
+        if filter_expression is not None else sql.SQL(''),
+    )
+    return query, columns, aliases, numeric_columns
+
+
+def _spatial_statistics_geometry_query(metadata, schema, table_name, filter_expression):
+    """Build the filtered geometry summary query, if the table has geometry."""
+    geometry_column = metadata['geometry_column']
+    if not geometry_column:
+        return None
+    geometry = sql.Identifier(geometry_column)
+    geometry_as_geometry = sql.SQL('{}::geometry').format(geometry)
+    normalized = sql.SQL(
+        "CASE WHEN ST_SRID({}) IN (0, 4326) THEN {} "
+        "ELSE ST_Transform({}, 4326) END"
+    ).format(geometry_as_geometry, geometry_as_geometry, geometry_as_geometry)
+    metric_geometry = sql.SQL('{}::geometry').format(geometry)
+    query = sql.SQL(
+        'SELECT COUNT({geom}), MIN(ST_SRID({geom})), '
+        'MIN(ST_GeometryType({geom})), ST_AsText(ST_Extent({normalized})), '
+        'SUM(CASE WHEN ST_SRID({geom}) <> 0 AND ST_Dimension({geom}) = 2 '
+        'THEN ST_Area(ST_Transform({geom}, 27700)) END), '
+        'SUM(CASE WHEN ST_SRID({geom}) <> 0 AND ST_Dimension({geom}) = 1 '
+        'THEN ST_Length(ST_Transform({geom}, 27700)) END) '
+        'FROM {schema}.{table}{where}'
+    ).format(
+        geom=metric_geometry,
+        normalized=normalized,
+        schema=sql.Identifier(schema),
+        table=sql.Identifier(table_name),
+        where=sql.SQL(' WHERE {}').format(filter_expression)
+        if filter_expression is not None else sql.SQL(''),
+    )
+    return query
+
+
+def _spatial_statistics_bbox(raw_bbox):
+    """Convert PostGIS BOX text into a JSON-friendly bounding box."""
+    if not raw_bbox:
+        return None
+    match = re.match(
+        r'^BOX\(\s*([-+0-9.eE]+)\s+([-+0-9.eE]+),\s*([-+0-9.eE]+)\s+([-+0-9.eE]+)\s*\)$',
+        str(raw_bbox),
+    )
+    if not match:
+        return None
+    return [float(value) for value in match.groups()]
+
+
+@login_required
+@require_GET
+def spatial_statistics_api(request):
+    """Return filtered numeric, categorical, and geometry statistics."""
+    schema = _spatial_schema_parameter(request)
+    if _is_gis_db_mock():
+        return _spatial_api_unavailable()
+
+    table_name, error_response = _spatial_table_parameter(request)
+    if error_response:
+        return error_response
+
+    category_name = (request.GET.get('category') or '').strip()
+    alias = _db_alias_for_schema(schema)
+    try:
+        with connections[alias].cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT 1
+                FROM information_schema.tables
+                WHERE table_schema = %s
+                  AND table_name = %s
+                  AND table_type = 'BASE TABLE'
+                """,
+                (schema, table_name),
+            )
+            if cursor.fetchone() is None:
+                return JsonResponse({'error': 'That table was not found.'}, status=404)
+
+            metadata = _spatial_table_metadata(cursor, schema, table_name)
+            if metadata is None:
+                return JsonResponse({'error': 'That table was not found.'}, status=404)
+            try:
+                filter_expression, filter_params = _spatial_filter_sql(request, metadata)
+            except ValueError as exc:
+                return JsonResponse({'error': str(exc)}, status=400)
+
+            profile_query, profile_columns, aliases, numeric_columns = _spatial_statistics_profile_query(
+                metadata, schema, table_name, filter_expression
+            )
+            cursor.execute(profile_query, filter_params)
+            profile_row = cursor.fetchone()
+            description = [item.name for item in cursor.description]
+            values = dict(zip(description, profile_row or []))
+
+            profiles = []
+            category_columns = []
+            for index, column in enumerate(profile_columns):
+                data_type = column['data_type']
+                if data_type == 'USER-DEFINED':
+                    data_type = column['udt_name']
+                kind = 'numeric' if (
+                    column['data_type'] in _SPATIAL_NUMERIC_TYPES
+                    or column['udt_name'] in _SPATIAL_NUMERIC_TYPES
+                ) else 'categorical' if column['data_type'] in _SPATIAL_CATEGORY_TYPES else 'other'
+                profile = {
+                    'name': column['name'],
+                    'type': data_type,
+                    'kind': kind,
+                    'non_null_count': values.get(aliases[index][0]),
+                    'null_count': values.get(aliases[index][1]),
+                    'distinct_count': values.get(aliases[index][2]),
+                }
+                if kind == 'categorical':
+                    category_columns.append(column['name'])
+                profiles.append(profile)
+
+            for column, numeric_aliases in numeric_columns:
+                profile = next(item for item in profiles if item['name'] == column['name'])
+                profile.update({
+                    key: _spatial_json_value(values.get(alias_name))
+                    for key, alias_name in numeric_aliases.items()
+                })
+
+            category_summary = None
+            if category_name:
+                if category_name not in category_columns:
+                    return JsonResponse({
+                        'error': 'Choose a text, date, boolean, UUID, or enum column for frequencies.',
+                    }, status=400)
+                category_identifier = sql.Identifier(category_name)
+                category_where = sql.SQL('{} IS NOT NULL').format(category_identifier)
+                if filter_expression is not None:
+                    category_where = sql.SQL('({}) AND ({})').format(filter_expression, category_where)
+                cursor.execute(
+                    sql.SQL(
+                        'SELECT {}::text, COUNT(*) FROM {}.{} '
+                        'WHERE {} GROUP BY {} ORDER BY COUNT(*) DESC, {}::text LIMIT 10'
+                    ).format(
+                        category_identifier,
+                        sql.Identifier(schema),
+                        sql.Identifier(table_name),
+                        category_where,
+                        category_identifier,
+                        category_identifier,
+                    ),
+                    filter_params,
+                )
+                category_summary = {
+                    'column': category_name,
+                    'values': [
+                        {'value': _spatial_json_value(row[0]), 'count': row[1]}
+                        for row in cursor.fetchall()
+                    ],
+                }
+
+            geometry_summary = {
+                'has_geometry': bool(metadata['geometry_column']),
+                'column': metadata['geometry_column'],
+                'type': None,
+                'srid': None,
+                'feature_count': 0,
+                'bbox_4326': None,
+                'total_area_m2': None,
+                'total_length_m': None,
+            }
+            geometry_query = _spatial_statistics_geometry_query(
+                metadata, schema, table_name, filter_expression
+            )
+            if geometry_query is not None:
+                cursor.execute(geometry_query, filter_params)
+                geometry_row = cursor.fetchone() or [None] * 6
+                geometry_summary.update({
+                    'feature_count': geometry_row[0] or 0,
+                    'srid': geometry_row[1],
+                    'type': geometry_row[2],
+                    'bbox_4326': _spatial_statistics_bbox(geometry_row[3]),
+                    'total_area_m2': _spatial_json_value(geometry_row[4]),
+                    'total_length_m': _spatial_json_value(geometry_row[5]),
+                })
+    except (psycopg2.OperationalError, psycopg2.InterfaceError, DatabaseError) as exc:
+        return JsonResponse({
+            'error': f'Could not calculate statistics: {exc}'.split('\n', 1)[0],
+        }, status=503)
+
+    return JsonResponse({
+        'schema': schema,
+        'table': table_name,
+        'total_count': values.get('__total_count', 0),
+        'filtered': filter_expression is not None,
+        'columns': [
+            {
+                key: _spatial_json_value(value) if key not in {'name', 'type', 'kind'} else value
+                for key, value in profile.items()
+            }
+            for profile in profiles
+        ],
+        'category_columns': category_columns,
+        'category_summary': category_summary,
+        'geometry': geometry_summary,
+    })
+
+
 @login_required
 @require_POST
 def spatial_run_operation_api(request):

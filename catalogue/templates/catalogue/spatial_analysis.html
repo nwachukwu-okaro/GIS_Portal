@@ -209,6 +209,39 @@
           <div id="sa3-filter-save-status" class="sa2-status" role="status" aria-live="polite"></div>
         </div>
       </section>
+
+      <section id="sa5-section" class="sa5-panel sa5-hidden" aria-labelledby="sa5-heading">
+        <div class="sa5-heading" id="sa5-heading">5) Statistics &amp; dataset summary</div>
+        <p class="sa5-intro">Calculate read-only summaries for the selected table and current filters. Results are calculated in PostGIS.</p>
+        <div class="sa5-actions">
+          <button type="button" id="sa5-load-btn" class="sa5-button">Calculate statistics</button>
+          <span id="sa5-status" class="sa2-status" role="status" aria-live="polite"></span>
+        </div>
+
+        <div id="sa5-summary" class="sa5-summary-grid"></div>
+
+        <section class="sa5-subsection" aria-labelledby="sa5-columns-heading">
+          <h3 id="sa5-columns-heading">Column statistics</h3>
+          <div class="sa2-table-scroll">
+            <table id="sa5-columns-table" class="sa2-table sa5-columns-table">
+              <thead></thead>
+              <tbody><tr><td class="sa2-table-empty">Calculate statistics to begin.</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="sa5-category-section" class="sa5-subsection sa5-hidden" aria-labelledby="sa5-category-heading">
+          <h3 id="sa5-category-heading">Most frequent values</h3>
+          <div class="sa5-category-controls">
+            <label class="sa2-label" for="sa5-category-select">Column</label>
+            <select id="sa5-category-select" class="sa2-select">
+              <option value="">Select a categorical column</option>
+            </select>
+            <button type="button" id="sa5-category-btn" class="sa5-secondary-button" disabled>Load frequencies</button>
+          </div>
+          <div id="sa5-category-output" class="sa5-category-output"></div>
+        </section>
+      </section>
     </main>
   </div>
 </section>
@@ -248,6 +281,7 @@
     saveFilter: "{% url 'catalogue:spatial_save_filter_api' %}",
     joinPreview: "{% url 'catalogue:spatial_join_preview_api' %}",
     joinSave: "{% url 'catalogue:spatial_join_save_api' %}",
+    statistics: "{% url 'catalogue:spatial_statistics_api' %}",
     operationLog: "{% url 'catalogue:spatial_operation_log_api' %}",
     savedResults: "{% url 'catalogue:spatial_saved_results_api' %}",
     downloadResult: "{% url 'catalogue:spatial_download_result_api' %}"
@@ -294,6 +328,15 @@
     const joinSaveButton = document.getElementById('sa4-save-btn');
     const joinSaveStatus = document.getElementById('sa4-save-status');
     const joinOutputName = document.getElementById('sa4-output-name');
+    const phase5Section = document.getElementById('sa5-section');
+    const statisticsButton = document.getElementById('sa5-load-btn');
+    const statisticsStatus = document.getElementById('sa5-status');
+    const statisticsSummary = document.getElementById('sa5-summary');
+    const statisticsColumnsTable = document.getElementById('sa5-columns-table');
+    const categorySection = document.getElementById('sa5-category-section');
+    const categorySelect = document.getElementById('sa5-category-select');
+    const categoryButton = document.getElementById('sa5-category-btn');
+    const categoryOutput = document.getElementById('sa5-category-output');
     let lastBufferPreview = false;
     let lastIntersectPreview = false;
     let bufferPreviewState = null;
@@ -302,6 +345,7 @@
     let dataLayer = null;
     let joinLayer = null;
     let joinPreviewState = null;
+    let statisticsState = null;
     let activeBoundarySource = 'upload';
 
     const FILTER_OPERATORS = [
@@ -608,6 +652,131 @@
       phase4Section.classList.remove('sa4-hidden');
     }
 
+    function showPhase5Section() {
+      phase5Section.classList.remove('sa5-hidden');
+    }
+
+    function resetPhase5() {
+      phase5Section.classList.add('sa5-hidden');
+      statisticsState = null;
+      statisticsStatus.textContent = '';
+      statisticsStatus.classList.remove('is-error');
+      statisticsSummary.innerHTML = '';
+      statisticsColumnsTable.querySelector('thead').innerHTML = '';
+      statisticsColumnsTable.querySelector('tbody').innerHTML =
+        '<tr><td class="sa2-table-empty">Calculate statistics to begin.</td></tr>';
+      categorySection.classList.add('sa5-hidden');
+      categorySelect.innerHTML = '<option value="">Select a categorical column</option>';
+      categoryButton.disabled = true;
+      categoryOutput.innerHTML = '';
+    }
+
+    function formatStatistic(value) {
+      if (value === null || value === undefined || value === '') return '—';
+      if (typeof value === 'number' && Number.isFinite(value)) {
+        return value.toLocaleString(undefined, {maximumFractionDigits: 3});
+      }
+      return formatCell(value);
+    }
+
+    function renderStatistics(data) {
+      const geometry = data.geometry || {};
+      const bbox = geometry.bbox_4326;
+      const summaryItems = [
+        ['Rows in selection', formatStatistic(data.total_count)],
+        ['Geometry features', geometry.has_geometry ? formatStatistic(geometry.feature_count) : 'No geometry'],
+        ['Geometry type', geometry.type || '—'],
+        ['CRS / SRID', geometry.srid || '—'],
+        ['Bounding box (WGS84)', bbox ? bbox.map(formatStatistic).join(', ') : '—'],
+        ['Total area (m²)', formatStatistic(geometry.total_area_m2)],
+        ['Total length (m)', formatStatistic(geometry.total_length_m)]
+      ];
+      statisticsSummary.innerHTML = summaryItems.map(([label, value]) => `
+        <div class="sa5-summary-item">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
+      `).join('');
+
+      const columns = data.columns || [];
+      const header = ['Column', 'Type', 'Kind', 'Non-null', 'Null', 'Distinct', 'Min', 'Q1', 'Median', 'Mean', 'Q3', 'Max', 'Std dev'];
+      statisticsColumnsTable.querySelector('thead').innerHTML =
+        `<tr>${header.map(item => `<th scope="col">${escapeHtml(item)}</th>`).join('')}</tr>`;
+      statisticsColumnsTable.querySelector('tbody').innerHTML = columns.length
+        ? columns.map(column => `<tr>
+            <td>${escapeHtml(column.name)}</td>
+            <td>${escapeHtml(column.type)}</td>
+            <td>${escapeHtml(column.kind)}</td>
+            <td>${escapeHtml(formatStatistic(column.non_null_count))}</td>
+            <td>${escapeHtml(formatStatistic(column.null_count))}</td>
+            <td>${escapeHtml(formatStatistic(column.distinct_count))}</td>
+            <td>${escapeHtml(formatStatistic(column.min))}</td>
+            <td>${escapeHtml(formatStatistic(column.q1))}</td>
+            <td>${escapeHtml(formatStatistic(column.median))}</td>
+            <td>${escapeHtml(formatStatistic(column.mean))}</td>
+            <td>${escapeHtml(formatStatistic(column.q3))}</td>
+            <td>${escapeHtml(formatStatistic(column.max))}</td>
+            <td>${escapeHtml(formatStatistic(column.stddev))}</td>
+          </tr>`).join('')
+        : '<tr><td class="sa2-table-empty" colspan="13">No attribute columns are available.</td></tr>';
+
+      const categoryColumns = data.category_columns || [];
+      const selectedCategory = data.category_summary?.column || '';
+      categorySelect.innerHTML = '<option value="">Select a categorical column</option>';
+      categoryColumns.forEach(column => {
+        const option = document.createElement('option');
+        option.value = column;
+        option.textContent = column;
+        categorySelect.appendChild(option);
+      });
+      if (selectedCategory) categorySelect.value = selectedCategory;
+      categorySection.classList.toggle('sa5-hidden', !categoryColumns.length);
+      categoryButton.disabled = !categoryColumns.length || !categorySelect.value;
+      renderCategorySummary(data.category_summary);
+    }
+
+    function renderCategorySummary(summaryData) {
+      if (!summaryData) {
+        categoryOutput.innerHTML = '';
+        return;
+      }
+      const rows = summaryData.values || [];
+      categoryOutput.innerHTML = rows.length
+        ? `<table class="sa5-frequency-table"><thead><tr><th>Value</th><th>Count</th></tr></thead><tbody>${rows.map(row =>
+            `<tr><td>${escapeHtml(formatCell(row.value))}</td><td>${escapeHtml(formatStatistic(row.count))}</td></tr>`
+          ).join('')}</tbody></table>`
+        : '<p class="sa5-empty">No non-null values were found for this column.</p>';
+    }
+
+    async function loadStatistics(category = '') {
+      if (!schemaSelect.value || !tableSelect.value) return;
+      statisticsButton.disabled = true;
+      categoryButton.disabled = true;
+      statisticsStatus.textContent = 'Calculating statistics…';
+      statisticsStatus.classList.remove('is-error');
+      try {
+        const filters = filtersHaveInput() ? getFilterPayload() : [];
+        const params = new URLSearchParams({
+          schema: schemaSelect.value,
+          table: tableSelect.value,
+          filters: JSON.stringify(filters)
+        });
+        if (category) params.set('category', category);
+        const data = await fetchJson(`${SA2_API.statistics}?${params.toString()}`);
+        statisticsState = data;
+        renderStatistics(data);
+        statisticsStatus.textContent = data.filtered
+          ? `Statistics calculated for the filtered rows in ${data.table}.`
+          : `Statistics calculated for ${data.table}.`;
+      } catch (error) {
+        statisticsStatus.textContent = error.message;
+        statisticsStatus.classList.add('is-error');
+      } finally {
+        statisticsButton.disabled = false;
+        categoryButton.disabled = !categorySelect.value;
+      }
+    }
+
     function buildJoinLeftKeys(columns) {
       joinLeftKey.innerHTML = '<option value="">Select a left key</option>';
       columns.forEach(column => {
@@ -893,6 +1062,7 @@
       resetPhase3();
       resetFilterSave();
       resetPhase4();
+      resetPhase5();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = 'Select a table to begin';
@@ -930,6 +1100,7 @@
       resetPhase3();
       resetFilterSave();
       resetPhase4();
+      resetPhase5();
       currentColumns = [];
       rowCount.textContent = '—';
       tableMeta.textContent = table ? `${table} — ready to load` : 'Select a table to begin';
@@ -949,6 +1120,7 @@
           showPhase4Section();
           buildJoinLeftKeys(currentColumns);
         }
+        showPhase5Section();
         rowCount.textContent = Number(countPreview.total_count || 0).toLocaleString();
         setStatus(`${table} selected.`);
       } catch (error) {
@@ -1344,6 +1516,11 @@
       );
     });
     document.getElementById('sa3-filter-save-btn').addEventListener('click', saveFilteredResult);
+    statisticsButton.addEventListener('click', () => loadStatistics());
+    categorySelect.addEventListener('change', () => {
+      categoryButton.disabled = !categorySelect.value;
+    });
+    categoryButton.addEventListener('click', () => loadStatistics(categorySelect.value));
     joinPreviewButton.addEventListener('click', previewJoin);
     joinSaveButton.addEventListener('click', saveJoin);
     document.getElementById('sa-log-toggle').addEventListener('click', function() {

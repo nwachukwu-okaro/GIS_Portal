@@ -12,6 +12,7 @@ urlpatterns = [
     path('spatial-analysis/api/tables/', views.spatial_tables_api, name='spatial_tables_api'),
     path('spatial-analysis/api/table-data/', views.spatial_table_data_api, name='spatial_table_data_api'),
     path('spatial-analysis/api/table-columns/', views.spatial_table_columns_api, name='spatial_table_columns_api'),
+    path('spatial-analysis/api/statistics/', views.spatial_statistics_api, name='spatial_statistics_api'),
     path('spatial-analysis/api/run-operation/', views.spatial_run_operation_api, name='spatial_run_operation_api'),
     path('spatial-analysis/api/save-filter/', views.spatial_save_filter_api, name='spatial_save_filter_api'),
     path('spatial-analysis/api/join-preview/', views.spatial_join_preview_api, name='spatial_join_preview_api'),
