@@ -312,7 +312,7 @@
         tab.title = 'Drawing tools are unavailable';
       });
     }
-    window.setTimeout(() => map.invalidateSize(), 0);
+    window.setTimeout(() => map.invalidateSize({pan: false}), 100);
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -992,7 +992,7 @@
         tab.classList.toggle('gp-active', active);
         tab.setAttribute('aria-selected', active ? 'true' : 'false');
       });
-      window.setTimeout(() => map.invalidateSize(), 0);
+      window.setTimeout(() => map.invalidateSize({pan: false}), 50);
     }
 
     function markTabDone(panelId, done = true) {
@@ -1022,7 +1022,7 @@
       const stop = () => {
         dragging = false;
         document.body.classList.remove('gp-resizing');
-        window.setTimeout(() => map.invalidateSize(), 0);
+        window.setTimeout(() => map.invalidateSize({pan: false}), 50);
       };
       handle.addEventListener('pointerup', stop);
       handle.addEventListener('pointercancel', stop);
@@ -1030,6 +1030,12 @@
         document.querySelector('.gp-attr-table-wrap').scrollTop = 0;
       });
     }
+
+    let mapResizeTimer = null;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(mapResizeTimer);
+      mapResizeTimer = window.setTimeout(() => map.invalidateSize({pan: false}), 100);
+    });
 
     function populateSourceSchemas(select, schemas) {
       select.innerHTML = '<option value="">Select a schema</option>';
