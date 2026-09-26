@@ -1232,6 +1232,7 @@
             pointToLayer: pointStyle,
             onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
           }).addTo(map);
+          dataLayer.bringToFront();
           setCurrentLayer(dataLayer);
 
           const bounds = dataLayer.getBounds();
@@ -1387,6 +1388,7 @@
         pointToLayer: joinPointStyle,
         onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
       }).addTo(map);
+      joinLayer.bringToFront();
       setCurrentLayer(joinLayer);
       const bounds = joinLayer.getBounds();
       if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
@@ -1454,6 +1456,7 @@
         pointToLayer: pointStyle,
         onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
       }).addTo(map);
+      dataLayer.bringToFront();
       setCurrentLayer(dataLayer);
       const bounds = dataLayer.getBounds();
       if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
