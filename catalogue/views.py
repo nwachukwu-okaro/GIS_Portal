@@ -3926,6 +3926,54 @@ def spatial_analysis(request):
     return render(request, 'catalogue/spatial_analysis.html')
 
 
+_DISCIPLINE_PAGES = {
+    'ground_engineering': {
+        'discipline': 'Ground Engineering',
+        'colour': '#8B5CF6',
+        'icon': '⛏',
+    },
+    'water': {
+        'discipline': 'Water',
+        'colour': '#0EA5E9',
+        'icon': '💧',
+    },
+    'ecology': {
+        'discipline': 'Ecology',
+        'colour': '#22C55E',
+        'icon': '🌿',
+    },
+    'transport': {
+        'discipline': 'Transport',
+        'colour': '#F59E0B',
+        'icon': '🚗',
+    },
+}
+
+
+def _render_discipline_page(request, page_key):
+    return render(request, 'catalogue/discipline_tool.html', _DISCIPLINE_PAGES[page_key].copy())
+
+
+@login_required
+def discipline_ground_engineering(request):
+    return _render_discipline_page(request, 'ground_engineering')
+
+
+@login_required
+def discipline_water(request):
+    return _render_discipline_page(request, 'water')
+
+
+@login_required
+def discipline_ecology(request):
+    return _render_discipline_page(request, 'ecology')
+
+
+@login_required
+def discipline_transport(request):
+    return _render_discipline_page(request, 'transport')
+
+
 def osm_tile_proxy(request, z, x, y):
     """Proxy OpenStreetMap tiles with an identifying User-Agent."""
     if not (0 <= z <= 19 and x >= 0 and y >= 0):

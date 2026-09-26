@@ -150,6 +150,31 @@
       </section>
       <div id="sa-log-panel" class="sa2-operation-log gp-log-panel"><button type="button" id="sa-log-toggle" class="sa2-btn-link">▶ Show my recent operations</button><div id="sa-log-content" class="sa2-hidden"><div class="sa2-table-scroll"><table id="sa-log-table" class="sa2-table sa2-operation-log-table"><thead><tr><th>Time</th><th>Operation</th><th>Table</th><th>Status</th><th>Duration</th><th>Detail</th></tr></thead><tbody id="sa-log-tbody"></tbody></table></div><button type="button" id="sa-log-refresh" class="sa2-btn-link sa2-operation-log-refresh">↻ Refresh</button></div></div>
     </section>
+    <!-- Phase 7: Discipline Tools drawer -->
+    <section class="gp-discipline-drawer" aria-label="Discipline tools">
+      <button type="button" class="gp-discipline-header" id="disc-toggle" aria-expanded="true" aria-controls="disc-grid">
+        <span class="gp-discipline-title"><span aria-hidden="true">🏢</span> Discipline Tools</span>
+        <span class="gp-discipline-chevron open" id="disc-chevron" aria-hidden="true">▲</span>
+      </button>
+      <div class="gp-discipline-grid" id="disc-grid">
+        <a href="{% url 'catalogue:discipline_ground_engineering' %}" class="gp-disc-card gp-disc-ground">
+          <span class="gp-disc-dot" aria-hidden="true"></span>
+          <span class="gp-disc-name">Ground<br>Engineering</span>
+        </a>
+        <a href="{% url 'catalogue:discipline_water' %}" class="gp-disc-card gp-disc-water">
+          <span class="gp-disc-dot" aria-hidden="true"></span>
+          <span class="gp-disc-name">Water</span>
+        </a>
+        <a href="{% url 'catalogue:discipline_ecology' %}" class="gp-disc-card gp-disc-ecology">
+          <span class="gp-disc-dot" aria-hidden="true"></span>
+          <span class="gp-disc-name">Ecology</span>
+        </a>
+        <a href="{% url 'catalogue:discipline_transport' %}" class="gp-disc-card gp-disc-transport">
+          <span class="gp-disc-dot" aria-hidden="true"></span>
+          <span class="gp-disc-name">Transport</span>
+        </a>
+      </div>
+    </section>
   </aside>
 
   <main class="gp-main">
@@ -230,6 +255,9 @@
     const joinSaveStatus = document.getElementById('sa4-save-status');
     const joinOutputName = document.getElementById('sa4-output-name');
     const phase5Section = document.getElementById('sa5-section');
+    const disciplineToggle = document.getElementById('disc-toggle');
+    const disciplineGrid = document.getElementById('disc-grid');
+    const disciplineChevron = document.getElementById('disc-chevron');
     const statisticsButton = document.getElementById('sa5-load-btn');
     const statisticsStatus = document.getElementById('sa5-status');
     const statisticsSummary = document.getElementById('sa5-summary');
@@ -339,6 +367,15 @@
       status.textContent = message;
       status.classList.toggle('is-error', isError);
     }
+
+    function toggleDisciplineDrawer() {
+      const isOpen = !disciplineGrid.hidden;
+      disciplineGrid.hidden = isOpen;
+      disciplineChevron.classList.toggle('open', !isOpen);
+      disciplineToggle.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    disciplineToggle.addEventListener('click', toggleDisciplineDrawer);
 
     function showWarning(message) {
       dataWarning.textContent = message;

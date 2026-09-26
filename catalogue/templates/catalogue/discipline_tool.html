@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ discipline }} Tools | Systra GIS Data Portal{% endblock %}
+
+{% block content %}
+<main class="discipline-placeholder" style="--discipline-colour: {{ colour }};">
+  <a href="{% url 'catalogue:spatial_analysis' %}" class="discipline-back-link">← Back to Spatial Analysis</a>
+  <h1>{{ icon }} {{ discipline }} Tools</h1>
+  <p>Discipline-specific spatial tools for {{ discipline }} will be built here in Phase 8.</p>
+</main>
+{% endblock %}
