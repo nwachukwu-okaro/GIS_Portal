@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIINfQ3qv4xkZ4xH5K5l8mM3G0fH0t0a0k=" crossorigin="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
 {% endblock %}
 
 {% block content %}
@@ -152,7 +154,7 @@
 
   <main class="gp-main">
     <div class="gp-map" id="gp-map-panel">
-      <div id="sa2-map" role="application" aria-label="Spatial data map"><div id="sa2-map-message" class="sa2-map-message" role="status" hidden></div></div>
+      <div id="sa2-map" role="application" aria-label="Spatial data map"><div id="sa2-data-warning" class="sa2-data-warning" role="status" hidden></div><div id="sa2-map-message" class="sa2-map-message" role="status" hidden></div></div>
     </div>
     <div id="resize-handle" class="gp-resize" role="separator" aria-label="Resize attribute table" tabindex="0"></div>
     <section id="attr-panel" class="gp-attr" aria-labelledby="sa2-table-heading">
@@ -167,6 +169,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script>
   const SA2_API = {
     schemas: "{% url 'catalogue:spatial_schemas_api' %}",
@@ -197,6 +200,7 @@
     const attributeTable = document.getElementById('sa2-attribute-table');
     const fullLayerButton = document.getElementById('btn-zoom-layer');
     const mapMessage = document.getElementById('sa2-map-message');
+    const dataWarning = document.getElementById('sa2-data-warning');
     const columnSelector = document.getElementById('sa2-column-selector');
     const columnCheckboxes = document.getElementById('sa2-column-checkboxes');
     const filterPanel = document.getElementById('sa2-filter-panel');
@@ -266,10 +270,18 @@
       preferCanvas: true
     }).setView([54.5, -4.0], 6);
     L.control.zoom({position: 'topright'}).addTo(map);
-    L.tileLayer('/tiles/osm/{z}/{x}/{y}.png', {
+    const baseTileLayer = L.tileLayer('/tiles/osm/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    });
+    baseTileLayer.on('tileerror', event => {
+      console.error('[Spatial Analysis] Basemap tile failed', {
+        url: event.tile?.src || '',
+        coordinates: event.coords || null,
+        error: event.error?.message || 'unknown tile error'
+      });
+    });
+    baseTileLayer.addTo(map);
 
     const HomeControl = L.Control.extend({
       options: {position: 'topright'},
@@ -326,6 +338,23 @@
     function setStatus(message, isError = false) {
       status.textContent = message;
       status.classList.toggle('is-error', isError);
+    }
+
+    function showWarning(message) {
+      dataWarning.textContent = message;
+      dataWarning.hidden = !message;
+    }
+
+    function updateDataWarning(data) {
+      if (data?.truncated) {
+        const returned = Number(data.returned_count || data.features?.length || 0);
+        const total = Number(data.total_rows ?? data.total_count ?? returned);
+        showWarning(
+          `Showing the first ${returned.toLocaleString()} of ${total.toLocaleString()} features. Apply a filter to see more.`
+        );
+      } else {
+        showWarning('');
+      }
     }
 
     async function fetchJson(url) {
@@ -1018,6 +1047,43 @@
       });
     }
 
+    function addLayerToMap(geojson, options = {}) {
+      const features = Array.isArray(geojson?.features) ? geojson.features : [];
+      const usableFeatures = features.filter(feature => feature?.geometry);
+      if (!usableFeatures.length) return null;
+
+      const pointOnly = usableFeatures.length === features.length
+        && usableFeatures.every(feature => ['Point', 'MultiPoint'].includes(feature.geometry.type));
+      const shouldCluster = options.clusterPoints !== false
+        && pointOnly
+        && usableFeatures.length > 200
+        && typeof L.markerClusterGroup === 'function';
+      const geoJsonOptions = {
+        style: options.style || SYSTRA_STYLE,
+        pointToLayer: options.pointToLayer || pointStyle,
+        onEachFeature: options.onEachFeature || ((feature, layer) => {
+          layer.bindPopup(popupForFeature(feature));
+        })
+      };
+
+      if (!shouldCluster) return L.geoJSON(geojson, geoJsonOptions).addTo(map);
+
+      const cluster = L.markerClusterGroup({
+        disableClusteringAtZoom: 14,
+        maxClusterRadius: 60,
+        iconCreateFunction: clusterGroup => L.divIcon({
+          html: `<div class="sa2-cluster-count">${clusterGroup.getChildCount()}</div>`,
+          className: 'sa2-cluster-icon',
+          iconSize: [36, 36]
+        })
+      });
+      const featureLayer = L.geoJSON(geojson, geoJsonOptions);
+      featureLayer.eachLayer(layer => cluster.addLayer(layer));
+      cluster.addTo(map);
+      console.info(`[Spatial Analysis] Clustered ${usableFeatures.length} point features; unclusters at zoom 14.`);
+      return cluster;
+    }
+
     function setLoading(isLoading) {
       loadButton.disabled = isLoading || !schemaSelect.value || !tableSelect.value;
       filterPreviewButton.disabled = isLoading || !schemaSelect.value || !tableSelect.value;
@@ -1214,7 +1280,7 @@
         const params = new URLSearchParams({
           schema,
           table,
-          limit: '50',
+          limit: '5000',
           columns: getSelectedColumns().join(','),
           filters: JSON.stringify(filters)
         });
@@ -1225,18 +1291,19 @@
         }
         setCurrentLayer(null);
         mapMessage.hidden = true;
+        updateDataWarning(data);
 
         if (data.has_geometry) {
-          dataLayer = L.geoJSON(data, {
-            style: SYSTRA_STYLE,
-            pointToLayer: pointStyle,
-            onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
-          }).addTo(map);
-          dataLayer.bringToFront();
-          setCurrentLayer(dataLayer);
-
-          const bounds = dataLayer.getBounds();
-          if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
+          dataLayer = addLayerToMap(data);
+          if (dataLayer) {
+            dataLayer.bringToFront();
+            setCurrentLayer(dataLayer);
+            const bounds = dataLayer.getBounds();
+            if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
+          } else {
+            mapMessage.textContent = 'No valid geometry was returned for this selection — attribute table shown below.';
+            mapMessage.hidden = false;
+          }
         } else {
           mapMessage.textContent = 'This table has no geometry — attribute table shown below';
           mapMessage.hidden = false;
@@ -1451,15 +1518,17 @@
       if (dataLayer) dataLayer.remove();
       setCurrentLayer(null);
       mapMessage.hidden = true;
-      dataLayer = L.geoJSON(data, {
-        style: SYSTRA_STYLE,
-        pointToLayer: pointStyle,
-        onEachFeature: (feature, layer) => layer.bindPopup(popupForFeature(feature))
-      }).addTo(map);
-      dataLayer.bringToFront();
-      setCurrentLayer(dataLayer);
-      const bounds = dataLayer.getBounds();
-      if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
+      updateDataWarning(data);
+      dataLayer = addLayerToMap(data);
+      if (dataLayer) {
+        dataLayer.bringToFront();
+        setCurrentLayer(dataLayer);
+        const bounds = dataLayer.getBounds();
+        if (bounds.isValid()) map.fitBounds(bounds, {padding: [20, 20]});
+      } else {
+        mapMessage.textContent = 'No valid geometry was returned for this operation — attribute table shown below.';
+        mapMessage.hidden = false;
+      }
       renderAttributeTable(data.features || []);
       tableMeta.textContent = `${label} preview — ${Number(data.total_count || 0).toLocaleString()} rows`;
       filterSavePanel.classList.add('sa3-hidden');

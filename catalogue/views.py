@@ -2571,7 +2571,7 @@ def spatial_table_columns_api(request):
 
 @login_required
 def spatial_table_data_api(request):
-    """Return up to 50 rows from a validated a_* schema table as GeoJSON."""
+    """Return a bounded GeoJSON preview from a validated a_* schema table."""
     schema = _spatial_schema_parameter(request)
     if _is_gis_db_mock():
         return _spatial_api_unavailable()
@@ -2581,10 +2581,11 @@ def spatial_table_data_api(request):
         return error_response
 
     try:
-        limit = int(request.GET.get('limit', '50'))
+        limit = int(request.GET.get('limit', '5000'))
     except (TypeError, ValueError):
         return JsonResponse({'error': 'limit must be a whole number.'}, status=400)
-    limit = max(1, min(limit, 50))
+    feature_limit = 5000
+    limit = max(1, min(limit, feature_limit))
 
     filters_requested = False
     try:
@@ -2681,6 +2682,10 @@ def spatial_table_data_api(request):
         'geometry_type': metadata['geometry_type'],
         'has_geometry': metadata['geometry_column'] is not None,
         'total_count': total_count,
+        'total_rows': total_count,
+        'returned_count': len(features),
+        'feature_limit': feature_limit,
+        'truncated': total_count > len(features),
     })
 
 
