@@ -3935,10 +3935,8 @@ _DISCIPLINE_PAGES = {
             'name': 'Levelling Point ETL',
             'icon': '⛏',
             'fme_url': 'https://selfservice.systra.com/fmeserver/apps/HS2-GroundMovement',
-            'description': (
-                'Processes HS2 ground movement levelling survey data. Transforms raw survey '
-                'readings into standardised point records and loads them into the project database.'
-            ),
+            'button_label': 'Levelling Point',
+            'description': 'Processes HS2 location levelling point and location data.',
         }],
         'coming_soon': ['Observation Value'],
     },

@@ -3,7 +3,7 @@
 {% block title %}{{ discipline }} Tools{% endblock %}
 
 {% block content %}
-<main class="dt-page" style="--discipline-colour: {{ colour }};">
+<main class="dt-page dt-{{ discipline|slugify }}">
   <a href="{% url 'catalogue:spatial_analysis' %}" class="dt-back">← Back to Spatial Analysis</a>
 
   <header class="dt-header">
@@ -25,7 +25,7 @@
           <div class="dt-card-body">
             <p class="dt-card-desc">{{ tool.description }}</p>
             <a href="{{ tool.fme_url }}" target="_blank" rel="noopener noreferrer" class="dt-card-btn">
-              Launch in FME Flow ↗
+              {{ tool.button_label|default:"Open tool" }} ↗
             </a>
           </div>
         </article>
