@@ -3931,34 +3931,36 @@ _DISCIPLINE_PAGES = {
         'discipline': 'Ground Engineering',
         'colour': '#8B5CF6',
         'icon': '⛏',
-        'tool_name': 'Levelling Point ETL',
-        'tool_url': 'https://selfservice.systra.com/fmeserver/apps/HS2-GroundMovement',
-        'tool_description': (
-            'Processes HS2 ground movement levelling survey data. Transforms raw survey '
-            'readings into standardised point records and loads them into the project database.'
-        ),
-        'tool_source': 'selfservice.systra.com · FME Flow · HS2 Ground Movement',
-        'coming_soon': ['Settlement Contour Tool', 'CPT Viewer', 'Geology Overlay'],
+        'fme_tools': [{
+            'name': 'Levelling Point ETL',
+            'icon': '⛏',
+            'fme_url': 'https://selfservice.systra.com/fmeserver/apps/HS2-GroundMovement',
+            'description': (
+                'Processes HS2 ground movement levelling survey data. Transforms raw survey '
+                'readings into standardised point records and loads them into the project database.'
+            ),
+        }],
+        'coming_soon': ['Observation Value'],
     },
     'water': {
         'discipline': 'Water',
         'colour': '#0EA5E9',
         'icon': '💧',
-        'tool_name': '',
+        'fme_tools': [],
         'coming_soon': [],
     },
     'ecology': {
         'discipline': 'Ecology',
         'colour': '#22C55E',
         'icon': '🌿',
-        'tool_name': '',
+        'fme_tools': [],
         'coming_soon': [],
     },
     'transport': {
         'discipline': 'Transport',
         'colour': '#F59E0B',
         'icon': '🚗',
-        'tool_name': '',
+        'fme_tools': [],
         'coming_soon': [],
     },
 }

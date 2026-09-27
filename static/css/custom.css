@@ -2315,9 +2315,9 @@ body:has(.gp-app) .systra-footer { display: none; }
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 12px 8px;
   border: 0;
-  background: transparent;
+  background: none;
   color: inherit;
   cursor: pointer;
   font: inherit;
@@ -2329,10 +2329,10 @@ body:has(.gp-app) .systra-footer { display: none; }
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #C8102E;
-  font-size: 9px;
+  color: #fff;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: .04em;
   text-transform: uppercase;
 }
 .gp-discipline-chevron {
@@ -2344,21 +2344,24 @@ body:has(.gp-app) .systra-footer { display: none; }
 .gp-discipline-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  padding: 0 10px 10px;
+  gap: 8px;
+  padding: 0 10px 12px;
 }
 .gp-discipline-grid[hidden] { display: none; }
 .gp-disc-card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 6px;
-  min-height: 44px;
-  padding: 10px 8px;
-  border-radius: 5px;
+  min-height: 64px;
+  padding: 12px 10px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  background: #1e1e1e;
   text-decoration: none;
-  transition: opacity 0.15s, transform 0.15s;
+  transition: filter .15s, border-color .15s;
 }
-.gp-disc-card:hover { opacity: 0.85; transform: translateY(-1px); }
+.gp-disc-card:hover { filter: brightness(1.15); border-color: #444; }
 .gp-disc-dot {
   width: 11px;
   height: 11px;
@@ -2367,8 +2370,8 @@ body:has(.gp-app) .systra-footer { display: none; }
 }
 .gp-disc-name {
   color: #fff;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   line-height: 1.3;
 }
 .gp-disc-ground { background: #1e1830; }
@@ -2507,6 +2510,63 @@ body:has(.gp-app) .systra-footer { display: none; }
 .discipline-empty-icon { margin-bottom: 12px; font-size: 36px; }
 .discipline-empty-name { color: #606066; font-size: 16px; font-weight: 600; }
 .discipline-empty-help { margin-top: 6px; color: #404040; font-size: 13px; }
+
+/* ── Ground Engineering discipline tool cards ─────────────────────────── */
+.dt-page {
+  min-height: calc(100vh - 62px);
+  padding: 32px 24px;
+  background: #111;
+  font-family: system-ui, sans-serif;
+}
+.dt-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  color: #888;
+  font-size: 13px;
+  text-decoration: none;
+}
+.dt-back:hover { color: #fff; }
+.dt-header {
+  margin-bottom: 32px;
+  padding-left: 16px;
+  border-left: 5px solid var(--discipline-colour);
+}
+.dt-header h1 { margin: 0 0 4px; color: #fff; font-size: 24px; font-weight: 700; }
+.dt-header p { margin: 0; color: #888; font-size: 14px; }
+.dt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.dt-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+  background: #1a1a1a;
+  text-decoration: none;
+  transition: border-color .2s, transform .15s, box-shadow .2s;
+}
+.dt-card:hover { border-color: var(--discipline-colour); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.5); }
+.dt-card-top { display: flex; align-items: center; gap: 14px; padding: 20px 20px 0; border-top: 4px solid var(--discipline-colour); }
+.dt-card-icon,
+.dt-card-empty-icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid color-mix(in srgb, var(--discipline-colour) 35%, transparent); border-radius: 10px; background: color-mix(in srgb, var(--discipline-colour) 13%, transparent); font-size: 22px; }
+.dt-card-meta { min-width: 0; flex: 1; }
+.dt-card-name { margin: 0 0 4px; color: #fff; font-size: 15px; font-weight: 700; line-height: 1.3; }
+.dt-card-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 4px; background: color-mix(in srgb, var(--discipline-colour) 20%, transparent); color: var(--discipline-colour); font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.dt-card-body { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 14px 20px 20px; }
+.dt-card-desc { flex: 1; margin: 0; color: #aaa; font-size: 13px; line-height: 1.6; }
+.dt-card-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin-top: 4px; padding: 10px 16px; border-radius: 6px; background: var(--discipline-colour); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: opacity .15s; }
+.dt-card-btn:hover { opacity: .85; color: #fff; }
+.dt-card-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 28px 20px; border: 1px dashed #2e2e2e; border-radius: 10px; background: #161616; text-align: center; }
+.dt-card-empty-icon { border: 0; background: #222; color: #555; }
+.dt-card-empty-name { margin: 0; color: #555; font-size: 14px; font-weight: 600; }
+.dt-card-empty-label { padding: 2px 8px; border-radius: 4px; background: #1e1e1e; color: #3a3a3a; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.dt-empty-message { margin-top: 40px; color: #555; font-size: 15px; text-align: center; }
+.dt-empty-message strong { color: #777; }
 
 @media (max-width: 640px) {
   .discipline-tool-list { padding: 20px 14px; }

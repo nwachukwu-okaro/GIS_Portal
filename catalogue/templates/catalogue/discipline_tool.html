@@ -1,45 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}{{ discipline }} Tools | Systra GIS Data Portal{% endblock %}
+{% block title %}{{ discipline }} Tools{% endblock %}
 
 {% block content %}
-<main class="discipline-page" style="--discipline-colour: {{ colour }};">
-  <header class="discipline-page-header">
-    <a href="{% url 'catalogue:spatial_analysis' %}" class="discipline-back-link">← Spatial Analysis</a>
+<main class="dt-page" style="--discipline-colour: {{ colour }};">
+  <a href="{% url 'catalogue:spatial_analysis' %}" class="dt-back">← Back to Spatial Analysis</a>
+
+  <header class="dt-header">
     <h1>{{ icon }} {{ discipline }} Tools</h1>
-    <p>Discipline-specific spatial tools for the {{ discipline }} team</p>
+    <p>Discipline-specific tools and integrations</p>
   </header>
 
-  <section class="discipline-tool-list" aria-label="{{ discipline }} tools">
-    {% if tool_name %}
-      <a href="{{ tool_url }}" target="_blank" rel="noopener noreferrer" class="discipline-tool-card">
-        <span class="discipline-tool-icon" aria-hidden="true">{{ icon }}</span>
-        <span class="discipline-tool-content">
-          <span class="discipline-tool-heading">
-            <span class="discipline-tool-name">{{ tool_name }}</span>
-            <span class="discipline-tool-badge">FME Flow ↗</span>
-          </span>
-          <span class="discipline-tool-description">{{ tool_description }} Runs on FME Flow and opens in a new tab.</span>
-          <span class="discipline-tool-source"><span aria-hidden="true">🔗</span> {{ tool_source }}</span>
-        </span>
-      </a>
+  {% if fme_tools %}
+    <section class="dt-grid" aria-label="{{ discipline }} tools">
+      {% for tool in fme_tools %}
+        <article class="dt-card">
+          <div class="dt-card-top">
+            <div class="dt-card-icon" aria-hidden="true">{{ tool.icon }}</div>
+            <div class="dt-card-meta">
+              <h2 class="dt-card-name">{{ tool.name }}</h2>
+              <span class="dt-card-badge">⚡ FME Flow ↗</span>
+            </div>
+          </div>
+          <div class="dt-card-body">
+            <p class="dt-card-desc">{{ tool.description }}</p>
+            <a href="{{ tool.fme_url }}" target="_blank" rel="noopener noreferrer" class="dt-card-btn">
+              Launch in FME Flow ↗
+            </a>
+          </div>
+        </article>
+      {% endfor %}
 
       {% for label in coming_soon %}
-        <div class="discipline-coming-card" aria-disabled="true">
-          <span class="discipline-coming-icon" aria-hidden="true">🔧</span>
-          <span>
-            <span class="discipline-coming-name">{{ label }}</span>
-            <span class="discipline-coming-status">Coming soon</span>
-          </span>
-        </div>
+        <article class="dt-card-empty" aria-disabled="true">
+          <div class="dt-card-empty-icon" aria-hidden="true">📊</div>
+          <h2 class="dt-card-empty-name">{{ label }}</h2>
+          <span class="dt-card-empty-label">Coming Soon</span>
+        </article>
       {% endfor %}
-    {% else %}
-      <div class="discipline-empty-card">
-        <div class="discipline-empty-icon" aria-hidden="true">🔧</div>
-        <div class="discipline-empty-name">{{ discipline }} tools coming in a future phase</div>
-        <div class="discipline-empty-help">Contact the Innovations Team to request a tool for this discipline.</div>
-      </div>
-    {% endif %}
-  </section>
+    </section>
+  {% else %}
+    <section class="dt-empty-message" aria-label="Coming soon">
+      Tools for <strong>{{ discipline }}</strong> are coming soon.
+    </section>
+  {% endif %}
 </main>
 {% endblock %}
