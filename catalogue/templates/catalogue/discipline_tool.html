@@ -3,9 +3,43 @@
 {% block title %}{{ discipline }} Tools | Systra GIS Data Portal{% endblock %}
 
 {% block content %}
-<main class="discipline-placeholder" style="--discipline-colour: {{ colour }};">
-  <a href="{% url 'catalogue:spatial_analysis' %}" class="discipline-back-link">← Back to Spatial Analysis</a>
-  <h1>{{ icon }} {{ discipline }} Tools</h1>
-  <p>Discipline-specific spatial tools for {{ discipline }} will be built here in Phase 8.</p>
+<main class="discipline-page" style="--discipline-colour: {{ colour }};">
+  <header class="discipline-page-header">
+    <a href="{% url 'catalogue:spatial_analysis' %}" class="discipline-back-link">← Spatial Analysis</a>
+    <h1>{{ icon }} {{ discipline }} Tools</h1>
+    <p>Discipline-specific spatial tools for the {{ discipline }} team</p>
+  </header>
+
+  <section class="discipline-tool-list" aria-label="{{ discipline }} tools">
+    {% if tool_name %}
+      <a href="{{ tool_url }}" target="_blank" rel="noopener noreferrer" class="discipline-tool-card">
+        <span class="discipline-tool-icon" aria-hidden="true">{{ icon }}</span>
+        <span class="discipline-tool-content">
+          <span class="discipline-tool-heading">
+            <span class="discipline-tool-name">{{ tool_name }}</span>
+            <span class="discipline-tool-badge">FME Flow ↗</span>
+          </span>
+          <span class="discipline-tool-description">{{ tool_description }} Runs on FME Flow and opens in a new tab.</span>
+          <span class="discipline-tool-source"><span aria-hidden="true">🔗</span> {{ tool_source }}</span>
+        </span>
+      </a>
+
+      {% for label in coming_soon %}
+        <div class="discipline-coming-card" aria-disabled="true">
+          <span class="discipline-coming-icon" aria-hidden="true">🔧</span>
+          <span>
+            <span class="discipline-coming-name">{{ label }}</span>
+            <span class="discipline-coming-status">Coming soon</span>
+          </span>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="discipline-empty-card">
+        <div class="discipline-empty-icon" aria-hidden="true">🔧</div>
+        <div class="discipline-empty-name">{{ discipline }} tools coming in a future phase</div>
+        <div class="discipline-empty-help">Contact the Innovations Team to request a tool for this discipline.</div>
+      </div>
+    {% endif %}
+  </section>
 </main>
 {% endblock %}
