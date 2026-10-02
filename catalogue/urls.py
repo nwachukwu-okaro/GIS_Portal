@@ -12,6 +12,7 @@ urlpatterns = [
     path('spatial-analysis/water/', views.discipline_water, name='discipline_water'),
     path('spatial-analysis/ecology/', views.discipline_ecology, name='discipline_ecology'),
     path('spatial-analysis/transport/', views.discipline_transport, name='discipline_transport'),
+    path('spatial-analysis/database-access/', views.discipline_database_access, name='discipline_database_access'),
     path('spatial-analysis/api/schemas/', views.spatial_schemas_api, name='spatial_schemas_api'),
     path('spatial-analysis/api/tables/', views.spatial_tables_api, name='spatial_tables_api'),
     path('spatial-analysis/api/table-data/', views.spatial_table_data_api, name='spatial_table_data_api'),

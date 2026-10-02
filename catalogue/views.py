@@ -3963,6 +3963,30 @@ _DISCIPLINE_PAGES = {
         'fme_tools': [],
         'coming_soon': [],
     },
+    'database_access': {
+        'discipline': 'Database Access Registration',
+        'colour': '#06B6D4',
+        'icon': '🗄️',
+        'fme_tools': [
+            {
+                'name': 'Account Creation',
+                'description': 'Creates user accounts on the UK_IRL GIS Database.',
+                'fme_url': 'https://selfservice.systra.com/fmeserver/apps/DB-user-creator',
+                'icon': '🗄️',
+                'btn_label': 'Launch in FME Flow ↗',
+                'badge': '🔗 External Tool',
+            },
+            {
+                'name': 'Account Authentication Guide',
+                'description': 'Provides a detailed guide on how to authenticate your UK_IRL GIS Database account after creation.',
+                'fme_url': 'http://mapit.systra.com/catalogue/#/geostory/204',
+                'icon': '🔐',
+                'btn_label': 'Open Guide ↗',
+                'badge': '🔗 External Tool',
+            },
+        ],
+        'coming_soon': [],
+    },
 }
 
 
@@ -3988,6 +4012,11 @@ def discipline_ecology(request):
 @login_required
 def discipline_transport(request):
     return _render_discipline_page(request, 'transport')
+
+
+@login_required
+def discipline_database_access(request):
+    return _render_discipline_page(request, 'database_access')
 
 
 def osm_tile_proxy(request, z, x, y):

@@ -19,13 +19,19 @@
             <div class="dt-card-icon" aria-hidden="true">{{ tool.icon }}</div>
             <div class="dt-card-meta">
               <h2 class="dt-card-name">{{ tool.name }}</h2>
-              <span class="dt-card-badge">⚡ FME Flow ↗</span>
+              <span class="dt-card-badge">{% if tool.badge %}{{ tool.badge }}{% else %}⚡ FME Flow ↗{% endif %}</span>
             </div>
           </div>
           <div class="dt-card-body">
             <p class="dt-card-desc">{{ tool.description }}</p>
             <a href="{{ tool.fme_url }}" target="_blank" rel="noopener noreferrer" class="dt-card-btn">
-              Launch in FME Flow ↗
+              {% if tool.btn_label %}
+                {{ tool.btn_label }}
+              {% elif tool.button_label %}
+                {{ tool.button_label }} ↗
+              {% else %}
+                Launch in FME Flow ↗
+              {% endif %}
             </a>
           </div>
         </article>
